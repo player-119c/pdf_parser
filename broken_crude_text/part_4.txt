@@ -1,0 +1,5795 @@
+
+--- Page 1 ---
+9.4
+PARALLEL GAUSSIAN CHANNELS
+275
+Z1
+Y1
+X1
+Zk
+Yk
+Xk
+FIGURE 9.3. Parallel Gaussian channels.
+We calculate the distribution that achieves the information capacity for
+this channel. The fact that the information capacity is the supremum of
+achievable rates can be proved by methods identical to those in the proof
+of the capacity theorem for single Gaussian channels and will be omitted.
+Since Z1, Z2, . . . , Zk are independent,
+I (X1, X2, . . . , Xk ; Y1, Y2, . . . , Yk)
+= h(Y1, Y2, . . . , Yk) −h(Y1, Y2, . . . , Yk|X1, X2, . . . , Xk)
+= h(Y1, Y2, . . . , Yk) −h(Z1, Z2, . . . , Zk|X1, X2, . . . , Xk)
+= h(Y1, Y2, . . . , Yk) −h(Z1, Z2, . . . , Zk)
+(9.68)
+= h(Y1, Y2, . . . , Yk) −
+
+i
+h(Zi)
+(9.69)
+≤
+
+i
+h(Yi) −h(Zi)
+(9.70)
+≤
+
+i
+1
+2 log
+
+1 + Pi
+Ni
+
+,
+(9.71)
+
+--- Page 2 ---
+276
+GAUSSIAN CHANNEL
+where Pi = EX2
+i , and  Pi = P . Equality is achieved by
+(X1, X2, . . . , Xk) ∼N
+
+0,
+
+
+P1
+0
+· · ·
+0
+0
+P2
+· · ·
+0
+...
+...
+...
+...
+0
+0
+· · ·
+Pk
+
+
+
+.
+(9.72)
+So the problem is reduced to ﬁnding the power allotment that max-
+imizes the capacity subject to the constraint that  Pi = P . This is a
+standard optimization problem and can be solved using Lagrange multi-
+pliers. Writing the functional as
+J(P1, . . . , Pk) =
+ 1
+2 log
+
+1 + Pi
+Ni
+
++ λ
+
+Pi
+
+(9.73)
+and differentiating with respect to Pi, we have
+1
+2
+1
+Pi + Ni
++ λ = 0
+(9.74)
+or
+Pi = ν −Ni.
+(9.75)
+However, since the Pi’s must be nonnegative, it may not always be possi-
+ble to ﬁnd a solution of this form. In this case, we use the Kuhn–Tucker
+conditions to verify that the solution
+Pi = (ν −Ni)+
+(9.76)
+is the assignment that maximizes capacity, where ν is chosen so that
+
+(ν −Ni)+ = P.
+(9.77)
+Here (x)+ denotes the positive part of x:
+(x)+ =
+!
+x
+if x ≥0,
+0
+if x < 0.
+(9.78)
+This solution is illustrated graphically in Figure 9.4. The vertical levels
+indicate the noise levels in the various channels. As the signal power is
+increased from zero, we allot the power to the channels with the lowest
+
+--- Page 3 ---
+9.5
+CHANNELS WITH COLORED GAUSSIAN NOISE
+277
+Power
+Channel 1
+Channel 2
+Channel 3
+P1
+n
+P2
+N1
+N2
+N3
+FIGURE 9.4. Water-ﬁlling for parallel channels.
+noise. When the available power is increased still further, some of the
+power is put into noisier channels. The process by which the power is
+distributed among the various bins is identical to the way in which water
+distributes itself in a vessel, hence this process is sometimes referred to
+as water-ﬁlling.
+9.5
+CHANNELS WITH COLORED GAUSSIAN NOISE
+In Section 9.4, we considered the case of a set of parallel independent
+Gaussian channels in which the noise samples from different channels
+were independent. Now we will consider the case when the noise is depen-
+dent. This represents not only the case of parallel channels, but also the
+case when the channel has Gaussian noise with memory. For channels
+with memory, we can consider a block of n consecutive uses of the chan-
+nel as n channels in parallel with dependent noise. As in Section 9.4, we
+will calculate only the information capacity for this channel.
+Let KZ be the covariance matrix of the noise, and let KX be the input
+covariance matrix. The power constraint on the input can then be writ-
+ten as
+1
+n
+
+i
+EX2
+i ≤P,
+(9.79)
+or equivalently,
+1
+ntr(KX) ≤P.
+(9.80)
+
+--- Page 4 ---
+278
+GAUSSIAN CHANNEL
+Unlike Section 9.4, the power constraint here depends on n; the capacity
+will have to be calculated for each n.
+Just as in the case of independent channels, we can write
+I (X1, X2, . . . , Xn; Y1, Y2, . . . , Yn) = h(Y1, Y2, . . . , Yn)
+−h(Z1, Z2, . . . , Zn). (9.81)
+Here h(Z1, Z2, . . . , Zn) is determined only by the distribution of the noise
+and is not dependent on the choice of input distribution. So ﬁnding the
+capacity amounts to maximizing h(Y1, Y2, . . . , Yn). The entropy of the
+output is maximized when Y is normal, which is achieved when the input
+is normal. Since the input and the noise are independent, the covariance
+of the output Y is KY = KX + KZ and the entropy is
+h(Y1, Y2, . . . , Yn) = 1
+2 log
+
+(2πe)n|KX + KZ|
+
+.
+(9.82)
+Now the problem is reduced to choosing KX so as to maximize |KX +
+KZ|, subject to a trace constraint on KX. To do this, we decompose KZ
+into its diagonal form,
+KZ = QQt,
+where QQt = I.
+(9.83)
+Then
+|KX + KZ| = |KX + QQt|
+(9.84)
+= |Q||QtKXQ + ||Qt|
+(9.85)
+= |QtKXQ + |
+(9.86)
+= |A + |,
+(9.87)
+where A = QtKXQ. Since for any matrices B and C,
+tr(BC) = tr(CB),
+(9.88)
+we have
+tr(A) = tr(QtKXQ)
+(9.89)
+= tr(QQtKX)
+(9.90)
+= tr(KX).
+(9.91)
+
+--- Page 5 ---
+9.5
+CHANNELS WITH COLORED GAUSSIAN NOISE
+279
+Now the problem is reduced to maximizing |A + | subject to a trace
+constraint tr(A) ≤nP .
+Now we apply Hadamard’s inequality, mentioned in Chapter 8. Hada-
+mard’s inequality states that the determinant of any positive deﬁnite matrix
+K is less than the product of its diagonal elements, that is,
+|K| ≤
+"
+i
+Kii
+(9.92)
+with equality iff the matrix is diagonal. Thus,
+|A + | ≤
+"
+i
+(Aii + λi)
+(9.93)
+with equality iff A is diagonal. Since A is subject to a trace constraint,
+1
+n
+
+i
+Aii ≤P,
+(9.94)
+and Aii ≥0, the maximum value of #
+i(Aii + λi) is attained when
+Aii + λi = ν.
+(9.95)
+However, given the constraints, it may not always be possible to satisfy
+this equation with positive Aii. In such cases, we can show by the standard
+Kuhn–Tucker conditions that the optimum solution corresponds to setting
+Aii = (ν −λi)+,
+(9.96)
+where the water level ν is chosen so that  Aii = nP . This value of A
+maximizes the entropy of Y and hence the mutual information. We can
+use Figure 9.4 to see the connection between the methods described above
+and water-ﬁlling.
+Consider a channel in which the additive Gaussian noise is a stochas-
+tic process with ﬁnite-dimensional covariance matrix K(n)
+Z . If the process
+is stationary, the covariance matrix is Toeplitz and the density of eigen-
+values on the real line tends to the power spectrum of the stochastic
+process [262]. In this case, the above water-ﬁlling argument translates to
+water-ﬁlling in the spectral domain.
+Hence, for channels in which the noise forms a stationary stochastic
+process, the input signal should be chosen to be a Gaussian process with
+a spectrum that is large at frequencies where the noise spectrum is small.
+
+--- Page 6 ---
+280
+GAUSSIAN CHANNEL
+F(w)
+w
+FIGURE 9.5. Water-ﬁlling in the spectral domain.
+This is illustrated in Figure 9.5. The capacity of an additive Gaussian
+noise channel with noise power spectrum N(f ) can be shown to be [233]
+C =
+ π
+−π
+1
+2 log
+
+1 + (ν −N(f ))+
+N(f )
+
+df,
+(9.97)
+where ν is chosen so that
+$
+(ν −N(f ))+ df = P .
+9.6
+GAUSSIAN CHANNELS WITH FEEDBACK
+In Chapter 7 we proved that feedback does not increase the capacity for
+discrete memoryless channels, although it can help greatly in reducing
+the complexity of encoding or decoding. The same is true of an additive
+noise channel with white noise. As in the discrete case, feedback does not
+increase capacity for memoryless Gaussian channels.
+However, for channels with memory, where the noise is correlated
+from time instant to time instant, feedback does increase capacity. The
+capacity without feedback can be calculated using water-ﬁlling, but we do
+not have a simple explicit characterization of the capacity with feedback.
+In this section we describe an expression for the capacity in terms of the
+covariance matrix of the noise Z. We prove a converse for this expression
+for capacity. We then derive a simple bound on the increase in capacity
+due to feedback.
+The Gaussian channel with feedback is illustrated in Figure 9.6. The
+output of the channel Yi is
+Yi = Xi + Zi,
+Zi ∼N(0, K(n)
+Z ).
+(9.98)
+
+--- Page 7 ---
+9.6
+GAUSSIAN CHANNELS WITH FEEDBACK
+281
+Zi
+Yi
+Xi
+FIGURE 9.6. Gaussian channel with feedback.
+The feedback allows the input of the channel to depend on the past values
+of the output.
+A (2nR, n) code for the Gaussian channel with feedback consists of
+a sequence of mappings xi(W, Y i−1), where W ∈{1, 2, . . . , 2nR} is the
+input message and Y i−1 is the sequence of past values of the output. Thus,
+x(W, ·) is a code function rather than a codeword. In addition, we require
+that the code satisfy a power constraint,
+E
+%
+1
+n
+n
+
+i=1
+x2
+i (w, Y i−1)
+&
+≤P,
+w ∈{1, 2, . . . , 2nR},
+(9.99)
+where the expectation is over all possible noise sequences.
+We characterize the capacity of the Gaussian channel is terms of the
+covariance matrices of the input X and the noise Z. Because of the feed-
+back, Xn and Zn are not independent; Xi depends causally on the past
+values of Z. In the next section we prove a converse for the Gaussian
+channel with feedback and show that we achieve capacity if we take X
+to be Gaussian.
+We now state an informal characterization of the capacity of the channel
+with and without feedback.
+1. With feedback. The capacity Cn,FB in bits per transmission of the
+time-varying Gaussian channel with feedback is
+Cn,FB =
+max
+1
+ntr(K(n)
+X )≤P
+1
+2n log |K(n)
+X+Z|
+|K(n)
+Z |
+,
+(9.100)
+
+--- Page 8 ---
+282
+GAUSSIAN CHANNEL
+where the maximization is taken over all Xn of the form
+Xi =
+i−1
+
+j=1
+bijZj + Vi,
+i = 1, 2, . . . , n,
+(9.101)
+and V n is independent of Zn. To verify that the maximization over
+(9.101) involves no loss of generality, note that the distribution on
+Xn + Zn achieving the maximum entropy is Gaussian. Since Zn is
+also Gaussian, it can be veriﬁed that a jointly Gaussian distribu-
+tion on (Xn, Zn, Xn + Zn) achieves the maximization in (9.100).
+But since Zn = Y n −Xn, the most general jointly normal causal
+dependence of Xn on Y n is of the form (9.101), where V n plays the
+role of the innovations process. Recasting (9.100) and (9.101) using
+X = BZ + V and Y = X + Z, we can write
+Cn,FB = max 1
+2n log |(B + I)K(n)
+Z (B + I)t + KV |
+|K(n)
+Z |
+,
+(9.102)
+where the maximum is taken over all nonnegative deﬁnite KV and
+strictly lower triangular B such that
+tr(BK(n)
+Z Bt + KV ) ≤nP.
+(9.103)
+Note that B is 0 if feedback is not allowed.
+2. Without feedback. The capacity Cn of the time-varying Gaussian
+channel without feedback is given by
+Cn =
+max
+1
+ntr(K(n)
+X )≤P
+1
+2n log |K(n)
+X + K(n)
+Z |
+|K(n)
+Z |
+.
+(9.104)
+This reduces to water-ﬁlling on the eigenvalues {λ(n)
+i } of K(n)
+Z . Thus,
+Cn = 1
+2n
+n
+
+i=1
+log
+
+1 + (λ −λ(n)
+i )+
+λ(n)
+i
+
+,
+(9.105)
+where (y)+ = max{y, 0} and where λ is chosen so that
+n
+
+i=1
+(λ −λ(n)
+i )+ = nP.
+(9.106)
+
+--- Page 9 ---
+9.6
+GAUSSIAN CHANNELS WITH FEEDBACK
+283
+We now prove an upper bound for the capacity of the Gaussian channel
+with feedback. This bound is actually achievable [136], and is therefore
+the capacity, but we do not prove this here.
+Theorem 9.6.1
+For a Gaussian channel with feedback, the rate Rn for
+any sequence of (2nRn, n) codes with P (n)
+e
+→0 satisﬁes
+Rn ≤Cn,FB + ǫn,
+(9.107)
+with ǫn →0 as n →∞, where Cn,FB is deﬁned in (9.100).
+Proof:
+Let W be uniform over 2nR, and therefore the probability of error
+P (n)
+e
+is bounded by Fano’s inequality,
+H(W| ˆW) ≤1 + nRnP (n)
+e
+= nǫn,
+(9.108)
+where ǫn →0 as P (n)
+e
+→0. We can then bound the rate as follows:
+nRn = H(W)
+(9.109)
+= I (W; ˆW) + H(W| ˆW)
+(9.110)
+≤I (W; ˆW) + nǫn
+(9.111)
+≤I (W; Y n) + nǫn
+(9.112)
+=
+
+I (W; Yi|Y i−1) + nǫn
+(9.113)
+(a)
+=
+ 
+h(Yi|Y i−1) −h(Yi|W, Y i−1, Xi, Xi−1, Zi−1)
+
++ nǫn
+(9.114)
+(b)
+=
+ 
+h(Yi|Y i−1) −h(Zi|W, Y i−1, Xi, Xi−1, Zi−1)
+
++ nǫn
+(9.115)
+(c)
+=
+ 
+h(Yi|Y i−1) −h(Zi|Zi−1)
+
++ nǫn
+(9.116)
+= h(Y n) −h(Zn) + nǫn,
+(9.117)
+where (a) follows from the fact that Xi is a function of W and the past
+Yi’s, and Zi−1 is Y i−1 −Xi−1, (b) follows from Yi = Xi + Zi and the
+fact that h(X + Z|X) = h(Z|X), and (c) follows from the fact Zi and
+(W, Y i−1, Xi) are conditionally independent given Zi−1. Continuing the
+
+--- Page 10 ---
+284
+GAUSSIAN CHANNEL
+chain of inequalities after dividing by n, we have
+Rn ≤1
+n
+
+h(Y n) −h(Zn)
+
++ ǫn
+(9.118)
+≤1
+2n log |K(n)
+Y |
+|K(n)
+Z |
++ ǫn
+(9.119)
+≤Cn,FB + ǫn,
+(9.120)
+by the entropy maximizing property of the normal.
+□
+We have proved an upper bound on the capacity of the Gaussian chan-
+nel with feedback in terms of the covariance matrix K(n)
+X+Z. We now derive
+bounds on the capacity with feedback in terms of K(n)
+X
+and K(n)
+Z , which
+will then be used to derive bounds in terms of the capacity without feed-
+back. For simplicity of notation, we will drop the superscript n in the
+symbols for covariance matrices.
+We ﬁrst prove a series of lemmas about matrices and determinants.
+Lemma 9.6.1
+Let X and Z be n-dimensional random vectors. Then
+KX+Z + KX−Z = 2KX + 2KZ.
+(9.121)
+Proof
+KX+Z = E(X + Z)(X + Z)t
+(9.122)
+= EXXt + EXZt + EZXt + EZZt
+(9.123)
+= KX + KXZ + KZX + KZ.
+(9.124)
+Similarly,
+KX−Z = KX −KXZ −KZX + KZ.
+(9.125)
+Adding these two equations completes the proof.
+□
+Lemma 9.6.2
+For two n × n nonnegative deﬁnite matrices A and B, if
+A −B is nonnegative deﬁnite, then |A| ≥|B|.
+Proof:
+Let C = A −B. Since B and C are nonnegative deﬁnite, we
+can consider them as covariance matrices. Consider two independent nor-
+mal random vectors X1 ∼N(0, B) and X2 ∼N(0, C). Let Y = X1 + X2.
+
+--- Page 11 ---
+9.6
+GAUSSIAN CHANNELS WITH FEEDBACK
+285
+Then
+h(Y) ≥h(Y|X2)
+(9.126)
+= h(X1|X2)
+(9.127)
+= h(X1),
+(9.128)
+where the inequality follows from the fact that conditioning reduces dif-
+ferential entropy, and the ﬁnal equality from the fact that X1 and X2 are
+independent. Substituting the expressions for the differential entropies of
+a normal random variable, we obtain
+1
+2 log(2πe)n|A| > 1
+2 log(2πe)n|B|,
+(9.129)
+which is equivalent to the desired lemma.
+□
+Lemma 9.6.3
+For two n-dimensional random vectors X and Z,
+|KX+Z| ≤2n|KX + KZ|.
+(9.130)
+Proof:
+From Lemma 9.6.1,
+2(KX + KZ) −KX+Z = KX−Z ⪰0,
+(9.131)
+where A ⪰0 means that A is nonnegative deﬁnite. Hence, applying
+Lemma 9.6.2, we have
+|KX+Z| ≤|2(KX + KZ)| = 2n|KX + KZ|,
+(9.132)
+which is the desired result.
+□
+Lemma 9.6.4
+For A,B nonnegative deﬁnite matrices and 0 ≤λ ≤1,
+|λA + (1 −λ)B| ≥|A|λ|B|1−λ.
+(9.133)
+Proof:
+Let X ∼Nn(0, A) and Y ∼Nn(0, B). Let Z be the mixture ran-
+dom vector
+Z =
+!
+X
+if θ = 1
+Y
+if θ = 2,
+(9.134)
+
+--- Page 12 ---
+286
+GAUSSIAN CHANNEL
+where
+θ =
+!
+1
+with probability λ
+2
+with probability 1 −λ.
+(9.135)
+Let X, Y, and θ be independent. Then
+KZ = λA + (1 −λ)B.
+(9.136)
+We observe that
+1
+2 ln(2πe)n|λA + (1 −λ)B| ≥h(Z)
+(9.137)
+≥h(Z|θ)
+(9.138)
+= λh(X) + (1 −λ)h(Y)
+(9.139)
+= 1
+2 ln(2πe)n|A|λ|B|1−λ,
+(9.140)
+which proves the result. The ﬁrst inequality follows from the entropy
+maximizing property of the Gaussian under the covariance constraint. □
+Deﬁnition
+We say that a random vector Xn is causally related to Zn if
+f (xn, zn) = f (zn)
+n
+"
+i=1
+f (xi|xi−1, zi−1).
+(9.141)
+Note that the feedback codes necessarily yield causally related (Xn, Zn).
+Lemma 9.6.5
+If Xn and Zn are causally related, then
+h(Xn −Zn) ≥h(Zn)
+(9.142)
+and
+|KX−Z| ≥|KZ|,
+(9.143)
+where KX−Z and KZ are the covariance matrices of Xn −Zn and Zn,
+respectively.
+Proof:
+We have
+h(Xn −Zn)
+(a)
+=
+n
+
+i=1
+h(Xi −Zi|Xi−1 −Zi−1)
+(9.144)
+
+--- Page 13 ---
+9.6
+GAUSSIAN CHANNELS WITH FEEDBACK
+287
+(b)
+≥
+n
+
+i=1
+h(Xi −Zi|Xi−1, Zi−1, Xi)
+(9.145)
+(c)
+=
+n
+
+i=1
+h(Zi|Xi−1, Zi−1, Xi)
+(9.146)
+(d)
+=
+n
+
+i=1
+h(Zi|Zi−1)
+(9.147)
+(e)
+= h(Zn).
+(9.148)
+Here (a) follows from the chain rule, (b) follows from conditioning
+h(A|B) ≥h(A|B, C), (c) follows from the conditional determinism of
+Xi and the invariance of differential entropy under translation, (d) fol-
+lows from the causal relationship of Xn and Zn, and (e) follows from the
+chain rule.
+Finally, suppose that Xn and Zn are causally related and the associ-
+ated covariance matrices for Zn and Xn −Zn are KZ and KX−Z. There
+obviously exists a multivariate normal (causally related) pair of random
+vectors ˜Xn, ˜Zn with the same covariance structure. Thus, from (9.148),
+we have
+1
+2 ln(2πe)n|KX−Z| = h( ˜Xn −˜Zn)
+(9.149)
+≥h( ˜Zn)
+(9.150)
+= 1
+2 ln(2πe)n|KZ|,
+(9.151)
+thus proving (9.143).
+□
+We are now in a position to prove that feedback increases the capacity
+of a nonwhite Gaussian additive noise channel by at most half a bit.
+Theorem 9.6.2
+Cn,FB ≤Cn + 1
+2
+bits per transmission.
+(9.152)
+Proof:
+Combining all the lemmas, we obtain
+Cn,FB ≤
+max
+tr(KX)≤nP
+1
+2n log |KY|
+|KZ|
+(9.153)
+
+--- Page 14 ---
+288
+GAUSSIAN CHANNEL
+≤
+max
+tr(KX)≤nP
+1
+2n log 2n|KX + KZ|
+|KZ|
+(9.154)
+=
+max
+tr(KX)≤nP
+1
+2n log |KX + KZ|
+|KZ|
++ 1
+2
+(9.155)
+≤Cn + 1
+2
+bits per transmission,
+(9.156)
+where the inequalities follow from Theorem 9.6.1, Lemma 9.6.3, and the
+deﬁnition of capacity without feedback, respectively.
+□
+We now prove Pinsker’s statement that feedback can at most double
+the capacity of colored noise channels.
+Theorem 9.6.3
+Cn,FB ≤2Cn.
+Proof:
+It is enough to show that
+1
+2
+1
+2n log |KX+Z|
+|KZ|
+≤1
+2n log |KX + KZ|
+|KZ|
+,
+(9.157)
+for it will then follow that by maximizing the right side and then the left
+side that
+1
+2Cn,FB ≤Cn.
+(9.158)
+We have
+1
+2n log |KX + KZ|
+|KZ|
+(a)
+= 1
+2n log |1
+2KX+Z + 1
+2KX−Z|
+|KZ|
+(9.159)
+(b)
+≥1
+2n log |KX+Z|
+1
+2|KX−Z|
+1
+2
+|KZ|
+(9.160)
+(c)
+≥1
+2n log |KX+Z|
+1
+2 |KZ|
+1
+2
+|KZ|
+(9.161)
+(d)
+= 1
+2
+1
+2n log |KX+Z|
+|KZ|
+(9.162)
+and the result is proved. Here (a) follows from Lemma 9.6.1, (b) is the
+inequality in Lemma 9.6.4, and (c) is Lemma 9.6.5 in which causality is
+used.
+□
+
+--- Page 15 ---
+SUMMARY
+289
+Thus, we have shown that Gaussian channel capacity is not increased
+by more than half a bit or by more than a factor of 2 when we have
+feedback; feedback helps, but not by much.
+SUMMARY
+Maximum entropy. maxEX2=α h(X) = 1
+2 log 2πeα.
+Gaussian channel.
+Yi = Xi + Zi; Zi ∼N(0, N); power constraint
+1
+n
+n
+i=1 x2
+i ≤P ; and
+C = 1
+2 log
+
+1 + P
+N
+
+bits per transmission.
+(9.163)
+Bandlimited additive white Gaussian noise channel. Bandwidth W;
+two-sided power spectral density N0/2; signal power P ; and
+C = W log
+
+1 +
+P
+N0W
+
+bits per second.
+(9.164)
+Water-ﬁlling (k parallel Gaussian channels). Yj = Xj + Zj, j = 1,
+2, . . . , k; Zj ∼N(0, Nj); k
+j=1 X2
+j ≤P ; and
+C =
+k
+
+i=1
+1
+2 log
+
+1 + (ν −Ni)+
+Ni
+
+,
+(9.165)
+where ν is chosen so that (ν −Ni)+ = nP .
+Additive nonwhite Gaussian noise channel. Yi = Xi + Zi; Zn ∼
+N(0, KZ); and
+C = 1
+n
+n
+
+i=1
+1
+2 log
+
+1 + (ν −λi)+
+λi
+
+,
+(9.166)
+where λ1, λ2, . . . , λn are the eigenvalues of KZ and ν is chosen so that
+
+i(ν −λi)+ = P .
+Capacity without feedback
+Cn =
+max
+tr(KX)≤nP
+1
+2n log |KX + KZ|
+|KZ|
+.
+(9.167)
+
+--- Page 16 ---
+290
+GAUSSIAN CHANNEL
+Capacity with feedback
+Cn,FB =
+max
+tr(KX)≤nP
+1
+2n log |KX+Z|
+|KZ| .
+(9.168)
+Feedback bounds
+Cn,FB ≤Cn + 1
+2.
+(9.169)
+Cn,FB ≤2Cn.
+(9.170)
+PROBLEMS
+9.1
+Channel with two independent looks at Y .
+Let Y1 and Y2 be condi-
+tionally independent
+and conditionally
+identically distributed
+given X.
+(a) Show that I (X; Y1, Y2) = 2I (X; Y1) −I (Y1; Y2).
+(b) Conclude that the capacity of the channel
+X
+(Y1, Y2)
+is less than twice the capacity of the channel
+X
+Y1
+9.2
+Two-look Gaussian channel
+X
+(Y1, Y2)
+Consider the ordinary Gaussian channel with two correlated looks
+at X, that is, Y = (Y1, Y2), where
+Y1 = X + Z1
+(9.171)
+Y2 = X + Z2
+(9.172)
+
+--- Page 17 ---
+PROBLEMS
+291
+with a power constraint P on X, and (Z1, Z2) ∼N2(0, K), where
+K =
+'
+N
+Nρ
+Nρ
+N
+(
+.
+(9.173)
+Find the capacity C for
+(a) ρ = 1
+(b) ρ = 0
+(c) ρ = −1
+9.3
+Output power constraint.
+Consider an additive white Gaussian
+noise channel with an expected output power constraint P . Thus,
+Y = X + Z, Z ∼N(0, σ 2), Z is independent of X, and EY 2 ≤P .
+Find the channel capacity.
+9.4
+Exponential noise channels.
+Yi = Xi + Zi, where Zi is i.i.d. ex-
+ponentially distributed noise with mean µ. Assume that we have
+a mean constraint on the signal (i.e., EXi ≤λ). Show that the
+capacity of such a channel is C = log(1 + λ
+µ).
+9.5
+Fading channel.
+Consider an additive noise fading channel
+V
+X
+Z
+Y
+Y = XV + Z,
+where Z is additive noise, V is a random variable representing
+fading, and Z and V are independent of each other and of X.
+Argue that knowledge of the fading factor V improves capacity by
+showing that
+I (X; Y|V ) ≥I (X; Y).
+9.6
+Parallel channels and water-ﬁlling.
+Consider a pair of parallel
+Gaussian channels:
+
+Y1
+Y2
+
+=
+
+X1
+X2
+
++
+
+Z1
+Z2
+
+,
+(9.174)
+
+--- Page 18 ---
+292
+GAUSSIAN CHANNEL
+where
+
+Z1
+Z2
+
+∼N
+
+0,
+'
+σ 2
+1
+0
+0
+σ 2
+2
+(
+,
+(9.175)
+and there is a power constraint E(X2
+1 + X2
+2) ≤2P . Assume that
+σ 2
+1 > σ 2
+2 . At what power does the channel stop behaving like a
+single channel with noise variance σ 2
+2 , and begin behaving like a
+pair of channels?
+9.7
+Multipath Gaussian channel.
+Consider a Gaussian noise channel
+with power constraint P , where the signal takes two different paths
+and the received noisy signals are added together at the antenna.
+∑
+X
+Y
+Z1
+Y1
+Y2
+Z2
+(a) Find the capacity of this channel if Z1 and Z2 are jointly normal
+with covariance matrix
+KZ =
+'
+σ 2
+ρσ 2
+ρσ 2
+σ 2
+(
+.
+(b) What is the capacity for ρ = 0, ρ = 1, ρ = −1?
+9.8
+Parallel Gaussian channels.
+Consider the following parallel
+Gaussian channel:
+Z1 ~
+(0,N1)
+X1
+Y1
+Z2 ~
+(0,N2)
+X2
+Y2
+
+--- Page 19 ---
+PROBLEMS
+293
+where Z1 ∼N(0,N1) and Z2 ∼N(0,N2) are independent Gaussian
+random variables and Yi = Xi + Zi. We wish to allocate power
+to the two parallel channels. Let β1 and β2 be ﬁxed. Consider
+a total cost constraint β1P1 + β2P2 ≤β, where Pi is the power
+allocated to the ith channel and βi is the cost per unit power in
+that channel. Thus, P1 ≥0 and P2 ≥0 can be chosen subject to
+the cost constraint β.
+(a) For what value of β does the channel stop acting like a single
+channel and start acting like a pair of channels?
+(b) Evaluate the capacity and ﬁnd P1 and P2 that achieve capacity
+for β1 = 1, β2 = 2, N1 = 3, N2 = 2, and β = 10.
+9.9
+Vector Gaussian channel.
+Consider the vector Gaussian noise
+channel
+Y = X + Z,
+where
+X = (X1, X2, X3),
+Z = (Z1, Z2, Z3), Y = (Y1, Y2, Y3),
+E∥X∥2 ≤P, and
+Z ∼N
+
+0,
+
+
+1
+0
+1
+0
+1
+1
+1
+1
+2
+
+
+
+.
+Find the capacity. The answer may be surprising.
+9.10
+Capacity of photographic ﬁlm.
+Here is a problem with a nice
+answer that takes a little time. We’re interested in the capacity
+of photographic ﬁlm. The ﬁlm consists of silver iodide crystals,
+Poisson distributed, with a density of λ particles per square inch.
+The ﬁlm is illuminated without knowledge of the position of the
+silver iodide particles. It is then developed and the receiver sees
+only the silver iodide particles that have been illuminated. It is
+assumed that light incident on a cell exposes the grain if it is there
+and otherwise results in a blank response. Silver iodide particles
+that are not illuminated and vacant portions of the ﬁlm remain
+blank. The question is: What is the capacity of this ﬁlm?
+We make the following assumptions. We grid the ﬁlm very ﬁnely
+into cells of area dA. It is assumed that there is at most one sil-
+ver iodide particle per cell and that no silver iodide particle is
+intersected by the cell boundaries. Thus, the ﬁlm can be consid-
+ered to be a large number of parallel binary asymmetric channels
+with crossover probability 1 −λdA. By calculating the capacity of
+this binary asymmetric channel to ﬁrst order in dA (making the
+
+--- Page 20 ---
+294
+GAUSSIAN CHANNEL
+necessary approximations), one can calculate the capacity of the
+ﬁlm in bits per square inch. It is, of course, proportional to λ. The
+question is: What is the multiplicative constant?
+The answer would be λ bits per unit area if both illuminator and
+receiver knew the positions of the crystals.
+9.11
+Gaussian mutual information.
+Suppose that (X, Y, Z) are jointly
+Gaussian and that X →Y →Z forms a Markov chain. Let X and
+Y have correlation coefﬁcient ρ1 and let Y and Z have correlation
+coefﬁcient ρ2. Find I (X; Z).
+9.12
+Time-varying channel.
+A train pulls out of the station at constant
+velocity. The received signal energy thus falls off with time as
+1/i2. The total received signal at time i is
+Yi = 1
+i Xi + Zi,
+where Z1, Z2, . . . are i.i.d. ∼N(0, N). The transmitter constraint
+for block length n is
+1
+n
+n
+
+i=1
+x2
+i (w) ≤P,
+w ∈{1, 2, . . . , 2nR}.
+Using Fano’s inequality, show that the capacity C is equal to zero
+for this channel.
+9.13
+Feedback
+capacity.
+Let
+(Z1, Z2) ∼N(0, K), K =
+'
+1
+ρ
+ρ
+1
+(
+.
+Find the maximum of 1
+2 log |KX+Z|
+|KZ|
+with and without feedback given
+a trace (power) constraint tr(KX) ≤2P.
+9.14
+Additive noise channel.
+Consider the channel Y = X + Z, where
+X is the transmitted signal with power constraint P , Z is indepen-
+dent additive noise, and Y is the received signal. Let
+Z =
+)
+0
+with probability
+1
+10
+Z∗
+with probability
+9
+10,
+where Z∗∼N(0, N). Thus, Z has a mixture distribution that is
+the mixture of a Gaussian distribution and a degenerate distribution
+with mass 1 at 0.
+
+--- Page 21 ---
+PROBLEMS
+295
+(a) What is the capacity of this channel? This should be a pleasant
+surprise.
+(b) How would you signal to achieve capacity?
+9.15
+Discrete input, continuous output channel.
+Let Pr{X = 1} = p,
+Pr{X = 0} = 1 −p, and let Y = X + Z, where Z is uniform over
+the interval [0, a], a > 1, and Z is independent of X.
+(a) Calculate
+I (X; Y) = H(X) −H(X|Y).
+(b) Now calculate I (X; Y) the other way by
+I (X; Y) = h(Y) −h(Y|X).
+(c) Calculate the capacity of this channel by maximizing over p.
+9.16
+Gaussian mutual information.
+Suppose that (X, Y, Z) are jointly
+Gaussian and that X →Y →Z forms a Markov chain. Let X and
+Y have correlation coefﬁcient ρ1 and let Y and Z have correlation
+coefﬁcient ρ2. Find I (X; Z).
+9.17
+Impulse power.
+Consider the additive white Gaussian channel
+Zi
+Yi
+Xi
+∑
+where Zi ∼N(0, N), and the input signal has average power con-
+straint P .
+(a) Suppose that we use all our power at time 1 (i.e., EX2
+1 = nP
+and EX2
+i = 0 for i = 2, 3, . . . , n). Find
+max
+f (xn)
+I (Xn; Y n)
+n
+,
+where the maximization is over all distributions f (xn) subject
+to the constraint EX2
+1 = nP and EX2
+i = 0 for i = 2, 3, . . . , n.
+
+--- Page 22 ---
+296
+GAUSSIAN CHANNEL
+(b) Find
+max
+f (xn): E
+
+1
+n
+n
+i=1 X2
+i
+
+≤P
+1
+nI (Xn; Y n)
+and compare to part (a).
+9.18
+Gaussian channel with time-varying mean.
+Find the capacity of
+the following Gaussian channel:
+Zi
+Xi
+Yi
+Let Z1, Z2, . . . be independent and let there be a power constraint
+P on xn(W). Find the capacity when:
+(a) µi = 0, for all i.
+(b) µi = ei,
+i = 1, 2, . . .. Assume that µi is known to the trans-
+mitter and receiver.
+(c) µi unknown, but µi i.i.d. ∼N(0, N1) for all i.
+9.19
+Parametric form for channel capacity.
+Consider m parallel Gaus-
+sian channels, Yi = Xi + Zi, where Zi ∼N(0, λi) and the noises
+Xi are independent random variables. Thus, C = m
+i=1
+1
+2 log(1 +
+(λ−λi)+
+λi
+), where λ is chosen to satisfy m
+i=1(λ −λi)+ = P . Show
+that this can be rewritten in the form
+P (λ)
+= 
+i:λi≤λ(λ −λi)
+C(λ)
+= 
+i:λi≤λ
+1
+2 log λ
+λi
+.
+Here P (λ) is piecewise linear and C(λ) is piecewise logarithmic
+in λ.
+9.20
+Robust decoding.
+Consider an additive noise channel whose out-
+put Y is given by
+Y = X + Z,
+where the channel input X is average power limited,
+EX2 ≤P,
+
+--- Page 23 ---
+PROBLEMS
+297
+and the noise process {Zk}∞
+k=−∞is i.i.d. with marginal distribution
+pZ(z) (not necessarily Gaussian) of power N,
+EZ2 = N.
+(a) Show that the channel capacity, C = maxEX2≤P I (X; Y), is
+lower bounded by CG, where
+CG = 1
+2 log
+
+1 + P
+N
+
+(i.e., the capacity CG corresponding to white Gaussian noise).
+(b) Decoding the received vector to the codeword that is closest to
+it in Euclidean distance is in general suboptimal if the noise is
+non-Gaussian. Show, however, that the rate CG is achievable
+even if one insists on performing nearest-neighbor decoding
+(minimum Euclidean distance decoding) rather than the optimal
+maximum-likelihood or joint typicality decoding (with respect
+to the true noise distribution).
+(c) Extend the result to the case where the noise is not i.i.d. but is
+stationary and ergodic with power N.
+(Hint for b and c: Consider a size 2nR random codebook whose
+codewords are drawn independently of each other according to a
+uniform distribution over the n-dimensional sphere of radius
+√
+nP .)
+(a) Using a symmetry argument, show that conditioned on the
+noise vector, the ensemble average probability of error depends
+on the noise vector only via its Euclidean norm ∥z∥.
+(b) Use a geometric argument to show that this dependence is
+monotonic.
+(c) Given a rate R < CG, choose some N′ > N such that
+R < 1
+2 log
+
+1 + P
+N′
+
+.
+Compare the case where the noise is i.i.d. N(0, N′) to the case
+at hand.
+(d) Conclude the proof using the fact that the above ensemble of
+codebooks can achieve the capacity of the Gaussian channel
+(no need to prove that).
+
+--- Page 24 ---
+298
+GAUSSIAN CHANNEL
+9.21
+Mutual information game.
+Consider the following channel:
+Z
+X
+Y
+Throughout this problem we shall constrain the signal power
+EX = 0,
+EX2 = P,
+(9.176)
+and the noise power
+EZ = 0,
+EZ2 = N,
+(9.177)
+and assume that X and Z are independent. The channel capacity is
+given by I (X; X + Z).
+Now for the game. The noise player chooses a distribution on Z to
+minimize I (X; X + Z), while the signal player chooses a distribu-
+tion on X to maximize I (X; X + Z). Letting X∗∼N(0, P ), Z∗∼
+N(0, N), show that Gaussian X∗and Z∗satisfy the saddlepoint
+conditions
+I (X; X + Z∗) ≤I (X∗; X∗+ Z∗) ≤I (X∗; X∗+ Z).
+(9.178)
+Thus,
+min
+Z max
+X I (X; X + Z) = max
+X min
+Z I (X; X + Z)
+(9.179)
+= 1
+2 log
+
+1 + P
+N
+
+,
+(9.180)
+and the game has a value. In particular, a deviation from normal
+for either player worsens the mutual information from that player’s
+standpoint. Can you discuss the implications of this?
+Note: Part of the proof hinges on the entropy power inequality from
+Section 17.8, which states that if X and Y are independent random
+n-vectors with densities, then
+2
+2
+nh(X+Y) ≥2
+2
+nh(X) + 2
+2
+nh(Y).
+(9.181)
+
+--- Page 25 ---
+HISTORICAL NOTES
+299
+9.22
+Recovering the noise.
+Consider a standard Gaussian channel Y n =
+Xn + Zn, where Zi is i.i.d. ∼N(0, N), i = 1, 2, . . . , n, and
+1
+n
+n
+i=1 X2
+i ≤P. Here we are interested in recovering the noise Zn
+and we don’t care about the signal Xn. By sending Xn = (0, 0, . . . ,
+0), the receiver gets Y n = Zn and can fully determine the value of
+Zn. We wonder how much variability there can be in Xn and still
+recover the Gaussian noise Zn. Use of the channel looks like
+Zn
+Zn(Yn)
+Xn
+Yn
+^
+Argue that for some R > 0, the transmitter can arbitrarily send one
+of 2nR different sequences of xn without affecting the recovery of
+the noise in the sense that
+Pr{ ˆZn ̸= Zn} →0
+as n →∞.
+For what R is this possible?
+HISTORICAL NOTES
+The Gaussian channel was ﬁrst analyzed by Shannon in his original
+paper [472]. The water-ﬁlling solution to the capacity of the colored
+noise Gaussian channel was developed by Shannon [480] and treated in
+detail by Pinsker [425]. The time-continuous Gaussian channel is treated
+in Wyner [576], Gallager [233], and Landau, Pollak, and Slepian [340,
+341, 500].
+Pinsker [421] and Ebert [178] argued that feedback at most doubles
+the capacity of a nonwhite Gaussian channel; the proof in the text is
+from Cover and Pombra [136], who also show that feedback increases
+the capacity of the nonwhite Gaussian channel by at most half a bit.
+The most recent feedback capacity results for nonwhite Gaussian noise
+channels are due to Kim [314].
+
+--- Page 26 ---
+
+--- Page 27 ---
+CHAPTER 10
+RATE DISTORTION THEORY
+The description of an arbitrary real number requires an inﬁnite number
+of bits, so a ﬁnite representation of a continuous random variable can
+never be perfect. How well can we do? To frame the question appropri-
+ately, it is necessary to deﬁne the “goodness” of a representation of a
+source. This is accomplished by deﬁning a distortion measure which is a
+measure of distance between the random variable and its representation.
+The basic problem in rate distortion theory can then be stated as follows:
+Given a source distribution and a distortion measure, what is the minimum
+expected distortion achievable at a particular rate? Or, equivalently, what
+is the minimum rate description required to achieve a particular distortion?
+One of the most intriguing aspects of this theory is that joint descriptions
+are more efﬁcient than individual descriptions. It is simpler to describe an
+elephant and a chicken with one description than to describe each alone. This
+is true even for independent random variables. It is simpler to describe X1
+and X2 together (at a given distortion for each) than to describe each by itself.
+Why don’t independent problems have independent solutions? The answer
+is found in the geometry. Apparently, rectangular grid points (arising from
+independent descriptions) do not ﬁll up the space efﬁciently.
+Rate distortion theory can be applied to both discrete and continuous
+random variables. The zero-error data compression theory of Chapter 5
+is an important special case of rate distortion theory applied to a discrete
+source with zero distortion. We begin by considering the simple problem
+of representing a single continuous random variable by a ﬁnite number
+of bits.
+10.1
+QUANTIZATION
+In this section we motivate the elegant theory of rate distortion by showing
+how complicated it is to solve the quantization problem exactly for a single
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+301
+
+--- Page 28 ---
+302
+RATE DISTORTION THEORY
+random variable. Since a continuous random source requires inﬁnite preci-
+sion to represent exactly, we cannot reproduce it exactly using a ﬁnite-rate
+code. The question is then to ﬁnd the best possible representation for any
+given data rate.
+We ﬁrst consider the problem of representing a single sample from the
+source. Let the random variable be represented be X and let the represen-
+tation of X be denoted as ˆX(X). If we are given R bits to represent X,
+the function ˆX can take on 2R values. The problem is to ﬁnd the optimum
+set of values for ˆX (called the reproduction points or code points) and
+the regions that are associated with each value ˆX.
+For example, let X ∼N(0, σ 2), and assume a squared-error distortion
+measure. In this case we wish to ﬁnd the function ˆX(X) such that ˆX takes
+on at most 2R values and minimizes E(X −ˆX(X))2. If we are given one
+bit to represent X, it is clear that the bit should distinguish whether or
+not X > 0. To minimize squared error, each reproduced symbol should
+be the conditional mean of its region. This is illustrated in Figure 10.1.
+Thus,
+ˆX(x) =
+
+
+
+
+2
+π σ
+if x ≥0,
+−
+
+2
+π σ
+if x < 0.
+(10.1)
+If we are given 2 bits to represent the sample, the situation is not as
+simple. Clearly, we want to divide the real line into four regions and use
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+0.4
+−2.5
+−2
+−1.5
+−.79
++.79
+−1
+−0.5
+0
+0.5
+1
+1.5
+2
+2.5
+x
+f(x)
+FIGURE 10.1. One-bit quantization of Gaussian random variable.
+
+--- Page 29 ---
+10.2
+DEFINITIONS
+303
+a point within each region to represent the sample. But it is no longer
+immediately obvious what the representation regions and the reconstruc-
+tion points should be. We can, however, state two simple properties of
+optimal regions and reconstruction points for the quantization of a single
+random variable:
+• Given a set { ˆX(w)} of reconstruction points, the distortion is mini-
+mized by mapping a source random variable X to the representation
+ˆX(w) that is closest to it. The set of regions of X deﬁned by this
+mapping is called a Voronoi or Dirichlet partition deﬁned by the
+reconstruction points.
+• The reconstruction points should minimize the conditional expected
+distortion over their respective assignment regions.
+These two properties enable us to construct a simple algorithm to ﬁnd a
+“good” quantizer: We start with a set of reconstruction points, ﬁnd the opti-
+mal set of reconstruction regions (which are the nearest-neighbor regions
+with respect to the distortion measure), then ﬁnd the optimal reconstruc-
+tion points for these regions (the centroids of these regions if the distortion
+is squared error), and then repeat the iteration for this new set of recon-
+struction points. The expected distortion is decreased at each stage in the
+algorithm, so the algorithm will converge to a local minimum of the dis-
+tortion. This algorithm is called the Lloyd algorithm [363] (for real-valued
+random variables) or the generalized Lloyd algorithm [358] (for vector-
+valued random variables) and is frequently used to design quantization
+systems.
+Instead of quantizing a single random variable, let us assume that we
+are given a set of n i.i.d. random variables drawn according to a Gaussian
+distribution. These random variables are to be represented using nR bits.
+Since the source is i.i.d., the symbols are independent, and it may appear
+that the representation of each element is an independent problem to be
+treated separately. But this is not true, as the results on rate distortion
+theory will show. We will represent the entire sequence by a single index
+taking 2nR values. This treatment of entire sequences at once achieves a
+lower distortion for the same rate than independent quantization of the
+individual samples.
+10.2
+DEFINITIONS
+Assume that we have a source that produces a sequence X1, X2, . . . , Xn
+i.i.d. ∼p(x), x ∈X. For the proofs in this chapter, we assume that the
+
+--- Page 30 ---
+304
+RATE DISTORTION THEORY
+Encoder
+Decoder
+Xn
+Xn
+fn(Xn)
+{1,2,...,2nR}
+∋
+^
+FIGURE 10.2. Rate distortion encoder and decoder.
+alphabet is ﬁnite, but most of the proofs can be extended to continuous
+random variables. The encoder describes the source sequence Xn by an
+index fn(Xn) ∈{1, 2, . . . , 2nR}. The decoder represents Xn by an estimate
+ˆXn ∈ˆX, as illustrated in Figure 10.2.
+Deﬁnition
+A distortion function or distortion measure is a mapping
+d : X × ˆX →R+
+(10.2)
+from the set of source alphabet-reproduction alphabet pairs into the set of
+nonnegative real numbers. The distortion d(x, ˆx) is a measure of the cost
+of representing the symbol x by the symbol ˆx.
+Deﬁnition
+A distortion measure is said to be bounded if the maximum
+value of the distortion is ﬁnite:
+dmax
+def
+=
+max
+x∈X,ˆx∈ˆX
+d(x, ˆx) < ∞.
+(10.3)
+In most cases, the reproduction alphabet ˆX is the same as the source
+alphabet X.
+Examples of common distortion functions are
+• Hamming (probability of error) distortion. The Hamming distortion
+is given by
+d(x, ˆx) =
+
+0
+if x = ˆx
+1
+if x ̸= ˆx,
+(10.4)
+which results in a probability of error distortion, since Ed(X, ˆX) =
+Pr(X ̸= ˆX).
+
+--- Page 31 ---
+10.2
+DEFINITIONS
+305
+• Squared-error distortion. The squared-error distortion,
+d(x, ˆx) = (x −ˆx)2,
+(10.5)
+is the most popular distortion measure used for continuous alphabets.
+Its advantages are its simplicity and its relationship to least-squares
+prediction. But in applications such as image and speech coding,
+various authors have pointed out that the mean-squared error is not an
+appropriate measure of distortion for human observers. For example,
+there is a large squared-error distortion between a speech waveform
+and another version of the same waveform slightly shifted in time,
+even though both would sound the same to a human observer.
+Many alternatives have been proposed; a popular measure of distortion
+in speech coding is the Itakura–Saito distance, which is the relative entropy
+between multivariate normal processes. In image coding, however, there is
+at present no real alternative to using the mean-squared error as the distortion
+measure.
+The distortion measure is deﬁned on a symbol-by-symbol basis. We
+extend the deﬁnition to sequences by using the following deﬁnition:
+Deﬁnition
+The distortion between sequences xn and ˆxn is deﬁned by
+d(xn, ˆxn) = 1
+n
+n
+
+i=1
+d(xi, ˆxi).
+(10.6)
+So the distortion for a sequence is the average of the per symbol dis-
+tortion of the elements of the sequence. This is not the only reasonable
+deﬁnition. For example, one may want to measure the distortion between
+two sequences by the maximum of the per symbol distortions. The the-
+ory derived below does not apply directly to this more general distortion
+measure.
+Deﬁnition
+A (2nR, n)-rate distortion code consists of an encoding func-
+tion,
+fn : Xn →{1, 2, . . . , 2nR},
+(10.7)
+and a decoding (reproduction) function,
+gn : {1, 2, . . . , 2nR} →
+ˆXn.
+(10.8)
+
+--- Page 32 ---
+306
+RATE DISTORTION THEORY
+The distortion associated with the (2nR, n) code is deﬁned as
+D = Ed(Xn, gn(fn(Xn))),
+(10.9)
+where the expectation is with respect to the probability distribution on X:
+D =
+
+xn
+p(xn)d(xn, gn(fn(xn))).
+(10.10)
+The set of n-tuples gn(1), gn(2), . . . , gn(2nR), denoted by
+ˆXn(1), . . . ,
+ˆXn(2nR), constitutes the codebook, and f −1
+n (1), . . . , f −1
+n (2nR) are the
+associated assignment regions.
+Many terms are used to describe the replacement of Xn by its quantized
+version ˆXn(w). It is common to refer to ˆXn as the vector quantiza-
+tion, reproduction, reconstruction, representation, source code, or estimate
+of Xn.
+Deﬁnition
+A rate distortion pair (R, D) is said to be achievable if
+there exists a sequence of (2nR, n)-rate distortion codes (fn, gn) with
+limn→∞Ed(Xn, gn(fn(Xn))) ≤D.
+Deﬁnition
+The rate distortion region for a source is the closure of the
+set of achievable rate distortion pairs (R, D).
+Deﬁnition
+The rate distortion function R(D) is the inﬁmum of rates R
+such that (R, D) is in the rate distortion region of the source for a given
+distortion D.
+Deﬁnition
+The distortion rate function D(R) is the inﬁmum of all dis-
+tortions D such that (R, D) is in the rate distortion region of the source
+for a given rate R.
+The distortion rate function deﬁnes another way of looking at the
+boundary of the rate distortion region. We will in general use the rate
+distortion function rather than the distortion rate function to describe this
+boundary, although the two approaches are equivalent.
+We now deﬁne a mathematical function of the source, which we call
+the information rate distortion function. The main result of this chapter
+is the proof that the information rate distortion function is equal to the
+rate distortion function deﬁned above (i.e., it is the inﬁmum of rates that
+achieve a particular distortion).
+
+--- Page 33 ---
+10.3
+CALCULATION OF THE RATE DISTORTION FUNCTION
+307
+Deﬁnition
+The information rate distortion function R(I)(D) for a source
+X with distortion measure d(x, ˆx) is deﬁned as
+R(I)(D) =
+min
+p(ˆx|x):
+(x,ˆx) p(x)p(ˆx|x)d(x,ˆx)≤D I (X; ˆX),
+(10.11)
+where the minimization is over all conditional distributions p(ˆx|x) for
+which the joint distribution p(x, ˆx) = p(x)p(ˆx|x) satisﬁes the expected
+distortion constraint.
+Paralleling the discussion of channel capacity in Chapter 7, we initially
+consider the properties of the information rate distortion function and
+calculate it for some simple sources and distortion measures. Later we
+prove that we can actually achieve this function (i.e., there exist codes with
+rate R(I)(D) with distortion D). We also prove a converse establishing
+that R ≥R(I)(D) for any code that achieves distortion D.
+The main theorem of rate distortion theory can now be stated as follows:
+Theorem 10.2.1
+The rate distortion function for an i.i.d. source X
+with distribution p(x) and bounded distortion function d(x, ˆx) is equal to
+the associated information rate distortion function. Thus,
+R(D) = R(I)(D) =
+min
+p(ˆx|x):
+(x,ˆx) p(x)p(ˆx|x)d(x,ˆx)≤D I (X; ˆX)
+(10.12)
+is the minimum achievable rate at distortion D.
+This theorem shows that the operational deﬁnition of the rate distortion
+function is equal to the information deﬁnition. Hence we will use R(D)
+from now on to denote both deﬁnitions of the rate distortion function.
+Before coming to the proof of the theorem, we calculate the information
+rate distortion function for some simple sources and distortions.
+10.3
+CALCULATION OF THE RATE DISTORTION FUNCTION
+10.3.1
+Binary Source
+We now ﬁnd the description rate R(D) required to describe a Bernoulli(p)
+source with an expected proportion of errors less than or equal to D.
+Theorem 10.3.1
+The rate distortion function for a Bernoulli(p) source
+with Hamming distortion is given by
+R(D) =
+
+H(p) −H(D),
+0 ≤D ≤min{p, 1 −p},
+0,
+D > min{p, 1 −p}.
+(10.13)
+
+--- Page 34 ---
+308
+RATE DISTORTION THEORY
+Proof:
+Consider a binary source X ∼Bernoulli(p) with a Hamming
+distortion measure. Without loss of generality, we may assume that p < 1
+2.
+We wish to calculate the rate distortion function,
+R(D) =
+min
+p(ˆx|x):
+(x,ˆx) p(x)p(ˆx|x)d(x,ˆx)≤D I (X; ˆX).
+(10.14)
+Let ⊕denote modulo 2 addition. Thus, X ⊕ˆX = 1 is equivalent to X ̸=
+ˆX. We do not minimize I (X; ˆX) directly; instead, we ﬁnd a lower bound
+and then show that this lower bound is achievable. For any joint distribu-
+tion satisfying the distortion constraint, we have
+I (X; ˆX) = H(X) −H(X| ˆX)
+(10.15)
+= H(p) −H(X ⊕ˆX| ˆX)
+(10.16)
+≥H(p) −H(X ⊕ˆX)
+(10.17)
+≥H(p) −H(D),
+(10.18)
+since Pr(X ̸= ˆX) ≤D and H(D) increases with D for D ≤1
+2. Thus,
+R(D) ≥H(p) −H(D).
+(10.19)
+We now show that the lower bound is actually the rate distortion function
+by ﬁnding a joint distribution that meets the distortion constraint and
+has I (X; ˆX) = R(D). For 0 ≤D ≤p, we can achieve the value of the
+rate distortion function in (10.19) by choosing (X, ˆX) to have the joint
+distribution given by the binary symmetric channel shown in Figure 10.3.
+1 −D
+1 −p −D
+1 − 2D
+1 −D
+D
+D
+X
+0
+1
+0
+1 −p
+p
+1
+p −D
+1 − 2D
+X
+^
+FIGURE 10.3. Joint distribution for binary source.
+
+--- Page 35 ---
+10.3
+CALCULATION OF THE RATE DISTORTION FUNCTION
+309
+We choose the distribution of ˆX at the input of the channel so that the
+output distribution of X is the speciﬁed distribution. Let r = Pr( ˆX = 1).
+Then choose r so that
+r(1 −D) + (1 −r)D = p,
+(10.20)
+or
+r = p −D
+1 −2D .
+(10.21)
+If D ≤p ≤1
+2, then Pr( ˆX = 1) ≥0 and Pr( ˆX = 0) ≥0. We then have
+I (X; ˆX) = H(X) −H(X| ˆX) = H(p) −H(D),
+(10.22)
+and the expected distortion is Pr(X ̸= ˆX) = D.
+If D ≥p, we can achieve R(D) = 0 by letting ˆX = 0 with probability
+1. In this case, I (X; ˆX) = 0 and D = p. Similarly, if D ≥1 −p, we can
+achieve R(D) = 0 by setting ˆX = 1 with probability 1. Hence, the rate
+distortion function for a binary source is
+R(D) =
+
+H(p) −H(D),
+0 ≤D ≤min{p, 1 −p},
+0,
+D > min{p, 1 −p}.
+(10.23)
+This function is illustrated in Figure 10.4.
+□
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+D
+R(D)
+FIGURE 10.4. Rate distortion function for a Bernoulli ( 1
+2) source.
+
+--- Page 36 ---
+310
+RATE DISTORTION THEORY
+The above calculations may seem entirely unmotivated. Why should
+minimizing mutual information have anything to do with quantization?
+The answer to this question must wait until we prove Theorem 10.2.1.
+10.3.2
+Gaussian Source
+Although Theorem 10.2.1 is proved only for discrete sources with a
+bounded distortion measure, it can also be proved for well-behaved contin-
+uous sources and unbounded distortion measures. Assuming this general
+theorem, we calculate the rate distortion function for a Gaussian source
+with squared-error distortion.
+Theorem 10.3.2
+The rate distortion function for a N(0, σ 2) source with
+squared-error distortion is
+R(D) =
+
+
+
+1
+2 log σ 2
+D ,
+0 ≤D ≤σ 2,
+0,
+D > σ 2.
+(10.24)
+Proof:
+Let X be ∼N(0, σ 2). By the rate distortion theorem extended
+to continuous alphabets, we have
+R(D) =
+min
+f (ˆx|x):E( ˆX−X)2≤D
+I (X; ˆX).
+(10.25)
+As in the preceding example, we ﬁrst ﬁnd a lower bound for the rate
+distortion function and then prove that this is achievable. Since E(X −
+ˆX)2 ≤D, we observe that
+I (X; ˆX) = h(X) −h(X| ˆX)
+(10.26)
+= 1
+2 log(2πe)σ 2 −h(X −ˆX| ˆX)
+(10.27)
+≥1
+2 log(2πe)σ 2 −h(X −ˆX)
+(10.28)
+≥1
+2 log(2πe)σ 2 −h(N(0, E(X −ˆX)2))
+(10.29)
+= 1
+2 log(2πe)σ 2 −1
+2 log(2πe)E(X −ˆX)2
+(10.30)
+≥1
+2 log(2πe)σ 2 −1
+2 log(2πe)D
+(10.31)
+= 1
+2 log σ 2
+D ,
+(10.32)
+
+--- Page 37 ---
+10.3
+CALCULATION OF THE RATE DISTORTION FUNCTION
+311
+where (10.28) follows from the fact that conditioning reduces entropy and
+(10.29) follows from the fact that the normal distribution maximizes the
+entropy for a given second moment (Theorem 8.6.5). Hence,
+R(D) ≥1
+2 log σ 2
+D .
+(10.33)
+To ﬁnd the conditional density f (ˆx|x) that achieves this lower bound,
+it is usually more convenient to look at the conditional density f (x|ˆx),
+which is sometimes called the test channel (thus emphasizing the duality of
+rate distortion with channel capacity). As in the binary case, we construct
+f (x|ˆx) to achieve equality in the bound. We choose the joint distribution
+as shown in Figure 10.5. If D ≤σ 2, we choose
+X = ˆX + Z,
+ˆX ∼N(0, σ 2 −D),
+Z ∼N(0, D),
+(10.34)
+where ˆX and Z are independent. For this joint distribution, we calculate
+I (X; ˆX) = 1
+2 log σ 2
+D ,
+(10.35)
+and E(X −ˆX)2 = D, thus achieving the bound in (10.33). If D > σ 2, we
+choose ˆX = 0 with probability 1, achieving R(D) = 0. Hence, the rate
+distortion function for the Gaussian source with squared-error distortion is
+R(D) =
+
+
+
+1
+2 log σ 2
+D ,
+0 ≤D ≤σ 2,
+0,
+D > σ 2,
+(10.36)
+as illustrated in Figure 10.6.
+□
+We can rewrite (10.36) to express the distortion in terms of the rate,
+D(R) = σ 22−2R.
+(10.37)
+Z ~
+(0,D)
+X ~
+(0, s2 −D)
+^
+X ~
+(0,s2)
+FIGURE 10.5. Joint distribution for Gaussian source.
+
+--- Page 38 ---
+312
+RATE DISTORTION THEORY
+0
+0.5
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+0
+0.2
+0.4
+0.6
+0.8
+1
+1.2
+1.4
+1.6
+1.8
+2
+D
+R(D)
+FIGURE 10.6. Rate distortion function for a Gaussian source.
+Each bit of description reduces the expected distortion by a factor of 4.
+With a 1-bit description, the best expected square error is σ 2/4. We can
+compare this with the result of simple 1-bit quantization of a N(0, σ 2)
+random variable as described in Section 10.1. In this case, using the two
+regions corresponding to the positive and negative real lines and repro-
+duction points as the centroids of the respective regions, the expected dis-
+tortion is (π−2)
+π
+σ 2 = 0.3633σ 2 (see Problem 10.1). As we prove later, the
+rate distortion limit R(D) is achieved by considering long block lengths.
+This example shows that we can achieve a lower distortion by consider-
+ing several distortion problems in succession (long block lengths) than can
+be achieved by considering each problem separately. This is somewhat
+surprising because we are quantizing independent random variables.
+10.3.3
+Simultaneous Description of Independent Gaussian
+Random Variables
+Consider the case of representing m independent (but not identically dis-
+tributed) normal random sources X1, . . . , Xm, where Xi are ∼N(0, σ 2
+i ),
+with squared-error distortion. Assume that we are given R bits with which
+to represent this random vector. The question naturally arises as to how
+we should allot these bits to the various components to minimize the
+total distortion. Extending the deﬁnition of the information rate distortion
+
+--- Page 39 ---
+10.3
+CALCULATION OF THE RATE DISTORTION FUNCTION
+313
+function to the vector case, we have
+R(D) =
+min
+f (ˆxm|xm):Ed(Xm, ˆXm)≤D
+I (Xm; ˆXm),
+(10.38)
+where d(xm, ˆxm) = m
+i=1(xi −ˆxi)2. Now using the arguments in the pre-
+ceding example, we have
+I (Xm; ˆXm) = h(Xm) −h(Xm| ˆXm)
+(10.39)
+=
+m
+
+i=1
+h(Xi) −
+m
+
+i=1
+h(Xi|Xi−1, ˆXm)
+(10.40)
+≥
+m
+
+i=1
+h(Xi) −
+m
+
+i=1
+h(Xi| ˆXi)
+(10.41)
+=
+m
+
+i=1
+I (Xi; ˆXi)
+(10.42)
+≥
+m
+
+i=1
+R(Di)
+(10.43)
+=
+m
+
+i=1
+	
+1
+2 log σ 2
+i
+Di
+
++
+,
+(10.44)
+where Di = E(Xi −ˆXi)2 and (10.41) follows from the fact that condi-
+tioning reduces entropy. We can achieve equality in (10.41) by choosing
+f (xm|ˆxm) = m
+i=1 f (xi|ˆxi) and in (10.43) by choosing the distribution of
+each ˆXi ∼N(0, σ 2
+i −Di), as in the preceding example. Hence, the prob-
+lem of ﬁnding the rate distortion function can be reduced to the following
+optimization (using nats for convenience):
+R(D) =
+min
+ Di=D
+m
+
+i=1
+max
+
+1
+2 ln σ 2
+i
+Di
+, 0
+
+.
+(10.45)
+Using Lagrange multipliers, we construct the functional
+J(D) =
+m
+
+i=1
+1
+2 ln σ 2
+i
+Di
++ λ
+m
+
+i=1
+Di,
+(10.46)
+
+--- Page 40 ---
+314
+RATE DISTORTION THEORY
+and differentiating with respect to Di and setting equal to 0, we have
+∂J
+∂Di
+= −1
+2
+1
+Di
++ λ = 0
+(10.47)
+or
+Di = λ′.
+(10.48)
+Hence, the optimum allotment of the bits to the various descriptions
+results in an equal distortion for each random variable. This is possible if
+the constant λ′ in (10.48) is less than σ 2
+i for all i. As the total allowable
+distortion D is increased, the constant λ′ increases until it exceeds σ 2
+i
+for some i. At this point the solution (10.48) is on the boundary of the
+allowable region of distortions. If we increase the total distortion, we must
+use the Kuhn–Tucker conditions to ﬁnd the minimum in (10.46). In this
+case the Kuhn–Tucker conditions yield
+∂J
+∂Di
+= −1
+2
+1
+Di
++ λ,
+(10.49)
+where λ is chosen so that
+∂J
+∂Di
+
+= 0
+if Di < σ 2
+i
+≤0
+if Di ≥σ 2
+i .
+(10.50)
+It is easy to check that the solution to the Kuhn–Tucker equations is given
+by the following theorem:
+Theorem 10.3.3
+(Rate distortion for a parallel Gaussian source) Let
+Xi ∼N(0, σ 2
+i ), i = 1, 2, . . . , m, be independent Gaussian random vari-
+ables, and let the distortion measure be d(xm, ˆxm) = m
+i=1(xi −ˆxi)2 .
+Then the rate distortion function is given by
+R(D) =
+m
+
+i=1
+1
+2 log σ 2
+i
+Di
+,
+(10.51)
+where
+Di =
+
+λ
+if λ < σ 2
+i ,
+σ 2
+i
+if λ ≥σ 2
+i ,
+(10.52)
+where λ is chosen so that m
+i=1 Di = D.
+
+--- Page 41 ---
+10.4
+CONVERSE TO THE RATE DISTORTION THEOREM
+315
+s2
+i
+l
+s2
+1
+s2
+1
+s2
+2
+s2
+3
+^
+s2
+4
+s2
+5
+s2
+4
+^
+s2
+6
+s2
+6
+^
+D1
+D2
+D3
+D4
+D5
+D6
+X1
+X2
+X3
+X4
+X5
+X6
+FIGURE 10.7. Reverse water-ﬁlling for independent Gaussian random variables.
+This gives rise to a kind of reverse water-ﬁlling, as illustrated in
+Figure 10.7. We choose a constant λ and only describe those random vari-
+ables with variances greater than λ. No bits are used to describe random
+variables with variance less than λ. Summarizing, if
+X ∼N(0,
+
+
+σ 2
+1
+· · ·
+0
+...
+...
+...
+0
+· · ·
+σ 2
+m
+
+), then ˆX ∼N(0,
+
+
+ˆσ 2
+1
+· · ·
+0
+...
+...
+...
+0
+· · ·
+ˆσ 2
+m
+
+),
+and E(Xi −ˆXi)2 = Di, where Di = min{λ, σ 2
+i }. More generally, the rate
+distortion function for a multivariate normal vector can be obtained by
+reverse water-ﬁlling on the eigenvalues. We can also apply the same argu-
+ments to a Gaussian stochastic process. By the spectral representation
+theorem, a Gaussian stochastic process can be represented as an inte-
+gral of independent Gaussian processes in the various frequency bands.
+Reverse water-ﬁlling on the spectrum yields the rate distortion function.
+10.4
+CONVERSE TO THE RATE DISTORTION THEOREM
+In this section we prove the converse to Theorem 10.2.1 by showing that
+we cannot achieve a distortion of less than D if we describe X at a rate
+less than R(D), where
+R(D) =
+min
+p(ˆx|x):
+(x,ˆx) p(x)p(ˆx|x)d(x,ˆx)≤D I (X; ˆX).
+(10.53)
+
+--- Page 42 ---
+316
+RATE DISTORTION THEORY
+The minimization is over all conditional distributions p(ˆx|x) for which
+the joint distribution p(x, ˆx) = p(x)p(ˆx|x) satisﬁes the expected distor-
+tion constraint. Before proving the converse, we establish some simple
+properties of the information rate distortion function.
+Lemma 10.4.1
+(Convexity of R(D)) The rate distortion function R(D)
+given in (10.53) is a nonincreasing convex function of D.
+Proof:
+R(D) is the minimum of the mutual information over increas-
+ingly larger sets as D increases. Thus, R(D) is nonincreasing in D. To
+prove that R(D) is convex, consider two rate distortion pairs, (R1, D1)
+and (R2, D2), which lie on the rate distortion curve. Let the joint distribu-
+tions that achieve these pairs be p1(x, ˆx) = p(x)p1(ˆx|x) and p2(x, ˆx) =
+p(x)p2(ˆx|x). Consider the distribution pλ = λp1 + (1 −λ)p2. Since the
+distortion is a linear function of the distribution, we have D(pλ) = λD1 +
+(1 −λ)D2. Mutual information, on the other hand, is a convex function
+of the conditional distribution (Theorem 2.7.4), and hence
+Ipλ(X; ˆX) ≤λIp1(X; ˆX) + (1 −λ)Ip2(X; ˆX).
+(10.54)
+Hence, by the deﬁnition of the rate distortion function,
+R(Dλ) ≤Ipλ(X; ˆX)
+(10.55)
+≤λIp1(X; ˆX) + (1 −λ)Ip2(X; ˆX)
+(10.56)
+= λR(D1) + (1 −λ)R(D2),
+(10.57)
+which proves that R(D) is a convex function of D.
+□
+The converse can now be proved.
+Proof:
+(Converse in Theorem 10.2.1). We must show for any source X
+drawn i.i.d. ∼p(x) with distortion measure d(x, ˆx) and any (2nR, n) rate
+distortion code with distortion ≤D, that the rate R of the code satis-
+ﬁes R ≥R(D). In fact, we prove that R ≥R(D) even for randomized
+mappings fn and gn, as long as fn takes on at most 2nR values.
+Consider any (2nR, n) rate distortion code deﬁned by functions fn and
+gn as given in (10.7) and (10.8). Let ˆXn = ˆXn(Xn) = gn(fn(Xn)) be the
+reproduced sequence corresponding to Xn. Assume that Ed(Xn, ˆXn) ≥D
+
+--- Page 43 ---
+10.4
+CONVERSE TO THE RATE DISTORTION THEOREM
+317
+for this code. Then we have the following chain of inequalities:
+nR
+(a)
+≥H(fn(Xn))
+(10.58)
+(b)
+≥H(fn(Xn)) −H(fn(Xn)|Xn)
+(10.59)
+= I (Xn; fn(Xn))
+(10.60)
+(c)
+≥I (Xn; ˆXn)
+(10.61)
+= H(Xn) −H(Xn| ˆXn)
+(10.62)
+(d)
+=
+n
+
+i=1
+H(Xi) −H(Xn| ˆXn)
+(10.63)
+(e)
+=
+n
+
+i=1
+H(Xi) −
+n
+
+i=1
+H(Xi| ˆXn, Xi−1, . . . , X1)
+(10.64)
+(f)≥
+n
+
+i=1
+H(Xi) −
+n
+
+i=1
+H(Xi| ˆXi)
+(10.65)
+=
+n
+
+i=1
+I (Xi; ˆXi)
+(10.66)
+(g)
+≥
+n
+
+i=1
+R(Ed(Xi, ˆXi))
+(10.67)
+= n
+	
+1
+n
+n
+
+i=1
+R(Ed(Xi, ˆXi))
+
+(10.68)
+(h)
+≥nR
+	
+1
+n
+n
+
+i=1
+Ed(Xi, ˆXi)
+
+(10.69)
+(i)= nR(Ed(Xn, ˆXn))
+(10.70)
+(j)= nR(D),
+(10.71)
+where
+(a) follows from the fact that the range of fn is at most 2nR
+(b) follows from the fact that H(fn(Xn)|Xn) ≥0
+
+--- Page 44 ---
+318
+RATE DISTORTION THEORY
+(c) follows from the data-processing inequality
+(d) follows from the fact that the Xi are independent
+(e) follows from the chain rule for entropy
+(f) follows from the fact that conditioning reduces entropy
+(g) follows from the deﬁnition of the rate distortion function
+(h) follows from the convexity of the rate distortion function (Lemma
+10.4.1) and Jensen’s inequality
+(i) follows from the deﬁnition of distortion for blocks of length n
+(j) follows from the fact that R(D) is a nonincreasing function of D and
+Ed(Xn, ˆXn) ≤D
+This shows that the rate R of any rate distortion code exceeds the rate
+distortion function R(D) evaluated at the distortion level D = Ed(Xn, ˆXn)
+achieved by that code.
+□
+A similar argument can be applied when the encoded source is passed
+through a noisy channel and hence we have the equivalent of the source
+channel separation theorem with distortion:
+Theorem 10.4.1
+(Source–channel separation theorem with distortion)
+Let V1, V2, . . . , Vn be a ﬁnite alphabet i.i.d. source which is encoded as
+a sequence of n input symbols Xn of a discrete memoryless channel with
+capacity C. The output of the channel Y n is mapped onto the reconstruction
+alphabet ˆV n = g(Y n). Let D = Ed(V n, ˆV n) = 1
+n
+n
+i=1 Ed(Vi, ˆVi) be the
+average distortion achieved by this combined source and channel coding
+scheme. Then distortion D is achievable if and only if C > R(D).
+Channel Capacity C
+Vn
+Vn
+Yn
+Xn(Vn)
+^
+Proof:
+See Problem 10.17.
+□
+10.5
+ACHIEVABILITY OF THE RATE DISTORTION FUNCTION
+We now prove the achievability of the rate distortion function. We begin
+with a modiﬁed version of the joint AEP in which we add the condition
+that the pair of sequences be typical with respect to the distortion measure.
+
+--- Page 45 ---
+10.5
+ACHIEVABILITY OF THE RATE DISTORTION FUNCTION
+319
+Deﬁnition
+Let p(x, ˆx) be a joint probability distribution on X × ˆX and
+let d(x, ˆx) be a distortion measure on X × ˆX. For any ǫ > 0, a pair of
+sequences (xn, ˆxn) is said to be distortion ǫ-typical or simply distortion
+typical if
+−1
+n log p(xn) −H(X)
+ < ǫ
+(10.72)
+−1
+n log p(ˆxn) −H( ˆX)
+ < ǫ
+(10.73)
+−1
+n log p(xn, ˆxn) −H(X, ˆX)
+ < ǫ
+(10.74)
+|d(xn, ˆxn) −Ed(X, ˆX)| < ǫ.
+(10.75)
+The set of distortion typical sequences is called the distortion typical set
+and is denoted A(n)
+d,ǫ.
+Note that this is the deﬁnition of the jointly typical set (Section 7.6)
+with the additional constraint that the distortion be close to the expected
+value. Hence, the distortion typical set is a subset of the jointly typical
+set (i.e., A(n)
+d,ǫ ⊂A(n)
+ǫ ). If (Xi, ˆXi) are drawn i.i.d ∼p(x, ˆx), the distortion
+between two random sequences
+d(Xn, ˆXn) = 1
+n
+n
+
+i=1
+d(Xi, ˆXi)
+(10.76)
+is an average of i.i.d. random variables, and the law of large numbers
+implies that it is close to its expected value with high probability. Hence
+we have the following lemma.
+Lemma 10.5.1
+Let (Xi, ˆXi) be drawn i.i.d. ∼p(x, ˆx). Then Pr(A(n)
+d,ǫ) →
+1 as n →∞.
+Proof:
+The sums in the four conditions in the deﬁnition of A(n)
+d,ǫ are
+all normalized sums of i.i.d random variables and hence, by the law of
+large numbers, tend to their respective expected values with probability 1.
+Hence the set of sequences satisfying all four conditions has probability
+tending to 1 as n →∞.
+□
+The following lemma is a direct consequence of the deﬁnition of the
+distortion typical set.
+
+--- Page 46 ---
+320
+RATE DISTORTION THEORY
+Lemma 10.5.2
+For all (xn, ˆxn) ∈A(n)
+d,ǫ,
+p(ˆxn) ≥p(ˆxn|xn)2−n(I(X; ˆX)+3ǫ).
+(10.77)
+Proof:
+Using the deﬁnition of A(n)
+d,ǫ, we can bound the probabilities
+p(xn), p(ˆxn) and p(xn, ˆxn) for all (xn, ˆxn) ∈A(n)
+d,ǫ, and hence
+p(ˆxn|xn) = p(xn, ˆxn)
+p(xn)
+(10.78)
+= p(ˆxn) p(xn, ˆxn)
+p(xn)p(ˆxn)
+(10.79)
+≤p(ˆxn)
+2−n(H(X, ˆX)−ǫ)
+2−n(H(X)+ǫ)2−n(H( ˆX)+ǫ)
+(10.80)
+= p(ˆxn)2n(I(X; ˆX)+3ǫ),
+(10.81)
+and the lemma follows immediately.
+□
+We also need the following interesting inequality.
+Lemma 10.5.3
+For 0 ≤x, y ≤1, n > 0,
+(1 −xy)n ≤1 −x + e−yn.
+(10.82)
+Proof:
+Let f (y) = e−y −1 + y. Then f (0) = 0 and f ′(y) = −e−y +
+1 > 0 for y > 0, and hence f (y) > 0 for y > 0. Hence for 0 ≤y ≤1,
+we have 1 −y ≤e−y, and raising this to the nth power, we obtain
+(1 −y)n ≤e−yn.
+(10.83)
+Thus, the lemma is satisﬁed for x = 1. By examination, it is clear that
+the inequality is also satisﬁed for x = 0. By differentiation, it is easy
+to see that gy(x) = (1 −xy)n is a convex function of x, and hence for
+0 ≤x ≤1, we have
+(1 −xy)n = gy(x)
+(10.84)
+≤(1 −x)gy(0) + xgy(1)
+(10.85)
+= (1 −x)1 + x(1 −y)n
+(10.86)
+≤1 −x + xe−yn
+(10.87)
+≤1 −x + e−yn.
+□
+(10.88)
+We use the preceding proof to prove the achievability of Theorem 10.2.1.
+
+--- Page 47 ---
+10.5
+ACHIEVABILITY OF THE RATE DISTORTION FUNCTION
+321
+Proof:
+(Achievability in Theorem 10.2.1). Let X1, X2, . . . , Xn be drawn
+i.i.d. ∼p(x) and let d(x, ˆx) be a bounded distortion measure for this
+source. Let the rate distortion function for this source be R(D). Then for
+any D, and any R > R(D), we will show that the rate distortion pair
+(R, D) is achievable by proving the existence of a sequence of rate dis-
+tortion codes with rate R and asymptotic distortion D. Fix p(ˆx|x), where
+p(ˆx|x) achieves equality in (10.53). Thus, I (X; ˆX) = R(D). Calculate
+p(ˆx) = 
+x p(x)p(ˆx|x). Choose δ > 0. We will prove the existence of a
+rate distortion code with rate R and distortion less than or equal to D + δ.
+Generation of codebook: Randomly generate a rate distortion codebook
+C consisting of 2nR sequences ˆXn drawn i.i.d. ∼n
+i=1 p(ˆxi). Index these
+codewords by w ∈{1, 2, . . . , 2nR}. Reveal this codebook to the encoder
+and decoder.
+Encoding: Encode Xn by w if there exists a w such that (Xn, ˆXn(w)) ∈
+A(n)
+d,ǫ, the distortion typical set. If there is more than one such w, send the
+least. If there is no such w, let w = 1. Thus, nR bits sufﬁce to describe
+the index w of the jointly typical codeword.
+Decoding: The reproduced sequence is ˆXn(w).
+Calculation of distortion: As in the case of the channel coding theorem,
+we calculate the expected distortion over the random choice of codebooks
+C as
+D = EXn,Cd(Xn, ˆXn),
+(10.89)
+where the expectation is over the random choice of codebooks and over
+Xn.
+For a ﬁxed codebook C and choice of ǫ > 0, we divide the sequences
+xn ∈Xn into two categories:
+• Sequences xn such that there exists a codeword ˆXn(w) that is dis-
+tortion typical with xn [i.e., d(xn, ˆxn(w)) < D + ǫ]. Since the total
+probability of these sequences is at most 1, these sequences contribute
+at most D + ǫ to the expected distortion.
+• Sequences xn such that there does not exist a codeword
+ˆXn(w)
+that is distortion typical with xn. Let Pe be the total probability of
+these sequences. Since the distortion for any individual sequence is
+bounded by dmax, these sequences contribute at most Pedmax to the
+expected distortion.
+Hence, we can bound the total distortion by
+Ed(Xn, ˆXn(Xn)) ≤D + ǫ + Pedmax,
+(10.90)
+
+--- Page 48 ---
+322
+RATE DISTORTION THEORY
+which can be made less than D + δ for an appropriate choice of ǫ if Pe is
+small enough. Hence, if we show that Pe is small, the expected distortion
+is close to D and the theorem is proved.
+Calculation of Pe: We must bound the probability that for a random
+choice of codebook C and a randomly chosen source sequence, there is
+no codeword that is distortion typical with the source sequence. Let J(C)
+denote the set of source sequences xn such that at least one codeword in
+C is distortion typical with xn. Then
+Pe =
+
+C
+P (C)
+
+xn:xn /∈J(C)
+p(xn).
+(10.91)
+This is the probability of all sequences not well represented by a code,
+averaged over the randomly chosen code. By changing the order of sum-
+mation, we can also interpret this as the probability of choosing a code-
+book that does not well represent sequence xn, averaged with respect to
+p(xn). Thus,
+Pe =
+
+xn
+p(xn)
+
+C:xn /∈J(C)
+p(C).
+(10.92)
+Let us deﬁne
+K(xn, ˆxn) =
+
+1
+if (xn, ˆxn) ∈A(n)
+d,ǫ,
+0
+if (xn, ˆxn) /∈A(n)
+d,ǫ.
+(10.93)
+The probability that a single randomly chosen codeword ˆXn does not well
+represent a ﬁxed xn is
+Pr((xn, ˆXn) /∈A(n)
+d,ǫ) = Pr(K(xn, ˆXn) = 0) = 1 −
+
+ˆxn
+p(ˆxn)K(xn, ˆxn),
+(10.94)
+and therefore the probability that 2nR independently chosen codewords do
+not represent xn, averaged over p(xn), is
+Pe =
+
+xn
+p(xn)
+
+C:xn /∈J(C)
+p(C)
+(10.95)
+=
+
+xn
+p(xn)
+
+1 −
+
+ˆxn
+p(ˆxn)K(xn, ˆxn)
+2nR
+.
+(10.96)
+
+--- Page 49 ---
+10.5
+ACHIEVABILITY OF THE RATE DISTORTION FUNCTION
+323
+We now use Lemma 10.5.2 to bound the sum within the brackets. From
+Lemma 10.5.2, it follows that
+
+ˆxn
+p(ˆxn)K(xn, ˆxn) ≥
+
+ˆxn
+p(ˆxn|xn)2−n(I(X; ˆX)+3ǫ)K(xn, ˆxn),
+(10.97)
+and hence
+Pe ≤
+
+xn
+p(xn)
+	
+1 −2−n(I(X; ˆX)+3ǫ) 
+ˆxn
+p(ˆxn|xn)K(xn, ˆxn)
+
+2nR
+.
+(10.98)
+We now use Lemma 10.5.3 to bound the term on the right-hand side
+of (10.98) and obtain
+	
+1 −2−n(I(X; ˆX)+3ǫ) 
+ˆxn
+p(ˆxn|xn)K(xn, ˆxn)
+
+2nR
+≤1 −
+ˆxn p(ˆxn|xn)K(xn, ˆxn) + e−(2−n(I (X; ˆX)+3ǫ)2nR). (10.99)
+Substituting this inequality in (10.98), we obtain
+Pe ≤1 −
+
+xn
+
+ˆxn
+p(xn)p(ˆxn|xn)K(xn, ˆxn) + e−2−n(I (X; ˆX)+3ǫ)2nR.
+(10.100)
+The last term in the bound is equal to
+e−2n(R−I (X; ˆX)−3ǫ),
+(10.101)
+which goes to zero exponentially fast with n if R > I (X; ˆX) + 3ǫ. Hence
+if we choose p(ˆx|x) to be the conditional distribution that achieves the
+minimum in the rate distortion function, then R > R(D) implies that
+R > I (X; ˆX) and we can choose ǫ small enough so that the last term in
+(10.100) goes to 0.
+The ﬁrst two terms in (10.100) give the probability under the joint
+distribution p(xn, ˆxn) that the pair of sequences is not distortion typical.
+Hence, using Lemma 10.5.1, we obtain
+1 −
+
+xn
+
+ˆxn
+p(xn, ˆxn)K(xn, ˆxn) = Pr((Xn, ˆXn) /∈A(n)
+d,ǫ) < ǫ
+(10.102)
+
+--- Page 50 ---
+324
+RATE DISTORTION THEORY
+for n sufﬁciently large. Therefore, by an appropriate choice of ǫ and n,
+we can make Pe as small as we like.
+So, for any choice of δ > 0, there exists an ǫ and n such that over all
+randomly chosen rate R codes of block length n, the expected distortion
+is less than D + δ. Hence, there must exist at least one code C∗with this
+rate and block length with average distortion less than D + δ. Since δ was
+arbitrary, we have shown that (R, D) is achievable if R > R(D).
+□
+We have proved the existence of a rate distortion code with an expected
+distortion close to D and a rate close to R(D). The similarities between
+the random coding proof of the rate distortion theorem and the random
+coding proof of the channel coding theorem are now evident. We will
+explore the parallels further by considering the Gaussian example, which
+provides some geometric insight into the problem. It turns out that channel
+coding is sphere packing and rate distortion coding is sphere covering.
+Channel coding for the Gaussian channel. Consider a Gaussian channel,
+Yi = Xi + Zi, where the Zi are i.i.d. ∼N(0, N) and there is a power
+constraint P on the power per symbol of the transmitted codeword. Con-
+sider a sequence of n transmissions. The power constraint implies that
+the transmitted sequence lies within a sphere of radius
+√
+nP in Rn. The
+coding problem is equivalent to ﬁnding a set of 2nR sequences within
+this sphere such that the probability of any of them being mistaken for
+any other is small—the spheres of radius
+√
+nN around each of them are
+almost disjoint. This corresponds to ﬁlling a sphere of radius √n(P + N)
+with spheres of radius
+√
+nN. One would expect that the largest number
+of spheres that could be ﬁt would be the ratio of their volumes, or, equiv-
+alently, the nth power of the ratio of their radii. Thus, if M is the number
+of codewords that can be transmitted efﬁciently, we have
+M ≤(√n(P + N))n
+(
+√
+nN)n
+=
+P + N
+N
+ n
+2
+.
+(10.103)
+The results of the channel coding theorem show that it is possible to do
+this efﬁciently for large n; it is possible to ﬁnd approximately
+2nC =
+P + N
+N
+ n
+2
+(10.104)
+codewords such that the noise spheres around them are almost disjoint
+(the total volume of their intersection is arbitrarily small).
+
+--- Page 51 ---
+10.6
+STRONGLY TYPICAL SEQUENCES AND RATE DISTORTION
+325
+Rate distortion for the Gaussian source. Consider a Gaussian source of
+variance σ 2. A (2nR, n) rate distortion code for this source with distortion
+D is a set of 2nR sequences in Rn such that most source sequences of
+length n (all those that lie within a sphere of radius
+√
+nσ 2) are within a
+distance
+√
+nD of some codeword. Again, by the sphere-packing argument,
+it is clear that the minimum number of codewords required is
+2nR(D) =
+σ 2
+D
+ n
+2
+.
+(10.105)
+The rate distortion theorem shows that this minimum rate is asymptotically
+achievable (i.e., that there exists a collection of spheres of radius
+√
+nD
+that cover the space except for a set of arbitrarily small probability).
+The above geometric arguments also enable us to transform a good
+code for channel transmission into a good code for rate distortion. In both
+cases, the essential idea is to ﬁll the space of source sequences: In channel
+transmission, we want to ﬁnd the largest set of codewords that have a large
+minimum distance between codewords, whereas in rate distortion, we wish
+to ﬁnd the smallest set of codewords that covers the entire space. If we
+have any set that meets the sphere packing bound for one, it will meet the
+sphere packing bound for the other. In the Gaussian case, choosing the
+codewords to be Gaussian with the appropriate variance is asymptotically
+optimal for both rate distortion and channel coding.
+10.6
+STRONGLY TYPICAL SEQUENCES AND RATE
+DISTORTION
+In Section 10.5 we proved the existence of a rate distortion code of
+rate R(D) with average distortion close to D. In fact, not only is the
+average distortion close to D, but the total probability that the distor-
+tion is greater than D + δ is close to 0. The proof of this is similar
+to the proof in Section 10.5; the main difference is that we will use
+strongly typical sequences rather than weakly typical sequences. This
+will enable us to give an upper bound to the probability that a typical
+source sequence is not well represented by a randomly chosen codeword
+in (10.94). We now outline an alternative proof based on strong typical-
+ity that will provide a stronger and more intuitive approach to the rate
+distortion theorem.
+We begin by deﬁning strong typicality and quoting a basic theorem
+bounding the probability that two sequences are jointly typical. The
+properties of strong typicality were introduced by Berger [53] and were
+
+--- Page 52 ---
+326
+RATE DISTORTION THEORY
+explored in detail in the book by Csisz´ar and K¨orner [149]. We will
+deﬁne strong typicality (as in Chapter 11) and state a fundamental lemma
+(Lemma 10.6.2).
+Deﬁnition
+A sequence xn ∈Xn is said to be ǫ-strongly typical with
+respect to a distribution p(x) on X if:
+1. For all a ∈X with p(a) > 0, we have
+
+1
+nN(a|xn) −p(a)
+ < ǫ
+|X|.
+(10.106)
+2. For all a ∈X with p(a) = 0, N(a|xn) = 0.
+N(a|xn) is the number of occurrences of the symbol a in the sequence
+xn.
+The set of sequences xn ∈Xn such that xn is strongly typical is called
+the strongly typical set and is denoted A∗(n)
+ǫ
+(X) or A∗(n)
+ǫ
+when the random
+variable is understood from the context.
+Deﬁnition
+A pair of sequences (xn, yn) ∈Xn × Yn is said to be ǫ-
+strongly typical with respect to a distribution p(x, y) on X × Y if:
+1. For all (a, b) ∈X × Y with p(a, b) > 0, we have
+
+1
+nN(a, b|xn, yn) −p(a, b)
+ <
+ǫ
+|X||Y|.
+(10.107)
+2. For all (a, b) ∈X × Y with p(a, b) = 0, N(a, b|xn, yn) = 0.
+N(a, b|xn, yn) is the number of occurrences of the pair (a, b) in the pair
+of sequences (xn, yn).
+The set of sequences (xn, yn) ∈Xn × Yn such that (xn, yn) is strongly
+typical is called the strongly typical set and is denoted A∗(n)
+ǫ
+(X, Y) or
+A∗(n)
+ǫ
+. From the deﬁnition, it follows that if (xn, yn) ∈A∗(n)
+ǫ
+(X, Y), then
+xn ∈A∗(n)
+ǫ
+(X). From the strong law of large numbers, the following
+lemma is immediate.
+Lemma 10.6.1
+Let (Xi, Yi) be drawn i.i.d. ∼p(x, y). Then Pr(A∗(n)
+ǫ
+)
+→1 as n →∞.
+We will use one basic result, which bounds the probability that an
+independently drawn sequence will be seen as jointly strongly typical
+
+--- Page 53 ---
+10.6
+STRONGLY TYPICAL SEQUENCES AND RATE DISTORTION
+327
+with a given sequence. Theorem 7.6.1 shows that if we choose Xn and
+Y n independently, the probability that they will be weakly jointly typical
+is ≈2−nI(X;Y). The following lemma extends the result to strongly typical
+sequences. This is stronger than the earlier result in that it gives a lower
+bound on the probability that a randomly chosen sequence is jointly typical
+with a ﬁxed typical xn.
+Lemma 10.6.2
+Let Y1, Y2, . . . , Yn be drawn i.i.d. ∼p(y). For xn ∈
+A∗(n)
+ǫ
+(X), the probability that (xn, Y n) ∈A∗(n)
+ǫ
+is bounded by
+2−n(I(X;Y)+ǫ1) ≤Pr((xn, Y n) ∈A∗(n)
+ǫ
+) ≤2−n(I(X;Y)−ǫ1),
+(10.108)
+where ǫ1 goes to 0 as ǫ →0 and n →∞.
+Proof:
+We will not prove this lemma, but instead, outline the proof in
+Problem 10.16 at the end of the chapter. In essence, the proof involves
+ﬁnding a lower bound on the size of the conditionally typical set.
+□
+We will proceed directly to the achievability of the rate distortion
+function. We will only give an outline to illustrate the main ideas. The
+construction of the codebook and the encoding and decoding are similar
+to the proof in Section 10.5.
+Proof:
+Fix p(ˆx|x). Calculate p(ˆx) = 
+x p(x)p(ˆx|x). Fix ǫ > 0. Later
+we will choose ǫ appropriately to achieve an expected distortion less than
+D + δ.
+Generation of codebook: Generate a rate distortion codebook C consist-
+ing of 2nR sequences ˆXn drawn i.i.d. ∼
+i p(ˆxi). Denote the sequences
+ˆXn(1), . . . , ˆXn(2nR).
+Encoding: Given a sequence Xn, index it by w if there exists a w such
+that (Xn, ˆXn(w)) ∈A∗(n)
+ǫ
+, the strongly jointly typical set. If there is more
+than one such w, send the ﬁrst in lexicographic order. If there is no such
+w, let w = 1.
+Decoding: Let the reproduced sequence be ˆXn(w).
+Calculation of distortion: As in the case of the proof in Section 10.5, we
+calculate the expected distortion over the random choice of codebook as
+D = EXn,Cd(Xn, ˆXn)
+(10.109)
+= EC
+
+xn
+p(xn)d(xn, ˆXn(xn))
+(10.110)
+=
+
+xn
+p(xn)ECd(xn, ˆXn),
+(10.111)
+
+--- Page 54 ---
+328
+RATE DISTORTION THEORY
+Nontypical sequences
+Typical
+sequences
+with
+jointly
+typical
+codeword
+Typical
+sequences
+without
+jointly
+typical
+codeword
+FIGURE 10.8. Classes of source sequences in rate distortion theorem.
+where the expectation is over the random choice of codebook. For a ﬁxed
+codebook C, we divide the sequences xn ∈Xn into three categories, as
+shown in Figure 10.8.
+• Nontypical sequences xn /∈A∗(n)
+ǫ
+. The total probability of these
+sequences can be made less than ǫ by choosing n large enough. Since
+the individual distortion between any two sequences is bounded by
+dmax, the nontypical sequences can contribute at most ǫdmax to the
+expected distortion.
+• Typical sequences xn ∈A∗(n)
+ǫ
+such that there exists a codeword ˆXn(w)
+that is jointly typical with xn. In this case, since the source sequence
+and the codeword are strongly jointly typical, the continuity of the
+distortion as a function of the joint distribution ensures that they
+are also distortion typical. Hence, the distortion between these xn
+and their codewords is bounded by D + ǫdmax, and since the total
+probability of these sequences is at most 1, these sequences contribute
+at most D + ǫdmax to the expected distortion.
+• Typical sequences xn ∈A∗(n)
+ǫ
+such that there does not exist a code-
+word ˆXn that is jointly typical with xn. Let Pe be the total probability
+of these sequences. Since the distortion for any individual sequence
+is bounded by dmax, these sequences contribute at most Pedmax to the
+expected distortion.
+
+--- Page 55 ---
+10.7
+CHARACTERIZATION OF THE RATE DISTORTION FUNCTION
+329
+The sequences in the ﬁrst and third categories are the sequences that
+may not be well represented by this rate distortion code. The probability
+of the ﬁrst category of sequences is less than ǫ for sufﬁciently large n. The
+probability of the last category is Pe, which we will show can be made
+small. This will prove the theorem that the total probability of sequences
+that are not well represented is small. In turn, we use this to show that
+the average distortion is close to D.
+Calculation of Pe: We must bound the probability that there is no code-
+word that is jointly typical with the given sequence Xn. From the joint
+AEP, we know that the probability that Xn and any ˆXn are jointly typical
+is
+.= 2−nI(X; ˆX). Hence the expected number of jointly typical ˆXn(w) is
+2nR2−nI(X; ˆX), which is exponentially large if R > I (X; ˆX).
+But this is not sufﬁcient to show that Pe →0. We must show that the
+probability that there is no codeword that is jointly typical with Xn goes
+to zero. The fact that the expected number of jointly typical codewords is
+exponentially large does not ensure that there will at least one with high
+probability. Just as in (10.94), we can expand the probability of error as
+Pe =
+
+xn∈A∗(n)
+ǫ
+p(xn)
+
+1 −Pr((xn, ˆXn) ∈A∗(n)
+ǫ
+)
+2nR
+.
+(10.112)
+From Lemma 10.6.2 we have
+Pr((xn, ˆXn) ∈A∗(n)
+ǫ
+) ≥2−n(I(X; ˆX)+ǫ1).
+(10.113)
+Substituting this in (10.112) and using the inequality (1 −x)n ≤e−nx, we
+have
+Pe ≤e−(2nR2−n(I (X; ˆX)+ǫ1)),
+(10.114)
+which goes to 0 as n →∞if R > I (X; ˆX) + ǫ1. Hence for an appropriate
+choice of ǫ and n, we can get the total probability of all badly represented
+sequences to be as small as we want. Not only is the expected distortion
+close to D, but with probability going to 1, we will ﬁnd a codeword whose
+distortion with respect to the given sequence is less than D + δ.
+□
+10.7
+CHARACTERIZATION OF THE RATE DISTORTION
+FUNCTION
+We have deﬁned the information rate distortion function as
+R(D) =
+min
+q(ˆx|x):
+(x,ˆx) p(x)q(ˆx|x)d(x,ˆx)≤D I (X; ˆX),
+(10.115)
+
+--- Page 56 ---
+330
+RATE DISTORTION THEORY
+where the minimization is over all conditional distributions q(ˆx|x) for
+which the joint distribution p(x)q(ˆx|x) satisﬁes the expected distortion
+constraint. This is a standard minimization problem of a convex function
+over the convex set of all q(ˆx|x) ≥0 satisfying 
+ˆx q(ˆx|x) = 1 for all x
+and  q(ˆx|x)p(x)d(x, ˆx) ≤D.
+We can use the method of Lagrange multipliers to ﬁnd the solution.
+We set up the functional
+J(q) =
+
+x
+
+ˆx
+p(x)q(ˆx|x) log
+q(ˆx|x)
+
+x p(x)q(ˆx|x)
++ λ
+
+x
+
+ˆx
+p(x)q(ˆx|x)d(x, ˆx)
+(10.116)
++
+
+x
+ν(x)
+
+ˆx
+q(ˆx|x),
+(10.117)
+where the last term corresponds to the constraint that q(ˆx|x) is a condi-
+tional probability mass function. If we let q(ˆx) = 
+x p(x)q(ˆx|x) be the
+distribution on ˆX induced by q(ˆx|x), we can rewrite J(q) as
+J(q) =
+
+x
+
+ˆx
+p(x)q(ˆx|x) log q(ˆx|x)
+q(ˆx)
++λ
+
+x
+
+ˆx
+p(x)q(ˆx|x)d(x, ˆx)
+(10.118)
++
+
+x
+ν(x)
+
+ˆx
+q(ˆx|x).
+(10.119)
+Differentiating with respect to q(ˆx|x), we have
+∂J
+∂q(ˆx|x) = p(x) log q(ˆx|x)
+q(ˆx) + p(x) −
+
+x′
+p(x′)q(ˆx|x′) 1
+q(ˆx)p(x)
++ λp(x)d(x, ˆx) + ν(x) = 0.
+(10.120)
+Setting log µ(x) = ν(x)/p(x), we obtain
+p(x)
+
+log q(ˆx|x)
+q(ˆx) + λd(x, ˆx) + log µ(x)
+
+= 0
+(10.121)
+
+--- Page 57 ---
+10.7
+CHARACTERIZATION OF THE RATE DISTORTION FUNCTION
+331
+or
+q(ˆx|x) = q(ˆx)e−λd(x,ˆx)
+µ(x)
+.
+(10.122)
+Since 
+ˆx q(ˆx|x) = 1, we must have
+µ(x) =
+
+ˆx
+q(ˆx)e−λd(x,ˆx)
+(10.123)
+or
+q(ˆx|x) =
+q(ˆx)e−λd(x,ˆx)
+
+ˆx q(ˆx)e−λd(x,ˆx).
+(10.124)
+Multiplying this by p(x) and summing over all x, we obtain
+q(ˆx) = q(ˆx)
+
+x
+p(x)e−λd(x,ˆx)
+
+ˆx′ q(ˆx′)e−λd(x,ˆx′) .
+(10.125)
+If q(ˆx) > 0, we can divide both sides by q(ˆx) and obtain
+
+x
+p(x)e−λd(x,ˆx)
+
+ˆx′ q(ˆx′)e−λd(x,ˆx′) = 1
+(10.126)
+for all ˆx ∈ˆX. We can combine these | ˆX| equations with the equation
+deﬁning the distortion and calculate λ and the | ˆX| unknowns q(ˆx). We
+can use this and (10.124) to ﬁnd the optimum conditional distribution.
+The above analysis is valid if q(ˆx) is unconstrained (i.e., q(ˆx) > 0 for
+all ˆx). The inequality condition q(ˆx) > 0 is covered by the Kuhn–Tucker
+conditions, which reduce to
+∂J
+∂q(ˆx|x) = 0 if q(ˆx|x) > 0,
+(10.127)
+≥0 if q(ˆx|x) = 0.
+Substituting the value of the derivative, we obtain the conditions for the
+minimum as
+
+x
+p(x)e−λd(x,ˆx)
+
+ˆx′ q(ˆx′)e−λd(x,ˆx′) = 1
+if q(ˆx) > 0,
+(10.128)
+≤1
+if q(ˆx) = 0.
+(10.129)
+
+--- Page 58 ---
+332
+RATE DISTORTION THEORY
+This characterization will enable us to check if a given q(ˆx) is a solution
+to the minimization problem. However, it is not easy to solve for the
+optimum output distribution from these equations. In the next section we
+provide an iterative algorithm for computing the rate distortion function.
+This algorithm is a special case of a general algorithm for ﬁnding the
+minimum relative entropy distance between two convex sets of probability
+densities.
+10.8
+COMPUTATION OF CHANNEL CAPACITY AND THE RATE
+DISTORTION FUNCTION
+Consider the following problem: Given two convex sets A and B in Rn
+as shown in Figure 10.9, we would like to ﬁnd the minimum distance
+between them:
+dmin =
+min
+a∈A,b∈B d(a, b),
+(10.130)
+where d(a, b) is the Euclidean distance between a and b. An intuitively
+obvious algorithm to do this would be to take any point x ∈A, and ﬁnd
+the y ∈B that is closest to it. Then ﬁx this y and ﬁnd the closest point in
+A. Repeating this process, it is clear that the distance decreases at each
+stage. Does it converge to the minimum distance between the two sets?
+Csisz´ar and Tusn´ady [155] have shown that if the sets are convex and
+if the distance satisﬁes certain conditions, this alternating minimization
+algorithm will indeed converge to the minimum. In particular, if the sets
+are sets of probability distributions and the distance measure is the relative
+entropy, the algorithm does converge to the minimum relative entropy
+between the two sets of distributions.
+A
+B
+FIGURE 10.9. Distance between convex sets.
+
+--- Page 59 ---
+10.8
+COMPUTATION OF CHANNEL CAPACITY AND RATE DISTORTION FUNCTION
+333
+To apply this algorithm to rate distortion, we have to rewrite the rate
+distortion function as a minimum of the relative entropy between two sets.
+We begin with a simple lemma. A form of this lemma comes up again
+in theorem 13.1.1, establishing the duality of channel capacity universal
+data compression.
+Lemma 10.8.1
+Let p(x)p(y|x) be a given joint distribution. Then the
+distribution r(y) that minimizes the relative entropy D(p(x)p(y|x)||p(x)
+r(y)) is the marginal distribution r∗(y) corresponding to p(y|x):
+D(p(x)p(y|x)||p(x)r∗(y)) = min
+r(y) D(p(x)p(y|x)||p(x)r(y)), (10.131)
+where r∗(y) = 
+x p(x)p(y|x). Also,
+max
+r(x|y)
+
+x,y
+p(x)p(y|x) log r(x|y)
+p(x) =
+
+x,y
+p(x)p(y|x) log r∗(x|y)
+p(x) ,
+(10.132)
+where
+r∗(x|y) =
+p(x)p(y|x)
+
+x p(x)p(y|x).
+(10.133)
+Proof
+D(p(x)p(y|x)||p(x)r(y)) −D(p(x)p(y|x)||p(x)r∗(y))
+=
+
+x,y
+p(x)p(y|x) log p(x)p(y|x)
+p(x)r(y)
+(10.134)
+−
+
+x,y
+p(x)p(y|x) log p(x)p(y|x)
+p(x)r∗(y)
+(10.135)
+=
+
+x,y
+p(x)p(y|x) log r∗(y)
+r(y)
+(10.136)
+=
+
+y
+r∗(y) log r∗(y)
+r(y)
+(10.137)
+= D(r∗||r)
+(10.138)
+≥0.
+(10.139)
+
+--- Page 60 ---
+334
+RATE DISTORTION THEORY
+The proof of the second part of the lemma is left as an exercise.
+□
+We can use this lemma to rewrite the minimization in the deﬁnition of
+the rate distortion function as a double minimization,
+R(D) = min
+r(ˆx)
+min
+q(ˆx|x): p(x)q(ˆx|x)d(x,ˆx)≤D
+
+x
+
+ˆx
+p(x)q(ˆx|x) log q(ˆx|x)
+r(ˆx) .
+(10.140)
+If A is the set of all joint distributions with marginal p(x) that satisfy the
+distortion constraints and if B the set of product distributions p(x)r(ˆx)
+with arbitrary r(ˆx), we can write
+R(D) = min
+q∈B min
+p∈A D(p||q).
+(10.141)
+We now apply the process of alternating minimization, which is called the
+Blahut–Arimoto algorithm in this case. We begin with a choice of λ and
+an initial output distribution r(ˆx) and calculate the q(ˆx|x) that minimizes
+the mutual information subject to the distortion constraint. We can use the
+method of Lagrange multipliers for this minimization to obtain
+q(ˆx|x) =
+r(ˆx)e−λd(x,ˆx)
+
+ˆx r(ˆx)e−λd(x,ˆx) .
+(10.142)
+For this conditional distribution q(ˆx|x), we calculate the output distribu-
+tion r(ˆx) that minimizes the mutual information, which by Lemma 10.8.1
+is
+r(ˆx) =
+
+x
+p(x)q(ˆx|x).
+(10.143)
+We use this output distribution as the starting point of the next iteration.
+Each step in the iteration, minimizing over q(·|·) and then minimizing over
+r(·), reduces the right-hand side of (10.140). Thus, there is a limit, and
+the limit has been shown to be R(D) by Csisz´ar [139], where the value
+of D and R(D) depends on λ. Thus, choosing λ appropriately sweeps out
+the R(D) curve.
+A similar procedure can be applied to the calculation of channel capac-
+ity. Again we rewrite the deﬁnition of channel capacity,
+C = max
+r(x) I (X; Y) = max
+r(x)
+
+x
+
+y
+r(x)p(y|x) log
+r(x)p(y|x)
+r(x) 
+x′ r(x′)p(y|x′)
+(10.144)
+
+--- Page 61 ---
+SUMMARY
+335
+as a double maximization using Lemma 10.8.1,
+C = max
+q(x|y) max
+r(x)
+
+x
+
+y
+r(x)p(y|x) log q(x|y)
+r(x) .
+(10.145)
+In this case, the Csisz´ar–Tusnady algorithm becomes one of alternating
+maximization—we start with a guess of the maximizing distribution r(x)
+and ﬁnd the best conditional distribution, which is, by Lemma 10.8.1,
+q(x|y) =
+r(x)p(y|x)
+
+x r(x)p(y|x).
+(10.146)
+For this conditional distribution, we ﬁnd the best input distribution
+r(x) by solving the constrained maximization problem with Lagrange
+multipliers. The optimum input distribution is
+r(x) =
+
+y (q(x|y))p(y|x)
+
+x
+
+y (q(x|y))p(y|x),
+(10.147)
+which we can use as the basis for the next iteration.
+These algorithms for the computation of the channel capacity and the
+rate distortion function were established by Blahut [65] and Arimoto [25]
+and the convergence for the rate distortion computation was proved by
+Csisz´ar [139]. The alternating minimization procedure of Csisz´ar and Tus-
+nady can be specialized to many other situations as well, including the EM
+algorithm [166], and the algorithm for ﬁnding the log-optimal portfolio
+for a stock market [123].
+SUMMARY
+Rate distortion. The rate distortion function for a source X ∼p(x)
+and distortion measure d(x, ˆx) is
+R(D) =
+min
+p(ˆx|x):
+(x,ˆx) p(x)p(ˆx|x)d(x,ˆx)≤D I (X; ˆX),
+(10.148)
+where the minimization is over all conditional distributions p(ˆx|x) for
+which the joint distribution p(x, ˆx) = p(x)p(ˆx|x) satisﬁes the expected
+distortion constraint.
+
+--- Page 62 ---
+336
+RATE DISTORTION THEORY
+Rate distortion theorem. If R > R(D), there exists a sequence of
+codes
+ˆXn(Xn) with the number of codewords | ˆXn(·)| ≤2nR with
+Ed(Xn, ˆXn(Xn)) →D. If R < R(D), no such codes exist.
+Bernoulli source. For a Bernoulli source with Hamming distortion,
+R(D) = H(p) −H(D).
+(10.149)
+Gaussian source. For a Gaussian source with squared-error distortion,
+R(D) = 1
+2 log σ 2
+D .
+(10.150)
+Source–channel separation. A source with rate distortion R(D) can
+be sent over a channel of capacity C and recovered with distortion D
+if and only if R(D) < C.
+Multivariate Gaussian source. The rate distortion function for a mul-
+tivariate normal vector with Euclidean mean-squared-error distortion is
+given by reverse water-ﬁlling on the eigenvalues.
+PROBLEMS
+10.1
+One-bit quantization of a single Gaussian random variable.
+Let
+X ∼N(0, σ 2) and let the distortion measure be squared error.
+Here we do not allow block descriptions. Show that the optimum
+reproduction points for 1-bit quantization are ±
+
+2
+π σ and that the
+expected distortion for 1-bit quantization is π−2
+π σ 2. Compare this
+with
+the
+distortion
+rate
+bound
+D = σ 22−2R
+for
+R = 1.
+10.2
+Rate distortion function with inﬁnite distortion.
+Find the rate dis-
+tortion function R(D) = min I (X; ˆX) for X ∼Bernoulli ( 1
+2) and
+distortion
+d(x, ˆx) =
+
+
+
+0,
+x = ˆx
+1,
+x = 1, ˆx = 0
+∞,
+x = 0, ˆx = 1.
+
+--- Page 63 ---
+PROBLEMS
+337
+10.3
+Rate distortion for binary source with asymmetric distortion .
+Fix
+p(ˆx|x) and evaluate I (X; ˆX) and D for
+X ∼Bernoulli
+1
+2
+
+,
+d(x, ˆx) =
+
+0
+a
+b
+0
+
+.
+(The rate distortion function cannot be expressed in closed form.)
+10.4
+Properties of R(D).
+Consider a discrete source X ∈X =
+{1, 2, . . . , m} with distribution p1, p2, . . . , pm and a distortion
+measure d(i, j). Let R(D) be the rate distortion function for
+this source and distortion measure. Let d′(i, j) = d(i, j) −wi be
+a new distortion measure, and let R′(D) be the corresponding
+rate distortion function. Show that R′(D) = R(D + w), where
+w =  piwi, and use this to show that there is no essential loss of
+generality in assuming that minˆx d(i, ˆx) = 0 (i.e., for each x ∈X,
+there is one symbol ˆx that reproduces the source with zero dis-
+tortion). This result is due to Pinkston [420].
+10.5
+Rate distortion for uniform source with Hamming distortion.
+Consider a source X uniformly distributed on the set {1, 2, . . . , m}.
+Find the rate distortion function for this source with Hamming
+distortion; that is,
+d(x, ˆx) =
+
+0
+if x = ˆx,
+1
+if x ̸= ˆx.
+10.6
+Shannon lower bound for the rate distortion function.
+Consider
+a source X with a distortion measure d(x, ˆx) that satisﬁes the
+following property: All columns of the distortion matrix are per-
+mutations of the set {d1, d2, . . . , dm}. Deﬁne the function
+φ(D) =
+max
+p:m
+i=1 pidi≤D H(p).
+(10.151)
+The Shannon lower bound on the rate distortion function [485]
+is proved by the following steps:
+(a) Show that φ(D) is a concave function of D.
+(b) Justify the following series of inequalities for I (X; ˆX) if
+Ed(X, ˆX) ≤D,
+I (X; ˆX) = H(X) −H(X| ˆX)
+(10.152)
+
+--- Page 64 ---
+338
+RATE DISTORTION THEORY
+= H(X) −
+
+ˆx
+p(ˆx)H(X| ˆX = ˆx)
+(10.153)
+≥H(X) −
+
+ˆx
+p(ˆx)φ(Dˆx)
+(10.154)
+≥H(X) −φ
+	
+ˆx
+p(ˆx)Dˆx
+
+(10.155)
+≥H(X) −φ(D),
+(10.156)
+where Dˆx = 
+x p(x|ˆx)d(x, ˆx).
+(c) Argue that
+R(D) ≥H(X) −φ(D),
+(10.157)
+which is the Shannon lower bound on the rate distortion func-
+tion.
+(d) If, in addition, we assume that the source has a uniform
+distribution and that the rows of the distortion matrix are per-
+mutations of each other, then R(D) = H(X) −φ(D) (i.e., the
+lower bound is tight).
+10.7
+Erasure distortion.
+Consider X ∼Bernoulli (1
+2), and let the dis-
+tortion measure be given by the matrix
+d(x, ˆx) =
+
+0
+1
+∞
+∞
+1
+0
+
+.
+(10.158)
+Calculate the rate distortion function for this source. Can you
+suggest a simple scheme to achieve any value of the rate distortion
+function for this source?
+10.8
+Bounds on the rate distortion function for squared-error distortion.
+For the case of a continuous random variable X with mean zero
+and variance σ 2 and squared-error distortion, show that
+h(X) −1
+2 log(2πeD) ≤R(D) ≤1
+2 log σ 2
+D .
+(10.159)
+For the upper bound, consider the following joint distribution:
+
+--- Page 65 ---
+PROBLEMS
+339
+Z ~
+0,
+Ds2
+s2 − D
+X 
+X 
+^
+X
+(X + Z )
+=
+^
+s2 − D
+s2
+s2 − D
+s2
+Are Gaussian random variables harder or easier to describe than
+other random variables with the same variance?
+10.9
+Properties of optimal rate distortion code.
+A good (R, D) rate
+distortion code with R ≈R(D) puts severe constraints on the rela-
+tionship of the source Xn and the representations ˆXn. Examine the
+chain of inequalities (10.58–10.71) considering the conditions for
+equality and interpret as properties of a good code. For example,
+equality in (10.59) implies that ˆXn is a deterministic function
+of Xn.
+10.10
+Rate distortion.
+Find and verify the rate distortion function R(D)
+for X uniform on X = {1, 2, . . . , 2m} and
+d(x, ˆx) =
+
+1
+for x −ˆx odd,
+0
+for x −ˆx even,
+where ˆX is deﬁned on ˆX = {1, 2, . . . , 2m}. (You may wish to use
+the Shannon lower bound in your argument.)
+10.11
+Lower bound.
+Let
+X ∼
+e−x4
+ ∞
+−∞e−x4dx
+and
+
+x4e−x4dx
+
+e−x4dx
+= c.
+Deﬁne g(a) = max h(X) over all densities such that EX4 ≤a.
+Let R(D) be the rate distortion function for X with the density
+above and with distortion criterion d(x, ˆx) = (x −ˆx)4. Show that
+R(D) ≥g(c) −g(D).
+
+--- Page 66 ---
+340
+RATE DISTORTION THEORY
+10.12
+Adding a column to the distortion matrix.
+Let R(D) be the rate
+distortion function for an i.i.d. process with probability mass func-
+tion p(x) and distortion function d(x, ˆx), x ∈X, ˆx ∈ˆX. Now
+suppose that we add a new reproduction symbol ˆx0 to ˆX with asso-
+ciated distortion d(x, ˆx0), x ∈X. Does this increase or decrease
+R(D), and why?
+10.13
+Simpliﬁcation.
+Suppose that X = {1, 2, 3, 4}, ˆX = {1, 2, 3, 4},
+p(i) = 1
+4, i = 1, 2, 3, 4, and X1, X2, . . . are i.i.d. ∼p(x). The
+distortion matrix d(x, ˆx) is given by
+1
+2
+3
+4
+1
+0
+0
+1
+1
+2
+0
+0
+1
+1
+3
+1
+1
+0
+0
+4
+1
+1
+0
+0
+(a) Find R(0), the rate necessary to describe the process with
+zero distortion.
+(b) Find the rate distortion function R(D). There are some irrel-
+evant distinctions in alphabets X and ˆX, which allow the
+problem to be collapsed.
+(c) Suppose that we have a nonuniform distribution p(i) = pi,
+i = 1, 2, 3, 4. What is R(D)?
+10.14
+Rate distortion for two independent sources.
+Can one compress
+two independent sources simultaneously better than by compress-
+ing the sources individually? The following problem addresses this
+question. Let {Xi} be i.i.d. ∼p(x) with distortion d(x, ˆx) and rate
+distortion function RX(D). Similarly, let {Yi} be i.i.d. ∼p(y) with
+distortion d(y, ˆy) and rate distortion function RY(D). Suppose we
+now wish to describe the process {(Xi, Yi)} subject to distortions
+Ed(X, ˆX) ≤D1 and Ed(Y, ˆY) ≤D2. Thus, a rate RX,Y(D1, D2)
+is sufﬁcient, where
+RX,Y(D1, D2) =
+min
+p(ˆx, ˆy|x,y):Ed(X, ˆX)≤D1,Ed(Y, ˆY)≤D2
+I (X, Y; ˆX, ˆY).
+Now suppose that the {Xi} process and the {Yi} process are inde-
+pendent of each other.
+(a) Show that
+RX,Y(D1, D2) ≥RX(D1) + RY(D2).
+
+--- Page 67 ---
+PROBLEMS
+341
+(b) Does equality hold?
+Now answer the question.
+10.15
+Distortion rate function.
+Let
+D(R) =
+min
+p(ˆx|x):I(X; ˆX)≤R
+Ed(X, ˆX)
+(10.160)
+be the distortion rate function.
+(a) Is D(R) increasing or decreasing in R?
+(b) Is D(R) convex or concave in R?
+(c) Converse for distortion rate functions: We now wish to prove
+the converse by focusing on D(R). Let X1, X2, . . . , Xn be
+i.i.d. ∼p(x). Suppose that one is given a (2nR, n) rate dis-
+tortion code Xn →i(Xn) →ˆXn(i(Xn)), with i(Xn) ∈2nR,
+and suppose that the resulting distortion is D = Ed(Xn, ˆXn
+(i(Xn))). We must show that D ≥D(R). Give reasons for the
+following steps in the proof:
+D = Ed(Xn, ˆXn(i(Xn)))
+(10.161)
+(a)
+= E 1
+n
+n
+
+i=1
+d(Xi, ˆXi)
+(10.162)
+(b)
+= 1
+n
+n
+
+i=1
+Ed(Xi, ˆXi)
+(10.163)
+(c)
+≥1
+n
+n
+
+i=1
+D
+
+I (Xi; ˆXi)
+ 
+(10.164)
+(d)
+≥D
+	
+1
+n
+n
+
+i=1
+I (Xi; ˆXi)
+
+(10.165)
+(e)
+≥D
+1
+nI (Xn; ˆXn)
+
+(10.166)
+(f)≥D(R).
+(10.167)
+10.16
+Probability of conditionally typical sequences.
+In Chapter 7 we
+calculated the probability that two independently drawn sequences
+Xn and Y n are weakly jointly typical. To prove the rate distor-
+tion theorem, however, we need to calculate this probability when
+
+--- Page 68 ---
+342
+RATE DISTORTION THEORY
+one of the sequences is ﬁxed and the other is random. The tech-
+niques of weak typicality allow us only to calculate the average
+set size of the conditionally typical set. Using the ideas of strong
+typicality, on the other hand, provides us with stronger bounds
+that work for all typical xn sequences. We outline the proof that
+Pr{(xn, Y n) ∈A∗(n)
+ǫ
+} ≈2−nI(X;Y) for all typical xn. This approach
+was introduced by Berger [53] and is fully developed in the book
+by Csisz´ar and K¨orner [149].
+Let (Xi, Yi) be drawn i.i.d. ∼p(x, y). Let the marginals of X and
+Y be p(x) and p(y), respectively.
+(a) Let A∗(n)
+ǫ
+be the strongly typical set for X. Show that
+|A∗(n)
+ǫ
+| .=2nH(X).
+(10.168)
+(Hint: Theorems 11.1.1 and 11.1.3.)
+(b) The joint type of a pair of sequences (xn, yn) is the proportion
+of times (xi, yi) = (a, b) in the pair of sequences:
+pxn,yn(a, b) = 1
+nN(a, b|xn, yn) = 1
+n
+n
+
+i=1
+I (xi = a, yi = b).
+(10.169)
+The conditional type of a sequence yn given xn is a stochastic
+matrix that gives the proportion of times a particular element
+of Y occurred with each element of X in the pair of sequences.
+Speciﬁcally, the conditional type Vyn|xn(b|a) is deﬁned as
+Vyn|xn(b|a) = N(a, b|xn, yn)
+N(a|xn)
+.
+(10.170)
+Show that the number of conditional types is bounded by (n +
+1)|X||Y|.
+(c) The set of sequences yn ∈Yn with conditional type V with
+respect to a sequence xn is called the conditional type class
+TV (xn). Show that
+1
+(n + 1)|X||Y| 2nH(Y|X) ≤|TV (xn)| ≤2nH(Y|X).
+(10.171)
+(d) The sequence yn ∈Yn is said to be ǫ-strongly conditionally
+typical with the sequence xn with respect to the conditional
+distribution V (·|·) if the conditional type is close to V . The
+conditional type should satisfy the following two conditions:
+
+--- Page 69 ---
+PROBLEMS
+343
+(i) For all (a, b) ∈X × Y with V (b|a) > 0,
+1
+n
+N(a, b|xn, yn) −V (b|a)N(a|xn)
+ ≤
+ǫ
+|Y| + 1.
+(10.172)
+(ii) N(a, b|xn, yn) = 0 for all (a, b) such that V (b|a) = 0.
+The set of such sequences is called the conditionally typi-
+cal set and is denoted A∗(n)
+ǫ
+(Y|xn). Show that the number
+of sequences yn that are conditionally typical with a given
+xn ∈Xn is bounded by
+1
+(n + 1)|X||Y| 2n(H(Y|X)−ǫ1) ≤|A∗(n)
+ǫ
+(Y|xn)|
+≤(n + 1)|X||Y|2n(H(Y|X)+ǫ1), (10.173)
+where ǫ1 →0 as ǫ →0.
+(e) For a pair of random variables (X, Y) with joint distribution
+p(x, y), the ǫ-strongly typical set A∗(n)
+ǫ
+is the set of sequences
+(xn, yn) ∈Xn × Yn satisfying
+(i)
+
+1
+nN(a, b|xn, yn) −p(a, b)
+ <
+ǫ
+|X||Y|
+(10.174)
+for every pair (a, b) ∈X × Y with p(a, b) > 0.
+(ii) N(a, b|xn, yn) = 0
+for
+all
+(a, b) ∈X × Y
+with
+p(a, b) = 0.
+The set of ǫ-strongly jointly typical sequences is called the
+ǫ-strongly jointly typical set and is denoted A∗(n)
+ǫ
+(X, Y). Let
+(X, Y) be drawn i.i.d. ∼p(x, y). For any xn such that there
+exists at least one pair (xn, yn) ∈A∗(n)
+ǫ
+(X, Y), the set of se-
+quences yn such that (xn, yn) ∈A∗(n)
+ǫ
+satisﬁes
+1
+(n + 1)|X||Y| 2n(H(Y|X)−δ(ǫ)) ≤|{yn : (xn, yn) ∈A∗(n)
+ǫ
+}|
+≤(n + 1)|X||Y|2n(H(Y|X)+δ(ǫ)),
+(10.175)
+where δ(ǫ) →0 as ǫ →0. In particular, we can write
+2n(H(Y|X)−ǫ2) ≤|{yn : (xn, yn) ∈A∗(n)
+ǫ
+}| ≤2n(H(Y|X)+ǫ2),
+(10.176)
+
+--- Page 70 ---
+344
+RATE DISTORTION THEORY
+where we can make ǫ2 arbitrarily small with an appropriate
+choice of ǫ and n.
+(f) Let Y1, Y2, . . . , Yn be drawn i.i.d. ∼ p(yi). For xn ∈A∗(n)
+ǫ
+,
+the probability that (xn, Y n) ∈A∗(n)
+ǫ
+is bounded by
+2−n(I(X;Y)+ǫ3) ≤Pr((xn, Y n) ∈A∗(n)
+ǫ
+) ≤2−n(I(X;Y)−ǫ3),
+(10.177)
+where ǫ3 goes to 0 as ǫ →0 and n →∞.
+10.17
+Source–channel separation theorem with distortion.
+Let V1,
+V2, . . . , Vn be a ﬁnite alphabet i.i.d. source which is encoded
+as a sequence of n input symbols Xn of a discrete memoryless
+channel. The output of the channel Y n is mapped onto the recon-
+struction alphabet ˆV n = g(Y n). Let D = Ed(V n, ˆV n) = 1
+n
+n
+i=1
+Ed(Vi, ˆVi) be the average distortion achieved by this combined
+source and channel coding scheme.
+Channel Capacity C
+Vn
+Vn
+Yn
+Xn(Vn)
+^
+(a) Show that if C > R(D), where R(D) is the rate distortion
+function for V , it is possible to ﬁnd encoders and decoders
+that achieve a average distortion arbitrarily close to D.
+(b) (Converse) Show that if the average distortion is equal to D,
+the capacity of the channel C must be greater than R(D).
+10.18
+Rate distortion.
+Let d(x, ˆx) be a distortion function. We have
+a source X ∼p(x). Let R(D) be the associated rate distortion
+function.
+(a) Find
+˜R(D) in terms of R(D), where
+˜R(D) is the rate
+distortion function associated with the distortion ˜d(x, ˆx) =
+d(x, ˆx) + a for some constant a > 0. (They are not equal.)
+(b) Now suppose that d(x, ˆx) ≥0 for all x, ˆx and deﬁne a new
+distortion function d∗(x, ˆx) = bd(x, ˆx), where b is some num-
+ber ≥0. Find the associated rate distortion function R∗(D) in
+terms of R(D).
+(c) Let X ∼N(0, σ 2) and d(x, ˆx) = 5(x −ˆx)2 + 3. What is
+R(D)?
+
+--- Page 71 ---
+HISTORICAL NOTES
+345
+10.19
+Rate distortion with two constraints.
+Let Xi be iid ∼p(x). We
+are given two distortion functions, d1(x, ˆx) and d2(x, ˆx). We
+wish to describe Xn at rate R and reconstruct it with distortions
+Ed1(Xn, ˆXn
+1) ≤D1, and Ed2(Xn, ˆXn
+2) ≤D2, as shown here:
+Xn −→i(Xn) −→( ˆXn
+1(i), ˆXn
+2(i))
+D1 = Ed1(Xn
+1, ˆXn
+1)
+D2 = Ed2(Xn
+1, ˆXn
+2).
+Here i(·) takes on 2nR values. What is the rate distortion function
+R(D1, D2)?
+10.20
+Rate distortion.
+Consider the standard rate distortion problem,
+Xi i.i.d. ∼p(x), Xn →i(Xn) →ˆXn, |i(·)| = 2nR. Consider two
+distortion criteria d1(x, ˆx) and d2(x, ˆx). Suppose that d1(x, ˆx) ≤
+d2(x, ˆx) for all x ∈X, ˆx ∈ˆX. Let R1(D) and R2(D) be the cor-
+responding rate distortion functions.
+(a) Find the inequality relationship between R1(D) and R2(D).
+(b) Suppose that we must describe the source {Xi} at the mini-
+mum rate R achieving d1(Xn, ˆXn
+1) ≤D and d2(Xn, ˆXn
+2) ≤D.
+Thus,
+Xn →i(Xn) →
+ ˆXn
+1(i(Xn))
+ˆXn
+2(i(Xn))
+and |i(·)| = 2nR.
+Find the minimum rate R.
+HISTORICAL NOTES
+The idea of rate distortion was introduced by Shannon in his original
+paper [472]. He returned to it and dealt with it exhaustively in his 1959
+paper [485], which proved the ﬁrst rate distortion theorem. Meanwhile,
+Kolmogorov and his school in the Soviet Union began to develop rate
+distortion theory in 1956. Stronger versions of the rate distortion theorem
+have been proved for more general sources in the comprehensive book by
+Berger [52].
+The inverse water-ﬁlling solution for the rate distortion function for
+parallel Gaussian sources was established by McDonald and Schultheiss
+
+--- Page 72 ---
+346
+RATE DISTORTION THEORY
+[381]. An iterative algorithm for the calculation of the rate distortion
+function for a general i.i.d. source and arbitrary distortion measure was
+described by Blahut [65], Arimoto [25], and Csisz´ar [139]. This algorithm
+is a special case of a general alternating minimization algorithm due to
+Csisz´ar and Tusn´ady [155].
+
+--- Page 73 ---
+CHAPTER 11
+INFORMATION THEORY
+AND STATISTICS
+We now explore the relationship between information theory and statistics.
+We begin by describing the method of types, which is a powerful technique
+in large deviation theory. We use the method of types to calculate the
+probability of rare events and to show the existence of universal source
+codes. We also consider the problem of testing hypotheses and derive the
+best possible error exponents for such tests (the Chernoff–Stein lemma).
+Finally, we treat the estimation of the parameters of a distribution and
+describe the role of Fisher information.
+11.1
+METHOD OF TYPES
+The AEP for discrete random variables (Chapter 3) focuses our attention
+on a small subset of typical sequences. The method of types is an even
+more powerful procedure in which we consider sequences that have the
+same empirical distribution. With this restriction, we can derive strong
+bounds on the number of sequences with a particular empirical distribution
+and the probability of each sequence in this set. It is then possible to derive
+strong error bounds for the channel coding theorem and prove a variety
+of rate distortion results. The method of types was fully developed by
+Csisz´ar and K¨orner [149], who obtained most of their results from this
+point of view.
+Let X1, X2, . . . , Xn be a sequence of n symbols from an alphabet X =
+{a1, a2, . . . , a|X|}. We use the notation xn and x interchangeably to denote
+a sequence x1, x2, . . . , xn.
+Deﬁnition
+The type Px (or empirical probability distribution) of a se-
+quence x1, x2, . . . , xn is the relative proportion of occurrences of each
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+347
+
+--- Page 74 ---
+348
+INFORMATION THEORY AND STATISTICS
+symbol of X (i.e., Px(a) = N(a|x)/n for all a ∈X, where N(a|x) is the
+number of times the symbol a occurs in the sequence x ∈Xn).
+The type of a sequence x is denoted as Px. It is a probability mass
+function on X. (Note that in this chapter, we will use capital letters to
+denote types and distributions. We also loosely use the word distribution
+to mean a probability mass function.)
+Deﬁnition
+The probability simplex in Rm is the set of points x =
+(x1, x2, . . . , xm) ∈Rm such that xi ≥0, m
+i=1 xi = 1.
+The probability simplex is an (m −1)-dimensional manifold in
+m-dimensional space. When m = 3, the probability simplex is the
+set
+of
+points
+{(x1, x2, x3) : x1 ≥0, x2 ≥0, x3 ≥0, x1 + x2 + x3 = 1}
+(Figure 11.1). Since this is a triangular two-dimensional ﬂat in R3, we
+use a triangle to represent the probability simplex in later sections of this
+chapter.
+Deﬁnition
+Let Pn denote the set of types with denominator n.
+For example, if X = {0, 1}, the set of possible types with denominator
+n is
+Pn =
+
+(P (0), P (1)) :
+0
+n, n
+n
+
+,
+1
+n, n −1
+n
+
+, . . . ,
+n
+n, 0
+n
+
+.
+(11.1)
+Deﬁnition
+If P ∈Pn, the set of sequences of length n and type P is
+called the type class of P , denoted T (P ):
+T (P ) = {x ∈Xn : Px = P }.
+(11.2)
+The type class is sometimes called the composition class of P .
+x2
+x3
+x1
+x1 + x2 + x3 = 1
+1
+1
+1
+FIGURE 11.1. Probability simplex in R3.
+
+--- Page 75 ---
+11.1
+METHOD OF TYPES
+349
+Example 11.1.1
+Let X = {1, 2, 3}, a ternary alphabet. Let x = 11321.
+Then the type Px is
+Px(1) = 3
+5,
+Px(2) = 1
+5,
+Px(3) = 1
+5.
+(11.3)
+The type class of Px is the set of all sequences of length 5 with three 1’s,
+one 2, and one 3. There are 20 such sequences, and
+T (Px) = {11123, 11132, 11213, . . . , 32111}.
+(11.4)
+The number of elements in T (P ) is
+|T (P )| =
+
+5
+3, 1, 1
+
+=
+5!
+3! 1! 1! = 20.
+(11.5)
+The essential power of the method of types arises from the following
+theorem, which shows that the number of types is at most polynomial
+in n.
+Theorem 11.1.1
+|Pn| ≤(n + 1)|X|.
+(11.6)
+Proof:
+There are |X| components in the vector that speciﬁes Px. The
+numerator in each component can take on only n + 1 values. So there are
+at most (n + 1)|X| choices for the type vector. Of course, these choices
+are not independent (e.g., the last choice is ﬁxed by the others). But this
+is a sufﬁciently good upper bound for our needs.
+□
+The crucial point here is that there are only a polynomial number of
+types of length n. Since the number of sequences is exponential in n, it
+follows that at least one type has exponentially many sequences in its
+type class. In fact, the largest type class has essentially the same number
+of elements as the entire set of sequences, to ﬁrst order in the exponent.
+Now, we assume that the sequence X1, X2, . . . , Xn is drawn i.i.d.
+according to a distribution Q(x). All sequences with the same type have
+the same probability, as shown in the following theorem. Let Qn(xn) =
+n
+i=1 Q(xi) denote the product distribution associated with Q.
+Theorem 11.1.2
+If X1, X2, . . . , Xn are drawn i.i.d. according to Q(x),
+the probability of x depends only on its type and is given by
+Qn(x) = 2−n(H(Px)+D(Px||Q)).
+(11.7)
+
+--- Page 76 ---
+350
+INFORMATION THEORY AND STATISTICS
+Proof
+Qn(x) =
+n
+
+i=1
+Q(xi)
+(11.8)
+=
+
+a∈X
+Q(a)N(a|x)
+(11.9)
+=
+
+a∈X
+Q(a)nPx(a)
+(11.10)
+=
+
+a∈X
+2nPx(a) log Q(a)
+(11.11)
+=
+
+a∈X
+2n(Px(a) log Q(a)−Px(a) log Px(a)+Px(a) log Px(a))
+(11.12)
+= 2n 
+a∈X (−Px(a) log Px(a)
+Q(a) +Px(a) log Px(a))
+(11.13)
+= 2n(−D(Px||Q)−H(Px)).
+□
+(11.14)
+Corollary
+If x is in the type class of Q, then
+Qn(x) = 2−nH(Q).
+(11.15)
+Proof:
+If x ∈T (Q), then Px = Q, which can be substituted into (11.14).
+□
+Example 11.1.2
+The probability that a fair die produces a particular
+sequence of length n with precisely n/6 occurrences of each face (n is a
+multiple of 6) is 2−nH( 1
+6, 1
+6,..., 1
+6) = 6−n. This is obvious. However, if the
+die has a probability mass function ( 1
+3, 1
+3, 1
+6, 1
+12, 1
+12, 0), the probability of
+observing a particular sequence with precisely these frequencies is pre-
+cisely 2−nH( 1
+3, 1
+3, 1
+6, 1
+12, 1
+12,0) for n a multiple of 12. This is more interesting.
+We now give an estimate of the size of a type class T (P ).
+Theorem 11.1.3
+(Size of a type class T (P ))
+For any type P ∈Pn,
+1
+(n + 1)|X| 2nH(P) ≤|T (P )| ≤2nH(P).
+(11.16)
+Proof:
+The exact size of T (P ) is easy to calculate. It is a simple combi-
+natorial problem—the number of ways of arranging nP (a1), nP (a2), . . . ,
+
+--- Page 77 ---
+11.1
+METHOD OF TYPES
+351
+nP (a|X|) objects in a sequence, which is
+|T (P )| =
+
+n
+nP (a1), nP (a2), . . . , nP (a|X|)
+
+.
+(11.17)
+This value is hard to manipulate, so we derive simple exponential bounds
+on its value.
+We suggest two alternative proofs for the exponential bounds. The ﬁrst
+proof uses Stirling’s formula [208] to bound the factorial function, and
+after some algebra, we can obtain the bounds of the theorem. We give an
+alternative proof. We ﬁrst prove the upper bound. Since a type class must
+have probability ≤1, we have
+1 ≥P n(T (P ))
+(11.18)
+=
+
+x∈T (P)
+P n(x)
+(11.19)
+=
+
+x∈T (P)
+2−nH(P)
+(11.20)
+= |T (P )|2−nH(P),
+(11.21)
+using Theorem 11.1.2. Thus,
+|T (P )| ≤2nH(P).
+(11.22)
+Now for the lower bound. We ﬁrst prove that the type class T (P )
+has the highest probability among all type classes under the probability
+distribution P :
+P n(T (P )) ≥P n(T ( ˆP ))
+for all ˆP ∈Pn.
+(11.23)
+We lower bound the ratio of probabilities,
+P n(T (P ))
+P n(T ( ˆP ))
+= |T (P )| 
+a∈X P (a)nP(a)
+|T ( ˆP )| 
+a∈X P (a)n ˆP(a)
+(11.24)
+=
+	
+n
+nP(a1), nP(a2),...,nP(a|X|)
+
+ 
+a∈X P (a)nP(a)
+	
+n
+n ˆP(a1), n ˆP(a2),...,n ˆP(a|X|)
+
+ 
+a∈X P (a)n ˆP (a)
+(11.25)
+=
+
+a∈X
+(n ˆP (a))!
+(nP (a))!P (a)n(P(a)−ˆP(a)).
+(11.26)
+
+--- Page 78 ---
+352
+INFORMATION THEORY AND STATISTICS
+Now using the simple bound (easy to prove by separately considering the
+cases m ≥n and m < n)
+m!
+n! ≥nm−n,
+(11.27)
+we obtain
+P n(T (P ))
+P n(T ( ˆP ))
+≥
+
+a∈X
+(nP (a))n ˆP(a)−nP(a)P (a)n(P(a)−ˆP(a))
+(11.28)
+=
+
+a∈X
+nn( ˆP(a)−P(a))
+(11.29)
+= nn(
+
+a∈X ˆP (a)−
+a∈X P(a))
+(11.30)
+= nn(1−1)
+(11.31)
+= 1.
+(11.32)
+Hence, P n(T (P )) ≥P n(T ( ˆP )). The lower bound now follows easily
+from this result, since
+1 =
+
+Q∈Pn
+P n(T (Q))
+(11.33)
+≤
+
+Q∈Pn
+max
+Q P n(T (Q))
+(11.34)
+=
+
+Q∈Pn
+P n(T (P ))
+(11.35)
+≤(n + 1)|X|P n(T (P ))
+(11.36)
+= (n + 1)|X| 
+x∈T (P)
+P n(x)
+(11.37)
+= (n + 1)|X| 
+x∈T (P)
+2−nH(P)
+(11.38)
+= (n + 1)|X||T (P )|2−nH(P),
+(11.39)
+where (11.36) follows from Theorem 11.1.1 and (11.38) follows from
+Theorem 11.1.2.
+□
+We give a slightly better approximation for the binary case.
+
+--- Page 79 ---
+11.1
+METHOD OF TYPES
+353
+Example 11.1.3
+(Binary alphabet)
+In this case, the type is deﬁned
+by the number of 1’s in the sequence, and the size of the type class is
+therefore
+	n
+k
+
+. We show that
+1
+n + 12
+nH
+ k
+n
+
+≤
+n
+k
+
+≤2
+nH
+ k
+n
+
+.
+(11.40)
+These bounds can be proved using Stirling’s approximation for the fac-
+torial function (Lemma 17.5.1). But we provide a more intuitive proof
+below.
+We ﬁrst prove the upper bound. From the binomial formula, for any p,
+n
+
+k=0
+n
+k
+
+pk(1 −p)n−k = 1.
+(11.41)
+Since all the terms of the sum are positive for 0 ≤p ≤1, each of the
+terms is less than 1. Setting p = k/n and taking the kth term, we get
+1 ≥
+n
+k
+ k
+n
+k 
+1 −k
+n
+n−k
+(11.42)
+=
+n
+k
+
+2k log k
+n+(n−k) log n−k
+n
+(11.43)
+=
+n
+k
+
+2
+n
+
+k
+n log k
+n+ n−k
+n
+log n−k
+n
+
+(11.44)
+=
+n
+k
+
+2
+−nH
+
+k
+n
+
+.
+(11.45)
+Hence,
+n
+k
+
+≤2
+nH
+
+k
+n
+
+.
+(11.46)
+For the lower bound, let S be a random variable with a binomial
+distribution with parameters n and p. The most likely value of S is
+S = ⟨np⟩. This can easily be veriﬁed from the fact that
+P (S = i + 1)
+P (S = i)
+= n −i
+i + 1
+p
+1 −p
+(11.47)
+and considering the cases when i < np and when i > np. Then, since
+there are n + 1 terms in the binomial sum,
+
+--- Page 80 ---
+354
+INFORMATION THEORY AND STATISTICS
+1 =
+n
+
+k=0
+n
+k
+
+pk(1 −p)n−k ≤(n + 1) max
+k
+n
+k
+
+pk(1 −p)n−k (11.48)
+= (n + 1)
+ n
+⟨np⟩
+
+p⟨np⟩(1 −p)n−⟨np⟩.
+(11.49)
+Now let p = k/n. Then we have
+1 ≤(n + 1)
+n
+k
+ k
+n
+k 
+1 −k
+n
+n−k
+,
+(11.50)
+which by the arguments in (11.45) is equivalent to
+1
+n + 1 ≤
+n
+k
+
+2
+−nH
+
+k
+n
+
+,
+(11.51)
+or
+n
+k
+
+≥2
+nH
+
+k
+n
+
+n + 1 .
+(11.52)
+Combining the two results, we see that
+n
+k
+
+.= 2
+nH
+
+k
+n
+
+.
+(11.53)
+A more precise bound can be found in theorem 17.5.1 when k ̸= 0 or n.
+Theorem 11.1.4
+(Probability of type class)
+for any P ∈Pn and any
+distribution Q, the probability of the type class T (P ) under Qn is 2−nD(P||Q)
+to ﬁrst order in the exponent. More precisely,
+1
+(n + 1)|X| 2−nD(P||Q) ≤Qn(T (P )) ≤2−nD(P||Q).
+(11.54)
+Proof:
+We have
+Qn(T (P )) =
+
+x∈T (P)
+Qn(x)
+(11.55)
+=
+
+x∈T (P)
+2−n(D(P||Q)+H(P))
+(11.56)
+= |T (P )|2−n(D(P||Q)+H(P)),
+(11.57)
+
+--- Page 81 ---
+11.2
+LAW OF LARGE NUMBERS
+355
+by Theorem 11.1.2. Using the bounds on |T (P )| derived in Theorem
+11.1.3, we have
+1
+(n + 1)|X| 2−nD(P||Q) ≤Qn(T (P )) ≤2−nD(P||Q).
+□
+(11.58)
+We can summarize the basic theorems concerning types in four equa-
+tions:
+|Pn| ≤(n + 1)|X|,
+(11.59)
+Qn(x) = 2−n(D(Px||Q)+H(Px)),
+(11.60)
+|T (P )| .= 2nH(P),
+(11.61)
+Qn(T (P )) .= 2−nD(P||Q).
+(11.62)
+These equations state that there are only a polynomial number of types
+and that there are an exponential number of sequences of each type. We
+also have an exact formula for the probability of any sequence of type P
+under distribution Q and an approximate formula for the probability of a
+type class.
+These equations allow us to calculate the behavior of long sequences
+based on the properties of the type of the sequence. For example, for
+long sequences drawn i.i.d. according to some distribution, the type of
+the sequence is close to the distribution generating the sequence, and we
+can use the properties of this distribution to estimate the properties of the
+sequence. Some of the applications that will be dealt with in the next few
+sections are as follows:
+• The law of large numbers
+• Universal source coding
+• Sanov’s theorem
+• The Chernoff–Stein lemma and hypothesis testing
+• Conditional probability and limit theorems
+11.2
+LAW OF LARGE NUMBERS
+The concept of type and type classes enables us to give an alternative
+statement of the law of large numbers. In fact, it can be used as a proof
+of a version of the weak law in the discrete case. The most important
+property of types is that there are only a polynomial number of types, and
+
+--- Page 82 ---
+356
+INFORMATION THEORY AND STATISTICS
+an exponential number of sequences of each type. Since the probability
+of each type class depends exponentially on the relative entropy distance
+between the type P and the distribution Q, type classes that are far from
+the true distribution have exponentially smaller probability.
+Given an ǫ > 0, we can deﬁne a typical set T ǫ
+Q of sequences for the
+distribution Qn as
+T ǫ
+Q = {xn : D(Pxn||Q) ≤ǫ}.
+(11.63)
+Then the probability that xn is not typical is
+1 −Qn(T ǫ
+Q) =
+
+P:D(P||Q)>ǫ
+Qn(T (P ))
+(11.64)
+≤
+
+P:D(P||Q)>ǫ
+2−nD(P||Q)
+(Theorem 11.1.4)
+(11.65)
+≤
+
+P:D(P||Q)>ǫ
+2−nǫ
+(11.66)
+≤(n + 1)|X|2−nǫ
+(Theorem 11.1.1)
+(11.67)
+= 2
+−n
+
+ǫ−|X| log(n+1)
+n
+
+,
+(11.68)
+which goes to 0 as n →∞. Hence, the probability of the typical set T ǫ
+Q
+goes to 1 as n →∞. This is similar to the AEP proved in Chapter 3,
+which is a form of the weak law of large numbers. We now prove that
+the empirical distribution PXn converges to P .
+Theorem 11.2.1
+Let X1, X2, . . . , Xn be i.i.d. ∼P (x). Then
+Pr {D(Pxn||P ) > ǫ} ≤2−n(ǫ−|X| log(n+1)
+n
+),
+(11.69)
+and consequently, D(Pxn||P ) →0 with probability 1.
+Proof:
+The inequality (11.69) was proved in (11.68). Summing over n,
+we ﬁnd that
+∞
+
+n=1
+Pr{D(Pxn||P ) > ǫ} < ∞.
+(11.70)
+
+--- Page 83 ---
+11.3
+UNIVERSAL SOURCE CODING
+357
+Thus, the expected number of occurrences of the event {D(Pxn||P ) > ǫ}
+for all n is ﬁnite, which implies that the actual number of such occur-
+rences is also ﬁnite with probability 1 (Borel–Cantelli lemma). Hence
+D(Pxn||P ) →0 with probability 1.
+□
+We now deﬁne a stronger version of typicality than in Chapter 3.
+Deﬁnition
+We deﬁne the strongly typical set A∗(n)
+ǫ
+to be the set of
+sequences in Xn for which the sample frequencies are close to the true
+values:
+A∗(n)
+ǫ
+=
+
+
+
+x ∈Xn :
+
+1
+nN(a|x) −P (a)
+ <
+ǫ
+|X |,
+if P (a) > 0
+N(a|x) = 0
+if P (a) = 0
+
+
+
+.
+(11.71)
+Hence, the typical set consists of sequences whose type does not differ
+from the true probabilities by more than ǫ/|X| in any component. By the
+strong law of large numbers, it follows that the probability of the strongly
+typical set goes to 1 as n →∞. The additional power afforded by strong
+typicality is useful in proving stronger results, particularly in universal
+coding, rate distortion theory, and large deviation theory.
+11.3
+UNIVERSAL SOURCE CODING
+Huffman coding compresses an i.i.d. source with a known distribution
+p(x) to its entropy limit H(X). However, if the code is designed for
+some incorrect distribution q(x), a penalty of D(p||q) is incurred. Thus,
+Huffman coding is sensitive to the assumed distribution.
+What compression can be achieved if the true distribution p(x) is
+unknown? Is there a universal code of rate R, say, that sufﬁces to describe
+every i.i.d. source with entropy H(X) < R? The surprising answer is yes.
+The idea is based on the method of types. There are 2nH(P) sequences of
+type P . Since there are only a polynomial number of types with denom-
+inator n, an enumeration of all sequences xn with type Pxn such that
+H(Pxn) < R will require roughly nR bits. Thus, by describing all such
+sequences, we are prepared to describe any sequence that is likely to arise
+from any distribution Q having entropy H(Q) < R. We begin with a
+deﬁnition.
+Deﬁnition
+A ﬁxed-rate block code of rate R for a source X1, X2, . . . ,
+Xn which has an unknown distribution Q consists of two mappings: the
+encoder,
+fn : Xn →{1, 2, . . . , 2nR},
+(11.72)
+
+--- Page 84 ---
+358
+INFORMATION THEORY AND STATISTICS
+and the decoder,
+φn : {1, 2, . . . , 2nR} →Xn.
+(11.73)
+Here R is called the rate of the code. The probability of error for the
+code with respect to the distribution Q is
+P (n)
+e
+= Qn(Xn : φn(fn(Xn)) ̸= Xn)
+(11.74)
+Deﬁnition
+A rate R block code for a source will be called universal
+if the functions fn and φn do not depend on the distribution Q and if
+P (n)
+e
+→0 as n →∞if R > H(Q).
+We now describe one such universal encoding scheme, due to Csisz´ar
+and K¨orner [149], that is based on the fact that the number of sequences
+of type P increases exponentially with the entropy and the fact that there
+are only a polynomial number of types.
+Theorem 11.3.1
+There exists a sequence of (2nR, n) universal source
+codes such that P (n)
+e
+→0 for every source Q such that H(Q) < R.
+Proof:
+Fix the rate R for the code. Let
+Rn = R −|X|log(n + 1)
+n
+.
+(11.75)
+Consider the set of sequences
+A = {x ∈Xn : H(Px) ≤Rn}.
+(11.76)
+Then
+|A| =
+
+P∈Pn:H(P)≤Rn
+|T (P )|
+(11.77)
+≤
+
+P∈Pn:H(P)≤Rn
+2nH(P)
+(11.78)
+≤
+
+P∈Pn:H(P)≤Rn
+2nRn
+(11.79)
+≤(n + 1)|X|2nRn
+(11.80)
+= 2n(Rn+|X| log(n+1)
+n
+)
+(11.81)
+= 2nR.
+(11.82)
+
+--- Page 85 ---
+11.3
+UNIVERSAL SOURCE CODING
+359
+By indexing the elements of A, we deﬁne the encoding function fn as
+fn(x) =
+
+index of x in A
+if x ∈A,
+0
+otherwise.
+(11.83)
+The decoding function maps each index onto the corresponding element
+of A. Hence all the elements of A are recovered correctly, and all the
+remaining sequences result in an error. The set of sequences that are
+recovered correctly is illustrated in Figure 11.2.
+We now show that this encoding scheme is universal. Assume that the
+distribution of X1, X2, . . . , Xn is Q and H(Q) < R. Then the probability
+of decoding error is given by
+P (n)
+e
+= 1 −Qn(A)
+(11.84)
+=
+
+P:H(P)>Rn
+Qn(T (P ))
+(11.85)
+≤(n + 1)|X|
+max
+P:H(P)>Rn Qn(T (P ))
+(11.86)
+≤(n + 1)|X|2−n minP :H(P )>Rn D(P||Q).
+(11.87)
+Since Rn ↑R and H(Q) < R, there exists n0 such that for all n ≥n0,
+Rn > H(Q). Then for n ≥n0, minP:H(P)>Rn D(P ||Q) must be greater
+than 0, and the probability of error P (n)
+e
+converges to 0 exponentially fast
+as n →∞.
+H(P) = R
+A
+FIGURE 11.2. Universal code and the probability simplex. Each sequence with type that
+lies outside the circle is encoded by its index. There are fewer than 2nR such sequences.
+Sequences with types within the circle are encoded by 0.
+
+--- Page 86 ---
+360
+INFORMATION THEORY AND STATISTICS
+Error exponent
+H(Q)
+Rate of code
+FIGURE 11.3. Error exponent for the universal code.
+On the other hand, if the distribution Q is such that the entropy H(Q)
+is greater than the rate R, then with high probability the sequence will
+have a type outside the set A. Hence, in such cases the probability of
+error is close to 1.
+The exponent in the probability of error is
+D∗
+R,Q =
+min
+P:H(P)>R D(P ||Q),
+(11.88)
+which is illustrated in Figure 11.3.
+□
+The universal coding scheme described here is only one of many such
+schemes. It is universal over the set of i.i.d. distributions. There are other
+schemes, such as the Lempel–Ziv algorithm, which is a variable-rate uni-
+versal code for all ergodic sources. The Lempel–Ziv algorithm, discussed
+in Section 13.4, is often used in practice to compress data that cannot be
+modeled simply, such as English text or computer source code.
+One may wonder why it is ever necessary to use Huffman codes, which
+are speciﬁc to a probability distribution. What do we lose in using a
+universal code? Universal codes need a longer block length to obtain
+the same performance as a code designed speciﬁcally for the probability
+distribution. We pay the penalty for this increase in block length by the
+increased complexity of the encoder and decoder. Hence, a distribution
+speciﬁc code is best if one knows the distribution of the source.
+11.4
+LARGE DEVIATION THEORY
+The subject of large deviation theory can be illustrated by an example.
+What is the probability that 1
+n
+ Xi is near 1
+3 if X1, X2, . . . , Xn are drawn
+i.i.d. Bernoulli(1
+3)? This is a small deviation (from the expected outcome)
+
+--- Page 87 ---
+11.4
+LARGE DEVIATION THEORY
+361
+and the probability is near 1. Now what is the probability that 1
+n
+ Xi
+is greater than
+3
+4 given that X1, X2, . . . , Xn are Bernoulli(1
+3)? This is
+a large deviation, and the probability is exponentially small. We might
+estimate the exponent using the central limit theorem, but this is a poor
+approximation for more than a few standard deviations. We note that
+1
+n
+ Xi = 3
+4 is equivalent to Px = ( 1
+4, 3
+4). Thus, the probability that Xn is
+near 3
+4 is the probability that type PX is near (3
+4, 1
+4). The probability of
+this large deviation will turn out to be ≈2−nD(( 3
+4, 1
+4)||( 1
+3, 2
+3)). In this section
+we estimate the probability of a set of nontypical types.
+Let E be a subset of the set of probability mass functions. For example,
+E may be the set of probability mass functions with mean µ. With a slight
+abuse of notation, we write
+Qn(E) = Qn(E ∩Pn) =
+
+x:Px∈E∩Pn
+Qn(x).
+(11.89)
+If E contains a relative entropy neighborhood of Q, then by the weak
+law of large numbers (Theorem 11.2.1), Qn(E) →1. On the other hand,
+if E does not contain Q or a neighborhood of Q, then by the weak law
+of large numbers, Qn(E) →0 exponentially fast. We will use the method
+of types to calculate the exponent.
+Let us ﬁrst give some examples of the kinds of sets E that we are
+considering. For example, assume that by observation we ﬁnd that the
+sample average of g(X) is greater than or equal to α [i.e., 1
+n
+
+i g(xi) ≥α].
+This event is equivalent to the event PX ∈E ∩Pn, where
+E =
+
+P :
+
+a∈X
+g(a)P (a) ≥α
+
+,
+(11.90)
+because
+1
+n
+n
+
+i=1
+g(xi) ≥α ⇔
+
+a∈X
+PX(a)g(a) ≥α
+(11.91)
+⇔PX ∈E ∩Pn.
+(11.92)
+Thus,
+Pr
+
+1
+n
+n
+
+i=1
+g(Xi) ≥α
+
+= Qn(E ∩Pn) = Qn(E).
+(11.93)
+
+--- Page 88 ---
+362
+INFORMATION THEORY AND STATISTICS
+P*
+Q
+E
+FIGURE 11.4. Probability simplex and Sanov’s theorem.
+Here E is a half space in the space of probability vectors, as illustrated
+in Figure 11.4.
+Theorem 11.4.1
+(Sanov’s
+theorem)
+Let
+X1, X2, . . . , Xn
+be
+i.i.d.
+∼Q(x). Let E ⊆P be a set of probability distributions. Then
+Qn(E) = Qn(E ∩Pn) ≤(n + 1)|X|2−nD(P ∗||Q),
+(11.94)
+where
+P ∗= arg min
+P∈E D(P ||Q)
+(11.95)
+is the distribution in E that is closest to Q in relative entropy.
+If, in addition, the set E is the closure of its interior, then
+1
+n log Qn(E) →−D(P ∗||Q).
+(11.96)
+Proof:
+We ﬁrst prove the upper bound:
+Qn(E) =
+
+P∈E∩Pn
+Qn(T (P ))
+(11.97)
+≤
+
+P∈E∩Pn
+2−nD(P||Q)
+(11.98)
+
+--- Page 89 ---
+11.4
+LARGE DEVIATION THEORY
+363
+≤
+
+P∈E∩Pn
+max
+P∈E∩Pn 2−nD(P||Q)
+(11.99)
+=
+
+P∈E∩Pn
+2−n minP ∈E∩Pn D(P||Q)
+(11.100)
+≤
+
+P∈E∩Pn
+2−n minP ∈E D(P||Q)
+(11.101)
+=
+
+P∈E∩Pn
+2−nD(P ∗||Q)
+(11.102)
+≤(n + 1)|X|2−nD(P ∗||Q),
+(11.103)
+where the last inequality follows from Theorem 11.1.1. Note that P ∗need
+not be a member of Pn. We now come to the lower bound, for which we
+need a “nice” set E, so that for all large n, we can ﬁnd a distribution in
+E ∩Pn that is close to P ∗. If we now assume that E is the closure of its
+interior (thus, the interior must be nonempty), then since ∪nPn is dense
+in the set of all distributions, it follows that E ∩Pn is nonempty for all
+n ≥n0 for some n0. We can then ﬁnd a sequence of distributions Pn such
+that Pn ∈E ∩Pn and D(Pn||Q) →D(P ∗||Q). For each n ≥n0,
+Qn(E) =
+
+P∈E∩Pn
+Qn(T (P ))
+(11.104)
+≥Qn(T (Pn))
+(11.105)
+≥
+1
+(n + 1)|X| 2−nD(Pn||Q).
+(11.106)
+Consequently,
+lim inf 1
+n log Qn(E) ≥lim inf
+
+−|X| log(n + 1)
+n
+−D(Pn||Q)
+
+= −D(P ∗||Q).
+(11.107)
+Combining this with the upper bound establishes the theorem.
+□
+This argument can be extended to continuous distributions using quan-
+tization.
+
+--- Page 90 ---
+364
+INFORMATION THEORY AND STATISTICS
+11.5
+EXAMPLES OF SANOV’S THEOREM
+Suppose that we wish to ﬁnd Pr{ 1
+n
+n
+i=1 gj(Xi) ≥αj, j = 1, 2, . . . , k}.
+Then the set E is deﬁned as
+E =
+
+P :
+
+a
+P (a)gj(a) ≥αj, j = 1, 2, . . . , k
+
+.
+(11.108)
+To ﬁnd the closest distribution in E to Q, we minimize D(P ||Q) subject
+to the constraints in (11.108). Using Lagrange multipliers, we construct
+the functional
+J(P ) =
+
+x
+P (x) log P (x)
+Q(x) +
+
+i
+λi
+
+x
+P (x)gi(x) + ν
+
+x
+P (x).
+(11.109)
+We then differentiate and calculate the closest distribution to Q to be of
+the form
+P ∗(x) =
+Q(x)e
+
+i λigi(x)
+
+a∈X Q(a)e
+
+i λigi(a),
+(11.110)
+where the constants λi are chosen to satisfy the constraints. Note that if
+Q is uniform, P ∗is the maximum entropy distribution. Veriﬁcation that
+P ∗is indeed the minimum follows from the same kinds of arguments as
+given in Chapter 12.
+Let us consider some speciﬁc examples:
+Example 11.5.1
+(Dice)
+Suppose that we toss a fair die n times; what
+is the probability that the average of the throws is greater than or equal
+to 4? From Sanov’s theorem, it follows that
+Qn(E) .= 2−nD(P ∗||Q),
+(11.111)
+where P ∗minimizes D(P ||Q) over all distributions P that satisfy
+6
+
+i=1
+iP (i) ≥4.
+(11.112)
+
+--- Page 91 ---
+11.5
+EXAMPLES OF SANOV’S THEOREM
+365
+From (11.110), it follows that P ∗has the form
+P ∗(x) =
+2λx
+6
+i=1 2λi ,
+(11.113)
+with λ chosen so that  iP ∗(i) = 4. Solving numerically, we obtain
+λ = 0.2519, P ∗= (0.1031, 0.1227, 0.1461, 0.1740, 0.2072, 0.2468), and
+therefore D(P ∗||Q) = 0.0624 bit. Thus, the probability that the average
+of 10000 throws is greater than or equal to 4 is ≈2−624.
+Example 11.5.2
+(Coins)
+Suppose that we have a fair coin and want
+to estimate the probability of observing more than 700 heads in a series
+of 1000 tosses. The problem is like Example 11.5.1. The probability is
+P (Xn ≥0.7) .= 2−nD(P ∗||Q),
+(11.114)
+where P ∗is the (0.7, 0.3) distribution and Q is the (0.5, 0.5) distribution.
+In this case, D(P ∗||Q) = 1 −H(P ∗) = 1 −H(0.7) = 0.119. Thus, the
+probability of 700 or more heads in 1000 trials is approximately 2−119.
+Example 11.5.3
+(Mutual dependence)
+Let Q(x, y) be a given joint
+distribution and let Q0(x, y) = Q(x)Q(y) be the associated product dis-
+tribution formed from the marginals of Q. We wish to know the likelihood
+that a sample drawn according to Q0 will “appear” to be jointly dis-
+tributed according to Q. Accordingly, let (Xi, Yi) be i.i.d. ∼Q0(x, y) =
+Q(x)Q(y). We deﬁne joint typicality as we did in Section 7.6; that is,
+(xn, yn) is jointly typical with respect to a joint distribution Q(x, y) iff
+the sample entropies are close to their true values:
+−1
+n log Q(xn) −H(X)
+ ≤ǫ,
+(11.115)
+−1
+n log Q(yn) −H(Y)
+ ≤ǫ,
+(11.116)
+and
+−1
+n log Q(xn, yn) −H(X, Y)
+ ≤ǫ.
+(11.117)
+We wish to calculate the probability (under the product distribution) of
+seeing a pair (xn, yn) that looks jointly typical
+of Q [i.e., (xn, yn)
+
+--- Page 92 ---
+366
+INFORMATION THEORY AND STATISTICS
+satisﬁes (11.115)–(11.117)]. Thus, (xn, yn) are jointly typical with respect
+to Q(x, y) if Pxn,yn ∈E ∩Pn(X, Y), where
+E = {P (x, y) :
+−
+
+x,y
+P (x, y) log Q(x) −H(X)
+ ≤ǫ,
+−
+
+x,y
+P (x, y) log Q(y) −H(Y)
+ ≤ǫ,
+−
+
+x,y
+P (x, y) log Q(x, y) −H(X, Y)
+ ≤ǫ}.
+(11.118)
+Using Sanov’s theorem, the probability is
+Qn
+0(E)
+.= 2−nD(P ∗||Q0),
+(11.119)
+where P ∗is the distribution satisfying the constraints that is closest to
+Q0 in relative entropy. In this case, as ǫ →0, it can be veriﬁed (Prob-
+lem 11.10) that P ∗is the joint distribution Q, and Q0 is the product
+distribution, so that the probability is 2−nD(Q(x,y)||Q(x)Q(y)) = 2−nI(X;Y),
+which is the same as the result derived in Chapter 7 for the joint AEP.
+In the next section we consider the empirical distribution of the sequence
+of outcomes given that the type is in a particular set of distributions E. We
+will show that not only is the probability of the set E essentially determined
+by D(P ∗||Q), the distance of the closest element of E to Q, but also that
+the conditional type is essentially P ∗, so that given that we are in set E, the
+type is very likely to be close to P ∗.
+11.6
+CONDITIONAL LIMIT THEOREM
+It has been shown that the probability of a set of types under a distribution
+Q is determined essentially by the probability of the closest element of
+the set to Q; the probability is 2−nD∗to ﬁrst order in the exponent, where
+D∗= min
+P∈E D(P ||Q).
+(11.120)
+This follows because the probability of the set of types is the sum of the
+probabilities of each type, which is bounded by the largest term times the
+
+--- Page 93 ---
+11.6
+CONDITIONAL LIMIT THEOREM
+367
+E
+Q
+P
+P*
+FIGURE 11.5. Pythagorean theorem for relative entropy.
+number of terms. Since the number of terms is polynomial in the length
+of the sequences, the sum is equal to the largest term to ﬁrst order in the
+exponent.
+We now strengthen the argument to show that not only is the proba-
+bility of the set E essentially the same as the probability of the closest
+type P ∗but also that the total probability of other types that are far
+away from P ∗is negligible. This implies that with very high probabil-
+ity, the type observed is close to P ∗. We call this a conditional limit
+theorem.
+Before we prove this result, we prove a “Pythagorean” theorem, which
+gives some insight into the geometry of D(P ||Q). Since D(P ||Q) is not
+a metric, many of the intuitive properties of distance are not valid for
+D(P ||Q). The next theorem shows a sense in which D(P ||Q) behaves
+like the square of the Euclidean metric (Figure 11.5).
+Theorem 11.6.1
+For a closed convex set E ⊂P and distribution Q /∈
+E, let P ∗∈E be the distribution that achieves the minimum distance to
+Q; that is,
+D(P ∗||Q) = min
+P∈E D(P ||Q).
+(11.121)
+Then
+D(P ||Q) ≥D(P ||P ∗) + D(P ∗||Q)
+(11.122)
+for all P ∈E.
+
+--- Page 94 ---
+368
+INFORMATION THEORY AND STATISTICS
+Note. The main use of this theorem is as follows: Suppose that we have
+a sequence Pn ∈E that yields D(Pn||Q) →D(P ∗||Q). Then from the
+Pythagorean theorem, D(Pn||P ∗) →0 as well.
+Proof:
+Consider any P ∈E. Let
+Pλ = λP + (1 −λ)P ∗.
+(11.123)
+Then Pλ →P ∗as λ →0. Also, since E is convex, Pλ ∈E for 0 ≤λ ≤1.
+Since D(P ∗||Q) is the minimum of D(Pλ||Q) along the path P ∗→P ,
+the derivative of D(Pλ||Q) as a function of λ is nonnegative at λ = 0.
+Now
+Dλ = D(Pλ||Q) =
+
+Pλ(x) log Pλ(x)
+Q(x)
+(11.124)
+and
+dDλ
+dλ =
+ 
+(P (x) −P ∗(x)) log Pλ(x)
+Q(x) + (P (x) −P ∗(x))
+
+. (11.125)
+Setting λ = 0, so that Pλ = P ∗and using the fact that  P (x) =  P ∗
+(x) = 1, we have
+0 ≤
+dDλ
+dλ
+
+λ=0
+(11.126)
+=
+
+(P (x) −P ∗(x)) log P ∗(x)
+Q(x)
+(11.127)
+=
+
+P (x) log P ∗(x)
+Q(x) −
+
+P ∗(x) log P ∗(x)
+Q(x)
+(11.128)
+=
+
+P (x) log P (x)
+Q(x)
+P ∗(x)
+P (x) −
+
+P ∗(x) log P ∗(x)
+Q(x)
+(11.129)
+= D(P ||Q) −D(P ||P ∗) −D(P ∗||Q),
+(11.130)
+which proves the theorem.
+□
+Note that the relative entropy D(P ||Q) behaves like the square of the
+Euclidean distance. Suppose that we have a convex set E in Rn. Let A
+be a point outside the set, B the point in the set closest to A, and C any
+
+--- Page 95 ---
+11.6
+CONDITIONAL LIMIT THEOREM
+369
+A
+B
+C
+FIGURE 11.6. Triangle inequality for distance squared.
+other point in the set. Then the angle between the lines BA and BC must
+be obtuse, which implies that l2
+AC ≥l2
+AB + l2
+BC, which is of the same form
+as Theorem 11.6.1. This is illustrated in Figure 11.6.
+We now prove a useful lemma which shows that convergence in relative
+entropy implies convergence in the L1 norm.
+Deﬁnition
+The L1 distance between any two distributions is deﬁned as
+||P1 −P2||1 =
+
+a∈X
+|P1(a) −P2(a)|.
+(11.131)
+Let A be the set on which P1(x) > P2(x). Then
+||P1 −P2||1 =
+
+x∈X
+|P1(x) −P2(x)|
+(11.132)
+=
+
+x∈A
+(P1(x) −P2(x)) +
+
+x∈Ac
+(P2(x) −P1(x)) (11.133)
+= P1(A) −P2(A) + P2(Ac) −P1(Ac)
+(11.134)
+= P1(A) −P2(A) + 1 −P2(A) −1 + P1(A)
+(11.135)
+= 2(P1(A) −P2(A)).
+(11.136)
+
+--- Page 96 ---
+370
+INFORMATION THEORY AND STATISTICS
+Also note that
+max
+B⊆X (P1(B) −P2(B)) = P1(A) −P2(A) = ||P1 −P2||1
+2
+.
+(11.137)
+The left-hand side of (11.137) is called the variational distance between
+P1 and P2.
+Lemma 11.6.1
+D(P1||P2) ≥
+1
+2 ln 2||P1 −P2||2
+1.
+(11.138)
+Proof:
+We ﬁrst prove it for the binary case. Consider two binary distri-
+butions with parameters p and q with p ≥q. We will show that
+p log p
+q + (1 −p) log 1 −p
+1 −q ≥
+4
+2 ln 2(p −q)2.
+(11.139)
+The difference g(p, q) between the two sides is
+g(p, q) = p log p
+q + (1 −p) log 1 −p
+1 −q −
+4
+2 ln 2(p −q)2.
+(11.140)
+Then
+dg(p, q)
+dq
+= −
+p
+q ln 2 +
+1 −p
+(1 −q) ln 2 −
+4
+2 ln 22(q −p) (11.141)
+=
+q −p
+q(1 −q) ln 2 −4
+ln 2(q −p)
+(11.142)
+≤0
+(11.143)
+since q(1 −q) ≤1
+4 and q ≤p. For q = p, g(p, q) = 0, and hence
+g(p, q) ≥0 for q ≤p, which proves the lemma for the binary case.
+For the general case, for any two distributions P1 and P2, let
+A = {x : P1(x) > P2(x)}.
+(11.144)
+Deﬁne a new binary random variable Y = φ(X), the indicator of the set A,
+and let ˆP1 and ˆP2 be the distributions of Y. Thus, ˆP1 and ˆP2 correspond
+to the quantized versions of P1 and P2. Then by the data-processing
+
+--- Page 97 ---
+11.6
+CONDITIONAL LIMIT THEOREM
+371
+inequality applied to relative entropies (which is proved in the same way
+as the data-processing inequality for mutual information), we have
+D(P1||P2) ≥D( ˆP1|| ˆP2)
+(11.145)
+≥
+4
+2 ln 2(P1(A) −P2(A))2
+(11.146)
+=
+1
+2 ln 2||P1 −P2||2
+1,
+(11.147)
+by (11.137), and the lemma is proved.
+□
+We can now begin the proof of the conditional limit theorem. We ﬁrst
+outline the method used. As stated at the beginning of the chapter, the
+essential idea is that the probability of a type under Q depends exponen-
+tially on the distance of the type from Q, and hence types that are farther
+away are exponentially less likely to occur. We divide the set of types in
+E into two categories: those at about the same distance from Q as P ∗and
+those a distance 2δ farther away. The second set has exponentially less
+probability than the ﬁrst, and hence the ﬁrst set has a conditional proba-
+bility tending to 1. We then use the Pythagorean theorem to establish that
+all the elements in the ﬁrst set are close to P ∗, which will establish the
+theorem.
+The following theorem is an important strengthening of the maximum
+entropy principle.
+Theorem 11.6.2
+(Conditional limit theorem)
+Let E be a closed con-
+vex subset of P and let Q be a distribution not in E. Let X1, X2, . . . , Xn
+be discrete random variables drawn i.i.d. ∼Q. Let P ∗achieve minP∈E
+D(P ||Q). Then
+Pr(X1 = a|PXn ∈E) →P ∗(a)
+(11.148)
+in probability as n →∞, i.e., the conditional distribution of X1, given that
+the type of the sequence is in E, is close to P ∗for large n.
+Example 11.6.1
+If Xi i.i.d. ∼Q, then
+Pr
+
+X1 = a
+
+1
+n
+
+X2
+i ≥α
+
+→P ∗(a),
+(11.149)
+
+--- Page 98 ---
+372
+INFORMATION THEORY AND STATISTICS
+where P ∗(a) minimizes D(P ||Q) over P satisfying  P (a)a2 ≥α. This
+minimization results in
+P ∗(a) = Q(a)
+eλa2
+
+a Q(a)eλa2 ,
+(11.150)
+where λ is chosen to satisfy  P ∗(a)a2 = α. Thus, the conditional dis-
+tribution on X1 given a constraint on the sum of the squares is a (normal-
+ized) product of the original probability mass function and the maximum
+entropy probability mass function (which in this case is Gaussian).
+Proof of Theorem:
+Deﬁne the sets
+St = {P ∈P : D(P ||Q) ≤t}.
+(11.151)
+The set St is convex since D(P ||Q) is a convex function of P . Let
+D∗= D(P ∗||Q) = min
+P∈E D(P ||Q).
+(11.152)
+Then P ∗is unique, since D(P ||Q) is strictly convex in P . Now deﬁne
+the set
+A = SD∗+2δ ∩E
+(11.153)
+and
+B = E −SD∗+2δ ∩E.
+(11.154)
+Thus, A ∪B = E. These sets are illustrated in Figure 11.7. Then
+Qn(B) =
+
+P∈E∩Pn:D(P||Q)>D∗+2δ
+Qn(T (P ))
+(11.155)
+≤
+
+P∈E∩Pn:D(P||Q)>D∗+2δ
+2−nD(P||Q)
+(11.156)
+≤
+
+P∈E∩Pn:D(P||Q)>D∗+2δ
+2−n(D∗+2δ)
+(11.157)
+≤(n + 1)|X|2−n(D∗+2δ)
+(11.158)
+
+--- Page 99 ---
+11.6
+CONDITIONAL LIMIT THEOREM
+373
+E
+B
+A
+P*
+SD* + 2d
+SD* + d
+Q
+FIGURE 11.7. Conditional limit theorem.
+since there are only a polynomial number of types. On the other hand,
+Qn(A) ≥Qn(SD∗+δ ∩E)
+(11.159)
+=
+
+P∈E∩Pn:D(P||Q)≤D∗+δ
+Qn(T (P ))
+(11.160)
+≥
+
+P∈E∩Pn:D(P||Q)≤D∗+δ
+1
+(n + 1)|X| 2−nD(P||Q)
+(11.161)
+≥
+1
+(n + 1)|X| 2−n(D∗+δ)
+for n sufﬁciently large,
+(11.162)
+since the sum is greater than one of the terms, and for sufﬁciently large n,
+there exists at least one type in SD∗+δ ∩E ∩Pn. Then, for n sufﬁciently
+large,
+Pr(PXn ∈B|PXn ∈E) = Qn(B ∩E)
+Qn(E)
+(11.163)
+≤Qn(B)
+Qn(A)
+(11.164)
+≤(n + 1)|X|2−n(D∗+2δ)
+1
+(n+1)|X|2−n(D∗+δ)
+(11.165)
+= (n + 1)2|X|2−nδ,
+(11.166)
+
+--- Page 100 ---
+374
+INFORMATION THEORY AND STATISTICS
+which goes to 0 as n →∞. Hence the conditional probability of B goes
+to 0 as n →∞, which implies that the conditional probability of A goes
+to 1.
+We now show that all the members of A are close to P ∗in relative
+entropy. For all members of A,
+D(P ||Q) ≤D∗+ 2δ.
+(11.167)
+Hence by the “Pythagorean” theorem (Theorem 11.6.1),
+D(P ||P ∗) + D(P ∗||Q) ≤D(P ||Q) ≤D∗+ 2δ,
+(11.168)
+which in turn implies that
+D(P ||P ∗) ≤2δ,
+(11.169)
+since D(P ∗||Q) = D∗. Thus, Px ∈A implies that D(Px||Q) ≤D∗+ 2δ,
+and therefore that D(Px||P ∗) ≤2δ. Consequently, since Pr{PXn ∈A|PXn
+∈E} →1, it follows that
+Pr(D(PXn||P ∗) ≤2δ|PXn ∈E) →1
+(11.170)
+as n →∞. By Lemma 11.6.1, the fact that the relative entropy is small
+implies that the L1 distance is small, which in turn implies that maxa∈X
+|PXn(a) −P ∗(a)| is small. Thus, Pr(|PXn(a) −P ∗(a)| ≥ǫ|PXn ∈E) →
+0 as n →∞. Alternatively, this can be written as
+Pr(X1 = a|PXn ∈E) →P ∗(a)
+in probability, a ∈X.
+(11.171)
+In this theorem we have only proved that the marginal distribution goes
+to P ∗as n →∞. Using a similar argument, we can prove a stronger
+version of this theorem:
+Pr(X1 = a1, X2 = a2, . . . , Xm
+= am|PXn ∈E) →
+m
+
+i=1
+P ∗(ai)
+in probability.
+(11.172)
+This holds for ﬁxed m as n →∞. The result is not true for m = n, since
+there are end effects; given that the type of the sequence is in E, the
+last elements of the sequence can be determined from the remaining ele-
+ments, and the elements are no longer independent. The conditional limit

@@ -1,0 +1,6010 @@
+
+--- Page 1 ---
+11.7
+HYPOTHESIS TESTING
+375
+theorem states that the ﬁrst few elements are asymptotically independent
+with common distribution P ∗.
+Example 11.6.2
+As an example of the conditional limit theorem, let us
+consider the case when n fair dice are rolled. Suppose that the sum of the
+outcomes exceeds 4n. Then by the conditional limit theorem, the proba-
+bility that the ﬁrst die shows a number a ∈{1, 2, . . . , 6} is approximately
+P ∗(a), where P ∗(a) is the distribution in E that is closest to the uni-
+form distribution, where E = {P :  P (a)a ≥4}. This is the maximum
+entropy distribution given by
+P ∗(x) =
+2λx
+6
+i=1 2λi ,
+(11.173)
+with λ chosen so that  iP ∗(i) = 4 (see Chapter 12). Here P ∗is the
+conditional distribution on the ﬁrst (or any other) die. Apparently, the
+ﬁrst few dice inspected will behave as if they are drawn independently
+according to an exponential distribution.
+11.7
+HYPOTHESIS TESTING
+One of the standard problems in statistics is to decide between two alter-
+native explanations for the data observed. For example, in medical testing,
+one may wish to test whether or not a new drug is effective. Similarly, a
+sequence of coin tosses may reveal whether or not the coin is biased.
+These problems are examples of the general hypothesis-testing problem.
+In the simplest case, we have to decide between two i.i.d. distributions.
+The general problem can be stated as follows:
+Problem 11.7.1
+Let X1, X2, . . . , Xn be i.i.d. ∼Q(x). We consider two
+hypotheses:
+• H1: Q = P1.
+• H2: Q = P2.
+Consider the general decision function g(x1, x2, . . . , xn), where g(x1,
+x2, . . . , xn) = 1 means that H1 is accepted and g(x1, x2, . . . , xn) = 2
+means that H2 is accepted. Since the function takes on only two val-
+ues, the test can also be speciﬁed by specifying the set A over which
+g(x1, x2, . . . , xn) is 1; the complement of this set is the set where
+g(x1, x2, . . . , xn) has the value 2. We deﬁne the two probabilities of error:
+α = Pr(g(X1, X2, . . . , Xn) = 2|H1 true) = P n
+1 (Ac)
+(11.174)
+
+--- Page 2 ---
+376
+INFORMATION THEORY AND STATISTICS
+and
+β = Pr(g(X1, X2, . . . , Xn) = 1|H2 true) = P n
+2 (A).
+(11.175)
+In general, we wish to minimize both probabilities, but there is a trade-
+off. Thus, we minimize one of the probabilities of error subject to a
+constraint on the other probability of error. The best achievable error
+exponent in the probability of error for this problem is given by the
+Chernoff–Stein lemma.
+We ﬁrst prove the Neyman–Pearson lemma, which derives the form of
+the optimum test between two hypotheses. We derive the result for discrete
+distributions; the same results can be derived for continuous distributions
+as well.
+Theorem 11.7.1
+(Neyman–Pearson lemma)
+Let X1, X2, . . . , Xn be
+drawn i.i.d. according to probability mass function Q. Consider the deci-
+sion problem corresponding to hypotheses Q = P1 vs. Q = P2. For T ≥0,
+deﬁne a region
+An(T ) =
+
+xn : P1(x1, x2, . . . , xn)
+P2(x1, x2, . . . , xn) > T
+
+.
+(11.176)
+Let
+α∗= P n
+1 (Ac
+n(T )),
+β∗= P n
+2 (An(T ))
+(11.177)
+be the corresponding probabilities of error corresponding to decision re-
+gion An. Let Bn be any other decision region with associated probabilities
+of error α and β. If α ≤α∗, then β ≥β∗.
+Proof:
+Let A = An(T ) be the region deﬁned in (11.176) and let B ⊆Xn
+be any other acceptance region. Let φA and φB be the indicator func-
+tions of the decision regions A and B, respectively. Then for all x =
+(x1, x2, . . . , xn) ∈Xn,
+(φA(x) −φB(x))(P1(x) −T P2(x)) ≥0.
+(11.178)
+This can be seen by considering separately the cases x ∈A and x /∈A.
+Multiplying out and summing this over the entire space, we obtain
+0 ≤
+
+(φAP1 −T φAP2 −P1φB + T P2φB)
+(11.179)
+
+--- Page 3 ---
+11.7
+HYPOTHESIS TESTING
+377
+=
+
+A
+(P1 −T P2) −
+
+B
+(P1 −T P2)
+(11.180)
+= (1 −α∗) −Tβ∗−(1 −α) + Tβ
+(11.181)
+= T (β −β∗) −(α∗−α).
+(11.182)
+Since T ≥0, we have proved the theorem.
+□
+The Neyman–Pearson lemma indicates that the optimum test for two
+hypotheses is of the form
+P1(X1, X2, . . . , Xn)
+P2(X1, X2, . . . , Xn) > T.
+(11.183)
+This is the likelihood ratio test and the quantity P1(X1,X2,...,Xn)
+P2(X1,X2,...,Xn) is called the
+likelihood ratio. For example, in a test between two Gaussian distributions
+[i.e., between f1 = N(1, σ 2) and f2 = N(−1, σ 2)], the likelihood ratio
+becomes
+f1(X1, X2, . . . , Xn)
+f2(X1, X2, . . . , Xn) =
+n
+i=1
+1
+√
+2πσ 2e−(Xi−1)2
+2σ2
+n
+i=1
+1
+√
+2πσ 2e−(Xi+1)2
+2σ2
+(11.184)
+= e+
+2 n
+i=1 Xi
+σ2
+(11.185)
+= e+ 2nXn
+σ2 .
+(11.186)
+Hence, the likelihood ratio test consists of comparing the sample mean
+Xn with a threshold. If we want the two probabilities of error to be equal,
+we should set T = 1. This is illustrated in Figure 11.8.
+In Theorem 11.7.1 we have shown that the optimum test is a likelihood
+ratio test. We can rewrite the log-likelihood ratio as
+L(X1, X2, . . . , Xn) = log P1(X1, X2, . . . , Xn)
+P2(X1, X2, . . . , Xn)
+(11.187)
+=
+n
+
+i=1
+log P1(Xi)
+P2(Xi)
+(11.188)
+=
+
+a∈X
+nPXn(a) log P1(a)
+P2(a)
+(11.189)
+=
+
+a∈X
+nPXn(a) log P1(a)
+P2(a)
+PXn(a)
+PXn(a)
+(11.190)
+
+--- Page 4 ---
+378
+INFORMATION THEORY AND STATISTICS
+0.35
+0.3
+0.25
+0.2
+0.15
+0.1
+0.05
+0
+−4
+−3
+−2
+−1
+0
+1
+2
+3
+4
+5
+x
+−5
+0.4
+f(x)
+f(x)
+FIGURE 11.8. Testing between two Gaussian distributions.
+=
+
+a∈X
+nPXn(a) log PXn(a)
+P2(a)
+−
+
+a∈X
+nPXn(a) log PXn(a)
+P1(a)
+(11.191)
+= nD(PXn||P2) −nD(PXn||P1),
+(11.192)
+the difference between the relative entropy distances of the sample type
+to each of the two distributions. Hence, the likelihood ratio test
+P1(X1, X2, . . . , Xn)
+P2(X1, X2, . . . , Xn) > T
+(11.193)
+is equivalent to
+D(PXn||P2) −D(PXn||P1) > 1
+n log T.
+(11.194)
+We can consider the test to be equivalent to specifying a region of the sim-
+plex of types that corresponds to choosing hypothesis H1. The optimum
+region is of the form (11.194), for which the boundary of the region is the
+set of types for which the difference between the distances is a constant.
+This boundary is the analog of the perpendicular bisector in Euclidean
+geometry. The test is illustrated in Figure 11.9.
+We now offer some informal arguments based on Sanov’s theorem to
+show how to choose the threshold to obtain different probabilities of error.
+Let B denote the set on which hypothesis 1 is accepted. The probability
+
+--- Page 5 ---
+11.7
+HYPOTHESIS TESTING
+379
+P2
+D(P||P1) = D(P||P2) =
+log T
+Pl
+P1
+1
+n
+FIGURE 11.9. Likelihood ratio test on the probability simplex.
+of error of the ﬁrst kind is
+αn = P n
+1 (PXn ∈Bc).
+(11.195)
+Since the set Bc is convex, we can use Sanov’s theorem to show that the
+probability of error is determined essentially by the relative entropy of
+the closest member of Bc to P1. Therefore,
+αn
+.= 2−nD(P ∗
+1 ||P1),
+(11.196)
+where P ∗
+1 is the closest element of Bc to distribution P1. Similarly,
+βn
+.= 2−nD(P ∗
+2 ||P2),
+(11.197)
+where P ∗
+2 is the closest element in B to the distribution P2.
+Now minimizing D(P ||P2) subject to the constraint D(P ||P2) −
+D(P ||P1) ≥1
+n log T will yield the type in B that is closest to P2. Set-
+ting up the minimization of D(P ||P2) subject to D(P ||P2) −D(P ||P1) =
+1
+n log T using Lagrange multipliers, we have
+J(P ) =
+
+P (x) log P (x)
+P2(x) + λ
+
+P (x) log P1(x)
+P2(x) + ν
+
+P (x).
+(11.198)
+Differentiating with respect to P (x) and setting to 0, we have
+log P (x)
+P2(x) + 1 + λ log P1(x)
+P2(x) + ν = 0.
+(11.199)
+
+--- Page 6 ---
+380
+INFORMATION THEORY AND STATISTICS
+Solving this set of equations, we obtain the minimizing P of the form
+P ∗
+2 = Pλ∗=
+P λ
+1 (x)P 1−λ
+2
+(x)
+
+a∈X P λ
+1 (a)P 1−λ
+2
+(a)
+,
+(11.200)
+where λ is chosen so that D(Pλ∗||P1) −D(Pλ∗||P2) = 1
+n log T .
+From the symmetry of expression (11.200), it is clear that P ∗
+1 = P ∗
+2 and
+that the probabilities of error behave exponentially with exponents given
+by the relative entropies D(P ∗||P1) and D(P ∗||P2). Also note from the
+equation that as λ →1, Pλ →P1 and as λ →0, Pλ →P2. The curve
+that Pλ traces out as λ varies is a geodesic in the simplex. Here Pλ is a
+normalized convex combination, where the combination is in the exponent
+(Figure 11.9).
+In the next section we calculate the best error exponent when one of
+the two types of error goes to zero arbitrarily slowly (the Chernoff–Stein
+lemma). We will also minimize the weighted sum of the two probabilities
+of error and obtain the Chernoff information bound.
+11.8
+CHERNOFF–STEIN LEMMA
+We consider hypothesis testing in the case when one of the probabili-
+ties of error is held ﬁxed and the other is made as small as possible.
+We will show that the other probability of error is exponentially small,
+with an exponential rate equal to the relative entropy between the two
+distributions. The method of proof uses a relative entropy version of the
+AEP.
+Theorem 11.8.1
+(AEP for relative entropy)
+Let X1, X2, . . . , Xn be
+a sequence of random variables drawn i.i.d. according to P1(x), and let
+P2(x) be any other distribution on X. Then
+1
+n log P1(X1, X2, . . . , Xn)
+P2(X1, X2, . . . , Xn) →D(P1||P2)
+in probability.
+(11.201)
+Proof:
+This follows directly from the weak law of large numbers.
+1
+n log P1(X1, X2, . . . , Xn)
+P2(X1, X2, . . . , Xn) = 1
+n log
+n
+i=1 P1(Xi)
+n
+i=1 P2(Xi)
+(11.202)
+
+--- Page 7 ---
+11.8
+CHERNOFF–STEIN LEMMA
+381
+= 1
+n
+n
+
+i=1
+log P1(Xi)
+P2(Xi)
+(11.203)
+→EP1 log P1(X)
+P2(X) in probability (11.204)
+= D(P1||P2).
+□
+(11.205)
+Just as for the regular AEP, we can deﬁne a relative entropy typical
+sequence as one for which the empirical relative entropy is close to its
+expected value.
+Deﬁnition
+For a ﬁxed n and ǫ > 0, a sequence (x1, x2, . . . , xn) ∈Xn
+is said to be relative entropy typical if and only if
+D(P1||P2) −ǫ ≤1
+n log P1(x1, x2, . . . , xn)
+P2(x1, x2, . . . , xn) ≤D(P1||P2) + ǫ.
+(11.206)
+The set of relative entropy typical sequences is called the relative entropy
+typical set A(n)
+ǫ (P1||P2).
+As a consequence of the relative entropy AEP, we can show that the
+relative entropy typical set satisﬁes the following properties:
+Theorem 11.8.2
+1. For (x1, x2, . . . , xn) ∈A(n)
+ǫ (P1||P2),
+P1(x1, x2, . . . , xn)2−n(D(P1||P2)+ǫ)
+≤P2(x1, x2, . . . , xn)
+≤P1(x1, x2, . . . , xn)2−n(D(P1||P2)−ǫ).
+(11.207)
+2. P1(A(n)
+ǫ (P1||P2)) > 1 −ǫ, for n sufﬁciently large.
+3. P2(A(n)
+ǫ (P1||P2)) < 2−n(D(P1||P2)−ǫ).
+4. P2(A(n)
+ǫ (P1||P2)) > (1 −ǫ)2−n(D(P1||P2)+ǫ), for n sufﬁciently large.
+Proof:
+The proof follows the same lines as the proof of Theorem 3.1.2,
+with the counting measure replaced by probability measure P2. The proof
+of property 1 follows directly from the deﬁnition of the relative entropy
+
+--- Page 8 ---
+382
+INFORMATION THEORY AND STATISTICS
+typical set. The second property follows from the AEP for relative entropy
+(Theorem 11.8.1). To prove the third property, we write
+P2(A(n)
+ǫ (P1||P2)) =
+
+xn∈A(n)
+ǫ (P1||P2)
+P2(x1, x2, . . . , xn)
+(11.208)
+≤
+
+xn∈A(n)
+ǫ (P1||P2)
+P1(x1, x2, . . . , xn)2−n(D(P1||P2)−ǫ)
+(11.209)
+= 2−n(D(P1||P2)−ǫ)
+
+xn∈A(n)
+ǫ (P1||P2)
+P1(x1, x2, . . . , xn) (11.210)
+= 2−n(D(P1||P2)−ǫ)P1(A(n)
+ǫ (P1||P2))
+(11.211)
+≤2−n(D(P1||P2)−ǫ),
+(11.212)
+where the ﬁrst inequality follows from property 1, and the second inequal-
+ity follows from the fact that the probability of any set under P1 is less
+than 1.
+To prove the lower bound on the probability of the relative entropy
+typical set, we use a parallel argument with a lower bound on the proba-
+bility:
+P2(A(n)
+ǫ (P1||P2)) =
+
+xn∈A(n)
+ǫ (P1||P2)
+P2(x1, x2, . . . , xn)
+(11.213)
+≥
+
+xn∈A(n)
+ǫ (P1||P2)
+P1(x1, x2, . . . , xn)2−n(D(P1||P2)+ǫ)
+(11.214)
+= 2−n(D(P1||P2)+ǫ)
+
+xn∈A(n)
+ǫ (P1||P2)
+P1(x1, x2, . . . , xn) (11.215)
+= 2−n(D(P1||P2)+ǫ)P1(A(n)
+ǫ (P1||P2))
+(11.216)
+≥(1 −ǫ)2−n(D(P1||P2)+ǫ),
+(11.217)
+where the second inequality follows from the second property of A(n)
+ǫ
+(P1||P2).
+□
+With the standard AEP in Chapter 3, we also showed that any set that
+has a high probability has a high intersection with the typical set, and
+therefore has about 2nH elements. We now prove the corresponding result
+for relative entropy.
+
+--- Page 9 ---
+11.8
+CHERNOFF–STEIN LEMMA
+383
+Lemma 11.8.1
+Let Bn ⊂Xn be any set of sequences x1, x2, . . . , xn such
+that P1(Bn) > 1 −ǫ. Let P2 be any other distribution such that D(P1||P2)
+< ∞. Then P2(Bn) > (1 −2ǫ)2−n(D(P1||P2)+ǫ).
+Proof:
+For simplicity, we will denote A(n)
+ǫ (P1||P2) by An. Since P1(Bn)
+> 1 −ǫ and P (An) > 1 −ǫ (Theorem 11.8.2), we have, by the union of
+events bound, P1(Ac
+n ∪Bc
+n) < 2ǫ, or equivalently, P1(An ∩Bn) > 1 −2ǫ.
+Thus,
+P2(Bn) ≥P2(An ∩Bn)
+(11.218)
+=
+
+xn∈An∩Bn
+P2(xn)
+(11.219)
+≥
+
+xn∈An∩Bn
+P1(xn)2−n(D(P1||P2)+ǫ)
+(11.220)
+= 2−n(D(P1||P2)+ǫ)
+
+xn∈An∩Bn
+P1(xn)
+(11.221)
+= 2−n(D(P1||P2)+ǫ)P1(An ∩Bn)
+(11.222)
+≥2−n(D(P1||P2)+ǫ)(1 −2ǫ),
+(11.223)
+where the second inequality follows from the properties of the relative
+entropy typical sequences (Theorem 11.8.2) and the last inequality follows
+from the union bound above.
+□
+We now consider the problem of testing two hypotheses, P1 vs. P2. We
+hold one of the probabilities of error ﬁxed and attempt to minimize the
+other probability of error. We show that the relative entropy is the best
+exponent in probability of error.
+Theorem 11.8.3
+(Chernoff–Stein Lemma)
+Let X1, X2, . . . , Xn be
+i.i.d. ∼Q. Consider the hypothesis test between two alternatives, Q = P1
+and Q = P2, where D(P1||P2) < ∞. Let An ⊆Xn be an acceptance
+region for hypothesis H1. Let the probabilities of error be
+αn = P n
+1 (Ac
+n),
+βn = P n
+2 (An).
+(11.224)
+and for 0 < ǫ < 1
+2, deﬁne
+βǫ
+n =
+min
+An ⊆Xn
+αn < ǫ
+βn.
+(11.225)
+
+--- Page 10 ---
+384
+INFORMATION THEORY AND STATISTICS
+Then
+lim
+n→∞
+1
+n log βǫ
+n = −D(P1||P2).
+(11.226)
+Proof:
+We prove this theorem in two parts. In the ﬁrst part we exhibit
+a sequence of sets An for which the probability of error βn goes expo-
+nentially to zero as D(P1||P2). In the second part we show that no other
+sequence of sets can have a lower exponent in the probability of error.
+For the ﬁrst part, we choose as the sets An = A(n)
+ǫ (P1||P2). As proved in
+Theorem 11.8.2, this sequence of sets has P1(Ac
+n) < ǫ for n large enough.
+Also,
+lim
+n→∞
+1
+n log P2(An) ≤−(D(P1||P2) −ǫ)
+(11.227)
+from property 3 of Theorem 11.8.2. Thus, the relative entropy typical set
+satisﬁes the bounds of the lemma.
+To show that no other sequence of sets can to better, consider any
+sequence of sets Bn with P1(Bn) > 1 −ǫ. By Lemma 11.8.1, we have
+P2(Bn) > (1 −2ǫ)2−n(D(P1||P2)+ǫ), and therefore
+lim
+n→∞
+1
+n log P2(Bn) > −(D(P1||P2) + ǫ) + lim
+n→∞
+1
+n log(1 −2ǫ)
+= −(D(P1||P2) + ǫ).
+(11.228)
+Thus, no other sequence of sets has a probability of error exponent better
+than D(P1||P2). Thus, the set sequence An = A(n)
+ǫ (P1||P2) is asymptoti-
+cally optimal in terms of the exponent in the probability.
+□
+Not that the relative entropy typical set, although asymptotically opti-
+mal (i.e., achieving the best asymptotic rate), is not the optimal set for
+any ﬁxed hypothesis-testing problem. The optimal set that minimizes the
+probabilities of error is that given by the Neyman–Pearson lemma.
+11.9
+CHERNOFF INFORMATION
+We have considered the problem of hypothesis testing in the classical
+setting, in which we treat the two probabilities of error separately. In the
+derivation of the Chernoff–Stein lemma, we set αn ≤ǫ and achieved
+βn
+.= 2−nD. But this approach lacks symmetry. Instead, we can fol-
+low a Bayesian approach, in which we assign prior probabilities to both
+
+--- Page 11 ---
+11.9
+CHERNOFF INFORMATION
+385
+hypotheses. In this case we wish to minimize the overall probability of
+error given by the weighted sum of the individual probabilities of error.
+The resulting error exponent is the Chernoff information.
+The setup is as follows: X1, X2, . . . , Xn i.i.d. ∼Q. We have two
+hypotheses: Q = P1 with prior probability π1 and Q = P2 with prior
+probability π2. The overall probability of error is
+P (n)
+e
+= π1αn + π2βn.
+(11.229)
+Let
+D∗= lim
+n→∞−1
+n log min
+An⊆X n P (n)
+e
+.
+(11.230)
+Theorem 11.9.1
+(Chernoff )
+The best achievable exponent in the
+Bayesian probability of error is D∗, where
+D∗= D(Pλ∗||P1) = D(Pλ∗||P2),
+(11.231)
+with
+Pλ =
+P λ
+1 (x)P 1−λ
+2
+(x)
+
+a∈X P λ
+1 (a)P 1−λ
+2
+(a)
+,
+(11.232)
+and λ∗the value of λ such that
+D(Pλ∗||P1) = D(Pλ∗||P2).
+(11.233)
+Proof:
+The basic details of the proof were given in Section 11.8. We
+have shown that the optimum test is a likelihood ratio test, which can be
+considered to be of the form
+D(PXn||P2) −D(PXn||P1) > 1
+n log T.
+(11.234)
+The test divides the probability simplex into regions corresponding to
+hypothesis 1 and hypothesis 2, respectively. This is illustrated in Fig-
+ure 11.10.
+Let A be the set of types associated with hypothesis 1. From the dis-
+cussion preceding (11.200), it follows that the closest point in the set Ac
+to P1 is on the boundary of A and is of the form given by (11.232). Then
+from the discussion in Section 11.8, it is clear that Pλ is the distribution
+
+--- Page 12 ---
+386
+INFORMATION THEORY AND STATISTICS
+P1
+P2
+Pl
+FIGURE 11.10. Probability simplex and Chernoff information.
+in A that is closest to P2; it is also the distribution in Ac that is closest
+to P1. By Sanov’s theorem, we can calculate the associated probabilities
+of error,
+αn = P n
+1 (Ac)
+.= 2−nD(Pλ∗||P1)
+(11.235)
+and
+βn = P n
+2 (A)
+.= 2−nD(Pλ∗||P2).
+(11.236)
+In the Bayesian case, the overall probability of error is the weighted sum
+of the two probabilities of error,
+Pe
+.= π12−nD(Pλ||P1) + π22−nD(Pλ||P2)
+.= 2−n min{D(Pλ||P1),D(Pλ||P2)},
+(11.237)
+since the exponential rate is determined by the worst exponent. Since
+D(Pλ||P1) increases with λ and D(Pλ||P2) decreases with λ, the maxi-
+mum value of the minimum of {D(Pλ||P1), D(Pλ||P2)} is attained when
+they are equal. This is illustrated in Figure 11.11. Hence, we choose λ so
+that
+D(Pλ||P1) = D(Pλ||P2).
+(11.238)
+Thus, C(P1, P2) is the highest achievable exponent for the probability of
+error and is called the Chernoff information.
+□
+
+--- Page 13 ---
+11.9
+CHERNOFF INFORMATION
+387
+2
+D(Pl||P1)
+D(Pl||P2)
+Relative entropy
+2.5
+1.5
+0.5
+0
+1
+0
+0.1
+0.2
+0.3
+0.4
+l
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+FIGURE 11.11. Relative entropy D(Pλ||P1) and D(Pλ||P2) as a function of λ.
+The deﬁnition D∗= D(Pλ∗||P1) = D(Pλ∗||P2) is equivalent to the
+standard deﬁnition of Chernoff information,
+C(P1, P2)
+△= −min
+0≤λ≤1 log
+
+x
+P λ
+1 (x)P 1−λ
+2
+(x)
+
+.
+(11.239)
+It is left as an exercise to the reader to show the equivalence of (11.231)
+and (11.239).
+We outline brieﬂy the usual derivation of the Chernoff information
+bound. The maximum a posteriori probability decision rule minimizes the
+Bayesian probability of error. The decision region A for hypothesis H1
+for the maximum a posteriori rule is
+A =
+
+x : π1P1(x)
+π2P2(x) > 1
+
+,
+(11.240)
+the set of outcomes where the a posteriori probability of hypothesis H1 is
+greater than the a posteriori probability of hypothesis H2. The probability
+of error for this rule is
+Pe = π1αn + π2βn
+(11.241)
+=
+
+Ac
+π1P1 +
+
+A
+π2P2
+(11.242)
+=
+
+min{π1P1, π2P2}.
+(11.243)
+
+--- Page 14 ---
+388
+INFORMATION THEORY AND STATISTICS
+Now for any two positive numbers a and b, we have
+min{a, b} ≤aλb1−λ
+for all 0 ≤λ ≤1.
+(11.244)
+Using this to continue the chain, we have
+Pe =
+
+min{π1P1, π2P2}
+(11.245)
+≤
+
+(π1P1)λ(π2P2)1−λ
+(11.246)
+≤
+
+P λ
+1 P 1−λ
+2
+.
+(11.247)
+For a sequence of i.i.d. observations, Pk(x) = n
+i=1 Pk(xi), and
+P (n)
+e
+≤
+
+πλ
+1 π1−λ
+2
+
+i
+P λ
+1 (xi)P 1−λ
+2
+(xi)
+(11.248)
+= πλ
+1 π1−λ
+2
+
+i
+
+P λ
+1 (xi)P 1−λ
+2
+(xi)
+(11.249)
+≤
+
+xi
+
+P λ
+1 P 1−λ
+2
+(11.250)
+=
+
+x
+P λ
+1 P 1−λ
+2
+n
+,
+(11.251)
+where (11.250) follows since π1 ≤1, π2 ≤1. Hence, we have
+1
+n log P (n)
+e
+≤log
+
+P λ
+1 (x)P 1−λ
+2
+(x).
+(11.252)
+Since this is true for all λ, we can take the minimum over 0 ≤λ ≤1,
+resulting in the Chernoff information bound. This proves that the exponent
+is no better than C(P1, P2). Achievability follows from Theorem 11.9.1.
+Note that the Bayesian error exponent does not depend on the actual
+value of π1 and π2, as long as they are nonzero. Essentially, the effect of
+the prior is washed out for large sample sizes. The optimum decision rule
+is to choose the hypothesis with the maximum a posteriori probability,
+which corresponds to the test
+π1P1(X1, X2, . . . , Xn)
+π2P2(X1, X2, . . . , Xn)
+>< 1.
+(11.253)
+
+--- Page 15 ---
+11.9
+CHERNOFF INFORMATION
+389
+Taking the log and dividing by n, this test can be rewritten as
+1
+n log π1
+π2
++ 1
+n
+
+i
+log P1(Xi)
+P2(Xi)
+<> 0,
+(11.254)
+where the second term tends to D(P1||P2) or −D(P2||P1) accordingly as
+P1 or P2 is the true distribution. The ﬁrst term tends to 0, and the effect
+of the prior distribution washes out.
+Finally, to round off our discussion of large deviation theory and hypoth-
+esis testing, we consider an example of the conditional limit theorem.
+Example 11.9.1
+Suppose that major league baseball players have a bat-
+ting average of 260 with a standard deviation of 15 and suppose that
+minor league ballplayers have a batting average of 240 with a standard
+deviation of 15. A group of 100 ballplayers from one of the leagues (the
+league is chosen at random) are found to have a group batting average
+greater than 250 and are therefore judged to be major leaguers. We are
+now told that we are mistaken; these players are minor leaguers. What
+can we say about the distribution of batting averages among these 100
+players? The conditional limit theorem can be used to show that the dis-
+tribution of batting averages among these players will have a mean of 250
+and a standard deviation of 15. To see this, we abstract the problem as
+follows.
+Let us consider an example of testing between two Gaussian distribu-
+tions, f1 = N(1, σ 2) and f2 = N(−1, σ 2), with different means and the
+same variance. As discussed in Section 11.8, the likelihood ratio test in
+this case is equivalent to comparing the sample mean with a threshold.
+The Bayes test is “Accept the hypothesis f = f1 if 1
+n
+n
+i=1 Xi > 0.” Now
+assume that we make an error of the ﬁrst kind (we say that f = f1 when
+indeed f = f2) in this test. What is the conditional distribution of the
+samples given that we have made an error?
+We might guess at various possibilities:
+• The sample will look like a ( 1
+2, 1
+2) mix of the two normal distributions.
+Plausible as this is, it is incorrect.
+• Xi ≈0 for all i. This is quite clearly very unlikely, although it is
+conditionally likely that Xn is close to 0.
+• The correct answer is given by the conditional limit theorem. If the
+true distribution is f2 and the sample type is in the set A, the condi-
+tional distribution is close to f ∗, the distribution in A that is closest to
+f2. By symmetry, this corresponds to λ = 1
+2 in (11.232). Calculating
+
+--- Page 16 ---
+390
+INFORMATION THEORY AND STATISTICS
+the distribution, we get
+f ∗(x) =
+
+1
+√
+2πσ 2 e−(x−1)2
+2σ2
+ 1
+2 
+1
+√
+2πσ 2 e−(x+1)2
+2σ2
+ 1
+2
+ 
+1
+√
+2πσ 2 e−(x−1)2
+2σ2
+ 1
+2 
+1
+√
+2πσ 2 e−(x+1)2
+2σ2
+ 1
+2
+dx
+(11.255)
+=
+1
+√
+2πσ 2 e−(x2+1)
+2σ2
+
+1
+√
+2πσ 2 e−(x2+1)
+2σ2
+dx
+(11.256)
+=
+1
+√
+2πσ 2 e−x2
+2σ2
+(11.257)
+= N(0, σ 2).
+(11.258)
+It is interesting to note that the conditional distribution is normal with
+mean 0 and with the same variance as the original distributions. This
+is strange but true; if we mistake a normal population for another, the
+“shape” of this population still looks normal with the same variance
+and a different mean. Apparently, this rare event does not result from
+bizarre-looking data.
+Example 11.9.2
+(Large deviation theory and football)
+Consider a very
+simple version of football in which the score is directly related to the
+number of yards gained. Assume that the coach has a choice between two
+strategies: running or passing. Associated with each strategy is a distri-
+bution on the number of yards gained. For example, in general, running
+Yards gained in pass
+Probability density
+Yards gained in run
+Probability density
+FIGURE 11.12. Distribution of yards gained in a run or a pass play.
+
+--- Page 17 ---
+11.9
+CHERNOFF INFORMATION
+391
+results in a gain of a few yards with very high probability, whereas passing
+results in huge gains with low probability. Examples of the distributions
+are illustrated in Figure 11.12.
+At the beginning of the game, the coach uses the strategy that promises
+the greatest expected gain. Now assume that we are in the closing min-
+utes of the game and one of the teams is leading by a large margin.
+(Let us ignore ﬁrst downs and adaptable defenses.) So the trailing team
+will win only if it is very lucky. If luck is required to win, we might
+as well assume that we will be lucky and play accordingly. What is the
+appropriate strategy?
+Assume that the team has only n plays left and it must gain l yards,
+where l is much larger than n times the expected gain under each play. The
+probability that the team succeeds in achieving l yards is exponentially
+small; hence, we can use the large deviation results and Sanov’s theorem to
+calculate the probability of this event. To be precise, we wish to calculate
+the probability that n
+i=1 Zi ≥nα, where Zi are independent random
+variables and Zi has a distribution corresponding to the strategy chosen.
+The situation is illustrated in Figure 11.13. Let E be the set of types
+corresponding to the constraint,
+E =
+
+P :
+
+a∈X
+P (a)a ≥α
+
+.
+(11.259)
+If P1 is the distribution corresponding to passing all the time, the proba-
+bility of winning is the probability that the sample type is in E, which by
+Sanov’s theorem is 2−nD(P ∗
+1 ||P1), where P ∗
+1 is the distribution in E that is
+closest to P1. Similarly, if the coach uses the running game all the time,
+E
+P1
+P2
+FIGURE 11.13. Probability simplex for a football game.
+
+--- Page 18 ---
+392
+INFORMATION THEORY AND STATISTICS
+the probability of winning is 2−nD(P ∗
+2 ||P2). What if he uses a mixture of
+strategies? Is it possible that 2−nD(P ∗
+λ ||Pλ), the probability of winning with
+a mixed strategy, Pλ = λP1 + (1 −λ)P2, is better than the probability of
+winning with either pure passing or pure running? The somewhat surpris-
+ing answer is yes, as can be shown by example. This provides a reason
+to use a mixed strategy other than the fact that it confuses the defense.
+We end this section with another inequality due to Chernoff, which
+is a special version of Markov’s inequality. This inequality is called the
+Chernoff bound.
+Lemma 11.9.1
+Let Y be any random variable and let ψ(s) be the
+moment generating function of Y,
+ψ(s) = EesY.
+(11.260)
+Then for all s ≥0,
+Pr(Y ≥a) ≤e−saψ(s),
+(11.261)
+and thus
+Pr(Y ≥a) ≤min
+s≥0 e−saψ(s).
+(11.262)
+Proof:
+Apply Markov’s inequality to the nonnegative random variable
+esY.
+□
+11.10
+FISHER INFORMATION AND THE CRAM´ER–RAO
+INEQUALITY
+A standard problem in statistical estimation is to determine the parameters
+of a distribution from a sample of data drawn from that distribution.
+For example, let X1, X2, . . . , Xn be drawn i.i.d. ∼N(θ, 1). Suppose that
+we wish to estimate θ from a sample of size n. There are a number of
+functions of the data that we can use to estimate θ. For example, we can
+use the ﬁrst sample X1. Although the expected value of X1 is θ, it is clear
+that we can do better by using more of the data. We guess that the best
+estimate of θ is the sample mean Xn = 1
+n
+ Xi. Indeed, it can be shown
+that Xn is the minimum mean-squared-error unbiased estimator.
+We begin with a few deﬁnitions. Let {f (x; θ)}, θ ∈, denote an
+indexed family of densities, f (x; θ) ≥0,
+
+f (x; θ) dx = 1 for all θ ∈.
+Here  is called the parameter set.
+Deﬁnition
+An estimator for θ for sample size n is a function T :
+Xn →.
+
+--- Page 19 ---
+11.10
+FISHER INFORMATION AND THE CRAM´ER–RAO INEQUALITY
+393
+An estimator is meant to approximate the value of the parameter. It
+is therefore desirable to have some idea of the goodness of the approxi-
+mation. We will call the difference T −θ the error of the estimator. The
+error is a random variable.
+Deﬁnition
+The bias of an estimator T (X1, X2, . . . , Xn) for the param-
+eter θ is the expected value of the error of the estimator [i.e., the bias is
+EθT (x1, x2, . . . , xn) −θ]. The subscript θ means that the expectation is
+with respect to the density f (·; θ). The estimator is said to be unbiased
+if the bias is zero for all θ ∈ (i.e., the expected value of the estimator
+is equal to the parameter).
+Example 11.10.1
+Let X1, X2, . . . , Xn drawn i.i.d. ∼f (x) = (1/λ)
+e−x/λ, x ≥0 be a sequence of exponentially distributed random variables.
+Estimators of λ include X1 and Xn. Both estimators are unbiased.
+The bias is the expected value of the error, and the fact that it is
+zero does not guarantee that the error is low with high probability. We
+need to look at some loss function of the error; the most commonly
+chosen loss function is the expected square of the error. A good estima-
+tor should have a low expected squared error and should have an error
+that approaches 0 as the sample size goes to inﬁnity. This motivates the
+following deﬁnition:
+Deﬁnition
+An estimator T (X1, X2, . . . , Xn) for θ is said to be consis-
+tent in probability if
+T (X1, X2, . . . , Xn) →θ in probability as n →∞.
+Consistency is a desirable asymptotic property, but we are interested in
+the behavior for small sample sizes as well. We can then rank estimators
+on the basis of their mean-squared error.
+Deﬁnition
+An estimator T1(X1, X2, . . . , Xn) is said to dominate
+another estimator T2(X1, X2, . . . , Xn) if, for all θ,
+E (T1(X1, X2, . . . , Xn) −θ)2 ≤E (T2(X1, X2, . . . , Xn) −θ)2 .
+(11.263)
+This raises a natural question: Is there a best estimator of θ that dom-
+inates every other estimator? To answer this question, we derive the
+Cram´er–Rao lower bound on the mean-squared error of any estimator.
+We ﬁrst deﬁne the score function of the distribution f (x; θ). We then use
+the Cauchy–Schwarz inequality to prove the Cram´er–Rao lower bound
+on the variance of all unbiased estimators.
+
+--- Page 20 ---
+394
+INFORMATION THEORY AND STATISTICS
+Deﬁnition
+The score V is a random variable deﬁned by
+V = ∂
+∂θ ln f (X; θ) =
+∂
+∂θ f (X; θ)
+f (X; θ) ,
+(11.264)
+where X ∼f (x; θ).
+The mean value of the score is
+EV =
+
+∂
+∂θ f (x; θ)
+f (x; θ) f (x; θ) dx
+(11.265)
+=
+
+∂
+∂θ f (x; θ) dx
+(11.266)
+= ∂
+∂θ
+
+f (x; θ) dx
+(11.267)
+= ∂
+∂θ 1
+(11.268)
+= 0,
+(11.269)
+and therefore EV 2 = var(V ). The variance of the score has a special
+signiﬁcance.
+Deﬁnition
+The Fisher information J(θ) is the variance of the score:
+J(θ) = Eθ
+ ∂
+∂θ ln f (X; θ)
+2
+.
+(11.270)
+If we consider a sample of n random variables X1, X2, . . . , Xn drawn
+i.i.d. ∼f (x; θ), we have
+f (x1, x2, . . . , xn; θ) =
+n
+
+i=1
+f (xi; θ),
+(11.271)
+and the score function is the sum of the individual score functions,
+V (X1, X2, . . . , Xn) = ∂
+∂θ ln f (X1, X2, . . . , Xn; θ)
+(11.272)
+=
+n
+
+i=1
+∂
+∂θ ln f (Xi; θ)
+(11.273)
+=
+n
+
+i=1
+V (Xi),
+(11.274)
+
+--- Page 21 ---
+11.10
+FISHER INFORMATION AND THE CRAM´ER–RAO INEQUALITY
+395
+where the V (Xi) are independent, identically distributed with zero mean.
+Hence, the n-sample Fisher information is
+Jn(θ) = Eθ
+ ∂
+∂θ ln f (X1, X2, . . . , Xn; θ)
+2
+(11.275)
+= EθV 2(X1, X2, . . . , Xn)
+(11.276)
+= Eθ
+ n
+
+i=1
+V (Xi)
+2
+(11.277)
+=
+n
+
+i=1
+EθV 2(Xi)
+(11.278)
+= nJ(θ).
+(11.279)
+Consequently, the Fisher information for n i.i.d. samples is n times the
+individual Fisher information. The signiﬁcance of the Fisher information
+is shown in the following theorem.
+Theorem 11.10.1
+(Cram´er–Rao inequality)
+The mean-squared error
+of any unbiased estimator T (X) of the parameter θ is lower bounded by
+the reciprocal of the Fisher information:
+var(T ) ≥
+1
+J(θ).
+(11.280)
+Proof:
+Let V be the score function and T be the estimator. By the
+Cauchy–Schwarz inequality, we have
+(Eθ[(V −EθV )(T −EθT )])2 ≤Eθ(V −EθV )2Eθ(T −EθT )2.
+(11.281)
+Since T is unbiased, EθT = θ for all θ. By (11.269), EθV = 0 and hence
+Eθ(V −EθV )(T −EθT ) = Eθ(V T ). Also, by deﬁnition, var(V ) = J(θ).
+Substituting these conditions in (11.281), we have
+[Eθ(V T )]2 ≤J(θ)var(T ).
+(11.282)
+Now,
+Eθ(V T ) =
+
+∂
+∂θ f (x; θ)
+f (x; θ) T (x)f (x; θ) dx
+(11.283)
+
+--- Page 22 ---
+396
+INFORMATION THEORY AND STATISTICS
+=
+
+∂
+∂θ f (x; θ)T (x) dx
+(11.284)
+= ∂
+∂θ
+
+f (x; θ)T (x) dx
+(11.285)
+= ∂
+∂θ EθT
+(11.286)
+= ∂
+∂θ θ
+(11.287)
+= 1,
+(11.288)
+where the interchange of differentiation and integration in (11.285) can be
+justiﬁed using the bounded convergence theorem for appropriately well
+behaved f (x; θ), and (11.287) follows from the fact that the estimator T
+is unbiased. Substituting this in (11.282), we obtain
+var(T ) ≥
+1
+J(θ),
+(11.289)
+which is the Cram´er–Rao inequality for unbiased estimators.
+□
+By essentially the same arguments, we can show that for any estimator
+E(T −θ)2 ≥(1 + b′
+T (θ))2
+J(θ)
++ b2
+T (θ),
+(11.290)
+where bT (θ) = EθT −θ and b′
+T (θ) is the derivative of bT (θ) with respect
+to θ. The proof of this is left as a problem at the end of the chapter.
+Example 11.10.2
+Let X1, X2, . . . , Xn be i.i.d. ∼N(θ, σ 2), σ 2 known.
+Here
+J(θ) = n/σ 2.
+Let
+T (X1, X2, . . . , Xn) = Xn = 1
+n
+ Xi.
+Then
+Eθ(Xn −θ)2 = σ 2/n = 1/J(θ). Thus, Xn is the minimum variance unbi-
+ased estimator of θ, since it achieves the Cram´er–Rao lower bound.
+The Cram´er–Rao inequality gives us a lower bound on the variance
+for all unbiased estimators. When this bound is achieved, we call the
+estimator efﬁcient.
+Deﬁnition
+An unbiased estimator T is said to be efﬁcient if it meets
+the Cram´er–Rao bound with equality [i.e., if var(T ) =
+1
+J(θ)].
+
+--- Page 23 ---
+SUMMARY
+397
+The Fisher information is therefore a measure of the amount of “infor-
+mation” about θ that is present in the data. It gives a lower bound on the
+error in estimating θ from the data. However, it is possible that there does
+not exist an estimator meeting this lower bound.
+We can generalize the concept of Fisher information to the multipa-
+rameter case, in which case we deﬁne the Fisher information matrix J(θ)
+with elements
+Jij(θ) =
+
+f (x; θ) ∂
+∂θi
+ln f (x; θ) ∂
+∂θj
+ln f (x; θ) dx.
+(11.291)
+The Cram´er–Rao inequality becomes the matrix inequality
+ ≥J −1(θ),
+(11.292)
+where  is the covariance matrix of a set of unbiased estimators for the
+parameters θ and  ≥J −1(θ) in the sense that the difference  −J −1 is
+a nonnegative deﬁnite matrix. We will not go into the details of the proof
+for multiple parameters; the basic ideas are similar.
+Is there a relationship between the Fisher information J(θ) and quanti-
+ties such as entropy deﬁned earlier? Note that Fisher information is deﬁned
+with respect to a family of parametric distributions, unlike entropy, which
+is deﬁned for all distributions. But we can parametrize any distribution
+f (x) by a location parameter θ and deﬁne Fisher information with respect
+to the family of densities f (x −θ) under translation. We explore the
+relationship in greater detail in Section 17.8, where we show that while
+entropy is related to the volume of the typical set, the Fisher information
+is related to the surface area of the typical set. Further relationships of
+Fisher information to relative entropy are developed in the problems.
+SUMMARY
+Basic identities
+Qn(x) = 2−n(D(Px||Q)+H(Px)),
+(11.293)
+|Pn| ≤(n + 1)|X|,
+(11.294)
+|T (P )| .= 2nH(P),
+(11.295)
+Qn(T (P )) .= 2−nD(P||Q).
+(11.296)
+
+--- Page 24 ---
+398
+INFORMATION THEORY AND STATISTICS
+Universal data compression
+P (n)
+e
+≤2−nD(P ∗
+R||Q)
+for all Q,
+(11.297)
+where
+D(P ∗
+R||Q) =
+min
+P:H(P)≥R D(P ||Q).
+(11.298)
+Large deviations (Sanov’s theorem)
+Qn(E) = Qn(E ∩Pn) ≤(n + 1)|X|2−nD(P ∗||Q),
+(11.299)
+D(P ∗||Q) = min
+P∈E D(P ||Q).
+(11.300)
+If E is the closure of its interior, then
+Qn(E) .= 2−nD(P ∗||Q).
+(11.301)
+L1 bound on relative entropy
+D(P1||P2) ≥
+1
+2 ln 2||P1 −P2||2
+1.
+(11.302)
+Pythagorean theorem. If E is a convex set of types, distribution Q /∈
+E, and P ∗achieves D(P ∗||Q) = minP∈E D(P ||Q), we have
+D(P ||Q) ≥D(P ||P ∗) + D(P ∗||Q)
+(11.303)
+for all P ∈E.
+Conditional limit theorem. If X1, X2, . . . , Xn i.i.d. ∼Q, then
+Pr(X1 = a|PXn ∈E) →P ∗(a)
+in probability,
+(11.304)
+where P ∗minimizes D(P ||Q) over P ∈E. In particular,
+Pr
+
+X1 = a
+
+1
+n
+n
+
+i=1
+Xi ≥α
+
+→
+Q(a)eλa
+
+x Q(x)eλx .
+(11.305)
+Neyman–Pearson lemma. The optimum test between two densities
+P1 and P2 has a decision region of the form “accept P = P1 if
+P1(x1,x2,...,xn)
+P2(x1,x2,...,xn) > T.”
+
+--- Page 25 ---
+PROBLEMS
+399
+Chernoff–Stein lemma. The best achievable error exponent βǫ
+n if
+αn ≤ǫ:
+βǫ
+n =
+min
+An ⊆Xn
+αn < ǫ
+βn,
+(11.306)
+lim
+n→∞
+1
+n log βǫ
+n = −D(P1||P2).
+(11.307)
+Chernoff information. The best achievable exponent for a Bayesian
+probability of error is
+D∗= D(Pλ∗||P1) = D(Pλ∗||P2),
+(11.308)
+where
+Pλ =
+P λ
+1 (x)P 1−λ
+2
+(x)
+
+a∈X P λ
+1 (a)P 1−λ
+2
+(a)
+(11.309)
+with λ = λ∗chosen so that
+D(Pλ||P1) = D(Pλ||P2).
+(11.310)
+Fisher information
+J(θ) = Eθ
+ ∂
+∂θ ln f (x; θ)
+2
+.
+(11.311)
+Cram´er–Rao inequality. For any unbiased estimator T of θ,
+Eθ(T (X) −θ)2 = var(T ) ≥
+1
+J(θ).
+(11.312)
+PROBLEMS
+11.1
+Chernoff–Stein lemma.
+Consider the two-hypothesis test
+H1 : f = f1
+vs.
+H2 : f = f2.
+Find D(f1 ∥f2) if
+
+--- Page 26 ---
+400
+INFORMATION THEORY AND STATISTICS
+(a) fi(x) = N(0, σ 2
+i ), i = 1, 2.
+(b) fi(x) = λie−λix, x ≥0, i = 1, 2.
+(c) f1(x) is the uniform density over the interval [0, 1] and f2(x)
+is the uniform density over [a, a + 1]. Assume that 0 < a < 1.
+(d) f1 corresponds to a fair coin and f2 corresponds to a two-
+headed coin.
+11.2
+Relation between D(P ∥Q) and chi-square.
+Show that the χ2
+statistic
+χ2 = x
+(P (x) −Q(x))2
+Q(x)
+is (twice) the ﬁrst term in the Taylor series expansion of D(P ∥
+Q) about Q. Thus, D(P ∥Q) = 1
+2χ2 + · · · . [Suggestion: Write
+P
+Q = 1 + P−Q
+Q
+and expand the log.]
+11.3
+Error exponent for universal codes.
+A universal source code of
+rate R achieves a probability of error P (n)
+e
+.= e−nD(P ∗∥Q), where
+Q is the true distribution and P ∗achieves min D(P ∥Q) over all
+P such that H(P ) ≥R.
+(a) Find P ∗in terms of Q and R.
+(b) Now let X be binary. Find the region of source probabili-
+ties Q(x), x ∈{0, 1}, for which rate R is sufﬁcient for the
+universal source code to achieve P (n)
+e
+→0.
+11.4
+Sequential projection.
+We wish to show that projecting Q onto
+P1 and then projecting the projection ˆQ onto P1
+ P2 is the same
+as projecting Q directly onto P1
+ P2. Let P1 be the set of prob-
+ability mass functions on X satisfying
+
+x
+p(x) = 1,
+(11.313)
+
+x
+p(x)hi(x) ≥αi,
+i = 1, 2, . . . , r.
+(11.314)
+Let P2 be the set of probability mass functions on X satisfying
+
+x
+p(x) = 1,
+(11.315)
+
+x
+p(x)gj(x) ≥βj,
+j = 1, 2, . . . , s.
+(11.316)
+
+--- Page 27 ---
+PROBLEMS
+401
+Suppose that Q ̸∈P1
+ P2. Let P ∗minimize D(P ∥Q) over all
+P ∈P1. Let R∗minimize D(R ∥Q) over all R ∈P1
+ P2. Argue
+that R∗minimizes D(R ∥P ∗) over all R ∈P1
+ P2.
+11.5
+Counting.
+Let X = {1, 2, . . . , m}. Show that the number of se-
+quences xn ∈Xn satisfying
+1
+n
+n
+i=1 g(xi) ≥α is approximately
+equal to 2nH ∗, to ﬁrst order in the exponent, for n sufﬁciently large,
+where
+H ∗=
+max
+P:m
+i=1 P(i)g(i)≥α H(P ).
+(11.317)
+11.6
+Biased estimates may be better.
+Consider the problem of esti-
+mating µ and σ 2 from n samples of data drawn i.i.d. from a
+N(µ, σ 2) distribution.
+(a) Show that Xn is an unbiased estimator of µ.
+(b) Show that the estimator
+S2
+n = 1
+n
+n
+
+i=1
+(Xi −Xn)2
+(11.318)
+is a biased estimator of σ 2 and the estimator
+S2
+n−1 =
+1
+n −1
+n
+
+i=1
+(Xi −Xn)2
+(11.319)
+is unbiased.
+(c) Show that S2
+n has a lower mean-squared error than that of
+S2
+n−1. This illustrates the idea that a biased estimator may be
+“better” than an unbiased estimator.
+11.7
+Fisher information and relative entropy.
+Show for a parametric
+family {pθ(x)} that
+lim
+θ′→θ
+1
+(θ −θ′)2 D(pθ||pθ′) =
+1
+ln 4J(θ).
+(11.320)
+11.8
+Examples of Fisher information.
+The Fisher information J()
+for the family fθ(x), θ ∈R is deﬁned by
+J(θ) = Eθ
+∂fθ(X)/∂θ
+fθ(X)
+2
+=
+ (f
+′
+θ)2
+fθ
+.
+Find the Fisher information for the following families:
+
+--- Page 28 ---
+402
+INFORMATION THEORY AND STATISTICS
+(a) fθ(x) = N(0, θ) =
+1
+√
+2πθ e−x2
+2θ
+(b) fθ(x) = θe−θx, x ≥0
+(c) What is the Cram`er–Rao lower bound on Eθ( ˆθ(X) −θ)2,
+where ˆθ(X) is an unbiased estimator of θ for parts (a) and
+(b)?
+11.9
+Two conditionally independent looks double the Fisher informa-
+tion.
+Let gθ(x1, x2) = fθ(x1)fθ(x2). Show that Jg(θ) = 2Jf (θ).
+11.10
+Joint distributions and product distributions.
+Consider a joint
+distribution Q(x, y) with marginals Q(x) and Q(y). Let E be
+the set of types that look jointly typical with respect to Q:
+E = {P (x, y) : −
+
+x,y
+P (x, y) log Q(x) −H(X) = 0,
+−
+
+x,y
+P (x, y) log Q(y) −H(Y) = 0,
+−
+
+x,y
+P (x, y) log Q(x, y)
+−H(X, Y) = 0}.
+(11.321)
+(a) Let Q0(x, y) be another distribution on X × Y. Argue
+that the distribution P ∗in E that is closest to Q0 is of the
+form
+P ∗(x, y) = Q0(x, y)eλ0+λ1 log Q(x)+λ2 log Q(y)+λ3 log Q(x,y),
+(11.322)
+where λ0, λ1, λ2, and λ3 are chosen to satisfy the constraints.
+Argue that this distribution is unique.
+(b) Now let Q0(x, y) = Q(x)Q(y). Verify that Q(x, y) is of the
+form (11.322) and satisﬁes the constraints. Thus, P ∗(x, y) =
+Q(x, y) (i.e., the distribution in E closest to the product dis-
+tribution is the joint distribution).
+11.11
+Cram´er–Rao inequality with a bias term.
+Let X ∼f (x; θ) and
+let T (X) be an estimator for θ. Let bT (θ) = EθT −θ be the bias
+of the estimator. Show that
+E(T −θ)2 ≥[1 + b′
+T (θ)]2
+J(θ)
++ b2
+T (θ).
+(11.323)
+
+--- Page 29 ---
+PROBLEMS
+403
+11.12
+Hypothesis testing.
+Let X1, X2, . . . , Xn be i.i.d. ∼p(x). Con-
+sider the hypothesis test H1 : p = p1 vs. H2 : p = p2 . Let
+p1(x) =
+
+
+
+1
+2,
+x = −1
+1
+4,
+x = 0
+1
+4,
+x = 1
+and
+p2(x) =
+
+
+
+1
+4,
+x = −1
+1
+4,
+x = 0
+1
+2,
+x = 1.
+Find the error exponent for Pr{Decide H2|H1 true} in the best
+hypothesis test of H1 vs. H2 subject to Pr{Decide H1|H2 true}
+≤1
+2.
+11.13
+Sanov’s theorem.
+Prove a simple version of Sanov’s theorem for
+Bernoulli(q) random variables.
+Let the proportion of 1’s in the sequence X1, X2, . . . , Xn be
+Xn = 1
+n
+n
+
+i=1
+Xi.
+(11.324)
+By the law of large numbers, we would expect Xn to be close
+to q for large n. Sanov’s theorem deals with the probability that
+pXn is far away from q. In particular, for concreteness, if we take
+p > q > 1
+2, Sanov’s theorem states that
+−1
+n log Pr
+
+(X1, X2, . . . , Xn) : Xn ≥p
+ 
+→p log p
+q + (1 −p) log 1 −p
+1 −q
+= D((p, 1 −p)||(q, 1 −q)).
+(11.325)
+Justify the following steps:
+• Pr
+
+(X1, X2, . . . , Xn) : Xn ≥p
+ 
+≤
+n
+
+i=⌊np⌋
+n
+i
+
+qi(1 −q)n−i.
+(11.326)
+
+--- Page 30 ---
+404
+INFORMATION THEORY AND STATISTICS
+• Argue that the term corresponding to i = ⌊np⌋is the largest
+term in the sum on the right-hand side of the last equation.
+• Show that this term is approximately 2−nD.
+• Prove an upper bound on the probability in Sanov’s theorem
+using the steps above. Use similar arguments to prove a lower
+bound and complete the proof of Sanov’s theorem.
+11.14
+Sanov.
+Let Xi be i.i.d. ∼N(0, σ 2).
+(a) Find the exponent in the behavior of Pr{ 1
+n
+n
+i=1 X2
+i ≥α2}.
+This can be done from ﬁrst principles (since the normal dis-
+tribution is nice) or by using Sanov’s theorem.
+(b) What do the data look like if 1
+n
+n
+i=1 X2
+i ≥α? That is, what
+is the P ∗that minimizes D(P ∥Q)?
+11.15
+Counting states.
+Suppose that an atom is equally likely to be in
+each of six states, X ∈{s1, s2, s3, . . . , s6}. One observes n atoms
+X1, X2, . . . , Xn independently drawn according to this uniform
+distribution. It is observed that the frequency of occurrence of
+state s1 is twice the frequency of occurrence of state s2.
+(a) To ﬁrst order in the exponent, what is the probability of
+observing this event?
+(b) Assuming n large, ﬁnd the conditional distribution of the state
+of the ﬁrst atom X1, given this observation.
+11.16
+Hypothesis testing.
+Let {Xi} be i.i.d. ∼p(x), x ∈{1, 2, . . .}.
+Consider two hypotheses, H0 : p(x) = p0(x) vs. H1 : p(x) =
+p1(x), where p0(x) =
+	1
+2
+
+x and p1(x) = qpx−1, x = 1, 2, 3, . . . .
+(a) Find D(p0 ∥p1).
+(b) Let Pr{H0} = 1
+2. Find the minimal probability of error test for
+H0 vs. H1 given data X1, X2, . . . , Xn ∼p(x).
+11.17
+Maximum likelihood estimation.
+Let {fθ(x)} denote a parametric
+family of densities with parameter θǫR. Let X1, X2, . . . , Xn be
+i.i.d. ∼fθ(x). The function
+lθ(xn) = ln
+ n
+
+i=1
+fθ(xi)
+
+is known as the log likelihood function. Let θ0 denote the true
+parameter value.
+
+--- Page 31 ---
+PROBLEMS
+405
+(a) Let the expected log likelihood be
+Eθ0lθ(Xn) =
+ 
+ln
+n
+
+i=1
+fθ(xi)
+
+n
+
+i=1
+fθ0(xi)dxn,
+and show that
+Eθ0(l(Xn)) = (−h(fθ0) −D(fθ0||fθ))n.
+(b) Show that the maximum over θ of the expected log likelihood
+is achieved by θ = θ0.
+11.18
+Large deviations.
+Let X1, X2, . . . be i.i.d. random variables
+drawn according to the geometric distribution
+Pr{X = k} = pk−1(1 −p),
+k = 1, 2, . . . .
+Find good estimates (to ﬁrst order in the exponent) of:
+(a) Pr{ 1
+n
+n
+i=1 Xi ≥α}.
+(b) Pr{X1 = k| 1
+n
+n
+i=1 Xi ≥α}.
+(c) Evaluate parts (a) and (b) for p = 1
+2, α = 4.
+11.19
+Another expression for Fisher information.
+Use integration by
+parts to show that
+J(θ) = −E ∂2 ln fθ(x)
+∂θ2
+.
+11.20
+Stirling’s approximation.
+Derive a weak form of Stirling’s
+approximation for factorials; that is, show that
+n
+e
+n
+≤n! ≤n
+n
+e
+n
+(11.327)
+using the approximation of integrals by sums. Justify the following
+steps:
+ln(n!) =
+n−1
+
+i=2
+ln(i) + ln(n) ≤
+ n−1
+2
+ln x dx + ln n = · · ·
+(11.328)
+
+--- Page 32 ---
+406
+INFORMATION THEORY AND STATISTICS
+and
+ln(n!) =
+n
+
+i=1
+ln(i) ≥
+ n
+0
+ln x dx = · · · .
+(11.329)
+11.21
+Asymptotic value of
+n
+k
+
+.
+Use the simple approximation of Prob-
+lem 11.20 to show that if 0 ≤p ≤1, and k = ⌊np⌋(i.e., k is the
+largest integer less than or equal to np), then
+lim
+n→∞
+1
+n log
+n
+k
+
+= −p log p −(1 −p) log(1 −p) = H(p).
+(11.330)
+Now let pi, i = 1, . . . , m be a probability distribution on m sym-
+bols (i.e., pi ≥0 and 
+i pi = 1). What is the limiting value of
+1
+n log
+
+n
+⌊np1⌋⌊np2⌋. . . ⌊npm−1⌋n −m−1
+j=0 ⌊npj⌋
+
+= 1
+n log
+n!
+⌊np1⌋! ⌊np2⌋! . . . ⌊npm−1⌋! (n −m−1
+j=0 ⌊npj⌋)!
+?
+(11.331)
+11.22
+Running difference.
+Let X1, X2, . . . , Xn be i.i.d. ∼Q1(x), and
+Y1, Y2, . . . , Yn be i.i.d. ∼Q2(y). Let Xn and Y n be independent.
+Find an expression for Pr{n
+i=1 Xi −n
+i=1 Yi ≥nt} good to ﬁrst
+order in the exponent. Again, this answer can be left in parametric
+form.
+11.23
+Large likelihoods.
+Let X1, X2, . . . be i.i.d. ∼Q(x), x ∈{1, 2,
+. . . , m}. Let P (x) be some other probability mass function. We
+form the log likelihood ratio
+1
+n log P n(X1, X2, . . . , Xn)
+Qn(X1, X2, . . . , Xn) = 1
+n
+n
+
+i=1
+log P (Xi)
+Q(Xi)
+of the sequence Xn and ask for the probability that it exceeds a
+certain threshold. Speciﬁcally, ﬁnd (to ﬁrst order in the exponent)
+Qn
+1
+n log P (X1, X2, . . . , Xn)
+Q(X1, X2, . . . , Xn) > 0
+
+.
+There may be an undetermined parameter in the answer.
+
+--- Page 33 ---
+PROBLEMS
+407
+11.24
+Fisher information for mixtures.
+Let f1(x) and f0(x) be two
+given probability densities. Let Z be Bernoulli(θ), where θ is
+unknown. Let X ∼f1(x) if Z = 1 and X ∼f0(x) if Z = 0.
+(a) Find the density fθ(x) of the observed X.
+(b) Find the Fisher information J(θ).
+(c) What is the Cram´er–Rao lower bound on the mean-squared
+error of an unbiased estimate of θ?
+(d) Can you exhibit an unbiased estimator of θ?
+11.25
+Bent coins.
+Let {Xi} be iid ∼Q, where
+Q(k) = Pr(Xi = k) =
+m
+k
+
+qk(1 −q)m−k for k = 0, 1, 2, . . . , m.
+Thus, the Xi’s are iid ∼Binomial(m, q). Show that as n →∞,
+Pr
+
+X1 = k
+
+1
+n
+n
+
+i=1
+Xi ≥α
+
+→P ∗(k),
+where P ∗is Binomial(m, λ) (i.e., P ∗(k) =
+m
+k
+
+λk(1 −λ)m−k for
+some λ ∈[0, 1]). Find λ.
+11.26
+Conditional limiting distribution
+(a) Find the exact value of
+Pr
+
+X1 = 1
+
+1
+n
+n
+
+i=1
+Xi = 1
+4
+
+(11.332)
+if X1, X2, . . . , are Bernoulli(2
+3) and n is a multiple of 4.
+(b) Now let Xiǫ{−1, 0, 1} and let X1, X2 . . . be i.i.d. uniform
+over {−1, 0, +1}. Find the limit of
+Pr
+
+X1 = +1
+
+1
+n
+n
+
+i=1
+X2
+i = 1
+2
+
+(11.333)
+for n = 2k, k →∞.
+
+--- Page 34 ---
+408
+INFORMATION THEORY AND STATISTICS
+11.27
+Variational inequality.
+Verify for positive random variables X
+that
+log EP (X) = sup
+Q
+!
+EQ(log X) −D(Q||P )
+"
+,
+(11.334)
+where EP (X) = 
+x xP (x) and D(Q||P ) = 
+x Q(x) log Q(x)
+P(x)
+and
+the
+supremum
+is
+over
+all
+Q(x) ≥0,
+ Q(x) = 1.
+It
+is
+enough
+to
+extremize
+J(Q) = EQ ln X −D(Q||P ) +
+λ( Q(x) −1).
+11.28
+Type constraints
+(a) Find constraints on the type PXn such that the sample variance
+X2n −(Xn)2 ≤α,
+where
+X2n = 1
+n
+n
+i=1 X2
+i
+and
+Xn = 1
+n
+n
+i=1 Xi.
+(b) Find the exponent in the probability Qn(X2n −(Xn)2 ≤α).
+You can leave the answer in parametric form.
+11.29
+Uniform distribution on the simplex.
+Which of these methods
+will generate a sample from the uniform distribution on the sim-
+plex {x ∈Rn : xi ≥0,
+n
+i=1 xi = 1}?
+(a) Let Yi be i.i.d. uniform [0, 1] with Xi = Yi/ n
+j=1 Yj.
+(b) Let Yi be i.i.d. exponentially distributed ∼λe−λy, y ≥0, with
+Xi = Yi/ n
+j=1 Yj.
+(c) (Break stick into n parts) Let Y1, Y2, . . . , Yn−1 be i.i.d. uni-
+form [0, 1], and let Xi be the length of the ith interval.
+HISTORICAL NOTES
+The method of types evolved from notions of strong typicality; some
+of the ideas were used by Wolfowitz [566] to prove channel capacity
+theorems. The method was fully developed by Csisz´ar and K¨orner [149],
+who derived the main theorems of information theory from this viewpoint.
+The method of types described in Section 11.1 follows the development
+in Csisz´ar and K¨orner. The L1 lower bound on relative entropy is due to
+Csisz´ar [138], Kullback [336], and Kemperman [309]. Sanov’s theorem
+[455] was generalized by Csisz´ar [141] using the method of types.
+
+--- Page 35 ---
+CHAPTER 12
+MAXIMUM ENTROPY
+The temperature of a gas corresponds to the average kinetic energy of the
+molecules in the gas. What can we say about the distribution of veloci-
+ties in the gas at a given temperature? We know from physics that this
+distribution is the maximum entropy distribution under the temperature
+constraint, otherwise known as the Maxwell–Boltzmann distribution. The
+maximum entropy distribution corresponds to the macrostate (as indexed
+by the empirical distribution) that has the most microstates (the individual
+gas velocities). Implicit in the use of maximum entropy methods in physics
+is a sort of AEP which says that all microstates are equally probable.
+12.1
+MAXIMUM ENTROPY DISTRIBUTIONS
+Consider the following problem: Maximize the entropy h(f ) over all
+probability densities f satisfying
+1.
+f (x) ≥0, with equality outside the support set S
+2.
+
+S f (x) dx = 1
+3.
+
+S f (x)ri(x) dx = αi
+for 1 ≤i ≤m.
+(12.1)
+Thus, f is a density on support set S meeting certain moment con-
+straints α1, α2, . . . , αm.
+Approach 1
+( Calculus)
+The differential entropy h(f ) is a concave
+function over a convex set. We form the functional
+J(f ) = −
+
+f ln f + λ0
+
+f +
+m
+
+i=1
+λi
+
+f ri
+(12.2)
+and “differentiate” with respect to f (x), the xth component of f , to obtain
+∂J
+∂f (x) = −ln f (x) −1 + λ0 +
+m
+
+i=1
+λiri(x).
+(12.3)
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+409
+
+--- Page 36 ---
+410
+MAXIMUM ENTROPY
+Setting this equal to zero, we obtain the form of the maximizing density
+f (x) = eλ0−1+m
+i=1 λiri(x),
+x ∈S,
+(12.4)
+where λ0, λ1, . . . , λm are chosen so that f satisﬁes the constraints.
+The approach using calculus only suggests the form of the density that
+maximizes the entropy. To prove that this is indeed the maximum, we can
+take the second variation. It is simpler to use the information inequality
+D(g||f ) ≥0.
+Approach 2
+(Information inequality)
+If g satisﬁes (12.1) and if f ∗is
+of the form (12.4), then 0 ≤D(g||f ∗) = −h(g) + h(f ∗). Thus h(g) ≤
+h(f ∗) for all g satisfying the constraints. We prove this in the following
+theorem.
+Theorem 12.1.1
+(Maximum entropy distribution)
+Let f ∗(x) = fλ(x)
+= eλ0+m
+i=1 λiri(x), x ∈S, where λ0, . . . , λm are chosen so that f ∗satisﬁes
+(12.1). Then f ∗uniquely maximizes h(f ) over all probability densities f
+satisfying constraints (12.1).
+Proof:
+Let g satisfy the constraints (12.1). Then
+h(g) = −
+
+S
+g ln g
+(12.5)
+= −
+
+S
+g ln g
+f ∗f ∗
+(12.6)
+= −D(g||f ∗) −
+
+S
+g ln f ∗
+(12.7)
+(a)
+≤−
+
+S
+g ln f ∗
+(12.8)
+(b)
+= −
+
+S
+g
+
+λ0 +
+
+λiri
+
+(12.9)
+(c)
+= −
+
+S
+f ∗
+λ0 +
+
+λiri
+
+(12.10)
+= −
+
+S
+f ∗ln f ∗
+(12.11)
+= h(f ∗),
+(12.12)
+where (a) follows from the nonnegativity of relative entropy, (b) follows
+from the deﬁnition of f ∗, and (c) follows from the fact that both f ∗
+and g satisfy the constraints. Note that equality holds in (a) if and only
+
+--- Page 37 ---
+12.2
+EXAMPLES
+411
+if g(x) = f ∗(x) for all x, except for a set of measure 0, thus proving
+uniqueness.
+□
+The same approach holds for discrete entropies and for multivariate
+distributions.
+12.2
+EXAMPLES
+Example 12.2.1
+(One-dimensional gas with a temperature constraint)
+Let the constraints be EX = 0 and EX2 = σ 2. Then the form of the
+maximizing distribution is
+f (x) = eλ0+λ1x+λ2x2.
+(12.13)
+To ﬁnd the appropriate constants, we ﬁrst recognize that this distribution
+has the same form as a normal distribution. Hence, the density that satisﬁes
+the constraints and also maximizes the entropy is the N(0, σ 2) distribution:
+f (x) =
+1
+√
+2πσ 2 e−x2
+2σ2 .
+(12.14)
+Example 12.2.2
+(Dice, no constraints)
+Let S = {1, 2, 3, 4, 5, 6}. The
+distribution that maximizes the entropy is the uniform distribution, p(x) =
+1
+6 for x ∈S.
+Example 12.2.3
+(Dice, with EX =  ipi = α)
+This important exam-
+ple was used by Boltzmann. Suppose that n dice are thrown on the table
+and we are told that the total number of spots showing is nα. What
+proportion of the dice are showing face i, i = 1, 2, . . . , 6?
+One way of going about this is to count the number of ways that
+n dice can fall so that ni dice show face i. There are
+
+n
+n1, n2, . . . , n6
+
+such ways. This is a macrostate indexed by (n1, n2, . . . , n6) corresponding
+to
+
+n
+n1, n2, . . . , n6
+
+microstates, each having probability
+1
+6n. To ﬁnd the
+most probable macrostate, we wish to maximize
+
+n
+n1, n2, . . . , n6
+
+under
+the constraint observed on the total number of spots,
+6
+
+i=1
+ini = nα.
+(12.15)
+Using a crude Stirling’s approximation, n! ≈( n
+e)n, we ﬁnd that
+
+n
+n1, n2, . . . , n6
+
+≈
+( n
+e)n
+	6
+i=1 ( ni
+e )ni
+(12.16)
+
+--- Page 38 ---
+412
+MAXIMUM ENTROPY
+=
+6
+
+i=1
+ n
+ni
+ni
+(12.17)
+= e
+nH
+ n1
+n , n2
+n ,..., n6
+n
+
+.
+(12.18)
+Thus, maximizing
+
+n
+n1, n2, . . . , n6
+
+under the constraint (12.15) is almost
+equivalent to maximizing H(p1, p2, . . . , p6) under the constraint  ipi =
+α. Using Theorem 12.1.1 under this constraint, we ﬁnd the maximum
+entropy probability mass function to be
+p∗
+i =
+eλi
+6
+i=1 eλi ,
+(12.19)
+where λ is chosen so that  ip∗
+i = α. Thus, the most probable macrostate
+is (np∗
+1, np∗
+2. . . . , np∗
+6), and we expect to ﬁnd n∗
+i = np∗
+i dice showing
+face i.
+In Chapter 11 we show that the reasoning and the approximations are
+essentially correct. In fact, we show that not only is the maximum entropy
+macrostate the most likely, but it also contains almost all of the probability.
+Speciﬁcally, for rational α,
+Pr
+
+Ni
+n −p∗
+i
+ < ǫ, i = 1, 2, . . . , 6
+
+n
+
+i=1
+Xi = nα
+
+→1,
+(12.20)
+as n →∞along the subsequence such that nα is an integer.
+Example 12.2.4
+Let S = [a, b], with no other constraints. Then the
+maximum entropy distribution is the uniform distribution over this range.
+Example 12.2.5
+S = [0, ∞) and EX = µ. Then the entropy-maxi-
+mizing distribution is
+f (x) = 1
+µe−x
+µ ,
+x ≥0.
+(12.21)
+This problem has a physical interpretation. Consider the distribution of the
+height X of molecules in the atmosphere. The average potential energy of
+the molecules is ﬁxed, and the gas tends to the distribution that has the
+maximum entropy subject to the constraint that E(mgX) is ﬁxed. This
+is the exponential distribution with density f (x) = λe−λx, x ≥0. The
+density of the atmosphere does indeed have this distribution.
+
+--- Page 39 ---
+12.3
+ANOMALOUS MAXIMUM ENTROPY PROBLEM
+413
+Example 12.2.6
+S = (−∞, ∞), and EX = µ. Here the maximum en-
+tropy is inﬁnite, and there is no maximum entropy distribution. (Consider
+normal distributions with larger and larger variances.)
+Example 12.2.7
+S = (−∞, ∞), EX = α1, and EX2 = α2. The maxi-
+mum entropy distribution is N(α1, α2 −α2
+1).
+Example 12.2.8
+S = Rn, EXiXj = Kij, 1 ≤i, j ≤n. This is a mul-
+tivariate example, but the same analysis holds and the maximum entropy
+density is of the form
+f (x) = eλ0+
+i,j λijxixj.
+(12.22)
+Since the exponent is a quadratic form, it is clear by inspection that the
+density is a multivariate normal with zero mean. Since we have to satisfy
+the second moment constraints, we must have a multivariate normal with
+covariance Kij, and hence the density is
+f (x) =
+1
+√
+2π
+n
+|K|1/2
+e−1
+2xT K−1x,
+(12.23)
+which has an entropy
+h(Nn(0, K)) = 1
+2 log(2πe)n|K|,
+(12.24)
+as derived in Chapter 8.
+Example 12.2.9
+Suppose that we have the same constraints as in Ex-
+ample 12.2.8, but EXiXj = Kij only for some restricted set of (i, j) ∈A.
+For example, we might know only Kij for i = j ± 2. Then by comparing
+(12.22) and (12.23), we can conclude that (K−1)ij = 0 for (i, j) ∈Ac
+(i.e., the entries in the inverse of the covariance matrix are 0 when (i, j)
+is outside the constraint set).
+12.3
+ANOMALOUS MAXIMUM ENTROPY PROBLEM
+We have proved that the maximum entropy distribution subject to the
+constraints
+
+S
+hi(x)f (x) dx = αi
+(12.25)
+is of the form
+f (x) = eλ0+ λihi(x)
+(12.26)
+if λ0, λ1, . . . , λp satisfying the constraints (12.25) exist.
+
+--- Page 40 ---
+414
+MAXIMUM ENTROPY
+We now consider a tricky problem in which the λi cannot be chosen
+to satisfy the constraints. Nonetheless, the “maximum” entropy can be
+found. We consider the following problem: Maximize the entropy subject
+to the constraints
+ ∞
+−∞
+f (x) dx = 1,
+(12.27)
+ ∞
+−∞
+xf (x) dx = α1,
+(12.28)
+ ∞
+−∞
+x2f (x) dx = α2,
+(12.29)
+ ∞
+−∞
+x3f (x) dx = α3.
+(12.30)
+Here, the maximum entropy distribution, if it exists, must be of the form
+f (x) = eλ0+λ1x+λ2x2+λ3x3.
+(12.31)
+But if λ3 is nonzero,
+ ∞
+−∞f = ∞and the density cannot be normalized.
+So λ3 must be 0. But then we have four equations and only three variables,
+so that in general it is not possible to choose the appropriate constants.
+The method seems to have failed in this case.
+The reason for the apparent failure is simple: The entropy has a least
+upper bound under these constraints, but it is not possible to attain it. Con-
+sider the corresponding problem with only ﬁrst and second moment con-
+straints. In this case, the results of Example 12.2.1 show that the entropy-
+maximizing distribution is the normal with the appropriate moments. With
+the additional third moment constraint, the maximum entropy cannot be
+higher. Is it possible to achieve this value?
+We cannot achieve it, but we can come arbitrarily close. Consider a
+normal distribution with a small “wiggle” at a very high value of x. The
+moments of the new distribution are almost the same as those of the old
+one, the biggest change being in the third moment. We can bring the
+ﬁrst and second moments back to their original values by adding new
+wiggles to balance out the changes caused by the ﬁrst. By choosing the
+position of the wiggles, we can get any value of the third moment without
+reducing the entropy signiﬁcantly below that of the associated normal.
+Using this method, we can come arbitrarily close to the upper bound for
+the maximum entropy distribution. We conclude that
+sup h(f ) = h(N(0, α2 −α2
+1)) = 1
+2 ln 2πe(α2 −α2
+1).
+(12.32)
+
+--- Page 41 ---
+12.4
+SPECTRUM ESTIMATION
+415
+This example shows that the maximum entropy may only be ǫ-achiev-
+able.
+12.4
+SPECTRUM ESTIMATION
+Given a stationary zero-mean stochastic process {Xi}, we deﬁne the auto-
+correlation function as
+R(k) = EXiXi+k.
+(12.33)
+The Fourier transform of the autocorrelation function for a zero-mean
+process is the power spectral density S(λ):
+S(λ) =
+∞
+
+m=−∞
+R(m)e−imλ,
+−π < λ ≤π,
+(12.34)
+where i =
+√
+−1. Since the power spectral density is indicative of the
+structure of the process, it is useful to form an estimate from a sample of
+the process.
+There are many methods to estimate the power spectrum. The simplest
+way is to estimate the autocorrelation function by taking sample averages
+for a sample of length n,
+ˆR(k) =
+1
+n −k
+n−k
+
+i=1
+XiXi+k.
+(12.35)
+If we use all the values of the sample correlation function ˆR(·) to cal-
+culate the spectrum, the estimate that we obtain from (12.34) does not
+converge to the true power spectrum for large n. Hence, this method, the
+periodogram method, is rarely used. One of the reasons for the problem
+with the periodogram method is that the estimates of the autocorrelation
+function from the data have different accuracies. The estimates for low
+values of k (called the lags) are based on a large number of samples and
+those for high k on very few samples. So the estimates are more accurate
+at low k. The method can be modiﬁed so that it depends only on the
+autocorrelations at low k by setting the higher lag autocorrelations to 0.
+However, this introduces some artifacts because of the sudden transition to
+zero autocorrelation. Various windowing schemes have been suggested to
+smooth out the transition. However, windowing reduces spectral resolution
+and can give rise to negative power spectral estimates.
+In the late 1960s, while working on the problem of spectral estimation for
+geophysical applications, Burg suggested an alternative method. Instead of
+
+--- Page 42 ---
+416
+MAXIMUM ENTROPY
+setting the autocorrelations at high lags to zero, he set them to values that
+make the fewest assumptions about the data (i.e., values that maximize the
+entropy rate of the process). This is consistent with the maximum entropy
+principle as articulated by Jaynes [294]. Burg assumed the process to be
+stationary and Gaussian and found that the process which maximizes the
+entropy subject to the correlation constraints is an autoregressive Gaussian
+process of the appropriate order. In some applications where we can assume
+an underlying autoregressive model for the data, this method has proved
+useful in determining the parameters of the model (e.g., linear predictive
+coding for speech). This method (known as the maximum entropy method
+or Burg’s method) is a popular method for estimation of spectral densities.
+We prove Burg’s theorem in Section 12.6.
+12.5
+ENTROPY RATES OF A GAUSSIAN PROCESS
+In Chapter 8 we deﬁned the differential entropy of a continuous random
+variable. We can now extend the deﬁnition of entropy rates to real-valued
+stochastic processes.
+Deﬁnition
+The differential entropy rateofa stochastic process {Xi}, Xi ∈
+R, is deﬁned to be
+h(X) = lim
+n→∞
+h(X1, X2, . . . , Xn)
+n
+(12.36)
+if the limit exists.
+Just as in the discrete case, we can show that the limit exists for sta-
+tionary processes and that the limit is given by the two expressions
+h(X) = lim
+n→∞
+h(X1, X2, . . . , Xn)
+n
+(12.37)
+= lim
+n→∞h(Xn|Xn−1, . . . , X1).
+(12.38)
+For a stationary Gaussian stochastic process, we have
+h(X1, X2, . . . , Xn) = 1
+2 log(2πe)n|K(n)|,
+(12.39)
+where the covariance matrix K(n) is Toeplitz with entries R(0), R(1), . . . ,
+R(n −1) along the top row. Thus, K(n)
+ij
+= R(i −j) = E(Xi −EXi)(Xj
+
+--- Page 43 ---
+12.6
+BURG’S MAXIMUM ENTROPY THEOREM
+417
+−EXj). As n →∞, the density of the eigenvalues of the covariance
+matrix tends to a limit, which is the spectrum of the stochastic process.
+Indeed, Kolmogorov showed that the entropy rate of a stationary Gaussian
+stochastic process can be expressed as
+h(X) = 1
+2 log 2πe + 1
+4π
+ π
+−π
+log S(λ) dλ.
+(12.40)
+The entropy rate is also limn→∞h(Xn|Xn−1). Since the stochastic pro-
+cess is Gaussian, the conditional distribution is also Gaussian, and hence
+the conditional entropy is 1
+2 log 2πeσ 2
+∞, where σ 2
+∞is the variance of the
+error in the best estimate of Xn given the inﬁnite past. Thus,
+σ 2
+∞=
+1
+2πe22h(X),
+(12.41)
+where h(X) is given by (12.40). Hence, the entropy rate corresponds to
+the minimum mean-squared error of the best estimator of a sample of the
+process given the inﬁnite past.
+12.6
+BURG’S MAXIMUM ENTROPY THEOREM
+Theorem 12.6.1
+The maximum entropy rate stochastic process {Xi} sat-
+isfying the constraints
+EXiXi+k = αk,
+k = 0, 1, . . . , p
+for all i,
+(12.42)
+is the pth-order Gauss–Markov process of the form
+Xi = −
+p
+
+k=1
+akXi−k + Zi,
+(12.43)
+where the Zi are i.i.d. ∼N(0, σ 2) and a1, a2, . . . , ap, σ 2 are chosen to
+satisfy (12.42).
+Remark
+We do not assume that {Xi} is (a) zero mean, (b) Gaussian, or
+(c) wide-sense stationary.
+Proof:
+Let X1, X2, . . . , Xn be any stochastic process that satisﬁes the
+constraints (12.42). Let Z1, Z2, . . . , Zn be a Gaussian process with the
+same covariance matrix as X1, X2, . . . , Xn. Then since the multivariate
+normal distribution maximizes the entropy over all vector-valued random
+
+--- Page 44 ---
+418
+MAXIMUM ENTROPY
+variables under a covariance constraint, we have
+h(X1, X2, . . . , Xn) ≤h(Z1, Z2, . . . , Zn)
+(12.44)
+= h(Z1, . . . , Zp) +
+n
+
+i=p+1
+h(Zi|Zi−1, Zi−2, . . . , Z1)
+(12.45)
+≤h(Z1, . . . , Zp) +
+n
+
+i=p+1
+h(Zi|Zi−1, Zi−2, . . . , Zi−p)
+(12.46)
+by the chain rule and the fact that conditioning reduces entropy. Now
+deﬁne Z′
+1, Z′
+2, . . . , Z′
+n as a pth-order Gauss–Markov process with the
+same distribution as Z1, Z2, . . . , Zn for all orders up to p. (Existence of
+such a process will be veriﬁed using the Yule–Walker equations immedi-
+ately after the proof.) Then since h(Zi|Zi−1, . . . , Zi−p) depends only on
+the pth-order distribution, h(Zi|Zi−1, . . . , Zi−p)= h(Z′
+i|Z′
+i−1, . . . , Z′
+i−p),
+and continuing the chain of inequalities, we obtain
+h(X1, X2, . . . , Xn) ≤h(Z1, . . . , Zp) +
+n
+
+i=p+1
+h(Zi|Zi−1, Zi−2, . . . , Zi−p)
+(12.47)
+= h(Z′
+1, . . . , Z′
+p) +
+n
+
+i=p+1
+h(Z′
+i|Z′
+i−1, Z′
+i−2, . . . , Z′
+i−p)
+(12.48)
+= h(Z′
+1, Z′
+2, . . . , Z′
+n),
+(12.49)
+where the last equality follows from the pth-order Markovity of the {Z′
+i}.
+Dividing by n and taking the limit, we obtain
+lim1
+nh(X1, X2, . . . , Xn) ≤lim 1
+nh(Z′
+1, Z′
+2, . . . , Z′
+n) = h∗,
+(12.50)
+where
+h∗= 1
+2 log 2πeσ 2,
+(12.51)
+which is the entropy rate of the Gauss–Markov process. Hence, the max-
+imum entropy rate stochastic process satisfying the constraints is the
+pth-order Gauss–Markov process satisfying the constraints.
+□
+A bare-bones summary of the proof is that the entropy of a ﬁnite
+segment of a stochastic process is bounded above by the entropy of a
+
+--- Page 45 ---
+12.6
+BURG’S MAXIMUM ENTROPY THEOREM
+419
+segment of a Gaussian random process with the same covariance structure.
+This entropy is in turn bounded above by the entropy of the minimal order
+Gauss–Markov process satisfying the given covariance constraints. Such
+a process exists and has a convenient characterization by means of the
+Yule–Walker equations given below.
+Note on the choice of a1, . . . , ap and σ 2: Given a sequence of covariances
+R(0), R(1), . . . , R(p), does there exist a pth-order Gauss–Markov pro-
+cess with these covariances? Given a process of the form (12.43), can we
+choose the ak’s to satisfy the constraints? Multiplying (12.43) by Xi−l
+and taking expectations, noting that R(k) = R(−k), we get
+R(0) = −
+p
+
+k=1
+akR(−k) + σ 2
+(12.52)
+and
+R(l) = −
+p
+
+k=1
+akR(l −k),
+l = 1, 2, . . . .
+(12.53)
+These equations are called the Yule–Walker equations. There are p + 1
+equations in the p + 1 unknowns a1, a2, . . . , ap, σ 2. Therefore, we can
+solve for the parameters of the process from the covariances.
+Fast algorithms such as the Levinson algorithm and the Durbin algo-
+rithm [433] have been devised to use the special structure of these
+equations to calculate the coefﬁcients a1, a2, . . . , ap efﬁciently from the
+covariances. (We set a0 = 1 for a consistent notation.) Not only do the
+Yule–Walker equations provide a convenient set of linear equations for
+calculating the ak’s and σ 2 from the R(k)’s, they also indicate how the
+autocorrelations behave for lags greater than p. The autocorrelations for
+high lags are an extension of the values for lags less than p. These val-
+ues are called the Yule–Walker extension of the autocorrelations. The
+spectrum of the maximum entropy process is seen to be
+S(λ) =
+∞
+
+m=−∞
+R(m)e−imλ
+(12.54)
+=
+σ 2
+1 + p
+k=1 ake−ikλ2 ,
+−π ≤λ ≤π.
+(12.55)
+This is the maximum entropy spectral density subject to the constraints
+R(0), R(1), . . . , R(p).
+However, for the pth-order Gauss–Markov process, it is possible to
+calculate the entropy rate directly without calculating the ai’s. Let Kp be
+
+--- Page 46 ---
+420
+MAXIMUM ENTROPY
+the autocorrelation matrix corresponding to this process—the matrix with
+R0, R1, . . . , Rp along the top row. For this process, the entropy rate is
+equal to
+h∗= h(Xp|Xp−1, . . . , X0) = h(X0, . . . , Xp) −h(X0, . . . , Xp−1)
+(12.56)
+= 1
+2 log(2πe)p+1|Kp| −1
+2 log(2πe)p|Kp−1|
+(12.57)
+= 1
+2 log(2πe) |Kp|
+|Kp−1|.
+(12.58)
+In a practical problem, we are generally given a sample sequence
+X1, X2, . . . , Xn, from which we calculate the autocorrelations. An impor-
+tant question is: How many autocorrelation lags should we consider (i.e.,
+what is the optimum value of p)? A logically sound method is to choose
+the value of p that minimizes the total description length in a two-stage
+description of the data. This method has been proposed by Rissanen
+[442, 447] and Barron [33] and is closely related to the idea of Kol-
+mogorov complexity.
+SUMMARY
+Maximum entropy distribution. Let f be a probability density satis-
+fying the constraints
+
+S
+f (x)ri(x) = αi
+for 1 ≤i ≤m.
+(12.59)
+Let f ∗(x) = fλ(x) = eλ0+m
+i=1 λiri(x), x ∈S, and let λ0, . . . , λm be cho-
+sen so that f ∗satisﬁes (12.59). Then f ∗uniquely maximizes h(f ) over
+all f satisfying these constraints.
+Maximum entropy spectral density estimation. The entropy rate of a
+stochastic process subject to autocorrelation constraints R0, R1, . . . , Rp
+is maximized by the pth order zero-mean Gauss-Markov process satis-
+fying these constraints. The maximum entropy rate is
+h∗= 1
+2 log(2πe) |Kp|
+|Kp−1|,
+(12.60)
+
+--- Page 47 ---
+[IMAGE]
+PROBLEMS
+421
+and the maximum entropy spectral density is
+S(λ) =
+σ 2
+1 + p
+k=1 ake−ikλ2 .
+(12.61)
+PROBLEMS
+12.1
+Maximum entropy.
+Find the maximum entropy density f ,
+deﬁned for x ≥0, satisfying EX = α1, E ln X = α2. That is, max-
+imize −
+
+f ln f subject to
+
+xf (x) dx = α1,
+
+(ln x)f (x) dx =
+α2, where the integral is over 0 ≤x < ∞. What family of densi-
+ties is this?
+12.2
+Min D(P ∥Q) under constraints on P .
+We wish to ﬁnd the
+(parametric form) of the probability mass function P (x), x ∈{1, 2,
+. . .} that minimizes the relative entropy D(P ∥Q) over all P such
+that  P (x)gi(x) = αi, i = 1, 2, . . . .
+(a) Use Lagrange multipliers to guess that
+P ∗(x) = Q(x)e
+∞
+i=1 λigi(x)+λ0
+(12.62)
+achieves this minimum if there exist λi’s satisfying the αi
+constraints. This generalizes the theorem on maximum en-
+tropy distributions subject to constraints.
+(b) Verify that P ∗minimizes D(P ∥Q).
+12.3
+Maximum entropy processes.
+Find the maximum entropy rate
+stochastic process {Xi}∞
+−∞subject to the constraints:
+(a) EX2
+i = 1,
+i = 1, 2, . . . .
+(b) EX2
+i = 1, EXiXi+1 = 1
+2,
+i = 1, 2, . . . .
+(c) Find the maximum entropy spectrum for the processes in parts
+(a) and (b).
+12.4
+Maximum entropy with marginals.
+What is the maximum en-
+tropy distribution p(x, y) that has the following marginals?
+
+--- Page 48 ---
+422
+MAXIMUM ENTROPY
+(Hint: You may wish to guess and verify a more general result.)
+12.5
+Processes with ﬁxed marginals.
+Consider the set of all densities
+with ﬁxed pairwise marginals fX1,X2(x1, x2), fX2,X3(x2, x3), . . . ,
+fXn−1,Xn(xn−1, xn). Show that the maximum entropy process with
+these marginals is the ﬁrst-order (possibly time-varying) Markov
+process with these marginals. Identify the maximizing f ∗(x1, x2,
+. . . , xn).
+12.6
+Every density is a maximum entropy density.
+Let f0(x) be a
+given density. Given r(x), let gα(x) be the density maximizing
+h(X) over all f satisfying
+
+f (x)r(x) dx = α. Now let r(x) =
+ln f0(x). Show that gα(x) = f0(x) for an appropriate choice α =
+α0. Thus, f0(x) is a maximum entropy density under the constraint
+
+f ln f0 = α0.
+12.7
+Mean-squared error.
+Let {Xi}n
+i=1 satisfy EXiXi+k = Rk, k =
+0, 1, . . . , p. Consider linear predictors for Xn; that is,
+ˆXn =
+n−1
+
+i=1
+biXn−i.
+Assume that n > p. Find
+max
+f (xn) min
+b E(Xn −ˆXn)2,
+where the minimum is over all linear predictors b and the maxi-
+mum is over all densities f satisfying R0, . . . , Rp.
+12.8
+Maximum entropy characteristic functions.
+We ask for the max-
+imum entropy density f (x), 0 ≤x ≤a, satisfying a constraint on
+the characteristic function (u) =
+ a
+0 eiuxf (x) dx. The answers
+need be given only in parametric form.
+(a) Find the maximum entropy f satisfying
+ a
+0 f (x) cos(u0x) dx
+= α, at a speciﬁed point u0.
+(b) Find the maximum entropy f satisfying
+ a
+0 f (x) sin(u0x) dx
+= β.
+(c) Find the maximum entropy density f (x), 0 ≤x ≤a, having a
+given value of the characteristic function (u0) at a speciﬁed
+point u0.
+(d) What problem is encountered if a = ∞?
+
+--- Page 49 ---
+PROBLEMS
+423
+12.9
+Maximum entropy processes
+(a) Find the maximum entropy rate binary stochastic process
+{Xi}∞
+i=−∞, Xi ∈{0, 1},
+satisfying
+Pr{Xi = Xi+1} = 1
+3
+for
+all i.
+(b) What is the resulting entropy rate?
+12.10
+Maximum entropy of sums.
+Let Y = X1 + X2. Find the maxi-
+mum entropy density for Y under the constraint EX2
+1 = P1, EX2
+2
+= P2:
+(a) If X1 and X2 are independent.
+(b) If X1 and X2 are allowed to be dependent.
+(c) Prove part (a).
+12.11
+Maximum entropy Markov chain.
+Let {Xi} be a stationary
+Markov chain with Xi ∈{1, 2, 3}. Let I (Xn; Xn+2) = 0 for all n.
+(a) What is the maximum entropy rate process satisfying this
+constraint?
+(b) What if I (Xn; Xn+2) = α for all n for some given value of
+α, 0 ≤α ≤log 3?
+12.12
+Entropy bound on prediction error.
+Let {Xn} be an arbitrary real
+valued stochastic process. Let ˆXn+1 = E{Xn+1|Xn}. Thus the con-
+ditional mean ˆXn+1 is a random variable depending on the n-past
+Xn. Here ˆXn+1 is the minimum mean squared error prediction of
+Xn+1 given the past.
+(a) Find a lower bound on the conditional variance E{E{(Xn+1
+−ˆXn+1)2|Xn}} in terms of the conditional differential entropy
+h(Xn+1|Xn).
+(b) Is equality achieved when {Xn} is a Gaussian stochastic pro-
+cess?
+12.13
+Maximum entropy rate.
+What is the maximum entropy rate sto-
+chastic process {Xi} over the symbol set {0, 1} for which the
+probability that 00 occurs in a sequence is zero?
+12.14
+Maximum entropy
+(a) What is the parametric-form maximum entropy density f (x)
+satisfying the two conditions
+EX8 = a,
+EX16 = b?
+(b) What is the maximum entropy density satisfying the condition
+E(X8 + X16) = a + b?
+(c) Which entropy is higher?
+
+--- Page 50 ---
+424
+MAXIMUM ENTROPY
+12.15
+Maximum entropy.
+Find the parametric form of the maximum
+entropy density f satisfying the Laplace transform condition
+
+f (x)e−x dx = α,
+and give the constraints on the parameter.
+12.16
+Maximum entropy processes.
+Consider the set of all stochastic
+processes with {Xi}, Xi ∈R, with
+R0 = EX2
+i = 1,
+R1 = EXiXi+1 = 1
+2.
+Find the maximum entropy rate.
+12.17
+Binary maximum entropy.
+Consider a binary process {Xi}, Xi ∈
+{−1, +1}, with R0 = EX2
+i = 1 and R1 = EXiXi+1 = 1
+2.
+(a) Find the maximum entropy process with these constraints.
+(b) What is the entropy rate?
+(c) Is there a Bernoulli process satisfying these constraints?
+12.18
+Maximum entropy.
+Maximize h(Z, Vx, Vy, Vz) subject to the en-
+ergy constraint E( 1
+2m∥V ∥2 + mgZ) = E0. Show that the resulting
+distribution yields
+E 1
+2m∥V ∥2 = 3
+5E0,
+EmgZ = 2
+5E0.
+Thus, 2
+5 of the energy is stored in the potential ﬁeld, regardless of
+its strength g.
+12.19
+Maximum entropy discrete processes
+(a) Find the maximum entropy rate binary stochastic process
+{Xi}∞
+i=−∞,
+Xi ∈{0, 1}, satisfying Pr{Xi = Xi+1} = 1
+3 for all
+i.
+(b) What is the resulting entropy rate?
+12.20
+Maximum entropy of sums.
+Let Y = X1 + X2. Find the maxi-
+mum entropy of Y under the constraint EX2
+1 = P1, EX2
+2 = P2:
+(a) If X1 and X2 are independent.
+(b) If X1 and X2 are allowed to be dependent.
+
+--- Page 51 ---
+HISTORICAL NOTES
+425
+12.21
+Entropy rate
+(a) Find the maximum entropy rate stochastic process {Xi} with
+EX2
+i = 1, EXiXi+2 = α, i = 1, 2, . . .. Be careful.
+(b) What is the maximum entropy rate?
+(c) What is EXiXi+1 for this process?
+12.22
+Minimum expected value
+(a) Find the minimum value of EX over all probability density
+functions f (x) satisfying the following three constraints:
+(i) f (x) = 0 for x ≤0.
+(ii)
+ ∞
+−∞f (x) dx = 1.
+(iii) h(f ) = h.
+(b) Solve the same problem if (i) is replaced by
+(i′) f (x) = 0 for x ≤a.
+HISTORICAL NOTES
+The maximum entropy principle arose in statistical mechanics in the
+nineteenth century and has been advocated for use in a broader con-
+text by Jaynes [294]. It was applied to spectral estimation by Burg [80].
+The information-theoretic proof of Burg’s theorem is from Choi and
+Cover [98].
+
+--- Page 52 ---
+
+--- Page 53 ---
+CHAPTER 13
+UNIVERSAL SOURCE CODING
+Here we develop the basics of universal source coding. Minimax regret
+data compression is deﬁned, and the descriptive cost of universality is
+shown to be the information radius of the relative entropy ball containing
+all the source distributions. The minimax theorem shows this radius to
+be the channel capacity for the associated channel given by the source
+distribution. Arithmetic coding enables the use of a source distribution
+that is learned on the ﬂy. Finally, individual sequence compression is
+deﬁned and achieved by a succession of Lempel–Ziv parsing algorithms.
+In Chapter 5 we introduced the problem of ﬁnding the shortest rep-
+resentation of a source, and showed that the entropy is the fundamental
+lower limit on the expected length of any uniquely decodable represen-
+tation. We also showed that if we know the probability distribution for
+the source, we can use the Huffman algorithm to construct the optimal
+(minimal expected length) code for that distribution.
+For many practical situations, however, the probability distribution
+underlying the source may be unknown, and we cannot apply the methods
+of Chapter 5 directly. Instead, all we know is a class of distributions. One
+possible approach is to wait until we have seen all the data, estimate the
+distribution from the data, use this distribution to construct the best code,
+and then go back to the beginning and compress the data using this code.
+This two-pass procedure is used in some applications where there is a
+fairly small amount of data to be compressed. But there are many situa-
+tions in which it is not feasible to make two passes over the data, and it
+is desirable to have a one-pass (or online) algorithm to compress the data
+that “learns” the probability distribution of the data and uses it to com-
+press the incoming symbols. We show the existence of such algorithms
+that do well for any distribution within a class of distributions.
+In yet other cases, there is no probability distribution underlying the
+data—all we are given is an individual sequence of outcomes. Examples
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+427
+
+--- Page 54 ---
+428
+UNIVERSAL SOURCE CODING
+of such data sources include text and music. We can then ask the question:
+How well can we compress the sequence? If we do not put any restric-
+tions on the class of algorithms, we get a meaningless answer—there
+always exists a function that compresses a particular sequence to one
+bit while leaving every other sequence uncompressed. This function is
+clearly “overﬁtted” to the data. However, if we compare our performance
+to that achievable by optimal word assignments with respect to Bernoulli
+distributions or kth-order Markov processes, we obtain more interesting
+answers that are in many ways analogous to the results for the probabilis-
+tic or average case analysis. The ultimate answer for compressibility for
+an individual sequence is the Kolmogorov complexity of the sequence,
+which we discuss in Chapter 14.
+We begin the chapter by considering the problem of source coding as
+a game in which the coder chooses a code that attempts to minimize
+the average length of the representation and nature chooses a distribution
+on the source sequence. We show that this game has a value that is
+related to the capacity of a channel with rows of its transition matrix that
+are the possible distributions on the source sequence. We then consider
+algorithms for encoding the source sequence given a known or “estimated”
+distribution on the sequence. In particular, we describe arithmetic coding,
+which is an extension of the Shannon–Fano–Elias code of Section 5.9
+that permits incremental encoding and decoding of sequences of source
+symbols.
+We then describe two basic versions of the class of adaptive dictionary
+compression algorithms called Lempel–Ziv, based on the papers by Ziv
+and Lempel [603, 604]. We provide a proof of asymptotic optimality for
+these algorithms, showing that in the limit they achieve the entropy rate
+for any stationary ergodic source. In Chapter 16 we extend the notion of
+universality to investment in the stock market and describe online portfolio
+selection procedures that are analogous to the universal methods for data
+compression.
+13.1
+UNIVERSAL CODES AND CHANNEL CAPACITY
+Assume that we have a random variable X drawn according to a dis-
+tribution from the family {pθ}, where the parameter θ ∈{1, 2, . . . , m} is
+unknown. We wish to ﬁnd an efﬁcient code for this source.
+From the results of Chapter 5, if we know θ, we can construct a code
+with codeword lengths l(x) = log
+1
+pθ(x), achieving an average codeword
+
+--- Page 55 ---
+13.1
+UNIVERSAL CODES AND CHANNEL CAPACITY
+429
+length equal to the entropy Hθ(x) = −
+x pθ(x) log pθ(x), and this is the
+best that we can do. For the purposes of this section, we will ignore the
+integer constraints on l(x), knowing that applying the integer constraint
+will cost at most one bit in expected length. Thus,
+min
+l(x) Epθ [l(X)] = Epθ
+
+log
+1
+pθ(X)
+
+= H(pθ).
+(13.1)
+What happens if we do not know the true distribution pθ, yet wish to
+code as efﬁciently as possible? In this case, using a code with codeword
+lengths l(x) and implied probability q(x) = 2−l(x), we deﬁne the redun-
+dancy of the code as the difference between the expected length of the
+code and the lower limit for the expected length:
+R(pθ, q) = Epθ [l(X)] −Epθ
+
+log
+1
+pθ(X)
+
+(13.2)
+=
+
+x
+pθ(x)
+
+l(x) −log
+1
+p(x)
+
+(13.3)
+=
+
+x
+pθ(x)
+
+log
+1
+q(x) −log
+1
+p(x)
+
+(13.4)
+=
+
+x
+pθ(x) log pθ(x)
+q(x)
+(13.5)
+= D(pθ∥q),
+(13.6)
+where q(x) = 2−l(x) is the distribution that corresponds to the codeword
+lengths l(x).
+We wish to ﬁnd a code that does well irrespective of the true distribution
+pθ, and thus we deﬁne the minimax redundancy as
+R∗= min
+q max
+pθ R(pθ, q) = min
+q max
+pθ D(pθ∥q).
+(13.7)
+This minimax redundancy is achieved by a distribution q that is at the
+“center” of the information ball containing the distributions pθ, that is,
+the distribution q whose maximum distance from any of the distributions
+pθ is minimized (Figure 13.1).
+To ﬁnd the distribution q that is as close as possible to all the possible
+pθ in relative entropy, consider the following channel:
+
+--- Page 56 ---
+430
+UNIVERSAL SOURCE CODING
+p1
+q*
+pm
+FIGURE 13.1. Minimum radius information ball containing all the pθ’s
+θ →
+
+
+. . . p1 . . .
+. . . p2 . . .
+...
+. . . pθ . . .
+...
+. . . pm . . .
+
+
+→X.
+(13.8)
+This is a channel {θ, pθ(x), X} with the rows of the transition matrix equal
+to the different pθ’s, the possible distributions of the source. We will show
+that the minimax redundancy R∗is equal to the capacity of this channel,
+and the corresponding optimal coding distribution is the output distribution
+of this channel induced by the capacity-achieving input distribution. The
+capacity of this channel is given by
+C = max
+π(θ) I (θ; X) = max
+π(θ)
+
+θ
+π(θ)pθ(x) log pθ(x)
+qπ(x),
+(13.9)
+where
+qπ(x) =
+
+θ
+π(θ)pθ(x).
+(13.10)
+The equivalence of R∗and C is expressed in the following theorem:
+Theorem 13.1.1
+(Gallager [229], Ryabko [450]) The capacity of a
+channel p(x|θ) with rows p1, p2, . . . , pm is given by
+C = R∗= min
+q max
+θ
+D(pθ∥q).
+(13.11)
+
+--- Page 57 ---
+13.1
+UNIVERSAL CODES AND CHANNEL CAPACITY
+431
+The distribution q that achieves the minimum in (13.11) is the output
+distribution q∗(x) induced be the capacity-achieving input distribution
+π∗(θ):
+q∗(x) = qπ∗(x) =
+
+θ
+π∗(θ)pθ(x).
+(13.12)
+Proof:
+Let π(θ) be an input distribution on θ ∈{1, 2, . . . , m}, and let
+the induced output distribution be qπ:
+(qπ)j =
+m
+
+i=1
+πipij,
+(13.13)
+where pij = pθ(x) for θ = i, x = j. Then for any distribution q on the
+output, we have
+Iπ(θ; X) =
+
+i,j
+πipij log pij
+(qπ)j
+(13.14)
+=
+
+i
+πiD(pi∥qπ)
+(13.15)
+=
+
+i,j
+πipij log pij
+qj
+qj
+(qπ)j
+(13.16)
+=
+
+i,j
+πipij log pij
+qj
++
+
+i,j
+πipij log
+qj
+(qπ)j
+(13.17)
+=
+
+i,j
+πipij log pij
+qj
++
+
+j
+(qπ)j log
+qj
+(qπ)j
+(13.18)
+=
+
+i,j
+πipij log pij
+qj
+−D(qπ∥q)
+(13.19)
+=
+
+i
+πiD(pi∥q) −D(qπ∥q)
+(13.20)
+≤
+
+i
+πiD(pi∥q)
+(13.21)
+for all q, with equality iff q = qπ. Thus, for all q,
+
+i
+πiD(pi∥q) ≥
+
+i
+πiD(pi∥qπ),
+(13.22)
+
+--- Page 58 ---
+432
+UNIVERSAL SOURCE CODING
+and therefore
+Iπ(θ; X) = min
+q
+
+i
+πiD(pi∥q)
+(13.23)
+is achieved when q = qπ. Thus, the output distribution that minimizes the
+average distance to all the rows of the transition matrix is the the output
+distribution induced by the channel (Lemma 10.8.1).
+The channel capacity can now be written as
+C = max
+π
+Iπ(θ; X)
+(13.24)
+= max
+π
+min
+q
+
+i
+πiD(pi∥q).
+(13.25)
+We can now apply a fundamental theorem of game theory, which states
+that for a continuous function f (x, y), x ∈X, y ∈Y, if f (x, y) is convex
+in x and concave in y, and X, Y are compact convex sets, then
+min
+x∈X max
+y∈Y f (x, y) = max
+y∈Y min
+x∈X f (x, y).
+(13.26)
+The proof of this minimax theorem can be found in [305, 392].
+By convexity of relative entropy (Theorem 2.7.2), 
+i πiD(pi∥q) is
+convex in q and concave in π, and therefore
+C = max
+π
+min
+q
+
+i
+πiD(pi∥q)
+(13.27)
+= min
+q max
+π
+
+i
+πiD(pi∥q)
+(13.28)
+= min
+q max
+i
+D(pi∥q),
+(13.29)
+where the last equality follows from the fact that the maximum is achieved
+by putting all the weight on the index i maximizing D(pi∥q) in (13.28).
+It also follows that q∗= qπ∗. This completes the proof.
+□
+Thus, the channel capacity of the channel from θ to X is the minimax
+expected redundancy in source coding.
+Example 13.1.1
+Consider the case when X = {1, 2, 3} and θ takes only
+two values, 1 and 2, and the corresponding distributions are p1 = (1 −α,
+α, 0) and p2 = (0, α, 1 −α). We would like to encode a sequence of
+symbols from X without knowing whether the distribution is p1 or p2.
+The arguments above indicate that the worst-case optimal code uses the
+
+--- Page 59 ---
+13.2
+UNIVERSAL CODING FOR BINARY SEQUENCES
+433
+codeword lengths corresponding to the distribution that has a minimal
+relative entropy distance from both distributions, in this case, the midpoint
+of the two distributions. Using this distribution, q =
+1−α
+2 , α, 1−α
+2
+
+, we
+achieve a redundancy of
+D(p1∥q) = D(p2∥q) = (1 −α) log
+1 −α
+(1 −α)/2 + α log α
+α + 0 = 1 −α.
+(13.30)
+The channel with transition matrix rows equal to p1 and p2 is equivalent
+to the erasure channel (Section 7.1.5), and the capacity of this channel can
+easily be calculated to be (1 −α), achieved with a uniform distribution on
+the inputs. The output distribution corresponding to the capacity-achieving
+input distribution is equal to
+1−α
+2 , α, 1−α
+2
+
+(i.e., the same as the distri-
+bution q above). Thus, if we don’t know the distribution for this class of
+sources, we code using the distribution q rather than p1 or p2, and incur
+an additional cost of 1 −α bits per source symbol above the ideal entropy
+bound.
+13.2
+UNIVERSAL CODING FOR BINARY SEQUENCES
+Now we consider an important special case of encoding a binary sequence
+xn ∈{0, 1}n. We do not make any assumptions about the probability dis-
+tribution for x1, x2, . . . , xn.
+We begin with bounds on the size of
+n
+k
+
+, taken from Wozencraft and
+Reiffen [567] proved in Lemma 17.5.1: For k ̸= 0 or n,
+
+n
+8k(n −k) ≤
+
+n
+k
+
+2−nH(k/n) ≤
+
+n
+πk(n −k).
+(13.31)
+We ﬁrst describe an ofﬂine algorithm to describe the sequence; we
+count the number of 1’s in the sequence, and after we have seen the entire
+sequence, we send a two-stage description of the sequence. The ﬁrst stage
+is a count of the number of 1’s in the sequence [i.e., k = 
+i xi (using
+⌈log(n + 1)⌉bits)], and the second stage is the index of this sequence
+among all sequences that have k 1’s (using ⌈log
+n
+k
+
+⌉bits). This two-stage
+description requires total length
+l(xn) ≤log(n + 1) + log
+
+n
+k
+
++ 2
+(13.32)
+≤log n + nH
+k
+n
+
+−1
+2 log n −1
+2 log
+
+π k
+n
+(n −k)
+n
+
++ 3 (13.33)
+
+--- Page 60 ---
+434
+UNIVERSAL SOURCE CODING
+= nH
+k
+n
+
++ 1
+2 log n −1
+2 log
+
+π k
+n
+n −k
+n
+
++ 3.
+(13.34)
+Thus, the cost of describing the sequence is approximately 1
+2 log n bits
+above the optimal cost with the Shannon code for a Bernoulli distribution
+corresponding to k/n. The last term is unbounded at k = 0 or k = n, so
+the bound is not useful for these cases (the actual description length is
+log(n + 1) bits, whereas the entropy H(k/n) = 0 when k = 0 or k = n).
+This counting approach requires the compressor to wait until he has
+seen the entire sequence. We now describe a different approach using a
+mixture distribution that achieves the same result on the ﬂy. We choose
+the coding distribution q(x1, x2, . . . , xn) = 2−l(x1,x2,...,xn) to be a uniform
+mixture of all Bernoulli(θ) distributions on x1, x2, . . . , xn. We will analyze
+the performance of a code using this distribution and show that such codes
+perform well for all input sequences.
+We construct this distribution by assuming that θ, the parameter of
+the Bernoulli distribution is drawn according to a uniform distribution on
+[0, 1]. The probability of a sequence x1, x2, . . . , xn with k ones is θk(1 −
+θ)n−k under the Bernoulli(θ) distribution. Thus, the mixture probability
+of the sequence is
+p(x1, x2, . . . , xn) =
+ 1
+0
+θk(1 −θ)n−kdθ = A(n, k).
+(13.35)
+Integrating by parts, setting u = (1 −θ)n−k and dv = θkdθ, we have
+ 1
+0
+θk(1 −θ)n−kdθ =
+
+1
+k + 1θk+1(1 −θ)n−k
+1
+0
++ n −k
+k + 1
+ 1
+0
+θk+1(1 −θ)n−k−1dθ,
+(13.36)
+or
+A(n, k) = n −k
+k + 1A(n, k + 1).
+(13.37)
+Now A(n, n) =
+ 1
+0 θndθ =
+1
+n+1, and we can easily verify from the recur-
+sion that
+p(x1, x2, . . . , xn) = A(n, k) =
+1
+n + 1
+1
+
+n
+k
+.
+(13.38)
+
+--- Page 61 ---
+13.2
+UNIVERSAL CODING FOR BINARY SEQUENCES
+435
+The codeword length with respect to the mixture distribution is
+
+log
+1
+q(xn)
+
+≤log(n + 1) + log
+
+n
+k
+
++ 1,
+(13.39)
+which is within one bit of the length of the two-stage description above.
+Thus, we have a similar bound on the codeword length
+l(x1, x2, . . . , xn) ≤H
+k
+n
+
++ 1
+2 log n −1
+2 log
+
+π k
+n
+(n −k)
+n
+
++ 2 (13.40)
+for all sequences x1, x2, . . . , xn. This mixture distribution achieves a code-
+word length within 1
+2 log n bits of the optimal code length nH(k/n) that
+would be required if the source were really Bernoulli(k/n), without any
+assumptions about the distribution of the source.
+Thismixturedistributionyieldsaniceexpressionfortheconditionalprob-
+ability of the next symbol given the previous symbols of x1, x2, . . . , xn. Let
+ki be the number of 1’s in the ﬁrst i symbols of x1, x2, . . . , xn. Using (13.38),
+we have
+q(xi+1 = 1|xi) = q(xi, 1)
+q(xi)
+(13.41)
+=
+
+1
+i + 2
+1
+ i+1
+ki+1
+
+  
+1
+i + 1
+1
+ i
+ki
+
+
+(13.42)
+=
+1
+i + 2
+(ki + 1)!(n −ki)!
+(i + 1)!
+(i + 1)ki!(i −ki)!
+i!
+(13.43)
+= ki + 1
+i + 2 .
+(13.44)
+This is the Bayesian posterior probability of 1 given the uniform prior
+on θ, and is called the Laplace estimate for the probability of the next
+symbol. We can use this posterior probability as the probability of the next
+symbol for arithmetic coding, and achieve the codeword length log
+1
+q(xn)
+in a sequential manner with ﬁnite-precision arithmetic. This is a horizon-
+free result, in that the procedure does not depend on the length of the
+sequence.
+One issue with the uniform mixture approach or the two-stage approach
+is that the bound does not apply for k = 0 or k = n. The only uni-
+form bound that we can give on the extra redundancy is log n, which
+we can obtain by using the bounds of (11.40). The problem is that
+
+--- Page 62 ---
+436
+UNIVERSAL SOURCE CODING
+we are not assigning enough probability to sequences with k = 0 or
+k = n. If instead of using a uniform distribution on θ, we used the
+Dirichlet
+1
+2, 1
+2
+
+distribution, also called the Beta
+1
+2, 1
+2
+
+distribution, the
+probability of a sequence x1, x2, . . . , xn becomes
+q 1
+2 (xn) =
+ 1
+0
+θk(1 −θ)n−k
+1
+π√θ(1 −θ) dθ
+(13.45)
+and it can be shown that this achieves a description length
+log
+1
+q 1
+2(xn)
+≤H(k/n) + 1
+2 log n + log π
+8
+(13.46)
+for all xn ∈{0, 1}n, achieving a uniform bound on the redundancy of the
+universal mixture code. As in the case of the uniform prior, we can cal-
+culate the conditional distribution of the next symbol, given the previous
+observations, as
+q 1
+2(xi+1 = 1|xi) = ki + 1
+2
+i + 1 ,
+(13.47)
+which can be used with arithmetic coding to provide an online algorithm
+to encode the sequence. We will analyze the performance of the mix-
+ture algorithm in greater detail when we analyze universal portfolios in
+Section 16.7.
+13.3
+ARITHMETIC CODING
+The Huffman coding procedure described in Chapter 5 is optimal for
+encoding a random variable with a known distribution that has to be
+encoded symbol by symbol. However, due to the fact that the codeword
+lengths for a Huffman code were restricted to be integral, there could be a
+loss of up to 1 bit per symbol in coding efﬁciency. We could alleviate this
+loss by using blocks of input symbols—however, the complexity of this
+approach increases exponentially with block length. We now describe a
+method of encoding without this inefﬁciency. In arithmetic coding, instead
+of using a sequence of bits to represent a symbol, we represent it by a
+subinterval of the unit interval.
+The code for a sequence of symbols is an interval whose length decreases
+as we add more symbols to the sequence. This property allows us to have a
+coding scheme that is incremental (the code for an extension to a sequence
+can be calculated simply from the code for the original sequence) and for
+which the codeword lengths are not restricted to be integral. The motivation
+
+--- Page 63 ---
+13.3
+ARITHMETIC CODING
+437
+for arithmetic coding is based on Shannon–Fano–Elias coding (Section 5.9)
+and the following lemma:
+Lemma 13.3.1
+Let Y be a random variable with continuous probability
+distribution function F(y). Let U = F(Y) (i.e., U is a function of Y deﬁned
+by its distribution function). Then U is uniformly distributed on [0, 1].
+Proof:
+Since F(y) ∈[0, 1], the range of U is [0, 1]. Also, for u ∈[0, 1],
+FU(u) = Pr(U ≤u)
+(13.48)
+= Pr(F(Y) ≤u)
+(13.49)
+= Pr(Y ≤F −1(u))
+(13.50)
+= F(F −1(u))
+(13.51)
+= u,
+(13.52)
+which proves that U has a uniform distribution in [0, 1].
+□
+Now consider an inﬁnite sequence of random variables X1, X2, . . . from
+a ﬁnite alphabet X = 0, 1, 2, . . . , m. For any sequence x1, x2, . . . , from
+this alphabet, we can place 0. in front of the sequence and consider it as
+a real number (base m + 1) between 0 and 1. Let X be the real-valued
+random variable X = 0.X1X2 . . . . Then X has the following distribution
+function:
+FX(x) = Pr{X ≤x = 0.x1x2 · · ·}
+(13.53)
+= Pr{0.X1X2 · · · ≤0.x1x2 · · ·}
+(13.54)
+= Pr{X1 < x1} + Pr{X1 = x1, X2 < x2} + · · · .
+(13.55)
+Now let U = FX(X) = FX(0.X1X2 . . .) = 0.F1F2 . . . . If the distribution
+on inﬁnite sequences X∞has no atoms, then, by the lemma above, U has a
+uniform distribution on [0, 1], and therefore the bits F1F2 . . . in the binary
+expansion of U are Bernoulli(1
+2) (i.e., they are independent and uniformly
+distributed on {0, 1}). These bits are therefore incompressible, and form a
+compressed representation of the sequence 0.X1X2 . . . . For Bernoulli or
+Markov models, it is easy to calculate the cumulative distribution function,
+as illustrated in the following example.
+Example 13.3.1
+Let X1, X2, . . . , Xn be Bernoulli(p). Then the sequence
+xn = 110101 maps into
+
+--- Page 64 ---
+438
+UNIVERSAL SOURCE CODING
+F(xn) = Pr(X1 < 1) + Pr(X1 = 1, X2 < 1)
++ Pr(X1 = 1, X2 = 1, X3 < 0)
++ Pr(X1 = 1, X2 = 1, X3 = 0, X4 < 1)
++ Pr(X1 = 1, X2 = 1, X3 = 0, X4 = 1, X5 < 0)
++ Pr(X1 = 1, X2 = 1, X3 = 0, X4 = 1, X5 = 0, X6 < 1)
+(13.56)
+= q + pq + p2·0 + p2q·q + p2qp·0 + p2qpqq
+(13.57)
+= q + pq + p2q2 + p3q3.
+(13.58)
+Note that each term is easily computed from the previous terms. In general,
+for an arbitrary binary process {Xi},
+F(xn) =
+n
+
+k=1
+p(xk−10)xk.
+(13.59)
+The probability transform thus forms an invertible mapping from inﬁ-
+nite source sequences to incompressible inﬁnite binary sequences. We
+now consider the compression achieved by this transformation on ﬁnite
+sequences. Let X1, X2, . . . , Xn be a sequence of binary random vari-
+ables of length n, and let x1, x2, . . . , xn be a particular outcome. We
+can treat this sequence as representing an interval [0.x1x2 . . . xn000 . . . ,
+0.x1x2 . . . xn1111 . . .),
+or
+equivalently,
+[0.x1x2 . . . xn, 0.x1x2 . . . xn +
+( 1
+2)n). This is the set of inﬁnite sequences that start with 0.x1x2 · · · xn.
+Under the probability transform, this interval gets mapped into another
+interval, [FY(0.x1x2 · · · xn), FY(0.x1x2 · · · xn + ( 1
+2)n)), whose length is
+equal to PX(x1, x2, . . . , xn), the sum of the probabilities of all inﬁnite
+sequences that start with 0.x1x2 · · · xn. Under the probability inverse trans-
+form, any real number u within this interval maps into a sequence that
+starts with x1, x2, . . . , xn, and therefore given u and n, we can recon-
+struct x1, x2, . . . , xn. The Shannon–Fano–Elias coding scheme described
+earlier allows one to construct a preﬁx-free code of length log
+1
+p(x1,x2,...,xn) + 2 bits, and therefore it is possible to encode the sequence
+x1, x2, . . . , xn with this length. Note that log
+1
+p(x1,...,xn) is the ideal code-
+word length for xn.
+The process of encoding the sequence with the cumulative distribution
+function described above assumes arbitrary accuracy for the computa-
+tion. In practice, though, we have to implement all numbers with ﬁnite
+precision, and we describe such an implementation. The key is to consider
+
+--- Page 65 ---
+13.3
+ARITHMETIC CODING
+439
+not inﬁnite-precision points for the cumulative distribution function but
+intervals in the unit interval. Any ﬁnite-length sequence of symbols can
+be said to correspond to a subinterval of the unit interval. The objective
+of the arithmetic coding algorithm is to represent a sequence of random
+variables by a subinterval in [0, 1]. As the algorithm observes more input
+symbols, the length of the subinterval corresponding to the input sequence
+decreases. As the top end of the interval and the bottom end of the inter-
+val get closer, they begin to agree in the ﬁrst few bits. These will be ﬁrst
+few bits of the output sequence. As soon as the two ends of the interval
+agree, we can output the corresponding bits. We can therefore shift these
+bits out of the calculation and effectively scale the remaining intervals so
+that entire calculation can be done with ﬁnite precision. We will not go
+into the details here—there is a very good description of the algorithm
+and performance considerations in Bell et al. [41]
+Example 13.3.2
+(Arithmetic coding for a ternary input alphabet)
+Con-
+sider a random variable X with a ternary alphabet {A, B, C}, which
+are assumed to have probabilities 0.4, 0.4, and 0.2, respectively. Let
+the sequence to be encoded by ACAA. Thus, Fl(·) = (0, 0.4, 0.8) and
+Fh(·) = (0.4, 0.8, 1.0). Initially, the input sequence is empty, and the cor-
+responding interval is [0, 1). The cumulative distribution function after
+the ﬁrst input symbol is shown in Figure 13.2. It is easy to calculate that
+the interval in the algorithm without scaling after the ﬁrst symbol A is
+A
+1.0
+0.8
+0.4
+B
+C
+xn
+F(xn)
+FIGURE 13.2. Cumulative distribution function after the ﬁrst symbol.
+
+--- Page 66 ---
+440
+UNIVERSAL SOURCE CODING
+AA
+AB
+AC
+BA
+BB
+BC
+CA
+CB
+CC
+xn
+F(xn)
+0.32
+0.4
+FIGURE 13.3. Cumulative distribution function after the second symbol.
+[0, 0.4); after the second symbol, C, it is [0.32, 0.4) (Figure 13.3); after
+the third symbol A, it is [0.32,0.352); and after the fourth symbol A, it
+is [0.32, 0.3328). Since the probability of this sequence is 0.0128, we
+will use log(1/0.0128) + 2 (i.e., 9 bits) to encode the midpoint of the
+interval sequence using Shannon–Fano–Elias coding (0.3264, which is
+0.010100111 binary).
+In summary, the arithmetic coding procedure, given any length n and
+probability mass functionq(x1x2 · · · xn), enables one to encode the sequence
+x1x2 · · · xn in a code of length log
+1
+q(x1x2···xn) + 2 bits. If the source is i.i.d.
+and the assumed distribution q is equal to the true distribution p of the data,
+this procedure achieves an average length for the block that is within 2 bits
+of the entropy. Although this is not necessarily optimal for any ﬁxed block
+length (a Huffman code designed for the distribution could have a lower
+average codeword length), the procedure is incremental and can be used for
+any blocklength.
+13.4
+LEMPEL–ZIV CODING
+In Section 13.3 we discussed the basic ideas of arithmetic coding and
+mentioned some results on worst-case redundancy for coding a sequence
+from an unknown distribution. We now discuss a popular class of tech-
+niques for source coding that are universally optimal (their asymptotic
+
+--- Page 67 ---
+13.4
+LEMPEL–ZIV CODING
+441
+compression rate approaches the entropy rate of the source for any sta-
+tionary ergodic source) and simple to implement. This class of algorithms
+is termed Lempel–Ziv, named after the authors of two seminal papers
+[603, 604] that describe the two basic algorithms that underlie this class.
+The algorithms could also be described as adaptive dictionary compression
+algorithms.
+The notion of using dictionaries for compression dates back to the
+invention of the telegraph. At the time, companies were charged by the
+number of letters used, and many large companies produced codebooks for
+the frequently used phrases and used the codewords for their telegraphic
+communication. Another example is the notion of greetings telegrams
+that are popular in India—there is a set of standard greetings such as
+“25:Merry Christmas” and “26:May Heaven’s choicest blessings be show-
+ered on the newly married couple.” A person wishing to send a greeting
+only needs to specify the number, which is used to generate the actual
+greeting at the destination.
+The idea of adaptive dictionary-based schemes was not explored until
+Ziv and Lempel wrote their papers in 1977 and 1978. The two papers
+describe two distinct versions of the algorithm. We refer to these ver-
+sions as LZ77 or sliding window Lempel–Ziv and LZ78 or tree-structured
+Lempel–Ziv. (They are sometimes called LZ1 and LZ2, respectively.)
+We ﬁrst describe the basic algorithms in the two cases and describe
+some simple variations. We later prove their optimality, and end with
+some practical issues. The key idea of the Lempel–Ziv algorithm is to
+parse the string into phrases and to replace phrases by pointers to where
+the same string has occurred in the past. The differences between the
+algorithms is based on differences in the set of possible match locations
+(and match lengths) the algorithm allows.
+13.4.1
+Sliding Window Lempel–Ziv Algorithm
+The algorithm described in the 1977 paper encodes a string by ﬁnding the
+longest match anywhere within a window of past symbols and represents
+the string by a pointer to location of the match within the window and the
+length of the match. There are many variations of this basic algorithm,
+and we describe one due to Storer and Szymanski [507].
+We assume that we have a string x1, x2, . . . to be compressed from a
+ﬁnite alphabet. A parsing S of a string x1x2 · · · xn is a division of the
+string into phrases, separated by commas. Let W be the length of the
+window. Then the algorithm can be described as follows: Assume that
+we have compressed the string until time i −1. Then to ﬁnd the next
+phrase, ﬁnd the largest k such that for some j, i −1 −W ≤j ≤i −1,
+
+--- Page 68 ---
+442
+UNIVERSAL SOURCE CODING
+the string of length k starting at xj is equal to the string (of length k)
+starting at xi (i.e., xj+l = xi+l for all 0 ≤l < k). The next phrase is then
+of length k (i.e., xi . . . xi+k−1) and is represented by the pair (P, L), where
+P is the location of the beginning of the match and L is the length of
+the match. If a match is not found in the window, the next character is
+sent uncompressed. To distinguish between these two cases, a ﬂag bit
+is needed, and hence the phrases are of two types: (F, P, L) or (F, C),
+where C represents an uncompressed character.
+Note that the target of a (pointer,length) pair could extend beyond the
+window, so that it overlaps with the new phrase. In theory, this match
+could be arbitrarily long; in practice, though, the maximum phrase length
+is restricted to be less than some parameter.
+For example, if W = 4 and the string is ABBABBABBBAABABA
+and the initial window is empty, the string will be parsed as follows:
+A,B,B,ABBABB,BA,A,BA,BA, which is represented by the sequence of
+“pointers”: (0,A),(0,B),(1,1,1),(1,3,6),(1,4,2),(1,1,1),(1,3,2),(1,2,2), where
+the ﬂag bit is 0 if there is no match and 1 if there is a match, and the
+location of the match is measured backward from the end of the window.
+[In the example, we have represented every match within the window
+using the (P, L) pair; however, it might be more efﬁcient to represent
+short matches as uncompressed characters. See Problem 13.8 for details.]
+We can view this algorithm as using a dictionary that consists of all
+substrings of the string in the window and of all single characters. The
+algorithm ﬁnds the longest match within the dictionary and sends a pointer
+to that match. We later show that a simple variation on this version of
+LZ77 is asymptotically optimal. Most practical implementations of LZ77,
+such as gzip and pkzip, are also based on this version of LZ77.
+13.4.2
+Tree-Structured Lempel–Ziv Algorithms
+In the 1978 paper, Ziv and Lempel described an algorithm that parses a
+string into phrases, where each phrase is the shortest phrase not seen ear-
+lier. This algorithm can be viewed as building a dictionary in the form of
+a tree, where the nodes correspond to phrases seen so far. The algorithm is
+particularly simple to implement and has become popular as one of the early
+standard algorithms for ﬁle compression on computers because of its speed
+and efﬁciency. It is also used for data compression in high-speed modems.
+The source sequence is sequentially parsed into strings that have not
+appeared so far. For example, if the string is ABBABBABBBAABABAA
+. . . , we parse it as A,B,BA,BB,AB,BBA,ABA,BAA. . . . After every com-
+ma, we look along the input sequence until we come to the shortest string
+that has not been marked off before. Since this is the shortest such string,
+
+--- Page 69 ---
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+443
+all its preﬁxes must have occurred earlier. (Thus, we can build up a tree
+of these phrases.) In particular, the string consisting of all but the last bit
+of this string must have occurred earlier. We code this phrase by giving
+the location of the preﬁx and the value of the last symbol. Thus, the string
+above would be represented as (0,A),(0,B),(2,A),(2,B),(1,B),(4,A),(5,A),
+(3,A), . . . .
+Sending an uncompressed character in each phrase results in a loss of
+efﬁciency. It is possible to get around this by considering the extension
+character (the last character of the current phrase) as part of the next
+phrase. This variation, due to Welch [554], is the basis of most practical
+implementations of LZ78, such as compress on Unix, in compression in
+modems, and in the image ﬁles in the GIF format.
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+13.5.1
+Sliding Window Lempel–Ziv Algorithms
+In the original paper of Ziv and Lempel [603], the authors described the
+basic LZ77 algorithm and proved that it compressed any string as well
+as any ﬁnite-state compressor acting on that string. However, they did
+not prove that this algorithm achieved asymptotic optimality (i.e., that the
+compression ratio converged to the entropy for an ergodic source). This
+result was proved by Wyner and Ziv [591].
+The proof relies on a simple lemma due to Kac: the average length of
+time that you need to wait to see a particular symbol is the reciprocal of
+the probability of a symbol. Thus, we are likely to see the high-probability
+strings within the window and encode these strings efﬁciently. The strings
+that we do not ﬁnd within the window have low probability, so that
+asymptotically, they do not inﬂuence the compression achieved.
+Instead of proving the optimality of the practical version of LZ77, we
+will present a simpler proof for a different version of the algorithm, which,
+though not practical, captures some of the basic ideas. This algorithm
+assumes that both the sender and receiver have access to the inﬁnite past
+of the string, and represents a string of length n by pointing to the last
+time it occurred in the past.
+We assume that we have a stationary and ergodic process deﬁned
+for time from −∞to ∞, and that both the encoder and decoder have
+access to . . . , X−2, X−1, the inﬁnite past of the sequence. Then to encode
+X0, X1, . . . , Xn−1 (a block of length n), we ﬁnd the last time we have
+seen these n symbols in the past. Let
+Rn(X0, X1, . . . , Xn−1) =
+max{j < 0 : (X−j, X−j+1 . . . X−j+n−1) = (X0, . . . , Xn−1)}. (13.60)
+
+--- Page 70 ---
+444
+UNIVERSAL SOURCE CODING
+Then to represent X0, . . . , Xn−1, we need only to send Rn to the receiver,
+who can then look back Rn bits into the past and recover X0, . . . , Xn−1.
+Thus, the cost of the encoding is the cost of representing Rn. We will show
+that this cost is approximately log Rn and that asymptotically 1
+nE log Rn
+→H(X), thus proving the asymptotic optimality of this algorithm.
+We will need the following lemmas.
+Lemma 13.5.1
+There exists a preﬁx-free code for the integers such that
+the length of the codeword for integer k is log k + 2 log log k + O(1).
+Proof:
+If we knew that k ≤m, we could encode k with log m bits. How-
+ever, since we don’t have an upper limit for k, we need to tell the receiver
+the length of the encoding of k (i.e., we need to specify log k). Consider
+the following encoding for the integer k: We ﬁrst represent ⌈log k⌉in
+unary, followed by the binary representation of k:
+C1(k) = 00 · · · 0
+  
+⌈log k⌉0’s
+1
+xx · · · x
+  
+k in binary
+.
+(13.61)
+It is easy to see that the length of this representation is 2⌈log k⌉+ 1 ≤
+2 log k + 3. This is more than the length we are looking for since we are
+using the very inefﬁcient unary code to send log k. However, if we use C1
+to represent log k, it is now easy to see that this representation has a length
+less than log k + 2 log log k + 4, which proves the lemma. A similar method
+is presented in the discussion following Theorem 14.2.3.
+□
+The key result that underlies the proof of the optimality of LZ77 is
+Kac’s lemma, which relates the average recurrence time to the proba-
+bility of a symbol for any stationary ergodic process. For example, if
+X1, X2, . . . , Xn is an i.i.d. process, we ask what is the expected waiting
+time to see the symbol a again, conditioned on the fact that X1 = a. In
+this case, the waiting time has a geometric distribution with parameter
+p = p(X0 = a), and thus the expected waiting time is 1/p(X0 = a). The
+somewhat surprising result is that the same is true even if the process is
+not i.i.d., but stationary and ergodic. A simple intuitive reason for this
+is that in a long sample of length n, we would expect to see a about
+np(a) times, and the average distance between these occurrences of a is
+n/(np(a)) (i.e., 1/p(a)).
+Lemma 13.5.2
+(Kac)
+Let . . . , U2, U1, U0, U1, . . . be a stationary
+ergodic process on a countable alphabet. For any u such that p(u) > 0
+
+--- Page 71 ---
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+445
+and for i = 1, 2, . . . , let
+Qu(i) = Pr
+
+U−i = u; Uj ̸= u for −i < j < 0|U0 = u
+
+(13.62)
+[i.e., Qu(i) is the conditional probability that the most recent previous
+occurrence of the symbol u is i, given that U0 = u]. Then
+E(R1(U)|X0 = u) =
+
+i
+iQu(i) =
+1
+p(u).
+(13.63)
+Thus, the conditional expected waiting time to see the symbol u again,
+looking backward from zero, is 1/p(u).
+Note the amusing fact that the expected recurrence time
+ER1(U) =
+
+p(u)
+1
+p(u) = m,
+(13.64)
+where m is the alphabet size.
+Proof:
+LetU0 = u.Deﬁnetheeventsforj = 1, 2, . . .andk = 0, 1, 2, . . . :
+Ajk =
+
+U−j = u, Ul ̸= u, −j < l < k, Uk = u
+
+.
+(13.65)
+Event Ajk corresponds to the event where the last time before zero at
+which the process is equal to u is at −j, the ﬁrst time after zero at which
+the process equals u is k. These events are disjoint, and by ergodicity, the
+probability Pr{∪j,kAjk} = 1. Thus,
+1 = Pr
+
+∪j,kAjk
+
+(13.66)
+(a)
+=
+∞
+
+j=1
+∞
+
+k=0
+Pr{Ajk}
+(13.67)
+=
+∞
+
+j=1
+∞
+
+k=0
+Pr(Uk = u) Pr
+
+U−j = u, Ul ̸= u, −j < l < k|Uk = u
+
+(13.68)
+(b)
+=
+∞
+
+j=1
+∞
+
+k=0
+Pr(Uk = u)Qu(j + k)
+(13.69)
+
+--- Page 72 ---
+446
+UNIVERSAL SOURCE CODING
+(c)
+=
+∞
+
+j=1
+∞
+
+k=0
+Pr(U0 = u)Qu(j + k)
+(13.70)
+= Pr(U0 = u)
+∞
+
+j=1
+∞
+
+k=0
+Qu(j + k)
+(13.71)
+(d)
+= Pr(U0 = u)
+∞
+
+i=1
+iQu(i),
+(13.72)
+where (a) follows from the fact that the Ajk are disjoint, (b) follows from
+the deﬁnition of Qu(·), (c) follows from stationarity, and (d) follows from
+the fact that there are i pairs (j, k) such that j + k = i in the sum. Kac’s
+lemma follows directly from this equation.
+□
+Corollary
+Let . . . , X−1, X0, X1, . . . be a stationary ergodic process and
+let Rn(X0, . . . , Xn−1) be the recurrence time looking backward as deﬁned
+in (13.60). Then
+E
+
+Rn(X0, . . . , Xn−1)|(X0, . . . , Xn−1) = xn−1
+0
+
+=
+1
+p(xn−1
+0
+)
+.
+(13.73)
+Proof:
+Deﬁne a new process with Ui = (Xi, Xi+1, . . . , Xi+n−1). The U
+process is also stationary and ergodic, and thus by Kac’s lemma the aver-
+age recurrence time for U conditioned on U0 = u is 1/p(u). Translating
+this to the X process proves the corollary.
+□
+We are now in a position to prove the main result, which shows that
+the compression ratio for the simple version of Lempel–Ziv using recur-
+rence time approaches the entropy. The algorithm describes Xn−1
+0
+by
+describing Rn(Xn−1
+0
+), which by Lemma 13.5.1 can be done with log Rn +
+2 log log Rn + 4 bits. We now prove the following theorem.
+Theorem 13.5.1
+Let Ln(Xn−1
+0
+) = log Rn + 2 log log Rn + O(1) be the
+description length for Xn−1
+0
+in the simple algorithm described above. Then
+1
+nELn(Xn−1
+0
+) →H(X)
+(13.74)
+as n →∞, where H(X) is the entropy rate of the process {Xi}.
+
+--- Page 73 ---
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+447
+Proof:
+We will prove upper and lower bounds for ELn. The lower bound
+follows directly from standard source coding results (i.e., ELn ≥nH for
+any preﬁx-free code). To prove the upper bound, we ﬁrst show that
+lim1
+nE log Rn ≤H
+(13.75)
+and later bound the other terms in the expression for Ln. To prove the
+bound for E log Rn, we expand the expectation by conditioning on the
+value of Xn−1
+0
+and then applying Jensen’s inequality. Thus,
+1
+nE log Rn = 1
+n
+
+xn−1
+0
+p(xn−1
+0
+)E[log Rn(Xn−1
+0
+)|Xn−1
+0
+= xn−1
+0
+]
+(13.76)
+≤1
+n
+
+xn−1
+0
+p(xn−1
+0
+) log E[Rn(Xn−1
+0
+)|Xn−1
+0
+= xn−1
+0
+]
+(13.77)
+= 1
+n
+
+xn−1
+0
+p(xn−1
+0
+) log
+1
+p(xn−1
+0
+)
+(13.78)
+= 1
+nH(Xn−1
+0
+)
+(13.79)
+ց H(X).
+(13.80)
+The second term in the expression for Ln is log log Rn, and we wish to
+show that
+1
+nE[log log Rn(Xn−1
+0
+)] →0.
+(13.81)
+Again, we use Jensen’s inequality,
+1
+nE log log Rn ≤1
+n log E[log Rn(Xn−1
+0
+)]
+(13.82)
+≤1
+n log H(Xn−1
+0
+),
+(13.83)
+where the last inequality follows from (13.79). For any ǫ > 0, for large
+enough
+n,
+H(Xn−1
+0
+) < n(H + ǫ),
+and
+therefore
+1
+n log log Rn < 1
+n
+log n + 1
+n log(H + ǫ) →0.
+This
+completes
+the
+proof
+of
+the
+theorem.
+□
+Thus, a compression scheme that represents a string by encoding the
+last time it was seen in the past is asymptotically optimal. Of course, this
+scheme is not practical, since it assumes that both sender and receiver
+
+--- Page 74 ---
+448
+UNIVERSAL SOURCE CODING
+have access to the inﬁnite past of a sequence. For longer strings, one
+would have to look further and further back into the past to ﬁnd a match.
+For example, if the entropy rate is 1
+2 and the string has length 200 bits,
+one would have to look an average of 2100 ≈1030 bits into the past to
+ﬁnd a match. Although this is not feasible, the algorithm illustrates the
+basic idea that matching the past is asymptotically optimal. The proof of
+the optimality of the practical version of LZ77 with a ﬁnite window is
+based on similar ideas. We will not present the details here, but refer the
+reader to the original proof in [591].
+13.5.2
+Optimality of Tree-Structured Lempel–Ziv Compression
+We now consider the tree-structured version of Lempel–Ziv, where the
+input sequence is parsed into phrases, each phrase being the shortest string
+that has not been seen so far. The proof of the optimality of this algorithm
+has a very different ﬂavor from the proof for LZ77; the essence of the
+proof is a counting argument that shows that the number of phrases cannot
+be too large if they are all distinct, and the probability of any sequence of
+symbols can be bounded by a function of the number of distinct phrases
+in the parsing of the sequence.
+The algorithm described in Section 13.4.2 requires two passes over the
+string—in the ﬁrst pass, we parse the string and calculate c(n), the number
+of phrases in the parsed string. We then use that to decide how many bits
+[log c(n)] to allot to the pointers in the algorithm. In the second pass, we
+calculate the pointers and produce the coded string as indicated above.
+The algorithm can be modiﬁed so that it requires only one pass over the
+string and also uses fewer bits for the initial pointers. These modiﬁcations
+do not affect the asymptotic efﬁciency of the algorithm. Some of the
+implementation details are discussed by Welch [554] and Bell et al. [41].
+We will show that like the sliding window version of Lempel–Ziv,
+this algorithm asymptotically achieves the entropy rate for the unknown
+ergodic source. We ﬁrst deﬁne a parsing of the string to be a decomposition
+into phrases.
+Deﬁnition
+A parsing S of a binary string x1x2 · · · xn is a division of the
+string into phrases, separated by commas. A distinct parsing is a parsing
+such that no two phrases are identical. For example, 0,111,1 is a distinct
+parsing of 01111, but 0,11,11 is a parsing that is not distinct.
+The LZ78 algorithm described above gives a distinct parsing of the
+source sequence. Let c(n) denote the number of phrases in the LZ78
+parsing of a sequence of length n. Of course, c(n) depends on the sequence
+Xn. The compressed sequence (after applying the Lempel–Ziv algorithm)
+
+--- Page 75 ---
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+449
+consists of a list of c(n) pairs of numbers, each pair consisting of a pointer
+to the previous occurrence of the preﬁx of the phrase and the last bit of
+the phrase. Each pointer requires log c(n) bits, and hence the total length
+of the compressed sequence is c(n)[log c(n) + 1] bits. We now show that
+c(n)(logc(n)+1)
+n
+→H(X) for a stationary ergodic sequence X1, X2, . . . , Xn.
+Our proof is based on the simple proof of asymptotic optimality of LZ78
+coding due to Wyner and Ziv [575].
+Before we proceed to the details of the proof, we provide an outline
+of the main ideas. The ﬁrst lemma shows that the number of phrases in
+a distinct parsing of a sequence is less than n/ log n; the main argument
+in the proof is based on the fact that there are not enough distinct short
+phrases. This bound holds for any distinct parsing of the sequence, not
+just the LZ78 parsing.
+The second key idea is a bound on the probability of a sequence based
+on the number of distinct phrases. To illustrate this, consider an i.i.d.
+sequence of random variables X1, X2, X3, X4 that take on four possible
+values, {A, B, C, D}, with probabilities pA, pB, pC, and pD, respec-
+tively. Now consider the probability of a sequence P (D, A, B, C) =
+pDpApBpC. Since pA + pB + pC + pD = 1, the product pDpApBpC is
+maximized when the probabilities are equal (i.e., the maximum value of
+the probability of a sequence of four distinct symbols is 1/256). On the
+other hand, if we consider a sequence A, B, A, B, the probability of this
+sequence is maximized if pA = pB = 1
+2, pC = pD = 0, and the maximum
+probability for A, B, A, B is 1
+16. A sequence of the form A, A, A, A could
+have a probability of 1. All these examples illustrate a basic point—se-
+quences with a large number of distinct symbols (or phrases) cannot have
+a large probability. Ziv’s inequality (Lemma 13.5.5) is the extension of
+this idea to the Markov case, where the distinct symbols are the phrases
+of the distinct parsing of the source sequence.
+Since the description length of a sequence after the parsing grows as
+c log c, the sequences that have very few distinct phrases can be com-
+pressed efﬁciently and correspond to strings that could have a high prob-
+ability. On the other hand, strings that have a large number of distinct
+phrases do not compress as well; but the probability of these sequences
+could not be too large by Ziv’s inequality. Thus, Ziv’s inequality enables
+us to connect the logarithm of the probability of the sequence with the
+number of phrases in its parsing, and this is ﬁnally used to show that the
+tree-structured Lempel–Ziv algorithm is asymptotically optimal.
+We ﬁrst prove a few lemmas that we need for the proof of the theorem.
+The ﬁrst is a bound on the number of phrases possible in a distinct parsing
+of a binary sequence of length n.
+
+--- Page 76 ---
+450
+UNIVERSAL SOURCE CODING
+Lemma 13.5.3
+(Lempel and Ziv [604])
+The number of phrases c(n) in
+a distinct parsing of a binary sequence X1, X2, . . . , Xn satisﬁes
+c(n) ≤
+n
+(1 −ǫn) log n,
+(13.84)
+where ǫn = min{1, log(log n)+4
+log n
+} →0 as n →∞.
+Proof:
+Let
+nk =
+k
+
+j=1
+j2j = (k −1)2k+1 + 2
+(13.85)
+be the sum of the lengths of all distinct strings of length less than or equal
+to k. The number of phrases c in a distinct parsing of a sequence of length
+n is maximized when all the phrases are as short as possible. If n = nk,
+this occurs when all the phrases are of length ≤k, and thus
+c(nk) ≤
+k
+
+j=1
+2j = 2k+1 −2 < 2k+1 ≤
+nk
+k −1.
+(13.86)
+If nk ≤n < nk+1, we write n = nk + , where  < (k + 1)2k+1. Then
+the parsing into shortest phrases has each of the phrases of length ≤k
+and /(k + 1) phrases of length k + 1. Thus,
+c(n) ≤
+nk
+k −1 +
+
+k + 1 ≤nk + 
+k −1 =
+n
+k −1.
+(13.87)
+We now bound the size of k for a given n. Let nk ≤n < nk+1. Then
+n ≥nk = (k −1)2k+1 + 2 ≥2k,
+(13.88)
+and therefore
+k ≤log n.
+(13.89)
+Moreover,
+n ≤nk+1 = k2k+2 + 2 ≤(k + 2)2k+2 ≤(log n + 2)2k+2,
+(13.90)
+by (13.89), and therefore
+k + 2 ≥log
+n
+log n + 2,
+(13.91)
+
+--- Page 77 ---
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+451
+or for all n ≥4,
+k −1 ≥log n −log(log n + 2) −3
+(13.92)
+=
+
+1 −log(log n + 2) + 3
+log n
+
+log n
+(13.93)
+≥
+
+1 −log(2 log n) + 3
+log n
+
+log n
+(13.94)
+=
+
+1 −log(log n) + 4
+log n
+
+log n
+(13.95)
+= (1 −ǫn) log n.
+(13.96)
+Note that ǫn = min{1, log(log n)+4
+log n
+}. Combining (13.96) with (13.87), we
+obtain the lemma.
+□
+We will need a simple result on maximum entropy in the proof of the
+main theorem.
+Lemma 13.5.4
+Let Z be a nonnegative integer-valued random variable
+with mean µ. Then the entropy H(Z) is bounded by
+H(Z) ≤(µ + 1) log(µ + 1) −µ log µ.
+(13.97)
+Proof:
+The lemma follows directly from the results of Theorem 12.1.1,
+which show that the geometric distribution maximizes the entropy of a
+nonnegative integer-valued random variable subject to a mean constraint.
+□
+Let {Xi}∞
+i=−∞be a binary stationary ergodic process with probabil-
+ity mass function P (x1, x2, . . . , xn). (Ergodic processes are discussed in
+greater detail in Section 16.8.) For a ﬁxed integer k, deﬁne the kth-order
+Markov approximation to P as
+Qk(x−(k−1), . . . , x0, x1, . . . , xn)
+△= P (x0
+−(k−1))
+n
+
+j=1
+P (xj|xj−1
+j−k),
+(13.98)
+where xj
+i
+△= (xi, xi+1, . . . , xj), i ≤j, and the initial state x0
+−(k−1) will be
+part of the speciﬁcation of Qk. Since P (Xn|Xn−1
+n−k) is itself an ergodic
+
+--- Page 78 ---
+452
+UNIVERSAL SOURCE CODING
+process, we have
+−1
+n log Qk(X1, X2, . . . , Xn|X0
+−(k−1)) = −1
+n
+n
+
+j=1
+log P (Xj|Xj−1
+j−k)
+(13.99)
+→−E log P (Xj|Xj−1
+j−k) (13.100)
+= H(Xj|Xj−1
+j−k).
+(13.101)
+We will bound the rate of the LZ78 code by the entropy rate of the kth-
+order Markov approximation for all k. The entropy rate of the Markov
+approximation H(Xj|Xj−1
+j−k) converges to the entropy rate of the process
+as k →∞, and this will prove the result.
+Suppose that Xn
+−(k−1) = xn
+−(k−1), and suppose that xn
+1 is parsed into c
+distinct phrases, y1, y2, . . . , yc. Let νi be the index of the start of the
+ith phrase (i.e., yi = xνi+1−1
+νi
+). For each i = 1, 2, . . . , c, deﬁne si = xνi−1
+νi−k.
+Thus, si is the k bits of x preceding yi. Of course, s1 = x0
+−(k−1).
+Let cls be the number of phrases yi with length l and preceding state
+si = s for l = 1, 2, . . . and s ∈Xk. We then have
+
+l,s
+cls = c
+(13.102)
+and
+
+l,s
+lcls = n.
+(13.103)
+We now prove a surprising upper bound on the probability of a string
+based on the parsing of the string.
+Lemma 13.5.5
+(Ziv’s inequality)
+For any distinct parsing (in particu-
+lar, the LZ78 parsing) of the string x1x2 · · · xn, we have
+log Qk(x1, x2, . . . , xn|s1) ≤−
+
+l,s
+cls log cls.
+(13.104)
+Note that the right-hand side does not depend on Qk.
+Proof:
+We write
+Qk(x1, x2, . . . , xn|s1) = Qk(y1, y2, . . . , yc|s1)
+(13.105)
+
+--- Page 79 ---
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+453
+=
+c
+i=1
+P (yi|si)
+(13.106)
+or
+log Qk(x1, x2, . . . , xn|s1) =
+c
+
+i=1
+log P (yi|si)
+(13.107)
+=
+
+l,s
+
+i:|yi|=l,si=s
+log P (yi|si)
+(13.108)
+=
+
+l,s
+cls
+
+i:|yi|=l,si=s
+1
+cls
+log P (yi|si)
+(13.109)
+≤
+
+l,s
+cls log
+
+
+
+i:|yi|=l,si=s
+1
+cls
+P (yi|si)
+
+,
+(13.110)
+where the inequality follows from Jensen’s inequality and the concavity
+of the logarithm.
+Now since the yi are distinct, we have 
+i:|yi|=l,si=s P (yi|si) ≤1. Thus,
+log Qk(x1, x2, . . . , xn|s1) ≤
+
+l,s
+cls log 1
+cls
+,
+(13.111)
+proving the lemma.
+□
+We can now prove the main theorem.
+Theorem 13.5.2
+Let {Xn} be a binary stationary ergodic process with
+entropy rate H(X), and let c(n) be the number of phrases in a distinct
+parsing of a sample of length n from this process. Then
+lim sup
+n→∞
+c(n) log c(n)
+n
+≤H(X)
+(13.112)
+with probability 1.
+Proof:
+We begin with Ziv’s inequality, which we rewrite as
+log Qk(x1, x2, . . . , xn|s1) ≤−
+
+l,s
+cls log clsc
+c
+(13.113)
+
+--- Page 80 ---
+454
+UNIVERSAL SOURCE CODING
+= −c log c −c
+
+ls
+cls
+c log cls
+c .
+(13.114)
+Writing πls = cls
+c , we have
+
+l,s
+πls = 1,
+
+l,s
+lπls = n
+c ,
+(13.115)
+from (13.102) and (13.103). We now deﬁne random variables U, V such
+that
+Pr(U = l, V = s) = πls.
+(13.116)
+Thus, EU = n
+c and
+log Qk(x1, x2, . . . , xn|s1) ≤cH(U, V ) −c log c
+(13.117)
+or
+−1
+n log Qk(x1, x2, . . . , xn|s1) ≥c
+n log c −c
+nH(U, V ).
+(13.118)
+Now
+H(U, V ) ≤H(U) + H(V )
+(13.119)
+and H(V ) ≤log |X|k = k. By Lemma 13.5.4, we have
+H(U) ≤(EU + 1) log(EU + 1) −(EU) log(EU)
+(13.120)
+=
+$n
+c + 1
+%
+log
+$n
+c + 1
+%
+−n
+c log n
+c
+(13.121)
+= log n
+c +
+$n
+c + 1
+%
+log
+$c
+n + 1
+%
+.
+(13.122)
+Thus,
+c
+nH(U, V ) ≤c
+nk + c
+n log n
+c + o(1).
+(13.123)
+For a given n, the maximum of c
+n log n
+c is attained for the maximum value
+of c (for c
+n ≤1
+e). But from Lemma 13.5.3, c ≤
+n
+log n(1 + o(1)). Thus,
+c
+n log n
+c ≤O
+log log n
+log n
+
+,
+(13.124)
+
+--- Page 81 ---
+13.5
+OPTIMALITY OF LEMPEL–ZIV ALGORITHMS
+455
+and therefore c
+nH(U, V ) →0 as n →∞. Therefore,
+c(n) log c(n)
+n
+≤−1
+n log Qk(x1, x2, . . . , xn|s1) + ǫk(n),
+(13.125)
+where ǫk(n) →0 as n →∞. Hence, with probability 1,
+lim sup
+n→∞
+c(n) log c(n)
+n
+≤lim
+n→∞−1
+n log Qk(X1, X2, . . . , Xn|X0
+−(k−1))
+(13.126)
+= H(X0|X−1, . . . , X−k)
+(13.127)
+→H(X)
+as k →∞.
+□
+(13.128)
+We now prove that LZ78 coding is asymptotically optimal.
+Theorem 13.5.3
+Let {Xi}∞
+−∞be a binary stationary ergodic stochastic
+process. Let l(X1, X2, . . . , Xn) be the LZ78 codeword length associated
+with X1, X2, . . . , Xn. Then
+lim sup
+n→∞
+1
+nl(X1, X2, . . . , Xn) ≤H(X)
+with probability 1,
+(13.129)
+where H(X) is the entropy rate of the process.
+Proof:
+We have shown that l(X1, X2, . . . , Xn) = c(n)(log c(n) + 1),
+where c(n) is the number of phrases in the LZ78 parsing of the
+string X1, X2, . . . , Xn. By Lemma 13.5.3, lim sup c(n)/n = 0, and thus
+Theorem 13.5.2 establishes that
+lim sup l(X1, X2, . . . , Xn)
+n
+= lim sup
+c(n) log c(n)
+n
++ c(n)
+n
+
+≤H(X)
+with probability 1. □
+(13.130)
+Thus, the length per source symbol of the LZ78 encoding of an ergodic
+source is asymptotically no greater than the entropy rate of the source.
+There are some interesting features of the proof of the optimality of LZ78
+that are worth noting. The bounds on the number of distinct phrases
+and Ziv’s inequality apply to any distinct parsing of the string, not just
+the incremental parsing version used in the algorithm. The proof can be
+extended in many ways with variations on the parsing algorithm; for
+example, it is possible to use multiple trees that are context or state
+
+--- Page 82 ---
+456
+UNIVERSAL SOURCE CODING
+dependent [218, 426]. Ziv’s inequality (Lemma 13.5.5) remains partic-
+ularly intriguing since it relates a probability on one side with a purely
+deterministic function of the parsing of a sequence on the other.
+The Lempel–Ziv codes are simple examples of a universal code (i.e., a
+code that does not depend on the distribution of the source). This code can
+be used without knowledge of the source distribution and yet will achieve
+an asymptotic compression equal to the entropy rate of the source.
+SUMMARY
+Ideal word length
+l∗(x) = log
+1
+p(x).
+(13.131)
+Average description length
+Epl∗(x) = H(p).
+(13.132)
+Estimated probability distribution ˆp(x). If ˆl(x) = log
+1
+ˆp(x), then
+Epˆl(x) = H(p) + D(p|| ˆp).
+(13.133)
+Average redundancy
+Rp = Epl(X) −H(p).
+(13.134)
+Minimax redundancy. For X ∼pθ(x), θ ∈θ,
+D∗= min
+l
+max
+p
+Rp = min
+q max
+θ
+D(pθ||q).
+(13.135)
+Minimax theorem. D∗= C, where C is the capacity of the channel
+{θ, pθ(x), X}.
+Bernoulli sequences. For Xn ∼Bernoulli(θ), the redundancy is
+D∗
+n = min
+q max
+θ
+D(pθ(xn)||q(xn)) ≈1
+2 log n + o(log n).
+(13.136)
+Arithmetic coding. nH bits of F(xn) reveal approximately n bits
+of xn.
+
+--- Page 83 ---
+PROBLEMS
+457
+Lempel–Ziv coding (recurrence time coding). Let Rn(Xn) be the
+last time in the past that we have seen a block of n symbols Xn. Then
+1
+n log Rn →H(X), and encoding by describing the recurrence time is
+asymptotically optimal.
+Lempel–Ziv coding (sequence parsing). If a sequence is parsed into
+the shortest phrases not seen before (e.g., 011011101 is parsed to
+0,1,10,11,101,...) and l(xn) is the description length of the parsed se-
+quence, then
+lim sup 1
+nl(Xn) ≤H(X)
+with probability 1
+(13.137)
+for every stationary ergodic process {Xi}.
+PROBLEMS
+13.1
+Minimax regret data compression and channel capacity.
+First
+consider universal data compression with respect to two source
+distributions. Let the alphabet V = {1, e, 0} and let p1(v) put mass
+1 −α on v = 1 and mass α on v = e. Let p2(v) put mass 1 −α on
+0 and mass α on v = e. We assign word lengths to V according to
+l(v) = log
+1
+p(v), the ideal codeword length with respect to a clev-
+erly chosen probability mass function p(v). The worst-case excess
+description length (above the entropy of the true distribution) is
+max
+i
+
+Epi log
+1
+p(V ) −Epi log
+1
+pi(V )
+
+= max
+i
+D(pi ∥p).
+(13.138)
+Thus, the minimax regret is D∗= minp maxi D(pi ∥p).
+(a) Find D∗.
+(b) Find the p(v) achieving D∗.
+(c) Compare D∗to the capacity of the binary erasure channel
+
+1 −α
+α
+0
+0
+α
+1 −α
+
+and comment.
+
+--- Page 84 ---
+458
+UNIVERSAL SOURCE CODING
+13.2
+Universal data compression.
+Consider three possible source dis-
+tributions on X,
+Pa = (0.7, 0.2, 0.1),
+Pb = (0.1, 0.7, 0.2),
+Pc = (0.2, 0.1, 0.7).
+(a) Find the minimum incremental cost of compression
+D∗= min
+P max
+θ
+D(Pθ∥P ),
+the associated mass function P = (p1, p2, p3), and ideal code-
+word lengths li = log(1/pi).
+(b) What is the channel capacity of a channel matrix with rows
+Pa, Pb, Pc?
+13.3
+Arithmetic coding.
+Let {Xi}∞
+i=0 be a stationary binary Markov
+chain with transition matrix
+pij =
+& 3
+4
+1
+4
+1
+4
+3
+4
+'
+.
+(13.139)
+Calculate the ﬁrst 3 bits of F(X∞) = 0.F1F2 . . . when X∞=
+1010111 . . . . How many bits of X∞does this specify?
+13.4
+Arithmetic coding.
+Let Xi be binary stationary Markov with
+transition matrix
+& 1
+3
+2
+3
+2
+3
+1
+3
+'
+.
+(a) Find F(01110) = Pr{.X1X2X3X4X5 < .01110}.
+(b) How many bits .F1F2 . . . can be known for sure if it is not
+known how X = 01110 continues?
+13.5
+Lempel–Ziv.
+Give
+the
+LZ78
+parsing
+and
+encoding
+of
+00000011010100000110101.
+13.6
+Compression of constant sequence.
+We are given the constant
+sequence xn = 11111 . . . .
+(a) Give the LZ78 parsing for this sequence.
+(b) Argue that the number of encoding bits per symbol for this
+sequence goes to zero as n →∞.
+13.7
+Another idealized version of Lempel–Ziv coding.
+An idealized
+version of LZ was shown to be optimal: The encoder and decoder
+both have available to them the “inﬁnite past” generated by the
+process, . . . , X−1, X0, and the encoder describes the string (X1,
+X2, . . . , Xn) by telling the decoder the position Rn in the past
+
+--- Page 85 ---
+PROBLEMS
+459
+of the ﬁrst recurrence of that string. This takes roughly log Rn +
+2 log log Rn bits. Now consider the following variant: Instead of
+describing Rn, the encoder describes Rn−1 plus the last sym-
+bol, Xn. From these two the decoder can reconstruct the string
+(X1, X2, . . . , Xn).
+(a) What is the number of bits per symbol used in this case to
+encode (X1, X2, . . . , Xn)?
+(b) Modify the proof given in the text to show that this version is
+also asymptotically optimal: namely, that the expected number
+of bits per symbol converges to the entropy rate.
+13.8
+Length of pointers in LZ77.
+In the version of LZ77 due to Storer
+and Szymanski [507] described in Section 13.4.1, a short match
+can be represented by either (F, P, L) (ﬂag, pointer, length) or
+by (F, C) (ﬂag, character). Assume that the window length is W,
+and assume that the maximum match length is M.
+(a) How many bits are required to represent P ? To represent L?
+(b) Assume that C, the representation of a character, is 8 bits
+long. If the representation of P plus L is longer than 8 bits,
+it would be better to represent a single character match as
+an uncompressed character rather than as a match within the
+dictionary. As a function of W and M, what is the shortest
+match that one should represent as a match rather than as
+uncompressed characters?
+(c) Let W = 4096 and M = 256. What is the shortest match that
+one would represent as a match rather than uncompressed
+characters?
+13.9
+Lempel–Ziv 78.
+(a) Continue
+the
+Lempel–Ziv
+parsing
+of
+the
+sequence
+0,00,001,00000011010111.
+(b) Give a sequence for which the number of phrases in the LZ
+parsing grows as fast as possible.
+(c) Give a sequence for which the number of phrases in the LZ
+parsing grows as slowly as possible.
+13.10
+Two versions of ﬁxed-database Lempel–Ziv.
+Consider a source
+(A, P ). For simplicity assume that the alphabet is ﬁnite |A| =
+A < ∞and the symbols are i.i.d. ∼P . A ﬁxed database D is
+given and is revealed to the decoder. The encoder parses the tar-
+get sequence xn
+1 into blocks of length l, and subsequently encodes
+them by giving the binary description of their last appearance
+
+--- Page 86 ---
+460
+UNIVERSAL SOURCE CODING
+in the database. If a match is not found, the entire block is
+sent uncompressed, requiring l log A bits. A ﬂag is used to tell
+the decoder whether a match location is being described or the
+sequence itself. Parts (a) and (b) give some preliminaries you will
+need in showing the optimality of ﬁxed-database LZ in part (c).
+(a) Let xl be a δ-typical sequence of length l starting at 0, and let
+Rl(xl) be the corresponding recurrence index in the inﬁnite
+past . . . , X−2, X−1. Show that
+E
+(
+Rl(Xl)|Xl = xl)
+≤2l(H+δ),
+where H is the entropy rate of the source.
+(b) Prove that for any ǫ > 0, Pr
+
+Rl(Xl) > 2l(H+ǫ)
+→0 as l →
+∞. (Hint: Expand the probability by conditioning on strings
+xl, and break things up into typical and nontypical. Markov’s
+inequality and the AEP should prove handy as well.)
+(c) Consider the following two ﬁxed databases: (i) D1 is formed
+by taking all δ-typical l-vectors; and (ii) D2 formed by taking
+the most recent ˜L = 2l(H+δ) symbols in the inﬁnite past (i.e.,
+X−˜L, . . . , X−1). Argue that the algorithm described above is
+asymptotically optimal: namely, that the expected number of
+bits per symbol converges to the entropy rate when used in
+conjunction with either database D1 or D2.
+13.11
+Tunstall coding.
+The normal setting for source coding maps a
+symbol(orablockofsymbols)fromaﬁnitealphabetontoavariable-
+length string. An example of such a code is the Huffman code, which
+is the optimal (minimal expected length) mapping from a set of
+symbols to a preﬁx-free set of codewords. Now consider the dual
+problem of variable-to-ﬁxed length codes, where we map a variable-
+length sequence of source symbols into a ﬁxed-length binary (or
+D-ary) representation. A variable-to-ﬁxed length code for an i.i.d.
+sequence of random variables X1, X2, . . . , Xn, Xi ∼p(x), x ∈X
+= {0, 1, . . . , m −1}, is deﬁned by a preﬁx-free set of phrases AD ⊂
+X∗, where X∗is the set of ﬁnite-length strings of symbols of X, and
+|AD| = D. Given any sequence X1, X2, . . . , Xn, the string is parsed
+into phrases from AD (unique because of the preﬁx-free property of
+AD) and represented by a sequence of symbols from a D-ary alpha-
+bet. Deﬁne the efﬁciency of this coding scheme by
+R(AD) =
+log D
+EL(AD),
+(13.140)
+
+--- Page 87 ---
+HISTORICAL NOTES
+461
+where EL(AD) is the expected length of a phrase from AD.
+(a) Prove that R(AD) ≥H(X).
+(b) The process of constructing AD can be considered as a process
+of constructing an m-ary tree whose leaves are the phrases in
+AD. Assume that D = 1 + k(m −1) for some integer k ≥1.
+Consider the following algorithm due to Tunstall:
+(i) Start with A = {0, 1, . . . , m −1} with probabilities p0,
+p1, . . . , pm−1. This corresponds to a complete m-ary tree
+of depth 1.
+(ii) Expand the node with the highest probability. For ex-
+ample, if p0 is the node with the highest probability, the
+new set is A = {00, 01, . . . , 0(m −1), 1, . . . , (m −1)}.
+(iii) Repeat step 2 until the number of leaves (number of
+phrases) reaches the required value.
+Show that the Tunstall algorithm is optimal in the sense that
+it constructs a variable to a ﬁxed code with the best R(AD)
+for a given D [i.e., the largest value of EL(AD) for a given
+D].
+(c) Show that there exists a D such that R(A∗
+D) < H(X) + 1.
+HISTORICAL NOTES
+The problem of encoding a source with an unknown distribution was
+analyzed by Fitingof [211] and Davisson [159], who showed that there
+were classes of sources for which the universal coding procedure was
+asymptotically optimal. The result relating the average redundancy of a
+universal code and channel capacity is due to Gallager [229] and Ryabko
+[450]. Our proof follows that of Csisz´ar. This result was extended to
+show that the channel capacity was the lower bound for the redundancy
+for “most” sources in the class by Merhav and Feder [387], extending the
+results obtained by Rissanen [444, 448] for the parametric case.
+The arithmetic coding procedure has its roots in the Shannon–Fano
+code developed by Elias (unpublished), which was analyzed by Jelinek
+[297]. The procedure for the construction of a preﬁx-free code described
+in the text is due to Gilbert and Moore [249]. Arithmetic coding itself was
+developed by Rissanen [441] and Pasco [414]; it was generalized by Lang-
+don and Rissanen [343]. See also the enumerative methods in Cover [120].
+Tutorial introductions to arithmetic coding can be found in Langdon [342]
+and Witten et al. [564]. Arithmetic coding combined with the context-tree
+weighting algorithm due to Willems et al. [560, 561] achieve the Rissanen
+
+--- Page 88 ---
+462
+UNIVERSAL SOURCE CODING
+lower bound [444] and therefore have the optimal rate of convergence to
+the entropy for tree sources with unknown parameters.
+The class of Lempel–Ziv algorithms was ﬁrst described in the seminal
+papers of Lempel and Ziv [603, 604]. The original results were theoreti-
+cally interesting, but people implementing compression algorithms did not
+take notice until the publication of a simple efﬁcient version of the algo-
+rithm due to Welch [554]. Since then, multiple versions of the algorithms
+have been described, many of them patented. Versions of this algorithm
+are now used in many compression products, including GIF ﬁles for image
+compression and the CCITT standard for compression in modems. The
+optimality of the sliding window version of Lempel–Ziv (LZ77) is due to
+Wyner and Ziv [575]. An extension of the proof of the optimality of LZ78
+[426] shows that the redundancy of LZ78 is on the order of 1/ log(n),
+as opposed to the lower bounds of log(n)/n. Thus even though LZ78
+is asymptotically optimal for all stationary ergodic sources, it converges
+to the entropy rate very slowly compared to the lower bounds for ﬁnite-
+state Markov sources. However, for the class of all ergodic sources, lower
+bounds on the redundancy of a universal code do not exist, as shown by
+examples due to Shields [492] and Shields and Weiss [494]. A lossless
+block compression algorithm based on sorting the blocks and using simple
+run-length encoding due to Burrows and Wheeler [81] has been analyzed
+by Effros et al. [181]. Universal methods for prediction are discussed in
+Feder, Merhav and Gutman [204, 386, 388].
+
+--- Page 89 ---
+CHAPTER 14
+KOLMOGOROV COMPLEXITY
+The great mathematician Kolmogorov culminated a lifetime of research
+in mathematics, complexity, and information theory with his deﬁnition in
+1965 of the intrinsic descriptive complexity of an object. In our treatment
+so far, the object X has been a random variable drawn according to
+a probability mass function p(x). If X is random, there is a sense in
+which the descriptive complexity of the event X = x is log
+1
+p(x), because
+⌈log
+1
+p(x)⌉is the number of bits required to describe x by a Shannon code.
+One notes immediately that the descriptive complexity of such an object
+depends on the probability distribution.
+Kolmogorov went further. He deﬁned the algorithmic (descriptive)
+complexity of an object to be the length of the shortest binary com-
+puter program that describes the object. (Apparently, a computer, the
+most general form of data decompressor, will after a ﬁnite amount of
+computation, use this description to exhibit the object described.) Thus,
+the Kolmogorov complexity of an object dispenses with the probability
+distribution. Kolmogorov made the crucial observation that the deﬁnition
+of complexity is essentially computer independent. It is an amazing fact
+that the expected length of the shortest binary computer description of a
+random variable is approximately equal to its entropy. Thus, the shortest
+computer description acts as a universal code which is uniformly good
+for all probability distributions. In this sense, algorithmic complexity is a
+conceptual precursor to entropy.
+Perhaps a good point of view of the role of this chapter is to consider
+Kolmogorov complexity as a way to think. One does not use the shortest
+computer program in practice because it may take inﬁnitely long to ﬁnd
+such a minimal program. But one can use very short, not necessarily mini-
+mal programs in practice; and the idea of ﬁnding such short programs leads
+to universal codes, a good basis for inductive inference, a formalization
+of Occam’s razor (“The simplest explanation is best”) and to fundamental
+understanding in physics, computer science, and communication theory.
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+463
+
+--- Page 90 ---
+464
+KOLMOGOROV COMPLEXITY
+Before formalizing the notion of Kolmogorov complexity, let us give
+three strings as examples:
+1. 0101010101010101010101010101010101010101010101010101010101010101
+2. 0110101000001001111001100110011111110011101111001100100100001000
+3. 1101111001110101111101101111101110101101111000101110010100111011
+What are the shortest binary computer programs for each of these
+sequences? The ﬁrst sequence is deﬁnitely simple. It consists of thirty-
+two 01’s. The second sequence looks random and passes most tests for
+randomness, but it is in fact the initial segment of the binary expansion
+of
+√
+2 −1. Again, this is a simple sequence. The third again looks ran-
+dom, except that the proportion of 1’s is not near 1
+2. We shall assume
+that it is otherwise random. It turns out that by describing the number
+k of 1’s in the sequence, then giving the index of the sequence in a
+lexicographic ordering of those with this number of 1’s, one can give a
+description of the sequence in roughly log n + nH( k
+n) bits. This again is
+substantially fewer than the n bits in the sequence. Again, we conclude
+that the sequence, random though it is, is simple. In this case, however, it
+is not as simple as the other two sequences, which have constant-length
+programs. In fact, its complexity is proportional to n. Finally, we can
+imagine a truly random sequence generated by pure coin ﬂips. There are
+2n such sequences and they are all equally probable. It is highly likely
+that such a random sequence cannot be compressed (i.e., there is no bet-
+ter program for such a sequence than simply saying “Print the following:
+0101100111010. . . 0”). The reason for this is that there are not enough
+short programs to go around. Thus, the descriptive complexity of a truly
+random binary sequence is as long as the sequence itself.
+These are the basic ideas. It will remain to be shown that this notion of
+intrinsic complexity is computer independent (i.e., that the length of the
+shortest program does not depend on the computer). At ﬁrst, this seems
+like nonsense. But it turns out to be true, up to an additive constant. And
+for long sequences of high complexity, this additive constant (which is
+the length of the preprogram that allows one computer to mimic the other)
+is negligible.
+14.1
+MODELS OF COMPUTATION
+To formalize the notions of algorithmic complexity, we ﬁrst discuss accept-
+able models for computers. All but the most trivial computers are univer-
+sal, in the sense that they can mimic the actions of other computers.
+
+--- Page 91 ---
+14.1
+MODELS OF COMPUTATION
+465
+We touch brieﬂy on a certain canonical universal computer, the universal
+Turing machine, the conceptually simplest universal computer.
+In 1936, Turing was obsessed with the question of whether the thoughts
+in a living brain could be held equally well by a collection of inani-
+mate parts. In short, could a machine think? By analyzing the human
+computational process, he posited some constraints on such a computer.
+Apparently, a human thinks, writes, thinks some more, writes, and so on.
+Consider a computer as a ﬁnite-state machine operating on a ﬁnite symbol
+set. (The symbols in an inﬁnite symbol set cannot be distinguished in ﬁnite
+space.) A program tape, on which a binary program is written, is fed left
+to right into this ﬁnite-state machine. At each unit of time, the machine
+inspects the program tape, writes some symbols on a work tape, changes
+its state according to its transition table, and calls for more program. The
+operations of such a machine can be described by a ﬁnite list of tran-
+sitions. Turing argued that this machine could mimic the computational
+ability of a human being.
+After Turing’s work, it turned out that every new computational sys-
+tem could be reduced to a Turing machine, and conversely. In particular,
+the familiar digital computer with its CPU, memory, and input output
+devices could be simulated by and could simulate a Turing machine. This
+led Church to state what is now known as Church’s thesis, which states
+that all (sufﬁciently complex) computational models are equivalent in the
+sense that they can compute the same family of functions. The class of
+functions they can compute agrees with our intuitive notion of effectively
+computable functions, that is, functions for which there is a ﬁnite pre-
+scription or program that will lead in a ﬁnite number of mechanically
+speciﬁed computational steps to the desired computational result.
+We shall have in mind throughout this chapter the computer illustrated
+in Figure 14.1. At each step of the computation, the computer reads a
+symbol from the input tape, changes state according to its state transition
+table, possibly writes something on the work tape or output tape, and
+Input tape
+Output tape
+Finite
+State
+Machine
+Work tape
+...
+...
+p2p1
+x1x2
+FIGURE 14.1. A Turing machine.
+
+--- Page 92 ---
+466
+KOLMOGOROV COMPLEXITY
+moves the program read head to the next cell of the program read tape.
+This machine reads the program from right to left only, never going back,
+and therefore the programs form a preﬁx-free set. No program leading to a
+halting computation can be the preﬁx of another such program. The restric-
+tion to preﬁx-free programs leads immediately to a theory of Kolmogorov
+complexity which is formally analogous to information theory.
+We can view the Turing machine as a map from a set of ﬁnite-length
+binary strings to the set of ﬁnite- or inﬁnite-length binary strings. In
+some cases, the computation does not halt, and in such cases the value of
+the function is said to be undeﬁned. The set of functions f : {0, 1}∗→
+{0, 1}∗∪{0, 1}∞computable by Turing machines is called the set of par-
+tial recursive functions.
+14.2
+KOLMOGOROV COMPLEXITY: DEFINITIONS
+AND EXAMPLES
+Let x be a ﬁnite-length binary string and let U be a universal computer.
+Let l(x) denote the length of the string x. Let U(p) denote the output of
+the computer U when presented with a program p.
+We deﬁne the Kolmogorov (or algorithmic) complexity of a string x
+as the minimal description length of x.
+Deﬁnition
+The Kolmogorov complexity KU(x) of a string x with respect
+to a universal computer U is deﬁned as
+KU(x) =
+min
+p: U(p)=x l(p),
+(14.1)
+the minimum length over all programs that print x and halt. Thus, KU(x)
+is the shortest description length of x over all descriptions interpreted by
+computer U.
+A useful technique for thinking about Kolmogorov complexity is the
+following—if one person can describe a sequence to another person in
+such a manner as to lead unambiguously to a computation of that sequence
+in a ﬁnite amount of time, the number of bits in that communication is an
+upper bound on the Kolmogorov complexity. For example, one can say
+“Print out the ﬁrst 1,239,875,981,825,931 bits of the square root of e.”
+Allowing 8 bits per character (ASCII), we see that the unambiguous 73-
+symbol program above demonstrates that the Kolmogorov complexity of
+this huge number is no greater than (8)(73) = 584 bits. Most numbers of
+this length (more than a quadrillion bits) have a Kolmogorov complexity
+
+--- Page 93 ---
+14.2
+KOLMOGOROV COMPLEXITY: DEFINITIONS AND EXAMPLES
+467
+of nearly 1,239,875,981,825,931 bits. The fact that there is a simple algo-
+rithm to calculate the square root of e provides the saving in descriptive
+complexity.
+In the deﬁnition above, we have not mentioned anything about the
+length of x. If we assume that the computer already knows the length of
+x, we can deﬁne the conditional Kolmogorov complexity knowing l(x) as
+KU(x|l(x)) =
+min
+p: U(p,l(x))=x l(p).
+(14.2)
+This is the shortest description length if the computer U has the length of
+x made available to it.
+It should be noted that KU(x|y) is usually deﬁned as KU(x|y, y∗),
+where y∗is the shortest program for y. This is to avoid certain slight
+asymmetries, but we will not use this deﬁnition here.
+We ﬁrst prove some of the basic properties of Kolmogorov complexity
+and then consider various examples.
+Theorem 14.2.1
+(Universality of Kolmogorov complexity)
+If U is a
+universal computer, for any other computer A there exists a constant cA
+such that
+KU(x) ≤KA(x) + cA
+(14.3)
+for all strings x ∈{0, 1}∗, and the constant cA does not depend on x.
+Proof:
+Assume that we have a program pA for computer A to print x.
+Thus, A(pA) = x. We can precede this program by a simulation program
+sA which tells computer U how to simulate computer A. Computer U
+will then interpret the instructions in the program for A, perform the
+corresponding calculations and print out x. The program for U is p =
+sApA and its length is
+l(p) = l(sA) + l(pA) = cA + l(pA),
+(14.4)
+where cA is the length of the simulation program. Hence,
+KU(x) =
+min
+p:U(p)=x l(p) ≤
+min
+p:A(p)=x (l(p) + cA) = KA(x) + cA
+(14.5)
+for all strings x.
+□
+The constant cA in the theorem may be very large. For example, A may
+be a large computer with a large number of functions built into the system.
+
+--- Page 94 ---
+468
+KOLMOGOROV COMPLEXITY
+The computer U can be a simple microprocessor. The simulation program
+will contain the details of the implementation of all these functions, in
+fact, all the software available on the large computer. The crucial point is
+that the length of this simulation program is independent of the length of
+x, the string to be compressed. For sufﬁciently long x, the length of this
+simulation program can be neglected, and we can discuss Kolmogorov
+complexity without talking about the constants.
+If A and U are both universal, we have
+|KU(x) −KA(x)| < c
+(14.6)
+for all x. Hence, we will drop all mention of U in all further deﬁnitions. We
+will assume that the unspeciﬁed computer U is a ﬁxed universal computer.
+Theorem 14.2.2
+(Conditional complexity is less than the length of the
+sequence)
+K(x|l(x)) ≤l(x) + c.
+(14.7)
+Proof:
+A program for printing x is
+Print the following l-bit sequence: x1x2 . . . xl(x).
+Note that no bits are required to describe l since l is given. The program
+is self-delimiting because l(x) is provided and the end of the program is
+thus clearly deﬁned. The length of this program is l(x) + c.
+□
+Without knowledge of the length of the string, we will need an addi-
+tional stop symbol or we can use a self-punctuating scheme like the one
+described in the proof of the next theorem.
+Theorem 14.2.3
+(Upper bound on Kolmogorov complexity)
+K(x) ≤K(x|l(x)) + 2 log l(x) + c.
+(14.8)
+Proof:
+If the computer does not know l(x), the method of Theorem
+14.2.2 does not apply. We must have some way of informing the com-
+puter when it has come to the end of the string of bits that describes
+the sequence. We describe a simple but inefﬁcient method that uses a
+sequence 01 as a “comma.”
+Suppose that l(x) = n. To describe l(x), repeat every bit of the binary
+expansion of n twice; then end the description with a 01 so that the
+computer knows that it has come to the end of the description of n.
+
+--- Page 95 ---
+14.2
+KOLMOGOROV COMPLEXITY: DEFINITIONS AND EXAMPLES
+469
+For example, the number 5 (binary 101) will be described as 11001101.
+This description requires 2⌈log n⌉+ 2 bits. Thus, inclusion of the binary
+representation of l(x) does not add more than 2 log l(x) + c bits to the
+length of the program, and we have the bound in the theorem.
+□
+A more efﬁcient method for describing n is to do so recursively. We
+ﬁrst specify the number (log n) of bits in the binary representation of n
+and then specify the actual bits of n. To specify log n, the length of the
+binary representation of n, we can use the inefﬁcient method (2 log log n)
+or the efﬁcient method (log log n + · · ·). If we use the efﬁcient method at
+each level, until we have a small number to specify, we can describe n
+in log n + log log n + log log log n + · · · bits, where we continue the sum
+until the last positive term. This sum of iterated logarithms is sometimes
+written log∗n. Thus, Theorem 14.2.3 can be improved to
+K(x) ≤K(x|l(x)) + log∗l(x) + c.
+(14.9)
+We now prove that there are very few sequences with low complexity.
+Theorem 14.2.4
+(Lower bound on Kolmogorov complexity).
+The
+number of strings x with complexity K(x) < k satisﬁes
+|{x ∈{0, 1}∗: K(x) < k}| < 2k.
+(14.10)
+Proof:
+There are not very many short programs. If we list all the pro-
+grams of length < k, we have
+
+
+1
+, 0, 1
+
+2
+, 00, 01, 10, 11
+
+
+
+4
+, . . . , . . . ,
+k−1
+  
+11 . . . 1
+
+
+
+2k−1
+(14.11)
+and the total number of such programs is
+1 + 2 + 4 + · · · + 2k−1 = 2k −1 < 2k.
+(14.12)
+Since each program can produce only one possible output sequence, the
+number of sequences with complexity < k is less than 2k.
+□
+To avoid confusion and to facilitate exposition in the rest of this chapter,
+we shall need to introduce a special notation for the binary entropy func-
+tion
+H0(p) = −p log p −(1 −p) log(1 −p).
+(14.13)
+
+--- Page 96 ---
+470
+KOLMOGOROV COMPLEXITY
+Thus, when we write H0( 1
+n
+n
+i=1 Xi), we will mean −Xn log Xn −(1 −
+Xn) log(1 −Xn) and not the entropy of random variable Xn. When there
+is no confusion, we shall simply write H(p) for H0(p).
+Now let us consider various examples of Kolmogorov complexity. The
+complexity will depend on the computer, but only up to an additive con-
+stant. To be speciﬁc, we consider a computer that can accept unambiguous
+commands in English (with numbers given in binary notation). We will
+use the inequality
+
+n
+8k(n −k)2nH(k/n) ≤
+n
+k
+
+≤
+
+n
+πk(n −k)2nH(k/n),
+k ̸= 0, n,
+(14.14)
+which is proved in Lemma 17.5.1.
+Example 14.2.1
+(A sequence of n zeros)
+If we assume that the com-
+puter knows n, a short program to print this string is
+Print the specified number of zeros.
+The length of this program is a constant number of bits. This program
+length does not depend on n. Hence, the Kolmogorov complexity of this
+sequence is c, and
+K(000 . . . 0|n) = c
+for all n.
+(14.15)
+Example 14.2.2
+(Kolmogorov complexity of π)
+The ﬁrst n bits of π
+can be calculated using a simple series expression. This program has a
+small constant length if the computer already knows n. Hence,
+K(π1π2 · · · πn|n) = c.
+(14.16)
+Example 14.2.3
+(Gotham weather)
+Suppose that we want the com-
+puter to print out the weather in Gotham for n days. We can write a
+program that contains the entire sequence x = x1x2 · · · xn, where xi = 1
+indicates rain on day i. But this is inefﬁcient, since the weather is quite
+dependent. We can devise various coding schemes for the sequence to
+take the dependence into account. A simple one is to ﬁnd a Markov
+model to approximate the sequence (using the empirical transition prob-
+abilities) and then code the sequence using the Shannon code for this
+probability distribution. We can describe the empirical Markov transitions
+in O(log n) bits and then use log
+1
+p(x) bits to describe x, where p is the
+
+--- Page 97 ---
+14.2
+KOLMOGOROV COMPLEXITY: DEFINITIONS AND EXAMPLES
+471
+speciﬁed Markov probability. Assuming that the entropy of the weather
+is 1
+5 bit per day, we can describe the weather for n days using about n/5
+bits, and hence
+K(Gotham weather|n) ≈n
+5 + O(log n) + c.
+(14.17)
+Example 14.2.4
+(Repeating sequence of the form 01010101. . .01)
+A
+short program sufﬁces. Simply print the speciﬁed number of 01 pairs.
+Hence,
+K(010101010 . . . 01|n) = c.
+(14.18)
+Example 14.2.5
+(Fractal)
+A fractal is part of the Mandelbrot set and
+is generated by a simple computer program. For different points c in the
+complex plane, one calculates the number of iterations of the map zn+1 =
+z2
+n + c (starting with z0 = 0) needed for |z| to cross a particular threshold.
+The point c is then colored according to the number of iterations needed.
+Thus, the fractal is an example of an object that looks very complex but
+is essentially very simple. Its Kolmogorov complexity is essentially zero.
+Example 14.2.6
+(Mona Lisa)
+We can make use of the many structures
+and dependencies in the painting. We can probably compress the image
+by a factor of 3 or so by using some existing easily described image
+compression algorithm. Hence, if n is the number of pixels in the image
+of the Mona Lisa,
+K(Mona Lisa|n) ≤n
+3 + c.
+(14.19)
+Example 14.2.7
+(Integer n)
+If the computer knows the number of bits
+in the binary representation of the integer, we need only provide the values
+of these bits. This program will have length c + log n.
+In general, the computer will not know the length of the binary repre-
+sentation of the integer. So we must inform the computer in some way
+when the description ends. Using the method to describe integers used
+to derive (14.9), we see that the Kolmogorov complexity of an integer is
+bounded by
+K(n) ≤log∗n + c.
+(14.20)
+Example 14.2.8
+(Sequence of n bits with k ones)
+Can we compress a
+sequence of n bits with k ones?
+Our ﬁrst guess is no, since we have a series of bits that must be repro-
+duced exactly. But consider the following program:
+
+--- Page 98 ---
+472
+KOLMOGOROV COMPLEXITY
+Generate, in lexicographic order, all sequences with k ones;
+Of these sequences, print the ith sequence.
+This program will print out the required sequence. The only variables in
+the program are k (with known range {0, 1, . . . , n}) and i (with conditional
+range {1, 2, . . . ,
+	n
+k
+
+}). The total length of this program is
+l(p) = c +
+log n
+
+to express k
++
+log
+n
+k
+
+  
+to express i
+(14.21)
+≤c′ + log n + nH
+	 k
+n
+
+−1
+2 log n,
+(14.22)
+since
+	n
+k
+
+≤
+1
+√πnpq 2nH0(p) by (14.14) for p = k/n and q = 1 −p and k ̸=
+0 and k ̸= n. We have used log n bits to represent k. Thus, if n
+i=1 xi = k,
+then
+K(x1, x2, . . . , xn|n) ≤nH0
+k
+n
+
++ 1
+2 log n + c.
+(14.23)
+We can summarize Example 14.2.8 in the following theorem.
+Theorem 14.2.5
+The Kolmogorov complexity of a binary string x is
+bounded by
+K(x1x2 · · · xn|n) ≤nH0
+
+1
+n
+n
+
+i=1
+xi
+
++ 1
+2 log n + c.
+(14.24)
+Proof:
+Use the program described in Example 14.2.8.
+□
+Remark
+Let x ∈{0, 1}∗be the data that we wish to compress, and
+consider the program p to be the compressed data. We will have succeeded
+in compressing the data only if l(p) < l(x), or
+K(x) < l(x).
+(14.25)
+In general, when the length l(x) of the sequence x is small, the constants
+that appear in the expressions for the Kolmogorov complexity will over-
+whelm the contributions due to l(x). Hence, the theory is useful primarily
+when l(x) is very large. In such cases we can safely neglect the terms
+that do not depend on l(x).
+
+--- Page 99 ---
+14.3
+KOLMOGOROV COMPLEXITY AND ENTROPY
+473
+14.3
+KOLMOGOROV COMPLEXITY AND ENTROPY
+We now consider the relationship between the Kolmogorov complexity of
+a sequence of random variables and its entropy. In general, we show that
+the expected value of the Kolmogorov complexity of a random sequence
+is close to the Shannon entropy. First, we prove that the program lengths
+satisfy the Kraft inequality.
+Lemma 14.3.1
+For any computer U,
+
+p: U(p)halts
+2−l(p) ≤1.
+(14.26)
+Proof:
+If the computer halts on any program, it does not look any further
+for input. Hence, there cannot be any other halting program with this
+program as a preﬁx. Thus, the halting programs form a preﬁx-free set,
+and their lengths satisfy the Kraft inequality (Theorem 5.2.1).
+We now show that
+1
+nEK(Xn|n) ≈H(X) for i.i.d. processes with a
+ﬁnite alphabet.
+Theorem 14.3.1
+(Relationship of Kolmogorov complexity and entropy)
+Let the stochastic process {Xi} be drawn i.i.d. according to the probability
+mass function f (x), x ∈X, where X is a ﬁnite alphabet. Let f (xn) =
+n
+i=1 f (xi). Then there exists a constant c such that
+H(X) ≤1
+n
+
+xn
+f (xn)K(xn|n) ≤H(X) + (|X| −1) log n
+n
++ c
+n
+(14.27)
+for all n. Consequently,
+E 1
+nK(Xn|n) →H(X).
+(14.28)
+Proof:
+Consider the lower bound. The allowed programs satisfy the pre-
+ﬁx property, and thus their lengths satisfy the Kraft inequality. We assign
+to each xn the length of the shortest program p such that U(p, n) = xn.
+These shortest programs also satisfy the Kraft inequality. We know from
+the theory of source coding that the expected codeword length must be
+greater than the entropy. Hence,
+
+xn
+f (xn)K(xn|n) ≥H(X1, X2, . . . , Xn) = nH(X).
+(14.29)
+
+--- Page 100 ---
+474
+KOLMOGOROV COMPLEXITY
+We ﬁrst prove the upper bound when X is binary (i.e., X1, X2, . . . , Xn
+are i.i.d. ∼Bernoulli(θ)). Using the method of Theorem 14.2.5, we can
+bound the complexity of a binary string by
+K(x1x2 . . . xn|n) ≤nH0
+
+1
+n
+n
+
+i=1
+xi
+
++ 1
+2 log n + c.
+(14.30)
+Hence,
+EK(X1X2 . . . Xn|n) ≤nEH0
+
+1
+n
+n
+
+i=1
+Xi
+
++ 1
+2 log n + c (14.31)
+(a)
+≤nH0
+
+1
+n
+n
+
+i=1
+EXi
+
++ 1
+2 log n + c (14.32)
+= nH0(θ) + 1
+2 log n + c,
+(14.33)
+where (a) follows from Jensen’s inequality and the concavity of the
+entropy. Thus, we have proved the upper bound in the theorem for binary
+processes.
+We can use the same technique for the case of a nonbinary ﬁnite alpha-
+bet. We ﬁrst describe the type of the sequence (the empirical frequency
+of occurrence of each of the alphabet symbols as deﬁned in Section 11.1)
+using (|X| −1) log n bits (the frequency of the last symbol can be cal-
+culated from the frequencies of the rest). Then we describe the index
+of the sequence within the set of all sequences having the same type.
+The type class has less than 2nH(Pxn) elements (where Pxn is the type
+of the sequence xn) as shown in Chapter 11, and therefore the two-stage
+description of a string xn has length
+K(xn|n) ≤nH(Pxn) + (|X| −1) log n + c.
+(14.34)
+Again, taking the expectation and applying Jensen’s inequality as in the
+binary case, we obtain
+EK(Xn|n) ≤nH(X) + (|X| −1) log n + c.
+(14.35)
+Dividing this by n yields the upper bound of the theorem.
+□

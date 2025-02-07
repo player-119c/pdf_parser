@@ -1,0 +1,5190 @@
+
+--- Page 1 ---
+[IMAGE]
+
+--- Page 2 ---
+[IMAGE]
+ELEMENTS OF
+INFORMATION THEORY
+Second Edition
+THOMAS M. COVER
+JOY A. THOMAS
+A JOHN WILEY & SONS, INC., PUBLICATION
+
+--- Page 3 ---
+ELEMENTS OF
+INFORMATION THEORY
+
+--- Page 4 ---
+
+--- Page 5 ---
+[IMAGE]
+ELEMENTS OF
+INFORMATION THEORY
+Second Edition
+THOMAS M. COVER
+JOY A. THOMAS
+A JOHN WILEY & SONS, INC., PUBLICATION
+
+--- Page 6 ---
+Copyright 2006 by John Wiley & Sons, Inc. All rights reserved.
+Published by John Wiley & Sons, Inc., Hoboken, New Jersey.
+Published simultaneously in Canada.
+No part of this publication may be reproduced, stored in a retrieval system, or transmitted in any
+form or by any means, electronic, mechanical, photocopying, recording, scanning, or otherwise,
+except as permitted under Section 107 or 108 of the 1976 United States Copyright Act, without
+either the prior written permission of the Publisher, or authorization through payment of the
+appropriate per-copy fee to the Copyright Clearance Center, Inc., 222 Rosewood Drive, Danvers,
+Requests to the Publisher for permission should be addressed to the Permissions Department,
+John Wiley & Sons, Inc., 111 River Street, Hoboken, NJ 07030, (201) 748-6011, fax (201) 748-6008,
+Limit of Liability/Disclaimer of Warranty: While the publisher and author have used their best efforts
+in preparing this book, they make no representations or warranties with respect to the accuracy or
+completeness of the contents of this book and speciﬁcally disclaim any implied warranties of
+merchantability or ﬁtness for a particular purpose. No warranty may be created or extended by sales
+representatives or written sales materials. The advice and strategies contained herein may not be
+suitable for your situation. You should consult with a professional where appropriate. Neither the
+publisher nor author shall be liable for any loss of proﬁt or any other commercial damages, including
+but not limited to special, incidental, consequential, or other damages.
+For general information on our other products and services or for technical support, please contact our
+Customer Care Department within the United States at (800) 762-2974, outside the United States at
+(317) 572-3993 or fax (317) 572-4002.
+Wiley also publishes its books in a variety of electronic formats. Some content that appears in print
+may not be available in electronic formats. For more information about Wiley products, visit our web
+Library of Congress Cataloging-in-Publication Data:
+Cover, T. M., 1938–
+Elements of information theory/by Thomas M. Cover, Joy A. Thomas.–2nd ed.
+p. cm.
+“A Wiley-Interscience publication.”
+Includes bibliographical references and index.
+ISBN-13 978-0-471-24195-9
+ISBN-10 0-471-24195-4
+1. Information theory. I. Thomas, Joy A. II. Title.
+Q360.C68 2005
+003′.54–dc22
+2005047799
+Printed in the United States of America.
+10 9 8 7 6 5 4 3 2 1
+site at www.wiley.com.
+or online at http://www.wiley.com/go/permission.
+MA 01923, (978) 750-8400, fax (978) 750-4470, or on the web at www.copyright.com.
+
+--- Page 7 ---
+CONTENTS
+Contents
+v
+Preface to the Second Edition
+xv
+Preface to the First Edition
+xvii
+Acknowledgments for the Second Edition
+xxi
+Acknowledgments for the First Edition
+xxiii
+1
+Introduction and Preview
+1
+1.1
+Preview of the Book
+5
+2
+Entropy, Relative Entropy, and Mutual Information
+13
+2.1
+Entropy
+13
+2.2
+Joint Entropy and Conditional Entropy
+16
+2.3
+Relative Entropy and Mutual Information
+19
+2.4
+Relationship Between Entropy and Mutual
+Information
+20
+2.5
+Chain Rules for Entropy, Relative Entropy,
+and Mutual Information
+22
+2.6
+Jensen’s Inequality and Its Consequences
+25
+2.7
+Log Sum Inequality and Its Applications
+30
+2.8
+Data-Processing Inequality
+34
+2.9
+Sufﬁcient Statistics
+35
+2.10
+Fano’s Inequality
+37
+Summary
+41
+Problems
+43
+Historical Notes
+54
+v
+
+--- Page 8 ---
+vi
+CONTENTS
+3
+Asymptotic Equipartition Property
+57
+3.1
+Asymptotic Equipartition Property Theorem
+58
+3.2
+Consequences of the AEP: Data Compression
+60
+3.3
+High-Probability Sets and the Typical Set
+62
+Summary
+64
+Problems
+64
+Historical Notes
+69
+4
+Entropy Rates of a Stochastic Process
+71
+4.1
+Markov Chains
+71
+4.2
+Entropy Rate
+74
+4.3
+Example: Entropy Rate of a Random Walk on a
+Weighted Graph
+78
+4.4
+Second Law of Thermodynamics
+81
+4.5
+Functions of Markov Chains
+84
+Summary
+87
+Problems
+88
+Historical Notes
+100
+5
+Data Compression
+103
+5.1
+Examples of Codes
+103
+5.2
+Kraft Inequality
+107
+5.3
+Optimal Codes
+110
+5.4
+Bounds on the Optimal Code Length
+112
+5.5
+Kraft Inequality for Uniquely Decodable
+Codes
+115
+5.6
+Huffman Codes
+118
+5.7
+Some Comments on Huffman Codes
+120
+5.8
+Optimality of Huffman Codes
+123
+5.9
+Shannon–Fano–Elias Coding
+127
+5.10
+Competitive Optimality of the Shannon
+Code
+130
+5.11
+Generation of Discrete Distributions from
+Fair Coins
+134
+Summary
+141
+Problems
+142
+Historical Notes
+157
+
+--- Page 9 ---
+CONTENTS
+vii
+6
+Gambling and Data Compression
+159
+6.1
+The Horse Race
+159
+6.2
+Gambling and Side Information
+164
+6.3
+Dependent Horse Races and Entropy Rate
+166
+6.4
+The Entropy of English
+168
+6.5
+Data Compression and Gambling
+171
+6.6
+Gambling Estimate of the Entropy of English
+173
+Summary
+175
+Problems
+176
+Historical Notes
+182
+7
+Channel Capacity
+183
+7.1
+Examples of Channel Capacity
+184
+7.1.1
+Noiseless Binary Channel
+184
+7.1.2
+Noisy Channel with Nonoverlapping
+Outputs
+185
+7.1.3
+Noisy Typewriter
+186
+7.1.4
+Binary Symmetric Channel
+187
+7.1.5
+Binary Erasure Channel
+188
+7.2
+Symmetric Channels
+189
+7.3
+Properties of Channel Capacity
+191
+7.4
+Preview of the Channel Coding Theorem
+191
+7.5
+Deﬁnitions
+192
+7.6
+Jointly Typical Sequences
+195
+7.7
+Channel Coding Theorem
+199
+7.8
+Zero-Error Codes
+205
+7.9
+Fano’s Inequality and the Converse to the Coding
+Theorem
+206
+7.10
+Equality in the Converse to the Channel Coding
+Theorem
+208
+7.11
+Hamming Codes
+210
+7.12
+Feedback Capacity
+216
+7.13
+Source–Channel Separation Theorem
+218
+Summary
+222
+Problems
+223
+Historical Notes
+240
+
+--- Page 10 ---
+viii
+CONTENTS
+8
+Differential Entropy
+243
+8.1
+Deﬁnitions
+243
+8.2
+AEP for Continuous Random Variables
+245
+8.3
+Relation of Differential Entropy to Discrete
+Entropy
+247
+8.4
+Joint and Conditional Differential Entropy
+249
+8.5
+Relative Entropy and Mutual Information
+250
+8.6
+Properties of Differential Entropy, Relative Entropy,
+and Mutual Information
+252
+Summary
+256
+Problems
+256
+Historical Notes
+259
+9
+Gaussian Channel
+261
+9.1
+Gaussian Channel: Deﬁnitions
+263
+9.2
+Converse to the Coding Theorem for Gaussian
+Channels
+268
+9.3
+Bandlimited Channels
+270
+9.4
+Parallel Gaussian Channels
+274
+9.5
+Channels with Colored Gaussian Noise
+277
+9.6
+Gaussian Channels with Feedback
+280
+Summary
+289
+Problems
+290
+Historical Notes
+299
+10
+Rate Distortion Theory
+301
+10.1
+Quantization
+301
+10.2
+Deﬁnitions
+303
+10.3
+Calculation of the Rate Distortion Function
+307
+10.3.1
+Binary Source
+307
+10.3.2
+Gaussian Source
+310
+10.3.3
+Simultaneous Description of Independent
+Gaussian Random Variables
+312
+10.4
+Converse to the Rate Distortion Theorem
+315
+10.5
+Achievability of the Rate Distortion Function
+318
+10.6
+Strongly Typical Sequences and Rate Distortion
+325
+10.7
+Characterization of the Rate Distortion Function
+329
+
+--- Page 11 ---
+CONTENTS
+ix
+10.8
+Computation of Channel Capacity and the Rate
+Distortion Function
+332
+Summary
+335
+Problems
+336
+Historical Notes
+345
+11
+Information Theory and Statistics
+347
+11.1
+Method of Types
+347
+11.2
+Law of Large Numbers
+355
+11.3
+Universal Source Coding
+357
+11.4
+Large Deviation Theory
+360
+11.5
+Examples of Sanov’s Theorem
+364
+11.6
+Conditional Limit Theorem
+366
+11.7
+Hypothesis Testing
+375
+11.8
+Chernoff–Stein Lemma
+380
+11.9
+Chernoff Information
+384
+11.10
+Fisher Information and the Cram´er–Rao
+Inequality
+392
+Summary
+397
+Problems
+399
+Historical Notes
+408
+12
+Maximum Entropy
+409
+12.1
+Maximum Entropy Distributions
+409
+12.2
+Examples
+411
+12.3
+Anomalous Maximum Entropy Problem
+413
+12.4
+Spectrum Estimation
+415
+12.5
+Entropy Rates of a Gaussian Process
+416
+12.6
+Burg’s Maximum Entropy Theorem
+417
+Summary
+420
+Problems
+421
+Historical Notes
+425
+13
+Universal Source Coding
+427
+13.1
+Universal Codes and Channel Capacity
+428
+13.2
+Universal Coding for Binary Sequences
+433
+13.3
+Arithmetic Coding
+436
+
+--- Page 12 ---
+x
+CONTENTS
+13.4
+Lempel–Ziv Coding
+440
+13.4.1
+Sliding Window Lempel–Ziv
+Algorithm
+441
+13.4.2
+Tree-Structured Lempel–Ziv
+Algorithms
+442
+13.5
+Optimality of Lempel–Ziv Algorithms
+443
+13.5.1
+Sliding Window Lempel–Ziv
+Algorithms
+443
+13.5.2
+Optimality of Tree-Structured Lempel–Ziv
+Compression
+448
+Summary
+456
+Problems
+457
+Historical Notes
+461
+14
+Kolmogorov Complexity
+463
+14.1
+Models of Computation
+464
+14.2
+Kolmogorov Complexity: Deﬁnitions
+and Examples
+466
+14.3
+Kolmogorov Complexity and Entropy
+473
+14.4
+Kolmogorov Complexity of Integers
+475
+14.5
+Algorithmically Random and Incompressible
+Sequences
+476
+14.6
+Universal Probability
+480
+14.7
+Kolmogorov complexity
+482
+14.8
+
+484
+14.9
+Universal Gambling
+487
+14.10
+Occam’s Razor
+488
+14.11
+Kolmogorov Complexity and Universal
+Probability
+490
+14.12
+Kolmogorov Sufﬁcient Statistic
+496
+14.13
+Minimum Description Length Principle
+500
+Summary
+501
+Problems
+503
+Historical Notes
+507
+15
+Network Information Theory
+509
+15.1
+Gaussian Multiple-User Channels
+513
+
+--- Page 13 ---
+CONTENTS
+xi
+15.1.1
+Single-User Gaussian Channel
+513
+15.1.2
+Gaussian Multiple-Access Channel
+with m Users
+514
+15.1.3
+Gaussian Broadcast Channel
+515
+15.1.4
+Gaussian Relay Channel
+516
+15.1.5
+Gaussian Interference Channel
+518
+15.1.6
+Gaussian Two-Way Channel
+519
+15.2
+Jointly Typical Sequences
+520
+15.3
+Multiple-Access Channel
+524
+15.3.1
+Achievability of the Capacity Region for the
+Multiple-Access Channel
+530
+15.3.2
+Comments on the Capacity Region for the
+Multiple-Access Channel
+532
+15.3.3
+Convexity of the Capacity Region of the
+Multiple-Access Channel
+534
+15.3.4
+Converse for the Multiple-Access
+Channel
+538
+15.3.5
+m-User Multiple-Access Channels
+543
+15.3.6
+Gaussian Multiple-Access Channels
+544
+15.4
+Encoding of Correlated Sources
+549
+15.4.1
+Achievability of the Slepian–Wolf
+Theorem
+551
+15.4.2
+Converse for the Slepian–Wolf
+Theorem
+555
+15.4.3
+Slepian–Wolf Theorem for Many
+Sources
+556
+15.4.4
+Interpretation of Slepian–Wolf
+Coding
+557
+15.5
+Duality Between Slepian–Wolf Encoding and
+Multiple-Access Channels
+558
+15.6
+Broadcast Channel
+560
+15.6.1
+Deﬁnitions for a Broadcast Channel
+563
+15.6.2
+Degraded Broadcast Channels
+564
+15.6.3
+Capacity Region for the Degraded Broadcast
+Channel
+565
+15.7
+Relay Channel
+571
+15.8
+Source Coding with Side Information
+575
+15.9
+Rate Distortion with Side Information
+580
+
+--- Page 14 ---
+xii
+CONTENTS
+15.10
+General Multiterminal Networks
+587
+Summary
+594
+Problems
+596
+Historical Notes
+609
+16
+Information Theory and Portfolio Theory
+613
+16.1
+The Stock Market: Some Deﬁnitions
+613
+16.2
+Kuhn–Tucker Characterization of the Log-Optimal
+Portfolio
+617
+16.3
+Asymptotic Optimality of the Log-Optimal
+Portfolio
+619
+16.4
+Side Information and the Growth Rate
+621
+16.5
+Investment in Stationary Markets
+623
+16.6
+Competitive Optimality of the Log-Optimal
+Portfolio
+627
+16.7
+Universal Portfolios
+629
+16.7.1
+Finite-Horizon Universal Portfolios
+631
+16.7.2
+Horizon-Free Universal Portfolios
+638
+16.8
+Shannon–McMillan–Breiman Theorem
+(General AEP)
+644
+Summary
+650
+Problems
+652
+Historical Notes
+655
+17
+Inequalities in Information Theory
+657
+17.1
+Basic Inequalities of Information Theory
+657
+17.2
+Differential Entropy
+660
+17.3
+Bounds on Entropy and Relative Entropy
+663
+17.4
+Inequalities for Types
+665
+17.5
+Combinatorial Bounds on Entropy
+666
+17.6
+Entropy Rates of Subsets
+667
+17.7
+Entropy and Fisher Information
+671
+17.8
+Entropy Power Inequality and Brunn–Minkowski
+Inequality
+674
+17.9
+Inequalities for Determinants
+679
+
+--- Page 15 ---
+CONTENTS
+xiii
+17.10
+Inequalities for Ratios of Determinants
+683
+Summary
+686
+Problems
+686
+Historical Notes
+687
+Bibliography
+689
+List of Symbols
+723
+Index
+727
+
+--- Page 16 ---
+
+--- Page 17 ---
+PREFACE TO THE
+SECOND EDITION
+In the years since the publication of the ﬁrst edition, there were many
+aspects of the book that we wished to improve, to rearrange, or to expand,
+but the constraints of reprinting would not allow us to make those changes
+between printings. In the new edition, we now get a chance to make some
+of these changes, to add problems, and to discuss some topics that we had
+omitted from the ﬁrst edition.
+The key changes include a reorganization of the chapters to make
+the book easier to teach, and the addition of more than two hundred
+new problems. We have added material on universal portfolios, universal
+source coding, Gaussian feedback capacity, network information theory,
+and developed the duality of data compression and channel capacity. A
+new chapter has been added and many proofs have been simpliﬁed. We
+have also updated the references and historical notes.
+The material in this book can be taught in a two-quarter sequence. The
+ﬁrst quarter might cover Chapters 1 to 9, which includes the asymptotic
+equipartition property, data compression, and channel capacity, culminat-
+ing in the capacity of the Gaussian channel. The second quarter could
+cover the remaining chapters, including rate distortion, the method of
+types, Kolmogorov complexity, network information theory, universal
+source coding, and portfolio theory. If only one semester is available, we
+would add rate distortion and a single lecture each on Kolmogorov com-
+plexity and network information theory to the ﬁrst semester. A web site,
+http://www.elementsoﬁnformationtheory.com, provides links to additional
+material and solutions to selected problems.
+In the years since the ﬁrst edition of the book, information theory
+celebrated its 50th birthday (the 50th anniversary of Shannon’s original
+paper that started the ﬁeld), and ideas from information theory have been
+applied to many problems of science and technology, including bioin-
+formatics, web search, wireless communication, video compression, and
+xv
+
+--- Page 18 ---
+xvi
+PREFACE TO THE SECOND EDITION
+others. The list of applications is endless, but it is the elegance of the
+fundamental mathematics that is still the key attraction of this area. We
+hope that this book will give some insight into why we believe that this
+is one of the most interesting areas at the intersection of mathematics,
+physics, statistics, and engineering.
+Tom Cover
+Joy Thomas
+Palo Alto, California
+January 2006
+
+--- Page 19 ---
+PREFACE TO THE
+FIRST EDITION
+This is intended to be a simple and accessible book on information theory.
+As Einstein said, “Everything should be made as simple as possible, but no
+simpler.” Although we have not veriﬁed the quote (ﬁrst found in a fortune
+cookie), this point of view drives our development throughout the book.
+There are a few key ideas and techniques that, when mastered, make the
+subject appear simple and provide great intuition on new questions.
+This book has arisen from over ten years of lectures in a two-quarter
+sequence of a senior and ﬁrst-year graduate-level course in information
+theory, and is intended as an introduction to information theory for stu-
+dents of communication theory, computer science, and statistics.
+There are two points to be made about the simplicities inherent in infor-
+mation theory. First, certain quantities like entropy and mutual information
+arise as the answers to fundamental questions. For example, entropy is
+the minimum descriptive complexity of a random variable, and mutual
+information is the communication rate in the presence of noise. Also,
+as we shall point out, mutual information corresponds to the increase in
+the doubling rate of wealth given side information. Second, the answers
+to information theoretic questions have a natural algebraic structure. For
+example, there is a chain rule for entropies, and entropy and mutual infor-
+mation are related. Thus the answers to problems in data compression
+and communication admit extensive interpretation. We all know the feel-
+ing that follows when one investigates a problem, goes through a large
+amount of algebra, and ﬁnally investigates the answer to ﬁnd that the
+entire problem is illuminated not by the analysis but by the inspection of
+the answer. Perhaps the outstanding examples of this in physics are New-
+ton’s laws and Schr¨odinger’s wave equation. Who could have foreseen the
+awesome philosophical interpretations of Schr¨odinger’s wave equation?
+In the text we often investigate properties of the answer before we look
+at the question. For example, in Chapter 2, we deﬁne entropy, relative
+entropy, and mutual information and study the relationships and a few
+xvii
+
+--- Page 20 ---
+xviii
+PREFACE TO THE FIRST EDITION
+interpretations of them, showing how the answers ﬁt together in various
+ways. Along the way we speculate on the meaning of the second law of
+thermodynamics. Does entropy always increase? The answer is yes and
+no. This is the sort of result that should please experts in the area but
+might be overlooked as standard by the novice.
+In fact, that brings up a point that often occurs in teaching. It is fun
+to ﬁnd new proofs or slightly new results that no one else knows. When
+one presents these ideas along with the established material in class, the
+response is “sure, sure, sure.” But the excitement of teaching the material
+is greatly enhanced. Thus we have derived great pleasure from investigat-
+ing a number of new ideas in this textbook.
+Examples of some of the new material in this text include the chapter
+on the relationship of information theory to gambling, the work on the uni-
+versality of the second law of thermodynamics in the context of Markov
+chains, the joint typicality proofs of the channel capacity theorem, the
+competitive optimality of Huffman codes, and the proof of Burg’s theorem
+on maximum entropy spectral density estimation. Also, the chapter on
+Kolmogorov complexity has no counterpart in other information theory
+texts. We have also taken delight in relating Fisher information, mutual
+information, the central limit theorem, and the Brunn–Minkowski and
+entropy power inequalities. To our surprise, many of the classical results
+on determinant inequalities are most easily proved using information the-
+oretic inequalities.
+Even though the ﬁeld of information theory has grown considerably
+since Shannon’s original paper, we have strived to emphasize its coher-
+ence. While it is clear that Shannon was motivated by problems in commu-
+nication theory when he developed information theory, we treat informa-
+tion theory as a ﬁeld of its own with applications to communication theory
+and statistics. We were drawn to the ﬁeld of information theory from
+backgrounds in communication theory, probability theory, and statistics,
+because of the apparent impossibility of capturing the intangible concept
+of information.
+Since most of the results in the book are given as theorems and proofs,
+we expect the elegance of the results to speak for themselves. In many
+cases we actually describe the properties of the solutions before the prob-
+lems. Again, the properties are interesting in themselves and provide a
+natural rhythm for the proofs that follow.
+One innovation in the presentation is our use of long chains of inequal-
+ities with no intervening text followed immediately by the explanations.
+By the time the reader comes to many of these proofs, we expect that he
+or she will be able to follow most of these steps without any explanation
+and will be able to pick out the needed explanations. These chains of
+
+--- Page 21 ---
+PREFACE TO THE FIRST EDITION
+xix
+inequalities serve as pop quizzes in which the reader can be reassured
+of having the knowledge needed to prove some important theorems. The
+natural ﬂow of these proofs is so compelling that it prompted us to ﬂout
+one of the cardinal rules of technical writing; and the absence of verbiage
+makes the logical necessity of the ideas evident and the key ideas per-
+spicuous. We hope that by the end of the book the reader will share our
+appreciation of the elegance, simplicity, and naturalness of information
+theory.
+Throughout the book we use the method of weakly typical sequences,
+which has its origins in Shannon’s original 1948 work but was formally
+developed in the early 1970s. The key idea here is the asymptotic equipar-
+tition property, which can be roughly paraphrased as “Almost everything
+is almost equally probable.”
+Chapter 2 includes the basic algebraic relationships of entropy, relative
+entropy, and mutual information. The asymptotic equipartition property
+(AEP) is given central prominence in Chapter 3. This leads us to dis-
+cuss the entropy rates of stochastic processes and data compression in
+Chapters 4 and 5. A gambling sojourn is taken in Chapter 6, where the
+duality of data compression and the growth rate of wealth is developed.
+The sensational success of Kolmogorov complexity as an intellectual
+foundation for information theory is explored in Chapter 14. Here we
+replace the goal of ﬁnding a description that is good on the average with
+the goal of ﬁnding the universally shortest description. There is indeed
+a universal notion of the descriptive complexity of an object. Here also
+the wonderful number  is investigated. This number, which is the binary
+expansion of the probability that a Turing machine will halt, reveals many
+of the secrets of mathematics.
+Channel capacity is established in Chapter 7. The necessary material
+on differential entropy is developed in Chapter 8, laying the groundwork
+for the extension of previous capacity theorems to continuous noise chan-
+nels. The capacity of the fundamental Gaussian channel is investigated in
+Chapter 9.
+The relationship between information theory and statistics, ﬁrst studied
+by Kullback in the early 1950s and relatively neglected since, is developed
+in Chapter 11. Rate distortion theory requires a little more background
+than its noiseless data compression counterpart, which accounts for its
+placement as late as Chapter 10 in the text.
+The huge subject of network information theory, which is the study
+of the simultaneously achievable ﬂows of information in the presence of
+noise and interference, is developed in Chapter 15. Many new ideas come
+into play in network information theory. The primary new ingredients are
+interference and feedback. Chapter 16 considers the stock market, which is
+
+--- Page 22 ---
+xx
+PREFACE TO THE FIRST EDITION
+the generalization of the gambling processes considered in Chapter 6, and
+shows again the close correspondence of information theory and gambling.
+Chapter 17, on inequalities in information theory, gives us a chance to
+recapitulate the interesting inequalities strewn throughout the book, put
+them in a new framework, and then add some interesting new inequalities
+on the entropy rates of randomly drawn subsets. The beautiful relationship
+of the Brunn–Minkowski inequality for volumes of set sums, the entropy
+power inequality for the effective variance of the sum of independent
+random variables, and the Fisher information inequalities are made explicit
+here.
+We have made an attempt to keep the theory at a consistent level.
+The mathematical level is a reasonably high one, probably the senior or
+ﬁrst-year graduate level, with a background of at least one good semester
+course in probability and a solid background in mathematics. We have,
+however, been able to avoid the use of measure theory. Measure theory
+comes up only brieﬂy in the proof of the AEP for ergodic processes in
+Chapter 16. This ﬁts in with our belief that the fundamentals of infor-
+mation theory are orthogonal to the techniques required to bring them to
+their full generalization.
+The essential vitamins are contained in Chapters 2, 3, 4, 5, 7, 8, 9,
+11, 10, and 15. This subset of chapters can be read without essential
+reference to the others and makes a good core of understanding. In our
+opinion, Chapter 14 on Kolmogorov complexity is also essential for a deep
+understanding of information theory. The rest, ranging from gambling to
+inequalities, is part of the terrain illuminated by this coherent and beautiful
+subject.
+Every course has its ﬁrst lecture, in which a sneak preview and overview
+of ideas is presented. Chapter 1 plays this role.
+Tom Cover
+Joy Thomas
+Palo Alto, California
+June 1990
+
+--- Page 23 ---
+ACKNOWLEDGMENTS
+FOR THE SECOND EDITION
+Since the appearance of the ﬁrst edition, we have been fortunate to receive
+feedback, suggestions, and corrections from a large number of readers. It
+would be impossible to thank everyone who has helped us in our efforts,
+but we would like to list some of them. In particular, we would like
+to thank all the faculty who taught courses based on this book and the
+students who took those courses; it is through them that we learned to
+look at the same material from a different perspective.
+In particular, we would like to thank Andrew Barron, Alon Orlitsky,
+T. S. Han, Raymond Yeung, Nam Phamdo, Franz Willems, and Marty
+Cohn for their comments and suggestions. Over the years, students at
+Stanford have provided ideas and inspirations for the changes—these
+include George Gemelos, Navid Hassanpour, Young-Han Kim, Charles
+Mathis, Styrmir Sigurjonsson, Jon Yard, Michael Baer, Mung Chiang,
+Suhas Diggavi, Elza Erkip, Paul Fahn, Garud Iyengar, David Julian, Yian-
+nis Kontoyiannis, Amos Lapidoth, Erik Ordentlich, Sandeep Pombra, Jim
+Roche, Arak Sutivong, Joshua Sweetkind-Singer, and Assaf Zeevi. Denise
+Murphy provided much support and help during the preparation of the
+second edition.
+Joy Thomas would like to acknowledge the support of colleagues
+at IBM and Stratify who provided valuable comments and suggestions.
+Particular thanks are due Peter Franaszek, C. S. Chang, Randy Nelson,
+Ramesh Gopinath, Pandurang Nayak, John Lamping, Vineet Gupta, and
+Ramana Venkata. In particular, many hours of dicussion with Brandon
+Roy helped reﬁne some of the arguments in the book. Above all, Joy
+would like to acknowledge that the second edition would not have been
+possible without the support and encouragement of his wife, Priya, who
+makes all things worthwhile.
+Tom Cover would like to thank his students and his wife, Karen.
+xxi
+
+--- Page 24 ---
+
+--- Page 25 ---
+ACKNOWLEDGMENTS
+FOR THE FIRST EDITION
+We wish to thank everyone who helped make this book what it is. In
+particular, Aaron Wyner, Toby Berger, Masoud Salehi, Alon Orlitsky,
+Jim Mazo and Andrew Barron have made detailed comments on various
+drafts of the book which guided us in our ﬁnal choice of content. We
+would like to thank Bob Gallager for an initial reading of the manuscript
+and his encouragement to publish it. Aaron Wyner donated his new proof
+with Ziv on the convergence of the Lempel-Ziv algorithm. We would
+also like to thank Normam Abramson, Ed van der Meulen, Jack Salz and
+Raymond Yeung for their suggested revisions.
+Certain key visitors and research associates contributed as well, includ-
+ing Amir Dembo, Paul Algoet, Hirosuke Yamamoto, Ben Kawabata, M.
+Shimizu and Yoichiro Watanabe. We beneﬁted from the advice of John
+Gill when he used this text in his class. Abbas El Gamal made invaluable
+contributions, and helped begin this book years ago when we planned
+to write a research monograph on multiple user information theory. We
+would also like to thank the Ph.D. students in information theory as this
+book was being written: Laura Ekroot, Will Equitz, Don Kimber, Mitchell
+Trott, Andrew Nobel, Jim Roche, Erik Ordentlich, Elza Erkip and Vitto-
+rio Castelli. Also Mitchell Oslick, Chien-Wen Tseng and Michael Morrell
+were among the most active students in contributing questions and sug-
+gestions to the text. Marc Goldberg and Anil Kaul helped us produce
+some of the ﬁgures. Finally we would like to thank Kirsten Goodell and
+Kathy Adams for their support and help in some of the aspects of the
+preparation of the manuscript.
+Joy Thomas would also like to thank Peter Franaszek, Steve Lavenberg,
+Fred Jelinek, David Nahamoo and Lalit Bahl for their encouragment and
+support during the ﬁnal stages of production of this book.
+xxiii
+
+--- Page 26 ---
+
+--- Page 27 ---
+CHAPTER 1
+INTRODUCTION AND PREVIEW
+Information theory answers two fundamental questions in communication
+theory: What is the ultimate data compression (answer: the entropy H),
+and what is the ultimate transmission rate of communication (answer: the
+channel capacity C). For this reason some consider information theory
+to be a subset of communication theory. We argue that it is much more.
+Indeed, it has fundamental contributions to make in statistical physics
+(thermodynamics), computer science (Kolmogorov complexity or algo-
+rithmic complexity), statistical inference (Occam’s Razor: “The simplest
+explanation is best”), and to probability and statistics (error exponents for
+optimal hypothesis testing and estimation).
+This “ﬁrst lecture” chapter goes backward and forward through infor-
+mation theory and its naturally related ideas. The full deﬁnitions and study
+of the subject begin in Chapter 2. Figure 1.1 illustrates the relationship
+of information theory to other ﬁelds. As the ﬁgure suggests, information
+theory intersects physics (statistical mechanics), mathematics (probability
+theory), electrical engineering (communication theory), and computer sci-
+ence (algorithmic complexity). We now describe the areas of intersection
+in greater detail.
+Electrical Engineering (Communication Theory).
+In the early 1940s
+it was thought to be impossible to send information at a positive rate
+with negligible probability of error. Shannon surprised the communica-
+tion theory community by proving that the probability of error could be
+made nearly zero for all communication rates below channel capacity.
+The capacity can be computed simply from the noise characteristics of
+the channel. Shannon further argued that random processes such as music
+and speech have an irreducible complexity below which the signal cannot
+be compressed. This he named the entropy, in deference to the parallel
+use of this word in thermodynamics, and argued that if the entropy of the
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+1
+
+--- Page 28 ---
+2
+INTRODUCTION AND PREVIEW
+Physics
+AEP
+Thermodynamics
+Quantum
+Information
+Theory
+Mathematics
+Inequalities
+Statistics
+Hypothesis
+Testing
+Fisher
+Information
+Computer
+Science
+Kolmogorov
+Complexity
+Probability
+Theory
+Limit
+Theorems
+Large
+Deviations
+Communication
+Theory
+Limits of
+Communication
+Theory
+Portfolio Theory
+Kelly Gambling
+Economics
+Information
+Theory
+FIGURE 1.1. Relationship of information theory to other ﬁelds.
+Data compression
+limit
+Data transmission
+limit
+min l(X; X )
+^
+max l(X; Y )
+FIGURE 1.2. Information theory as the extreme points of communication theory.
+source is less than the capacity of the channel, asymptotically error-free
+communication can be achieved.
+Information theory today represents the extreme points of the set of
+all possible communication schemes, as shown in the fanciful Figure 1.2.
+The data compression minimum I (X; ˆX) lies at one extreme of the set of
+communication ideas. All data compression schemes require description
+
+--- Page 29 ---
+INTRODUCTION AND PREVIEW
+3
+rates at least equal to this minimum. At the other extreme is the data
+transmission maximum I (X; Y), known as the channel capacity. Thus,
+all modulation schemes and data compression schemes lie between these
+limits.
+Information theory also suggests means of achieving these ultimate
+limits of communication. However, these theoretically optimal communi-
+cation schemes, beautiful as they are, may turn out to be computationally
+impractical. It is only because of the computational feasibility of sim-
+ple modulation and demodulation schemes that we use them rather than
+the random coding and nearest-neighbor decoding rule suggested by Shan-
+non’s proof of the channel capacity theorem. Progress in integrated circuits
+and code design has enabled us to reap some of the gains suggested by
+Shannon’s theory. Computational practicality was ﬁnally achieved by the
+advent of turbo codes. A good example of an application of the ideas of
+information theory is the use of error-correcting codes on compact discs
+and DVDs.
+Recent work on the communication aspects of information theory has
+concentrated on network information theory: the theory of the simultane-
+ous rates of communication from many senders to many receivers in the
+presence of interference and noise. Some of the trade-offs of rates between
+senders and receivers are unexpected, and all have a certain mathematical
+simplicity. A unifying theory, however, remains to be found.
+Computer
+Science
+(Kolmogorov
+Complexity).
+Kolmogorov,
+Chaitin, and Solomonoff put forth the idea that the complexity of a string
+of data can be deﬁned by the length of the shortest binary computer
+program for computing the string. Thus, the complexity is the minimal
+description length. This deﬁnition of complexity turns out to be universal,
+that is, computer independent, and is of fundamental importance. Thus,
+Kolmogorov complexity lays the foundation for the theory of descriptive
+complexity. Gratifyingly, the Kolmogorov complexity K is approximately
+equal to the Shannon entropy H if the sequence is drawn at random from
+a distribution that has entropy H. So the tie-in between information theory
+and Kolmogorov complexity is perfect. Indeed, we consider Kolmogorov
+complexity to be more fundamental than Shannon entropy. It is the ulti-
+mate data compression and leads to a logically consistent procedure for
+inference.
+There is a pleasing complementary relationship between algorithmic
+complexity and computational complexity. One can think about computa-
+tional complexity (time complexity) and Kolmogorov complexity (pro-
+gram length or descriptive complexity) as two axes corresponding to
+
+--- Page 30 ---
+4
+INTRODUCTION AND PREVIEW
+program running time and program length. Kolmogorov complexity fo-
+cuses on minimizing along the second axis, and computational complexity
+focuses on minimizing along the ﬁrst axis. Little work has been done on
+the simultaneous minimization of the two.
+Physics (Thermodynamics).
+Statistical mechanics is the birthplace of
+entropy and the second law of thermodynamics. Entropy always increases.
+Among other things, the second law allows one to dismiss any claims to
+perpetual motion machines. We discuss the second law brieﬂy in Chapter 4.
+Mathematics (Probability Theory and Statistics).
+The fundamental
+quantities of information theory—entropy, relative entropy, and mutual
+information—are deﬁned as functionals of probability distributions. In
+turn, they characterize the behavior of long sequences of random variables
+and allow us to estimate the probabilities of rare events (large deviation
+theory) and to ﬁnd the best error exponent in hypothesis tests.
+Philosophy of Science (Occam’s Razor).
+William of Occam said
+“Causes shall not be multiplied beyond necessity,” or to paraphrase it,
+“The simplest explanation is best.” Solomonoff and Chaitin argued per-
+suasively that one gets a universally good prediction procedure if one takes
+a weighted combination of all programs that explain the data and observes
+what they print next. Moreover, this inference will work in many problems
+not handled by statistics. For example, this procedure will eventually pre-
+dict the subsequent digits of π. When this procedure is applied to coin ﬂips
+that come up heads with probability 0.7, this too will be inferred. When
+applied to the stock market, the procedure should essentially ﬁnd all the
+“laws” of the stock market and extrapolate them optimally. In principle,
+such a procedure would have found Newton’s laws of physics. Of course,
+such inference is highly impractical, because weeding out all computer
+programs that fail to generate existing data will take impossibly long. We
+would predict what happens tomorrow a hundred years from now.
+Economics (Investment).
+Repeated investment in a stationary stock
+market results in an exponential growth of wealth. The growth rate of
+the wealth is a dual of the entropy rate of the stock market. The paral-
+lels between the theory of optimal investment in the stock market and
+information theory are striking. We develop the theory of investment to
+explore this duality.
+Computation vs. Communication.
+As we build larger computers
+out of smaller components, we encounter both a computation limit and
+a communication limit. Computation is communication limited and com-
+munication is computation limited. These become intertwined, and thus
+
+--- Page 31 ---
+1.1
+PREVIEW OF THE BOOK
+5
+all of the developments in communication theory via information theory
+should have a direct impact on the theory of computation.
+1.1
+PREVIEW OF THE BOOK
+The initial questions treated by information theory lay in the areas of
+data compression and transmission. The answers are quantities such as
+entropy and mutual information, which are functions of the probability
+distributions that underlie the process of communication. A few deﬁnitions
+will aid the initial discussion. We repeat these deﬁnitions in Chapter 2.
+The entropy of a random variable X with a probability mass function
+p(x) is deﬁned by
+H(X) = −
+
+x
+p(x) log2 p(x).
+(1.1)
+We use logarithms to base 2. The entropy will then be measured in bits.
+The entropy is a measure of the average uncertainty in the random vari-
+able. It is the number of bits on average required to describe the random
+variable.
+Example 1.1.1
+Consider a random variable that has a uniform distribu-
+tion over 32 outcomes. To identify an outcome, we need a label that takes
+on 32 different values. Thus, 5-bit strings sufﬁce as labels.
+The entropy of this random variable is
+H(X) = −
+32
+
+i=1
+p(i) log p(i) = −
+32
+
+i=1
+1
+32 log 1
+32 = log 32 = 5 bits,
+(1.2)
+which agrees with the number of bits needed to describe X. In this case,
+all the outcomes have representations of the same length.
+Now consider an example with nonuniform distribution.
+Example 1.1.2
+Suppose that we have a horse race with eight horses
+taking part. Assume that the probabilities of winning for the eight horses
+are
+1
+2, 1
+4, 1
+8, 1
+16, 1
+64, 1
+64, 1
+64, 1
+64
+
+. We can calculate the entropy of the horse
+race as
+H(X) = −1
+2 log 1
+2 −1
+4 log 1
+4 −1
+8 log 1
+8 −1
+16 log 1
+16 −4 1
+64 log 1
+64
+= 2 bits.
+(1.3)
+
+--- Page 32 ---
+6
+INTRODUCTION AND PREVIEW
+Suppose that we wish to send a message indicating which horse won
+the race. One alternative is to send the index of the winning horse. This
+description requires 3 bits for any of the horses. But the win probabilities
+are not uniform. It therefore makes sense to use shorter descriptions for the
+more probable horses and longer descriptions for the less probable ones,
+so that we achieve a lower average description length. For example, we
+could use the following set of bit strings to represent the eight horses: 0,
+10, 110, 1110, 111100, 111101, 111110, 111111. The average description
+length in this case is 2 bits, as opposed to 3 bits for the uniform code.
+Notice that the average description length in this case is equal to the
+entropy. In Chapter 5 we show that the entropy of a random variable is
+a lower bound on the average number of bits required to represent the
+random variable and also on the average number of questions needed to
+identify the variable in a game of “20 questions.” We also show how to
+construct representations that have an average length within 1 bit of the
+entropy.
+The concept of entropy in information theory is related to the concept of
+entropy in statistical mechanics. If we draw a sequence of n independent
+and identically distributed (i.i.d.) random variables, we will show that the
+probability of a “typical” sequence is about 2−nH(X) and that there are
+about 2nH(X) such typical sequences. This property [known as the asymp-
+totic equipartition property (AEP)] is the basis of many of the proofs in
+information theory. We later present other problems for which entropy
+arises as a natural answer (e.g., the number of fair coin ﬂips needed to
+generate a random variable).
+The notion of descriptive complexity of a random variable can be
+extended to deﬁne the descriptive complexity of a single string. The Kol-
+mogorov complexity of a binary string is deﬁned as the length of the
+shortest computer program that prints out the string. It will turn out that
+if the string is indeed random, the Kolmogorov complexity is close to
+the entropy. Kolmogorov complexity is a natural framework in which
+to consider problems of statistical inference and modeling and leads to
+a clearer understanding of Occam’s Razor: “The simplest explanation is
+best.” We describe some simple properties of Kolmogorov complexity in
+Chapter 1.
+Entropy is the uncertainty of a single random variable. We can deﬁne
+conditional entropy H(X|Y), which is the entropy of a random variable
+conditional on the knowledge of another random variable. The reduction
+in uncertainty due to another random variable is called the mutual infor-
+mation. For two random variables X and Y this reduction is the mutual
+
+--- Page 33 ---
+1.1
+PREVIEW OF THE BOOK
+7
+information
+I (X; Y) = H(X) −H(X|Y) =
+
+x,y
+p(x, y) log p(x, y)
+p(x)p(y).
+(1.4)
+The mutual information I (X; Y) is a measure of the dependence between
+the two random variables. It is symmetric in X and Y and always non-
+negative and is equal to zero if and only if X and Y are independent.
+A communication channel is a system in which the output depends
+probabilistically on its input. It is characterized by a probability transition
+matrix p(y|x) that determines the conditional distribution of the output
+given the input. For a communication channel with input X and output
+Y, we can deﬁne the capacity C by
+C = max
+p(x) I (X; Y).
+(1.5)
+Later we show that the capacity is the maximum rate at which we can send
+information over the channel and recover the information at the output
+with a vanishingly low probability of error. We illustrate this with a few
+examples.
+Example 1.1.3
+(Noiseless binary channel)
+For this channel, the binary
+input is reproduced exactly at the output. This channel is illustrated in
+Figure 1.3. Here, any transmitted bit is received without error. Hence,
+in each transmission, we can send 1 bit reliably to the receiver, and the
+capacity is 1 bit. We can also calculate the information capacity C =
+max I (X; Y) = 1 bit.
+Example 1.1.4
+(Noisy four-symbol channel)
+Consider the channel
+shown in Figure 1.4. In this channel, each input letter is received either as
+the same letter with probability 1
+2 or as the next letter with probability 1
+2.
+If we use all four input symbols, inspection of the output would not reveal
+with certainty which input symbol was sent. If, on the other hand, we use
+1
+0
+1
+0
+FIGURE 1.3. Noiseless binary channel. C = 1 bit.
+
+--- Page 34 ---
+8
+INTRODUCTION AND PREVIEW
+1
+2
+3
+4
+1
+2
+3
+4
+FIGURE 1.4. Noisy channel.
+only two of the inputs (1 and 3, say), we can tell immediately from the
+output which input symbol was sent. This channel then acts like the noise-
+less channel of Example 1.1.3, and we can send 1 bit per transmission
+over this channel with no errors. We can calculate the channel capacity
+C = max I (X; Y) in this case, and it is equal to 1 bit per transmission,
+in agreement with the analysis above.
+In general, communication channels do not have the simple structure of
+this example, so we cannot always identify a subset of the inputs to send
+information without error. But if we consider a sequence of transmissions,
+all channels look like this example and we can then identify a subset of the
+input sequences (the codewords) that can be used to transmit information
+over the channel in such a way that the sets of possible output sequences
+associated with each of the codewords are approximately disjoint. We can
+then look at the output sequence and identify the input sequence with a
+vanishingly low probability of error.
+Example 1.1.5
+(Binary symmetric channel)
+This is the basic example
+of a noisy communication system. The channel is illustrated in Figure 1.5.
+1 −p
+1 −p
+0
+0
+1
+1
+p
+p
+FIGURE 1.5. Binary symmetric channel.
+
+--- Page 35 ---
+1.1
+PREVIEW OF THE BOOK
+9
+The channel has a binary input, and its output is equal to the input with
+probability 1 −p. With probability p, on the other hand, a 0 is received
+as a 1, and vice versa. In this case, the capacity of the channel can be cal-
+culated to be C = 1 + p log p + (1 −p) log(1 −p) bits per transmission.
+However, it is no longer obvious how one can achieve this capacity. If we
+use the channel many times, however, the channel begins to look like the
+noisy four-symbol channel of Example 1.1.4, and we can send informa-
+tion at a rate C bits per transmission with an arbitrarily low probability
+of error.
+The ultimate limit on the rate of communication of information over
+a channel is given by the channel capacity. The channel coding theorem
+shows that this limit can be achieved by using codes with a long block
+length. In practical communication systems, there are limitations on the
+complexity of the codes that we can use, and therefore we may not be
+able to achieve capacity.
+Mutual information turns out to be a special case of a more general
+quantity called relative entropy D(p||q), which is a measure of the “dis-
+tance” between two probability mass functions p and q. It is deﬁned
+as
+D(p||q) =
+
+x
+p(x) log p(x)
+q(x) .
+(1.6)
+Although relative entropy is not a true metric, it has some of the properties
+of a metric. In particular, it is always nonnegative and is zero if and only
+if p = q. Relative entropy arises as the exponent in the probability of
+error in a hypothesis test between distributions p and q. Relative entropy
+can be used to deﬁne a geometry for probability distributions that allows
+us to interpret many of the results of large deviation theory.
+There are a number of parallels between information theory and the
+theory of investment in a stock market. A stock market is deﬁned by a
+random vector X whose elements are nonnegative numbers equal to the
+ratio of the price of a stock at the end of a day to the price at the beginning
+of the day. For a stock market with distribution F(x), we can deﬁne the
+doubling rate W as
+W =
+max
+b:bi≥0, bi=1
+
+log btx dF(x).
+(1.7)
+The doubling rate is the maximum asymptotic exponent in the growth
+of wealth. The doubling rate has a number of properties that parallel the
+properties of entropy. We explore some of these properties in Chapter 16.
+
+--- Page 36 ---
+10
+INTRODUCTION AND PREVIEW
+The quantities H, I, C, D, K, W arise naturally in the following areas:
+• Data compression. The entropy H of a random variable is a lower
+bound on the average length of the shortest description of the random
+variable. We can construct descriptions with average length within 1
+bit of the entropy. If we relax the constraint of recovering the source
+perfectly, we can then ask what communication rates are required to
+describe the source up to distortion D? And what channel capacities
+are sufﬁcient to enable the transmission of this source over the chan-
+nel and its reconstruction with distortion less than or equal to D?
+This is the subject of rate distortion theory.
+When we try to formalize the notion of the shortest description
+for nonrandom objects, we are led to the deﬁnition of Kolmogorov
+complexity K. Later, we show that Kolmogorov complexity is uni-
+versal and satisﬁes many of the intuitive requirements for the theory
+of shortest descriptions.
+• Data transmission. We consider the problem of transmitting infor-
+mation so that the receiver can decode the message with a small prob-
+ability of error. Essentially, we wish to ﬁnd codewords (sequences
+of input symbols to a channel) that are mutually far apart in the
+sense that their noisy versions (available at the output of the channel)
+are distinguishable. This is equivalent to sphere packing in high-
+dimensional space. For any set of codewords it is possible to calculate
+the probability that the receiver will make an error (i.e., make an
+incorrect decision as to which codeword was sent). However, in most
+cases, this calculation is tedious.
+Using a randomly generated code, Shannon showed that one can
+send information at any rate below the capacity C of the channel
+with an arbitrarily low probability of error. The idea of a randomly
+generated code is very unusual. It provides the basis for a simple
+analysis of a very difﬁcult problem. One of the key ideas in the proof
+is the concept of typical sequences. The capacity C is the logarithm
+of the number of distinguishable input signals.
+• Network information theory. Each of the topics mentioned previously
+involves a single source or a single channel. What if one wishes to com-
+press each of many sources and then put the compressed descriptions
+together into a joint reconstruction of the sources? This problem is
+solved by the Slepian–Wolf theorem. Or what if one has many senders
+sending information independently to a common receiver? What is the
+channel capacity of this channel? This is the multiple-access channel
+solved by Liao and Ahlswede. Or what if one has one sender and many
+
+--- Page 37 ---
+1.1
+PREVIEW OF THE BOOK
+11
+receivers and wishes to communicate (perhaps different) information
+simultaneously to each of the receivers? This is the broadcast channel.
+Finally, what if one has an arbitrary number of senders and receivers in
+an environment of interference and noise. What is the capacity region
+of achievable rates from the various senders to the receivers? This is
+the general network information theory problem. All of the preceding
+problems fall into the general area of multiple-user or network informa-
+tion theory. Although hopes for a comprehensive theory for networks
+may be beyond current research techniques, there is still some hope that
+all the answers involve only elaborate forms of mutual information and
+relative entropy.
+• Ergodic theory. The asymptotic equipartition theorem states that most
+sample n-sequences of an ergodic process have probability about 2−nH
+and that there are about 2nH such typical sequences.
+• Hypothesis testing. The relative entropy D arises as the exponent in
+the probability of error in a hypothesis test between two distributions.
+It is a natural measure of distance between distributions.
+• Statistical mechanics. The entropy H arises in statistical mechanics
+as a measure of uncertainty or disorganization in a physical system.
+Roughly speaking, the entropy is the logarithm of the number of
+ways in which the physical system can be conﬁgured. The second law
+of thermodynamics says that the entropy of a closed system cannot
+decrease. Later we provide some interpretations of the second law.
+• Quantum mechanics.
+Here, von Neumann entropy S = tr(ρ ln ρ) =
+
+i λi log λi plays the role of classical Shannon–Boltzmann entropy
+H = −
+i pi log pi. Quantum mechanical versions of data compres-
+sion and channel capacity can then be found.
+• Inference. We can use the notion of Kolmogorov complexity K to
+ﬁnd the shortest description of the data and use that as a model to
+predict what comes next. A model that maximizes the uncertainty or
+entropy yields the maximum entropy approach to inference.
+• Gambling and investment.
+The optimal exponent in the growth rate
+of wealth is given by the doubling rate W. For a horse race with
+uniform odds, the sum of the doubling rate W and the entropy H is
+constant. The increase in the doubling rate due to side information is
+equal to the mutual information I between a horse race and the side
+information. Similar results hold for investment in the stock market.
+• Probability theory.
+The asymptotic equipartition property (AEP)
+shows that most sequences are typical in that they have a sam-
+ple entropy close to H. So attention can be restricted to these
+approximately 2nH typical sequences. In large deviation theory, the
+
+--- Page 38 ---
+12
+INTRODUCTION AND PREVIEW
+probability of a set is approximately 2−nD, where D is the relative
+entropy distance between the closest element in the set and the true
+distribution.
+• Complexity theory. The Kolmogorov complexity K is a measure of
+the descriptive complexity of an object. It is related to, but different
+from, computational complexity, which measures the time or space
+required for a computation.
+Information-theoretic quantities such as entropy and relative entropy
+arise again and again as the answers to the fundamental questions in
+communication and statistics. Before studying these questions, we shall
+study some of the properties of the answers. We begin in Chapter 2 with
+the deﬁnitions and basic properties of entropy, relative entropy, and mutual
+information.
+
+--- Page 39 ---
+CHAPTER 2
+ENTROPY, RELATIVE ENTROPY,
+AND MUTUAL INFORMATION
+In this chapter we introduce most of the basic deﬁnitions required for
+subsequent development of the theory. It is irresistible to play with their
+relationships and interpretations, taking faith in their later utility. After
+deﬁning entropy and mutual information, we establish chain rules, the
+nonnegativity of mutual information, the data-processing inequality, and
+illustrate these deﬁnitions by examining sufﬁcient statistics and Fano’s
+inequality.
+The concept of information is too broad to be captured completely by
+a single deﬁnition. However, for any probability distribution, we deﬁne a
+quantity called the entropy, which has many properties that agree with the
+intuitive notion of what a measure of information should be. This notion is
+extended to deﬁne mutual information, which is a measure of the amount
+of information one random variable contains about another. Entropy then
+becomes the self-information of a random variable. Mutual information is
+a special case of a more general quantity called relative entropy, which is
+a measure of the distance between two probability distributions. All these
+quantities are closely related and share a number of simple properties,
+some of which we derive in this chapter.
+In later chapters we show how these quantities arise as natural answers
+to a number of questions in communication, statistics, complexity, and
+gambling. That will be the ultimate test of the value of these deﬁnitions.
+2.1
+ENTROPY
+We ﬁrst introduce the concept of entropy, which is a measure of the
+uncertainty of a random variable. Let X be a discrete random variable
+with alphabet X and probability mass function p(x) = Pr{X = x}, x ∈X.
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+13
+
+--- Page 40 ---
+14
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+We denote the probability mass function by p(x) rather than pX(x), for
+convenience. Thus, p(x) and p(y) refer to two different random variables
+and are in fact different probability mass functions, pX(x) and pY(y),
+respectively.
+Deﬁnition
+The entropy H(X) of a discrete random variable X is
+deﬁned by
+H(X) = −
+
+x∈X
+p(x) log p(x).
+(2.1)
+We also write H(p) for the above quantity. The log is to the base 2
+and entropy is expressed in bits. For example, the entropy of a fair coin
+toss is 1 bit. We will use the convention that 0 log 0 = 0, which is easily
+justiﬁed by continuity since x log x →0 as x →0. Adding terms of zero
+probability does not change the entropy.
+If the base of the logarithm is b, we denote the entropy as Hb(X). If
+the base of the logarithm is e, the entropy is measured in nats. Unless
+otherwise speciﬁed, we will take all logarithms to base 2, and hence all
+the entropies will be measured in bits. Note that entropy is a functional
+of the distribution of X. It does not depend on the actual values taken by
+the random variable X, but only on the probabilities.
+We denote expectation by E. Thus, if X ∼p(x), the expected value of
+the random variable g(X) is written
+Epg(X) =
+
+x∈X
+g(x)p(x),
+(2.2)
+or more simply as Eg(X) when the probability mass function is under-
+stood from the context. We shall take a peculiar interest in the eerily
+self-referential expectation of g(X) under p(x) when g(X) = log
+1
+p(X).
+Remark
+The entropy of X can also be interpreted as the expected value
+of the random variable log
+1
+p(X), where X is drawn according to probability
+mass function p(x). Thus,
+H(X) = Ep log
+1
+p(X).
+(2.3)
+This deﬁnition of entropy is related to the deﬁnition of entropy in ther-
+modynamics; some of the connections are explored later. It is possible
+to derive the deﬁnition of entropy axiomatically by deﬁning certain prop-
+erties that the entropy of a random variable must satisfy. This approach
+is illustrated in Problem 2.46. We do not use the axiomatic approach to
+
+--- Page 41 ---
+2.1
+ENTROPY
+15
+justify the deﬁnition of entropy; instead, we show that it arises as the
+answer to a number of natural questions, such as “What is the average
+length of the shortest description of the random variable?” First, we derive
+some immediate consequences of the deﬁnition.
+Lemma 2.1.1
+H(X) ≥0.
+Proof:
+0 ≤p(x) ≤1 implies that log
+1
+p(x) ≥0.
+□
+Lemma 2.1.2
+Hb(X) = (logb a)Ha(X).
+Proof:
+logb p = logb a loga p.
+□
+The second property of entropy enables us to change the base of the
+logarithm in the deﬁnition. Entropy can be changed from one base to
+another by multiplying by the appropriate factor.
+Example 2.1.1
+Let
+X =
+
+1
+with probability p,
+0
+with probability 1 −p.
+(2.4)
+Then
+H(X) = −p log p −(1 −p) log(1 −p) def
+== H(p).
+(2.5)
+In particular, H(X) = 1 bit when p = 1
+2. The graph of the function H(p)
+is shown in Figure 2.1. The ﬁgure illustrates some of the basic properties
+of entropy: It is a concave function of the distribution and equals 0 when
+p = 0 or 1. This makes sense, because when p = 0 or 1, the variable
+is not random and there is no uncertainty. Similarly, the uncertainty is
+maximum when p = 1
+2, which also corresponds to the maximum value of
+the entropy.
+Example 2.1.2
+Let
+X =
+
+
+
+a
+with probability 1
+2,
+b
+with probability 1
+4,
+c
+with probability 1
+8,
+d
+with probability 1
+8.
+(2.6)
+The entropy of X is
+H(X) = −1
+2 log 1
+2 −1
+4 log 1
+4 −1
+8 log 1
+8 −1
+8 log 1
+8 = 7
+4 bits.
+(2.7)
+
+--- Page 42 ---
+16
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+p
+H(p)
+FIGURE 2.1. H(p) vs. p.
+Suppose that we wish to determine the value of X with the minimum
+number of binary questions. An efﬁcient ﬁrst question is “Is X = a?”
+This splits the probability in half. If the answer to the ﬁrst question is
+no, the second question can be “Is X = b?” The third question can be
+“Is X = c?” The resulting expected number of binary questions required
+is 1.75. This turns out to be the minimum expected number of binary
+questions required to determine the value of X. In Chapter 5 we show that
+the minimum expected number of binary questions required to determine
+X lies between H(X) and H(X) + 1.
+2.2
+JOINT ENTROPY AND CONDITIONAL ENTROPY
+We deﬁned the entropy of a single random variable in Section 2.1. We
+now extend the deﬁnition to a pair of random variables. There is nothing
+really new in this deﬁnition because (X, Y) can be considered to be a
+single vector-valued random variable.
+Deﬁnition
+The joint entropy H(X, Y) of a pair of discrete random
+variables (X, Y) with a joint distribution p(x, y) is deﬁned as
+H(X, Y) = −
+
+x∈X
+
+y∈Y
+p(x, y) log p(x, y),
+(2.8)
+
+--- Page 43 ---
+2.2
+JOINT ENTROPY AND CONDITIONAL ENTROPY
+17
+which can also be expressed as
+H(X, Y) = −E log p(X, Y).
+(2.9)
+We also deﬁne the conditional entropy of a random variable given
+another as the expected value of the entropies of the conditional distribu-
+tions, averaged over the conditioning random variable.
+Deﬁnition
+If (X, Y) ∼p(x, y), the conditional entropy H(Y|X) is
+deﬁned as
+H(Y|X) =
+
+x∈X
+p(x)H(Y|X = x)
+(2.10)
+= −
+
+x∈X
+p(x)
+
+y∈Y
+p(y|x) log p(y|x)
+(2.11)
+= −
+
+x∈X
+
+y∈Y
+p(x, y) log p(y|x)
+(2.12)
+= −E log p(Y|X).
+(2.13)
+The naturalness of the deﬁnition of joint entropy and conditional entropy
+is exhibited by the fact that the entropy of a pair of random variables is
+the entropy of one plus the conditional entropy of the other. This is proved
+in the following theorem.
+Theorem 2.2.1
+(Chain rule)
+H(X, Y) = H(X) + H(Y|X).
+(2.14)
+Proof
+H(X, Y) = −
+
+x∈X
+
+y∈Y
+p(x, y) log p(x, y)
+(2.15)
+= −
+
+x∈X
+
+y∈Y
+p(x, y) log p(x)p(y|x)
+(2.16)
+= −
+
+x∈X
+
+y∈Y
+p(x, y) log p(x) −
+
+x∈X
+
+y∈Y
+p(x, y) log p(y|x)
+(2.17)
+= −
+
+x∈X
+p(x) log p(x) −
+
+x∈X
+
+y∈Y
+p(x, y) log p(y|x)
+(2.18)
+= H(X) + H(Y|X).
+(2.19)
+
+--- Page 44 ---
+[IMAGE]
+18
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Equivalently, we can write
+log p(X, Y) = log p(X) + log p(Y|X)
+(2.20)
+and take the expectation of both sides of the equation to obtain the
+theorem.
+□
+Corollary
+H(X, Y|Z) = H(X|Z) + H(Y|X, Z).
+(2.21)
+Proof:
+The proof follows along the same lines as the theorem.
+□
+Example 2.2.1
+Let (X, Y) have the following joint distribution:
+The marginal distribution of X is ( 1
+2, 1
+4, 1
+8, 1
+8) and the marginal distribution
+of Y is ( 1
+4, 1
+4, 1
+4, 1
+4), and hence H(X) = 7
+4 bits and H(Y) = 2 bits. Also,
+H(X|Y) =
+4
+
+i=1
+p(Y = i)H(X|Y = i)
+(2.22)
+= 1
+4H
+1
+2, 1
+4, 1
+8, 1
+8
+
++ 1
+4H
+1
+4, 1
+2, 1
+8, 1
+8
+
++ 1
+4H
+1
+4, 1
+4, 1
+4, 1
+4
+
++ 1
+4H(1, 0, 0, 0)
+(2.23)
+= 1
+4 × 7
+4 + 1
+4 × 7
+4 + 1
+4 × 2 + 1
+4 × 0
+(2.24)
+= 11
+8 bits.
+(2.25)
+Similarly, H(Y|X) = 13
+8 bits and H(X, Y) = 27
+8 bits.
+Remark
+Note that H(Y|X) ̸= H(X|Y). However, H(X) −H(X|Y) =
+H(Y)−H(Y|X), a property that we exploit later.
+
+--- Page 45 ---
+2.3
+RELATIVE ENTROPY AND MUTUAL INFORMATION
+19
+2.3
+RELATIVE ENTROPY AND MUTUAL INFORMATION
+The entropy of a random variable is a measure of the uncertainty of the
+random variable; it is a measure of the amount of information required on
+the average to describe the random variable. In this section we introduce
+two related concepts: relative entropy and mutual information.
+The relative entropy is a measure of the distance between two distribu-
+tions. In statistics, it arises as an expected logarithm of the likelihood ratio.
+The relative entropy D(p||q) is a measure of the inefﬁciency of assuming
+that the distribution is q when the true distribution is p. For example, if
+we knew the true distribution p of the random variable, we could con-
+struct a code with average description length H(p). If, instead, we used
+the code for a distribution q, we would need H(p) + D(p||q) bits on the
+average to describe the random variable.
+Deﬁnition
+The relative entropy or Kullback–Leibler distance between
+two probability mass functions p(x) and q(x) is deﬁned as
+D(p||q) =
+
+x∈X
+p(x) log p(x)
+q(x)
+(2.26)
+= Ep log p(X)
+q(X).
+(2.27)
+In the above deﬁnition, we use the convention that 0 log 0
+0 = 0 and the
+convention (based on continuity arguments) that 0 log 0
+q = 0 and p log p
+0 =
+∞. Thus, if there is any symbol x ∈X such that p(x) > 0 and q(x) = 0,
+then D(p||q) = ∞.
+We will soon show that relative entropy is always nonnegative and is
+zero if and only if p = q. However, it is not a true distance between
+distributions since it is not symmetric and does not satisfy the triangle
+inequality. Nonetheless, it is often useful to think of relative entropy as a
+“distance” between distributions.
+We now introduce mutual information, which is a measure of the
+amount of information that one random variable contains about another
+random variable. It is the reduction in the uncertainty of one random
+variable due to the knowledge of the other.
+Deﬁnition
+Consider two random variables X and Y with a joint proba-
+bility mass function p(x, y) and marginal probability mass functions p(x)
+and p(y). The mutual information I (X; Y) is the relative entropy between
+
+--- Page 46 ---
+20
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+the joint distribution and the product distribution p(x)p(y):
+I (X; Y) =
+
+x∈X
+
+y∈Y
+p(x, y) log p(x, y)
+p(x)p(y)
+(2.28)
+= D(p(x, y)||p(x)p(y))
+(2.29)
+= Ep(x,y) log p(X, Y)
+p(X)p(Y).
+(2.30)
+In Chapter 8 we generalize this deﬁnition to continuous random vari-
+ables, and in (8.54) to general random variables that could be a mixture
+of discrete and continuous random variables.
+Example 2.3.1
+Let X = {0, 1} and consider two distributions p and q
+on X. Let p(0) = 1 −r, p(1) = r, and let q(0) = 1 −s, q(1) = s. Then
+D(p||q) = (1 −r) log 1 −r
+1 −s + r log r
+s
+(2.31)
+and
+D(q||p) = (1 −s) log 1 −s
+1 −r + s log s
+r .
+(2.32)
+If r = s, then D(p||q) = D(q||p) = 0. If r = 1
+2, s = 1
+4, we can calculate
+D(p||q) = 1
+2 log
+1
+2
+3
+4
++ 1
+2 log
+1
+2
+1
+4
+= 1 −1
+2 log 3 = 0.2075 bit,
+(2.33)
+whereas
+D(q||p) = 3
+4 log
+3
+4
+1
+2
++ 1
+4 log
+1
+4
+1
+2
+= 3
+4 log 3 −1 = 0.1887 bit.
+(2.34)
+Note that D(p||q) ̸= D(q||p) in general.
+2.4
+RELATIONSHIP BETWEEN ENTROPY AND MUTUAL
+INFORMATION
+We can rewrite the deﬁnition of mutual information I (X; Y) as
+I (X; Y) =
+
+x,y
+p(x, y) log p(x, y)
+p(x)p(y)
+(2.35)
+
+--- Page 47 ---
+2.4
+RELATIONSHIP BETWEEN ENTROPY AND MUTUAL INFORMATION
+21
+=
+
+x,y
+p(x, y) log p(x|y)
+p(x)
+(2.36)
+= −
+
+x,y
+p(x, y) log p(x) +
+
+x,y
+p(x, y) log p(x|y)
+(2.37)
+= −
+
+x
+p(x) log p(x) −
+	
+−
+
+x,y
+p(x, y) log p(x|y)
+
+(2.38)
+= H(X) −H(X|Y).
+(2.39)
+Thus, the mutual information I (X; Y) is the reduction in the uncertainty
+of X due to the knowledge of Y.
+By symmetry, it also follows that
+I (X; Y) = H(Y) −H(Y|X).
+(2.40)
+Thus, X says as much about Y as Y says about X.
+Since H(X, Y) = H(X) + H(Y|X), as shown in Section 2.2, we have
+I (X; Y) = H(X) + H(Y) −H(X, Y).
+(2.41)
+Finally, we note that
+I (X; X) = H(X) −H(X|X) = H(X).
+(2.42)
+Thus, the mutual information of a random variable with itself is the
+entropy of the random variable. This is the reason that entropy is some-
+times referred to as self-information.
+Collecting these results, we have the following theorem.
+Theorem 2.4.1
+(Mutual information and entropy)
+I (X; Y) = H(X) −H(X|Y)
+(2.43)
+I (X; Y) = H(Y) −H(Y|X)
+(2.44)
+I (X; Y) = H(X) + H(Y) −H(X, Y)
+(2.45)
+I (X; Y) = I (Y; X)
+(2.46)
+I (X; X) = H(X).
+(2.47)
+
+--- Page 48 ---
+22
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+H(X,Y)
+H(Y |X)
+H(X|Y )
+H(Y)
+I(X;Y)
+H(X )
+FIGURE 2.2. Relationship between entropy and mutual information.
+The relationship between H(X), H(Y), H(X, Y), H(X|Y), H(Y|X),
+and I (X; Y) is expressed in a Venn diagram (Figure 2.2). Notice that
+the mutual information I (X; Y) corresponds to the intersection of the
+information in X with the information in Y.
+Example 2.4.1
+For the joint distribution of Example 2.2.1, it is easy to
+calculate the mutual information I (X; Y) = H(X) −H(X|Y) = H(Y) −
+H(Y|X) = 0.375 bit.
+2.5
+CHAIN RULES FOR ENTROPY, RELATIVE ENTROPY,
+AND MUTUAL INFORMATION
+We now show that the entropy of a collection of random variables is the
+sum of the conditional entropies.
+Theorem 2.5.1
+(Chain rule for entropy)
+Let X1, X2, . . . , Xn be drawn
+according to p(x1, x2, . . . , xn). Then
+H(X1, X2, . . . , Xn) =
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1).
+(2.48)
+Proof:
+By repeated application of the two-variable expansion rule for
+entropies, we have
+H(X1, X2) = H(X1) + H(X2|X1),
+(2.49)
+H(X1, X2, X3) = H(X1) + H(X2, X3|X1)
+(2.50)
+
+--- Page 49 ---
+2.5
+CHAIN RULES FOR ENTROPY, RELATIVE ENTROPY, MUTUAL INFORMATION
+23
+= H(X1) + H(X2|X1) + H(X3|X2, X1),
+(2.51)
+...
+H(X1, X2, . . . , Xn) = H(X1) + H(X2|X1) + · · · + H(Xn|Xn−1, . . . , X1)
+(2.52)
+=
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1).
+□
+(2.53)
+Alternative Proof:
+We write p(x1, . . . , xn) = n
+i=1 p(xi|xi−1, . . . , x1)
+and evaluate
+H(X1, X2, . . . , Xn)
+= −
+
+x1,x2,...,xn
+p(x1, x2, . . . , xn) log p(x1, x2, . . . , xn)
+(2.54)
+= −
+
+x1,x2,...,xn
+p(x1, x2, . . . , xn) log
+n
+
+i=1
+p(xi|xi−1, . . . , x1)
+(2.55)
+= −
+
+x1,x2,...,xn
+n
+
+i=1
+p(x1, x2, . . . , xn) log p(xi|xi−1, . . . , x1)
+(2.56)
+= −
+n
+
+i=1
+
+x1,x2,...,xn
+p(x1, x2, . . . , xn) log p(xi|xi−1, . . . , x1)
+(2.57)
+= −
+n
+
+i=1
+
+x1,x2,...,xi
+p(x1, x2, . . . , xi) log p(xi|xi−1, . . . , x1)
+(2.58)
+=
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1).
+□
+(2.59)
+We now deﬁne the conditional mutual information as the reduction in
+the uncertainty of X due to knowledge of Y when Z is given.
+Deﬁnition
+The conditional mutual information of random variables X
+and Y given Z is deﬁned by
+I (X; Y|Z) = H(X|Z) −H(X|Y, Z)
+(2.60)
+= Ep(x,y,z) log
+p(X, Y|Z)
+p(X|Z)p(Y|Z).
+(2.61)
+Mutual information also satisﬁes a chain rule.
+
+--- Page 50 ---
+24
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Theorem 2.5.2
+(Chain rule for information)
+I (X1, X2, . . . , Xn; Y) =
+n
+
+i=1
+I (Xi; Y|Xi−1, Xi−2, . . . , X1).
+(2.62)
+Proof
+I (X1, X2, . . . , Xn; Y)
+= H(X1, X2, . . . , Xn) −H(X1, X2, . . . , Xn|Y)
+(2.63)
+=
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1) −
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1, Y)
+=
+n
+
+i=1
+I (Xi; Y|X1, X2, . . . , Xi−1).
+□
+(2.64)
+We deﬁne a conditional version of the relative entropy.
+Deﬁnition
+For joint probability mass functions p(x, y) and q(x, y), the
+conditional relative entropy D(p(y|x)||q(y|x)) is the average of the rela-
+tive entropies between the conditional probability mass functions p(y|x)
+and q(y|x) averaged over the probability mass function p(x). More pre-
+cisely,
+D(p(y|x)||q(y|x)) =
+
+x
+p(x)
+
+y
+p(y|x) log p(y|x)
+q(y|x)
+(2.65)
+= Ep(x,y) log p(Y|X)
+q(Y|X) .
+(2.66)
+The notation for conditional relative entropy is not explicit since it omits
+mention of the distribution p(x) of the conditioning random variable.
+However, it is normally understood from the context.
+The relative entropy between two joint distributions on a pair of ran-
+dom variables can be expanded as the sum of a relative entropy and a
+conditional relative entropy. The chain rule for relative entropy is used in
+Section 4.4 to prove a version of the second law of thermodynamics.
+Theorem 2.5.3
+(Chain rule for relative entropy)
+D(p(x, y)||q(x, y)) = D(p(x)||q(x)) + D(p(y|x)||q(y|x)).
+(2.67)
+
+--- Page 51 ---
+2.6
+JENSEN’S INEQUALITY AND ITS CONSEQUENCES
+25
+Proof
+D(p(x, y)||q(x, y))
+=
+
+x
+
+y
+p(x, y) log p(x, y)
+q(x, y)
+(2.68)
+=
+
+x
+
+y
+p(x, y) log p(x)p(y|x)
+q(x)q(y|x)
+(2.69)
+=
+
+x
+
+y
+p(x, y) log p(x)
+q(x) +
+
+x
+
+y
+p(x, y) log p(y|x)
+q(y|x)
+(2.70)
+= D(p(x)||q(x)) + D(p(y|x)||q(y|x)).
+□
+(2.71)
+2.6
+JENSEN’S INEQUALITY AND ITS CONSEQUENCES
+In this section we prove some simple properties of the quantities deﬁned
+earlier. We begin with the properties of convex functions.
+Deﬁnition
+A function f (x) is said to be convex over an interval (a, b)
+if for every x1, x2 ∈(a, b) and 0 ≤λ ≤1,
+f (λx1 + (1 −λ)x2) ≤λf (x1) + (1 −λ)f (x2).
+(2.72)
+A function f is said to be strictly convex if equality holds only if λ = 0
+or λ = 1.
+Deﬁnition
+A function f is concave if −f is convex. A function is
+convex if it always lies below any chord. A function is concave if it
+always lies above any chord.
+Examples of convex functions include x2, |x|, ex, x log x (for x ≥
+0), and so on. Examples of concave functions include log x and √x for
+x ≥0. Figure 2.3 shows some examples of convex and concave functions.
+Note that linear functions ax + b are both convex and concave. Convexity
+underlies many of the basic properties of information-theoretic quantities
+such as entropy and mutual information. Before we prove some of these
+properties, we derive some simple results for convex functions.
+Theorem 2.6.1
+If the function f has a second derivative that is non-
+negative (positive) over an interval, the function is convex (strictly convex)
+over that interval.
+
+--- Page 52 ---
+26
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+(a)
+(b)
+FIGURE 2.3. Examples of (a) convex and (b) concave functions.
+Proof:
+We use the Taylor series expansion of the function around x0:
+f (x) = f (x0) + f ′(x0)(x −x0) + f ′′(x∗)
+2
+(x −x0)2,
+(2.73)
+where x∗lies between x0 and x. By hypothesis, f ′′(x∗) ≥0, and thus
+the last term is nonnegative for all x.
+We let x0 = λx1 + (1 −λ)x2 and take x = x1, to obtain
+f (x1) ≥f (x0) + f ′(x0)((1 −λ)(x1 −x2)).
+(2.74)
+Similarly, taking x = x2, we obtain
+f (x2) ≥f (x0) + f ′(x0)(λ(x2 −x1)).
+(2.75)
+Multiplying (2.74) by λ and (2.75) by 1 −λ and adding, we obtain (2.72).
+The proof for strict convexity proceeds along the same lines.
+□
+Theorem 2.6.1 allows us immediately to verify the strict convexity of
+x2, ex, and x log x for x ≥0, and the strict concavity of log x and √x for
+x ≥0.
+Let E denote expectation. Thus, EX = 
+x∈X p(x)x in the discrete
+case and EX =
+
+xf (x) dx in the continuous case.
+
+--- Page 53 ---
+2.6
+JENSEN’S INEQUALITY AND ITS CONSEQUENCES
+27
+The next inequality is one of the most widely used in mathematics and
+one that underlies many of the basic results in information theory.
+Theorem 2.6.2
+(Jensen’s inequality)
+If f is a convex function and
+X is a random variable,
+Ef (X) ≥f (EX).
+(2.76)
+Moreover, if f is strictly convex, the equality in (2.76) implies that
+X = EX with probability 1 (i.e., X is a constant).
+Proof:
+We prove this for discrete distributions by induction on the num-
+ber of mass points. The proof of conditions for equality when f is strictly
+convex is left to the reader.
+For a two-mass-point distribution, the inequality becomes
+p1f (x1) + p2f (x2) ≥f (p1x1 + p2x2),
+(2.77)
+which follows directly from the deﬁnition of convex functions. Suppose
+that the theorem is true for distributions with k −1 mass points. Then
+writing p′
+i = pi/(1 −pk) for i = 1, 2, . . . , k −1, we have
+k
+
+i=1
+pif (xi) = pkf (xk) + (1 −pk)
+k−1
+
+i=1
+p′
+if (xi)
+(2.78)
+≥pkf (xk) + (1 −pk)f
+	k−1
+
+i=1
+p′
+ixi
+
+(2.79)
+≥f
+	
+pkxk + (1 −pk)
+k−1
+
+i=1
+p′
+ixi
+
+(2.80)
+= f
+	 k
+
+i=1
+pixi
+
+,
+(2.81)
+where the ﬁrst inequality follows from the induction hypothesis and the
+second follows from the deﬁnition of convexity.
+The proof can be extended to continuous distributions by continuity
+arguments.
+□
+We now use these results to prove some of the properties of entropy and
+relative entropy. The following theorem is of fundamental importance.
+
+--- Page 54 ---
+28
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Theorem 2.6.3
+(Information inequality)
+Let p(x), q(x), x ∈X, be
+two probability mass functions. Then
+D(p||q) ≥0
+(2.82)
+with equality if and only if p(x) = q(x) for all x.
+Proof:
+Let A = {x : p(x) > 0} be the support set of p(x). Then
+−D(p||q) = −
+
+x∈A
+p(x) log p(x)
+q(x)
+(2.83)
+=
+
+x∈A
+p(x) log q(x)
+p(x)
+(2.84)
+≤log
+
+x∈A
+p(x)q(x)
+p(x)
+(2.85)
+= log
+
+x∈A
+q(x)
+(2.86)
+≤log
+
+x∈X
+q(x)
+(2.87)
+= log 1
+(2.88)
+= 0,
+(2.89)
+where (2.85) follows from Jensen’s inequality. Since log t is a strictly
+concave function of t, we have equality in (2.85) if and only if q(x)/p(x)
+is constant everywhere [i.e., q(x) = cp(x) for all x]. Thus, 
+x∈A q(x) =
+c 
+x∈A p(x) = c. We have equality in (2.87) only if 
+x∈A q(x) = 
+x∈X
+q(x) = 1, which implies that c = 1. Hence, we have D(p||q) = 0 if and
+only if p(x) = q(x) for all x.
+□
+Corollary
+(Nonnegativity of mutual information)
+For any two random
+variables, X, Y,
+I (X; Y) ≥0,
+(2.90)
+with equality if and only if X and Y are independent.
+Proof:
+I (X; Y) = D(p(x, y)||p(x)p(y)) ≥0, with equality if and only
+if p(x, y) = p(x)p(y) (i.e., X and Y are independent).
+□
+
+--- Page 55 ---
+2.6
+JENSEN’S INEQUALITY AND ITS CONSEQUENCES
+29
+Corollary
+D(p(y|x)||q(y|x)) ≥0,
+(2.91)
+with equality if and only if p(y|x) = q(y|x) for all y and x such that
+p(x) > 0.
+Corollary
+I (X; Y|Z) ≥0,
+(2.92)
+with equality if and only if X and Y are conditionally independent given Z.
+We now show that the uniform distribution over the range X is the
+maximum entropy distribution over this range. It follows that any random
+variable with this range has an entropy no greater than log |X|.
+Theorem 2.6.4
+H(X) ≤log |X|, where |X| denotes the number of ele-
+ments in the range of X, with equality if and only X has a uniform distri-
+bution over X.
+Proof:
+Let u(x) =
+1
+|X| be the uniform probability mass function over X,
+and let p(x) be the probability mass function for X. Then
+D(p ∥u) =
+
+p(x) log p(x)
+u(x) = log |X| −H(X).
+(2.93)
+Hence by the nonnegativity of relative entropy,
+0 ≤D(p ∥u) = log |X| −H(X).
+□
+(2.94)
+Theorem 2.6.5
+(Conditioning reduces entropy)(Information can’t hurt)
+H(X|Y) ≤H(X)
+(2.95)
+with equality if and only if X and Y are independent.
+Proof:
+0 ≤I (X; Y) = H(X) −H(X|Y).
+□
+Intuitively, the theorem says that knowing another random variable Y
+can only reduce the uncertainty in X. Note that this is true only on the
+average. Speciﬁcally, H(X|Y = y) may be greater than or less than or
+equal to H(X), but on the average H(X|Y) = 
+y p(y)H(X|Y = y) ≤
+H(X). For example, in a court case, speciﬁc new evidence might increase
+uncertainty, but on the average evidence decreases uncertainty.
+
+--- Page 56 ---
+[IMAGE]
+30
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Example 2.6.1
+Let (X, Y) have the following joint distribution:
+Then
+H(X) = H(1
+8, 7
+8) = 0.544
+bit,
+H(X|Y = 1) = 0
+bits,
+and
+H(X|Y = 2) = 1
+bit.
+We
+calculate
+H(X|Y) = 3
+4H(X|Y = 1) + 1
+4
+H(X|Y = 2) = 0.25 bit. Thus, the uncertainty in X is increased if Y = 2
+is observed and decreased if Y = 1 is observed, but uncertainty decreases
+on the average.
+Theorem 2.6.6
+(Independence
+bound
+on
+entropy)
+Let
+X1, X2, . . . , Xn be drawn according to p(x1, x2, . . . , xn). Then
+H(X1, X2, . . . , Xn) ≤
+n
+
+i=1
+H(Xi)
+(2.96)
+with equality if and only if the Xi are independent.
+Proof:
+By the chain rule for entropies,
+H(X1, X2, . . . , Xn) =
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1)
+(2.97)
+≤
+n
+
+i=1
+H(Xi),
+(2.98)
+where the inequality follows directly from Theorem 2.6.5. We have equal-
+ity if and only if Xi is independent of Xi−1, . . . , X1 for all i (i.e., if and
+only if the Xi’s are independent).
+□
+2.7
+LOG SUM INEQUALITY AND ITS APPLICATIONS
+We now prove a simple consequence of the concavity of the logarithm,
+which will be used to prove some concavity results for the entropy.
+
+--- Page 57 ---
+2.7
+LOG SUM INEQUALITY AND ITS APPLICATIONS
+31
+Theorem 2.7.1
+(Log sum inequality)
+For nonnegative numbers,
+a1, a2, . . . , an and b1, b2, . . . , bn,
+n
+
+i=1
+ai log ai
+bi
+≥
+	 n
+
+i=1
+ai
+
+log
+n
+i=1 ai
+n
+i=1 bi
+(2.99)
+with equality if and only if ai
+bi = const.
+We again use the convention that 0 log 0 = 0, a log a
+0 = ∞if a > 0 and
+0 log 0
+0 = 0. These follow easily from continuity.
+Proof:
+Assume without loss of generality that ai > 0 and bi > 0. The
+function f (t) = t log t is strictly convex, since f ′′(t) = 1
+t log e > 0 for all
+positive t. Hence by Jensen’s inequality, we have
+
+αif (ti) ≥f
+
+αiti
+
+(2.100)
+for αi ≥0, 
+i αi = 1. Setting αi =
+bi
+n
+j=1 bj and ti = ai
+bi , we obtain
+
+ai
+ bj
+log ai
+bi
+≥
+
+ai
+ bj
+log
+
+ai
+ bj
+,
+(2.101)
+which is the log sum inequality.
+□
+We now use the log sum inequality to prove various convexity results.
+We begin by reproving Theorem 2.6.3, which states that D(p||q) ≥0 with
+equality if and only if p(x) = q(x). By the log sum inequality,
+D(p||q) =
+
+p(x) log p(x)
+q(x)
+(2.102)
+≥
+
+p(x)
+
+log
+
+p(x)
+ 
+q(x)
+(2.103)
+= 1 log 1
+1 = 0
+(2.104)
+with equality if and only if p(x)
+q(x) = c. Since both p and q are probability
+mass functions, c = 1, and hence we have D(p||q) = 0 if and only if
+p(x) = q(x) for all x.
+
+--- Page 58 ---
+32
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Theorem 2.7.2
+(Convexity of relative entropy)
+D(p||q) is convex in
+the pair (p, q); that is, if (p1, q1) and (p2, q2) are two pairs of probability
+mass functions, then
+D(λp1 + (1 −λ)p2||λq1 + (1 −λ)q2) ≤λD(p1||q1) + (1 −λ)D(p2||q2)
+(2.105)
+for all 0 ≤λ ≤1.
+Proof:
+We apply the log sum inequality to a term on the left-hand side
+of (2.105):
+(λp1(x) + (1 −λ)p2(x)) log λp1(x) + (1 −λ)p2(x)
+λq1(x) + (1 −λ)q2(x)
+≤λp1(x) log λp1(x)
+λq1(x) + (1 −λ)p2(x) log (1 −λ)p2(x)
+(1 −λ)q2(x) .
+(2.106)
+Summing this over all x, we obtain the desired property.
+□
+Theorem 2.7.3
+(Concavity of entropy)
+H(p) is a concave function
+of p.
+Proof
+H(p) = log |X| −D(p||u),
+(2.107)
+where u is the uniform distribution on |X| outcomes. The concavity of H
+then follows directly from the convexity of D.
+□
+Alternative Proof:
+Let X1 be a random variable with distribution p1,
+taking on values in a set A. Let X2 be another random variable with
+distribution p2 on the same set. Let
+θ =
+
+1
+with probability λ,
+2
+with probability 1 −λ.
+(2.108)
+Let Z = Xθ. Then the distribution of Z is λp1 + (1 −λ)p2. Now since
+conditioning reduces entropy, we have
+H(Z) ≥H(Z|θ),
+(2.109)
+or equivalently,
+H(λp1 + (1 −λ)p2) ≥λH(p1) + (1 −λ)H(p2),
+(2.110)
+which proves the concavity of the entropy as a function of the distribution.
+□
+
+--- Page 59 ---
+2.7
+LOG SUM INEQUALITY AND ITS APPLICATIONS
+33
+One of the consequences of the concavity of entropy is that mixing two
+gases of equal entropy results in a gas with higher entropy.
+Theorem 2.7.4
+Let (X, Y) ∼p(x, y) = p(x)p(y|x). The mutual infor-
+mation I (X; Y) is a concave function of p(x) for ﬁxed p(y|x) and a convex
+function of p(y|x) for ﬁxed p(x).
+Proof:
+To prove the ﬁrst part, we expand the mutual information
+I (X; Y) = H(Y) −H(Y|X) = H(Y) −
+
+x
+p(x)H(Y|X = x). (2.111)
+If p(y|x) is ﬁxed, then p(y) is a linear function of p(x). Hence H(Y),
+which is a concave function of p(y), is a concave function of p(x). The
+second term is a linear function of p(x). Hence, the difference is a concave
+function of p(x).
+To prove the second part, we ﬁx p(x) and consider two different con-
+ditional distributions p1(y|x) and p2(y|x). The corresponding joint dis-
+tributions are p1(x, y) = p(x)p1(y|x) and p2(x, y) = p(x)p2(y|x), and
+their respective marginals are p(x), p1(y) and p(x), p2(y). Consider a
+conditional distribution
+pλ(y|x) = λp1(y|x) + (1 −λ)p2(y|x),
+(2.112)
+which is a mixture of p1(y|x) and p2(y|x) where 0 ≤λ ≤1. The cor-
+responding joint distribution is also a mixture of the corresponding joint
+distributions,
+pλ(x, y) = λp1(x, y) + (1 −λ)p2(x, y),
+(2.113)
+and the distribution of Y is also a mixture,
+pλ(y) = λp1(y) + (1 −λ)p2(y).
+(2.114)
+Hence if we let qλ(x, y) = p(x)pλ(y) be the product of the marginal
+distributions, we have
+qλ(x, y) = λq1(x, y) + (1 −λ)q2(x, y).
+(2.115)
+Since the mutual information is the relative entropy between the joint
+distribution and the product of the marginals,
+I (X; Y) = D(pλ(x, y)||qλ(x, y)),
+(2.116)
+and relative entropy D(p||q) is a convex function of (p, q), it follows that
+the mutual information is a convex function of the conditional distribution.
+□
+
+--- Page 60 ---
+34
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+2.8
+DATA-PROCESSING INEQUALITY
+The data-processing inequality can be used to show that no clever manip-
+ulation of the data can improve the inferences that can be made from
+the data.
+Deﬁnition
+Random variables X, Y, Z are said to form a Markov chain
+in that order (denoted by X →Y →Z) if the conditional distribution of
+Z depends only on Y and is conditionally independent of X. Speciﬁcally,
+X, Y, and Z form a Markov chain X →Y →Z if the joint probability
+mass function can be written as
+p(x, y, z) = p(x)p(y|x)p(z|y).
+(2.117)
+Some simple consequences are as follows:
+• X →Y →Z if and only if X and Z are conditionally independent
+given Y. Markovity implies conditional independence because
+p(x, z|y) = p(x, y, z)
+p(y)
+= p(x, y)p(z|y)
+p(y)
+= p(x|y)p(z|y). (2.118)
+This is the characterization of Markov chains that can be extended
+to deﬁne Markov ﬁelds, which are n-dimensional random processes
+in which the interior and exterior are independent given the values
+on the boundary.
+• X →Y →Z implies that Z →Y →X. Thus, the condition is some-
+times written X ↔Y ↔Z.
+• If Z = f (Y), then X →Y →Z.
+We can now prove an important and useful theorem demonstrating that
+no processing of Y, deterministic or random, can increase the information
+that Y contains about X.
+Theorem 2.8.1
+(Data-processing inequality)
+If X →Y →Z, then
+I (X; Y) ≥I (X; Z).
+Proof:
+By the chain rule, we can expand mutual information in two
+different ways:
+I (X; Y, Z) = I (X; Z) + I (X; Y|Z)
+(2.119)
+= I (X; Y) + I (X; Z|Y).
+(2.120)
+
+--- Page 61 ---
+2.9
+SUFFICIENT STATISTICS
+35
+Since X and Z are conditionally independent given Y, we have
+I (X; Z|Y) = 0. Since I (X; Y|Z) ≥0, we have
+I (X; Y) ≥I (X; Z).
+(2.121)
+We have equality if and only if I (X; Y|Z) = 0 (i.e., X →Z →Y forms
+a Markov chain). Similarly, one can prove that I (Y; Z) ≥I (X; Z).
+□
+Corollary
+In particular, if Z = g(Y), we have I (X; Y) ≥I (X; g(Y)).
+Proof:
+X →Y →g(Y) forms a Markov chain.
+□
+Thus functions of the data Y cannot increase the information about X.
+Corollary
+If X →Y →Z, then I (X; Y|Z) ≤I (X; Y).
+Proof:
+We note in (2.119) and (2.120) that I (X; Z|Y) = 0, by
+Markovity, and I (X; Z) ≥0. Thus,
+I (X; Y|Z) ≤I (X; Y).
+□
+(2.122)
+Thus, the dependence of X and Y is decreased (or remains unchanged)
+by the observation of a “downstream” random variable Z. Note that it is
+also possible that I (X; Y|Z) > I (X; Y) when X, Y, and Z do not form a
+Markov chain. For example, let X and Y be independent fair binary ran-
+dom variables, and let Z = X + Y. Then I (X; Y) = 0, but I (X; Y|Z) =
+H(X|Z) −H(X|Y, Z) = H(X|Z) = P (Z = 1)H(X|Z = 1) = 1
+2 bit.
+2.9
+SUFFICIENT STATISTICS
+This section is a sidelight showing the power of the data-processing
+inequality in clarifying an important idea in statistics. Suppose that we
+have a family of probability mass functions {fθ(x)} indexed by θ, and let
+X be a sample from a distribution in this family. Let T (X) be any statistic
+(function of the sample) like the sample mean or sample variance. Then
+θ →X →T (X), and by the data-processing inequality, we have
+I (θ; T (X)) ≤I (θ; X)
+(2.123)
+for any distribution on θ. However, if equality holds, no information
+is lost.
+A statistic T (X) is called sufﬁcient for θ if it contains all the infor-
+mation in X about θ.
+
+--- Page 62 ---
+36
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Deﬁnition
+A function T (X) is said to be a sufﬁcient statistic relative to
+the family {fθ(x)} if X is independent of θ given T (X) for any distribution
+on θ[i.e., θ →T (X) →X forms a Markov chain].
+This is the same as the condition for equality in the data-processing
+inequality,
+I (θ; X) = I (θ; T (X))
+(2.124)
+for all distributions on θ. Hence sufﬁcient statistics preserve mutual infor-
+mation and conversely.
+Here are some examples of sufﬁcient statistics:
+1. Let X1, X2, . . . , Xn, Xi ∈{0, 1}, be an independent and identically
+distributed (i.i.d.) sequence of coin tosses of a coin with unknown
+parameter θ = Pr(Xi = 1). Given n, the number of 1’s is a sufﬁcient
+statistic for θ. Here T (X1, X2, . . . , Xn) = n
+i=1 Xi. In fact, we can
+show that given T , all sequences having that many 1’s are equally
+likely and independent of the parameter θ. Speciﬁcally,
+Pr
+
+(X1, X2, . . . , Xn) = (x1, x2, . . . , xn)
+
+n
+
+i=1
+Xi = k
+
+=
+
+1
+(n
+k)
+if  xi = k,
+0
+otherwise.
+(2.125)
+Thus, θ → Xi →(X1, X2, . . . , Xn) forms a Markov chain, and
+T is a sufﬁcient statistic for θ.
+The next two examples involve probability densities instead of
+probability mass functions, but the theory still applies. We deﬁne
+entropy and mutual information for continuous random variables in
+Chapter 8.
+2. If X is normally distributed with mean θ and variance 1; that is, if
+fθ(x) =
+1
+√
+2π
+e−(x−θ)2/2 = N(θ, 1),
+(2.126)
+and X1, X2, . . . , Xn are drawn independently according to this distri-
+bution, a sufﬁcient statistic for θ is the sample mean Xn = 1
+n
+n
+i=1 Xi.
+It can be veriﬁed that the conditional distribution of X1, X2, . . . , Xn,
+conditioned on Xn and n does not depend on θ.
+
+--- Page 63 ---
+2.10
+FANO’S INEQUALITY
+37
+3. If fθ = Uniform(θ, θ + 1), a sufﬁcient statistic for θ is
+T (X1, X2, . . . , Xn)
+= (max{X1, X2, . . . , Xn}, min{X1, X2, . . . , Xn}).
+(2.127)
+The proof of this is slightly more complicated, but again one can
+show that the distribution of the data is independent of the parameter
+given the statistic T .
+The minimal sufﬁcient statistic is a sufﬁcient statistic that is a function
+of all other sufﬁcient statistics.
+Deﬁnition
+A statistic T (X) is a minimal sufﬁcient statistic relative to
+{fθ(x)} if it is a function of every other sufﬁcient statistic U. Interpreting
+this in terms of the data-processing inequality, this implies that
+θ →T (X) →U(X) →X.
+(2.128)
+Hence, a minimal sufﬁcient statistic maximally compresses the infor-
+mation about θ in the sample. Other sufﬁcient statistics may contain
+additional irrelevant information. For example, for a normal distribution
+with mean θ, the pair of functions giving the mean of all odd samples and
+the mean of all even samples is a sufﬁcient statistic, but not a minimal
+sufﬁcient statistic. In the preceding examples, the sufﬁcient statistics are
+also minimal.
+2.10
+FANO’S INEQUALITY
+Suppose that we know a random variable Y and we wish to guess the value
+of a correlated random variable X. Fano’s inequality relates the probabil-
+ity of error in guessing the random variable X to its conditional entropy
+H(X|Y). It will be crucial in proving the converse to Shannon’s channel
+capacity theorem in Chapter 7. From Problem 2.5 we know that the con-
+ditional entropy of a random variable X given another random variable
+Y is zero if and only if X is a function of Y. Hence we can estimate X
+from Y with zero probability of error if and only if H(X|Y) = 0.
+Extending this argument, we expect to be able to estimate X with a
+low probability of error only if the conditional entropy H(X|Y) is small.
+Fano’s inequality quantiﬁes this idea. Suppose that we wish to estimate a
+random variable X with a distribution p(x). We observe a random variable
+Y that is related to X by the conditional distribution p(y|x). From Y, we
+
+--- Page 64 ---
+38
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+calculate a function g(Y) = ˆX, where ˆX is an estimate of X and takes on
+values in ˆX. We will not restrict the alphabet ˆX to be equal to X, and we
+will also allow the function g(Y) to be random. We wish to bound the
+probability that ˆX ̸= X. We observe that X →Y →ˆX forms a Markov
+chain. Deﬁne the probability of error
+Pe = Pr
+ ˆX ̸= X
+
+.
+(2.129)
+Theorem 2.10.1
+(Fano’s Inequality)
+For any estimator ˆX such that
+X →Y →ˆX, with Pe = Pr(X ̸= ˆX), we have
+H(Pe) + Pe log |X| ≥H(X| ˆX) ≥H(X|Y).
+(2.130)
+This inequality can be weakened to
+1 + Pe log |X| ≥H(X|Y)
+(2.131)
+or
+Pe ≥H(X|Y) −1
+log |X|
+.
+(2.132)
+Remark
+Note from (2.130) that Pe = 0 implies that H(X|Y) = 0, as
+intuition suggests.
+Proof:
+We ﬁrst ignore the role of Y and prove the ﬁrst inequality in
+(2.130). We will then use the data-processing inequality to prove the more
+traditional form of Fano’s inequality, given by the second inequality in
+(2.130). Deﬁne an error random variable,
+E =
+
+1
+if ˆX ̸= X,
+0
+if ˆX = X.
+(2.133)
+Then, using the chain rule for entropies to expand H(E, X| ˆX) in two
+different ways, we have
+H(E, X| ˆX) = H(X| ˆX) + H(E|X, ˆX)
+
+
+
+=0
+(2.134)
+= H(E| ˆX)
+
+
+
+≤H(Pe)
++ H(X|E, ˆX)
+
+
+
+≤Pe log |X|
+.
+(2.135)
+Since conditioning reduces entropy, H(E| ˆX) ≤H(E) = H(Pe). Now
+since E is a function of X and ˆX, the conditional entropy H(E|X, ˆX) is
+
+--- Page 65 ---
+2.10
+FANO’S INEQUALITY
+39
+equal to 0. Also, since E is a binary-valued random variable, H(E) =
+H(Pe). The remaining term, H(X|E, ˆX), can be bounded as follows:
+H(X|E, ˆX) = Pr(E = 0)H(X| ˆX, E = 0) + Pr(E = 1)H(X| ˆX, E = 1)
+≤(1 −Pe)0 + Pe log |X|,
+(2.136)
+since given E = 0, X = ˆX, and given E = 1, we can upper bound the
+conditional entropy by the log of the number of possible outcomes. Com-
+bining these results, we obtain
+H(Pe) + Pe log |X| ≥H(X| ˆX).
+(2.137)
+By the data-processing inequality, we have I (X; ˆX) ≤I (X; Y) since
+X →Y →ˆX is a Markov chain, and therefore H(X| ˆX) ≥H(X|Y). Thus,
+we have
+H(Pe) + Pe log |X| ≥H(X| ˆX) ≥H(X|Y).
+□
+(2.138)
+Corollary
+For any two random variables X and Y, let p = Pr(X ̸= Y).
+H(p) + p log |X| ≥H(X|Y).
+(2.139)
+Proof:
+Let ˆX = Y in Fano’s inequality.
+□
+For any two random variables X and Y, if the estimator g(Y) takes
+values in the set X, we can strengthen the inequality slightly by replacing
+log |X| with log(|X| −1).
+Corollary
+Let Pe = Pr(X ̸= ˆX), and let ˆX : Y →X; then
+H(Pe) + Pe log(|X| −1) ≥H(X|Y).
+(2.140)
+Proof:
+The proof of the theorem goes through without change, except
+that
+H(X|E, ˆX) = Pr(E = 0)H(X| ˆX, E = 0) + Pr(E = 1)H(X| ˆX, E = 1)
+(2.141)
+≤(1 −Pe)0 + Pe log(|X| −1),
+(2.142)
+since given E = 0, X = ˆX, and given E = 1, the range of possible X
+outcomes is |X| −1, we can upper bound the conditional entropy by the
+log(|X| −1), the logarithm of the number of possible outcomes. Substi-
+tuting this provides us with the stronger inequality.
+□
+
+--- Page 66 ---
+40
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Remark
+Suppose that there is no knowledge of Y. Thus, X must be
+guessed without any information. Let X ∈{1, 2, . . . , m} and p1 ≥p2 ≥
+· · · ≥pm. Then the best guess of X is ˆX = 1 and the resulting probability
+of error is Pe = 1 −p1. Fano’s inequality becomes
+H(Pe) + Pe log(m −1) ≥H(X).
+(2.143)
+The probability mass function
+(p1, p2, . . . , pm) =
+
+1 −Pe,
+Pe
+m −1, . . . ,
+Pe
+m −1
+
+(2.144)
+achieves this bound with equality. Thus, Fano’s inequality is sharp.
+While we are at it, let us introduce a new inequality relating probability
+of error and entropy. Let X and X′ by two independent identically dis-
+tributed random variables with entropy H(X). The probability at X = X′
+is given by
+Pr(X = X′) =
+
+x
+p2(x).
+(2.145)
+We have the following inequality:
+Lemma 2.10.1
+If X and X′ are i.i.d. with entropy H(X),
+Pr(X = X′) ≥2−H(X),
+(2.146)
+with equality if and only if X has a uniform distribution.
+Proof:
+Suppose that X ∼p(x). By Jensen’s inequality, we have
+2E log p(X) ≤E2log p(X),
+(2.147)
+which implies that
+2−H(X) = 2
+ p(x) log p(x) ≤
+
+p(x)2log p(x) =
+
+p2(x).
+□
+(2.148)
+Corollary
+Let X, X′ be independent with X ∼p(x), X′ ∼r(x), x, x′ ∈
+X. Then
+Pr(X = X′) ≥2−H(p)−D(p||r),
+(2.149)
+Pr(X = X′) ≥2−H(r)−D(r||p).
+(2.150)
+
+--- Page 67 ---
+SUMMARY
+41
+Proof:
+We have
+2−H(p)−D(p||r) = 2
+ p(x) log p(x)+ p(x) log r(x)
+p(x)
+(2.151)
+= 2
+ p(x) log r(x)
+(2.152)
+≤
+
+p(x)2log r(x)
+(2.153)
+=
+
+p(x)r(x)
+(2.154)
+= Pr(X = X′),
+(2.155)
+where the inequality follows from Jensen’s inequality and the convexity
+of the function f (y) = 2y.
+□
+The following telegraphic summary omits qualifying conditions.
+SUMMARY
+Deﬁnition
+The entropy H(X) of a discrete random variable X is
+deﬁned by
+H(X) = −
+
+x∈X
+p(x) log p(x).
+(2.156)
+Properties of H
+1. H(X) ≥0.
+2. Hb(X) = (logb a)Ha(X).
+3. (Conditioning reduces entropy) For any two random variables, X
+and Y, we have
+H(X|Y) ≤H(X)
+(2.157)
+with equality if and only if X and Y are independent.
+4. H(X1, X2, . . . , Xn) ≤n
+i=1 H(Xi), with equality if and only if the
+Xi are independent.
+5. H(X) ≤log | X |, with equality if and only if X is distributed uni-
+formly over X.
+6. H(p) is concave in p.
+
+--- Page 68 ---
+42
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Deﬁnition
+The relative entropy D(p ∥q) of the probability mass
+function p with respect to the probability mass function q is deﬁned by
+D(p ∥q) =
+
+xp(x) log p(x)
+q(x) .
+(2.158)
+Deﬁnition
+The mutual information between two random variables X
+and Y is deﬁned as
+I (X; Y) =
+
+x∈X
+
+y∈Y
+p(x, y) log p(x, y)
+p(x)p(y).
+(2.159)
+Alternative expressions
+H(X) = Ep log
+1
+p(X),
+(2.160)
+H(X, Y) = Ep log
+1
+p(X, Y),
+(2.161)
+H(X|Y) = Ep log
+1
+p(X|Y),
+(2.162)
+I (X; Y) = Ep log p(X, Y)
+p(X)p(Y),
+(2.163)
+D(p||q) = Ep log p(X)
+q(X).
+(2.164)
+Properties of D and I
+1. I (X; Y) = H(X) −H(X|Y) = H(Y) −H(Y|X) = H(X) +
+H(Y) −H(X, Y).
+2. D(p ∥q) ≥0 with equality if and only if p(x) = q(x), for all x ∈
+X.
+3. I (X; Y) = D(p(x, y)||p(x)p(y)) ≥0, with equality if and only if
+p(x, y) = p(x)p(y) (i.e., X and Y are independent).
+4. If | X |= m, and u is the uniform distribution over X, then D(p ∥
+u) = log m −H(p).
+5. D(p||q) is convex in the pair (p, q).
+Chain rules
+Entropy: H(X1, X2, . . . , Xn) = n
+i=1 H(Xi|Xi−1, . . . , X1).
+Mutual information:
+I (X1, X2, . . . , Xn; Y) = n
+i=1 I (Xi; Y|X1, X2, . . . , Xi−1).
+
+--- Page 69 ---
+PROBLEMS
+43
+Relative entropy:
+D(p(x, y)||q(x, y)) = D(p(x)||q(x)) + D(p(y|x)||q(y|x)).
+Jensen’s inequality. If f is a convex function, then Ef (X) ≥f (EX).
+Log sum inequality. For n positive numbers, a1, a2, . . . , an and
+b1, b2, . . . , bn,
+n
+
+i=1
+ai log ai
+bi
+≥
+	 n
+
+i=1
+ai
+
+log
+n
+i=1 ai
+n
+i=1 bi
+(2.165)
+with equality if and only if ai
+bi = constant.
+Data-processing inequality. If X →Y →Z forms a Markov chain,
+I (X; Y) ≥I (X; Z).
+Sufﬁcient statistic. T (X) is sufﬁcient relative to {fθ(x)} if and only
+if I (θ; X) = I (θ; T (X)) for all distributions on θ.
+Fano’s inequality. Let Pe = Pr{ ˆX(Y) ̸= X}. Then
+H(Pe) + Pe log |X| ≥H(X|Y).
+(2.166)
+Inequality. If X and X′ are independent and identically distributed,
+then
+Pr(X = X′) ≥2−H(X),
+(2.167)
+PROBLEMS
+2.1
+Coin ﬂips.
+A fair coin is ﬂipped until the ﬁrst head occurs. Let
+X denote the number of ﬂips required.
+(a) Find the entropy H(X) in bits. The following expressions may
+be useful:
+∞
+
+n=0
+rn =
+1
+1 −r ,
+∞
+
+n=0
+nrn =
+r
+(1 −r)2.
+(b) A random variable X is drawn according to this distribution.
+Find an “efﬁcient” sequence of yes–no questions of the form,
+
+--- Page 70 ---
+44
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+“Is X contained in the set S?” Compare H(X) to the expected
+number of questions required to determine X.
+2.2
+Entropy of functions.
+Let X be a random variable taking on a
+ﬁnite number of values. What is the (general) inequality relation-
+ship of H(X) and H(Y) if
+(a) Y = 2X?
+(b) Y = cos X?
+2.3
+Minimum
+entropy.
+What
+is
+the
+minimum
+value
+of
+H(p1, . . . , pn) = H(p) as p ranges over the set of n-dimensional
+probability vectors?
+Find all p’s that achieve this minimum.
+2.4
+Entropy of functions of a random variable.
+Let X be a discrete
+random variable. Show that the entropy of a function of X is less
+than or equal to the entropy of X by justifying the following steps:
+H(X, g(X))
+(a)
+= H(X) + H(g(X) | X)
+(2.168)
+(b)
+= H(X),
+(2.169)
+H(X, g(X))
+(c)
+= H(g(X)) + H(X | g(X))
+(2.170)
+(d)
+≥H(g(X)).
+(2.171)
+Thus, H(g(X)) ≤H(X).
+2.5
+Zero conditional entropy.
+Show that if H(Y|X) = 0, then Y is
+a function of X [i.e., for all x with p(x) > 0, there is only one
+possible value of y with p(x, y) > 0].
+2.6
+Conditional mutual information vs. unconditional mutual informa-
+tion.
+Give examples of joint random variables X, Y, and Z
+such that
+(a) I (X; Y | Z) < I (X; Y).
+(b) I (X; Y | Z) > I (X; Y).
+2.7
+Coin weighing.
+Suppose that one has n coins, among which there
+may or may not be one counterfeit coin. If there is a counterfeit
+coin, it may be either heavier or lighter than the other coins. The
+coins are to be weighed by a balance.
+(a) Find an upper bound on the number of coins n so that k
+weighings will ﬁnd the counterfeit coin (if any) and correctly
+declare it to be heavier or lighter.
+
+--- Page 71 ---
+PROBLEMS
+45
+(b) (Difﬁcult) What is the coin- weighing strategy for k = 3 weigh-
+ings and 12 coins?
+2.8
+Drawing with and without replacement.
+An urn contains r red, w
+white, and b black balls. Which has higher entropy, drawing k ≥2
+balls from the urn with replacement or without replacement? Set it
+up and show why. (There is both a difﬁcult way and a relatively
+simple way to do this.)
+2.9
+Metric.
+A function ρ(x, y) is a metric if for all x, y,
+• ρ(x, y) ≥0.
+• ρ(x, y) = ρ(y, x).
+• ρ(x, y) = 0 if and only if x = y.
+• ρ(x, y) + ρ(y, z) ≥ρ(x, z).
+(a) Show that ρ(X, Y) = H(X|Y) + H(Y|X) satisﬁes the ﬁrst,
+second, and fourth properties above. If we say that X = Y if
+there is a one-to-one function mapping from X to Y, the third
+property is also satisﬁed, and ρ(X, Y) is a metric.
+(b) Verify that ρ(X, Y) can also be expressed as
+ρ(X, Y) = H(X) + H(Y) −2I (X; Y)
+(2.172)
+= H(X, Y) −I (X; Y)
+(2.173)
+= 2H(X, Y) −H(X) −H(Y).
+(2.174)
+2.10
+Entropy of a disjoint mixture.
+Let X1 and X2 be discrete random
+variables drawn according to probability mass functions p1(·) and
+p2(·) over the respective alphabets X1 = {1, 2, . . . , m} and X2 =
+{m + 1, . . . , n}. Let
+X =
+
+X1
+with probability α,
+X2
+with probability 1 −α.
+(a) Find H(X) in terms of H(X1), H(X2), and α.
+(b) Maximize over α to show that 2H(X) ≤2H(X1) + 2H(X2) and
+interpret using the notion that 2H(X) is the effective alpha-
+bet size.
+2.11
+Measure of correlation.
+Let X1 and X2 be identically distributed
+but not necessarily independent. Let
+ρ = 1 −H(X2 | X1)
+H(X1)
+.
+
+--- Page 72 ---
+[IMAGE]
+46
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+(a) Show that ρ = I(X1;X2)
+H(X1) .
+(b) Show that 0 ≤ρ ≤1.
+(c) When is ρ = 0?
+(d) When is ρ = 1?
+2.12
+Example of joint entropy.
+Let p(x, y) be given by
+Find:
+(a) H(X), H(Y).
+(b) H(X | Y), H(Y | X).
+(c) H(X, Y).
+(d) H(Y) −H(Y | X).
+(e) I (X; Y).
+(f) Draw a Venn diagram for the quantities in parts (a) through (e).
+2.13
+Inequality.
+Show that ln x ≥1 −1
+x for x > 0.
+2.14
+Entropy of a sum.
+Let X and Y be random variables that take
+on values x1, x2, . . . , xr and y1, y2, . . . , ys, respectively. Let Z =
+X + Y.
+(a) Show that H(Z|X) = H(Y|X). Argue that if X, Y are inde-
+pendent, then H(Y) ≤H(Z) and H(X) ≤H(Z). Thus, the
+addition of independent random variables adds uncertainty.
+(b) Give an example of (necessarily dependent) random variables
+in which H(X) > H(Z) and H(Y) > H(Z).
+(c) Under what conditions does H(Z) = H(X) + H(Y)?
+2.15
+Data processing.
+Let
+X1 →X2 →X3 →· · · →Xn
+form
+a
+Markov chain in this order; that is, let
+p(x1, x2, . . . , xn) = p(x1)p(x2|x1) · · · p(xn|xn−1).
+Reduce I (X1; X2, . . . , Xn) to its simplest form.
+2.16
+Bottleneck.
+Suppose that a (nonstationary) Markov chain starts
+in one of n states, necks down to k < n states, and then
+fans back to m > k states. Thus, X1 →X2 →X3, that is,
+
+--- Page 73 ---
+PROBLEMS
+47
+p(x1, x2, x3) = p(x1)p(x2|x1)p(x3|x2), for all x1 ∈{1, 2, . . . , n},
+x2 ∈{1, 2, . . . , k}, x3 ∈{1, 2, . . . , m}.
+(a) Show that the dependence of X1 and X3 is limited by the
+bottleneck by proving that I (X1; X3) ≤log k.
+(b) Evaluate I (X1; X3) for k = 1, and conclude that no depen-
+dence can survive such a bottleneck.
+2.17
+Pure randomness and bent coins.
+Let X1, X2, . . . , Xn denote the
+outcomes of independent ﬂips of a bent coin. Thus, Pr {Xi =
+1} = p, Pr {Xi = 0} = 1 −p, where p is unknown. We wish
+to obtain a sequence Z1, Z2, . . . , ZK of fair coin ﬂips from
+X1, X2, . . . , Xn. Toward this end, let f : Xn →{0, 1}∗(where
+{0, 1}∗= {, 0, 1, 00, 01, . . .} is the set of all ﬁnite-length binary
+sequences) be a mapping f (X1, X2, . . . , Xn) = (Z1, Z2, . . . , ZK),
+where Zi ∼Bernoulli ( 1
+2), and K may depend on (X1, . . . , Xn).
+In order that the sequence Z1, Z2, . . . appear to be fair coin ﬂips,
+the map f from bent coin ﬂips to fair ﬂips must have the prop-
+erty that all 2k sequences (Z1, Z2, . . . , Zk) of a given length k
+have equal probability (possibly 0), for k = 1, 2, . . .. For example,
+for n = 2, the map f (01) = 0, f (10) = 1, f (00) = f (11) = 
+(the null string) has the property that Pr{Z1 = 1|K = 1} = Pr{Z1 =
+0|K = 1} = 1
+2. Give reasons for the following inequalities:
+nH(p)
+(a)
+= H(X1, . . . , Xn)
+(b)
+≥H(Z1, Z2, . . . , ZK, K)
+(c)
+= H(K) + H(Z1, . . . , ZK|K)
+(d)
+= H(K) + E(K)
+(e)
+≥EK.
+Thus, no more than nH(p) fair coin tosses can be derived from
+(X1, . . . , Xn), on the average. Exhibit a good map f on sequences
+of length 4.
+2.18
+World Series.
+The World Series is a seven-game series that termi-
+nates as soon as either team wins four games. Let X be the random
+variable that represents the outcome of a World Series between
+teams A and B; possible values of X are AAAA, BABABAB, and
+BBBAAAA. Let Y be the number of games played, which ranges
+from 4 to 7. Assuming that A and B are equally matched and that
+
+--- Page 74 ---
+48
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+the games are independent, calculate H(X), H(Y), H(Y|X), and
+H(X|Y).
+2.19
+Inﬁnite entropy.
+This problem shows that the entropy of a discrete
+random variable can be inﬁnite. Let A = ∞
+n=2(n log2 n)−1. [It is
+easy to show that A is ﬁnite by bounding the inﬁnite sum by the
+integral of (x log2 x)−1.] Show that the integer-valued random vari-
+able X deﬁned by Pr(X = n) = (An log2 n)−1 for n = 2, 3, . . .,
+has H(X) = +∞.
+2.20
+Run-length coding.
+Let X1, X2, . . . , Xn be (possibly dependent)
+binary random variables. Suppose that one calculates the run
+lengths R = (R1, R2, . . .) of this sequence (in order as they
+occur). For example, the sequence X = 0001100100 yields run
+lengths R = (3, 2, 2, 1, 2). Compare H(X1, X2, . . . , Xn), H(R),
+and H(Xn, R). Show all equalities and inequalities, and bound all
+the differences.
+2.21
+Markov’s inequality for probabilities.
+Let p(x) be a probability
+mass function. Prove, for all d ≥0, that
+Pr {p(X) ≤d} log 1
+d ≤H(X).
+(2.175)
+2.22
+Logical order of ideas.
+Ideas have been developed in order of
+need and then generalized if necessary. Reorder the following ideas,
+strongest ﬁrst, implications following:
+(a) Chain rule for I (X1, . . . , Xn; Y), chain rule for D(p(x1, . . . ,
+xn)||q(x1, x2, . . . , xn)), and chain rule for H(X1, X2, . . . , Xn).
+(b) D(f ||g) ≥0, Jensen’s inequality, I (X; Y) ≥0.
+2.23
+Conditional mutual information.
+Consider a sequence of n binary
+random variables X1, X2, . . . , Xn. Each sequence with an even
+number of 1’s has probability 2−(n−1), and each sequence with an
+odd number of 1’s has probability 0. Find the mutual informations
+I (X1; X2),
+I (X2; X3|X1), . . . , I (Xn−1; Xn|X1, . . . , Xn−2).
+2.24
+Average entropy.
+Let H(p) = −p log2 p −(1 −p) log2(1 −p)
+be the binary entropy function.
+(a) Evaluate H( 1
+4) using the fact that log2 3 ≈1.584. (Hint: You
+may wish to consider an experiment with four equally likely
+outcomes, one of which is more interesting than the others.)
+
+--- Page 75 ---
+PROBLEMS
+49
+(b) Calculate the average entropy H(p) when the probability p is
+chosen uniformly in the range 0 ≤p ≤1.
+(c) (Optional) Calculate the average entropy H(p1, p2, p3), where
+(p1, p2, p3) is a uniformly distributed probability vector. Gen-
+eralize to dimension n.
+2.25
+Venn diagrams.
+There isn’t really a notion of mutual information
+common to three random variables. Here is one attempt at a deﬁni-
+tion: Using Venn diagrams, we can see that the mutual information
+common to three random variables X, Y, and Z can be deﬁned by
+I (X; Y; Z) = I (X; Y) −I (X; Y|Z) .
+This quantity is symmetric in X, Y, and Z, despite the preceding
+asymmetric deﬁnition. Unfortunately, I (X; Y; Z) is not necessar-
+ily nonnegative. Find X, Y, and Z such that I (X; Y; Z) < 0, and
+prove the following two identities:
+(a) I (X; Y; Z) = H(X, Y, Z) −H(X) −H(Y) −H(Z) +
+I (X; Y) + I (Y; Z) + I (Z; X).
+(b) I (X; Y; Z) = H(X, Y, Z) −H(X, Y) −H(Y, Z) −
+H(Z, X) + H(X) + H(Y) + H(Z).
+The ﬁrst identity can be understood using the Venn diagram analogy
+for entropy and mutual information. The second identity follows
+easily from the ﬁrst.
+2.26
+Another proof of nonnegativity of relative entropy.
+In view of the
+fundamental nature of the result D(p||q) ≥0, we will give another
+proof.
+(a) Show that ln x ≤x −1 for 0 < x < ∞.
+(b) Justify the following steps:
+−D(p||q) =
+
+x
+p(x) ln q(x)
+p(x)
+(2.176)
+≤
+
+x
+p(x)
+q(x)
+p(x) −1
+
+(2.177)
+≤0.
+(2.178)
+(c) What are the conditions for equality?
+2.27
+Grouping rule for entropy.
+Let p = (p1, p2, . . . , pm) be a prob-
+ability distribution on m elements (i.e., pi ≥0 and m
+i=1 pi = 1).
+
+--- Page 76 ---
+[IMAGE]
+50
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+Deﬁne a new distribution q on m −1 elements as q1 = p1, q2 = p2,
+. . . , qm−2 = pm−2, and qm−1 = pm−1 + pm [i.e., the distribution q
+is the same as p on {1, 2, . . . , m −2}, and the probability of the
+last element in q is the sum of the last two probabilities of p].
+Show that
+H(p) = H(q) + (pm−1 + pm)H
+
+pm−1
+pm−1 + pm
+,
+pm
+pm−1 + pm
+
+.
+(2.179)
+2.28
+Mixing increases entropy.
+Show that the entropy of the proba-
+bility distribution, (p1, . . . , pi, . . . , pj, . . . , pm), is less than the
+entropy
+of
+the
+distribution
+(p1, . . . , pi+pj
+2
+, . . . , pi+pj
+2
+,
+. . . , pm). Show that in general any transfer of probability that
+makes the distribution more uniform increases the entropy.
+2.29
+Inequalities.
+Let X, Y, and Z be joint random variables. Prove
+the following inequalities and ﬁnd conditions for equality.
+(a) H(X, Y|Z) ≥H(X|Z).
+(b) I (X, Y; Z) ≥I (X; Z).
+(c) H(X, Y, Z) −H(X, Y) ≤H(X, Z) −H(X).
+(d) I (X; Z|Y) ≥I (Z; Y|X) −I (Z; Y) + I (X; Z).
+2.30
+Maximum entropy.
+Find the probability mass function p(x) that
+maximizes the entropy H(X) of a nonnegative integer-valued ran-
+dom variable X subject to the constraint
+EX =
+∞
+
+n=0
+np(n) = A
+for a ﬁxed value A > 0. Evaluate this maximum H(X).
+2.31
+Conditional entropy.
+Under what conditions does H(X|g(Y)) =
+H(X|Y)?
+2.32
+Fano.
+We are given the following joint distribution on (X, Y):
+
+--- Page 77 ---
+PROBLEMS
+51
+Let
+ˆX(Y) be an estimator for X (based on Y) and let Pe =
+Pr{ ˆX(Y) ̸= X}.
+(a) Find the minimum probability of error estimator ˆX(Y) and the
+associated Pe.
+(b) Evaluate Fano’s inequality for this problem and compare.
+2.33
+Fano’s inequality.
+Let Pr(X = i) = pi, i = 1, 2, . . . , m, and let
+p1 ≥p2 ≥p3 ≥· · · ≥pm. The minimal probability of error pre-
+dictor of X is ˆX = 1, with resulting probability of error Pe =
+1 −p1. Maximize H(p) subject to the constraint 1 −p1 = Pe to
+ﬁnd a bound on Pe in terms of H. This is Fano’s inequality in the
+absence of conditioning.
+2.34
+Entropy of initial conditions.
+Prove that H(X0|Xn) is nondecreas-
+ing with n for any Markov chain.
+2.35
+Relative entropy is not symmetric.
+Let the random variable X have three possible outcomes {a, b, c}.
+Consider two distributions on this random variable:
+Symbol
+p(x)
+q(x)
+a
+1
+2
+1
+3
+b
+1
+4
+1
+3
+c
+1
+4
+1
+3
+Calculate H(p), H(q), D(p||q), and D(q||p). Verify that in this
+case, D(p||q) ̸= D(q||p).
+2.36
+Symmetric relative entropy.
+Although, as Problem 2.35 shows,
+D(p||q) ̸= D(q||p) in general, there could be distributions for
+which equality holds. Give an example of two distributions p and
+q on a binary alphabet such that D(p||q) = D(q||p) (other than
+the trivial case p = q).
+2.37
+Relative entropy.
+Let X, Y, Z be three random variables with a
+joint probability mass function p(x, y, z). The relative entropy
+between the joint distribution and the product of the marginals is
+D(p(x, y, z)||p(x)p(y)p(z)) = E
+
+log
+p(x, y, z)
+p(x)p(y)p(z)
+
+. (2.180)
+Expand this in terms of entropies. When is this quantity zero?
+
+--- Page 78 ---
+52
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+2.38
+The value of a question.
+Let X ∼p(x), x = 1, 2, . . . , m. We are
+given a set S ⊆{1, 2, . . . , m}. We ask whether X ∈S and receive
+the answer
+Y =
+
+1
+if X ∈S
+0
+if X ̸∈S.
+Suppose that Pr{X ∈S} = α. Find the decrease in uncertainty
+H(X) −H(X|Y).
+Apparently, any set S with a given α is as good as any other.
+2.39
+Entropy and pairwise independence.
+Let X, Y, Z be three binary
+Bernoulli(1
+2) random variables that are pairwise independent; that
+is, I (X; Y) = I (X; Z) = I (Y; Z) = 0.
+(a) Under this constraint, what is the minimum value for
+H(X, Y, Z)?
+(b) Give an example achieving this minimum.
+2.40
+Discrete entropies.
+Let X and Y be two independent integer-
+valued random variables. Let X be uniformly distributed over {1, 2,
+. . . , 8}, and let Pr{Y = k} = 2−k, k = 1, 2, 3, . . ..
+(a) Find H(X).
+(b) Find H(Y).
+(c) Find H(X + Y, X −Y).
+2.41
+Random questions.
+One wishes to identify a random object X ∼
+p(x). A question Q ∼r(q) is asked at random according to r(q).
+This results in a deterministic answer A = A(x, q) ∈{a1, a2, . . .}.
+Suppose that X and Q are independent. Then I (X; Q, A) is the
+uncertainty in X removed by the question–answer (Q, A).
+(a) Show that I (X; Q, A) = H(A|Q). Interpret.
+(b) Now suppose that two i.i.d. questions Q1, Q2, ∼r(q) are
+asked, eliciting answers A1 and A2. Show that two questions
+are less valuable than twice a single question in the sense that
+I (X; Q1, A1, Q2, A2) ≤2I (X; Q1, A1).
+2.42
+Inequalities.
+Which of the following inequalities are generally
+≥, =, ≤? Label each with ≥, =, or ≤.
+(a) H(5X) vs. H(X)
+(b) I (g(X); Y) vs. I (X; Y)
+(c) H(X0|X−1) vs. H(X0|X−1, X1)
+(d) H(X, Y)/(H(X) + H(Y)) vs. 1
+
+--- Page 79 ---
+PROBLEMS
+53
+2.43
+Mutual information of heads and tails
+(a) Consider a fair coin ﬂip. What is the mutual information
+between the top and bottom sides of the coin?
+(b) A six-sided fair die is rolled. What is the mutual information
+between the top side and the front face (the side most facing
+you)?
+2.44
+Pure randomness.
+We wish to use a three-sided coin to generate
+a fair coin toss. Let the coin X have probability mass function
+X =
+
+
+
+A,
+pA
+B,
+pB
+C,
+pC,
+where pA, pB, pC are unknown.
+(a) How would you use two independent ﬂips X1, X2 to generate
+(if possible) a Bernoulli(1
+2) random variable Z?
+(b) What is the resulting maximum expected number of fair bits
+generated?
+2.45
+Finite entropy.
+Show that for a discrete random variable X ∈
+{1, 2, . . .}, if E log X < ∞, then H(X) < ∞.
+2.46
+Axiomatic deﬁnition of entropy (Difﬁcult).
+If we assume certain
+axioms for our measure of information, we will be forced to use a
+logarithmic measure such as entropy. Shannon used this to justify
+his initial deﬁnition of entropy. In this book we rely more on the
+other properties of entropy rather than its axiomatic derivation to
+justify its use. The following problem is considerably more difﬁcult
+than the other problems in this section.
+If a sequence of symmetric functions Hm(p1, p2, . . . , pm) satisﬁes
+the following properties:
+• Normalization: H2
+1
+2, 1
+2
+
+= 1,
+• Continuity: H2(p, 1 −p) is a continuous function of p,
+• Grouping: Hm(p1, p2, . . . , pm) = Hm−1(p1 + p2, p3, . . . , pm) +
+(p1 + p2)H2
+
+p1
+p1+p2,
+p2
+p1+p2
+
+,
+prove that Hm must be of the form
+Hm(p1, p2, . . . , pm) = −
+m
+
+i=1
+pi log pi,
+m = 2, 3, . . . .
+(2.181)
+
+--- Page 80 ---
+54
+ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+There are various other axiomatic formulations which result in the
+same deﬁnition of entropy. See, for example, the book by Csisz´ar
+and K¨orner [149].
+2.47
+Entropy of a missorted ﬁle.
+A deck of n cards in order 1, 2, . . . , n
+is provided. One card is removed at random, then replaced at ran-
+dom. What is the entropy of the resulting deck?
+2.48
+Sequence length.
+How much information does the length of a
+sequence give about the content of a sequence? Suppose that we
+consider a Bernoulli (1
+2) process {Xi}. Stop the process when the
+ﬁrst 1 appears. Let N designate this stopping time. Thus, XN is an
+element of the set of all ﬁnite-length binary sequences {0, 1}∗=
+{0, 1, 00, 01, 10, 11, 000, . . . }.
+(a) Find I (N; XN).
+(b) Find H(XN|N).
+(c) Find H(XN).
+Let’s now consider a different stopping time. For this part, again
+assume that Xi ∼Bernoulli( 1
+2) but stop at time N = 6, with prob-
+ability
+1
+3 and stop at time N = 12 with probability
+2
+3. Let this
+stopping time be independent of the sequence X1X2 · · · X12.
+(d) Find I (N; XN).
+(e) Find H(XN|N).
+(f) Find H(XN).
+HISTORICAL NOTES
+The concept of entropy was introduced in thermodynamics, where it
+was used to provide a statement of the second law of thermodynam-
+ics. Later, statistical mechanics provided a connection between thermo-
+dynamic entropy and the logarithm of the number of microstates in a
+macrostate of the system. This work was the crowning achievement of
+Boltzmann, who had the equation S = k ln W inscribed as the epitaph on
+his gravestone [361].
+In the 1930s, Hartley introduced a logarithmic measure of informa-
+tion for communication. His measure was essentially the logarithm of the
+alphabet size. Shannon [472] was the ﬁrst to deﬁne entropy and mutual
+information as deﬁned in this chapter. Relative entropy was ﬁrst deﬁned
+by Kullback and Leibler [339]. It is known under a variety of names,
+including the Kullback–Leibler distance, cross entropy, information diver-
+gence, and information for discrimination, and has been studied in detail
+by Csisz´ar [138] and Amari [22].
+
+--- Page 81 ---
+HISTORICAL NOTES
+55
+Many of the simple properties of these quantities were developed by
+Shannon. Fano’s inequality was proved in Fano [201]. The notion of
+sufﬁcient statistic was deﬁned by Fisher [209], and the notion of the
+minimal sufﬁcient statistic was introduced by Lehmann and Scheff´e [350].
+The relationship of mutual information and sufﬁciency is due to Kullback
+[335]. The relationship between information theory and thermodynamics
+has been discussed extensively by Brillouin [77] and Jaynes [294].
+The physics of information is a vast new subject of inquiry spawned
+from statistical mechanics, quantum mechanics, and information theory.
+The key question is how information is represented physically. Quan-
+tum channel capacity (the logarithm of the number of distinguishable
+preparations of a physical system) and quantum data compression [299]
+are well-deﬁned problems with nice answers involving the von Neumann
+entropy. A new element of quantum information arises from the exis-
+tence of quantum entanglement and the consequences (exhibited in Bell’s
+inequality) that the observed marginal distribution of physical events are
+not consistent with any joint distribution (no local realism). The funda-
+mental text by Nielsen and Chuang [395] develops the theory of quantum
+information and the quantum counterparts to many of the results in this
+book. There have also been attempts to determine whether there are
+any fundamental physical limits to computation, including work by Ben-
+nett [47] and Bennett and Landauer [48].
+
+--- Page 82 ---
+
+--- Page 83 ---
+CHAPTER 3
+ASYMPTOTIC EQUIPARTITION
+PROPERTY
+In information theory, the analog of the law of large numbers is the
+asymptotic equipartition property (AEP). It is a direct consequence
+of the weak law of large numbers. The law of large numbers states
+that for independent, identically distributed (i.i.d.) random variables,
+1
+n
+n
+i=1 Xi is close to its expected value EX for large values of n.
+The AEP states that 1
+n log
+1
+p(X1,X2,...,Xn) is close to the entropy H, where
+X1, X2, . . . , Xn are i.i.d. random variables and p(X1, X2, . . . , Xn) is the
+probability of observing the sequence X1, X2, . . . , Xn. Thus, the proba-
+bility p(X1, X2, . . . , Xn) assigned to an observed sequence will be close
+to 2−nH.
+This enables us to divide the set of all sequences into two sets, the
+typical set, where the sample entropy is close to the true entropy, and the
+nontypical set, which contains the other sequences. Most of our attention
+will be on the typical sequences. Any property that is proved for the typical
+sequences will then be true with high probability and will determine the
+average behavior of a large sample.
+First, an example. Let the random variable X ∈{0, 1} have a probability
+mass function deﬁned by p(1) = p and p(0) = q. If X1, X2, . . . , Xn are
+i.i.d. according to p(x), the probability of a sequence x1, x2, . . . , xn is
+n
+i=1 p(xi). For example, the probability of the sequence (1, 0, 1, 1, 0, 1)
+is p
+ Xiqn− Xi = p4q2. Clearly, it is not true that all 2n sequences of
+length n have the same probability.
+However, we might be able to predict the probability of the sequence
+that we actually observe. We ask for the probability p(X1, X2, . . . , Xn) of
+the outcomes X1, X2, . . . , Xn, where X1, X2, . . . are i.i.d. ∼p(x). This is
+insidiously self-referential, but well deﬁned nonetheless. Apparently, we
+are asking for the probability of an event drawn according to the same
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+57
+
+--- Page 84 ---
+58
+ASYMPTOTIC EQUIPARTITION PROPERTY
+probability distribution. Here it turns out that p(X1, X2, . . . , Xn) is close
+to 2−nH with high probability.
+We summarize this by saying, “Almost all events are almost equally
+surprising.” This is a way of saying that
+Pr
+
+(X1, X2, . . . , Xn) : p(X1, X2, . . . , Xn) = 2−n(H±ǫ)
+≈1
+(3.1)
+if X1, X2, . . . , Xn are i.i.d. ∼p(x).
+In the example just given, where p(X1, X2, . . . , Xn) = p
+ Xiqn− Xi,
+we are simply saying that the number of 1’s in the sequence is close
+to np (with high probability), and all such sequences have (roughly) the
+same probability 2−nH(p). We use the idea of convergence in probability,
+deﬁned as follows:
+Deﬁnition
+(Convergence of random variables). Given a sequence of
+random variables, X1, X2, . . . , we say that the sequence X1, X2, . . . con-
+verges to a random variable X:
+1. In probability if for every ǫ > 0, Pr{|Xn −X| > ǫ} →0
+2. In mean square if E(Xn −X)2 →0
+3. With probability 1 (also called almost surely) if Pr{limn→∞Xn =
+X} = 1
+3.1
+ASYMPTOTIC EQUIPARTITION PROPERTY THEOREM
+The asymptotic equipartition property is formalized in the following
+theorem.
+Theorem 3.1.1
+(AEP)
+If X1, X2, . . . are i.i.d. ∼p(x), then
+−1
+n log p(X1, X2, . . . , Xn) →H(X)
+in probability.
+(3.2)
+Proof:
+Functions of independent random variables are also independent
+random variables. Thus, since the Xi are i.i.d., so are log p(Xi). Hence,
+by the weak law of large numbers,
+−1
+n log p(X1, X2, . . . , Xn) = −1
+n
+
+i
+log p(Xi)
+(3.3)
+→−E log p(X)
+in probability
+(3.4)
+= H(X),
+(3.5)
+which proves the theorem.
+□
+
+--- Page 85 ---
+3.1
+ASYMPTOTIC EQUIPARTITION PROPERTY THEOREM
+59
+Deﬁnition
+The typical set A(n)
+ǫ
+with respect to p(x) is the set of se-
+quences (x1, x2, . . . , xn) ∈Xn with the property
+2−n(H(X)+ǫ) ≤p(x1, x2, . . . , xn) ≤2−n(H(X)−ǫ).
+(3.6)
+As a consequence of the AEP, we can show that the set A(n)
+ǫ
+has the
+following properties:
+Theorem 3.1.2
+1. If (x1, x2, . . . , xn) ∈A(n)
+ǫ , then H(X) −ǫ ≤−1
+n log p(x1, x2, . . . ,
+xn) ≤H(X) + ǫ.
+2. Pr
+
+A(n)
+ǫ
+
+> 1 −ǫ for n sufﬁciently large.
+3.
+A(n)
+ǫ
+ ≤2n(H(X)+ǫ), where |A| denotes the number of elements in the
+set A.
+4. |A(n)
+ǫ | ≥(1 −ǫ)2n(H(X)−ǫ) for n sufﬁciently large.
+Thus, the typical set has probability nearly 1, all elements of the typical
+set are nearly equiprobable, and the number of elements in the typical set
+is nearly 2nH.
+Proof:
+The proof of property (1) is immediate from the deﬁnition of
+A(n)
+ǫ . The second property follows directly from Theorem 3.1.1, since the
+probability of the event (X1, X2, . . . , Xn) ∈A(n)
+ǫ
+tends to 1 as n →∞.
+Thus, for any δ > 0, there exists an n0 such that for all n ≥n0, we have
+Pr
+−1
+n log p(X1, X2, . . . , Xn) −H(X)
+ < ǫ
+
+> 1 −δ.
+(3.7)
+Setting δ = ǫ, we obtain the second part of the theorem. The identiﬁcation
+of δ = ǫ will conveniently simplify notation later.
+To prove property (3), we write
+1 =
+
+x∈X n
+p(x)
+(3.8)
+≥
+
+x∈A(n)
+ǫ
+p(x)
+(3.9)
+≥
+
+x∈A(n)
+ǫ
+2−n(H(X)+ǫ)
+(3.10)
+= 2−n(H(X)+ǫ)|A(n)
+ǫ |,
+(3.11)
+
+--- Page 86 ---
+60
+ASYMPTOTIC EQUIPARTITION PROPERTY
+where the second inequality follows from (3.6). Hence
+|A(n)
+ǫ | ≤2n(H(X)+ǫ).
+(3.12)
+Finally, for sufﬁciently large n, Pr{A(n)
+ǫ } > 1 −ǫ, so that
+1 −ǫ < Pr{A(n)
+ǫ }
+(3.13)
+≤
+
+x∈A(n)
+ǫ
+2−n(H(X)−ǫ)
+(3.14)
+= 2−n(H(X)−ǫ)|A(n)
+ǫ |,
+(3.15)
+where the second inequality follows from (3.6). Hence,
+|A(n)
+ǫ | ≥(1 −ǫ)2n(H(X)−ǫ),
+(3.16)
+which completes the proof of the properties of A(n)
+ǫ .
+□
+3.2
+CONSEQUENCES OF THE AEP: DATA COMPRESSION
+Let X1, X2, . . . , Xn be independent, identically distributed random vari-
+ables drawn from the probability mass function p(x). We wish to ﬁnd
+short descriptions for such sequences of random variables. We divide all
+sequences in Xn into two sets: the typical set A(n)
+ǫ
+and its complement,
+as shown in Figure 3.1.
+Non-typical set
+Typical set
+∋
+∋
+A(n): 2n(H +   ) elements
+n:|    |n elements
+FIGURE 3.1. Typical sets and source coding.
+
+--- Page 87 ---
+3.2
+CONSEQUENCES OF THE AEP: DATA COMPRESSION
+61
+Non-typical set
+Typical set
+Description: n log |    | + 2 bits
+Description: n(H +   ) + 2 bits
+∋
+FIGURE 3.2. Source code using the typical set.
+We order all elements in each set according to some order (e.g., lexi-
+cographic order). Then we can represent each sequence of A(n)
+ǫ
+by giving
+the index of the sequence in the set. Since there are ≤2n(H+ǫ) sequences
+in A(n)
+ǫ , the indexing requires no more than n(H + ǫ) + 1 bits. [The extra
+bit may be necessary because n(H + ǫ) may not be an integer.] We pre-
+ﬁx all these sequences by a 0, giving a total length of ≤n(H + ǫ) + 2
+bits to represent each sequence in A(n)
+ǫ
+(see Figure 3.2). Similarly, we can
+index each sequence not in A(n)
+ǫ
+by using not more than n log |X| + 1 bits.
+Preﬁxing these indices by 1, we have a code for all the sequences in Xn.
+Note the following features of the above coding scheme:
+• The code is one-to-one and easily decodable. The initial bit acts as
+a ﬂag bit to indicate the length of the codeword that follows.
+• We have used a brute-force enumeration of the atypical set A(n)
+ǫ
+c
+without taking into account the fact that the number of elements in
+A(n)
+ǫ
+c is less than the number of elements in Xn. Surprisingly, this is
+good enough to yield an efﬁcient description.
+• The typical sequences have short descriptions of length ≈nH.
+We use the notation xn to denote a sequence x1, x2, . . . , xn. Let l(xn)
+be the length of the codeword corresponding to xn. If n is sufﬁciently
+large so that Pr{A(n)
+ǫ } ≥1 −ǫ, the expected length of the codeword is
+E(l(Xn)) =
+
+xn
+p(xn)l(xn)
+(3.17)
+
+--- Page 88 ---
+62
+ASYMPTOTIC EQUIPARTITION PROPERTY
+=
+
+xn∈A(n)
+ǫ
+p(xn)l(xn) +
+
+xn∈A(n)
+ǫ
+c
+p(xn)l(xn)
+(3.18)
+≤
+
+xn∈A(n)
+ǫ
+p(xn)(n(H + ǫ) + 2)
++
+
+xn∈A(n)
+ǫ
+c
+p(xn)(n log |X| + 2)
+(3.19)
+= Pr
+
+A(n)
+ǫ
+
+(n(H + ǫ) + 2) + Pr
+	
+A(n)
+ǫ
+c
+(n log |X| + 2)
+(3.20)
+≤n(H + ǫ) + ǫn(log |X|) + 2
+(3.21)
+= n(H + ǫ′),
+(3.22)
+where ǫ′ = ǫ + ǫ log |X| + 2
+n can be made arbitrarily small by an appro-
+priate choice of ǫ followed by an appropriate choice of n. Hence we have
+proved the following theorem.
+Theorem 3.2.1
+Let Xn be i.i.d. ∼p(x). Let ǫ > 0. Then there exists a
+code that maps sequences xn of length n into binary strings such that the
+mapping is one-to-one (and therefore invertible) and
+E
+1
+nl(Xn)
+
+≤H(X) + ǫ
+(3.23)
+for n sufﬁciently large.
+Thus, we can represent sequences Xn using nH(X) bits on the average.
+3.3
+HIGH-PROBABILITY SETS AND THE TYPICAL SET
+From the deﬁnition of A(n)
+ǫ , it is clear that A(n)
+ǫ
+is a fairly small set that
+contains most of the probability. But from the deﬁnition, it is not clear
+whether it is the smallest such set. We will prove that the typical set has
+essentially the same number of elements as the smallest set, to ﬁrst order
+in the exponent.
+Deﬁnition
+For each n = 1, 2, . . . , let B(n)
+δ
+⊂Xn be the smallest set
+with
+Pr{B(n)
+δ } ≥1 −δ.
+(3.24)
+
+--- Page 89 ---
+3.3
+HIGH-PROBABILITY SETS AND THE TYPICAL SET
+63
+We argue that B(n)
+δ
+must have signiﬁcant intersection with A(n)
+ǫ
+and there-
+fore must have about as many elements. In Problem 3.3.11, we outline
+the proof of the following theorem.
+Theorem 3.3.1
+Let X1, X2, . . . , Xn be i.i.d. ∼p(x). For δ < 1
+2 and
+any δ′ > 0, if Pr{B(n)
+δ } > 1 −δ, then
+1
+n log |B(n)
+δ | > H −δ′
+for n sufﬁciently large.
+(3.25)
+Thus, B(n)
+δ
+must have at least 2nH elements, to ﬁrst order in the expo-
+nent. But A(n)
+ǫ
+has 2n(H±ǫ) elements. Therefore, A(n)
+ǫ
+is about the same
+size as the smallest high-probability set.
+We will now deﬁne some new notation to express equality to ﬁrst order
+in the exponent.
+Deﬁnition
+The notation an
+.= bn means
+lim
+n→∞
+1
+n log an
+bn
+= 0.
+(3.26)
+Thus, an
+.= bn implies that an and bn are equal to the ﬁrst order in the
+exponent.
+We can now restate the above results: If δn →0 and ǫn →0, then
+|B(n)
+δn | .=|A(n)
+ǫn | .=2nH.
+(3.27)
+To illustrate the difference between A(n)
+ǫ
+and B(n)
+δ , let us con-
+sider a Bernoulli sequence X1, X2, . . . , Xn with parameter p = 0.9. [A
+Bernoulli(θ) random variable is a binary random variable that takes on
+the value 1 with probability θ.] The typical sequences in this case are the
+sequences in which the proportion of 1’s is close to 0.9. However, this
+does not include the most likely single sequence, which is the sequence of
+all 1’s. The set B(n)
+δ
+includes all the most probable sequences and there-
+fore includes the sequence of all 1’s. Theorem 3.3.1 implies that A(n)
+ǫ
+and
+B(n)
+δ
+must both contain the sequences that have about 90% 1’s, and the
+two sets are almost equal in size.
+
+--- Page 90 ---
+64
+ASYMPTOTIC EQUIPARTITION PROPERTY
+SUMMARY
+AEP. “Almost all events are almost equally surprising.” Speciﬁcally,
+if X1, X2, . . . are i.i.d. ∼p(x), then
+−1
+n log p(X1, X2, . . . , Xn) →H(X) in probability.
+(3.28)
+Deﬁnition. The typical set A(n)
+ǫ
+is the set of sequences x1, x2, . . . , xn
+satisfying
+2−n(H(X)+ǫ) ≤p(x1, x2, . . . , xn) ≤2−n(H(X)−ǫ).
+(3.29)
+Properties of the typical set
+1. If (x1, x2, . . . , xn) ∈A(n)
+ǫ , then p(x1, x2, . . . , xn) = 2−n(H±ǫ).
+2. Pr
+
+A(n)
+ǫ
+
+> 1 −ǫ for n sufﬁciently large.
+3.
+A(n)
+ǫ
+ ≤2n(H(X)+ǫ), where |A| denotes the number of elements in
+set A.
+Deﬁnition. an
+.=bn means that 1
+n log an
+bn →0 as n →∞.
+Smallest probable set. Let X1, X2, . . . , Xn be i.i.d. ∼p(x), and for
+δ < 1
+2, let B(n)
+δ
+⊂Xn be the smallest set such that Pr{B(n)
+δ } ≥1 −δ.
+Then
+|B(n)
+δ | .=2nH.
+(3.30)
+PROBLEMS
+3.1
+Markov’s inequality and Chebyshev’s inequality
+(a) (Markov’s inequality) For any nonnegative random variable X
+and any t > 0, show that
+Pr {X ≥t} ≤EX
+t .
+(3.31)
+Exhibit a random variable that achieves this inequality with
+equality.
+(b) (Chebyshev’s inequality) Let Y be a random variable with
+mean µ and variance σ 2. By letting X = (Y −µ)2, show that
+
+--- Page 91 ---
+PROBLEMS
+65
+for any ǫ > 0,
+Pr {|Y −µ| > ǫ} ≤σ 2
+ǫ2 .
+(3.32)
+(c) (Weak law of large numbers) Let Z1, Z2, . . . , Zn be a sequence
+of i.i.d. random variables with mean µ and variance σ 2. Let
+Zn = 1
+n
+n
+i=1
+Zi be the sample mean. Show that
+Pr
+Zn −µ
+ > ǫ
+
+≤σ 2
+nǫ2 .
+(3.33)
+Thus, Pr
+Zn −µ
+ > ǫ
+
+→0 as n →∞. This is known as the
+weak law of large numbers.
+3.2
+AEP and mutual information.
+Let (Xi, Yi) be i.i.d. ∼p(x, y). We
+form the log likelihood ratio of the hypothesis that X and Y are
+independent vs. the hypothesis that X and Y are dependent. What
+is the limit of
+1
+n log p(Xn)p(Y n)
+p(Xn, Y n) ?
+3.3
+Piece of cake.
+A cake is sliced roughly in half, the largest piece being chosen each
+time, the other pieces discarded. We will assume that a random cut
+creates pieces of proportions
+P =
+
+( 2
+3, 1
+3)
+with probability 3
+4
+( 2
+5, 3
+5)
+with probability 1
+4
+Thus, for example, the ﬁrst cut (and choice of largest piece) may
+result in a piece of size 3
+5. Cutting and choosing from this piece
+might reduce it to size
+3
+5
+  2
+3
+
+at time 2, and so on. How large, to
+ﬁrst order in the exponent, is the piece of cake after n cuts?
+3.4
+AEP.
+Let Xi be iid ∼p(x), x ∈{1, 2, . . . , m}. Let µ = EX and
+H = − p(x) log p(x). Let An = {xn ∈Xn : | −1
+n log p(xn) −
+H| ≤ǫ}. Let Bn = {xn ∈Xn : | 1
+n
+n
+i=1 Xi −µ| ≤ǫ}.
+(a) Does Pr{Xn ∈An} −→1?
+(b) Does Pr{Xn ∈An ∩Bn} −→1?
+
+--- Page 92 ---
+66
+ASYMPTOTIC EQUIPARTITION PROPERTY
+(c) Show that |An ∩Bn| ≤2n(H+ǫ) for all n.
+(d) Show that |An ∩Bn| ≥
+1
+2
+
+2n(H−ǫ) for n sufﬁciently large.
+3.5
+Sets deﬁned by probabilities.
+Let X1, X2, . . . be an i.i.d. sequence
+of discrete random variables with entropy H(X). Let
+Cn(t) = {xn ∈Xn : p(xn) ≥2−nt}
+denote the subset of n-sequences with probabilities ≥2−nt.
+(a) Show that |Cn(t)| ≤2nt.
+(b) For what values of t does P ({Xn ∈Cn(t)}) →1?
+3.6
+AEP-like limit.
+Let X1, X2, . . . be i.i.d. drawn according to prob-
+ability mass function p(x). Find
+lim
+n→∞(p(X1, X2, . . . , Xn))
+1
+n.
+3.7
+AEP and source coding.
+A discrete memoryless source emits a
+sequence of statistically independent binary digits with probabilities
+p(1) = 0.005 and p(0) = 0.995. The digits are taken 100 at a time
+and a binary codeword is provided for every sequence of 100 digits
+containing three or fewer 1’s.
+(a) Assuming that all codewords are the same length, ﬁnd the min-
+imum length required to provide codewords for all sequences
+with three or fewer 1’s.
+(b) Calculate the probability of observing a source sequence for
+which no codeword has been assigned.
+(c) Use Chebyshev’s inequality to bound the probability of observ-
+ing a source sequence for which no codeword has been assign-
+ed. Compare this bound with the actual probability computed
+in part (b).
+3.8
+Products.
+Let
+X =
+
+
+
+1,
+with probability 1
+2
+2,
+with probability 1
+4
+3,
+with probability 1
+4
+Let X1, X2, . . . be drawn i.i.d. according to this distribution. Find
+the limiting behavior of the product
+(X1X2 · · · Xn)
+1
+n .
+
+--- Page 93 ---
+PROBLEMS
+67
+3.9
+AEP.
+Let X1, X2, . . . be independent, identically distributed ran-
+dom variables drawn according to the probability mass function
+p(x), x ∈{1, 2, . . . , m}. Thus, p(x1, x2, . . . , xn) = n
+i=1 p(xi). We
+know that −1
+n log p(X1, X2, . . . , Xn) →H(X) in probability. Let
+q(x1, x2, . . . , xn) = n
+i=1 q(xi), where q is another probability
+mass function on {1, 2, . . . , m}.
+(a) Evaluate lim −1
+n log q(X1, X2, . . . , Xn), where X1, X2, . . . are
+i.i.d. ∼p(x).
+(b) Now
+evaluate
+the
+limit
+of
+the
+log
+likelihood
+ratio
+1
+n log q(X1,...,Xn)
+p(X1,...,Xn) when X1, X2, . . . are i.i.d. ∼p(x). Thus, the
+odds favoring q are exponentially small when p is true.
+3.10
+Random box size.
+An n-dimensional rectangular box with sides X1, X2, X3, . . . , Xn is
+to be constructed. The volume is Vn = n
+i=1 Xi. The edge length l
+of a n-cube with the same volume as the random box is l = V 1/n
+n
+.
+Let X1, X2, . . . be i.i.d. uniform random variables over the unit
+interval [0, 1]. Find limn→∞V 1/n
+n
+and compare to (EVn)
+1
+n . Clearly,
+the expected edge length does not capture the idea of the volume
+of the box. The geometric mean, rather than the arithmetic mean,
+characterizes the behavior of products.
+3.11
+Proof of Theorem 3.3.1.
+This problem shows that the size of the
+smallest “probable” set is about 2nH. Let X1, X2, . . . , Xn be i.i.d.
+∼p(x). Let B(n)
+δ
+⊂Xn such that Pr(B(n)
+δ ) > 1 −δ. Fix ǫ < 1
+2.
+(a) Given any two sets A, B such that Pr(A) > 1 −ǫ1 and Pr(B) >
+1 −ǫ2, show that Pr(A ∩B) > 1 −ǫ1 −ǫ2. Hence, Pr(A(n)
+ǫ
+∩
+B(n)
+δ ) ≥1 −ǫ −δ.
+(b) Justify the steps in the chain of inequalities
+1 −ǫ −δ ≤Pr(A(n)
+ǫ
+∩B(n)
+δ )
+(3.34)
+=
+
+A(n)
+ǫ ∩B(n)
+δ
+p(xn)
+(3.35)
+≤
+
+A(n)
+ǫ ∩B(n)
+δ
+2−n(H−ǫ)
+(3.36)
+= |A(n)
+ǫ
+∩B(n)
+δ |2−n(H−ǫ)
+(3.37)
+≤|B(n)
+δ |2−n(H−ǫ).
+(3.38)
+(c) Complete the proof of the theorem.
+
+--- Page 94 ---
+68
+ASYMPTOTIC EQUIPARTITION PROPERTY
+3.12
+Monotonic convergence of the empirical distribution.
+Let ˆpn denote the empirical probability mass function correspond-
+ing to X1, X2, . . . , Xn i.i.d. ∼p(x), x ∈X. Speciﬁcally,
+ˆpn(x) = 1
+n
+n
+
+i=1
+I (Xi = x)
+is the proportion of times that Xi = x in the ﬁrst n samples, where
+I is the indicator function.
+(a) Show for X binary that
+ED( ˆp2n ∥p) ≤ED( ˆpn ∥p).
+Thus, the expected relative entropy “distance” from the empir-
+ical distribution to the true distribution decreases with sample
+size. (Hint: Write ˆp2n = 1
+2 ˆpn + 1
+2 ˆp′
+n and use the convexity
+of D.)
+(b) Show for an arbitrary discrete X that
+ED( ˆpn ∥p) ≤ED( ˆpn−1 ∥p).
+(Hint: Write ˆpn as the average of n empirical mass functions
+with each of the n samples deleted in turn.)
+3.13
+Calculation of typical set.
+To clarify the notion of a typical set
+A(n)
+ǫ
+and the smallest set of high probability B(n)
+δ , we will calculate
+the set for a simple example. Consider a sequence of i.i.d. binary
+random variables, X1, X2, . . . , Xn, where the probability that Xi =
+1 is 0.6 (and therefore the probability that Xi = 0 is 0.4).
+(a) Calculate H(X).
+(b) With n = 25 and ǫ = 0.1, which sequences fall in the typi-
+cal set A(n)
+ǫ ? What is the probability of the typical set? How
+many elements are there in the typical set? (This involves com-
+putation of a table of probabilities for sequences with k 1’s,
+0 ≤k ≤25, and ﬁnding those sequences that are in the typi-
+cal set.)
+(c) How many elements are there in the smallest set that has prob-
+ability 0.9?
+(d) How many elements are there in the intersection of the sets in
+parts (b) and (c)? What is the probability of this intersection?
+
+--- Page 95 ---
+HISTORICAL NOTES
+69
+k
+n
+k
+
+n
+k
+
+pk(1 −p)n−k
+−1
+n log p(xn)
+0
+1
+0.000000
+1.321928
+1
+25
+0.000000
+1.298530
+2
+300
+0.000000
+1.275131
+3
+2300
+0.000001
+1.251733
+4
+12650
+0.000007
+1.228334
+5
+53130
+0.000054
+1.204936
+6
+177100
+0.000227
+1.181537
+7
+480700
+0.001205
+1.158139
+8
+1081575
+0.003121
+1.134740
+9
+2042975
+0.013169
+1.111342
+10
+3268760
+0.021222
+1.087943
+11
+4457400
+0.077801
+1.064545
+12
+5200300
+0.075967
+1.041146
+13
+5200300
+0.267718
+1.017748
+14
+4457400
+0.146507
+0.994349
+15
+3268760
+0.575383
+0.970951
+16
+2042975
+0.151086
+0.947552
+17
+1081575
+0.846448
+0.924154
+18
+480700
+0.079986
+0.900755
+19
+177100
+0.970638
+0.877357
+20
+53130
+0.019891
+0.853958
+21
+12650
+0.997633
+0.830560
+22
+2300
+0.001937
+0.807161
+23
+300
+0.999950
+0.783763
+24
+25
+0.000047
+0.760364
+25
+1
+0.000003
+0.736966
+HISTORICAL NOTES
+The asymptotic equipartition property (AEP) was ﬁrst stated by Shan-
+non in his original 1948 paper [472], where he proved the result for
+i.i.d. processes and stated the result for stationary ergodic processes.
+McMillan [384] and Breiman [74] proved the AEP for ergodic ﬁnite
+alphabet sources. The result is now referred to as the AEP or the Shan-
+non–McMillan–Breiman theorem. Chung [101] extended the theorem to
+the case of countable alphabets and Moy [392], Perez [417], and Kieffer
+[312] proved the L1 convergence when {Xi} is continuous valued and
+ergodic. Barron [34] and Orey [402] proved almost sure convergence for
+real-valued ergodic processes; a simple sandwich argument (Algoet and
+Cover [20]) will be used in Section 16.8 to prove the general AEP.
+
+--- Page 96 ---
+
+--- Page 97 ---
+CHAPTER 4
+ENTROPY RATES
+OF A STOCHASTIC PROCESS
+The asymptotic equipartition property in Chapter 3 establishes that
+nH(X) bits sufﬁce on the average to describe n independent and iden-
+tically distributed random variables. But what if the random variables
+are dependent? In particular, what if the random variables form a sta-
+tionary process? We will show, just as in the i.i.d. case, that the entropy
+H(X1, X2, . . . , Xn) grows (asymptotically) linearly with n at a rate H(X),
+which we will call the entropy rate of the process. The interpretation of
+H(X) as the best achievable data compression will await the analysis in
+Chapter 5.
+4.1
+MARKOV CHAINS
+A stochastic process {Xi} is an indexed sequence of random variables.
+In general, there can be an arbitrary dependence among the random vari-
+ables. The process is characterized by the joint probability mass functions
+Pr{(X1, X2, . . . , Xn) = (x1, x2, . . . , xn)}= p(x1, x2, . . . , xn), (x1, x2, . . . ,
+xn) ∈Xn for n = 1, 2, . . . .
+Deﬁnition
+A stochastic process is said to be stationary if the joint
+distribution of any subset of the sequence of random variables is invariant
+with respect to shifts in the time index; that is,
+Pr{X1 = x1, X2 = x2, . . . , Xn = xn}
+= Pr{X1+l = x1, X2+l = x2, . . . , Xn+l = xn}
+(4.1)
+for every n and every shift l and for all x1, x2, . . . , xn ∈X.
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+71
+
+--- Page 98 ---
+72
+ENTROPY RATES OF A STOCHASTIC PROCESS
+A simple example of a stochastic process with dependence is one in
+which each random variable depends only on the one preceding it and
+is conditionally independent of all the other preceding random variables.
+Such a process is said to be Markov.
+Deﬁnition
+A discrete stochastic process X1, X2, . . . is said to be a
+Markov chain or a Markov process if for n = 1, 2, . . . ,
+Pr(Xn+1 = xn+1|Xn = xn, Xn−1 = xn−1, . . . , X1 = x1)
+= Pr (Xn+1 = xn+1|Xn = xn)
+(4.2)
+for all x1, x2, . . . , xn, xn+1 ∈X.
+In this case, the joint probability mass function of the random variables
+can be written as
+p(x1, x2, . . . , xn) = p(x1)p(x2|x1)p(x3|x2) · · · p(xn|xn−1).
+(4.3)
+Deﬁnition
+The Markov chain is said to be time invariant if the con-
+ditional probability p(xn+1|xn) does not depend on n; that is, for n =
+1, 2, . . . ,
+Pr{Xn+1 = b|Xn = a} = Pr{X2 = b|X1 = a}
+for all a, b ∈X.
+(4.4)
+We will assume that the Markov chain is time invariant unless otherwise
+stated.
+If {Xi} is a Markov chain, Xn is called the state at time n. A time-
+invariant Markov chain is characterized by its initial state and a probability
+transition matrix P = [Pij], i, j ∈{1, 2, . . . , m}, where Pij = Pr{Xn+1 =
+j|Xn = i}.
+If it is possible to go with positive probability from any state of the
+Markov chain to any other state in a ﬁnite number of steps, the Markov
+chain is said to be irreducible. If the largest common factor of the lengths
+of different paths from a state to itself is 1, the Markov chain is said to
+aperiodic.
+If the probability mass function of the random variable at time n is
+p(xn), the probability mass function at time n + 1 is
+p(xn+1) =
+
+xn
+p(xn)Pxnxn+1.
+(4.5)
+A distribution on the states such that the distribution at time n + 1 is the
+same as the distribution at time n is called a stationary distribution. The
+
+--- Page 99 ---
+4.1
+MARKOV CHAINS
+73
+stationary distribution is so called because if the initial state of a Markov
+chain is drawn according to a stationary distribution, the Markov chain
+forms a stationary process.
+If the ﬁnite-state Markov chain is irreducible and aperiodic, the sta-
+tionary distribution is unique, and from any starting distribution, the
+distribution of Xn tends to the stationary distribution as n →∞.
+Example 4.1.1
+Consider a two-state Markov chain with a probability
+transition matrix
+P =
+
+1 −α
+α
+β
+1 −β
+
+(4.6)
+as shown in Figure 4.1.
+Let the stationary distribution be represented by a vector µ whose com-
+ponents are the stationary probabilities of states 1 and 2, respectively. Then
+the stationary probability can be found by solving the equation µP = µ
+or, more simply, by balancing probabilities. For the stationary distribution,
+the net probability ﬂow across any cut set in the state transition graph is
+zero. Applying this to Figure 4.1, we obtain
+µ1α = µ2β.
+(4.7)
+Since µ1 + µ2 = 1, the stationary distribution is
+µ1 =
+β
+α + β ,
+µ2 =
+α
+α + β .
+(4.8)
+If the Markov chain has an initial state drawn according to the stationary
+distribution, the resulting process will be stationary. The entropy of the
+State 1
+State 2
+1 − β
+1 − α
+β
+α
+FIGURE 4.1. Two-state Markov chain.
+
+--- Page 100 ---
+74
+ENTROPY RATES OF A STOCHASTIC PROCESS
+state Xn at time n is
+H(Xn) = H
+
+β
+α + β ,
+α
+α + β
+
+.
+(4.9)
+However, this is not the rate at which entropy grows for H(X1, X2, . . . ,
+Xn). The dependence among the Xi’s will take a steady toll.
+4.2
+ENTROPY RATE
+If we have a sequence of n random variables, a natural question to ask
+is: How does the entropy of the sequence grow with n? We deﬁne the
+entropy rate as this rate of growth as follows.
+Deﬁnition
+The entropy of a stochastic process {Xi} is deﬁned by
+H(X) = lim
+n→∞
+1
+nH(X1, X2, . . . , Xn)
+(4.10)
+when the limit exists.
+We now consider some simple examples of stochastic processes and
+their corresponding entropy rates.
+1. Typewriter.
+Consider the case of a typewriter that has m equally likely output
+letters. The typewriter can produce mn sequences of length n, all
+of them equally likely. Hence H(X1, X2, . . . , Xn) = log mn and the
+entropy rate is H(X) = log m bits per symbol.
+2. X1, X2, . . . are i.i.d. random variables. Then
+H(X) = lim H(X1, X2, . . . , Xn)
+n
+= lim nH(X1)
+n
+= H(X1),
+(4.11)
+which is what one would expect for the entropy rate per symbol.
+3. Sequence of independent but not identically distributed random vari-
+ables. In this case,
+H(X1, X2, . . . , Xn) =
+n
+
+i=1
+H(Xi),
+(4.12)
+but the H(Xi)’s are all not equal. We can choose a sequence of dis-
+tributions on X1, X2, . . . such that the limit of 1
+n
+ H(Xi) does not
+exist. An example of such a sequence is a random binary sequence

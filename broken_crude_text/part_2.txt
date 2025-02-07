@@ -1,0 +1,5740 @@
+
+--- Page 1 ---
+4.2
+ENTROPY RATE
+75
+where pi = P (Xi = 1) is not constant but a function of i, chosen
+carefully so that the limit in (4.10) does not exist. For example, let
+pi =
+ 0.5
+if 2k < log log i ≤2k + 1,
+0
+if 2k + 1 < log log i ≤2k + 2
+(4.13)
+for k = 0, 1, 2, . . . .
+Then there are arbitrarily long stretches where H(Xi) = 1, followed
+by exponentially longer segments where H(Xi) = 0. Hence, the run-
+ning average of the H(Xi) will oscillate between 0 and 1 and will
+not have a limit. Thus, H(X) is not deﬁned for this process.
+We can also deﬁne a related quantity for entropy rate:
+H ′(X) = lim
+n→∞H(Xn|Xn−1, Xn−2, . . . , X1)
+(4.14)
+when the limit exists.
+The two quantities H(X) and H ′(X) correspond to two different notions
+of entropy rate. The ﬁrst is the per symbol entropy of the n random vari-
+ables, and the second is the conditional entropy of the last random variable
+given the past. We now prove the important result that for stationary pro-
+cesses both limits exist and are equal.
+Theorem 4.2.1
+For a stationary stochastic process, the limits in (4.10)
+and (4.14) exist and are equal:
+H(X) = H ′(X).
+(4.15)
+We ﬁrst prove that lim H(Xn|Xn−1, . . . , X1) exists.
+Theorem 4.2.2
+For a stationary stochastic process, H(Xn|Xn−1, . . . ,
+X1) is nonincreasing in n and has a limit H ′(X).
+Proof
+H(Xn+1|X1, X2, . . . , Xn) ≤H(Xn+1|Xn, . . . , X2)
+(4.16)
+= H(Xn|Xn−1, . . . , X1),
+(4.17)
+where the inequality follows from the fact that conditioning reduces en-
+tropy and the equality follows from the stationarity of the process. Since
+H(Xn|Xn−1, . . . , X1) is a decreasing sequence of nonnegative numbers,
+it has a limit, H ′(X).
+□
+
+--- Page 2 ---
+76
+ENTROPY RATES OF A STOCHASTIC PROCESS
+We now use the following simple result from analysis.
+Theorem 4.2.3
+(Ces´aro mean)
+If an →a and bn = 1
+n
+n
+i=1 ai, then
+bn →a.
+Proof:
+(Informal outline). Since most of the terms in the sequence {ak}
+are eventually close to a, then bn, which is the average of the ﬁrst n terms,
+is also eventually close to a.
+Formal Proof:
+Let ǫ > 0. Since an →a, there exists a number N(ǫ)
+such that |an −a| ≤ǫ for all n ≥N(ǫ). Hence,
+|bn −a| =
+
+1
+n
+n
+
+i=1
+(ai −a)
+
+(4.18)
+≤1
+n
+n
+
+i=1
+|(ai −a)|
+(4.19)
+≤1
+n
+N(ǫ)
+
+i=1
+|ai −a| + n −N(ǫ)
+n
+ǫ
+(4.20)
+≤1
+n
+N(ǫ)
+
+i=1
+|ai −a| + ǫ
+(4.21)
+for all n ≥N(ǫ). Since the ﬁrst term goes to 0 as n →∞, we can make
+|bn −a| ≤2ǫ by taking n large enough. Hence, bn →a as n →∞.
+□
+Proof of Theorem 4.2.1:
+By the chain rule,
+H(X1, X2, . . . , Xn)
+n
+= 1
+n
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1),
+(4.22)
+that is, the entropy rate is the time average of the conditional entropies.
+But we know that the conditional entropies tend to a limit H ′. Hence, by
+Theorem 4.2.3, their running average has a limit, which is equal to the
+limit H ′ of the terms. Thus, by Theorem 4.2.2,
+H(X) = lim H(X1, X2, . . . , Xn)
+n
+= lim H(Xn|Xn−1, . . . , X1)
+= H ′(X).
+□
+(4.23)
+
+--- Page 3 ---
+4.2
+ENTROPY RATE
+77
+The signiﬁcance of the entropy rate of a stochastic process arises from
+the AEP for a stationary ergodic process. We prove the general AEP in
+Section 16.8, where we show that for any stationary ergodic process,
+−1
+n log p(X1, X2, . . . , Xn) →H(X)
+(4.24)
+with probability 1. Using this, the theorems of Chapter 3 can easily be
+extended to a general stationary ergodic process. We can deﬁne a typical
+set in the same way as we did for the i.i.d. case in Chapter 3. By the
+same arguments, we can show that the typical set has a probability close
+to 1 and that there are about 2nH(X) typical sequences of length n, each
+with probability about 2−nH(X). We can therefore represent the typical
+sequences of length n using approximately nH(X) bits. This shows the
+signiﬁcance of the entropy rate as the average description length for a
+stationary ergodic process.
+The entropy rate is well deﬁned for all stationary processes. The entropy
+rate is particularly easy to calculate for Markov chains.
+Markov Chains.
+For a stationary Markov chain, the entropy rate is
+given by
+H(X) = H ′(X) = lim H(Xn|Xn−1, . . . , X1) = lim H(Xn|Xn−1)
+= H(X2|X1),
+(4.25)
+where the conditional entropy is calculated using the given stationary
+distribution. Recall that the stationary distribution µ is the solution of the
+equations
+µj =
+
+i
+µiPij
+for all j.
+(4.26)
+We express the conditional entropy explicitly in the following theorem.
+Theorem 4.2.4
+Let {Xi} be a stationary Markov chain with station-
+ary distribution µ and transition matrix P . Let X1 ∼µ. Then the entropy
+rate is
+H(X) = −
+
+ij
+µiPij log Pij.
+(4.27)
+Proof:
+H(X) = H(X2|X1) = 
+i µi
+	
+j −Pij log Pij
+
+.
+□
+
+--- Page 4 ---
+78
+ENTROPY RATES OF A STOCHASTIC PROCESS
+Example 4.2.1
+(Two-state Markov chain)
+The entropy rate of the two-
+state Markov chain in Figure 4.1 is
+H(X) = H(X2|X1) =
+β
+α + β H(α) +
+α
+α + β H(β).
+(4.28)
+Remark
+If the Markov chain is irreducible and aperiodic, it has a unique
+stationary distribution on the states, and any initial distribution tends to
+the stationary distribution as n →∞. In this case, even though the initial
+distribution is not the stationary distribution, the entropy rate, which is
+deﬁned in terms of long-term behavior, is H(X), as deﬁned in (4.25) and
+(4.27).
+4.3
+EXAMPLE: ENTROPY RATE OF A RANDOM WALK
+ON A WEIGHTED GRAPH
+As an example of a stochastic process, let us consider a random walk on
+a connected graph (Figure 4.2). Consider a graph with m nodes labeled
+{1, 2, . . . , m}, with weight Wij ≥0 on the edge joining node i to node
+j. (The graph is assumed to be undirected, so that Wij = Wji. We set
+Wij = 0 if there is no edge joining nodes i and j.)
+A particle walks randomly from node to node in this graph. The ran-
+dom walk {Xn}, Xn ∈{1, 2, . . . , m}, is a sequence of vertices of the
+graph. Given Xn = i, the next vertex j is chosen from among the nodes
+connected to node i with a probability proportional to the weight of the
+edge connecting i to j. Thus, Pij = Wij/ 
+k Wik.
+1
+2
+5
+3
+4
+FIGURE 4.2. Random walk on a graph.
+
+--- Page 5 ---
+4.3
+EXAMPLE: ENTROPY RATE OF A RANDOM WALK ON A WEIGHTED GRAPH
+79
+In this case, the stationary distribution has a surprisingly simple form,
+which we will guess and verify. The stationary distribution for this Markov
+chain assigns probability to node i proportional to the total weight of the
+edges emanating from node i. Let
+Wi =
+
+j
+Wij
+(4.29)
+be the total weight of edges emanating from node i, and let
+W =
+
+i,j:j>i
+Wij
+(4.30)
+be the sum of the weights of all the edges. Then 
+i Wi = 2W.
+We now guess that the stationary distribution is
+µi = Wi
+2W .
+(4.31)
+We verify that this is the stationary distribution by checking that µP = µ.
+Here
+
+i
+µiPij =
+
+i
+Wi
+2W
+Wij
+Wi
+(4.32)
+=
+
+i
+1
+2W Wij
+(4.33)
+= Wj
+2W
+(4.34)
+= µj.
+(4.35)
+Thus, the stationary probability of state i is proportional to the weight of
+edges emanating from node i. This stationary distribution has an inter-
+esting property of locality: It depends only on the total weight and the
+weight of edges connected to the node and hence does not change if the
+weights in some other part of the graph are changed while keeping the
+total weight constant. We can now calculate the entropy rate as
+H(X) = H(X2|X1)
+(4.36)
+= −
+
+i
+µi
+
+j
+Pij log Pij
+(4.37)
+
+--- Page 6 ---
+80
+ENTROPY RATES OF A STOCHASTIC PROCESS
+= −
+
+i
+Wi
+2W
+
+j
+Wij
+Wi
+log Wij
+Wi
+(4.38)
+= −
+
+i
+
+j
+Wij
+2W log Wij
+Wi
+(4.39)
+= −
+
+i
+
+j
+Wij
+2W log Wij
+2W +
+
+i
+
+j
+Wij
+2W log Wi
+2W
+(4.40)
+= H
+
+. . . , Wij
+2W , . . .
+
+−H
+
+. . . , Wi
+2W , . . .
+
+.
+(4.41)
+If all the edges have equal weight, the stationary distribution puts
+weight Ei/2E on node i, where Ei is the number of edges emanating
+from node i and E is the total number of edges in the graph. In this case,
+the entropy rate of the random walk is
+H(X) = log(2E) −H
+ E1
+2E , E2
+2E , . . . , Em
+2E
+
+.
+(4.42)
+This answer for the entropy rate is so simple that it is almost mislead-
+ing. Apparently, the entropy rate, which is the average transition entropy,
+depends only on the entropy of the stationary distribution and the total
+number of edges.
+Example 4.3.1
+(Random walk on a chessboard)
+Let a king move at
+random on an 8 × 8 chessboard. The king has eight moves in the interior,
+ﬁve moves at the edges, and three moves at the corners. Using this and
+the preceding results, the stationary probabilities are, respectively,
+8
+420,
+5
+420, and
+3
+420, and the entropy rate is 0.92 log 8. The factor of 0.92 is due
+to edge effects; we would have an entropy rate of log 8 on an inﬁnite
+chessboard.
+Similarly, we can ﬁnd the entropy rate of rooks (log 14 bits, since the
+rook always has 14 possible moves), bishops, and queens. The queen
+combines the moves of a rook and a bishop. Does the queen have more
+or less freedom than the pair?
+Remark
+It is easy to see that a stationary random walk on a graph is
+time-reversible; that is, the probability of any sequence of states is the
+
+--- Page 7 ---
+4.4
+SECOND LAW OF THERMODYNAMICS
+81
+same forward or backward:
+Pr(X1 = x1, X2 = x2, . . . , Xn = xn)
+= Pr(Xn = x1, Xn−1 = x2, . . . , X1 = xn).
+(4.43)
+Rather surprisingly, the converse is also true; that is, any time-reversible
+Markov chain can be represented as a random walk on an undirected
+weighted graph.
+4.4
+SECOND LAW OF THERMODYNAMICS
+One of the basic laws of physics, the second law of thermodynamics,
+states that the entropy of an isolated system is nondecreasing. We now
+explore the relationship between the second law and the entropy function
+that we deﬁned earlier in this chapter.
+In statistical thermodynamics, entropy is often deﬁned as the log of
+the number of microstates in the system. This corresponds exactly to our
+notion of entropy if all the states are equally likely. But why does entropy
+increase?
+We model the isolated system as a Markov chain with transitions obey-
+ing the physical laws governing the system. Implicit in this assumption is
+the notion of an overall state of the system and the fact that knowing the
+present state, the future of the system is independent of the past. In such
+a system we can ﬁnd four different interpretations of the second law. It
+may come as a shock to ﬁnd that the entropy does not always increase.
+However, relative entropy always decreases.
+1. Relative entropy D(µn||µ′
+n) decreases with n. Let µn and µ′
+n be two
+probability distributions on the state space of a Markov chain at time
+n, and let µn+1 and µ′
+n+1 be the corresponding distributions at time
+n + 1. Let the corresponding joint mass functions be denoted by
+p and q. Thus, p(xn, xn+1) = p(xn)r(xn+1|xn) and q(xn, xn+1) =
+q(xn)r(xn+1|xn), where r(·|·) is the probability transition function
+for the Markov chain. Then by the chain rule for relative entropy,
+we have two expansions:
+D(p(xn, xn+1)||q(xn, xn+1)) = D(p(xn)||q(xn))
++ D(p(xn+1|xn)||q(xn+1|xn))
+
+--- Page 8 ---
+82
+ENTROPY RATES OF A STOCHASTIC PROCESS
+= D(p(xn+1)||q(xn+1))
++ D(p(xn|xn+1)||q(xn|xn+1)).
+Since both p and q are derived from the Markov chain, the con-
+ditional probability mass functions p(xn+1|xn) and q(xn+1|xn) are
+both equal to r(xn+1|xn), and hence D(p(xn+1|xn)||q(xn+1|xn)) = 0.
+Now using the nonnegativity of D(p(xn|xn+1)||q(xn|xn+1)) (Corol-
+lary to Theorem 2.6.3), we have
+D(p(xn)||q(xn)) ≥D(p(xn+1)||q(xn+1))
+(4.44)
+or
+D(µn||µ′
+n) ≥D(µn+1||µ′
+n+1).
+(4.45)
+Consequently, the distance between the probability mass functions
+is decreasing with time n for any Markov chain.
+An example of one interpretation of the preceding inequality is
+to suppose that the tax system for the redistribution of wealth is
+the same in Canada and in England. Then if µn and µ′
+n represent
+the distributions of wealth among people in the two countries, this
+inequality shows that the relative entropy distance between the two
+distributions decreases with time. The wealth distributions in Canada
+and England become more similar.
+2. Relative entropy D(µn||µ) between a distribution µn on the states at
+time n and a stationary distribution µ decreases with n. In (4.45),
+µ′
+n is any distribution on the states at time n. If we let µ′
+n be any
+stationary distribution µ, the distribution µ′
+n+1 at the next time is
+also equal to µ. Hence,
+D(µn||µ) ≥D(µn+1||µ),
+(4.46)
+which implies that any state distribution gets closer and closer to
+each stationary distribution as time passes. The sequence D(µn||µ)
+is a monotonically nonincreasing nonnegative sequence and must
+therefore have a limit. The limit is zero if the stationary distribution
+is unique, but this is more difﬁcult to prove.
+3. Entropy increases if the stationary distribution is uniform. In gen-
+eral, the fact that the relative entropy decreases does not imply that
+the entropy increases. A simple counterexample is provided by any
+Markov chain with a nonuniform stationary distribution. If we start
+
+--- Page 9 ---
+4.4
+SECOND LAW OF THERMODYNAMICS
+83
+this Markov chain from the uniform distribution, which already is
+the maximum entropy distribution, the distribution will tend to the
+stationary distribution, which has a lower entropy than the uniform.
+Here, the entropy decreases with time.
+If, however, the stationary distribution is the uniform distribution,
+we can express the relative entropy as
+D(µn||µ) = log |X| −H(µn) = log |X| −H(Xn).
+(4.47)
+In this case the monotonic decrease in relative entropy implies a
+monotonic increase in entropy. This is the explanation that ties in
+most closely with statistical thermodynamics, where all the micro-
+states are equally likely. We now characterize processes having a
+uniform stationary distribution.
+Deﬁnition
+A probability transition matrix [Pij], Pij = Pr{Xn+1 =
+j|Xn = i}, is called doubly stochastic if
+
+i
+Pij = 1,
+j = 1, 2, . . .
+(4.48)
+and
+
+j
+Pij = 1,
+i = 1, 2, . . . .
+(4.49)
+Remark
+The uniform distribution is a stationary distribution of P if
+and only if the probability transition matrix is doubly stochastic (see
+Problem 4.1).
+4. The conditional entropy H(Xn|X1) increases with n for a station-
+ary Markov process. If the Markov process is stationary, H(Xn) is
+constant. So the entropy is nonincreasing. However, we will prove
+that H(Xn|X1) increases with n. Thus, the conditional uncertainty
+of the future increases. We give two alternative proofs of this result.
+First, we use the properties of entropy,
+H(Xn|X1) ≥H(Xn|X1, X2)
+(conditioning reduces entropy)
+(4.50)
+= H(Xn|X2)
+(by Markovity)
+(4.51)
+= H(Xn−1|X1)
+(by stationarity).
+(4.52)
+
+--- Page 10 ---
+84
+ENTROPY RATES OF A STOCHASTIC PROCESS
+Alternatively, by an application of the data-processing inequality to
+the Markov chain X1 →Xn−1 →Xn, we have
+I (X1; Xn−1) ≥I (X1; Xn).
+(4.53)
+Expanding the mutual informations in terms of entropies, we have
+H(Xn−1) −H(Xn−1|X1) ≥H(Xn) −H(Xn|X1).
+(4.54)
+By stationarity, H(Xn−1) = H(Xn), and hence we have
+H(Xn−1|X1) ≤H(Xn|X1).
+(4.55)
+[These techniques can also be used to show that H(X0|Xn) is
+increasing in n for any Markov chain.]
+5. Shufﬂes increase entropy. If T is a shufﬂe (permutation) of a deck
+of cards and X is the initial (random) position of the cards in the
+deck, and if the choice of the shufﬂe T is independent of X, then
+H(T X) ≥H(X),
+(4.56)
+where T X is the permutation of the deck induced by the shufﬂe T
+on the initial permutation X. Problem 4.3 outlines a proof.
+4.5
+FUNCTIONS OF MARKOV CHAINS
+Here is an example that can be very difﬁcult if done the wrong
+way. It illustrates the power of the techniques developed so far. Let
+X1, X2, . . . , Xn, . . . be a stationary Markov chain, and let Yi = φ(Xi) be
+a process each term of which is a function of the corresponding state
+in the Markov chain. What is the entropy rate H(Y)? Such functions of
+Markov chains occur often in practice. In many situations, one has only
+partial information about the state of the system. It would simplify matters
+greatly if Y1, Y2, . . . , Yn also formed a Markov chain, but in many cases,
+this is not true. Since the Markov chain is stationary, so is Y1, Y2, . . . , Yn,
+and the entropy rate is well deﬁned. However, if we wish to compute
+H(Y), we might compute H(Yn|Yn−1, . . . , Y1) for each n and ﬁnd the
+limit. Since the convergence can be arbitrarily slow, we will never know
+how close we are to the limit. (We can’t look at the change between the
+values at n and n + 1, since this difference may be small even when we
+are far away from the limit—consider, for example,  1
+n.)
+
+--- Page 11 ---
+4.5
+FUNCTIONS OF MARKOV CHAINS
+85
+It would be useful computationally to have upper and lower bounds con-
+verging to the limit from above and below. We can halt the computation
+when the difference between upper and lower bounds is small, and we
+will then have a good estimate of the limit.
+We already know that H(Yn|Yn−1, . . . , Y1) converges monoton-
+ically
+to
+H(Y)
+from
+above.
+For
+a
+lower
+bound,
+we
+will
+use
+H(Yn|Yn−1, . . . , Y1, X1). This is a neat trick based on the idea that X1
+contains as much information about Yn as Y1, Y0, Y−1, . . . .
+Lemma 4.5.1
+H(Yn|Yn−1, . . . , Y2, X1) ≤H(Y).
+(4.57)
+Proof:
+We have for k = 1, 2, . . . ,
+H(Yn|Yn−1, . . . , Y2, X1)
+(a)
+= H(Yn|Yn−1, . . . , Y2, Y1, X1)
+(4.58)
+(b)
+= H(Yn|Yn−1, . . . , Y1, X1, X0, X−1, . . . , X−k)
+(4.59)
+(c)
+= H(Yn|Yn−1, . . . , Y1, X1, X0, X−1, . . . ,
+X−k, Y0, . . . , Y−k)
+(4.60)
+(d)
+≤H(Yn|Yn−1, . . . , Y1, Y0, . . . , Y−k)
+(4.61)
+(e)
+= H(Yn+k+1|Yn+k, . . . , Y1),
+(4.62)
+where (a) follows from that fact that Y1 is a function of X1, and (b) follows
+from the Markovity of X, (c) follows from the fact that Yi is a function
+of Xi, (d) follows from the fact that conditioning reduces entropy, and (e)
+follows by stationarity. Since the inequality is true for all k, it is true in
+the limit. Thus,
+H(Yn|Yn−1, . . . , Y1, X1) ≤lim
+k H(Yn+k+1|Yn+k, . . . , Y1)
+(4.63)
+= H(Y).
+□
+(4.64)
+The next lemma shows that the interval between the upper and the
+lower bounds decreases in length.
+Lemma 4.5.2
+H(Yn|Yn−1, . . . , Y1) −H(Yn|Yn−1, . . . , Y1, X1) →0.
+(4.65)
+
+--- Page 12 ---
+86
+ENTROPY RATES OF A STOCHASTIC PROCESS
+Proof:
+The interval length can be rewritten as
+H(Yn|Yn−1, . . . , Y1) −H(Yn|Yn−1, . . . , Y1, X1)
+= I (X1; Yn|Yn−1, . . . , Y1).
+(4.66)
+By the properties of mutual information,
+I (X1; Y1, Y2, . . . , Yn) ≤H(X1),
+(4.67)
+and I (X1; Y1, Y2, . . . , Yn) increases with n. Thus, lim I (X1; Y1, Y2, . . . ,
+Yn) exists and
+lim
+n→∞I (X1; Y1, Y2, . . . , Yn) ≤H(X1).
+(4.68)
+By the chain rule,
+H(X) ≥lim
+n→∞I (X1; Y1, Y2, . . . , Yn)
+(4.69)
+= lim
+n→∞
+n
+
+i=1
+I (X1; Yi|Yi−1, . . . , Y1)
+(4.70)
+=
+∞
+
+i=1
+I (X1; Yi|Yi−1, . . . , Y1).
+(4.71)
+Since this inﬁnite sum is ﬁnite and the terms are nonnegative, the terms
+must tend to 0; that is,
+lim I (X1; Yn|Yn−1, . . . , Y1) = 0,
+(4.72)
+which proves the lemma.
+□
+Combining Lemmas 4.5.1 and 4.5.2, we have the following theorem.
+Theorem 4.5.1
+If X1, X2, . . . , Xn form a stationary Markov chain, and
+Yi = φ(Xi), then
+H(Yn|Yn−1, . . . , Y1, X1) ≤H(Y) ≤H(Yn|Yn−1, . . . , Y1)
+(4.73)
+and
+lim H(Yn|Yn−1, . . . , Y1, X1) = H(Y) = lim H(Yn|Yn−1, . . . , Y1). (4.74)
+In general, we could also consider the case where Yi is a stochastic
+function (as opposed to a deterministic function) of Xi. Consider a Markov
+
+--- Page 13 ---
+SUMMARY
+87
+process X1, X2, . . . , Xn, and deﬁne a new process Y1, Y2, . . . , Yn, where
+each Yi is drawn according to p(yi|xi), conditionally independent of all
+the other Xj, j ̸= i; that is,
+p(xn, yn) = p(x1)
+n−1
+
+i=1
+p(xi+1|xi)
+n
+
+i=1
+p(yi|xi).
+(4.75)
+Such a process, called a hidden Markov model (HMM), is used extensively
+in speech recognition, handwriting recognition, and so on. The same argu-
+ment as that used above for functions of a Markov chain carry over to
+hidden Markov models, and we can lower bound the entropy rate of a
+hidden Markov model by conditioning it on the underlying Markov state.
+The details of the argument are left to the reader.
+SUMMARY
+Entropy rate. Two deﬁnitions of entropy rate for a stochastic process
+are
+H(X) = lim
+n→∞
+1
+nH(X1, X2, . . . , Xn),
+(4.76)
+H ′(X) = lim
+n→∞H(Xn|Xn−1, Xn−2, . . . , X1).
+(4.77)
+For a stationary stochastic process,
+H(X) = H ′(X).
+(4.78)
+Entropy rate of a stationary Markov chain
+H(X) = −
+
+ij
+µiPij log Pij.
+(4.79)
+Second law of thermodynamics. For a Markov chain:
+1. Relative entropy D(µn||µ′
+n) decreases with time
+2. Relative entropy D(µn||µ) between a distribution and the stationary
+distribution decreases with time.
+3. Entropy H(Xn) increases if the stationary distribution is uniform.
+
+--- Page 14 ---
+88
+ENTROPY RATES OF A STOCHASTIC PROCESS
+4. The conditional entropy H(Xn|X1) increases with time for a sta-
+tionary Markov chain.
+5. The conditional entropy H(X0|Xn) of the initial condition X0 in-
+creases for any Markov chain.
+Functions of a Markov chain. If X1, X2, . . . , Xn form a stationary
+Markov chain and Yi = φ(Xi), then
+H(Yn|Yn−1, . . . , Y1, X1) ≤H(Y) ≤H(Yn|Yn−1, . . . , Y1)
+(4.80)
+and
+lim
+n→∞H(Yn|Yn−1, . . . , Y1, X1) = H(Y) = lim
+n→∞H(Yn|Yn−1, . . . , Y1).
+(4.81)
+PROBLEMS
+4.1
+Doubly stochastic matrices.
+An n × n matrix P = [Pij] is said
+to be doubly stochastic if Pij ≥0 and 
+j Pij = 1 for all i and
+
+i Pij = 1 for all j. An n × n matrix P is said to be a permu-
+tation matrix if it is doubly stochastic and there is precisely one
+Pij = 1 in each row and each column. It can be shown that every
+doubly stochastic matrix can be written as the convex combination
+of permutation matrices.
+(a) Let at = (a1, a2, . . . , an), ai ≥0,  ai = 1, be a probability
+vector. Let b = aP , where P is doubly stochastic. Show that b
+is a probability vector and that H(b1, b2, . . . , bn) ≥H(a1, a2,
+. . . , an). Thus, stochastic mixing increases entropy.
+(b) Show that a stationary distribution µ for a doubly stochastic
+matrix P is the uniform distribution.
+(c) Conversely, prove that if the uniform distribution is a stationary
+distribution for a Markov transition matrix P , then P is doubly
+stochastic.
+4.2
+Time’s arrow.
+Let {Xi}∞
+i=−∞be a stationary stochastic process.
+Prove that
+H(X0|X−1, X−2, . . . , X−n) = H(X0|X1, X2, . . . , Xn).
+
+--- Page 15 ---
+PROBLEMS
+89
+In other words, the present has a conditional entropy given the past
+equal to the conditional entropy given the future. This is true even
+though it is quite easy to concoct stationary random processes for
+which the ﬂow into the future looks quite different from the ﬂow
+into the past. That is, one can determine the direction of time by
+looking at a sample function of the process. Nonetheless, given
+the present state, the conditional uncertainty of the next symbol in
+the future is equal to the conditional uncertainty of the previous
+symbol in the past.
+4.3
+Shufﬂes increase entropy.
+Argue that for any distribution on shuf-
+ﬂes T and any distribution on card positions X that
+H(T X) ≥H(T X|T )
+(4.82)
+= H(T −1T X|T )
+(4.83)
+= H(X|T )
+(4.84)
+= H(X)
+(4.85)
+if X and T are independent.
+4.4
+Second law of thermodynamics.
+Let X1, X2, X3, . . . be a station-
+ary ﬁrst-order Markov chain. In Section 4.4 it was shown that
+H(Xn | X1) ≥H(Xn−1 | X1) for n = 2, 3, . . . . Thus, conditional
+uncertainty about the future grows with time. This is true although
+the unconditional uncertainty H(Xn) remains constant. However,
+show by example that H(Xn|X1 = x1) does not necessarily grow
+with n for every x1.
+4.5
+Entropy of a random tree.
+Consider the following method of gen-
+erating a random tree with n nodes. First expand the root node:
+Then expand one of the two terminal nodes at random:
+At time k, choose one of the k −1 terminal nodes according to a
+uniform distribution and expand it. Continue until n terminal nodes
+
+--- Page 16 ---
+90
+ENTROPY RATES OF A STOCHASTIC PROCESS
+have been generated. Thus, a sequence leading to a ﬁve-node tree
+might look like this:
+Surprisingly, the following method of generating random trees
+yields the same probability distribution on trees with n termi-
+nal nodes. First choose an integer N1 uniformly distributed on
+{1, 2, . . . , n −1}. We then have the picture
+N1
+n − N1
+Then
+choose
+an
+integer
+N2
+uniformly
+distributed
+over
+{1, 2, . . . , N1 −1}, and independently choose another integer N3
+uniformly over {1, 2, . . . , (n −N1) −1}. The picture is now
+N2
+N3
+n − N1 − N3
+N1 − N2
+Continue the process until no further subdivision can be made.
+(The equivalence of these two tree generation schemes follows, for
+example, from Polya’s urn model.)
+Now let Tn denote a random n-node tree generated as described. The
+probability distribution on such trees seems difﬁcult to describe, but
+we can ﬁnd the entropy of this distribution in recursive form.
+First some examples. For n = 2, we have only one tree. Thus,
+H(T2) = 0. For n = 3, we have two equally probable trees:
+
+--- Page 17 ---
+PROBLEMS
+91
+Thus, H(T3) = log 2. For n = 4, we have ﬁve possible trees, with
+probabilities 1
+3, 1
+6, 1
+6, 1
+6, 1
+6.
+Now for the recurrence relation. Let N1(Tn) denote the number of
+terminal nodes of Tn in the right half of the tree. Justify each of
+the steps in the following:
+H(Tn)
+(a)
+= H(N1, Tn)
+(4.86)
+(b)
+= H(N1) + H(Tn|N1)
+(4.87)
+(c)
+= log(n −1) + H(Tn|N1)
+(4.88)
+(d)
+= log(n −1) +
+1
+n −1
+n−1
+
+k=1
+(H(Tk) + H(Tn−k))
+(4.89)
+(e)
+= log(n −1) +
+2
+n −1
+n−1
+
+k=1
+H(Tk)
+(4.90)
+= log(n −1) +
+2
+n −1
+n−1
+
+k=1
+Hk.
+(4.91)
+(f) Use this to show that
+(n −1)Hn = nHn−1 + (n −1) log(n −1) −(n −2) log(n −2)
+(4.92)
+or
+Hn
+n = Hn−1
+n −1 + cn
+(4.93)
+for appropriately deﬁned cn. Since  cn = c < ∞, you have proved
+that 1
+nH(Tn) converges to a constant. Thus, the expected number of
+bits necessary to describe the random tree Tn grows linearly with n.
+4.6
+Monotonicity of entropy per element.
+For a stationary stochastic
+process X1, X2, . . . , Xn, show that
+(a)
+H(X1, X2, . . . , Xn)
+n
+≤H(X1, X2, . . . , Xn−1)
+n −1
+.
+(4.94)
+(b)
+H(X1, X2, . . . , Xn)
+n
+≥H(Xn|Xn−1, . . . , X1).
+(4.95)
+
+--- Page 18 ---
+92
+ENTROPY RATES OF A STOCHASTIC PROCESS
+4.7
+Entropy rates of Markov chains
+(a) Find the entropy rate of the two-state Markov chain with tran-
+sition matrix
+P =
+
+1 −p01
+p01
+p10
+1 −p10
+
+.
+(b) What values of p01, p10 maximize the entropy rate?
+(c) Find the entropy rate of the two-state Markov chain with tran-
+sition matrix
+P =
+
+1 −p
+p
+1
+0
+
+.
+(d) Find the maximum value of the entropy rate of the Markov
+chain of part (c). We expect that the maximizing value of p
+should be less than 1
+2, since the 0 state permits more informa-
+tion to be generated than the 1 state.
+(e) Let N(t) be the number of allowable state sequences of length t
+for the Markov chain of part (c). Find N(t) and calculate
+H0 = lim
+t→∞
+1
+t log N(t).
+[Hint: Find a linear recurrence that expresses N(t) in terms
+of N(t −1) and N(t −2). Why is H0 an upper bound on the
+entropy rate of the Markov chain? Compare H0 with the max-
+imum entropy found in part (d).]
+4.8
+Maximum entropy process.
+A discrete memoryless source has the
+alphabet {1, 2}, where the symbol 1 has duration 1 and the sym-
+bol 2 has duration 2. The probabilities of 1 and 2 are p1 and p2,
+respectively. Find the value of p1 that maximizes the source entropy
+per unit time H(X) = H(X)
+ET . What is the maximum value H(X)?
+4.9
+Initial conditions.
+Show, for a Markov chain, that
+H(X0|Xn) ≥H(X0|Xn−1).
+Thus, initial conditions X0 become more difﬁcult to recover as the
+future Xn unfolds.
+4.10
+Pairwise independence.
+Let X1, X2, . . . , Xn−1 be i.i.d. random
+variables taking values in {0, 1}, with Pr{Xi = 1} = 1
+2 . Let Xn = 1
+if n−1
+i=1 Xi is odd and Xn = 0 otherwise. Let n ≥3.
+
+--- Page 19 ---
+PROBLEMS
+93
+(a) Show that Xi and Xj are independent for i ̸= j, i, j ∈{1, 2,
+. . . , n}.
+(b) Find H(Xi, Xj) for i ̸= j.
+(c) Find H(X1, X2, . . . , Xn). Is this equal to nH(X1)?
+4.11
+Stationary processes.
+Let . . . , X−1, X0, X1, . . . be a stationary
+(not necessarily Markov) stochastic process. Which of the follow-
+ing statements are true? Prove or provide a counterexample.
+(a) H(Xn|X0) = H(X−n|X0) .
+(b) H(Xn|X0) ≥H(Xn−1|X0) .
+(c) H(Xn|X1, X2, . . . , Xn−1, Xn+1) is nonincreasing in n.
+(d) H(Xn|X1, . . . , Xn−1, Xn+1, . . . , X2n) is nonincreasing in n.
+4.12
+Entropy rate of a dog looking for a bone.
+A dog walks on the
+integers, possibly reversing direction at each step with probability
+p = 0.1. Let X0 = 0. The ﬁrst step is equally likely to be positive
+or negative. A typical walk might look like this:
+(X0, X1, . . .) = (0, −1, −2, −3, −4, −3, −2, −1, 0, 1, . . .).
+(a) Find H(X1, X2, . . . , Xn).
+(b) Find the entropy rate of the dog.
+(c) What is the expected number of steps that the dog takes before
+reversing direction?
+4.13
+The past has little to say about the future.
+For a stationary stochas-
+tic process X1, X2, . . . , Xn, . . . , show that
+lim
+n→∞
+1
+2nI (X1, X2, . . . , Xn; Xn+1, Xn+2, . . . , X2n) = 0.
+(4.96)
+Thus, the dependence between adjacent n-blocks of a stationary
+process does not grow linearly with n.
+4.14
+Functions of a stochastic process
+(a) Consider a stationary stochastic process X1, X2, . . . , Xn, and
+let Y1, Y2, . . . , Yn be deﬁned by
+Yi = φ(Xi),
+i = 1, 2, . . .
+(4.97)
+for some function φ. Prove that
+H(Y) ≤H(X).
+(4.98)
+
+--- Page 20 ---
+94
+ENTROPY RATES OF A STOCHASTIC PROCESS
+(b) What is the relationship between the entropy rates H(Z) and
+H(X) if
+Zi = ψ(Xi, Xi+1),
+i = 1, 2, . . .
+(4.99)
+for some function ψ?
+4.15
+Entropy rate.
+Let {Xi} be a discrete stationary stochastic process
+with entropy rate H(X). Show that
+1
+nH(Xn, . . . , X1 | X0, X−1, . . . , X−k) →H(X)
+(4.100)
+for k = 1, 2, . . ..
+4.16
+Entropy rate of constrained sequences.
+In magnetic recording, the
+mechanism of recording and reading the bits imposes constraints
+on the sequences of bits that can be recorded. For example, to
+ensure proper synchronization, it is often necessary to limit the
+length of runs of 0’s between two 1’s. Also, to reduce intersymbol
+interference, it may be necessary to require at least one 0 between
+any two 1’s. We consider a simple example of such a constraint.
+Suppose that we are required to have at least one 0 and at most
+two 0’s between any pair of 1’s in a sequences. Thus, sequences
+like 101001 and 0101001 are valid sequences, but 0110010 and
+0000101 are not. We wish to calculate the number of valid se-
+quences of length n.
+(a) Show that the set of constrained sequences is the same as the
+set of allowed paths on the following state diagram:
+(b) Let Xi(n) be the number of valid paths of length n ending at
+state i. Argue that X(n) = [X1(n) X2(n) X3(n)]t satisﬁes the
+
+--- Page 21 ---
+PROBLEMS
+95
+following recursion:
+
+
+X1(n)
+X2(n)
+X3(n)
+
+=
+
+
+0
+1
+1
+1
+0
+0
+0
+1
+0
+
+
+
+
+X1(n −1)
+X2(n −1)
+X3(n −1)
+
+,
+(4.101)
+with initial conditions X(1) = [1 1 0]t.
+(c) Let
+A =
+
+
+0
+1
+1
+1
+0
+0
+0
+1
+0
+
+.
+(4.102)
+Then we have by induction
+X(n) = AX(n −1) = A2X(n −2) = · · · = An−1X(1).
+(4.103)
+Using the eigenvalue decomposition of A for the case of distinct
+eigenvalues, we can write A = U −1U, where  is the diag-
+onal matrix of eigenvalues. Then An−1 = U −1n−1U. Show
+that we can write
+X(n) = λn−1
+1
+Y1 + λn−1
+2
+Y2 + λn−1
+3
+Y3,
+(4.104)
+where Y1, Y2, Y3 do not depend on n. For large n, this sum
+is dominated by the largest term. Therefore, argue that for i =
+1, 2, 3, we have
+1
+n log Xi(n) →log λ,
+(4.105)
+where λ is the largest (positive) eigenvalue. Thus, the number
+of sequences of length n grows as λn for large n. Calculate λ
+for the matrix A above. (The case when the eigenvalues are
+not distinct can be handled in a similar manner.)
+(d) We now take a different approach. Consider a Markov chain
+whose state diagram is the one given in part (a), but with
+arbitrary transition probabilities. Therefore, the probability tran-
+sition matrix of this Markov chain is
+P =
+
+
+0
+1
+0
+α
+0
+1 −α
+1
+0
+0
+
+.
+(4.106)
+Show that the stationary distribution of this Markov chain is
+µ =
+
+1
+3 −α,
+1
+3 −α, 1 −α
+3 −α
+
+.
+(4.107)
+
+--- Page 22 ---
+96
+ENTROPY RATES OF A STOCHASTIC PROCESS
+(e) Maximize the entropy rate of the Markov chain over choices
+of α. What is the maximum entropy rate of the chain?
+(f) Compare the maximum entropy rate in part (e) with log λ in
+part (c). Why are the two answers the same?
+4.17
+Recurrence times are insensitive to distributions.
+Let X0, X1, X2,
+. . . be drawn i.i.d. ∼p(x), x ∈X = {1, 2, . . . , m}, and let N be the
+waiting time to the next occurrence of X0. Thus N = minn{Xn =
+X0}.
+(a) Show that EN = m.
+(b) Show that E log N ≤H(X).
+(c) (Optional) Prove part (a) for {Xi} stationary and ergodic.
+4.18
+Stationary but not ergodic process.
+A bin has two biased coins,
+one with probability of heads p and the other with probability of
+heads 1 −p. One of these coins is chosen at random (i.e., with
+probability 1
+2) and is then tossed n times. Let X denote the identity
+of the coin that is picked, and let Y1 and Y2 denote the results of
+the ﬁrst two tosses.
+(a) Calculate I (Y1; Y2|X).
+(b) Calculate I (X; Y1, Y2).
+(c) Let H(Y) be the entropy rate of the Y process (the se-
+quence of coin tosses). Calculate H(Y). [Hint: Relate this to
+lim 1
+nH(X, Y1, Y2, . . . , Yn).]
+You can check the answer by considering the behavior as p →1
+2.
+4.19
+Random walk on graph.
+Consider a random walk on the following
+graph:
+1
+5
+4
+3
+2
+(a) Calculate the stationary distribution.
+
+--- Page 23 ---
+PROBLEMS
+97
+(b) What is the entropy rate?
+(c) Find the mutual information I (Xn+1; Xn) assuming that the
+process is stationary.
+4.20
+Random walk on chessboard.
+Find the entropy rate of the Markov
+chain associated with a random walk of a king on the 3 × 3 chess-
+board
+1
+2
+3
+4
+5
+6
+7
+8
+9
+What about the entropy rate of rooks, bishops, and queens? There
+are two types of bishops.
+4.21
+Maximal entropy graphs.
+Consider a random walk on a connected
+graph with four edges.
+(a) Which graph has the highest entropy rate?
+(b) Which graph has the lowest?
+4.22
+Three-dimensional maze.
+A bird is lost in a 3 × 3 × 3 cubical
+maze. The bird ﬂies from room to room going to adjoining rooms
+with equal probability through each of the walls. For example, the
+corner rooms have three exits.
+(a) What is the stationary distribution?
+(b) What is the entropy rate of this random walk?
+4.23
+Entropy rate.
+Let {Xi} be a stationary stochastic process with
+entropy rate H(X).
+(a) Argue that H(X) ≤H(X1).
+(b) What are the conditions for equality?
+4.24
+Entropy rates.
+Let {Xi} be a stationary process. Let Yi = (Xi,
+Xi+1). Let Zi = (X2i, X2i+1). Let Vi = X2i. Consider the entropy
+rates H(X), H(Y), H(Z), and H(V) of the processes {Xi},{Yi},
+{Zi}, and {Vi}. What is the inequality relationship ≤, =, or ≥
+between each of the pairs listed below?
+(a) H(X)⩾<H(Y).
+(b) H(X)⩾<H(Z).
+(c) H(X)⩾<H(V).
+(d) H(Z)⩾<H(X).
+4.25
+Monotonicity
+(a) Show that I (X; Y1, Y2, . . . , Yn) is nondecreasing in n.
+
+--- Page 24 ---
+98
+ENTROPY RATES OF A STOCHASTIC PROCESS
+(b) Under what conditions is the mutual information constant for
+all n?
+4.26
+Transitions in Markov chains.
+Suppose that {Xi} forms an irre-
+ducible Markov chain with transition matrix P and stationary distri-
+bution µ. Form the associated “edge process” {Yi} by keeping track
+only of the transitions. Thus, the new process {Yi} takes values in
+X × X, and Yi = (Xi−1, Xi). For example,
+Xn = 3, 2, 8, 5, 7, . . .
+becomes
+Y n = (∅, 3), (3, 2), (2, 8), (8, 5), (5, 7), . . . .
+Find the entropy rate of the edge process {Yi}.
+4.27
+Entropy rate.
+Let {Xi} be a stationary {0, 1}-valued stochastic
+process obeying
+Xk+1 = Xk ⊕Xk−1 ⊕Zk+1,
+where {Zi} is Bernoulli(p)and ⊕denotes mod 2 addition. What is
+the entropy rate H(X)?
+4.28
+Mixture of processes.
+Suppose that we observe one of two
+stochastic processes but don’t know which. What is the entropy
+rate? Speciﬁcally, let X11, X12, X13, . . . be a Bernoulli process with
+parameter p1, and let X21, X22, X23, . . . be Bernoulli(p2). Let
+θ =
+
+1
+with probability 1
+2
+2
+with probability 1
+2
+and let Yi = Xθi, i = 1, 2, . . . , be the stochastic process observed.
+Thus, Y observes the process {X1i} or {X2i}. Eventually, Y will
+know which.
+(a) Is {Yi} stationary?
+(b) Is {Yi} an i.i.d. process?
+(c) What is the entropy rate H of {Yi}?
+(d) Does
+−1
+n log p(Y1, Y2, . . . Yn) −→H?
+(e) Is there a code that achieves an expected per-symbol description
+length 1
+nELn −→H?
+
+--- Page 25 ---
+PROBLEMS
+99
+Now let θi be Bern(1
+2). Observe that
+Zi = Xθii,
+i = 1, 2, . . . .
+Thus, θ is not ﬁxed for all time, as it was in the ﬁrst part, but is
+chosen i.i.d. each time. Answer parts (a), (b), (c), (d), (e) for the
+process {Zi}, labeling the answers (a′), (b′), (c′), (d′), (e′).
+4.29
+Waiting times.
+Let X be the waiting time for the ﬁrst heads to
+appear in successive ﬂips of a fair coin. For example, Pr{X = 3} =
+( 1
+2)3. Let Sn be the waiting time for the nth head to appear. Thus,
+S0 = 0
+Sn+1 = Sn + Xn+1,
+where X1, X2, X3, . . . are i.i.d according to the distribution above.
+(a) Is the process {Sn} stationary?
+(b) Calculate H(S1, S2, . . . , Sn).
+(c) Does the process {Sn} have an entropy rate? If so, what is it?
+If not, why not?
+(d) What is the expected number of fair coin ﬂips required to
+generate a random variable having the same distribution as Sn?
+4.30
+Markov chain transitions
+P = [Pij] =
+
+
+1
+2
+1
+4
+1
+4
+1
+4
+1
+2
+1
+4
+1
+4
+1
+4
+1
+2
+
+.
+Let X1 be distributed uniformly over the states {0, 1, 2}. Let {Xi}∞
+1
+be a Markov chain with transition matrix P ; thus, P (Xn+1 =
+j|Xn = i) = Pij, i, j ∈{0, 1, 2}.
+(a) Is {Xn} stationary?
+(b) Find limn→∞1
+nH(X1, . . . , Xn).
+Now consider the derived process Z1, Z2, . . . , Zn, where
+Z1 = X1
+Zi = Xi −Xi−1
+(mod 3),
+i = 2, . . . , n.
+Thus, Zn encodes the transitions, not the states.
+(c) Find H(Z1, Z2, . . . , Zn).
+(d) Find H(Zn) and H(Xn) for n ≥2.
+
+--- Page 26 ---
+100
+ENTROPY RATES OF A STOCHASTIC PROCESS
+(e) Find H(Zn|Zn−1) for n ≥2.
+(f) Are Zn−1 and Zn independent for n ≥2?
+4.31
+Markov.
+Let
+{Xi} ∼Bernoulli(p).
+Consider
+the
+associated
+Markov chain {Yi}n
+i=1, where
+Yi = (the number of 1’s in the current run of 1’s). For example, if
+Xn = 101110 . . . , we have Y n = 101230 . . . .
+(a) Find the entropy rate of Xn.
+(b) Find the entropy rate of Y n.
+4.32
+Time symmetry.
+Let {Xn} be a stationary Markov process. We
+condition on (X0, X1) and look into the past and future. For what
+index k is
+H(X−n|X0, X1) = H(Xk|X0, X1)?
+Give the argument.
+4.33
+Chain inequality.
+Let X1 →X2 →X3 →X4 form a Markov
+chain. Show that
+I (X1; X3) + I (X2; X4) ≤I (X1; X4) + I (X2; X3).
+(4.108)
+4.34
+Broadcast channel.
+Let X →Y →(Z, W) form a Markov chain
+[i.e., p(x, y, z, w) = p(x)p(y|x)p(z, w|y) for all x, y, z, w]. Show
+that
+I (X; Z) + I (X; W) ≤I (X; Y) + I (Z; W).
+(4.109)
+4.35
+Concavity of second law.
+Let {Xn}∞
+−∞be a stationary Markov
+process. Show that H(Xn|X0) is concave in n. Speciﬁcally, show
+that
+H(Xn|X0) −H(Xn−1|X0) −(H(Xn−1|X0) −H(Xn−2|X0))
+= −I (X1; Xn−1|X0, Xn) ≤0.
+(4.110)
+Thus, the second difference is negative, establishing that H(Xn|X0)
+is a concave function of n.
+HISTORICAL NOTES
+The entropy rate of a stochastic process was introduced by Shannon [472],
+who also explored some of the connections between the entropy rate of the
+process and the number of possible sequences generated by the process.
+Since Shannon, there have been a number of results extending the basic
+
+--- Page 27 ---
+HISTORICAL NOTES
+101
+theorems of information theory to general stochastic processes. The AEP
+for a general stationary stochastic process is proved in Chapter 16.
+Hidden Markov models are used for a number of applications, such
+as speech recognition [432]. The calculation of the entropy rate for con-
+strained sequences was introduced by Shannon [472]. These sequences
+are used for coding for magnetic and optical channels [288].
+
+--- Page 28 ---
+
+--- Page 29 ---
+CHAPTER 5
+DATA COMPRESSION
+We now put content in the deﬁnition of entropy by establishing the funda-
+mental limit for the compression of information. Data compression can be
+achieved by assigning short descriptions to the most frequent outcomes
+of the data source, and necessarily longer descriptions to the less fre-
+quent outcomes. For example, in Morse code, the most frequent symbol
+is represented by a single dot. In this chapter we ﬁnd the shortest average
+description length of a random variable.
+We ﬁrst deﬁne the notion of an instantaneous code and then prove the
+important Kraft inequality, which asserts that the exponentiated codeword
+length assignments must look like a probability mass function. Elemen-
+tary calculus then shows that the expected description length must be
+greater than or equal to the entropy, the ﬁrst main result. Then Shan-
+non’s simple construction shows that the expected description length can
+achieve this bound asymptotically for repeated descriptions. This estab-
+lishes the entropy as a natural measure of efﬁcient description length.
+The famous Huffman coding procedure for ﬁnding minimum expected
+description length assignments is provided. Finally, we show that Huff-
+man codes are competitively optimal and that it requires roughly H fair
+coin ﬂips to generate a sample of a random variable having entropy H.
+Thus, the entropy is the data compression limit as well as the number of
+bits needed in random number generation, and codes achieving H turn
+out to be optimal from many points of view.
+5.1
+EXAMPLES OF CODES
+Deﬁnition
+A source code C for a random variable X is a mapping from
+X, the range of X, to D∗, the set of ﬁnite-length strings of symbols from
+a D-ary alphabet. Let C(x) denote the codeword corresponding to x and
+let l(x) denote the length of C(x).
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+103
+
+--- Page 30 ---
+104
+DATA COMPRESSION
+For example, C(red) = 00, C(blue) = 11 is a source code for X = {red,
+blue} with alphabet D = {0, 1}.
+Deﬁnition
+The expected length L(C) of a source code C(x) for a ran-
+dom variable X with probability mass function p(x) is given by
+L(C) =
+
+x∈X
+p(x)l(x),
+(5.1)
+where l(x) is the length of the codeword associated with x.
+Without loss of generality, we can assume that the D-ary alphabet is
+D = {0, 1, . . . , D −1}.
+Some examples of codes follow.
+Example 5.1.1
+Let X be a random variable with the following distri-
+bution and codeword assignment:
+Pr(X = 1) = 1
+2,
+codeword C(1) = 0
+Pr(X = 2) = 1
+4,
+codeword C(2) = 10
+Pr(X = 3) = 1
+8,
+codeword C(3) = 110
+Pr(X = 4) = 1
+8,
+codeword C(4) = 111.
+(5.2)
+The entropy H(X) of X is 1.75 bits, and the expected length L(C) =
+El(X) of this code is also 1.75 bits. Here we have a code that has the
+same average length as the entropy. We note that any sequence of bits
+can be uniquely decoded into a sequence of symbols of X. For example,
+the bit string 0110111100110 is decoded as 134213.
+Example 5.1.2
+Consider another simple example of a code for a random
+variable:
+Pr(X = 1) = 1
+3,
+codeword C(1) = 0
+Pr(X = 2) = 1
+3,
+codeword C(2) = 10
+Pr(X = 3) = 1
+3,
+codeword C(3) = 11.
+(5.3)
+Just as in Example 5.1.1, the code is uniquely decodable. However, in
+this case the entropy is log 3 = 1.58 bits and the average length of the
+encoding is 1.66 bits. Here El(X) > H(X).
+Example 5.1.3
+(Morse code) The Morse code is a reasonably efﬁcient
+code for the English alphabet using an alphabet of four symbols: a dot,
+
+--- Page 31 ---
+5.1
+EXAMPLES OF CODES
+105
+a dash, a letter space, and a word space. Short sequences represent fre-
+quent letters (e.g., a single dot represents E) and long sequences represent
+infrequent letters (e.g., Q is represented by “dash,dash,dot,dash”). This is
+not the optimal representation for the alphabet in four symbols—in fact,
+many possible codewords are not utilized because the codewords for let-
+ters do not contain spaces except for a letter space at the end of every
+codeword, and no space can follow another space. It is an interesting prob-
+lem to calculate the number of sequences that can be constructed under
+these constraints. The problem was solved by Shannon in his original
+1948 paper. The problem is also related to coding for magnetic recording,
+where long strings of 0’s are prohibited [5], [370].
+We now deﬁne increasingly more stringent conditions on codes. Let xn
+denote (x1, x2, . . . , xn).
+Deﬁnition
+A code is said to be nonsingular if every element of the
+range of X maps into a different string in D∗; that is,
+x ̸= x′ ⇒C(x) ̸= C(x′).
+(5.4)
+Nonsingularity sufﬁces for an unambiguous description of a single
+value of X. But we usually wish to send a sequence of values of X.
+In such cases we can ensure decodability by adding a special symbol
+(a “comma”) between any two codewords. But this is an inefﬁcient use
+of the special symbol; we can do better by developing the idea of self-
+punctuating or instantaneous codes. Motivated by the necessity to send
+sequences of symbols X, we deﬁne the extension of a code as follows:
+Deﬁnition
+The extension C∗of a code C is the mapping from ﬁnite-
+length strings of X to ﬁnite-length strings of D, deﬁned by
+C(x1x2 · · · xn) = C(x1)C(x2) · · · C(xn),
+(5.5)
+where C(x1)C(x2) · · · C(xn) indicates concatenation of the corresponding
+codewords.
+Example 5.1.4
+If C(x1) = 00 and C(x2) = 11, then C(x1x2) = 0011.
+Deﬁnition
+A code is called uniquely decodable if its extension is non-
+singular.
+In other words, any encoded string in a uniquely decodable code has
+only one possible source string producing it. However, one may have
+to look at the entire string to determine even the ﬁrst symbol in the
+corresponding source string.
+
+--- Page 32 ---
+106
+DATA COMPRESSION
+Deﬁnition
+A code is called a preﬁx code or an instantaneous code if
+no codeword is a preﬁx of any other codeword.
+An instantaneous code can be decoded without reference to future code-
+words since the end of a codeword is immediately recognizable. Hence,
+for an instantaneous code, the symbol xi can be decoded as soon as we
+come to the end of the codeword corresponding to it. We need not wait
+to see the codewords that come later. An instantaneous code is a self-
+punctuating code; we can look down the sequence of code symbols and
+add the commas to separate the codewords without looking at later sym-
+bols. For example, the binary string 01011111010 produced by the code
+of Example 5.1.1 is parsed as 0,10,111,110,10.
+The nesting of these deﬁnitions is shown in Figure 5.1. To illustrate the
+differences between the various kinds of codes, consider the examples of
+codeword assignments C(x) to x ∈X in Table 5.1. For the nonsingular
+code, the code string 010 has three possible source sequences: 2 or 14 or
+31, and hence the code is not uniquely decodable. The uniquely decodable
+code is not preﬁx-free and hence is not instantaneous. To see that it is
+uniquely decodable, take any code string and start from the beginning.
+If the ﬁrst two bits are 00 or 10, they can be decoded immediately. If
+All
+codes
+Nonsingular
+codes
+Uniquely
+decodable
+codes
+Instantaneous
+codes
+FIGURE 5.1. Classes of codes.
+
+--- Page 33 ---
+5.2
+KRAFT INEQUALITY
+107
+TABLE 5.1
+Classes of Codes
+Nonsingular, But Not
+Uniquely Decodable,
+X
+Singular
+Uniquely Decodable
+But Not Instantaneous
+Instantaneous
+1
+0
+0
+10
+0
+2
+0
+010
+00
+10
+3
+0
+01
+11
+110
+4
+0
+10
+110
+111
+the ﬁrst two bits are 11, we must look at the following bits. If the next
+bit is a 1, the ﬁrst source symbol is a 3. If the length of the string of
+0’s immediately following the 11 is odd, the ﬁrst codeword must be 110
+and the ﬁrst source symbol must be 4; if the length of the string of 0’s is
+even, the ﬁrst source symbol is a 3. By repeating this argument, we can see
+that this code is uniquely decodable. Sardinas and Patterson [455] have
+devised a ﬁnite test for unique decodability, which involves forming sets
+of possible sufﬁxes to the codewords and eliminating them systematically.
+The test is described more fully in Problem 5.5.27. The fact that the last
+code in Table 5.1 is instantaneous is obvious since no codeword is a preﬁx
+of any other.
+5.2
+KRAFT INEQUALITY
+We wish to construct instantaneous codes of minimum expected length to
+describe a given source. It is clear that we cannot assign short codewords
+to all source symbols and still be preﬁx-free. The set of codeword lengths
+possible for instantaneous codes is limited by the following inequality.
+Theorem 5.2.1
+(Kraft inequality)
+For any instantaneous code (preﬁx
+code) over an alphabet of size D, the codeword lengths l1, l2, . . . , lm must
+satisfy the inequality
+
+i
+D−li ≤1.
+(5.6)
+Conversely, given a set of codeword lengths that satisfy this inequality,
+there exists an instantaneous code with these word lengths.
+Proof:
+Consider a D-ary tree in which each node has D children. Let the
+branches of the tree represent the symbols of the codeword. For example,
+the D branches arising from the root node represent the D possible values
+of the ﬁrst symbol of the codeword. Then each codeword is represented
+
+--- Page 34 ---
+108
+DATA COMPRESSION
+Root
+0
+10
+110
+111
+FIGURE 5.2. Code tree for the Kraft inequality.
+by a leaf on the tree. The path from the root traces out the symbols of the
+codeword. A binary example of such a tree is shown in Figure 5.2. The
+preﬁx condition on the codewords implies that no codeword is an ancestor
+of any other codeword on the tree. Hence, each codeword eliminates its
+descendants as possible codewords.
+Let lmax be the length of the longest codeword of the set of codewords.
+Consider all nodes of the tree at level lmax. Some of them are codewords,
+some are descendants of codewords, and some are neither. A codeword
+at level li has Dlmax−li descendants at level lmax. Each of these descendant
+sets must be disjoint. Also, the total number of nodes in these sets must
+be less than or equal to Dlmax. Hence, summing over all the codewords,
+we have
+
+Dlmax−li ≤Dlmax
+(5.7)
+or
+
+D−li ≤1,
+(5.8)
+which is the Kraft inequality.
+Conversely, given any set of codeword lengths l1, l2, . . . , lm that sat-
+isfy the Kraft inequality, we can always construct a tree like the one in
+
+--- Page 35 ---
+5.2
+KRAFT INEQUALITY
+109
+Figure 5.2. Label the ﬁrst node (lexicographically) of depth l1 as code-
+word 1, and remove its descendants from the tree. Then label the ﬁrst
+remaining node of depth l2 as codeword 2, and so on. Proceeding this
+way, we construct a preﬁx code with the speciﬁed l1, l2, . . . , lm.
+□
+We now show that an inﬁnite preﬁx code also satisﬁes the Kraft inequal-
+ity.
+Theorem 5.2.2
+(Extended Kraft Inequality)
+For any countably inﬁ-
+nite set of codewords that form a preﬁx code, the codeword lengths satisfy
+the extended Kraft inequality,
+∞
+
+i=1
+D−li ≤1.
+(5.9)
+Conversely, given any l1, l2, . . . satisfying the extended Kraft inequality,
+we can construct a preﬁx code with these codeword lengths.
+Proof:
+Let the D-ary alphabet be {0, 1, . . . , D −1}. Consider the ith
+codeword y1y2 · · · yli. Let 0.y1y2 · · · yli be the real number given by the
+D-ary expansion
+0.y1y2 · · · yli =
+li
+
+j=1
+yjD−j.
+(5.10)
+This codeword corresponds to the interval
+
+0.y1y2 · · · yli, 0.y1y2 · · · yli + 1
+Dli
+
+,
+(5.11)
+the set of all real numbers whose D-ary expansion begins with
+0.y1y2 · · · yli. This is a subinterval of the unit interval [0, 1]. By the preﬁx
+condition, these intervals are disjoint. Hence, the sum of their lengths has
+to be less than or equal to 1. This proves that
+∞
+
+i=1
+D−li ≤1.
+(5.12)
+Just as in the ﬁnite case, we can reverse the proof to construct the
+code for a given l1, l2, . . . that satisﬁes the Kraft inequality. First, reorder
+the indexing so that l1 ≤l2 ≤. . . . Then simply assign the intervals in
+
+--- Page 36 ---
+110
+DATA COMPRESSION
+order from the low end of the unit interval. For example, if we wish to
+construct a binary code with l1 = 1, l2 = 2, . . . , we assign the intervals
+[0, 1
+2), [1
+2, 1
+4), . . . to the symbols, with corresponding codewords 0, 10,
+. . . .
+□
+In Section 5.5 we show that the lengths of codewords for a uniquely
+decodable code also satisfy the Kraft inequality. Before we do that, we
+consider the problem of ﬁnding the shortest instantaneous code.
+5.3
+OPTIMAL CODES
+In Section 5.2 we proved that any codeword set that satisﬁes the preﬁx
+condition has to satisfy the Kraft inequality and that the Kraft inequality
+is a sufﬁcient condition for the existence of a codeword set with the
+speciﬁed set of codeword lengths. We now consider the problem of ﬁnding
+the preﬁx code with the minimum expected length. From the results of
+Section 5.2, this is equivalent to ﬁnding the set of lengths l1, l2, . . . , lm
+satisfying the Kraft inequality and whose expected length L =  pili is
+less than the expected length of any other preﬁx code. This is a standard
+optimization problem: Minimize
+L =
+
+pili
+(5.13)
+over all integers l1, l2, . . . , lm satisfying
+
+D−li ≤1.
+(5.14)
+A simple analysis by calculus suggests the form of the minimizing l∗
+i .
+We neglect the integer constraint on li and assume equality in the con-
+straint. Hence, we can write the constrained minimization using Lagrange
+multipliers as the minimization of
+J =
+
+pili + λ
+
+D−li
+
+.
+(5.15)
+Differentiating with respect to li, we obtain
+∂J
+∂li
+= pi −λD−li loge D.
+(5.16)
+Setting the derivative to 0, we obtain
+D−li =
+pi
+λ loge D.
+(5.17)
+
+--- Page 37 ---
+5.3
+OPTIMAL CODES
+111
+Substituting this in the constraint to ﬁnd λ, we ﬁnd λ = 1/ loge D, and
+hence
+pi = D−li,
+(5.18)
+yielding optimal code lengths,
+l∗
+i = −logD pi.
+(5.19)
+This noninteger choice of codeword lengths yields expected codeword
+length
+L∗=
+
+pil∗
+i = −
+
+pi logD pi = HD(X).
+(5.20)
+But since the li must be integers, we will not always be able to set
+the codeword lengths as in (5.19). Instead, we should choose a set of
+codeword lengths li “close” to the optimal set. Rather than demonstrate
+by calculus that l∗
+i = −logD pi is a global minimum, we verify optimality
+directly in the proof of the following theorem.
+Theorem 5.3.1
+The expected length L of any instantaneous D-ary code
+for a random variable X is greater than or equal to the entropy HD(X);
+that is,
+L ≥HD(X),
+(5.21)
+with equality if and only if D−li = pi.
+Proof:
+We can write the difference between the expected length and the
+entropy as
+L −HD(X) =
+
+pili −
+
+pi logD
+1
+pi
+(5.22)
+= −
+
+pi logD D−li +
+
+pi logD pi.
+(5.23)
+Letting ri = D−li/ 
+j D−lj and c =  D−li, we obtain
+L −H =
+
+pi logD
+pi
+ri
+−logD c
+(5.24)
+= D(p||r) + logD
+1
+c
+(5.25)
+≥0
+(5.26)
+
+--- Page 38 ---
+112
+DATA COMPRESSION
+by the nonnegativity of relative entropy and the fact (Kraft inequality)
+that c ≤1. Hence, L ≥H with equality if and only if pi = D−li (i.e., if
+and only if −logD pi is an integer for all i).
+□
+Deﬁnition
+A probability distribution is called D-adic if each of the
+probabilities is equal to D−n for some n. Thus, we have equality in the
+theorem if and only if the distribution of X is D-adic.
+The preceding proof also indicates a procedure for ﬁnding an optimal
+code: Find the D-adic distribution that is closest (in the relative entropy
+sense) to the distribution of X. This distribution provides the set of code-
+word lengths. Construct the code by choosing the ﬁrst available node as
+in the proof of the Kraft inequality. We then have an optimal code for X.
+However, this procedure is not easy, since the search for the closest
+D-adic distribution is not obvious. In the next section we give a good
+suboptimal procedure (Shannon–Fano coding). In Section 5.6 we describe
+a simple procedure (Huffman coding) for actually ﬁnding the optimal
+code.
+5.4
+BOUNDS ON THE OPTIMAL CODE LENGTH
+We now demonstrate a code that achieves an expected description length
+L within 1 bit of the lower bound; that is,
+H(X) ≤L < H(X) + 1.
+(5.27)
+Recall the setup of Section 5.3: We wish to minimize L =  pili sub-
+ject to the constraint that l1, l2, . . . , lm are integers and  D−li ≤1. We
+proved that the optimal codeword lengths can be found by ﬁnding the
+D-adic probability distribution closest to the distribution of X in relative
+entropy, that is, by ﬁnding the D-adic r (ri = D−li/ 
+j D−lj ) minimizing
+L −HD = D(p||r) −log
+
+D−li
+
+≥0.
+(5.28)
+The choice of word lengths li = logD
+1
+pi yields L = H. Since logD
+1
+pi
+may not equal an integer, we round it up to give integer word-length
+assignments,
+li =
+
+logD
+1
+pi
+
+,
+(5.29)
+
+--- Page 39 ---
+5.4
+BOUNDS ON THE OPTIMAL CODE LENGTH
+113
+where ⌈x⌉is the smallest integer ≥x. These lengths satisfy the Kraft
+inequality since
+
+D−⌈log 1
+pi ⌉≤
+
+D−log 1
+pi =
+
+pi = 1.
+(5.30)
+This choice of codeword lengths satisﬁes
+logD
+1
+pi
+≤li < logD
+1
+pi
++ 1.
+(5.31)
+Multiplying by pi and summing over i, we obtain
+HD(X) ≤L < HD(X) + 1.
+(5.32)
+Since an optimal code can only be better than this code, we have the
+following theorem.
+Theorem 5.4.1
+Let l∗
+1, l∗
+2, . . . , l∗
+m be optimal codeword lengths for a
+source distribution p and a D-ary alphabet, and let L∗be the associated
+expected length of an optimal code (L∗=  pil∗
+i ). Then
+HD(X) ≤L∗< HD(X) + 1.
+(5.33)
+Proof:
+Let li = ⌈logD
+1
+pi ⌉. Then li satisﬁes the Kraft inequality and from
+(5.32) we have
+HD(X) ≤L =
+
+pili < HD(X) + 1.
+(5.34)
+But since L∗, the expected length of the optimal code, is less than L =
+ pili,
+and
+since
+L∗≥HD
+from
+Theorem 5.3.1,
+we
+have
+the
+theorem.
+□
+In Theorem 5.4.1 there is an overhead that is at most 1 bit, due to the
+fact that log 1
+pi is not always an integer. We can reduce the overhead per
+symbol by spreading it out over many symbols. With this in mind, let us
+consider a system in which we send a sequence of n symbols from X.
+The symbols are assumed to be drawn i.i.d. according to p(x). We can
+consider these n symbols to be a supersymbol from the alphabet Xn.
+Deﬁne Ln to be the expected codeword length per input symbol, that
+is, if l(x1, x2, . . . , xn) is the length of the binary
+codeword associated
+
+--- Page 40 ---
+114
+DATA COMPRESSION
+with (x1, x2, . . . , xn) (for the rest of this section, we assume that D = 2,
+for simplicity), then
+Ln = 1
+n
+
+p(x1, x2, . . . , xn)l(x1, x2, . . . , xn) = 1
+nEl(X1, X2, . . . , Xn).
+(5.35)
+We can now apply the bounds derived above to the code:
+H(X1, X2, . . . , Xn) ≤El(X1, X2, . . . , Xn) < H(X1, X2, . . . , Xn) + 1.
+(5.36)
+Since
+X1, X2, . . . , Xn
+are
+i.i.d.,
+H(X1, X2, . . . , Xn) =  H(Xi) =
+nH(X). Dividing (5.36) by n, we obtain
+H(X) ≤Ln < H(X) + 1
+n.
+(5.37)
+Hence, by using large block lengths we can achieve an expected code-
+length per symbol arbitrarily close to the entropy.
+We can use the same argument for a sequence of symbols from a
+stochastic process that is not necessarily i.i.d. In this case, we still have
+the bound
+H(X1, X2, . . . , Xn) ≤El(X1, X2, . . . , Xn) < H(X1, X2, . . . , Xn) + 1.
+(5.38)
+Dividing by n again and deﬁning Ln to be the expected description length
+per symbol, we obtain
+H(X1, X2, . . . , Xn)
+n
+≤Ln < H(X1, X2, . . . , Xn)
+n
++ 1
+n.
+(5.39)
+If the stochastic process is stationary, then H(X1, X2, . . . , Xn)/n →
+H(X), and the expected description length tends to the entropy rate as
+n →∞. Thus, we have the following theorem:
+Theorem 5.4.2
+The minimum expected codeword length per symbol sat-
+isﬁes
+H(X1, X2, . . . , Xn)
+n
+≤L∗
+n < H(X1, X2, . . . , Xn)
+n
++ 1
+n.
+(5.40)
+Moreover, if X1, X2, . . . , Xn is a stationary stochastic process,
+L∗
+n →H(X),
+(5.41)
+where H(X) is the entropy rate of the process.
+
+--- Page 41 ---
+5.5
+KRAFT INEQUALITY FOR UNIQUELY DECODABLE CODES
+115
+This theorem provides another justiﬁcation for the deﬁnition of entropy
+rate—it is the expected number of bits per symbol required to describe
+the process.
+Finally, we ask what happens to the expected description length if the
+code is designed for the wrong distribution. For example, the wrong dis-
+tribution may be the best estimate that we can make of the unknown true
+distribution. We consider the Shannon code assignment l(x) =
+	
+log
+1
+q(x)
+
+designed for the probability mass function q(x). Suppose that the true
+probability mass function is p(x). Thus, we will not achieve expected
+length L ≈H(p) = − p(x) log p(x). We now show that the increase
+in expected description length due to the incorrect distribution is the rel-
+ative entropy D(p||q). Thus, D(p||q) has a concrete interpretation as the
+increase in descriptive complexity due to incorrect information.
+Theorem 5.4.3
+(Wrong code)
+The expected length under p(x) of the
+code assignment l(x) =
+	
+log
+1
+q(x)
+
+satisﬁes
+H(p) + D(p||q) ≤Epl(X) < H(p) + D(p||q) + 1.
+(5.42)
+Proof:
+The expected codelength is
+El(X) =
+
+x
+p(x)
+
+log
+1
+q(x)
+
+(5.43)
+<
+
+x
+p(x)
+
+log
+1
+q(x) + 1
+
+(5.44)
+=
+
+x
+p(x) log p(x)
+q(x)
+1
+p(x) + 1
+(5.45)
+=
+
+x
+p(x) log p(x)
+q(x) +
+
+x
+p(x) log
+1
+p(x) + 1
+(5.46)
+= D(p||q) + H(p) + 1.
+(5.47)
+The lower bound can be derived similarly.
+□
+Thus, believing that the distribution is q(x) when the true distribution
+is p(x) incurs a penalty of D(p||q) in the average description length.
+5.5
+KRAFT INEQUALITY FOR UNIQUELY DECODABLE CODES
+We have proved that any instantaneous code must satisfy the Kraft inequal-
+ity. The class of uniquely decodable codes is larger than the class of
+
+--- Page 42 ---
+116
+DATA COMPRESSION
+instantaneous codes, so one expects to achieve a lower expected codeword
+length if L is minimized over all uniquely decodable codes. In this section
+we prove that the class of uniquely decodable codes does not offer any
+further possibilities for the set of codeword lengths than do instantaneous
+codes. We now give Karush’s elegant proof of the following theorem.
+Theorem 5.5.1
+(McMillan)
+The codeword lengths of any uniquely
+decodable D-ary code must satisfy the Kraft inequality
+
+D−li ≤1.
+(5.48)
+Conversely, given a set of codeword lengths that satisfy this inequality, it
+is possible to construct a uniquely decodable code with these codeword
+lengths.
+Proof:
+Consider Ck, the kth extension of the code (i.e., the code formed
+by the concatenation of k repetitions of the given uniquely decodable code
+C). By the deﬁnition of unique decodability, the kth extension of the code
+is nonsingular. Since there are only Dn different D-ary strings of length n,
+unique decodability implies that the number of code sequences of length
+n in the kth extension of the code must be no greater than Dn. We now
+use this observation to prove the Kraft inequality.
+Let the codeword lengths of the symbols x ∈X be denoted by l(x).
+For the extension code, the length of the code sequence is
+l(x1, x2, . . . , xk) =
+k
+
+i=1
+l(xi).
+(5.49)
+The inequality that we wish to prove is
+
+x∈X
+D−l(x) ≤1.
+(5.50)
+The trick is to consider the kth power of this quantity. Thus,
+
+x∈X
+D−l(x)
+k
+=
+
+x1∈X
+
+x2∈X
+· · ·
+
+xk∈X
+D−l(x1)D−l(x2) · · · D−l(xk)
+(5.51)
+=
+
+x1,x2,...,xk∈X k
+D−l(x1)D−l(x2) · · · D−l(xk)
+(5.52)
+=
+
+xk∈X k
+D−l(xk),
+(5.53)
+
+--- Page 43 ---
+5.5
+KRAFT INEQUALITY FOR UNIQUELY DECODABLE CODES
+117
+by (5.49). We now gather the terms by word lengths to obtain
+
+xk∈X k
+D−l(xk) =
+klmax
+
+m=1
+a(m)D−m,
+(5.54)
+where lmax is the maximum codeword length and a(m) is the number
+of source sequences xk mapping into codewords of length m. But the
+code is uniquely decodable, so there is at most one sequence mapping
+into each code m-sequence and there are at most Dm code m-sequences.
+Thus, a(m) ≤Dm, and we have
+
+x∈X
+D−l(x)
+k
+=
+klmax
+
+m=1
+a(m)D−m
+(5.55)
+≤
+klmax
+
+m=1
+DmD−m
+(5.56)
+= klmax
+(5.57)
+and hence
+
+j
+D−lj ≤(klmax)1/k .
+(5.58)
+Since this inequality is true for all k, it is true in the limit as k →∞.
+Since (klmax)1/k →1, we have
+
+j
+D−lj ≤1,
+(5.59)
+which is the Kraft inequality.
+Conversely, given any set of l1, l2, . . . , lm satisfying the Kraft inequal-
+ity, we can construct an instantaneous code as proved in Section 5.2. Since
+every instantaneous code is uniquely decodable, we have also constructed
+a uniquely decodable code.
+□
+Corollary
+A uniquely decodable code for an inﬁnite source alphabet X
+also satisﬁes the Kraft inequality.
+Proof:
+The point at which the preceding proof breaks down for inﬁnite
+|X| is at (5.58), since for an inﬁnite code lmax is inﬁnite. But there is a
+
+--- Page 44 ---
+118
+DATA COMPRESSION
+simple ﬁx to the proof. Any subset of a uniquely decodable code is also
+uniquely decodable; thus, any ﬁnite subset of the inﬁnite set of codewords
+satisﬁes the Kraft inequality. Hence,
+∞
+
+i=1
+D−li = lim
+N→∞
+N
+
+i=1
+D−li ≤1.
+(5.60)
+Given a set of word lengths l1, l2, . . . that satisfy the Kraft inequality, we
+can construct an instantaneous code as in Section 5.4. Since instantaneous
+codes are uniquely decodable, we have constructed a uniquely decodable
+code with an inﬁnite number of codewords. So the McMillan theorem
+also applies to inﬁnite alphabets.
+□
+The theorem implies a rather surprising result—that the class of
+uniquely decodable codes does not offer any further choices for the set
+of codeword lengths than the class of preﬁx codes. The set of achievable
+codeword lengths is the same for uniquely decodable and instantaneous
+codes. Hence, the bounds derived on the optimal codeword lengths con-
+tinue to hold even when we expand the class of allowed codes to the class
+of all uniquely decodable codes.
+5.6
+HUFFMAN CODES
+An optimal (shortest expected length) preﬁx code for a given distribution
+can be constructed by a simple algorithm discovered by Huffman [283].
+We will prove that any other code for the same alphabet cannot have a
+lower expected length than the code constructed by the algorithm. Before
+we give any formal proofs, let us introduce Huffman codes with some
+examples.
+Example 5.6.1
+Consider a random variable X taking values in the set
+X = {1, 2, 3, 4, 5} with probabilities 0.25, 0.25, 0.2, 0.15, 0.15, respec-
+tively. We expect the optimal binary code for X to have the longest
+codewords assigned to the symbols 4 and 5. These two lengths must be
+equal, since otherwise we can delete a bit from the longer codeword and
+still have a preﬁx code, but with a shorter expected length. In general,
+we can construct a code in which the two longest codewords differ only
+in the last bit. For this code, we can combine the symbols 4 and 5 into
+a single source symbol, with a probability assignment 0.30. Proceeding
+this way, combining the two least likely symbols into one symbol until
+we are ﬁnally left with only one symbol, and then assigning codewords
+to the symbols, we obtain the following table:
+
+--- Page 45 ---
+[IMAGE]
+5.6
+HUFFMAN CODES
+119
+Codeword
+Length
+Codeword
+X
+Probability
+2
+01
+1
+0.25
+0.3
+0.45
+0.55
+1
+2
+10
+2
+0.25
+0.25
+0.3
+0.45
+2
+11
+3
+0.2
+0.25
+0.25
+3
+000
+4
+0.15
+0.2
+3
+001
+5
+0.15
+This code has average length 2.3 bits.
+Example 5.6.2
+Consider a ternary code for the same random variable.
+Now we combine the three least likely symbols into one supersymbol and
+obtain the following table:
+Codeword
+X
+Probability
+1
+1
+0.25
+0.5
+1
+2
+2
+0.25
+0.25
+00
+3
+0.2
+0.25
+01
+4
+0.15
+02
+5
+0.15
+This code has an average length of 1.5 ternary digits.
+Example 5.6.3
+If D ≥3, we may not have a sufﬁcient number of sym-
+bols so that we can combine them D at a time. In such a case, we add
+dummy symbols to the end of the set of symbols. The dummy symbols
+have probability 0 and are inserted to ﬁll the tree. Since at each stage of
+the reduction, the number of symbols is reduced by D −1, we want the
+total number of symbols to be 1 + k(D −1), where k is the number of
+merges. Hence, we add enough dummy symbols so that the total number
+of symbols is of this form. For example:
+This code has an average length of 1.7 ternary digits.
+
+--- Page 46 ---
+120
+DATA COMPRESSION
+A proof of the optimality of Huffman coding is given in Section 5.8.
+5.7
+SOME COMMENTS ON HUFFMAN CODES
+1. Equivalence of source coding and 20 questions. We now digress
+to show the equivalence of coding and the game “20 questions”.
+Suppose that we wish to ﬁnd the most efﬁcient series of yes–no
+questions to determine an object from a class of objects. Assuming
+that we know the probability distribution on the objects, can we ﬁnd
+the most efﬁcient sequence of questions? (To determine an object,
+we need to ensure that the responses to the sequence of questions
+uniquely identiﬁes the object from the set of possible objects; it is
+not necessary that the last question have a “yes” answer.)
+We ﬁrst show that a sequence of questions is equivalent to a code
+for the object. Any question depends only on the answers to the
+questions before it. Since the sequence of answers uniquely deter-
+mines the object, each object has a different sequence of answers,
+and if we represent the yes–no answers by 0’s and 1’s, we have a
+binary code for the set of objects. The average length of this code
+is the average number of questions for the questioning scheme.
+Also, from a binary code for the set of objects, we can ﬁnd a
+sequence of questions that correspond to the code, with the average
+number of questions equal to the expected codeword length of the
+code. The ﬁrst question in this scheme becomes: Is the ﬁrst bit equal
+to 1 in the object’s codeword?
+Since the Huffman code is the best source code for a random
+variable, the optimal series of questions is that determined by the
+Huffman code. In Example 5.6.1 the optimal ﬁrst question is: Is
+X equal to 2 or 3? The answer to this determines the ﬁrst bit of
+the Huffman code. Assuming that the answer to the ﬁrst question
+is “yes,” the next question should be “Is X equal to 3?”, which
+determines the second bit. However, we need not wait for the answer
+to the ﬁrst question to ask the second. We can ask as our second
+question “Is X equal to 1 or 3?”, determining the second bit of the
+Huffman code independent of the ﬁrst.
+The expected number of questions EQ in this optimal scheme
+satisﬁes
+H(X) ≤EQ < H(X) + 1.
+(5.61)
+
+--- Page 47 ---
+[IMAGE]
+5.7
+SOME COMMENTS ON HUFFMAN CODES
+121
+2. Huffman coding for weighted codewords. Huffman’s algorithm for
+minimizing  pili can be applied to any set of numbers pi ≥0,
+regardless of  pi. In this case, the Huffman code minimizes the
+sum of weighted code lengths  wili rather than the average code
+length.
+Example 5.7.1
+We perform the weighted minimization using the
+same algorithm.
+In this case the code minimizes the weighted sum of the codeword
+lengths, and the minimum weighted sum is 36.
+3. Huffman coding and “slice” questions (Alphabetic codes). We have
+described the equivalence of source coding with the game of 20
+questions. The optimal sequence of questions corresponds to an
+optimal source code for the random variable. However, Huffman
+codes ask arbitrary questions of the form “Is X ∈A?” for any set
+A ⊆{1, 2, . . . , m}.
+Now we consider the game “20 questions” with a restricted set
+of questions. Speciﬁcally, we assume that the elements of X =
+{1, 2, . . . , m} are ordered so that p1 ≥p2 ≥· · · ≥pm and that the
+only questions allowed are of the form “Is X > a?” for some a. The
+Huffman code constructed by the Huffman algorithm may not cor-
+respond to slices (sets of the form {x : x < a}). If we take the code-
+word lengths (l1 ≤l2 ≤· · · ≤lm, by Lemma 5.8.1) derived from the
+Huffman code and use them to assign the symbols to the code tree
+by taking the ﬁrst available node at the corresponding level, we
+will construct another optimal code. However, unlike the Huffman
+code itself, this code is a slice code, since each question (each bit
+of the code) splits the tree into sets of the form {x : x > a} and
+{x : x < a}.
+We illustrate this with an example.
+Example 5.7.2
+Consider the ﬁrst example of Section 5.6. The
+code that was constructed by the Huffman coding procedure is not a
+
+--- Page 48 ---
+122
+DATA COMPRESSION
+slice code. But using the codeword lengths from the Huffman pro-
+cedure, namely, {2, 2, 2, 3, 3}, and assigning the symbols to the ﬁrst
+available node on the tree, we obtain the following code for this
+random variable:
+1 →00,
+2 →01,
+3 →10,
+4 →110,
+5 →111
+It can be veriﬁed that this code is a slice code, codes known as
+alphabetic codes because the codewords are ordered alphabetically.
+4. Huffman codes and Shannon codes. Using codeword lengths of
+⌈log 1
+pi ⌉(which is called Shannon coding) may be much worse than
+the optimal code for some particular symbol. For example, con-
+sider two symbols, one of which occurs with probability 0.9999 and
+the other with probability 0.0001. Then using codeword lengths of
+⌈log 1
+pi ⌉gives codeword lengths of 1 bit and 14 bits, respectively.
+The optimal codeword length is obviously 1 bit for both symbols.
+Hence, the codeword for the infrequent symbol is much longer in
+the Shannon code than in the optimal code.
+Is it true that the codeword lengths for an optimal code are always
+less than ⌈log 1
+pi ⌉? The following example illustrates that this is not
+always true.
+Example 5.7.3
+Consider a random variable X with a distribution
+1
+3, 1
+3, 1
+4, 1
+12
+
+. The Huffman coding procedure results in codeword
+lengths of (2, 2, 2, 2) or (1, 2, 3, 3) [depending on where one puts
+the merged probabilities, as the reader can verify (Problem 5.5.12)].
+Both these codes achieve the same expected codeword length. In the
+second code, the third symbol has length 3, which is greater than
+⌈log 1
+p3 ⌉. Thus, the codeword length for a Shannon code could be
+less than the codeword length of the corresponding symbol of an
+optimal (Huffman) code. This example also illustrates the fact that
+the set of codeword lengths for an optimal code is not unique (there
+may be more than one set of lengths with the same expected value).
+Although either the Shannon code or the Huffman code can be
+shorter for individual symbols, the Huffman code is shorter on aver-
+age. Also, the Shannon code and the Huffman code differ by less
+than 1 bit in expected codelength (since both lie between H and
+H + 1.)
+
+--- Page 49 ---
+5.8
+OPTIMALITY OF HUFFMAN CODES
+123
+5. Fano codes. Fano proposed a suboptimal procedure for constructing
+a source code, which is similar to the idea of slice codes. In his
+method we ﬁrst order the probabilities in decreasing order. Then we
+choose k such that
+
+k
+i=1 pi −m
+i=k+1 pi
+ is minimized. This point
+divides the source symbols into two sets of almost equal probability.
+Assign 0 for the ﬁrst bit of the upper set and 1 for the lower set.
+Repeat this process for each subset. By this recursive procedure, we
+obtain a code for each source symbol. This scheme, although not
+optimal in general, achieves L(C) ≤H(X) + 2. (See [282].)
+5.8
+OPTIMALITY OF HUFFMAN CODES
+We prove by induction that the binary Huffman code is optimal. It is
+important to remember that there are many optimal codes: inverting all
+the bits or exchanging two codewords of the same length will give another
+optimal code. The Huffman procedure constructs one such optimal code.
+To prove the optimality of Huffman codes, we ﬁrst prove some properties
+of a particular optimal code.
+Without loss of generality, we will assume that the probability masses
+are ordered, so that p1 ≥p2 ≥· · · ≥pm. Recall that a code is optimal if
+ pili is minimal.
+Lemma 5.8.1
+For any distribution, there exists an optimal instantaneous
+code (with minimum expected length) that satisﬁes the following proper-
+ties:
+1. The lengths are ordered inversely with the probabilities (i.e., if pj >
+pk, then lj ≤lk).
+2. The two longest codewords have the same length.
+3. Two of the longest codewords differ only in the last bit and corre-
+spond to the two least likely symbols.
+Proof:
+The proof amounts to swapping, trimming, and rearranging, as
+shown in Figure 5.3. Consider an optimal code Cm:
+• If pj > pk, then lj ≤lk. Here we swap codewords.
+Consider C′
+m, with the codewords j and k of Cm interchanged. Then
+L(C′
+m) −L(Cm) =
+
+pili′ −
+
+pili
+(5.62)
+= pjlk + pklj −pjlj −pklk
+(5.63)
+= (pj −pk)(lk −lj).
+(5.64)
+
+--- Page 50 ---
+124
+DATA COMPRESSION
+0
+0
+1
+1
+1
+1
+1
+0
+0
+0
+p1
+p3
+p4
+p2
+p5
+(a)
+(b)
+0
+1
+1
+1
+1
+0
+0
+0
+p1
+p3
+p4
+p2
+p5
+(c)
+(d)
+1
+1
+1
+0
+0
+1
+0
+0
+p5
+p2
+p1
+p3
+p4
+1
+1
+1
+0
+0
+1
+0
+0
+p2
+p2
+p3
+p4
+p5
+FIGURE 5.3. Properties of optimal codes. We assume that p1 ≥p2 ≥· · · ≥pm. A possible
+instantaneous code is given in (a). By trimming branches without siblings, we improve the
+code to (b). We now rearrange the tree as shown in (c), so that the word lengths are ordered
+by increasing length from top to bottom. Finally, we swap probability assignments to improve
+the expected depth of the tree, as shown in (d). Every optimal code can be rearranged and
+swapped into canonical form as in (d), where l1 ≤l2 ≤· · · ≤lm and lm−1 = lm, and the last
+two codewords differ only in the last bit.
+But pj −pk > 0, and since Cm is optimal, L(C′
+m) −L(Cm) ≥0.
+Hence, we must have lk ≥lj. Thus, Cm itself satisﬁes property 1.
+• The two longest codewords are of the same length. Here we trim the
+codewords. If the two longest codewords are not of the same length,
+one can delete the last bit of the longer one, preserving the preﬁx
+property and achieving lower expected codeword length. Hence, the
+two longest codewords must have the same length. By property 1, the
+longest codewords must belong to the least probable source symbols.
+• The two longest codewords differ only in the last bit and correspond
+to the two least likely symbols. Not all optimal codes satisfy this
+property, but by rearranging, we can ﬁnd an optimal code that does.
+If there is a maximal-length codeword without a sibling, we can delete
+the last bit of the codeword and still satisfy the preﬁx property. This
+reduces the average codeword length and contradicts the optimality
+
+--- Page 51 ---
+5.8
+OPTIMALITY OF HUFFMAN CODES
+125
+of the code. Hence, every maximal-length codeword in any optimal
+code has a sibling. Now we can exchange the longest codewords so
+that the two lowest-probability source symbols are associated with
+two siblings on the tree. This does not change the expected length,
+ pili. Thus, the codewords for the two lowest-probability source
+symbols have maximal length and agree in all but the last bit.
+Summarizing, we have shown that if p1 ≥p2 ≥· · · ≥pm, there exists
+an optimal code with l1 ≤l2 ≤· · · ≤lm−1 = lm, and codewords C(xm−1)
+and C(xm) that differ only in the last bit.
+□
+Thus, we have shown that there exists an optimal code satisfy-
+ing the properties of the lemma. We call such codes canonical codes.
+For any probability mass function for an alphabet of size m, p =
+(p1, p2, . . . , pm) with p1 ≥p2 ≥· · · ≥pm, we deﬁne the Huffman reduc-
+tion p′ = (p1, p2, . . . , pm−2, pm−1 + pm) over an alphabet of size m −1
+(Figure 5.4). Let C∗
+m−1(p′) be an optimal code for p′, and let C∗
+m(p) be
+the canonical optimal code for p.
+The proof of optimality will follow from two constructions: First, we
+expand an optimal code for p′ to construct a code for p, and then we
+(c)
+p1
+p2
+p3
+0
+0
+0
+1
+1
+1
+p4 + p5
+(a)
+p1
+p2
+p3
+p4
+p5
+0
+0
+0
+0
+1
+1
+1
+1
+(b)
+p1
+p2
+p3
+p4 + p5
+0
+0
+0
+1
+1
+1
+FIGURE 5.4. Induction step for Huffman coding. Let p1 ≥p2 ≥· · · ≥p5. A canonical
+optimal code is illustrated in (a). Combining the two lowest probabilities, we obtain the
+code in (b). Rearranging the probabilities in decreasing order, we obtain the canonical code
+in (c) for m −1 symbols.
+
+--- Page 52 ---
+126
+DATA COMPRESSION
+condense an optimal canonical code for p to construct a code for the
+Huffman reduction p′. Comparing the average codeword lengths for the
+two codes establishes that the optimal code for p can be obtained by
+extending the optimal code for p′.
+From the optimal code for p′, we construct an extension code for m
+elements as follows: Take the codeword in C∗
+m−1 corresponding to weight
+pm−1 + pm and extend it by adding a 0 to form a codeword for symbol
+m −1 and by adding 1 to form a codeword for symbol m. The code
+construction is illustrated as follows:
+C∗
+m−1(p′)
+Cm(p)
+p1
+w′
+1
+l′
+1
+w1 = w′
+1
+l1 = l′
+1
+p2
+w′
+2
+l′
+2
+w2 = w′
+2
+l2 = l′
+2
+...
+...
+...
+...
+...
+pm−2
+w′
+m−2
+l′
+m−2
+wm−2 = w′
+m−2
+lm−2 = l′
+m−2
+pm−1 + pm
+w′
+m−1
+l′
+m−1
+wm−1 = w′
+m−10
+lm−1 = l′
+m−1 + 1
+wm = w′
+m−11
+lm = l′
+m−1 + 1
+(5.65)
+Calculation of the average length 
+i p′
+il′
+i shows that
+L(p) = L∗(p′) + pm−1 + pm.
+(5.66)
+Similarly, from the canonical code for p, we construct a code for p′ by
+merging the codewords for the two lowest-probability symbols m −1 and
+m with probabilities pm−1 and pm, which are siblings by the properties
+of the canonical code. The new code for p′ has average length
+L(p′) =
+m−2
+
+i=1
+pili + pm−1(lm−1 −1) + pm(lm −1)
+(5.67)
+=
+m
+
+i=1
+pili −pm−1 −pm
+(5.68)
+= L∗(p) −pm−1 −pm.
+(5.69)
+Adding (5.66) and (5.69) together, we obtain
+L(p′) + L(p) = L∗(p′) + L∗(p)
+(5.70)
+or
+(L(p′) −L∗(p′)) + (L(p) −L∗(p)) = 0.
+(5.71)
+
+--- Page 53 ---
+5.9
+SHANNON–FANO–ELIAS CODING
+127
+Now examine the two terms in (5.71). By assumption, since L∗(p′) is the
+optimal length for p′, we have L(p′) −L∗(p′) ≥0. Similarly, the length
+of the extension of the optimal code for p′ has to have an average length
+at least as large as the optimal code for p [i.e., L(p) −L∗(p) ≥0]. But
+the sum of two nonnegative terms can only be 0 if both of them are 0,
+which implies that L(p) = L∗(p) (i.e., the extension of the optimal code
+for p′ is optimal for p).
+Consequently, if we start with an optimal code for p′ with m −1 sym-
+bols and construct a code for m symbols by extending the codeword
+corresponding to pm−1 + pm, the new code is also optimal. Starting with
+a code for two elements, in which case the optimal code is obvious, we
+can by induction extend this result to prove the following theorem.
+Theorem 5.8.1
+Huffman coding is optimal; that is, if C∗is a Huffman
+code and C′ is any other uniquely decodable code, L(C∗) ≤L(C′).
+Although we have proved the theorem for a binary alphabet, the proof
+can be extended to establishing optimality of the Huffman coding algo-
+rithm for a D-ary alphabet as well. Incidentally, we should remark that
+Huffman coding is a “greedy” algorithm in that it coalesces the two least
+likely symbols at each stage. The proof above shows that this local opti-
+mality ensures global optimality of the ﬁnal code.
+5.9
+SHANNON–FANO–ELIAS CODING
+In Section 5.4 we showed that the codeword lengths l(x) =
+	
+log
+1
+p(x)
+
+sat-
+isfy the Kraft inequality and can therefore be used to construct a uniquely
+decodable code for the source. In this section we describe a simple con-
+structive procedure that uses the cumulative distribution function to allot
+codewords.
+Without loss of generality, we can take X = {1, 2, . . . , m}. Assume that
+p(x) > 0 for all x. The cumulative distribution function F(x) is deﬁned
+as
+F(x) =
+
+a≤x
+p(a).
+(5.72)
+This function is illustrated in Figure 5.5. Consider the modiﬁed cumulative
+distribution function
+F(x) =
+
+a<x
+p(a) + 1
+2p(x),
+(5.73)
+
+--- Page 54 ---
+128
+DATA COMPRESSION
+F(x)
+F(x)
+F(x)
+F(x − 1)
+1
+2
+x
+x
+p(x)
+FIGURE 5.5. Cumulative distribution function and Shannon–Fano–Elias coding.
+where F(x) denotes the sum of the probabilities of all symbols less than
+x plus half the probability of the symbol x. Since the random variable is
+discrete, the cumulative distribution function consists of steps of size p(x).
+The value of the function F(x) is the midpoint of the step corresponding
+to x.
+Since all the probabilities are positive, F(a) ̸= F(b) if a ̸= b, and hence
+we can determine x if we know F(x). Merely look at the graph of the
+cumulative distribution function and ﬁnd the corresponding x. Thus, the
+value of F(x) can be used as a code for x.
+But, in general, F(x) is a real number expressible only by an inﬁnite
+number of bits. So it is not efﬁcient to use the exact value of F(x) as a
+code for x. If we use an approximate value, what is the required accuracy?
+Assume that we truncate F(x) to l(x) bits (denoted by ⌊F(x)⌋l(x)).
+Thus, we use the ﬁrst l(x) bits of F(x) as a code for x. By deﬁnition of
+rounding off, we have
+F(x) −⌊F(x)⌋l(x) <
+1
+2l(x).
+(5.74)
+If l(x) =
+	
+log
+1
+p(x)
+
++ 1, then
+1
+2l(x) < p(x)
+2
+= F(x) −F(x −1),
+(5.75)
+and therefore ⌊F(x)⌋l(x) lies within the step corresponding to x. Thus,
+l(x) bits sufﬁce to describe x.
+
+--- Page 55 ---
+5.9
+SHANNON–FANO–ELIAS CODING
+129
+In addition to requiring that the codeword identify the corresponding
+symbol, we also require the set of codewords to be preﬁx-free. To check
+whether the code is preﬁx-free, we consider each codeword z1z2 · · · zl to
+represent not a point but the interval
+
+0.z1z2 · · · zl, 0.z1z2 · · · zl + 1
+2l
+
+. The
+code is preﬁx-free if and only if the intervals corresponding to codewords
+are disjoint.
+We now verify that the code above is preﬁx-free. The interval corre-
+sponding to any codeword has length 2−l(x), which is less than half the
+height of the step corresponding to x by (5.75). The lower end of the
+interval is in the lower half of the step. Thus, the upper end of the inter-
+val lies below the top of the step, and the interval corresponding to any
+codeword lies entirely within the step corresponding to that symbol in the
+cumulative distribution function. Therefore, the intervals corresponding to
+different codewords are disjoint and the code is preﬁx-free. Note that this
+procedure does not require the symbols to be ordered in terms of proba-
+bility. Another procedure that uses the ordered probabilities is described
+in Problem 5.5.28.
+Since we use l(x) =
+	
+log
+1
+p(x)
+
++ 1 bits to represent x, the expected
+length of this code is
+L =
+
+x
+p(x)l(x) =
+
+x
+p(x)
+
+log
+1
+p(x)
+
++ 1
+
+< H(X) + 2. (5.76)
+Thus, this coding scheme achieves an average codeword length that is
+within 2 bits of the entropy.
+Example 5.9.1
+We ﬁrst consider an example where all the probabilities
+are dyadic. We construct the code in the following table:
+x
+p(x)
+F(x)
+F(x)
+F(x) in Binary
+l(x) =
+
+log
+1
+p(x)
+
++ 1
+Codeword
+1
+0.25
+0.25
+0.125
+0.001
+3
+001
+2
+0.5
+0.75
+0.5
+0.10
+2
+10
+3
+0.125
+0.875
+0.8125
+0.1101
+4
+1101
+4
+0.125
+1.0
+0.9375
+0.1111
+4
+1111
+In this case, the average codeword length is 2.75 bits and the entropy
+is 1.75 bits. The Huffman code for this case achieves the entropy
+bound. Looking at the codewords, it is obvious that there is some inef-
+ﬁciency—for example, the last bit of the last two codewords can be
+omitted. But if we remove the last bit from all the codewords, the code
+is no longer preﬁx-free.
+
+--- Page 56 ---
+130
+DATA COMPRESSION
+Example 5.9.2
+We now give another example for construction of the
+Shannon–Fano–Elias code. In this case, since the distribution is not
+dyadic, the representation of F(x) in binary may have an inﬁnite number
+of bits. We denote 0.01010101 . . . by 0.01. We construct the code in the
+following table:
+x
+p(x)
+F(x)
+F(x)
+F(x) in Binary
+l(x) =
+
+log
+1
+p(x)
+
++ 1
+Codeword
+1
+0.25
+0.25
+0.125
+0.001
+3
+001
+2
+0.25
+0.5
+0.375
+0.011
+3
+011
+3
+0.2
+0.7
+0.6
+0.10011
+4
+1001
+4
+0.15
+0.85
+0.775
+0.1100011
+4
+1100
+5
+0.15
+1.0
+0.925
+0.1110110
+4
+1110
+The above code is 1.2 bits longer on the average than the Huffman
+code for this source (Example 5.6.1).
+The Shannon–Fano–Elias coding procedure can also be applied to
+sequences of random variables. The key idea is to use the cumulative
+distribution function of the sequence, expressed to the appropriate accu-
+racy, as a code for the sequence. Direct application of the method to blocks
+of length n would require calculation of the probabilities and cumulative
+distribution function for all sequences of length n, a calculation that would
+grow exponentially with the block length. But a simple trick ensures that
+we can calculate both the probability and the cumulative density func-
+tion sequentially as we see each symbol in the block, ensuring that the
+calculation grows only linearly with the block length. Direct application
+of Shannon–Fano–Elias coding would also need arithmetic whose preci-
+sion grows with the block size, which is not practical when we deal with
+long blocks. In Chapter 13 we describe arithmetic coding, which is an
+extension of the Shannon–Fano–Elias method to sequences of random
+variables that encodes using ﬁxed-precision arithmetic with a complexity
+that is linear in the length of the sequence. This method is the basis of
+many practical compression schemes such as those used in the JPEG and
+FAX compression standards.
+5.10
+COMPETITIVE OPTIMALITY OF THE SHANNON CODE
+We have shown that Huffman coding is optimal in that it has minimum
+expected length. But what does that say about its performance on any
+particular sequence? For example, is it always better than any other code
+for all sequences? Obviously not, since there are codes that assign short
+
+--- Page 57 ---
+5.10
+COMPETITIVE OPTIMALITY OF THE SHANNON CODE
+131
+codewords to infrequent source symbols. Such codes will be better than
+the Huffman code on those source symbols.
+To formalize the question of competitive optimality, consider the fol-
+lowing two-person zero-sum game: Two people are given a probability
+distribution and are asked to design an instantaneous code for the dis-
+tribution. Then a source symbol is drawn from this distribution, and the
+payoff to player A is 1 or −1, depending on whether the codeword of
+player A is shorter or longer than the codeword of player B. The payoff
+is 0 for ties.
+Dealing with Huffman code lengths is difﬁcult, since there is no explicit
+expression for the codeword lengths. Instead, we consider the Shannon
+code with codeword lengths l(x) =
+	
+log
+1
+p(x)
+
+. In this case, we have the
+following theorem.
+Theorem 5.10.1
+Let l(x) be the codeword lengths associated with the
+Shannon code, and let l′(x) be the codeword lengths associated with any
+other uniquely decodable code. Then
+Pr
+
+l(X) ≥l′(X) + c
+
+≤
+1
+2c−1 .
+(5.77)
+For example, the probability that l′(X) is 5 or more bits shorter than
+l(X) is less than
+1
+16.
+Proof
+Pr
+
+l(X) ≥l′(X) + c
+
+= Pr
+
+log
+1
+p(X)
+
+≥l′(X) + c
+
+(5.78)
+≤Pr
+
+log
+1
+p(X) ≥l′(X) + c −1
+
+(5.79)
+= Pr
+
+p(X) ≤2−l′(X)−c+1
+(5.80)
+=
+
+x: p(x)≤2−l′(x)−c+1
+p(x)
+(5.81)
+≤
+
+x: p(x)≤2−l′(x)−c+1
+2−l′(x)−(c−1)
+(5.82)
+≤
+
+x
+2−l′(x)2−(c−1)
+(5.83)
+≤2−(c−1)
+(5.84)
+since  2−l′(x) ≤1 by the Kraft inequality.
+□
+
+--- Page 58 ---
+132
+DATA COMPRESSION
+Hence, no other code can do much better than the Shannon code most
+of the time. We now strengthen this result. In a game-theoretic setting,
+one would like to ensure that l(x) < l′(x) more often than l(x) > l′(x).
+The fact that l(x) ≤l′(x) + 1 with probability ≥1
+2 does not ensure this.
+We now show that even under this stricter criterion, Shannon coding is
+optimal. Recall that the probability mass function p(x) is dyadic if log
+1
+p(x)
+is an integer for all x.
+Theorem 5.10.2
+For a dyadic probability mass function p(x), let
+l(x) = log
+1
+p(x) be the word lengths of the binary Shannon code for the
+source, and let l′(x) be the lengths of any other uniquely decodable binary
+code for the source. Then
+Pr(l(X) < l′(X)) ≥Pr(l(X) > l′(X)),
+(5.85)
+with equality if and only if l′(x) = l(x) for all x. Thus, the code length
+assignment l(x) = log
+1
+p(x) is uniquely competitively optimal.
+Proof:
+Deﬁne the function sgn(t) as follows:
+sgn(t) =
+
+
+
+1
+if t > 0
+0
+if t = 0
+−1
+if t < 0
+(5.86)
+Then it is easy to see from Figure 5.6 that
+sgn(t) ≤2t −1
+for t = 0, ±1, ±2, . . . .
+(5.87)
+sgn(x)
+−1
+1
+1
+2t − 1
+x
+FIGURE 5.6. Sgn function and a bound.
+
+--- Page 59 ---
+5.10
+COMPETITIVE OPTIMALITY OF THE SHANNON CODE
+133
+Note that though this inequality is not satisﬁed for all t, it is satisﬁed
+at all integer values of t. We can now write
+Pr(l′(X) < l(X)) −Pr(l′(X) > l(X)) =
+
+x:l′(x)<l(x)
+p(x) −
+
+x:l′(x)>l(x)
+p(x)
+(5.88)
+=
+
+x
+p(x)sgn(l(x) −l′(x))
+(5.89)
+= E sgn
+
+l(X) −l′(X)
+
+(5.90)
+(a)
+≤
+
+x
+p(x)
+
+2l(x)−l′(x) −1
+
+(5.91)
+=
+
+x
+2−l(x) 
+2l(x)−l′(x) −1
+
+(5.92)
+=
+
+x
+2−l′(x) −
+
+x
+2−l(x)
+(5.93)
+=
+
+x
+2−l′(x) −1
+(5.94)
+(b)
+≤1 −1
+(5.95)
+= 0,
+(5.96)
+where (a) follows from the bound on sgn(x) and (b) follows from the fact
+that l′(x) satisﬁes the Kraft inequality.
+We have equality in the above chain only if we have equality in (a)
+and (b). We have equality in the bound for sgn(t) only if t is 0 or 1 [i.e.,
+l(x) = l′(x) or l(x) = l′(x) + 1]. Equality in (b) implies that l′(x) satisﬁes
+the Kraft inequality with equality. Combining these two facts implies that
+l′(x) = l(x) for all x.
+□
+Corollary
+For nondyadic probability mass functions,
+E sgn(l(X) −l′(X) −1) ≤0,
+(5.97)
+where l(x) =
+	
+log
+1
+p(x)
+
+and l′(x) is any other code for the source.
+
+--- Page 60 ---
+134
+DATA COMPRESSION
+Proof:
+Along the same lines as the preceding proof.
+□
+Hence we have shown that Shannon coding l(x) =
+	
+log
+1
+p(x)
+
+is opti-
+mal under a variety of criteria; it is robust with respect to the payoff
+function. In particular, for dyadic p, E(l −l′) ≤0, E sgn(l −l′) ≤0, and
+by use of inequality (5.87), Ef (l −l′) ≤0 for any function f satisfying
+f (t) ≤2t −1, t = 0, ±1, ±2, . . ..
+5.11
+GENERATION OF DISCRETE DISTRIBUTIONS FROM FAIR
+COINS
+In the early sections of this chapter we considered the problem of repre-
+senting a random variable by a sequence of bits such that the expected
+length of the representation was minimized. It can be argued (Prob-
+lem 5.5.29) that the encoded sequence is essentially incompressible and
+therefore has an entropy rate close to 1 bit per symbol. Therefore, the bits
+of the encoded sequence are essentially fair coin ﬂips.
+In this section we take a slight detour from our discussion of source
+coding and consider the dual question. How many fair coin ﬂips does
+it take to generate a random variable X drawn according to a speciﬁed
+probability mass function p? We ﬁrst consider a simple example.
+Example 5.11.1
+Given a sequence of fair coin tosses (fair bits), suppose
+that we wish to generate a random variable X with distribution
+X =
+
+
+
+a
+with probability 1
+2,
+b
+with probability 1
+4,
+c
+with probability 1
+4.
+(5.98)
+It is easy to guess the answer. If the ﬁrst bit is 0, we let X = a. If the
+ﬁrst two bits are 10, we let X = b. If we see 11, we let X = c. It is clear
+that X has the desired distribution.
+We calculate the average number of fair bits required for generating
+the random variable, in this case as 1
+2(1) + 1
+4(2) + 1
+4(2) = 1.5 bits. This
+is also the entropy of the distribution. Is this unusual? No, as the results
+of this section indicate.
+The general problem can now be formulated as follows. We are given a
+sequence of fair coin tosses Z1, Z2, . . . , and we wish to generate a discrete
+random variable X ∈X = {1, 2, . . . , m} with probability mass function
+
+--- Page 61 ---
+5.11
+GENERATION OF DISCRETE DISTRIBUTIONS FROM FAIR COINS
+135
+a
+b
+c
+FIGURE 5.7. Tree for generation of the distribution ( 1
+2, 1
+4, 1
+4).
+p = (p1, p2, . . . , pm). Let the random variable T denote the number of
+coin ﬂips used in the algorithm.
+We can describe the algorithm mapping strings of bits Z1, Z2, . . . , to
+possible outcomes X by a binary tree. The leaves of the tree are marked
+by output symbols X, and the path to the leaves is given by the sequence
+of bits produced by the fair coin. For example, the tree for the distribution
+( 1
+2, 1
+4, 1
+4) is shown in Figure 5.7.
+The tree representing the algorithm must satisfy certain properties:
+1. The tree should be complete (i.e., every node is either a leaf or has
+two descendants in the tree). The tree may be inﬁnite, as we will
+see in some examples.
+2. The probability of a leaf at depth k is 2−k. Many leaves may be
+labeled with the same output symbol—the total probability of all
+these leaves should equal the desired probability of the output sym-
+bol.
+3. The expected number of fair bits ET required to generate X is equal
+to the expected depth of this tree.
+There are many possible algorithms that generate the same output dis-
+tribution. For example, the mapping 00 →a, 01 →b, 10 →c, 11 →a
+also yields the distribution ( 1
+2, 1
+4, 1
+4). However, this algorithm uses two
+fair bits to generate each sample and is therefore not as efﬁcient as the
+mapping given earlier, which used only 1.5 bits per sample. This brings
+up the question: What is the most efﬁcient algorithm to generate a given
+distribution, and how is this related to the entropy of the distribution?
+We expect that we need at least as much randomness in the fair bits as
+we produce in the output samples. Since entropy is a measure of random-
+ness, and each fair bit has an entropy of 1 bit, we expect that the number
+of fair bits used will be at least equal to the entropy of the output. This
+is proved in the following theorem. We will need a simple lemma about
+trees in the proof of the theorem. Let Y denote the set of leaves of a com-
+plete tree. Consider a distribution on the leaves such that the probability
+
+--- Page 62 ---
+136
+DATA COMPRESSION
+of a leaf at depth k on the tree is 2−k. Let Y be a random variable with
+this distribution. Then we have the following lemma.
+Lemma 5.11.1
+For any complete tree, consider a probability distribu-
+tion on the leaves such that the probability of a leaf at depth k is 2−k. Then
+the expected depth of the tree is equal to the entropy of this distribution.
+Proof:
+The expected depth of the tree
+ET =
+
+y∈Y
+k(y)2−k(y)
+(5.99)
+and the entropy of the distribution of Y is
+H(Y) = −
+y∈Y
+1
+2k(y) log
+1
+2k(y)
+(5.100)
+= 
+y∈Y k(y)2−k(y),
+(5.101)
+where k(y) denotes the depth of leaf y. Thus,
+H(Y) = ET.
+□
+(5.102)
+Theorem 5.11.1
+For any algorithm generating X, the expected number
+of fair bits used is greater than the entropy H(X), that is,
+ET ≥H(X).
+(5.103)
+Proof:
+Any algorithm generating X from fair bits can be represented by
+a complete binary tree. Label all the leaves of this tree by distinct symbols
+y ∈Y = {1, 2, . . .}. If the tree is inﬁnite, the alphabet Y is also inﬁnite.
+Now consider the random variable Y deﬁned on the leaves of the tree,
+such that for any leaf y at depth k, the probability that Y = y is 2−k.
+By Lemma 5.11.1, the expected depth of this tree is equal to the entropy
+of Y:
+ET = H(Y).
+(5.104)
+Now the random variable X is a function of Y (one or more leaves
+map onto an output symbol), and hence by the result of Problem 2.4, we
+have
+H(X) ≤H(Y).
+(5.105)
+
+--- Page 63 ---
+5.11
+GENERATION OF DISCRETE DISTRIBUTIONS FROM FAIR COINS
+137
+Thus, for any algorithm generating the random variable X, we have
+H(X) ≤ET.
+□
+(5.106)
+The same argument answers the question of optimality for a dyadic dis-
+tribution.
+Theorem 5.11.2
+Let the random variable X have a dyadic distribu-
+tion. The optimal algorithm to generate X from fair coin ﬂips requires an
+expected number of coin tosses precisely equal to the entropy:
+ET = H(X).
+(5.107)
+Proof:
+Theorem 5.11.1 shows that we need at least H(X) bits to generate
+X. For the constructive part, we use the Huffman code tree for X as
+the tree to generate the random variable. For a dyadic distribution, the
+Huffman code is the same as the Shannon code and achieves the entropy
+bound. For any x ∈X, the depth of the leaf in the code tree corresponding
+to x is the length of the corresponding codeword, which is log
+1
+p(x). Hence,
+when this code tree is used to generate X, the leaf will have a probability
+2−log
+1
+p(x) = p(x). The expected number of coin ﬂips is the expected depth
+of the tree, which is equal to the entropy (because the distribution is
+dyadic). Hence, for a dyadic distribution, the optimal generating algorithm
+achieves
+ET = H(X).
+□
+(5.108)
+What if the distribution is not dyadic? In this case we cannot use the
+same idea, since the code tree for the Huffman code will generate a dyadic
+distribution on the leaves, not the distribution with which we started. Since
+all the leaves of the tree have probabilities of the form 2−k, it follows that
+we should split any probability pi that is not of this form into atoms of this
+form. We can then allot these atoms to leaves on the tree. For example, if
+one of the outcomes x has probability p(x) = 1
+4, we need only one atom
+(leaf of the tree at level 2), but if p(x) = 7
+8 = 1
+2 + 1
+4 + 1
+8, we need three
+atoms, one each at levels 1, 2, and 3 of the tree.
+To minimize the expected depth of the tree, we should use atoms with
+as large a probability as possible. So given a probability pi, we ﬁnd the
+largest atom of the form 2−k that is less than pi, and allot this atom to
+the tree. Then we calculate the remainder and ﬁnd that largest atom that
+will ﬁt in the remainder. Continuing this process, we can split all the
+
+--- Page 64 ---
+138
+DATA COMPRESSION
+probabilities into dyadic atoms. This process is equivalent to ﬁnding the
+binary expansions of the probabilities. Let the binary expansion of the
+probability pi be
+pi =
+
+j≥1
+p(j)
+i ,
+(5.109)
+where p(j)
+i
+= 2−j or 0. Then the atoms of the expansion are the {p(j)
+i
+:
+i = 1, 2, . . . , m, j ≥1}.
+Since 
+i pi = 1, the sum of the probabilities of these atoms is 1.
+We will allot an atom of probability 2−j to a leaf at depth j on the
+tree. The depths of the atoms satisfy the Kraft inequality, and hence by
+Theorem 5.2.1, we can always construct such a tree with all the atoms at
+the right depths. We illustrate this procedure with an example.
+Example 5.11.2
+Let X have the distribution
+X =
+ a
+with probability 2
+3,
+b
+with probability 1
+3.
+(5.110)
+We ﬁnd the binary expansions of these probabilities:
+2
+3 = 0.10101010 . . .2
+(5.111)
+1
+3 = 0.01010101 . . .2 .
+(5.112)
+Hence, the atoms for the expansion are
+2
+3 →
+1
+2, 1
+8, 1
+32, . . .
+
+(5.113)
+1
+3 →
+1
+4, 1
+16, 1
+64, . . .
+
+.
+(5.114)
+These can be allotted to a tree as shown in Figure 5.8.
+This procedure yields a tree that generates the random variable X.
+We have argued that this procedure is optimal (gives a tree of minimum
+expected depth), but we will not give a formal proof. Instead, we bound
+the expected depth of the tree generated by this procedure.
+
+--- Page 65 ---
+5.11
+GENERATION OF DISCRETE DISTRIBUTIONS FROM FAIR COINS
+139
+a
+b
+a
+b
+FIGURE 5.8. Tree to generate a ( 2
+3, 1
+3) distribution.
+Theorem 5.11.3
+The expected number of fair bits required by the opti-
+mal algorithm to generate a random variable X lies between H(X) and
+H(X) + 2:
+H(X) ≤ET < H(X) + 2.
+(5.115)
+Proof:
+The lower bound on the expected number of coin tosses is proved
+in Theorem 5.11.1. For the upper bound, we write down an explicit
+expression for the expected number of coin tosses required for the proce-
+dure described above. We split all the probabilities (p1, p2, . . . , pm) into
+dyadic atoms, for example,
+p1 →
+
+p(1)
+1 , p(2)
+1 , . . .
+
+,
+(5.116)
+and so on. Using these atoms (which form a dyadic distribution), we
+construct a tree with leaves corresponding to each of these atoms. The
+number of coin tosses required to generate each atom is its depth in the
+tree, and therefore the expected number of coin tosses is the expected
+depth of the tree, which is equal to the entropy of the dyadic distribution
+of the atoms. Hence,
+ET = H(Y),
+(5.117)
+where Y has the distribution, (p(1)
+1 , p(2)
+1 , . . . , p(1)
+2 , p(2)
+2 , . . . , p(1)
+m , p(2)
+m , . . .).
+Now since X is a function of Y, we have
+H(Y) = H(Y, X) = H(X) + H(Y|X),
+(5.118)
+
+--- Page 66 ---
+140
+DATA COMPRESSION
+and our objective is to show that H(Y|X) < 2. We now give an algebraic
+proof of this result. Expanding the entropy of Y, we have
+H(Y) = −m
+i=1
+
+j≥1 p(j)
+i
+log p(j)
+i
+(5.119)
+= m
+i=1
+
+j:p(j)
+i
+>0 j2−j,
+(5.120)
+since each of the atoms is either 0 or 2−k for some k. Now consider the
+term in the expansion corresponding to each i, which we shall call Ti:
+Ti =
+
+j:p(j)
+i
+>0
+j2−j.
+(5.121)
+We can ﬁnd an n such that 2−(n−1) > pi ≥2−n, or
+n −1 < −log pi ≤n.
+(5.122)
+Then it follows that p(j)
+i
+> 0 only if j ≥n, so that we can rewrite (5.121)
+as
+Ti =
+
+j:j≥n,p(j)
+i
+>0
+j2−j.
+(5.123)
+We use the deﬁnition of the atom to write pi as
+pi =
+
+j:j≥n,p(j)
+i
+>0
+2−j.
+(5.124)
+To prove the upper bound, we ﬁrst show that Ti < −pi log pi + 2pi.
+Consider the difference
+Ti + pi log pi −2pi
+(a)
+< Ti −pi(n −1) −2pi
+(5.125)
+= Ti −(n −1 + 2)pi
+(5.126)
+=
+
+j:j≥n,p(j)
+i
+>0
+j2−j −(n + 1)
+
+j:j≥n,p(j)
+i
+>0
+2−j
+(5.127)
+=
+
+j:j≥n,p(j)
+i
+>0
+(j −n −1)2−j
+(5.128)
+
+--- Page 67 ---
+SUMMARY
+141
+= −2−n + 0 +
+
+j:j≥n+2,p(j)
+i
+>0
+(j −n −1)2−j
+(5.129)
+(b)
+= −2−n +
+
+k:k≥1,p(k+n+1)
+i
+>0
+k2−(k+n+1)
+(5.130)
+(c)
+≤−2−n +
+
+k:k≥1
+k2−(k+n+1)
+(5.131)
+= −2−n + 2−(n+1)2
+(5.132)
+= 0,
+(5.133)
+where (a) follows from (5.122), (b) follows from a change of variables
+for the summation, and (c) follows from increasing the range of the sum-
+mation. Hence, we have shown that
+Ti < −pi log pi + 2pi.
+(5.134)
+Since ET = 
+i Ti, it follows immediately that
+ET < −
+
+i
+pi log pi + 2
+
+i
+pi = H(X) + 2,
+(5.135)
+completing the proof of the theorem.
+□
+Thus, an average of H(X) + 2 coin ﬂips sufﬁce to simulate a random
+variable X.
+SUMMARY
+Kraft inequality. Instantaneous codes ⇔ D−li ≤1.
+McMillan inequality. Uniquely decodable codes ⇔ D−li ≤1.
+Entropy bound on data compression
+L
+△=
+
+pili ≥HD(X).
+(5.136)
+
+--- Page 68 ---
+142
+DATA COMPRESSION
+Shannon code
+li =
+
+logD
+1
+pi
+
+(5.137)
+HD(X) ≤L < HD(X) + 1.
+(5.138)
+Huffman code
+L∗=
+min
+ D−li ≤1
+
+pili
+(5.139)
+HD(X) ≤L∗< HD(X) + 1.
+(5.140)
+Wrong code. X ∼p(x), l(x) =
+	
+log
+1
+q(x)
+
+, L =  p(x)l(x):
+H(p) + D(p||q) ≤L < H(p) + D(p||q) + 1.
+(5.141)
+Stochastic processes
+H(X1, X2, . . . , Xn)
+n
+≤Ln < H(X1, X2, . . . , Xn)
+n
++ 1
+n.
+(5.142)
+Stationary processes
+Ln →H(X).
+(5.143)
+Competitive optimality. Shannon code l(x) =
+	
+log
+1
+p(x)
+
+versus any
+other code l′(x):
+Pr
+
+l(X) ≥l′(X) + c
+
+≤
+1
+2c−1.
+(5.144)
+PROBLEMS
+5.1
+Uniquely
+decodable
+and
+instantaneous
+codes.
+Let
+L = m
+i=1 pil100
+i
+be the expected value of the 100th power
+of the word lengths associated with an encoding of the random
+variable X. Let L1 = min L over all instantaneous codes; and let
+L2 = min L over all uniquely decodable codes. What inequality
+relationship exists between L1 and L2?
+
+--- Page 69 ---
+PROBLEMS
+143
+5.2
+How many ﬁngers has a Martian? Let
+S =
+S1, . . . , Sm
+p1, . . . , pm
+
+.
+The Si’s are encoded into strings from a D-symbol output alphabet
+in a uniquely decodable manner. If m = 6 and the codeword lengths
+are (l1, l2, . . . , l6) = (1, 1, 2, 3, 2, 3), ﬁnd a good lower bound on
+D. You may wish to explain the title of the problem.
+5.3
+Slackness in the Kraft inequality.
+An instantaneous code has word
+lengths l1, l2, . . . , lm, which satisfy the strict inequality
+m
+
+i=1
+D−li < 1.
+The code alphabet is D = {0, 1, 2, . . . , D −1}. Show that there
+exist arbitrarily long sequences of code symbols in D∗which cannot
+be decoded into sequences of codewords.
+5.4
+Huffman coding.
+Consider the random variable
+X =
+
+x1
+x2
+x3
+x4
+x5
+x6
+x7
+0.49
+0.26
+0.12
+0.04
+0.04
+0.03
+0.02
+
+.
+(a) Find a binary Huffman code for X.
+(b) Find the expected code length for this encoding.
+(c) Find a ternary Huffman code for X.
+5.5
+More Huffman codes.
+Find the binary Huffman code for the
+source with probabilities ( 1
+3, 1
+5, 1
+5, 2
+15, 2
+15). Argue that this code is
+also optimal for the source with probabilities ( 1
+5, 1
+5, 1
+5, 1
+5, 1
+5).
+5.6
+Bad codes.
+Which of these codes cannot be Huffman codes for
+any probability assignment?
+(a) {0, 10, 11}
+(b) {00, 01, 10, 110}
+(c) {01, 10}
+5.7
+Huffman 20 questions.
+Consider a set of n objects. Let Xi =
+1 or 0 accordingly as the ith object is good or defective. Let
+X1, X2, . . . , Xn be independent with Pr{Xi = 1} = pi; and p1 >
+p2 > · · · > pn > 1
+2. We are asked to determine the set of all defec-
+tive objects. Any yes–no question you can think of is admissible.
+
+--- Page 70 ---
+144
+DATA COMPRESSION
+(a) Give a good lower bound on the minimum average number of
+questions required.
+(b) If the longest sequence of questions is required by nature’s
+answers to our questions, what (in words) is the last ques-
+tion we should ask? What two sets are we distinguishing with
+this question? Assume a compact (minimum average length)
+sequence of questions.
+(c) Give an upper bound (within one question) on the minimum
+average number of questions required.
+5.8
+Simple optimum compression of a Markov source.
+Consider the
+three-state Markov process U1, U2, . . . having transition matrix
+Un
+Un−1
+S1
+S2
+S3
+S1
+1
+2
+1
+4
+1
+4
+S2
+1
+4
+1
+2
+1
+4
+S3
+0
+1
+2
+1
+2
+Thus, the probability that S1 follows S3 is equal to zero. Design
+three codes C1, C2, C3 (one for each state 1, 2 and 3, each code
+mapping elements of the set of Si’s into sequences of 0’s and 1’s,
+such that this Markov process can be sent with maximal compres-
+sion by the following scheme:
+(a) Note the present symbol Xn = i.
+(b) Select code Ci.
+(c) Note the next symbol Xn+1 = j and send the codeword in Ci
+corresponding to j.
+(d) Repeat for the next symbol. What is the average message length
+of the next symbol conditioned on the previous state Xn = i
+using this coding scheme? What is the unconditional average
+number of bits per source symbol? Relate this to the entropy
+rate H(U) of the Markov chain.
+5.9
+Optimal code lengths that require one bit above entropy.
+The
+source coding theorem shows that the optimal code for a random
+variable X has an expected length less than H(X) + 1. Give an
+example of a random variable for which the expected length of the
+optimal code is close to H(X) + 1 [i.e., for any ǫ > 0, construct a
+distribution for which the optimal code has L > H(X) + 1 −ǫ].
+
+--- Page 71 ---
+PROBLEMS
+145
+5.10
+Ternary codes that achieve the entropy bound.
+A random variable
+X takes on m values and has entropy H(X). An instantaneous
+ternary code is found for this source, with average length
+L = H(X)
+log2 3 = H3(X).
+(5.145)
+(a) Show that each symbol of X has a probability of the form 3−i
+for some i.
+(b) Show that m is odd.
+5.11
+Sufﬁx condition.
+Consider codes that satisfy the sufﬁx condition,
+which says that no codeword is a sufﬁx of any other codeword.
+Show that a sufﬁx condition code is uniquely decodable, and show
+that the minimum average length over all codes satisfying the sufﬁx
+condition is the same as the average length of the Huffman code
+for that random variable.
+5.12
+Shannon codes and Huffman codes.
+Consider a random variable
+X that takes on four values with probabilities ( 1
+3, 1
+3, 1
+4, 1
+12).
+(a) Construct a Huffman code for this random variable.
+(b) Show that there exist two different sets of optimal lengths
+for the codewords; namely, show that codeword length assign-
+ments (1, 2, 3, 3) and (2, 2, 2, 2) are both optimal.
+(c) Conclude that there are optimal codes with codeword lengths
+for some symbols that exceed the Shannon code length
+	
+log
+1
+p(x)
+
+.
+5.13
+Twenty questions.
+Player A chooses some object in the universe,
+and player B attempts to identify the object with a series of yes–no
+questions. Suppose that player B is clever enough to use the code
+achieving the minimal expected length with respect to player A’s
+distribution. We observe that player B requires an average of 38.5
+questions to determine the object. Find a rough lower bound to the
+number of objects in the universe.
+5.14
+Huffman code.
+Find the (a) binary and (b) ternary Huffman codes
+for the random variable X with probabilities
+p =
+ 1
+21, 2
+21, 3
+21, 4
+21, 5
+21, 6
+21
+
+.
+(c) Calculate L =  pili in each case.
+
+--- Page 72 ---
+146
+DATA COMPRESSION
+5.15
+Huffman codes
+(a) Construct a binary Huffman code for the following distribu-
+tion on ﬁve symbols: p = (0.3, 0.3, 0.2, 0.1, 0.1). What is the
+average length of this code?
+(b) Construct a probability distribution p′ on ﬁve symbols for
+which the code that you constructed in part (a) has an average
+length (under p′) equal to its entropy H(p′).
+5.16
+Huffman codes.
+Consider a random variable X that takes six val-
+ues {A, B, C, D, E, F} with probabilities 0.5, 0.25, 0.1, 0.05, 0.05,
+and 0.05, respectively.
+(a) Construct a binary Huffman code for this random variable.
+What is its average length?
+(b) Construct a quaternary Huffman code for this random variable
+[i.e., a code over an alphabet of four symbols (call them a, b, c
+and d)]. What is the average length of this code?
+(c) One way to construct a binary code for the random variable
+is to start with a quaternary code and convert the symbols into
+binary using the mapping a →00, b →01, c →10, and d →
+11. What is the average length of the binary code for the random
+variable above constructed by this process?
+(d) For any random variable X, let LH be the average length of
+the binary Huffman code for the random variable, and let LQB
+be the average length code constructed by ﬁrst building a qua-
+ternary Huffman code and converting it to binary. Show that
+LH ≤LQB < LH + 2.
+(5.146)
+(e) The lower bound in the example is tight. Give an example
+where the code constructed by converting an optimal quaternary
+code is also the optimal binary code.
+(f) The upper bound (i.e., LQB < LH + 2) is not tight. In fact, a
+better bound is LQB ≤LH + 1. Prove this bound, and provide
+an example where this bound is tight.
+5.17
+Data compression.
+Find an optimal set of binary codeword
+lengths l1, l2, . . . (minimizing  pili) for an instantaneous code
+for each of the following probability mass functions:
+(a) p = (10
+41, 9
+41, 8
+41, 7
+41, 7
+41)
+(b) p = ( 9
+10, ( 9
+10)( 1
+10), ( 9
+10)( 1
+10)2, ( 9
+10)( 1
+10)3, . . .)
+
+--- Page 73 ---
+PROBLEMS
+147
+5.18
+Classes of codes.
+Consider the code {0, 01}.
+(a) Is it instantaneous?
+(b) Is it uniquely decodable?
+(c) Is it nonsingular?
+5.19
+The game of Hi-Lo
+(a) A computer generates a number X according to a known proba-
+bility mass function p(x), x ∈{1, 2, . . . , 100}. The player asks
+a question, “Is X = i?” and is told “Yes,” “You’re too high,”
+or “You’re too low.” He continues for a total of six questions.
+If he is right (i.e., he receives the answer “Yes”) during this
+sequence, he receives a prize of value v(X). How should the
+player proceed to maximize his expected winnings?
+(b) Part (a) doesn’t have much to do with information theory. Con-
+sider the following variation: X ∼p(x), prize = v(x), p(x)
+known, as before. But arbitrary yes–no questions are asked
+sequentially until X is determined. (“Determined” doesn’t mean
+that a “Yes” answer is received.) Questions cost 1 unit each.
+How should the player proceed? What is the expected payoff?
+(c) Continuing part (b), what if v(x) is ﬁxed but p(x) can be
+chosen by the computer (and then announced to the player)?
+The computer wishes to minimize the player’s expected return.
+What should p(x) be? What is the expected return to the
+player?
+5.20
+Huffman codes with costs.
+Words such as “Run!”, “Help!”, and
+“Fire!” are short, not because they are used frequently, but perhaps
+because time is precious in the situations in which these words are
+required. Suppose that X = i with probability pi, i = 1, 2, . . . , m.
+Let li be the number of binary symbols in the codeword associated
+with X = i, and let ci denote the cost per letter of the codeword
+when X = i. Thus, the average cost C of the description of X is
+C = m
+i=1 picili.
+(a) Minimize C over all l1, l2, . . . , lm such that  2−li ≤1. Ignore
+any implied integer constraints on li. Exhibit the minimizing
+l∗
+1, l∗
+2, . . . , l∗
+m and the associated minimum value C∗.
+(b) How would you use the Huffman code procedure to minimize
+C over all uniquely decodable codes? Let CHuffman denote this
+minimum.
+
+--- Page 74 ---
+148
+DATA COMPRESSION
+(c) Can you show that
+C∗≤CHuffman ≤C∗+
+m
+
+i=1
+pici?
+5.21
+Conditions for unique decodability.
+Prove that a code C is
+uniquely decodable if (and only if) the extension
+Ck(x1, x2, . . . , xk) = C(x1)C(x2) · · · C(xk)
+is a one-to-one mapping from Xk to D∗for every k ≥1. (The “only
+if” part is obvious.)
+5.22
+Average length of an optimal code.
+Prove that L(p1, . . . , pm),
+the average codeword length for an optimal D-ary preﬁx code for
+probabilities {p1, . . . , pm}, is a continuous function of p1, . . . , pm.
+This is true even though the optimal code changes discontinuously
+as the probabilities vary.
+5.23
+Unused code sequences.
+Let C be a variable-length code that
+satisﬁes the Kraft inequality with an equality but does not satisfy
+the preﬁx condition.
+(a) Prove that some ﬁnite sequence of code alphabet symbols is
+not the preﬁx of any sequence of codewords.
+(b) (Optional) Prove or disprove: C has inﬁnite decoding delay.
+5.24
+Optimal codes for uniform distributions.
+Consider a random vari-
+able with m equiprobable outcomes. The entropy of this informa-
+tion source is obviously log2 m bits.
+(a) Describe the optimal instantaneous binary code for this source
+and compute the average codeword length Lm.
+(b) For what values of m does the average codeword length Lm
+equal the entropy H = log2 m?
+(c) We know that L < H + 1 for any probability distribution. The
+redundancy of a variable-length code is deﬁned to be ρ =
+L −H. For what value(s) of m, where 2k ≤m ≤2k+1, is the
+redundancy of the code maximized? What is the limiting value
+of this worst-case redundancy as m →∞?
+5.25
+Optimal codeword lengths.
+Although the codeword lengths of an
+optimal variable-length code are complicated functions of the mes-
+sage probabilities {p1, p2, . . . , pm}, it can be said that less probable
+
+--- Page 75 ---
+PROBLEMS
+149
+symbols are encoded into longer codewords. Suppose that the mes-
+sage probabilities are given in decreasing order, p1 > p2 ≥· · · ≥
+pm.
+(a) Prove that for any binary Huffman code, if the most probable
+message symbol has probability p1 > 2
+5, that symbol must be
+assigned a codeword of length 1.
+(b) Prove that for any binary Huffman code, if the most probable
+message symbol has probability p1 < 1
+3, that symbol must be
+assigned a codeword of length ≥2.
+5.26
+Merges.
+Companies with values W1, W2, . . . , Wm are merged as
+follows. The two least valuable companies are merged, thus form-
+ing a list of m −1 companies. The value of the merge is the
+sum of the values of the two merged companies. This contin-
+ues until one supercompany remains. Let V equal the sum of
+the values of the merges. Thus, V represents the total reported
+dollar volume of the merges. For example, if W = (3, 3, 2, 2),
+the merges yield (3, 3, 2, 2) →(4, 3, 3) →(6, 4) →(10) and V =
+4 + 6 + 10 = 20.
+(a) Argue that V is the minimum volume achievable by sequences
+of pairwise merges terminating in one supercompany. (Hint:
+Compare to Huffman coding.)
+(b) Let W =  Wi,
+˜Wi = Wi/W, and show that the minimum
+merge volume V satisﬁes
+WH( ˜W) ≤V ≤WH( ˜W) + W.
+(5.147)
+5.27
+Sardinas–Patterson test for unique decodability.
+A code is not
+uniquely decodable if and only if there exists a ﬁnite sequence of
+code symbols which can be resolved into sequences of codewords
+in two different ways. That is, a situation such as
+B1
+A1
+A2
+A3
+Am
+B2
+B3
+Bn
+...
+...
+must occur where each Ai and each Bi is a codeword. Note that
+B1 must be a preﬁx of A1 with some resulting “dangling sufﬁx.”
+Each dangling sufﬁx must in turn be either a preﬁx of a codeword
+or have another codeword as its preﬁx, resulting in another dan-
+gling sufﬁx. Finally, the last dangling sufﬁx in the sequence must
+also be a codeword. Thus, one can set up a test for unique decod-
+ability (which is essentially the Sardinas–Patterson test [456]) in
+
+--- Page 76 ---
+150
+DATA COMPRESSION
+the following way: Construct a set S of all possible dangling suf-
+ﬁxes. The code is uniquely decodable if and only if S contains no
+codeword.
+(a) State the precise rules for building the set S.
+(b) Suppose that the codeword lengths are li, i = 1, 2, . . . , m. Find
+a good upper bound on the number of elements in the set S.
+(c) Determine which of the following codes is uniquely decodable:
+(i) {0, 10, 11}
+(ii) {0, 01, 11}
+(iii) {0, 01, 10}
+(iv) {0, 01}
+(v) {00, 01, 10, 11}
+(vi) {110, 11, 10}
+(vii) {110, 11, 100, 00, 10}
+(d) For each uniquely decodable code in part (c), construct, if pos-
+sible, an inﬁnite encoded sequence with a known starting point
+such that it can be resolved into codewords in two different
+ways. (This illustrates that unique decodability does not imply
+ﬁnite decodability.) Prove that such a sequence cannot arise in
+a preﬁx code.
+5.28
+Shannon code.
+Consider the following method for generating a
+code for a random variable X that takes on m values {1, 2, . . . , m}
+with probabilities p1, p2, . . . , pm. Assume that the probabilities are
+ordered so that p1 ≥p2 ≥· · · ≥pm. Deﬁne
+Fi =
+i−1
+
+k=1
+pk,
+(5.148)
+the sum of the probabilities of all symbols less than i. Then the
+codeword for i is the number Fi ∈[0, 1] rounded off to li bits,
+where li = ⌈log 1
+pi ⌉.
+(a) Show that the code constructed by this process is preﬁx-free
+and that the average length satisﬁes
+H(X) ≤L < H(X) + 1.
+(5.149)
+(b) Construct the code for the probability distribution (0.5, 0.25,
+0.125, 0.125).
+
+--- Page 77 ---
+PROBLEMS
+151
+5.29
+Optimal codes for dyadic distributions.
+For a Huffman code tree,
+deﬁne the probability of a node as the sum of the probabilities of
+all the leaves under that node. Let the random variable X be drawn
+from a dyadic distribution [i.e., p(x) = 2−i, for some i, for all
+x ∈X]. Now consider a binary Huffman code for this distribution.
+(a) Argue that for any node in the tree, the probability of the left
+child is equal to the probability of the right child.
+(b) Let X1, X2, . . . , Xn be drawn i.i.d. ∼p(x). Using the Huff-
+man code for p(x), we map X1, X2, . . . , Xn to a sequence
+of bits Y1, Y2, . . . , Yk(X1,X2,...,Xn). (The length of this sequence
+will depend on the outcome X1, X2, . . . , Xn.) Use part (a) to
+argue that the sequence Y1, Y2, . . . forms a sequence of fair coin
+ﬂips [i.e., that Pr{Yi = 0} = Pr{Yi = 1} = 1
+2, independent of
+Y1, Y2, . . . , Yi−1]. Thus, the entropy rate of the coded sequence
+is 1 bit per symbol.
+(c) Give a heuristic argument why the encoded sequence of bits
+for any code that achieves the entropy bound cannot be com-
+pressible and therefore should have an entropy rate of 1 bit per
+symbol.
+5.30
+Relative entropy is cost of miscoding.
+Let the random variable X
+have ﬁve possible outcomes {1, 2, 3, 4, 5}. Consider two distribu-
+tions p(x) and q(x) on this random variable.
+Symbol
+p(x)
+q(x)
+C1(x)
+C2(x)
+1
+1
+2
+1
+2
+0
+0
+2
+1
+4
+1
+8
+10
+100
+3
+1
+8
+1
+8
+110
+101
+4
+1
+16
+1
+8
+1110
+110
+5
+1
+16
+1
+8
+1111
+111
+(a) Calculate H(p), H(q), D(p||q), and D(q||p).
+(b) The last two columns represent codes for the random variable.
+Verify that the average length of C1 under p is equal to the
+entropy H(p). Thus, C1 is optimal for p. Verify that C2 is
+optimal for q.
+(c) Now assume that we use code C2 when the distribution is p.
+What is the average length of the codewords. By how much
+does it exceed the entropy p?
+(d) What is the loss if we use code C1 when the distribution is q?
+
+--- Page 78 ---
+152
+DATA COMPRESSION
+5.31
+Nonsingular codes.
+The discussion in the text focused on instan-
+taneous codes, with extensions to uniquely decodable codes. Both
+these are required in cases when the code is to be used repeatedly
+to encode a sequence of outcomes of a random variable. But if
+we need to encode only one outcome and we know when we have
+reached the end of a codeword, we do not need unique decod-
+ability—the fact that the code is nonsingular would sufﬁce. For
+example, if a random variable X takes on three values, a, b, and c,
+we could encode them by 0, 1, and 00. Such a code is nonsingular
+but not uniquely decodable.
+In the following, assume that we have a random variable X which
+takes on m values with probabilities p1, p2, . . . , pm and that the
+probabilities are ordered so that p1 ≥p2 ≥· · · ≥pm.
+(a) By viewing the nonsingular binary code as a ternary code with
+three symbols, 0, 1, and “STOP,” show that the expected length
+of a nonsingular code L1:1 for a random variable X satisﬁes the
+following inequality:
+L1:1 ≥H2(X)
+log2 3 −1,
+(5.150)
+where H2(X) is the entropy of X in bits. Thus, the average
+length of a nonsingular code is at least a constant fraction of
+the average length of an instantaneous code.
+(b) Let LINST be the expected length of the best instantaneous code
+and L∗
+1:1 be the expected length of the best nonsingular code
+for X. Argue that L∗
+1:1 ≤L∗
+INST ≤H(X) + 1.
+(c) Give a simple example where the average length of the non-
+singular code is less than the entropy.
+(d) The set of codewords available for a nonsingular code is {0, 1,
+00, 01, 10, 11, 000, . . .}. Since L1:1 = m
+i=1 pili, show that this
+is minimized if we allot the shortest codewords to the most
+probable symbols. Thus, l1 = l2 = 1, l3 = l4 = l5 = l6 = 2, etc.
+Show that in general li =
+
+log
+ i
+2 + 1
+
+, and therefore L∗
+1:1 =
+m
+i=1 pi
+
+log
+ i
+2 + 1
+
+.
+(e) Part (d) shows that it is easy to ﬁnd the optimal nonsin-
+gular code for a distribution. However, it is a little more
+tricky to deal with the average length of this code. We now
+bound this average length. It follows from part (d) that L∗
+1:1 ≥
+
+--- Page 79 ---
+PROBLEMS
+153
+˜L
+△= m
+i=1 pi log
+ i
+2 + 1
+
+. Consider the difference
+F(p) = H(X) −˜L = −
+m
+
+i=1
+pi log pi −
+m
+
+i=1
+pi log
+ i
+2 + 1
+
+.
+(5.151)
+Prove by the method of Lagrange multipliers that the maximum
+of F(p) occurs when pi = c/(i + 2), where c = 1/(Hm+2 −
+H2) and Hk is the sum of the harmonic series:
+Hk
+△=
+k
+
+i=1
+1
+i .
+(5.152)
+(This can also be done using the nonnegativity of relative
+entropy.)
+(f) Complete the arguments for
+H(X) −L∗
+1:1 ≤H(X) −˜L
+(5.153)
+≤log(2(Hm+2 −H2)).
+(5.154)
+Now it is well known (see, e.g., Knuth [315]) that Hk ≈ln k
+(more precisely, Hk = ln k + γ + 1
+2k −
+1
+12k2 +
+1
+120k4 −ǫ, where
+0 < ǫ < 1/252n6, and γ = Euler’s constant = 0.577 . . .).
+Using either this or a simple approximation that Hk ≤ln k + 1,
+which can be proved by integration of 1
+x, it can be shown that
+H(X) −L∗
+1:1 < log log m + 2. Thus, we have
+H(X) −log log |X| −2 ≤L∗
+1:1 ≤H(X) + 1.
+(5.155)
+A nonsingular code cannot do much better than an instantaneous
+code!
+5.32
+Bad wine.
+One is given six bottles of wine. It is known that
+precisely one bottle has gone bad (tastes terrible). From inspection
+of the bottles it is determined that the probability pi that the ith
+bottle is bad is given by (p1, p2, . . . , p6) = ( 8
+23, 6
+23, 4
+23, 2
+23, 2
+23, 1
+23).
+Tasting will determine the bad wine. Suppose that you taste the
+wines one at a time. Choose the order of tasting to minimize the
+
+--- Page 80 ---
+154
+DATA COMPRESSION
+expected number of tastings required to determine the bad bottle.
+Remember, if the ﬁrst ﬁve wines pass the test, you don’t have to
+taste the last.
+(a) What is the expected number of tastings required?
+(b) Which bottle should be tasted ﬁrst?
+Now you get smart. For the ﬁrst sample, you mix some of the wines
+in a fresh glass and sample the mixture. You proceed, mixing and
+tasting, stopping when the bad bottle has been determined.
+(a) What is the minimum expected number of tastings required to
+determine the bad wine?
+(b) What mixture should be tasted ﬁrst?
+5.33
+Huffman vs. Shannon.
+A random variable X takes on three values
+with probabilities 0.6, 0.3, and 0.1.
+(a) What are the lengths of the binary Huffman codewords for
+X? What are the lengths of the binary Shannon codewords
+
+l(x) =
+	
+log
+
+1
+p(x)
+
+
+for X?
+(b) What is the smallest integer D such that the expected Shannon
+codeword length with a D-ary alphabet equals the expected
+Huffman codeword length with a D-ary alphabet?
+5.34
+Huffman algorithm for tree construction.
+Consider the following
+problem: m binary signals S1, S2, . . . , Sm are available at times
+T1 ≤T2 ≤· · · ≤Tm, and we would like to ﬁnd their sum S1 ⊕S2 ⊕
+· · · ⊕Sm using two-input gates, each gate with one time unit delay,
+so that the ﬁnal result is available as quickly as possible. A simple
+greedy algorithm is to combine the earliest two results, forming
+the partial result at time max(T1, T2) + 1. We now have a new
+problem with S1 ⊕S2, S3, . . . , Sm, available at times max(T1, T2) +
+1, T3, . . . , Tm. We can now sort this list of T ’s and apply the same
+merging step again, repeating this until we have the ﬁnal result.
+(a) Argue that the foregoing procedure is optimal, in that it con-
+structs a circuit for which the ﬁnal result is available as quickly
+as possible.
+(b) Show that this procedure ﬁnds the tree that minimizes
+C(T ) = max
+i (Ti + li),
+(5.156)
+where Ti is the time at which the result allotted to the ith leaf
+is available and li is the length of the path from the ith leaf to
+the root.
+
+--- Page 81 ---
+PROBLEMS
+155
+(c) Show that
+C(T ) ≥log2
+
+i
+2Ti
+
+(5.157)
+for any tree T .
+(d) Show that there exists a tree such that
+C(T ) ≤log2
+
+i
+2Ti
+
++ 1.
+(5.158)
+Thus, log2
+
+i 2Ti
+is the analog of entropy for this problem.
+5.35
+Generating random variables.
+One wishes to generate a random
+variable X
+X =
+
+1
+with probability p
+0
+with probability 1 −p.
+(5.159)
+You are given fair coin ﬂips Z1, Z2, . . . . Let N be the (random)
+number of ﬂips needed to generate X. Find a good way to use
+Z1, Z2, . . . to generate X. Show that EN ≤2.
+5.36
+Optimal word lengths.
+(a) Can l = (1, 2, 2) be the word lengths of a binary Huffman
+code. What about (2,2,3,3)?
+(b) What word lengths l = (l1, l2, . . .) can arise from binary Huff-
+man codes?
+5.37
+Codes.
+Which of the following codes are
+(a) Uniquely decodable?
+(b) Instantaneous?
+C1 = {00, 01, 0}
+C2 = {00, 01, 100, 101, 11}
+C3 = {0, 10, 110, 1110, . . .}
+C4 = {0, 00, 000, 0000}
+5.38
+Huffman.
+Find the Huffman D-ary code for (p1, p2, p3, p4, p5,
+p6) = ( 6
+25, 6
+25, 4
+25, 4
+25, 3
+25, 2
+25) and the expected word length
+(a) For D = 2.
+(b) For D = 4.
+
+--- Page 82 ---
+156
+DATA COMPRESSION
+5.39
+Entropy of encoded bits.
+Let C : X −→{0, 1}∗be a nonsingular
+but nonuniquely decodable code. Let X have entropy H(X).
+(a) Compare H(C(X)) to H(X).
+(b) Compare H(C(Xn)) to H(Xn).
+5.40
+Code rate.
+Let X be a random variable with alphabet {1, 2, 3}
+and distribution
+X =
+
+
+
+1
+with probability 1
+2
+2
+with probability 1
+4
+3
+with probability 1
+4.
+The data compression code for X assigns codewords
+C(x) =
+
+
+
+0
+if x = 1
+10
+if x = 2
+11
+if x = 3.
+Let X1, X2, . . . be independent, identically distributed according
+to this distribution and let Z1Z2Z3 · · · = C(X1)C(X2) · · · be the
+string of binary symbols resulting from concatenating the corre-
+sponding codewords. For example, 122 becomes 01010.
+(a) Find the entropy rate H(X) and the entropy rate H(Z) in bits
+per symbol. Note that Z is not compressible further.
+(b) Now let the code be
+C(x) =
+
+
+
+00
+if x = 1
+10
+if x = 2
+01
+if x = 3
+and ﬁnd the entropy rate H(Z).
+(c) Finally, let the code be
+C(x) =
+
+
+
+00
+if x = 1
+1
+if x = 2
+01
+if x = 3
+and ﬁnd the entropy rate H(Z).
+5.41
+Optimal codes.
+Let l1, l2, . . . , l10 be the binary Huffman code-
+word lengths for the probabilities p1 ≥p2 ≥· · · ≥p10. Suppose
+that we get a new distribution by splitting the last probability
+
+--- Page 83 ---
+HISTORICAL NOTES
+157
+mass. What can you say about the optimal binary codeword lengths
+˜l1, ˜l2, . . . , ˜l11 for the probabilities p1, p2, . . . , p9, αp10, (1 −α)p10,
+where 0 ≤α ≤1.
+5.42
+Ternary codes.
+Which of the following codeword lengths can be
+the word lengths of a 3-ary Huffman code, and which cannot?
+(a) (1, 2, 2, 2, 2)
+(b) (2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3)
+5.43
+Piecewise Huffman.
+Suppose the codeword that we use to
+describe a random variable X ∼p(x) always starts with a symbol
+chosen from the set {A, B, C}, followed by binary digits {0, 1}.
+Thus, we have a ternary code for the ﬁrst symbol and binary
+thereafter. Give the optimal uniquely decodable code (minimum
+expected number of symbols) for the probability distribution
+p =
+16
+69, 15
+69, 12
+69, 10
+69, 8
+69, 8
+69
+
+.
+(5.160)
+5.44
+Huffman.
+Find the word lengths of the optimal binary encoding
+of p =
+ 1
+100,
+1
+100, . . . ,
+1
+100
+
+.
+5.45
+Random 20 questions.
+Let X be uniformly distributed over {1, 2,
+. . . , m}. Assume that m = 2n. We ask random questions: Is X ∈S1?
+Is X ∈S2?... until only one integer remains. All 2m subsets S of
+{1, 2, . . . , m} are equally likely to be asked.
+(a) Without loss of generality, suppose that X = 1 is the random
+object. What is the probability that object 2 yields the same
+answers for k questions as does object 1?
+(b) What is the expected number of objects in {2, 3, . . . , m} that
+have the same answers to the questions as does the correct
+object 1?
+(c) Suppose that we ask n + √n
+random questions. What is the
+expected number of wrong objects agreeing with the answers?
+(d) Use Markov’s inequality Pr{X ≥tµ} ≤1
+t , to show that the
+probability of error (one or more wrong object remaining) goes
+to zero as n −→∞.
+HISTORICAL NOTES
+The foundations for the material in this chapter can be found in Shan-
+non’s original paper [469], in which Shannon stated the source coding
+
+--- Page 84 ---
+158
+DATA COMPRESSION
+theorem and gave simple examples of codes. He described a simple code
+construction procedure (described in Problem 5.5.28), which he attributed
+to Fano. This method is now called the Shannon–Fano code construction
+procedure.
+The Kraft inequality for uniquely decodable codes was ﬁrst proved
+by McMillan [385]; the proof given here is due to Karush [306]. The
+Huffman coding procedure was ﬁrst exhibited and proved to be optimal
+by Huffman [283].
+In recent years, there has been considerable interest in designing source
+codes that are matched to particular applications, such as magnetic record-
+ing. In these cases, the objective is to design codes so that the output
+sequences satisfy certain properties. Some of the results for this problem
+are described by Franaszek [219], Adler et al. [5] and Marcus [370].
+The arithmetic coding procedure has its roots in the Shannon–Fano
+code developed by Elias (unpublished), which was analyzed by Jelinek
+[297]. The procedure for the construction of a preﬁx-free code described
+in the text is due to Gilbert and Moore [249]. The extension of the
+Shannon–Fano–Elias method to sequences is based on the enumerative
+methods in Cover [120] and was described with ﬁnite-precision arithmetic
+by Pasco [414] and Rissanen [441]. The competitive optimality of Shan-
+non codes was proved in Cover [125] and extended to Huffman codes by
+Feder [203]. Section 5.11 on the generation of discrete distributions from
+fair coin ﬂips follows the work of Knuth and Yao[317].
+
+--- Page 85 ---
+CHAPTER 6
+GAMBLING AND DATA
+COMPRESSION
+At ﬁrst sight, information theory and gambling seem to be unrelated.
+But as we shall see, there is strong duality between the growth rate of
+investment in a horse race and the entropy rate of the horse race. Indeed,
+the sum of the growth rate and the entropy rate is a constant. In the process
+of proving this, we shall argue that the ﬁnancial value of side information
+is equal to the mutual information between the horse race and the side
+information. The horse race is a special case of investment in the stock
+market, studied in Chapter 16.
+We also show how to use a pair of identical gamblers to compress a
+sequence of random variables by an amount equal to the growth rate of
+wealth on that sequence. Finally, we use these gambling techniques to
+estimate the entropy rate of English.
+6.1
+THE HORSE RACE
+Assume that m horses run in a race. Let the ith horse win with probability
+pi. If horse i wins, the payoff is oi for 1 (i.e., an investment of 1 dollar
+on horse i results in oi dollars if horse i wins and 0 dollars if horse i
+loses).
+There are two ways of describing odds: a-for-1 and b-to-1. The ﬁrst
+refers to an exchange that takes place before the race—the gambler puts
+down 1 dollar before the race and at a-for-1 odds will receive a dollars
+after the race if his horse wins, and will receive nothing otherwise. The
+second refers to an exchange after the race—at b-to-1 odds, the gambler
+will pay 1 dollar after the race if his horse loses and will pick up b dollars
+after the race if his horse wins. Thus, a bet at b-to-1 odds is equivalent to
+a bet at a-for-1 odds if b = a −1. For example, fair odds on a coin ﬂip
+would be 2-for-1 or 1-to-1, otherwise known as even odds.
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+159
+
+--- Page 86 ---
+160
+GAMBLING AND DATA COMPRESSION
+We assume that the gambler distributes all of his wealth across the
+horses. Let bi be the fraction of the gambler’s wealth invested in horse i,
+where bi ≥0 and  bi = 1. Then if horse i wins the race, the gambler
+will receive oi times the amount of wealth bet on horse i. All the other
+bets are lost. Thus, at the end of the race, the gambler will have multiplied
+his wealth by a factor bioi if horse i wins, and this will happen with prob-
+ability pi. For notational convenience, we use b(i) and bi interchangeably
+throughout this chapter.
+The wealth at the end of the race is a random variable, and the gambler
+wishes to “maximize” the value of this random variable. It is tempting to
+bet everything on the horse that has the maximum expected return (i.e.,
+the one with the maximum pioi). But this is clearly risky, since all the
+money could be lost.
+Some clarity results from considering repeated gambles on this race.
+Now since the gambler can reinvest his money, his wealth is the product
+of the gains for each race. Let Sn be the gambler’s wealth after n races.
+Then
+Sn =
+n
+
+i=1
+S(Xi),
+(6.1)
+where S(X) = b(X)o(X) is the factor by which the gambler’s wealth is
+multiplied when horse X wins.
+Deﬁnition
+The wealth relative S(X) = b(X)o(X) is the factor by which
+the gambler’s wealth grows if horse X wins the race.
+Deﬁnition
+The doubling rate of a horse race is
+W(b, p) = E(log S(X)) =
+m
+
+k=1
+pk log bkok.
+(6.2)
+The deﬁnition of doubling rate is justiﬁed by the following theorem.
+Theorem 6.1.1
+Let the race outcomes X1, X2, . . . be i.i.d. ∼p(x).
+Then the wealth of the gambler using betting strategy b grows exponen-
+tially at rate W(b, p); that is,
+Sn
+.= 2nW(b,p).
+(6.3)
+
+--- Page 87 ---
+6.1
+THE HORSE RACE
+161
+Proof:
+Functions of independent random variables are also independent,
+and hence log S(X1), log S(X2), . . . are i.i.d. Then, by the weak law of
+large numbers,
+1
+n log Sn = 1
+n
+n
+
+i=1
+log S(Xi) →E(log S(X))
+in probability.
+(6.4)
+Thus,
+Sn
+.= 2nW(b,p).
+□
+(6.5)
+Now since the gambler’s wealth grows as 2nW(b,p), we seek to maximize
+the exponent W(b, p) over all choices of the portfolio b.
+Deﬁnition
+The optimum doubling rate W ∗(p) is the maximum doubling
+rate over all choices of the portfolio b:
+W ∗(p) = max
+b
+W(b, p) =
+max
+b:bi≥0, 
+i bi=1
+m
+
+i=1
+pi log bioi.
+(6.6)
+We maximize W(b, p) as a function of b subject to the constraint
+ bi = 1. Writing the functional with a Lagrange multiplier and changing
+the base of the logarithm (which does not affect the maximizing b), we
+have
+J(b) =
+
+pi ln bioi + λ
+
+bi.
+(6.7)
+Differentiating this with respect to bi yields
+∂J
+∂bi
+= pi
+bi
++ λ,
+i = 1, 2, . . . , m.
+(6.8)
+Setting the partial derivative equal to 0 for a maximum, we have
+bi = −pi
+λ .
+(6.9)
+Substituting this in the constraint  bi = 1 yields λ = −1 and bi = pi.
+Hence, we can conclude that b = p is a stationary point of the function
+J(b). To prove that this is actually a maximum is tedious if we take
+
+--- Page 88 ---
+162
+GAMBLING AND DATA COMPRESSION
+second derivatives. Instead, we use a method that works for many such
+problems: Guess and verify. We verify that proportional gambling b = p
+is optimal in the following theorem. Proportional gambling is known as
+Kelly gambling [308].
+Theorem 6.1.2
+(Proportional gambling is log-optimal)
+The optimum
+doubling rate is given by
+W ∗(p) =
+
+pi log oi −H(p)
+(6.10)
+and is achieved by the proportional gambling scheme b∗= p.
+Proof:
+We rewrite the function W(b, p) in a form in which the maximum
+is obvious:
+W(b, p) =
+
+pi log bioi
+(6.11)
+=
+
+pi log
+ bi
+pi
+pioi
+
+(6.12)
+=
+
+pi log oi −H(p) −D(p||b)
+(6.13)
+≤
+
+pi log oi −H(p),
+(6.14)
+with equality iff p = b (i.e., the gambler bets on each horse in proportion
+to its probability of winning).
+□
+Example 6.1.1
+Consider a case with two horses, where horse 1 wins
+with probability p1 and horse 2 wins with probability p2. Assume even
+odds (2-for-1 on both horses). Then the optimal bet is proportional bet-
+ting (i.e., b1 = p1, b2 = p2). The optimal doubling rate is W ∗(p) =
+ pi log oi −H(p) = 1 −H(p), and the resulting wealth grows to inﬁn-
+ity at this rate:
+Sn
+.= 2n(1−H(p)).
+(6.15)
+Thus, we have shown that proportional betting is growth rate optimal
+for a sequence of i.i.d. horse races if the gambler can reinvest his wealth
+and if there is no alternative of keeping some of the wealth in cash.
+We now consider a special case when the odds are fair with respect to
+some distribution (i.e., there is no track take and  1
+oi = 1). In this case,
+we write ri = 1
+oi , where ri can be interpreted as a probability mass function
+
+--- Page 89 ---
+6.1
+THE HORSE RACE
+163
+over the horses. (This is the bookie’s estimate of the win probabilities.)
+With this deﬁnition, we can write the doubling rate as
+W(b, p) =
+
+pi log bioi
+(6.16)
+=
+
+pi log
+ bi
+pi
+pi
+ri
+
+(6.17)
+= D(p||r) −D(p||b).
+(6.18)
+This equation gives another interpretation for the relative entropy dis-
+tance: The doubling rate is the difference between the distance of the
+bookie’s estimate from the true distribution and the distance of the gam-
+bler’s estimate from the true distribution. Hence, the gambler can make
+money only if his estimate (as expressed by b) is better than the bookie’s.
+An even more special case is when the odds are m-for-1 on each horse.
+In this case, the odds are fair with respect to the uniform distribution and
+the optimum doubling rate is
+W ∗(p) = D
+
+p|| 1
+m
+
+= log m −H(p).
+(6.19)
+In this case we can clearly see the duality between data compression and
+the doubling rate.
+Theorem 6.1.3
+(Conservation theorem)
+For uniform fair odds,
+W ∗(p) + H(p) = log m.
+(6.20)
+Thus, the sum of the doubling rate and the entropy rate is a constant.
+Every bit of entropy decrease doubles the gambler’s wealth. Low entropy
+races are the most proﬁtable.
+In the analysis above, we assumed that the gambler was fully invested.
+In general, we should allow the gambler the option of retaining some of
+his wealth as cash. Let b(0) be the proportion of wealth held out as cash,
+and b(1), b(2), . . . , b(m) be the proportions bet on the various horses.
+Then at the end of a race, the ratio of ﬁnal wealth to initial wealth (the
+wealth relative) is
+S(X) = b(0) + b(X)o(X).
+(6.21)
+Now the optimum strategy may depend on the odds and will not necessar-
+ily have the simple form of proportional gambling. We distinguish three
+subcases:
+
+--- Page 90 ---
+164
+GAMBLING AND DATA COMPRESSION
+1. Fair odds with respect to some distribution:  1
+oi = 1. For fair odds,
+the option of withholding cash does not change the analysis. This is
+because we can get the effect of withholding cash by betting bi = 1
+oi
+on the ith horse, i = 1, 2, . . . , m. Then S(X) = 1 irrespective of
+which horse wins. Thus, whatever money the gambler keeps aside
+as cash can equally well be distributed over the horses, and the
+assumption that the gambler must invest all his money does not
+change the analysis. Proportional betting is optimal.
+2. Superfair odds:  1
+oi < 1. In this case, the odds are even better than
+fair odds, so one would always want to put all one’s wealth into the
+race rather than leave it as cash. In this race, too, the optimum
+strategy is proportional betting. However, it is possible to choose
+b so as to form a Dutch book by choosing bi = c 1
+oi , where c =
+1/  1
+ci , to get oibi = c, irrespective of which horse wins. With
+this allotment, one has wealth S(X) = 1/  1
+oi > 1 with probability
+1 (i.e., no risk). Needless to say, one seldom ﬁnds such odds in
+real life. Incidentally, a Dutch book, although risk-free, does not
+optimize the doubling rate.
+3. Subfair odds:  1
+oi > 1. This is more representative of real life. The
+organizers of the race track take a cut of all the bets. In this case it
+is optimal to bet only some of the money and leave the rest aside
+as cash. Proportional gambling is no longer log-optimal. A paramet-
+ric form for the optimal strategy can be found using Kuhn–Tucker
+conditions (Problem 6.6.2); it has a simple “water-ﬁlling” interpre-
+tation.
+6.2
+GAMBLING AND SIDE INFORMATION
+Suppose the gambler has some information that is relevant to the outcome
+of the gamble. For example, the gambler may have some information
+about the performance of the horses in previous races. What is the value
+of this side information?
+One deﬁnition of the ﬁnancial value of such information is the increase
+in wealth that results from that information. In the setting described in
+Section 6.1 the measure of the value of information is the increase in the
+doubling rate due to that information. We will now derive a connection
+between mutual information and the increase in the doubling rate.
+To formalize the notion, let horse X ∈{1, 2, . . . , m} win the race with
+probability p(x) and pay odds of o(x) for 1. Let (X, Y) have joint
+probability mass function p(x, y). Let b(x|y) ≥0, 
+x b(x|y) = 1 be an
+arbitrary conditional betting strategy depending on the side information
+
+--- Page 91 ---
+6.2
+GAMBLING AND SIDE INFORMATION
+165
+Y, where b(x|y) is the proportion of wealth bet on horse x when y is
+observed. As before, let b(x) ≥0,  b(x) = 1 denote the unconditional
+betting scheme.
+Let the unconditional and the conditional doubling rates be
+W ∗(X) = max
+b(x)
+
+x
+p(x) log b(x)o(x),
+(6.22)
+W ∗(X|Y) = max
+b(x|y)
+
+x,y
+p(x, y) log b(x|y)o(x)
+(6.23)
+and let
+W = W ∗(X|Y) −W ∗(X).
+(6.24)
+We observe that for (Xi, Yi) i.i.d. horse races, wealth grows like 2nW ∗(X|Y)
+with side information and like 2nW ∗(X) without side information.
+Theorem 6.2.1
+The increase W in doubling rate due to side infor-
+mation Y for a horse race X is
+W = I (X; Y).
+(6.25)
+Proof:
+With side information, the maximum value of W ∗(X|Y) with
+side information Y is achieved by conditionally proportional gambling
+[i.e., b∗(x|y) = p(x|y)]. Thus,
+W ∗(X|Y) = max
+b(x|y) E
+
+log S
+
+= max
+b(x|y)
+
+p(x, y) log o(x)b(x|y)
+(6.26)
+=
+
+p(x, y) log o(x)p(x|y)
+(6.27)
+=
+
+p(x) log o(x) −H(X|Y).
+(6.28)
+Without side information, the optimal doubling rate is
+W ∗(X) =
+
+p(x) log o(x) −H(X).
+(6.29)
+Thus, the increase in doubling rate due to the presence of side information
+Y is
+W = W ∗(X|Y) −W ∗(X) = H(X) −H(X|Y) = I (X; Y).
+□(6.30)
+
+--- Page 92 ---
+166
+GAMBLING AND DATA COMPRESSION
+Hence, the increase in doubling rate is equal to the mutual informa-
+tion between the side information and the horse race. Not surprisingly,
+independent side information does not increase the doubling rate.
+This relationship can also be extended to the general stock market
+(Chapter 16). In this case, however, one can only show the inequality
+W ≤I, with equality if and only if the market is a horse race.
+6.3
+DEPENDENT HORSE RACES AND ENTROPY RATE
+The most common example of side information for a horse race is the
+past performance of the horses. If the horse races are independent, this
+information will be useless. If we assume that there is dependence among
+the races, we can calculate the effective doubling rate if we are allowed
+to use the results of previous races to determine the strategy for the next
+race.
+Suppose that the sequence {Xk} of horse race outcomes forms a stochas-
+tic process. Let the strategy for each race depend on the results of previous
+races. In this case, the optimal doubling rate for uniform fair odds is
+W ∗(Xk|Xk−1, Xk−2, . . . , X1)
+= E
+
+max
+b(·|Xk−1,Xk−2,...,X1) E[log S(Xk)|Xk−1, Xk−2, . . . , X1]
+	
+= log m −H(Xk|Xk−1, Xk−2, . . . , X1),
+(6.31)
+which is achieved by b∗(xk|xk−1, . . . , x1) = p(xk|xk−1, . . . , x1).
+At the end of n races, the gambler’s wealth is
+Sn =
+n
+
+i=1
+S(Xi),
+(6.32)
+and the exponent in the growth rate (assuming m for 1 odds) is
+1
+nE log Sn = 1
+n
+
+E log S(Xi)
+(6.33)
+= 1
+n
+
+(log m −H(Xi|Xi−1, Xi−2, . . . , X1))
+(6.34)
+= log m −H(X1, X2, . . . , Xn)
+n
+.
+(6.35)
+
+--- Page 93 ---
+6.3
+DEPENDENT HORSE RACES AND ENTROPY RATE
+167
+The quantity 1
+nH(X1, X2, . . . , Xn) is the average entropy per race. For
+a stationary process with entropy rate H(X), the limit in (6.35) yields
+lim
+n→∞
+1
+nE log Sn + H(X) = log m.
+(6.36)
+Again, we have the result that the entropy rate plus the doubling rate is a
+constant.
+The expectation in (6.36) can be removed if the process is ergodic. It
+will be shown in Chapter 16 that for an ergodic sequence of horse races,
+Sn
+.= 2nW
+with probability 1,
+(6.37)
+where W = log m −H(X) and
+H(X) = lim 1
+nH(X1, X2, . . . , Xn).
+(6.38)
+Example 6.3.1
+(Red and black)
+In this example, cards replace horses
+and the outcomes become more predictable as time goes on. Consider the
+case of betting on the color of the next card in a deck of 26 red and 26
+black cards. Bets are placed on whether the next card will be red or black,
+as we go through the deck. We also assume that the game pays 2-for-1;
+that is, the gambler gets back twice what he bets on the right color. These
+are fair odds if red and black are equally probable.
+We consider two alternative betting schemes:
+1. If we bet sequentially, we can calculate the conditional probability
+of the next card and bet proportionally. Thus, we should bet ( 1
+2, 1
+2)
+on (red, black) for the ﬁrst card, ( 26
+51, 25
+51) for the second card if the
+ﬁrst card is black, and so on.
+2. Alternatively, we can bet on the entire sequence of 52 cards at once.
+There are
+
+52
+26
+
+possible sequences of 26 red and 26 black cards, all
+of them equally likely. Thus, proportional betting implies that we
+put 1/
+
+52
+26
+
+of our money on each of these sequences and let each
+bet “ride.”
+We will argue that these procedures are equivalent. For example, half
+the sequences of 52 cards start with red, and so the proportion of money
+bet on sequences that start with red in scheme 2 is also one-half, agreeing
+with the proportion used in the ﬁrst scheme. In general, we can verify that
+betting 1/
+
+52
+26
+
+of the money on each of the possible outcomes will at each
+
+--- Page 94 ---
+168
+GAMBLING AND DATA COMPRESSION
+stage give bets that are proportional to the probability of red and black
+at that stage. Since we bet 1/
+
+52
+26
+
+of the wealth on each possible output
+sequence, and a bet on a sequence increases wealth by a factor of 252 on
+the sequence observed and 0 on all the others, the resulting wealth is
+S∗
+52 = 252
+
+52
+26
+ = 9.08.
+(6.39)
+Rather interestingly, the return does not depend on the actual sequence.
+This is like the AEP in that the return is the same for all sequences. All
+sequences are typical in this sense.
+6.4
+THE ENTROPY OF ENGLISH
+An important example of an information source is English text. It is
+not immediately obvious whether English is a stationary ergodic process.
+Probably not! Nonetheless, we will be interested in the entropy rate of
+English. We discuss various stochastic approximations to English. As we
+increase the complexity of the model, we can generate text that looks like
+English. The stochastic models can be used to compress English text. The
+better the stochastic approximation, the better the compression.
+For the purposes of discussion, we assume that the alphabet of English
+consists of 26 letters and the space symbol. We therefore ignore punctua-
+tion and the difference between upper- and lowercase letters. We construct
+models for English using empirical distributions collected from samples
+of text. The frequency of letters in English is far from uniform. The most
+common letter, E, has a frequency of about 13%, and the least common
+letters, Q and Z, occur with a frequency of about 0.1%. The letter E is
+so common that it is rare to ﬁnd a sentence of any length that does not
+contain the letter. [A surprising exception to this is the 267-page novel,
+Gadsby, by Ernest Vincent Wright (Lightyear Press, Boston, 1997; orig-
+inal publication in 1939), in which the author deliberately makes no use
+of the letter E.]
+The frequency of pairs of letters is also far from uniform. For example,
+the letter Q is always followed by a U. The most frequent pair is TH,
+which occurs normally with a frequency of about 3.7%. We can use
+the frequency of the pairs to estimate the probability that a letter fol-
+lows any other letter. Proceeding this way, we can also estimate higher-
+order conditional probabilities and build more complex models for the
+language. However, we soon run out of data. For example, to build
+a third-order Markov approximation, we must estimate the values of
+
+--- Page 95 ---
+6.4
+THE ENTROPY OF ENGLISH
+169
+p(xi|xi−1, xi−2, xi−3). There are 274 = 531, 441 entries in this table, and
+we would need to process millions of letters to make accurate estimates
+of these probabilities.
+The conditional probability estimates can be used to generate random
+samples of letters drawn according to these distributions (using a random
+number generator). But there is a simpler method to simulate randomness
+using a sample of text (a book, say). For example, to construct the second-
+order model, open the book at random and choose a letter at random on
+the page. This will be the ﬁrst letter. For the next letter, again open the
+book at random and starting at a random point, read until the ﬁrst letter is
+encountered again. Then take the letter after that as the second letter. We
+repeat this process by opening to another page, searching for the second
+letter, and taking the letter after that as the third letter. Proceeding this
+way, we can generate text that simulates the second-order statistics of the
+English text.
+Here are some examples of Markov approximations to English from
+Shannon’s original paper [472]:
+1. Zero-order approximation. (The symbols are independent and equi-
+probable.)
+XFOML RXKHRJFFJUJ ZLPWCFWKCYJ
+FFJEYVKCQSGXYD QPAAMKBZAACIBZLHJQD
+2. First-order approximation. (The symbols are independent. The fre-
+quency of letters matches English text.)
+OCRO HLI RGWR NMIELWIS EU LL NBNESEBYA TH EEI
+ALHENHTTPA OOBTTVA NAH BRL
+3. Second-order approximation. (The frequency of pairs of letters
+matches English text.)
+ON IE ANTSOUTINYS ARE T INCTORE ST BE S DEAMY
+ACHIN D ILONASIVE TUCOOWE AT TEASONARE FUSO
+TIZIN ANDY TOBE SEACE CTISBE
+4. Third-order approximation. (The frequency of triplets of letters
+matches English text.)
+IN NO IST LAT WHEY CRATICT FROURE BERS GROCID
+PONDENOME OF DEMONSTURES OF THE REPTAGIN IS
+REGOACTIONA OF CRE
+
+--- Page 96 ---
+170
+GAMBLING AND DATA COMPRESSION
+5. Fourth-order approximation. (The frequency of quadruplets of let-
+ters matches English text. Each letter depends on the previous three
+letters. This sentence is from Lucky’s book, Silicon Dreams [366].)
+THE GENERATED JOB PROVIDUAL BETTER TRAND THE DISPLAYED
+CODE, ABOVERY UPONDULTS WELL THE CODERST IN THESTICAL
+IT DO HOCK BOTHE MERG. (INSTATES CONS ERATION. NEVER
+ANY OF PUBLE AND TO THEORY. EVENTIAL CALLEGAND TO ELAST
+BENERATED IN WITH PIES AS IS WITH THE )
+Instead of continuing with the letter models, we jump to word
+models.
+6. First-order word model. (The words are chosen independently but
+with frequencies as in English.)
+REPRESENTING AND SPEEDILY IS AN GOOD APT OR COME CAN
+DIFFERENT NATURAL HERE HE THE A IN CAME THE TO OF TO
+EXPERT GRAY COME TO FURNISHES THE LINE MESSAGE HAD BE
+THESE.
+7. Second-order word model. (The word transition probabilities match
+English text.)
+THE HEAD AND IN FRONTAL ATTACK ON AN ENGLISH WRITER
+THAT THE CHARACTER OF THIS POINT IS THEREFORE ANOTHER
+METHOD FOR THE LETTERS THAT THE TIME OF WHO EVER TOLD
+THE PROBLEM FOR AN UNEXPECTED
+The approximations get closer and closer to resembling English. For
+example, long phrases of the last approximation could easily have occurred
+in a real English sentence. It appears that we could get a very good approx-
+imation by using a more complex model. These approximations could be
+used to estimate the entropy of English. For example, the entropy of the
+zeroth-order model is log 27 = 4.76 bits per letter. As we increase the
+complexity of the model, we capture more of the structure of English,
+and the conditional uncertainty of the next letter is reduced. The ﬁrst-
+order model gives an estimate of the entropy of 4.03 bits per letter, while
+the fourth-order model gives an estimate of 2.8 bits per letter. But even
+the fourth-order model does not capture all the structure of English. In
+Section 6.6 we describe alternative methods for estimating the entropy of
+English.
+The distribution of English is useful in decoding encrypted English text.
+For example, a simple substitution cipher (where each letter is replaced
+
+--- Page 97 ---
+6.5
+DATA COMPRESSION AND GAMBLING
+171
+by some other letter) can be solved by looking for the most frequent letter
+and guessing that it is the substitute for E, and so on. The redundancy in
+English can be used to ﬁll in some of the missing letters after the other
+letters are decrypted: for example,
+TH R
+S NLY N W Y T F LL N TH V W LS N TH S S NT NC .
+Some of the inspiration for Shannon’s original work on information
+theory came out of his work in cryptography during World War II. The
+mathematical theory of cryptography and its relationship to the entropy
+of language is developed in Shannon [481].
+Stochastic models of language also play a key role in some speech
+recognition systems. A commonly used model is the trigram (second-order
+Markov) word model, which estimates the probability of the next word
+given the preceding two words. The information from the speech signal
+is combined with the model to produce an estimate of the most likely
+word that could have produced the observed speech. Random models do
+surprisingly well in speech recognition, even when they do not explicitly
+incorporate the complex rules of grammar that govern natural languages
+such as English.
+We can apply the techniques of this section to estimate the entropy rate
+of other information sources, such as speech and images. A fascinating
+nontechnical introduction to these issues may be found in the book by
+Lucky [366].
+6.5
+DATA COMPRESSION AND GAMBLING
+We now show a direct connection between gambling and data compres-
+sion, by showing that a good gambler is also a good data compressor. Any
+sequence on which a gambler makes a large amount of money is also a
+sequence that can be compressed by a large factor. The idea of using
+the gambler as a data compressor is based on the fact that the gambler’s
+bets can be considered to be his estimate of the probability distribution
+of the data. A good gambler will make a good estimate of the probability
+distribution. We can use this estimate of the distribution to do arithmetic
+coding (Section 13.3). This is the essential idea of the scheme described
+below.
+We assume that the gambler has a mechanically identical twin, who
+will be used for the data decompression. The identical twin will place the
+same bets on possible sequences of outcomes as the original gambler (and
+will therefore make the same amount of money). The cumulative amount
+
+--- Page 98 ---
+172
+GAMBLING AND DATA COMPRESSION
+of money that the gambler would have made on all sequences that are
+lexicographically less than the given sequence will be used as a code
+for the sequence. The decoder will use the identical twin to gamble on
+all sequences, and look for the sequence for which the same cumulative
+amount of money is made. This sequence will be chosen as the decoded
+sequence.
+Let X1, X2, . . . , Xn be a sequence of random variables that we wish
+to compress. Without loss of generality, we will assume that the random
+variables are binary. Gambling on this sequence will be deﬁned by a
+sequence of bets
+b(xk+1 | x1, x2, . . . , xk) ≥0,
+
+xk+1
+b(xk+1 | x1, x2, . . . , xk) = 1,
+(6.40)
+where b(xk+1 | x1, x2, . . . , xk) is the proportion of money bet at time k on
+the event that Xk+1 = xk+1 given the observed past x1, x2, . . . , xk. Bets
+are paid at uniform odds (2-for-1). Thus, the wealth Sn at the end of the
+sequence is given by
+Sn = 2n
+n
+
+k=1
+b(xk | x1, . . . , xk−1)
+(6.41)
+= 2nb(x1, x2, . . . , xn),
+(6.42)
+where
+b(x1, x2, . . . , xn) =
+n
+
+k=1
+b(xk|xk−1, . . . , x1).
+(6.43)
+So sequential gambling can also be considered as an assignment of proba-
+bilities (or bets) b(x1, x2, . . . , xn) ≥0, 
+x1,...,xn b(x1, . . . , xn) = 1, on the
+2n possible sequences.
+This gambling elicits both an estimate of the true probability of the text
+sequence ( ˆp(x1, . . . , xn) = Sn/2n) as well as an estimate of the entropy
+ ˆH = −1
+n log ˆp
+
+of the text from which the sequence was drawn. We now
+wish to show that high values of wealth Sn lead to high data compression.
+Speciﬁcally, we argue that if the text in question results in wealth Sn,
+then log Sn bits can be saved in a naturally associated deterministic data
+compression scheme. We further assert that if the gambling is log optimal,
+the data compression achieves the Shannon limit H.
+
+--- Page 99 ---
+6.6
+GAMBLING ESTIMATE OF THE ENTROPY OF ENGLISH
+173
+Consider the following data compression algorithm that maps the
+text x = x1x2 · · · xn ∈{0, 1}n into a code sequences c1c2 · · · ck, ci ∈
+{0, 1}. Both the compressor and the decompressor know n. Let
+the
+2n
+text
+sequences
+be
+arranged
+in
+lexicographical
+order:
+for
+example, 0100101 < 0101101. The encoder observes the sequence
+xn = (x1, x2, . . . , xn). He then calculates what his wealth Sn(x
+′(n))
+would
+have
+been
+on
+all
+sequences
+x
+′(n) ≤x(n)
+and
+calculates
+F(x(n)) = 
+x′(n)≤x(n) 2−nSn(x
+′(n)). Clearly, F(x(n)) ∈[0, 1]. Let k =
+⌈n −log Sn(x(n))⌉. Now express F(x(n)) as a binary decimal to k-place
+accuracy: ⌊F(x(n))⌋= .c1c2 · · · ck. The sequence c(k) = (c1, c2, . . . , ck)
+is transmitted to the decoder.
+The decoder twin can calculate the precise value S(x
+′(n)) associated
+with each of the 2n sequences x
+′(n). He thus knows the cumulative sum
+of 2−nS(x
+′(n)) up through any sequence x(n). He tediously calculates
+this sum until it ﬁrst exceeds .c(k). The ﬁrst sequence x(n) such that
+the cumulative sum falls in the interval [.c1 · · · ck, .c1 . . . ck + (1/2)k] is
+deﬁned uniquely, and the size of S(x(n))/2n guarantees that this sequence
+will be precisely the encoded x(n).
+Thus, the twin uniquely recovers x(n). The number of bits required
+is
+k = ⌈n −log S(x(n))⌉.
+The
+number
+of
+bits
+saved
+is
+n −k =
+⌊log S(x(n))⌋. For proportional gambling, S(x(n)) = 2np(x(n)). Thus,
+the expected number of bits is Ek =  p(x(n))⌈−log p(x(n))⌉≤
+H(X1, . . . , Xn) + 1.
+We see that if the betting operation is deterministic and is known
+both to the encoder and the decoder, the number of bits necessary to
+encode x1, . . . , xn is less than n −log Sn + 1. Moreover, if p(x) is known,
+and if proportional gambling is used, the description length expected is
+E(n −log Sn) ≤H(X1, . . . , Xn) + 1. Thus, the gambling results corre-
+spond precisely to the data compression that would have been achieved
+by the given human encoder–decoder identical twin pair.
+The data compression scheme using a gambler is similar to the idea
+of arithmetic coding (Section 13.3) using a distribution b(x1, x2, . . . , xn)
+rather than the true distribution. The procedure above brings out the duality
+between gambling and data compression. Both involve estimation of the
+true distribution. The better the estimate, the greater the growth rate of
+the gambler’s wealth and the better the data compression.
+6.6
+GAMBLING ESTIMATE OF THE ENTROPY OF ENGLISH
+We now estimate the entropy rate for English using a human gambler to
+estimate probabilities. We assume that English consists of 27 characters
+
+--- Page 100 ---
+174
+GAMBLING AND DATA COMPRESSION
+(26 letters and a space symbol). We therefore ignore punctuation and case
+of letters. Two different approaches have been proposed to estimate the
+entropy of English.
+1. Shannon guessing game.
+In this approach the human subject is
+given a sample of English text and asked to guess the next letter.
+An optimal subject will estimate the probabilities of the next letter
+and guess the most probable letter ﬁrst, then the second most prob-
+able letter next, and so on. The experimenter records the number of
+guesses required to guess the next letter. The subject proceeds this
+way through a fairly large sample of text. We can then calculate the
+empirical frequency distribution of the number of guesses required
+to guess the next letter. Many of the letters will require only one
+guess; but a large number of guesses will usually be needed at the
+beginning of words or sentences.
+Now let us assume that the subject can be modeled as a computer
+making a deterministic choice of guesses given the past text. Then
+if we have the same machine and the sequence of guess numbers,
+we can reconstruct the English text. Just let the machine run, and if
+the number of guesses at any position is k, choose the kth guess of
+the machine as the next letter. Hence the amount of information in
+the sequence of guess numbers is the same as in the English text.
+The entropy of the guess sequence is the entropy of English text. We
+can bound the entropy of the guess sequence by assuming that the
+samples are independent. Hence, the entropy of the guess sequence
+is bounded above by the entropy of the histogram in the experiment.
+The experiment was conducted in 1950 by Shannon [482], who
+obtained a value of 1.3 bits per symbol for the entropy of English.
+2. Gambling estimate. In this approach we let a human subject gamble
+on the next letter in a sample of English text. This allows ﬁner
+gradations of judgment than does guessing. As in the case of a horse
+race, the optimal bet is proportional to the conditional probability
+of the next letter. The payoff is 27-for-1 on the correct letter.
+Since sequential betting is equivalent to betting on the entire
+sequence, we can write the payoff after n letters as
+Sn = (27)nb(X1, X2, . . . , Xn).
+(6.44)
+Thus, after n rounds of betting, the expected log wealth satisﬁes
+E 1
+n log Sn = log 27 + 1
+nE log b(X1, X2, . . . , Xn)
+(6.45)

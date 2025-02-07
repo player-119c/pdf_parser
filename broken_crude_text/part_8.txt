@@ -1,0 +1,4990 @@
+
+--- Page 1 ---
+17.8
+ENTROPY POWER INEQUALITY AND BRUNN–MINKOWSKI INEQUALITY
+675
+alternative proof of the entropy power inequality. We also show how the
+entropy power inequality and the Brunn–Minkowski inequality are related
+by means of a common proof.
+We can rewrite the entropy power inequality for dimension n = 1 in
+a form that emphasizes its relationship to the normal distribution. Let
+X and Y be two independent random variables with densities, and let
+X′ and Y ′ be independent normals with the same entropy as X and
+Y, respectively. Then 22h(X) = 22h(X′) = (2πe)σ 2
+X′ and similarly, 22h(Y) =
+(2πe)σ 2
+Y ′. Hence the entropy power inequality can be rewritten as
+22h(X+Y) ≥(2πe)(σ 2
+X′ + σ 2
+Y ′) = 22h(X′+Y ′),
+(17.89)
+since X′ and Y ′ are independent. Thus, we have a new statement of the
+entropy power inequality.
+Theorem 17.8.1
+(Restatement of the entropy power inequality)
+For
+two independent random variables X and Y,
+h(X + Y) ≥h(X′ + Y ′),
+(17.90)
+where X′ and Y ′ are independent normal random variables with h(X′) =
+h(X) and h(Y ′) = h(Y).
+This form of the entropy power inequality bears a striking resemblance
+to the Brunn–Minkowski inequality, which bounds the volume of set
+sums.
+Deﬁnition
+The set sum A + B of two sets A, B ⊂Rn is deﬁned as the
+set {x + y : x ∈A, y ∈B}.
+Example 17.8.1
+The set sum of two spheres of radius 1 is a sphere of
+radius 2.
+Theorem 17.8.2
+(Brunn–Minkowski inequality)
+The volume of the set
+sum of two sets A and B is greater than the volume of the set sum of two
+spheres A′ and B′ with the same volume as A and B, respectively:
+V (A + B) ≥V (A′ + B′),
+(17.91)
+where A′ and B′ are spheres with V (A′) = V (A) and V (B′) = V (B).
+The similarity between the two theorems was pointed out in [104].
+A common proof was found by Dembo [162] and Lieb, starting from a
+
+--- Page 2 ---
+676
+INEQUALITIES IN INFORMATION THEORY
+strengthened version of Young’s inequality. The same proof can be used to
+prove a range of inequalities which includes the entropy power inequality
+and the Brunn–Minkowski inequality as special cases. We begin with a
+few deﬁnitions.
+Deﬁnition
+Let f and g be two densities over Rn and let f ∗g denote
+the convolution of the two densities. Let the Lr norm of the density be
+deﬁned by
+||f ||r =
+
+
+f r(x) dx
+ 1
+r
+.
+(17.92)
+Lemma 17.8.1
+(Strengthened Young’s inequality)
+For any two densi-
+ties f and g over Rn,
+||f ∗g||r ≤
+
+CpCq
+Cr
+n
+2
+||f ||p||g||q,
+(17.93)
+where
+1
+r = 1
+p + 1
+q −1
+(17.94)
+and
+Cp = p
+1
+p
+p′
+1
+p′
+,
+1
+p + 1
+p′ = 1.
+(17.95)
+Proof:
+The proof of this inequality may be found in [38] and [73].
+□
+We deﬁne a generalization of the entropy.
+Deﬁnition
+The Renyi entropy hr(X) of order r is deﬁned as
+hr(X) =
+1
+1 −r log
+
+f r(x) dx
+
+(17.96)
+for 0 < r < ∞, r ̸= 1. If we take the limit as r →1, we obtain the Shan-
+non entropy function,
+h(X) = h1(X) = −
+
+f (x) log f (x) dx.
+(17.97)
+If we take the limit as r →0, we obtain the logarithm of the volume of
+the support set,
+h0(X) = log (µ{x : f (x) > 0}) .
+(17.98)
+
+--- Page 3 ---
+17.8
+ENTROPY POWER INEQUALITY AND BRUNN–MINKOWSKI INEQUALITY
+677
+Thus, the zeroth-order Renyi entropy gives the logarithm of the measure
+of the support set of the density f , and the Shannon entropy h1 gives the
+logarithm of the size of the “effective” support set (Theorem 8.2.2). We
+now deﬁne the equivalent of the entropy power for Renyi entropies.
+Deﬁnition
+The Renyi entropy power Vr(X) of order r is deﬁned as
+Vr(X) =
+
+
+
+
+f r(x) dx
+−2
+n
+r′
+r ,
+0 < r ≤∞, r ̸= 1 , 1
+r + 1
+r′ = 1
+exp [ 2
+nh(X)],
+r = 1
+µ({x : f (x) > 0})
+2
+n ,
+r = 0
+(17.99)
+Theorem 17.8.3
+For two independent random variables X and Y and
+any 0 ≤r < ∞and any 0 ≤λ ≤1, we have
+log Vr(X + Y) ≥λ log Vp(X) + (1 −λ) log Vq(Y) + H(λ)
++1+r
+1−r
+
+H
+
+r+λ(1−r)
+1+r
+
+−H
+ r
+1+r
+	
+,
+(17.100)
+where p =
+r
+(r+λ(1−r)), q =
+r
+(r+(1−λ)(1−r)) and H(λ) = −λ log λ −(1 −λ)
+log(1 −λ).
+Proof:
+If we take the logarithm of Young’s inequality (17.93), we obtain
+1
+r′ log Vr(X + Y) ≥1
+p′ log Vp(X) + 1
+q′ log Vq(Y) + log Cr
+−log Cp −log Cq.
+(17.101)
+Setting λ = r′/p′ and using (17.94), we have 1 −λ = r′/q′, p =
+r
+r+λ(1−r)
+and q =
+r
+r+(1−λ)(1−r). Thus, (17.101) becomes
+log Vr(X + Y) ≥λ log Vp(X) + (1 −λ) log Vq(Y) + r′
+r log r −log r′
+−r′
+p log p + r′
+p′ log p′ −r′
+q log q + r′
+q′ log q′
+(17.102)
+= λ log Vp(X) + (1 −λ) log Vq(Y)
++ r′
+r log r −(λ + 1 −λ) log r′
+−r′
+p log p + λ log p′ −r′
+q log q + (1 −λ) log q′
+(17.103)
+
+--- Page 4 ---
+678
+INEQUALITIES IN INFORMATION THEORY
+= λ log Vp(X) + (1 −λ) log Vq(Y) +
+1
+r −1 log r + H(λ)
+−r + λ(1 −r)
+r −1
+log
+r
+r + λ(1 −r)
+−r + (1 −λ)(1 −r)
+r −1
+log
+r
+r + (1 −λ)(1 −r)
+(17.104)
+= λ log Vp(X) + (1 −λ) log Vq(Y) + H(λ)
++ 1 + r
+1 −r
+
+H
+
+r + λ(1 −r)
+1 + r
+
+−H
+
+r
+1 + r
+
+,
+(17.105)
+where the details of the algebra for the last step are omitted.
+□
+The Brunn–Minkowski inequality and the entropy power inequality
+can then be obtained as special cases of this theorem.
+• The entropy power inequality. Taking the limit of (17.100) as r →1
+and setting
+λ =
+V1(X)
+V1(X) + V1(Y),
+(17.106)
+we obtain
+V1(X + Y) ≥V1(X) + V1(Y),
+(17.107)
+which is the entropy power inequality.
+• The Brunn–Minkowski inequality. Similarly, letting r →0 and choos-
+ing
+λ =
+√V0(X)
+√V0(X) + √V0(Y),
+(17.108)
+we obtain
+
+V0(X + Y) ≥
+
+V0(X) +
+
+V0(Y).
+(17.109)
+Now let A be the support set of X and B be the support set of Y.
+Then A + B is the support set of X + Y, and (17.109) reduces to
+[µ(A + B)]
+1
+n ≥[µ(A)]
+1
+n + [µ(B)]
+1
+n ,
+(17.110)
+which is the Brunn–Minkowski inequality.
+
+--- Page 5 ---
+17.9
+INEQUALITIES FOR DETERMINANTS
+679
+The general theorem uniﬁes the entropy power inequality and the
+Brunn–Minkowski inequality and introduces a continuum of new
+inequalities that lie between the entropy power inequality and the
+Brunn–Minkowski inequality. This further strengthens the analogy
+between entropy power and volume.
+17.9
+INEQUALITIES FOR DETERMINANTS
+Throughout the remainder of this chapter, we assume that K is a nonneg-
+ative deﬁnite symmetric n × n matrix. Let |K| denote the determinant of
+K.
+We ﬁrst give an information-theoretic proof of a result due to Ky Fan
+[199].
+Theorem 17.9.1
+log |K| is concave.
+Proof:
+Let X1 and X2 be normally distributed n-vectors, Xi ∼N(0, Ki),
+i = 1, 2. Let the random variable θ have the distribution
+Pr{θ = 1} = λ,
+(17.111)
+Pr{θ = 2} = 1 −λ
+(17.112)
+for some 0 ≤λ ≤1. Let θ, X1, and X2 be independent, and let Z =
+Xθ. Then Z has covariance KZ = λK1 + (1 −λ)K2. However, Z will
+not be multivariate normal. By ﬁrst using Theorem 17.2.3, followed by
+Theorem 17.2.1, we have
+1
+2 log(2πe)n|λK1 + (1 −λ)K2| ≥h(Z)
+(17.113)
+≥h(Z|θ)
+(17.114)
+= λ1
+2 log(2πe)n|K1|
++ (1 −λ)1
+2 log(2πe)n|K2|.
+Thus,
+|λK1 + (1 −λ)K2| ≥|K1|λ|K2|1−λ,
+(17.115)
+as desired.
+□
+We now give Hadamard’s inequality using an information-theoretic
+proof [128].
+
+--- Page 6 ---
+680
+INEQUALITIES IN INFORMATION THEORY
+Theorem 17.9.2
+(Hadamard)
+|K| ≤Kii, with equality iff Kij =
+0, i ̸= j.
+Proof:
+Let X ∼N(0, K). Then
+1
+2 log(2πe)n|K| = h(X1, X2, . . . , Xn) ≤
+
+h(Xi) =
+n
+
+i=1
+1
+2 log 2πe|Kii|,
+(17.116)
+with equality iff X1, X2, . . . , Xn are independent (i.e., Kij = 0, i ̸= j).□
+We now prove a generalization of Hadamard’s inequality due to Szasz
+[391]. Let K(i1, i2, . . . , ik) be the k × k principal submatrix of K formed
+by the rows and columns with indices i1, i2, . . . , ik.
+Theorem 17.9.3
+(Szasz)
+If K is a positive deﬁnite n × n matrix and
+Pk denotes the product of the determinants of all the principal k-rowed
+minors of K, that is,
+Pk =
+
+1≤i1<i2<···<ik≤n
+|K(i1, i2, . . . , ik)|,
+(17.117)
+then
+P1 ≥P
+1
+(n−1
+1 )
+2
+≥P
+1
+(n−1
+2 )
+3
+≥· · · ≥Pn.
+(17.118)
+Proof:
+Let X ∼N(0, K). Then the theorem follows directly from
+Theorem 17.6.1, with the identiﬁcation h(n)
+k
+=
+1
+2n(n−1
+k−1) log Pk + 1
+2 log 2πe.
+□
+We can also prove a related theorem.
+Theorem 17.9.4
+Let K be a positive deﬁnite n × n matrix and let
+S(n)
+k
+= 1
+n
+k
+	
+
+1≤i1<i2<···<ik≤n
+|K(i1, i2, . . . , ik)|
+1
+k .
+(17.119)
+Then
+1
+ntr(K) = S(n)
+1
+≥S(n)
+2
+≥· · · ≥S(n)
+n
+= |K|
+1
+n .
+(17.120)
+Proof:
+This follows directly from the corollary to Theorem 17.6.1, with
+the identiﬁcation t(n)
+k
+= (2πe)S(n)
+k
+and r = 2.
+□
+
+--- Page 7 ---
+17.9
+INEQUALITIES FOR DETERMINANTS
+681
+Theorem 17.9.5
+Let
+Qk =
+
+
+S:|S|=k
+|K|
+|K(Sc)|
+
+
+1
+k(n
+k)
+.
+(17.121)
+Then
+ n
+
+i=1
+σ 2
+i
+ 1
+n
+= Q1 ≤Q2 ≤· · · ≤Qn−1 ≤Qn = |K|
+1
+n .
+(17.122)
+Proof:
+The theorem follows immediately from Theorem 17.6.3 and the
+identiﬁcation
+h(X(S)|X(Sc)) = 1
+2 log(2πe)k
+|K|
+|K(Sc)|.
+□
+(17.123)
+The outermost inequality, Q1 ≤Qn, can be rewritten as
+|K| ≥
+n
+
+i=1
+σ 2
+i ,
+(17.124)
+where
+σ 2
+i =
+|K|
+|K(1, 2 . . . , i −1, i + 1, . . . , n)|
+(17.125)
+is the minimum mean-squared error in the linear prediction of Xi from
+the remaining X’s. Thus, σ 2
+i is the conditional variance of Xi given the
+remaining Xj’s if X1, X2, . . . , Xn are jointly normal. Combining this with
+Hadamard’s inequality gives upper and lower bounds on the determinant
+of a positive deﬁnite matrix.
+Corollary
+
+i
+Kii ≥|K| ≥
+
+i
+σ 2
+i .
+(17.126)
+Hence, the determinant of a covariance matrix lies between the product
+of the unconditional variances Kii of the random variables Xi and the
+product of the conditional variances σ 2
+i .
+We now prove a property of Toeplitz matrices, which are important as
+the covariance matrices of stationary random processes. A Toeplitz matrix
+K is characterized by the property that Kij = Krs if |i −j| = |r −s|.
+Let Kk denote the principal minor K(1, 2, . . . , k). For such a matrix, the
+following property can be proved easily from the properties of the entropy
+function.
+
+--- Page 8 ---
+682
+INEQUALITIES IN INFORMATION THEORY
+Theorem 17.9.6
+If the positive deﬁnite n × n matrix K is Toeplitz, then
+|K1| ≥|K2|
+1
+2 ≥· · · ≥|Kn−1|
+1
+(n−1) ≥|Kn|
+1
+n
+(17.127)
+and |Kk|/|Kk−1| is decreasing in k, and
+lim
+n→∞|Kn|
+1
+n = lim
+n→∞
+|Kn|
+|Kn−1|.
+(17.128)
+Proof:
+Let (X1, X2, . . . , Xn) ∼N(0, Kn). We observe that
+h(Xk|Xk−1, . . . , X1) = h(Xk) −h(Xk−1)
+(17.129)
+= 1
+2 log(2πe) |Kk|
+|Kk−1|.
+(17.130)
+Thus, the monotonicity of |Kk|/|Kk−1| follows from the monotonocity of
+h(Xk|Xk−1, . . . , X1), which follows from
+h(Xk|Xk−1, . . . , X1) = h(Xk+1|Xk, . . . , X2)
+(17.131)
+≥h(Xk+1|Xk, . . . , X2, X1),
+(17.132)
+where the equality follows from the Toeplitz assumption and the inequality
+from the fact that conditioning reduces entropy. Since h(Xk|Xk−1, . . . , X1)
+is decreasing, it follows that the running averages
+1
+kh(X1, . . . , Xk) = 1
+k
+k
+
+i=1
+h(Xi|Xi−1, . . . , X1)
+(17.133)
+are decreasing in k. Then (17.127) follows from h(X1, X2, . . . , Xk) =
+1
+2 log(2πe)k|Kk|.
+□
+Finally, since h(Xn|Xn−1, . . . , X1) is a decreasing sequence, it has a
+limit. Hence by the theorem of the Ces´aro mean,
+lim
+n→∞
+h(X1, X2, . . . , Xn)
+n
+= lim
+n→∞
+1
+n
+n
+
+k=1
+h(Xk|Xk−1, . . . , X1)
+= lim
+n→∞h(Xn|Xn−1, . . . , X1).
+(17.134)
+
+--- Page 9 ---
+17.10
+INEQUALITIES FOR RATIOS OF DETERMINANTS
+683
+Translating this to determinants, one obtains
+lim
+n→∞|Kn|
+1
+n = lim
+n→∞
+|Kn|
+|Kn−1|.
+(17.135)
+Theorem 17.9.7
+(Minkowski inequality [390])
+|K1 + K2|1/n ≥|K1|1/n + |K2|1/n.
+(17.136)
+Proof:
+Let X1, X2 be independent with Xi ∼N(0, Ki). Noting that X1 +
+X2 ∼N(0, K1 + K2) and using the entropy power inequality (Theorem
+17.7.3) yields
+(2πe)|K1 + K2|1/n = 2
+2
+nh(X1 + X2)
+(17.137)
+≥2
+2
+nh(X1) + 2
+2
+nh(X2)
+(17.138)
+= (2πe)|K1|1/n + (2πe)|K2|1/n.
+□(17.139)
+17.10
+INEQUALITIES FOR RATIOS OF DETERMINANTS
+We now prove similar inequalities for ratios of determinants. Before devel-
+oping the next theorem, we make an observation about minimum mean-
+squared-error linear prediction. If (X1, X2, . . . , Xn) ∼N(0, Kn), we know
+that the conditional density of Xn given (X1, X2, . . . , Xn−1) is univariate
+normal with mean linear in X1, X2, . . . , Xn−1 and conditional variance
+σ 2
+n. Here σ 2
+n is the minimum mean squared error E(Xn −ˆXn)2 over all
+linear estimators ˆXn based on X1, X2, . . . , Xn−1.
+Lemma 17.10.1
+σ 2
+n = |Kn|/|Kn−1|.
+Proof:
+Using the conditional normality of Xn, we have
+1
+2 log 2πeσ 2
+n = h(Xn|X1, X2, . . . , Xn−1)
+(17.140)
+= h(X1, X2, . . . , Xn) −h(X1, X2, . . . , Xn−1) (17.141)
+= 1
+2 log(2πe)n|Kn| −1
+2 log(2πe)n−1|Kn−1|
+(17.142)
+= 1
+2 log 2πe|Kn|/|Kn−1|.
+□
+(17.143)
+
+--- Page 10 ---
+684
+INEQUALITIES IN INFORMATION THEORY
+Minimization of σ 2
+n over a set of allowed covariance matrices {Kn} is
+aided by the following theorem. Such problems arise in maximum entropy
+spectral density estimation.
+Theorem 17.10.1
+(Bergstrøm
+[42])
+log(|Kn|/|Kn−p|)
+is
+concave
+in Kn.
+Proof:
+We remark that Theorem 17.9.1 cannot be used because
+log(|Kn|/|Kn−p|) is the difference of two concave functions. Let Z = Xθ,
+where X1 ∼N(0, Sn), X2 ∼N(0, Tn), Pr{θ = 1} = λ = 1 −Pr{θ = 2},
+and let X1, X2, θ be independent. The covariance matrix Kn of Z is
+given by
+Kn = λSn + (1 −λ)Tn.
+(17.144)
+The following chain of inequalities proves the theorem:
+λ1
+2 log(2πe)p|Sn|/|Sn−p| + (1 −λ)1
+2 log(2πe)p|Tn|/|Tn−p|
+(a)
+= λh(X1,n, X1,n−1, . . . , X1,n−p+1|X1,1, . . . , X1,n−p)
++ (1 −λ)h(X2,n, X2,n−1, . . . , X2,n−p+1|X2,1, . . . , X2,n−p)
+(17.145)
+= h(Zn, Zn−1, . . . , Zn−p+1|Z1, . . . , Zn−p, θ)
+(17.146)
+(b)
+≤h(Zn, Zn−1, . . . , Zn−p+1|Z1, . . . , Zn−p)
+(17.147)
+(c)
+≤1
+2 log(2πe)p |Kn|
+|Kn−p|,
+(17.148)
+where
+(a) follows
+from
+h(Xn, Xn−1, . . . , Xn−p+1|X1, . . . , Xn−p) =
+h(X1, . . . , Xn) −h(X1, . . . , Xn−p), (b) follows from the conditioning
+lemma, and (c) follows from a conditional version of Theorem 17.2.3. □
+Theorem 17.10.2
+(Bergstrøm [42])
+|Kn|/|Kn−1| is concave in Kn.
+Proof:
+Again we use the properties of Gaussian random variables. Let
+us assume that we have two independent Gaussian random n-vectors,
+X ∼N(0, An) and Y ∼N(0, Bn). Let Z = X + Y. Then
+1
+2 log 2πe
+|An + Bn|
+|An−1 + Bn−1|
+(a)
+= h(Zn|Zn−1, Zn−2, . . . , Z1)
+(17.149)
+
+--- Page 11 ---
+17.10
+INEQUALITIES FOR RATIOS OF DETERMINANTS
+685
+(b)
+≥h(Zn|Zn−1, Zn−2, . . . , Z1, Xn−1, Xn−2, . . . , X1, Yn−1, Yn−2, . . . , Y1)
+(17.150)
+(c)
+= h(Xn + Yn|Xn−1, Xn−2, . . . , X1, Yn−1, Yn−2, . . . , Y1)
+(17.151)
+(d)
+= E 1
+2 log
+
+2πe Var(Xn + Yn|Xn−1, Xn−2, . . . , X1, Yn−1,
+Yn−2, . . . , Y1)
+
+(17.152)
+(e)
+= E 1
+2 log
+
+2πe(Var(Xn|Xn−1, Xn−2, . . . , X1)
++ Var(Yn|Yn−1, Yn−2, . . . , Y1))
+
+(17.153)
+(f)= E 1
+2 log
+
+2πe
+
+ |An|
+|An−1| + |Bn|
+|Bn−1|
+
+(17.154)
+= 1
+2 log
+
+2πe
+
+ |An|
+|An−1| + |Bn|
+|Bn−1|
+
+,
+(17.155)
+where
+(a) follows from Lemma 17.10.1
+(b) follows from the fact that the conditioning decreases entropy
+(c) follows from the fact that Z is a function of X and Y
+(d) follows since Xn + Yn is Gaussian conditioned on X1, X2, . . . ,
+Xn−1, Y1, Y2, . . . , Yn−1, and hence we can express its entropy in
+terms of its variance
+(e) follows from the independence of Xn and Yn conditioned on the
+past X1, X2, . . . , Xn−1, Y1, Y2, . . . , Yn−1
+(f) follows from the fact that for a set of jointly Gaussian random
+variables, the conditional variance is constant, independent of the
+conditioning variables (Lemma 17.10.1)
+Setting A = λS and B = λT , we obtain
+|λSn + λTn|
+|λSn−1 + λTn−1| ≥λ |Sn|
+|Sn−1| + λ |Tn|
+|Tn−1|
+(17.156)
+(i.e., |Kn|/|Kn−1| is concave). Simple examples show that |Kn|/
+|Kn−p| is not necessarily concave for p ≥2.
+□
+A number of other determinant inequalities can be proved by these
+techniques. A few of them are given as problems.
+
+--- Page 12 ---
+686
+INEQUALITIES IN INFORMATION THEORY
+OVERALL SUMMARY
+Entropy. H(X) = − p(x) log p(x).
+Relative entropy. D(p||q) =  p(x) log p(x)
+q(x).
+Mutual information. I (X; Y) =  p(x, y) log
+p(x,y)
+p(x)p(y).
+Information inequality. D(p||q) ≥0.
+Asymptotic
+equipartition
+property. −1
+n log p(X1, X2, . . . , Xn) →
+H(X).
+Data compression. H(X) ≤L∗< H(X) + 1.
+Kolmogorov complexity. K(x) = minU(p)=x l(p).
+Universal probability. log
+1
+PU (x) ≈K(x).
+Channel capacity. C = maxp(x) I (X; Y).
+Data transmission
+• R < C: Asymptotically error-free communication possible
+• R > C: Asymptotically error-free communication not possible
+Gaussian channel capacity. C = 1
+2 log(1 + P
+N ).
+Rate distortion. R(D) = min I (X; ˆX) over all p(ˆx|x) such that
+Ep(x)p(ˆx|x)d(X, ˆX) ≤D.
+Growth rate for investment. W ∗= maxb∗E log btX.
+PROBLEMS
+17.1
+Sum of positive deﬁnite matrices.
+For any two positive deﬁnite
+matrices, K1 and K2, show that |K1 + K2| ≥|K1|.
+
+--- Page 13 ---
+HISTORICAL NOTES
+687
+17.2
+Fan’s inequality [200] for ratios of determinants.
+For all 1 ≤p ≤
+n, for a positive deﬁnite K = K(1, 2, . . . , n), show that
+|K|
+|K(p + 1, p + 2, . . . , n)| ≤
+p
+
+i=1
+|K(i, p + 1, p + 2, . . . , n)|
+|K(p + 1, p + 2, . . . , n)| .
+(17.157)
+17.3
+Convexity of determinant ratios.
+For positive deﬁnite matrices K,
+K0, show that ln(|K + K0|/|K|) is convex in K.
+17.4
+Data-processing inequality.
+Let random variable X1, X2, X3, and
+X4 form a Markov chain X1 →X2 →X3 →X4. Show that
+I (X1; X3) + I (X2; X4) ≤I (X1; X4) + I (X2; X3).
+(17.158)
+17.5
+Markov chains.
+Let random variables X, Y, Z, and W form a
+Markov chain so that X →Y →(Z, W) [i.e., p(x, y, z, w) =
+p(x)p(y|x)p(z, w|y)]. Show that
+I (X; Z) + I (X; W) ≤I (X; Y) + I (Z; W).
+(17.159)
+HISTORICAL NOTES
+The entropy power inequality was stated by Shannon [472]; the ﬁrst for-
+mal proofs are due to Stam [505] and Blachman [61]. The uniﬁed proof
+of the entropy power and Brunn–Minkowski inequalities is in Dembo
+et al.[164].
+Most of the matrix inequalities in this chapter were derived using
+information-theoretic methods by Cover and Thomas [118]. Some of the
+subset inequalities for entropy rates may be found in Han [270].
+
+--- Page 14 ---
+
+--- Page 15 ---
+BIBLIOGRAPHY
+[1] J. Abrahams.
+Code and parse trees for lossless source encoding.
+Proc.
+Compression and Complexity of Sequences 1997, pages 145–171, 1998.
+[2] N. Abramson. The ALOHA system—another alternative for computer com-
+munications. AFIPS Conf. Proc., pages 281–285, 1970.
+[3] N. M. Abramson. Information Theory and Coding. McGraw-Hill, New York,
+1963.
+[4] Y. S. Abu-Mostafa. Information theory. Complexity, pages 25–28, Nov.
+1989.
+[5] R. L. Adler, D. Coppersmith, and M. Hassner. Algorithms for sliding block
+codes: an application of symbolic dynamics to information theory. IEEE
+Trans. Inf. Theory, IT-29(1):5–22, 1983.
+[6] R. Ahlswede. The capacity of a channel with arbitrary varying Gaussian
+channel probability functions. Trans. 6th Prague Conf. Inf. Theory, pages
+13–21, Sept. 1971.
+[7] R. Ahlswede.
+Multi-way communication channels.
+In Proc. 2nd Int.
+Symp. Inf. Theory (Tsahkadsor, Armenian S.S.R.), pages 23–52. Hungarian
+Academy of Sciences, Budapest, 1971.
+[8] R. Ahlswede. The capacity region of a channel with two senders and two
+receivers. Ann. Prob., 2:805–814, 1974.
+[9] R. Ahlswede.
+Elimination of correlation in random codes for arbitrarily
+varying channels.
+Z. Wahrscheinlichkeitstheorie und verwandte Gebiete,
+33:159–175, 1978.
+[10] R. Ahlswede. Coloring hypergraphs: A new approach to multiuser source
+coding. J. Comb. Inf. Syst. Sci., pages 220–268, 1979.
+[11] R. Ahlswede. A method of coding and an application to arbitrarily varying
+channels. J. Comb. Inf. Syst. Sci., pages 10–35, 1980.
+[12] R. Ahlswede and T. S. Han. On source coding with side information via
+a multiple access channel and related problems in multi-user information
+theory. IEEE Trans. Inf. Theory, IT-29:396–412, 1983.
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+689
+
+--- Page 16 ---
+690
+BIBLIOGRAPHY
+[13] R. Ahlswede and J. K¨orner.
+Source coding with side information and a
+converse for the degraded broadcast channel.
+IEEE Trans. Inf. Theory,
+IT-21:629–637, 1975.
+[14] R. F. Ahlswede. Arbitrarily varying channels with states sequence known
+to the sender. IEEE Trans. Inf. Theory, pages 621–629, Sept. 1986.
+[15] R. F. Ahlswede. The maximal error capacity of arbitrarily varying channels
+for constant list sizes (corresp.). IEEE Trans. Inf. Theory, pages 1416–1417,
+July 1993.
+[16] R. F. Ahlswede and G. Dueck. Identiﬁcation in the presence of feedback: a
+discovery of new capacity formulas. IEEE Trans. Inf. Theory, pages 30–36,
+Jan. 1989.
+[17] R. F. Ahlswede and G. Dueck. Identiﬁcation via channels. IEEE Trans. Inf.
+Theory, pages 15–29, Jan. 1989.
+[18] R. F. Ahlswede, E. H. Yang, and Z. Zhang. Identiﬁcation via compressed
+data. IEEE Trans. Inf. Theory, pages 48–70, Jan. 1997.
+[19] H. Akaike. Information theory and an extension of the maximum likelihood
+principle. Proc. 2nd Int. Symp. Inf. Theory, pages 267–281, 1973.
+[20] P. Algoet and T. M. Cover.
+A sandwich proof of the Shannon–
+McMillan–Breiman theorem. Ann. Prob., 16(2):899–909, 1988.
+[21] P. Algoet and T. M. Cover. Asymptotic optimality and asymptotic equipar-
+tition property of log-optimal investment. Ann. Prob., 16(2):876–898, 1988.
+[22] S. Amari. Differential-Geometrical Methods in Statistics. Springer-Verlag,
+New York, 1985.
+[23] S. I. Amari and H. Nagaoka. Methods of Information Geometry. Oxford
+University Press, Oxford, 1999.
+[24] V. Anantharam and S. Verdu. Bits through queues. IEEE Trans. Inf. Theory,
+pages 4–18, Jan. 1996.
+[25] S. Arimoto. An algorithm for calculating the capacity of an arbitrary discrete
+memoryless channel. IEEE Trans. Inf. Theory, IT-18:14–20, 1972.
+[26] S. Arimoto. On the converse to the coding theorem for discrete memoryless
+channels. IEEE Trans. Inf. Theory, IT-19:357–359, 1973.
+[27] R. B. Ash. Information Theory. Interscience, New York, 1965.
+[28] J. Acz´el and Z. Dar´oczy. On Measures of Information and Their Character-
+ization. Academic Press, New York, 1975.
+[29] L. R. Bahl, J. Cocke, F. Jelinek, and J. Raviv. Optimal decoding of linear
+codes for minimizing symbol error rate (corresp.). IEEE Trans. Inf. Theory,
+pages 284–287, March 1974.
+[30] A. Barron.
+Entropy and the central limit theorem.
+Ann. Prob., 14(1):
+336–342, 1986.
+[31] A. Barron and T. M. Cover. A bound on the ﬁnancial value of information.
+IEEE Trans. Inf. Theory, IT-34:1097–1100, 1988.
+
+--- Page 17 ---
+BIBLIOGRAPHY
+691
+[32] A. Barron and T. M. Cover. Minimum complexity density estimation. IEEE
+Trans. Inf. Theory, 37(4):1034–1054, July 1991.
+[33] A. R. Barron. Logically smooth density estimation. Ph.D. thesis, Department
+of Electrical Engineering, Stanford University, Stanford, CA, 1985.
+[34] A. R. Barron. The strong ergodic theorem for densities: generalized Shan-
+non–McMillan–Breiman theorem. Ann. Prob., 13:1292–1303, 1985.
+[35] A. R. Barron. Are Bayes’ rules consistent in information? Prob. Commun.
+Computation, pages 85–91, 1987.
+[36] A. R. Barron, J. Rissanen, and Bin Yu. The minimum description length prin-
+ciple in coding and modeling. IEEE Trans. Inf. Theory, pages 2743–2760,
+Oct. 1998.
+[37] E. B. Baum.
+Neural net algorithms that learn in polynomial time from
+examples and queries. IEEE Trans. Neural Networks, pages 5–19, 1991.
+[38] W. Beckner. Inequalities in Fourier analysis. Ann. Math., 102:159–182,
+1975.
+[39] R. Bell and T. M. Cover. Competitive optimality of logarithmic investment.
+Math. Oper. Res., 5(2):161–166, May 1980.
+[40] R. Bell and T. M. Cover. Game-theoretic optimal portfolios. Manage. Sci.,
+34(6):724–733, 1988.
+[41] T. C. Bell, J. G. Cleary, and I. H. Witten. Text Compression. Prentice-Hall,
+Englewood Cliffs, NJ, 1990.
+[42] R. Bellman. Notes on matrix theory. IV: An inequality due to Bergstrøm.
+Am. Math. Monthly, 62:172–173, 1955.
+[43] C. H. Bennett and G. Brassard. Quantum cryptography: public key distri-
+bution and coin tossing. Proc. IEEE Int. Conf. Comput., pages 175–179,
+1984.
+[44] C. H. Bennett, D. P. DiVincenzo, J. Smolin, and W. K. Wootters. Mixed
+state entanglement and quantum error correction.
+Phys. Rev. A, pages
+3824–3851, 1996.
+[45] C. H. Bennett, D. P. DiVincenzo, and J. A. Smolin. Capacities of quantum
+erasure channels. Phys. Rev. Lett., pages 3217–3220, 1997.
+[46] C. H. Bennett and S. J. Wiesner. Communication via one- and two-particle
+operators on Einstein–podolsky–Rosen states.
+Phys. Rev. Lett., pages
+2881–2884, 1992.
+[47] C. H. Bennett.
+Demons, engines and the second law.
+Sci. Am.,
+259(5):108–116, Nov. 1987.
+[48] C. H. Bennett and R. Landauer. The fundamental physical limits of compu-
+tation. Sci. Am., 255(1):48–56, July 1985.
+[49] C. H. Bennett and P. W. Shor. Quantum information theory. IEEE Trans.
+Inf. Theory, IT-44:2724–2742, Oct. 1998.
+[50] J. Bentley, D. Sleator, R. Tarjan, and V. Wei.
+Locally adaptive data
+compression scheme. Commun. ACM, pages 320–330, 1986.
+
+--- Page 18 ---
+692
+BIBLIOGRAPHY
+[51] R. Benzel.
+The capacity region of a class of discrete additive degraded
+interference channels. IEEE Trans. Inf. Theory, IT-25:228–231, 1979.
+[52] T. Berger.
+Rate Distortion Theory: A Mathematical Basis for Data
+Compression. Prentice-Hall, Englewood Cliffs, NJ, 1971.
+[53] T. Berger. Multiterminal source coding. In G. Longo (Ed.), The Information
+Theory Approach to Communications. Springer-Verlag, New York, 1977.
+[54] T. Berger and R. W. Yeung. Multiterminal source encoding with one dis-
+tortion criterion. IEEE Trans. Inf. Theory, IT-35:228–236, 1989.
+[55] P. Bergmans. Random coding theorem for broadcast channels with degraded
+components. IEEE Trans. Inf. Theory, IT-19:197–207, 1973.
+[56] E. R. Berlekamp. Block Coding with Noiseless Feedback. Ph.D. thesis, MIT,
+Cambridge, MA, 1964.
+[57] C. Berrou, A. Glavieux, and P. Thitimajshima. Near Shannon limit error-
+correcting coding and decoding: Turbo codes. Proc. 1993 Int. Conf. Com-
+mun., pages 1064–1070, May 1993.
+[58] D. Bertsekas and R. Gallager. Data Networks, 2nd ed.. Prentice-Hall, Engle-
+wood Cliffs, NJ, 1992.
+[59] M. Bierbaum and H. M. Wallmeier. A note on the capacity region of the
+multiple access channel. IEEE Trans. Inf. Theory, IT-25:484, 1979.
+[60] E. Biglieri, J. Proakis, and S. Shamai. Fading channels: information-theoretic
+and communications aspects. IEEE Trans. Inf. Theory, pages 2619–2692,
+October 1998.
+[61] N. Blachman. The convolution inequality for entropy powers. IEEE Trans.
+Inf. Theory, IT-11:267–271, Apr. 1965.
+[62] D. Blackwell, L. Breiman, and A. J. Thomasian. Proof of Shannon’s trans-
+mission theorem for ﬁnite-state indecomposable channels. Ann. Math. Stat.,
+pages 1209–1220, 1958.
+[63] D. Blackwell, L. Breiman, and A. J. Thomasian. The capacity of a class of
+channels. Ann. Math. Stat., 30:1229–1241, 1959.
+[64] D. Blackwell, L. Breiman, and A. J. Thomasian.
+The capacities of cer-
+tain channel classes under random coding. Ann. Math. Stat., 31:558–567,
+1960.
+[65] R. Blahut. Computation of channel capacity and rate distortion functions.
+IEEE Trans. Inf. Theory, IT-18:460–473, 1972.
+[66] R. E. Blahut. Information bounds of the Fano–Kullback type. IEEE Trans.
+Inf. Theory, IT-22:410–421, 1976.
+[67] R. E. Blahut.
+Principles and Practice of Information Theory.
+Addison-
+Wesley, Reading, MA, 1987.
+[68] R. E. Blahut. Hypothesis testing and information theory. IEEE Trans. Inf.
+Theory, IT-20:405–417, 1974.
+[69] R. E. Blahut. Theory and Practice of Error Control Codes. Addison-Wesley,
+Reading, MA, 1983.
+
+--- Page 19 ---
+BIBLIOGRAPHY
+693
+[70] B. M. Hochwald, G. Caire, B. Hassibi, and T. L. Marzetta (Eds.). IEEE
+Trans. Inf. Theory, Special Issue on Space-Time Transmission, Reception,
+Coding and Signal-Processing, Vol. 49, Oct. 2003.
+[71] L. Boltzmann.
+Beziehung
+Zwischen
+dem
+zweiten
+Hauptsatze
+der
+mechanischen W¨armertheorie und der Wahrscheilichkeitsrechnung respek-
+tive den Saetzen uber das W¨armegleichgwicht. Wien. Ber., pages 373–435,
+1877.
+[72] R. C. Bose and D. K. Ray-Chaudhuri. On a class of error correcting binary
+group codes. Inf. Control, 3:68–79, Mar. 1960.
+[73] H. J. Brascamp and E. J. Lieb. Best constants in Young’s inequality, its
+converse and its generalization to more than three functions. Adv. Math.,
+20:151–173, 1976.
+[74] L. Breiman. The individual ergodic theorems of information theory. Ann.
+Math. Stat., 28:809–811, 1957. With correction made in 31:809-810.
+[75] L. Breiman. Optimal gambling systems for favourable games. In Fourth
+Berkeley Symposium on Mathematical Statistics and Probability, Vol. 1,
+pages 65–78. University of California Press, Berkeley, CA, 1961.
+[76] L. Breiman, J. H. Friedman, R. A. Olshen, and C. J. Stone. Classiﬁcation
+and Regression Trees. Wadsworth & Brooks, Paciﬁc Grove, CA, 1984.
+[77] L. Brillouin. Science and Information Theory. Academic Press, New York,
+1962.
+[78] J. A. Bucklew.
+The source coding theorem via Sanov’s theorem.
+IEEE
+Trans. Inf. Theory, pages 907–909, Nov. 1987.
+[79] J. A. Bucklew.
+Large Deviation Techniques in Decision, Simulation, and
+Estimation. Wiley, New York, 1990.
+[80] J. P. Burg. Maximum entropy spectral analysis. Ph.D. thesis, Department of
+Geophysics, Stanford University, Stanford, CA, 1975.
+[81] M. Burrows and D. J. Wheeler. A Block-Sorting Lossless Data Compression
+Algorithm (Tech. Rept. 124). Digital Systems Research Center, Palo Alto,
+CA, May 1994.
+[82] A. R. Calderbank. The art of signaling: ﬁfty years of coding theory. IEEE
+Trans. Inf. Theory, pages 2561–2595, Oct. 1998.
+[83] A. R. Calderbank and P. W. Shor. Good quantum error-correcting codes
+exist. Phys. Rev. A, pages 1098–1106, 1995.
+[84] A. Carleial. Outer bounds on the capacity of the interference channel. IEEE
+Trans. Inf. Theory, IT-29:602–606, 1983.
+[85] A. B. Carleial. A case where interference does not reduce capacity. IEEE
+Trans. Inf. Theory, IT-21:569–570, 1975.
+[86] G. Chaitin. Information-Theoretic Incompleteness. World Scientiﬁc, Singa-
+pore, 1992.
+[87] G. J. Chaitin. On the length of programs for computing binary sequences.
+J. ACM, pages 547–569, 1966.
+
+--- Page 20 ---
+694
+BIBLIOGRAPHY
+[88] G. J. Chaitin.
+The limits of mathematics.
+J. Universal Comput. Sci.,
+2(5):270–305, 1996.
+[89] G. J. Chaitin. On the length of programs for computing binary sequences.
+J. ACM, 13:547–569, 1966.
+[90] G. J. Chaitin. Information theoretical limitations of formal systems. J. ACM,
+21:403–424, 1974.
+[91] G. J. Chaitin. Randomness and mathematical proof. Sci. Am., 232(5):47–52,
+May 1975.
+[92] G. J. Chaitin. Algorithmic information theory. IBM J. Res. Dev., 21:350–359,
+1977.
+[93] G. J. Chaitin. Algorithmic Information Theory. Cambridge University Press,
+Cambridge, 1987.
+[94] C. S. Chang and J. A. Thomas. Huffman algebras for independent random
+variables. Discrete Event Dynam. Syst., 4:23–40, 1994.
+[95] C. S. Chang and J. A. Thomas. Effective bandwidth in high speed digital
+networks. IEEE J. Select. Areas Commun., 13:1091–1114, Aug. 1995.
+[96] R. Chellappa. Markov Random Fields: Theory and Applications. Academic
+Press, San Diego, CA, 1993.
+[97] H. Chernoff. A measure of the asymptotic efﬁciency of tests of a hypo-
+thesis based on a sum of observations.
+Ann. Math. Stat., 23:493–507,
+1952.
+[98] B. S. Choi and T. M. Cover.
+An information-theoretic proof of Burg’s
+maximum entropy spectrum. Proc. IEEE, 72:1094–1095, 1984.
+[99] N. Chomsky. Three models for the description of language. IEEE Trans.
+Inf. Theory, pages 113–124, Sept. 1956.
+[100] P. A. Chou, M. Effros, and R. M. Gray. A vector quantization approach to
+universal noiseless coding and quantization. IEEE Trans. Inf. Theory, pages
+1109–1138, July 1996.
+[101] K. L. Chung. A note on the ergodic theorem of information theory. Ann.
+Math. Stat., 32:612–614, 1961.
+[102] B. S. Clarke and A. R. Barron. Information-theoretic asymptotics of Bayes’
+methods. IEEE Trans. Inf. Theory, pages 453–471, May 1990.
+[103] B. S. Clarke and A. R. Barron. Jeffreys’ prior is asymptotically least favor-
+able under entropy risk. J. Stat. Planning Inf., pages 37–60, Aug. 1994.
+[104] M. Costa and T. M. Cover. On the similarity of the entropy power inequal-
+ity and the Brunn–Minkowski inequality.
+IEEE Trans. Inf. Theory, IT-
+30:837–839, 1984.
+[105] M. H. M. Costa. On the Gaussian interference channel. IEEE Trans. Inf.
+Theory, pages 607–615, Sept. 1985.
+[106] M. H. M. Costa and A. A. El Gamal. The capacity region of the discrete
+memoryless interference channel with strong interference. IEEE Trans. Inf.
+Theory, pages 710–711, Sept. 1987.
+
+--- Page 21 ---
+BIBLIOGRAPHY
+695
+[107] T. M. Cover.
+Geometrical and statistical properties of systems of linear
+inequalities with applications to pattern recognition. IEEE Trans. Electron.
+Computation, pages 326–334, 1965.
+[108] T. M. Cover. Universal Gambling Schemes and the Complexity Measures of
+Kolmogorov and Chaitin (Tech. Rept. 12). Department of Statistics, Stanford
+University, Stanford, CA, Oct. 1974.
+[109] T. M. Cover.
+Open problems in information theory.
+Proc. Moscow Inf.
+Theory Workshop, pages 35–36, 1975.
+[110] T. M. Cover. Universal portfolios. Math. Finance, pages 1–29, Jan. 1991.
+[111] T. M. Cover. Comments on broadcast channels. IEEE Trans. Inf. Theory,
+pages 2524–2530, Oct. 1998.
+[112] T. M. Cover. Shannon and investment. IEEE Inf. Theory Newslett (Special
+Golden Jubilee Issue), pp. 10–11, June 1998.
+[113] T. M. Cover and M. S. Chiang.
+Duality between channel capacity and
+rate distortion with two-sided state information. IEEE Trans. Inf. Theory,
+IT-48(6):1629–1638, June 2002.
+[114] T. M. Cover, P. G´acs, and R. M. Gray. Kolmogorov’s contributions to infor-
+mation theory and algorithmic complexity. Ann. Prob., pages 840–865, July
+1989.
+[115] T. M. Cover, A. A. El Gamal, and M. Salehi. Multiple access channels with
+arbitrarily correlated sources. IEEE Trans. Inf. Theory, pages 648–657, Nov.
+1980.
+[116] T. M. Cover and P. E. Hart. Nearest neighbor pattern classiﬁcation. IEEE
+Trans. Inf. Theory, pages 21–27, Jan. 1967.
+[117] T. M. Cover and S. Pombra. Gaussian feedback capacity. IEEE Trans. Inf.
+Theory, pages 37–43, January 1989.
+[118] T. M. Cover and J. A. Thomas. Determinant inequalities via information
+theory. SIAM J. Matrix Anal. and Its Applications, 9(3):384–392, July 1988.
+[119] T. M. Cover. Broadcast channels. IEEE Trans. Inf. Theory, IT-18:2–14,
+1972.
+[120] T. M. Cover. Enumerative source encoding. IEEE Trans. Inf. Theory, IT-
+19(1):73–77, Jan. 1973.
+[121] T. M. Cover. An achievable rate region for the broadcast channel. IEEE
+Trans. Inf. Theory, IT-21:399–404, 1975.
+[122] T. M. Cover. A proof of the data compression theorem of Slepian and Wolf
+for ergodic sources. IEEE Trans. Inf. Theory, IT-22:226–228, 1975.
+[123] T. M. Cover. An algorithm for maximizing expected log investment return.
+IEEE Trans. Inf. Theory, IT-30(2):369–373, 1984.
+[124] T. M. Cover.
+Kolmogorov complexity, data compression and inference.
+In J. Skwirzynski (Ed.), The Impact of Processing Techniques on Commu-
+nications, Vol. 91 of Applied Sciences. Martinus-Nijhoff, Dordrecht, The
+Netherlands, 1985.
+
+--- Page 22 ---
+696
+BIBLIOGRAPHY
+[125] T. M. Cover. On the competitive optimality of Huffman codes. IEEE Trans.
+Inf. Theory, 37(1):172–174, Jan. 1991.
+[126] T. M. Cover. Universal portfolios. Math. Finance, pages 1–29, Jan. 1991.
+[127] T. M. Cover and A El Gamal. Capacity theorems for the relay channel.
+IEEE Trans. Inf. Theory, IT-25:572–584, 1979.
+[128] T. M. Cover and A. El Gamal. An information theoretic proof of Hadamard’s
+inequality. IEEE Trans. Inf. Theory, IT-29(6):930–931, Nov. 1983.
+[129] T. M. Cover, A. El Gamal, and M. Salehi. Multiple access channels with
+arbitrarily correlated sources.
+IEEE Trans. Inf. Theory, IT-26:648–657,
+1980.
+[130] T. M. Cover. Pick the largest number, Open Problems in Communication
+and Computation. Ed. by T. M. Cover and B. Gopinath, page 152, New
+York, 1987.
+[131] T. M. Cover and R. King. A convergent gambling estimate of the entropy
+of English. IEEE Trans. Inf. Theory, IT-24:413–421, 1978.
+[132] T. M. Cover and C. S. K. Leung.
+Some equivalences between Shan-
+non entropy and Kolmogorov complexity.
+IEEE Trans. Inf. Theory, IT-
+24:331–338, 1978.
+[133] T. M. Cover and C. S. K. Leung. An achievable rate region for the multiple
+access channel with feedback.
+IEEE Trans. Inf. Theory, IT-27:292–298,
+1981.
+[134] T. M. Cover, R. J. McEliece, and E. Posner. Asynchronous multiple access
+channel capacity. IEEE Trans. Inf. Theory, IT-27:409–413, 1981.
+[135] T. M. Cover and E. Ordentlich. Universal portfolios with side information.
+IEEE Trans. Inf. Theory, IT-42:348–363, Mar. 1996.
+[136] T. M. Cover and S. Pombra. Gaussian feedback capacity. IEEE Trans. Inf.
+Theory, IT-35:37–43, 1989.
+[137] H. Cramer. Mathematical Methods of Statistics. Princeton University Press,
+Princeton, NJ, 1946.
+[138] I. Csisz´ar.
+Information type measures of difference of probability dis-
+tributions and indirect observations.
+Stud. Sci. Math. Hung., 2:299–318,
+1967.
+[139] I Csisz´ar. On the computation of rate distortion functions. IEEE Trans. Inf.
+Theory, IT-20:122–124, 1974.
+[140] I. Csisz´ar. I-divergence geometry of probability distributions and minimiza-
+tion problems. Ann. Prob., pages 146–158, Feb. 1975.
+[141] I Csisz´ar. Sanov property, generalized I-projection and a conditional limit
+theorem. Ann. Prob., 12:768–793, 1984.
+[142] I. Csisz´ar. Information theory and ergodic theory. Probl. Contr. Inf. Theory,
+pages 3–27, 1987.
+[143] I. Csisz´ar. A geometric interpretation of Darroch and Ratcliff’s generalized
+iterative scaling. Ann. Stat., pages 1409–1413, 1989.
+
+--- Page 23 ---
+BIBLIOGRAPHY
+697
+[144] I. Csisz´ar. Why least squares and maximum entropy? An axiomatic approach
+to inference for linear inverse problems. Ann. Stat., pages 2032–2066, Dec.
+1991.
+[145] I. Csisz´ar. Arbitrarily varying channels with general alphabets and states.
+IEEE Trans. Inf. Theory, pages 1725–1742, Nov. 1992.
+[146] I. Csisz´ar. The method of types. IEEE Trans. Inf. Theory, pages 2505–2523,
+October 1998.
+[147] I. Csisz´ar, T. M. Cover, and B. S. Choi. Conditional limit theorems under
+Markov conditioning. IEEE Trans. Inf. Theory, IT-33:788–801, 1987.
+[148] I. Csisz´ar and J. K¨orner. Towards a general theory of source networks. IEEE
+Trans. Inf. Theory, IT-26:155–165, 1980.
+[149] I. Csisz´ar and J. K¨orner. Information Theory: Coding Theorems for Discrete
+Memoryless Systems. Academic Press, New York, 1981.
+[150] I. Csisz´ar and J. K¨orner. Feedback does not affect the reliability function of
+a DMC at rates above capacity (corresp.). IEEE Trans. Inf. Theory, pages
+92–93, Jan. 1982.
+[151] I. Csisz´ar and J. K¨orner. Broadcast channels with conﬁdential messages.
+IEEE Trans. Inf. Theory, pages 339–348, May 1978.
+[152] I. Csisz´ar and J. K¨orner.
+Graph decomposition: a new key to coding
+theorems. IEEE Trans. Inf. Theory, pages 5–12, Jan. 1981.
+[153] I. Csisz´ar and G. Longo.
+On the Error Exponent for Source Coding and
+for Testing Simple Statistical Hypotheses. Hungarian Academy of Sciences,
+Budapest, 1971.
+[154] I. Csisz´ar and P. Narayan. Capacity of the Gaussian arbitrarily varying chan-
+nel. IEEE Trans. Inf. Theory, pages 18–26, Jan. 1991.
+[155] I. Csisz´ar and G. Tusn´ady. Information geometry and alternating minimiza-
+tion procedures.
+Statistics and Decisions, Supplement Issue 1:205–237,
+1984.
+[156] G. B. Dantzig and D. R. Fulkerson. On the max-ﬂow min-cut theorem of
+networks. In H. W. Kuhn and A. W. Tucker (Eds.), Linear Inequalities and
+Related Systems (Vol. 38 of Annals of Mathematics Study), pages 215–221.
+Princeton University Press, Princeton, NJ, 1956.
+[157] J. N. Darroch and D. Ratcliff. Generalized iterative scaling for log-linear
+models. Ann. Math. Stat., pages 1470–1480, 1972.
+[158] I. Daubechies. Ten Lectures on Wavelets. SIAM, Philadelphia, 1992.
+[159] L. D. Davisson. Universal noiseless coding. IEEE Trans. Inf. Theory, IT-
+19:783–795, 1973.
+[160] L. D. Davisson. Minimax noiseless universal coding for Markov sources.
+IEEE Trans. Inf. Theory, pages 211–215, Mar. 1983.
+[161] L. D. Davisson, R. J. McEliece, M. B. Pursley, and M. S. Wallace. Efﬁcient
+universal noiseless source codes. IEEE Trans. Inf. Theory, pages 269–279,
+May 1981.
+
+--- Page 24 ---
+698
+BIBLIOGRAPHY
+[162] A. Dembo. Information Inequalities and Uncertainty Principles
+(Techni-
+cal Report), Department of Statistics, Stanford University, Stanford, CA,
+1990.
+[163] A. Dembo.
+Information inequalities and concentration of measure. Ann.
+Prob., pages 927–939, 1997.
+[164] A. Dembo, T. M. Cover, and J. A. Thomas. Information theoretic inequali-
+ties. IEEE Trans. Inf. Theory, 37(6):1501–1518, Nov. 1991.
+[165] A. Dembo and O. Zeitouni. Large Deviations Techniques and Applications.
+Jones & Bartlett, Boston, 1993.
+[166] A. P. Dempster, N. M. Laird, and D. B. Rubin. Maximum likelihood from
+incomplete data via the EM algorithm. J. Roy. Stat. Soc. B, 39(1):1–38,
+1977.
+[167] L. Devroye and L. Gyorﬁ. Nonparametric Density Estimation: The L1 View.
+Wiley, New York, 1985.
+[168] L. Devroye, L. Gyorﬁ, and G. Lugosi.
+A Probabilistic Theory of Pattern
+Recognition. Springer-Verlag, New York, 1996.
+[169] D. P. DiVincenzo, P. W. Shor, and J. A. Smolin. Quantum-channel capacity
+of very noisy channels. Phys. Rev. A, pages 830–839, 1998.
+[170] R.L. Dobrushin. General formulation of Shannon’s main theorem of infor-
+mation theory. Usp. Math. Nauk, 14:3–104, 1959. Translated in Am. Math.
+Soc. Trans., 33:323-438.
+[171] R. L. Dobrushin. Survey of Soviet research in information theory. IEEE
+Trans. Inf. Theory, pages 703–724, Nov. 1972.
+[172] D. L. Donoho. De-noising by soft-thresholding. IEEE Trans. Inf. Theory,
+pages 613–627, May 1995.
+[173] R. O. Duda and P. E. Hart. Pattern Classiﬁcation and Scene Analysis. Wiley,
+New York, 1973.
+[174] G. Dueck. Maximal error capacity regions are smaller than average error
+capacity regions for multi-user channels. Probl. Contr. Inf. Theory, pages
+11–19, 1978.
+[175] G. Dueck. The capacity region of the two-way channel can exceed the inner
+bound. Inf. Control, 40:258–266, 1979.
+[176] G. Dueck. Partial feedback for two-way and broadcast channels. Inf. Control,
+46:1–15, 1980.
+[177] G. Dueck and J. K¨orner. Reliability function of a discrete memoryless chan-
+nel at rates above capacity. IEEE Trans. Inf. Theory, IT-25:82–85, 1979.
+[178] P. M. Ebert. The capacity of the Gaussian channel with feedback. Bell Syst.
+Tech. J., 49:1705–1712, Oct. 1970.
+[179] P. M. Ebert. The capacity of the Gaussian channel with feedback. Bell Syst.
+Tech. J., pages 1705–1712, Oct. 1970.
+[180] K. Eckschlager. Information Theory in Analytical Chemistry. Wiley, New
+York, 1994.
+
+--- Page 25 ---
+BIBLIOGRAPHY
+699
+[181] M. Effros, K. Visweswariah, S. R. Kulkarni, and S. Verdu. Universal loss-
+less source coding with the Burrows–Wheeler transform. IEEE Trans. Inf.
+Theory, IT-48:1061–1081, May 2002.
+[182] B. Efron and R. Tibshirani. An Introduction to the Bootstrap. Chapman &
+Hall, London, 1993.
+[183] H. G. Eggleston. Convexity (Cambridge Tracts in Mathematics and Mathe-
+matical Physics, No. 47). Cambridge University Press, Cambridge, 1969.
+[184] A. El Gamal. The feedback capacity of degraded broadcast channels. IEEE
+Trans. Inf. Theory, IT-24:379–381, 1978.
+[185] A. El Gamal. The capacity region of a class of broadcast channels. IEEE
+Trans. Inf. Theory, IT-25:166–169, 1979.
+[186] A. El Gamal and T. M. Cover.
+Multiple user information theory.
+Proc.
+IEEE, 68:1466–1483, 1980.
+[187] A. El Gamal and T. M. Cover. Achievable rates for multiple descriptions.
+IEEE Trans. Inf. Theory, IT-28:851–857, 1982.
+[188] A. El Gamal and E. C. Van der Meulen. A proof of Marton’s coding theorem
+for the discrete memoryless broadcast channel.
+IEEE Trans. Inf. Theory,
+IT-27:120–122, 1981.
+[189] P. Elias. Error-free coding. IRE Trans. Inf. Theory, IT-4:29–37, 1954.
+[190] P. Elias. Coding for noisy channels. IRE Conv. Rec., Pt. 4, pages 37–46,
+1955.
+[191] P. Elias. Networks of Gaussian channels with applications to feedback sys-
+tems. IEEE Trans. Inf. Theory, pages 493–501, July 1967.
+[192] P. Elias. The efﬁcient construction of an unbiased random sequence. Ann.
+Math. Stat., pages 865–870, 1972.
+[193] P. Elias. Universal codeword sets and representations of the integers. IEEE
+Trans. Inf. Theory, pages 194–203, Mar. 1975.
+[194] P. Elias.
+Interval and recency rank source coding: two on-line adaptive
+variable-length schemes. IEEE Trans. Inf. Theory, pages 3–10, Jan. 1987.
+[195] P. Elias, A. Feinstein, and C. E. Shannon. A note on the maximum ﬂow
+through a network.
+IEEE Trans. Inf. Theory, pages 117–119, December
+1956.
+[196] R. S. Ellis. Entropy, Large Deviations, and Statistical Mechanics. Springer-
+Verlag, New York, 1985.
+[197] A. Ephremides and B. Hajek.
+Information theory and communication
+networks: an unconsummated union.
+IEEE Trans. Inf. Theory, pages
+2416–2434, Oct. 1998.
+[198] W. H. R. Equitz and T. M. Cover. Successive reﬁnement of information.
+IEEE Trans. Inf. Theory, pages 269–275, Mar. 1991.
+[199] Ky Fan. On a theorem of Weyl concerning the eigenvalues of linear trans-
+formations II. Proc. Nat. Acad. Sci. USA, 36:31–35, 1950.
+
+--- Page 26 ---
+700
+BIBLIOGRAPHY
+[200] Ky Fan. Some inequalities concerning positive-deﬁnite matrices. Proc. Cam-
+bridge Philos. Soc., 51:414–421, 1955.
+[201] R. M. Fano.
+Class notes for Transmission of Information, course 6.574
+(Technical Report). MIT, Cambridge, MA, 1952.
+[202] R. M. Fano. Transmission of Information: A Statistical Theory of Communi-
+cation. Wiley, New York, 1961.
+[203] M. Feder. A note on the competetive optimality of Huffman codes. IEEE
+Trans. Inf. Theory, 38(2):436–439, Mar. 1992.
+[204] M. Feder, N. Merhav, and M. Gutman. Universal prediction of individual
+sequences. IEEE Trans. Inf. Theory, pages 1258–1270, July 1992.
+[205] A. Feinstein. A new basic theorem of information theory. IRE Trans. Inf.
+Theory, IT-4:2–22, 1954.
+[206] A. Feinstein. Foundations of Information Theory. McGraw-Hill, New York,
+1958.
+[207] A. Feinstein.
+On the coding theorem and its converse for ﬁnite-memory
+channels. Inf. Control, 2:25–44, 1959.
+[208] W. Feller. An Introduction to Probability Theory and Its Applications, 2nd
+ed., Vol. 1. Wiley, New York, 1957.
+[209] R. A. Fisher. On the mathematical foundations of theoretical statistics. Phi-
+los. Trans. Roy. Soc., London A, 222:309–368, 1922.
+[210] R. A. Fisher. Theory of statistical estimation. Proc. Cambridge Philos. Soc.,
+22:700–725, 1925.
+[211] B. M. Fitingof. Optimal encoding with unknown and variable message statis-
+tics. Probl. Inf. Transm. (USSR), pages 3–11, 1966.
+[212] B. M. Fitingof. The compression of discrete information. Probl. Inf. Transm.
+(USSR), pages 28–36, 1967.
+[213] L. R. Ford and D. R. Fulkerson. Maximal ﬂow through a network. Can. J.
+Math., pages 399–404, 1956.
+[214] L. R. Ford and D. R. Fulkerson. Flows in Networks. Princeton University
+Press, Princeton, NJ, 1962.
+[215] G. D. Forney. Exponential error bounds for erasure, list and decision feed-
+back schemes. IEEE Trans. Inf. Theory, IT-14:549–557, 1968.
+[216] G. D. Forney.
+Information Theory: unpublished course notes.
+Stanford
+University, Stanford, CA, 1972.
+[217] G. J. Foschini. Layered space-time architecture for wireless communication
+in a fading environment when using multi-element antennas. Bell Syst. Tech.
+J., 1(2):41–59, 1996.
+[218] P. Franaszek, P. Tsoucas, and J. Thomas. Context allocation for multiple dic-
+tionary data compression. In Proc. IEEE Int. Symp. Inf. Theory, Trondheim,
+Norway, page 12, 1994.
+[219] P. A. Franaszek. On synchronous variable length coding for discrete noise-
+less channels. Inf. Control, 15:155–164, 1969.
+
+--- Page 27 ---
+BIBLIOGRAPHY
+701
+[220] T. Gaarder and J. K. Wolf. The capacity region of a multiple-access discrete
+memoryless channel can increase with feedback. IEEE Trans. Inf. Theory,
+IT-21:100–102, 1975.
+[221] D. Gabor. Theory of communication. J. Inst. Elec. Engg., pages 429–457,
+Sept. 1946.
+[222] P. Gacs and J. K¨orner. Common information is much less than mutual infor-
+mation. Probl. Contr. Inf. Theory, pages 149–162, 1973.
+[223] R. G. Gallager. Source coding with side information and universal coding.
+Unpublished manuscript, also presented at the Int. Symp. Inf. Theory, Oct.
+1974.
+[224] R. G. Gallager. A simple derivation of the coding theorem and some appli-
+cations. IEEE Trans. Inf. Theory, IT-11:3–18, 1965.
+[225] R. G. Gallager. Capacity and coding for degraded broadcast channels. Probl.
+Peredachi Inf., 10(3):3–14, 1974.
+[226] R. G. Gallager.
+Basic limits on protocol information in data com-
+munication networks.
+IEEE Trans. Inf. Theory, pages 385–398, July
+1976.
+[227] R. G. Gallager. A minimum delay routing algorithm using distributed com-
+putation. IEEE Trans. Commun., pages 73–85, Jan. 1977.
+[228] R. G. Gallager. Variations on a theme by Huffman. IEEE Trans. Inf. Theory,
+pages 668–674, Nov. 1978.
+[229] R. G. Gallager. Source Coding with Side Information and Universal Coding
+(Tech. Rept. LIDS-P-937). Laboratory for Information Decision Systems,
+MIT, Cambridge, MA, 1979.
+[230] R. G. Gallager. A perspective on multiaccess channels. IEEE Trans. Inf.
+Theory, pages 124–142, Mar. 1985.
+[231] R. G. Gallager. Low density parity check codes. IRE Trans. Inf. Theory,
+IT-8:21–28, Jan. 1962.
+[232] R. G. Gallager. Low Density Parity Check Codes. MIT Press, Cambridge,
+MA, 1963.
+[233] R. G. Gallager. Information Theory and Reliable Communication. Wiley,
+New York, 1968.
+[234] A. A. El Gamal and T. M. Cover. Achievable rates for multiple descriptions.
+IEEE Trans. Inf. Theory, pages 851–857, November 1982.
+[235] A. El Gamal. Broadcast channels with and without feedback. 11th Ann.
+Asilomar Conf. Circuits, pages 180–183, Nov. 1977.
+[236] A. El Gamal. Capacity of the product and sum of two unmatched broadcast
+channels. Probl. Peredachi Inf., pages 3–23, Jan.–Mar. 1980.
+[237] A. A. El Gamal.
+The feedback capacity of degraded broadcast channels
+(corresp.). IEEE Trans. Inf. Theory, pages 379–381, May 1978.
+[238] A. A. El Gamal. The capacity of a class of broadcast channels. IEEE Trans.
+Inf. Theory, pages 166–169, Mar. 1979.
+
+--- Page 28 ---
+702
+BIBLIOGRAPHY
+[239] A. A. El Gamal. The capacity of the physically degraded Gaussian broadcast
+channel with feedback (corresp.). IEEE Trans. Inf. Theory, pages 508–511,
+July 1981.
+[240] A. A. El Gamal and E. C. van der Meulen. A proof of Marton’s coding
+theorem for the discrete memoryless broadcast channel. IEEE Trans. Inf.
+Theory, pages 120–122, Jan. 1981.
+[241] I. M. Gelfand, A. N. Kolmogorov, and A. M. Yaglom.
+On the general
+deﬁnition of mutual information. Rept. Acad. Sci. USSR, pages 745–748,
+1956.
+[242] S. I. Gelfand. Capacity of one broadcast channel. Probl. Peredachi Inf.,
+pages 106–108, July–Sept. 1977.
+[243] S. I. Gelfand and M. S. Pinsker. Capacity of a broadcast channel with one
+deterministic component.
+Probl. Peredachi Inf., pages 24–34, Jan.–Mar.
+1980.
+[244] S. I. Gelfand and M. S. Pinsker. Coding for channel with random parameters.
+Probl. Contr. Inf. Theory, pages 19–31, 1980.
+[245] A. Gersho and R. M. Gray. Vector Quantization and Signal Compression.
+Kluwer, Boston, 1992.
+[246] G. G. Rayleigh and J. M. Ciofﬁ. Spatio-temporal coding for wireless com-
+munication. IEEE Trans. Commun., 46:357–366, 1998.
+[247] J. D. Gibson and J. L. Melsa. Introduction to Nonparametric Detection with
+Applications. IEEE Press, New York, 1996.
+[248] E. N. Gilbert. Codes based on inaccurate source probabilities. IEEE Trans.
+Inf. Theory, pages 304–314, May 1971.
+[249] E. N. Gilbert and E. F. Moore. Variable length binary encodings. Bell Syst.
+Tech. J., 38:933–967, 1959.
+[250] S. Goldman.
+Some fundamental considerations concerning noise reduc-
+tion and range in radar and communication. Proc. Inst. Elec. Engg., pages
+584–594, 1948.
+[251] S. Goldman.
+Information Theory.
+Prentice-Hall, Englewood Cliffs, NJ,
+1953.
+[252] A. Goldsmith and M. Effros.
+The capacity region of Gaussian broadcast
+channels with intersymbol interference and colored Gaussian noise. IEEE
+Trans. Inf. Theory, 47:2–8, Jan. 2001.
+[253] S. W. Golomb.
+Run-length encodings.
+IEEE Trans. Inf. Theory, pages
+399–401, July 1966.
+[254] S. W. Golomb, R. E. Peile, and R. A. Scholtz. Basic Concepts in Information
+Theory and Coding: The Adventures of Secret Agent 00111 (Applications of
+Communications Theory). Plenum Publishing, New York, 1994.
+[255] A. J. Grant, B. Rimoldi, R. L. Urbanke, and P. A. Whiting. Rate-splitting
+multiple access for discrete memoryless channels. IEEE Trans. Inf. Theory,
+pages 873–890, Mar. 2001.
+
+--- Page 29 ---
+BIBLIOGRAPHY
+703
+[256] R. M. Gray. Source Coding Theory. Kluwer, Boston, 1990.
+[257] R. M. Gray and L. D. Davisson, (Eds.). Ergodic and Information Theory.
+Dowden, Hutchinson & Ross, Stroudsburg, PA, 1977.
+[258] R. M. Gray and Lee D. Davisson.
+Source coding theorems without the
+ergodic assumption. IEEE Trans. Inf. Theory, pages 502–516, July 1974.
+[259] R. M. Gray. Sliding block source coding. IEEE Trans. Inf. Theory, IT-
+21:357–368, 1975.
+[260] R. M. Gray. Entropy and Information Theory. Springer-Verlag, New York,
+1990.
+[261] R. M. Gray and A. Wyner. Source coding for a simple network. Bell Syst.
+Tech. J., 58:1681–1721, 1974.
+[262] U. Grenander and G. Szego. Toeplitz Forms and Their Applications. Uni-
+versity of California Press, Berkeley, CA, 1958.
+[263] B. Gr¨unbaum. Convex Polytopes. Interscience, New York, 1967.
+[264] S. Guiasu. Information Theory with Applications. McGraw-Hill, New York,
+1976.
+[265] B. E. Hajek and M. B. Pursley. Evaluation of an achievable rate region for
+the broadcast channel. IEEE Trans. Inf. Theory, pages 36–46, Jan. 1979.
+[266] R. V. Hamming. Error detecting and error correcting codes. Bell Syst. Tech.
+J., 29:147–160, 1950.
+[267] T. S. Han. The capacity region for the deterministic broadcast channel with
+a common message (corresp.). IEEE Trans. Inf. Theory, pages 122–125,
+Jan. 1981.
+[268] T. S. Han and S. I. Amari. Statistical inference under multiterminal data
+compression. IEEE Trans. Inf. Theory, pages 2300–2324, Oct. 1998.
+[269] T. S. Han and S. Verdu.
+New results in the theory of identiﬁcation via
+channels. IEEE Trans. Inf. Theory, pages 14–25, Jan. 1992.
+[270] T. S. Han. Nonnegative entropy measures of multivariate symmetric corre-
+lations. Inf. Control, 36(2):133–156, 1978.
+[271] T. S. Han. The capacity region of a general multiple access channel with
+certain correlated sources. Inf. Control, 40:37–60, 1979.
+[272] T. S. Han. Information-Spectrum Methods in Information Theory. Springer-
+Verlag, New York, 2002.
+[273] T. S. Han and M. H. M. Costa. Broadcast channels with arbitrarily correlated
+sources. IEEE Trans. Inf. Theory, IT-33:641–650, 1987.
+[274] T. S. Han and K. Kobayashi. A new achievable rate region for the interfer-
+ence channel. IEEE Trans. Inf. Theory, IT-27:49–60, 1981.
+[275] R. V. Hartley. Transmission of information. Bell Syst. Tech. J., 7:535, 1928.
+[276] C. W. Helstrom. Elements of Signal Detection and Estimation. Prentice-Hall,
+Englewood Cliffs, NJ, 1995.
+[277] Y. Hershkovits and J. Ziv. On sliding-window universal data compression
+with limited memory. IEEE Trans. Inf. Theory, pages 66–78, Jan. 1998.
+
+--- Page 30 ---
+704
+BIBLIOGRAPHY
+[278] P. A. Hocquenghem.
+Codes correcteurs d’erreurs.
+Chiffres, 2:147–156,
+1959.
+[279] J. L. Holsinger.
+Digital Communication over Fixed Time-Continuous
+Channels with Memory, with Special Application to Telephone Channels
+(Technical Report). MIT, Cambridge, MA, 1964.
+[280] M. L. Honig, U. Madhow, and S. Verdu. Blind adaptive multiuser detection.
+IEEE Trans. Inf. Theory, pages 944–960, July 1995.
+[281] J. E. Hopcroft and J. D. Ullman. Introduction to Automata Theory, Formal
+Languages and Computation. Addison-Wesley, Reading, MA, 1979.
+[282] Y. Horibe.
+An improved bound for weight-balanced tree.
+Inf. Control,
+34:148–151, 1977.
+[283] D. A. Huffman. A method for the construction of minimum redundancy
+codes. Proc. IRE, 40:1098–1101, 1952.
+[284] J. Y. Hui. Switching an Trafﬁc Theory for Integrated Broadband Networks.
+Kluwer, Boston, 1990.
+[285] J. Y. N. Hui and P. A. Humblet. The capacity region of the totally asyn-
+chronous multiple-access channel. IEEE Trans. Inf. Theory, pages 207–216,
+Mar. 1985.
+[286] S. Ihara. On the capacity of channels with additive non-Gaussian noise. Inf.
+Contr., pages 34–39, 1978.
+[287] S. Ihara. Information Theory for Continuous Systems. World Scientiﬁc, Sin-
+gapore, 1993.
+[288] K. A. Schouhamer Immink, Paul H. Siegel, and Jack K. Wolf.
+Codes
+for digital recorders.
+IEEE Trans. Inf. Theory, pages 2260–2299, Oct.
+1998.
+[289] N. S. Jayant (Ed.). Waveform Quantization and Coding. IEEE Press, New
+York, 1976.
+[290] N. S. Jayant and P. Noll. Digital Coding of Waveforms. Prentice-Hall, Engle-
+wood Cliffs, NJ, 1984.
+[291] E. T. Jaynes.
+Information theory and statistical mechanics.
+Phys. Rev.,
+106:620, 1957.
+[292] E. T. Jaynes. Information theory and statistical mechanics II. Phys. Rev.,
+108:171, 1957.
+[293] E. T. Jaynes. On the rationale of maximum entropy methods. Proc. IEEE,
+70:939–952, 1982.
+[294] E. T. Jaynes. Papers on Probability, Statistics and Statistical Physics. Reidel,
+Dordrecht, The Netherlands, 1982.
+[295] F. Jelinek. Buffer overﬂow in variable length encoding of ﬁxed rate sources.
+IEEE Trans. Inf. Theory, IT-14:490–501, 1968.
+[296] F. Jelinek. Evaluation of expurgated error bounds. IEEE Trans. Inf. Theory,
+IT-14:501–505, 1968.
+
+--- Page 31 ---
+BIBLIOGRAPHY
+705
+[297] F. Jelinek.
+Probabilistic Information Theory.
+McGraw-Hill, New York,
+1968.
+[298] F. Jelinek. Statistical Methods for Speech Recognition. MIT Press, Cam-
+bridge, MA, 1998.
+[299] R Jozsa and B. Schumacher. A new proof of the quantum noiseless coding
+theorem. J Mod. Opt., pages 2343–2350, 1994.
+[300] G. G. Langdon, Jr.
+A note on the Ziv–Lempel model for compressing
+individual sequences. IEEE Trans. Inf. Theory, pages 284–287, Mar. 1983.
+[301] J. Justesen. A class of constructive asymptotically good algebraic codes.
+IEEE Trans. Inf. Theory, IT-18:652–656, 1972.
+[302] M. Kac. On the notion of recurrence in discrete stochastic processes. Bull.
+Am. Math. Soc., pages 1002–1010, Oct. 1947.
+[303] T. Kailath and J. P. M. Schwalkwijk. A coding scheme for additive noise
+channels with feedback. Part I: No bandwidth constraints. IEEE Trans. Inf.
+Theory, IT-12:172–182, 1966.
+[304] T. Kailath and H. V. Poor. Detection of stochastic processes. IEEE Trans.
+Inf. Theory, pages 2230–2259, Oct. 1998.
+[305] S. Karlin. Mathematical Methods and Theory in Games, Programming and
+Economics, Vol. 2. Addison-Wesley, Reading, MA, 1959.
+[306] J. Karush. A simple proof of an inequality of McMillan. IRE Trans. Inf.
+Theory, IT-7:118, 1961.
+[307] F. P. Kelly. Notes on effective bandwidth. Stochastic Networks Theory and
+Applications, pages 141–168, 1996.
+[308] J. Kelly.
+A new interpretation of information rate.
+Bell Syst. Tech. J,
+35:917–926, July 1956.
+[309] J. H. B. Kemperman. On the Optimum Rate of Transmitting Information
+(Lecture Notes in Mathematics), pages 126–169. Springer Verlag, New York,
+1967.
+[310] M. Kendall and A. Stuart. The Advanced Theory of Statistics. Macmillan,
+New York, 1977.
+[311] A. Y. Khinchin. Mathematical Foundations of Information Theory. Dover,
+New York, 1957.
+[312] J. C. Kieffer. A simple proof of the Moy–Perez generalization of the Shan-
+non–McMillan theorem. Paciﬁc J. Math., 51:203–206, 1974.
+[313] J. C. Kieffer. A survey of the theory of source coding with a ﬁdelity criterion.
+IEEE Trans. Inf. Theory, pages 1473–1490, Sept. 1993.
+[314] Y. H. Kim. Feedback capacity of ﬁrst-order moving average Gaussian chan-
+nel. Proc. IEEE Int. Symp. Information Theory, Adelaide, pages 416–420,
+Sept. 2005.
+[315] D. E. Knuth. Dynamic Huffman coding. J. Algorithms, pages 163–180,
+1985.
+[316] D. E. Knuth. Art of Computer Programming.
+
+--- Page 32 ---
+706
+BIBLIOGRAPHY
+[317] D. E. Knuth and A. C. Yao. The complexity of random number generation.
+In J. F. Traub (Ed.), Algorithms and Complexity: Recent Results and New
+Directions (Proceedings of the Symposium on New Directions and Recent
+Results in Algorithms and Complexity, Carnegie-Mellon University, 1976),
+pages 357–428. Academic Press, New York, 1976.
+[318] A. N. Kolmogorov.
+A new metric invariant of transitive dynamical sys-
+tems and automorphism in Lebesgue spaces. Dokl. Akad. Nauk SSSR, pages
+861–864, 1958.
+[319] A. N. Kolmogorov. On the Shannon theory of information transmission in
+the case of continuous signals. IRE Trans. Inf. Theory, IT-2:102–108, Sept.
+1956.
+[320] A. N. Kolmogorov. A new invariant for transitive dynamical systems. Dokl.
+Acad. Nauks SSR, 119:861–864, 1958.
+[321] A. N. Kolmogorov.
+Three approaches to the quantitative deﬁnition of
+information. Probl. Inf. Transm. (USSR), 1:4–7, 1965.
+[322] A. N. Kolmogorov. Logical basis for information theory and probability
+theory. IEEE Trans. Inf. Theory, IT-14:662–664, 1968.
+[323] A. N. Kolmogorov. The theory of transmission of information. In Selected
+Works of A. N. Kolmogorov, Vol. III: Information Theory and the Theory of
+Algorithms, Session on scientiﬁc problems of automatization in industry,
+Vol. 1, Plenary talks, Izd. Akad. Nauk SSSR, Moscow, 1957, pages 66–99.
+Kluwer, Dordrecht, The Netherlands, 1993.
+[324] J. K¨orner and K. Marton.
+The comparison of two noisy channels.
+In
+I. Csisz´ar and P. Elias (Ed.), Topics in Information Theory (Coll. Math. Soc.
+J. Bolyai, No. 16), pages 411–423. North-Holland, Amsterdam, 1977.
+[325] J. K¨orner and K. Marton. General broadcast channels with degraded message
+sets. IEEE Trans. Inf. Theory, IT-23:60–64, 1977.
+[326] J. K¨orner and K. Marton. How to encode the modulo 2 sum of two binary
+sources. IEEE Trans. Inf. Theory, IT-25:219–221, 1979.
+[327] J. K¨orner and A. Orlitsky. Zero error information theory. IEEE Trans. Inf.
+Theory, IT-44:2207–2229, Oct. 1998.
+[328] V. A. Kotel’nikov.
+On the transmission capacity of “ether” and wire in
+electrocommunications. Izd. Red. Upr. Svyazi RKKA, 44, 1933.
+[329] V. A. Kotel’nikov. The Theory of Optimum Noise Immunity. McGraw-Hill,
+New York, 1959.
+[330] L. G. Kraft. A device for quantizing, grouping and coding amplitude mod-
+ulated pulses. Master’s thesis, Department of Electrical Engineering, MIT,
+Cambridge, MA, 1949.
+[331] R. E. Krichevsky. Laplace’s law of succession and universal encoding. IEEE
+Trans. Inf. Theory, pages 296–303, Jan. 1998.
+[332] R. E. Krichevsky. Universal Compression and Retrieval. Kluwer, Dordrecht,
+The Netherlands, 1994.
+
+--- Page 33 ---
+BIBLIOGRAPHY
+707
+[333] R. E. Krichevsky and V. K. Troﬁmov. The performance of universal encod-
+ing. IEEE Trans. Inf. Theory, pages 199–207, Mar. 1981.
+[334] S. R. Kulkarni, G. Lugosi, and S. S. Venkatesh. Learning pattern classiﬁca-
+tion: a survey. IEEE Trans. Inf. Theory, pages 2178–2206, Oct. 1998.
+[335] S. Kullback. Information Theory and Statistics. Wiley, New York, 1959.
+[336] S. Kullback. A lower bound for discrimination in terms of variation. IEEE
+Trans. Inf. Theory, IT-13:126–127, 1967.
+[337] S. Kullback, J. C. Keegel, and J. H. Kullback. Topics in Statistical Informa-
+tion Theory. Springer-Verlag, Berlin, 1987.
+[338] S. Kullback and M. A. Khairat. A note on minimum discrimination infor-
+mation. Ann. Math. Stat., pages 279–280, 1966.
+[339] S. Kullback and R. A. Leibler. On information and sufﬁciency. Ann. Math.
+Stat., 22:79–86, 1951.
+[340] H. J. Landau and H. O. Pollak. Prolate spheroidal wave functions, Fourier
+analysis and uncertainty: Part II. Bell Syst. Tech. J., 40:65–84, 1961.
+[341] H. J. Landau and H. O. Pollak. Prolate spheroidal wave functions, Fourier
+analysis and uncertainty: Part III. Bell Syst. Tech. J., 41:1295–1336, 1962.
+[342] G. G. Langdon. An introduction to arithmetic coding. IBM J. Res. Dev.,
+28:135–149, 1984.
+[343] G. G. Langdon and J. J. Rissanen. A simple general binary source code.
+IEEE Trans. Inf. Theory, IT-28:800, 1982.
+[344] A. Lapidoth and P. Narayan. Reliable communication under channel uncer-
+tainty. IEEE Trans. Inf. Theory, pages 2148–2177, Oct. 1998.
+[345] A. Lapidoth and J. Ziv. On the universality of the LZ-based decoding algo-
+rithm. IEEE Trans. Inf. Theory, pages 1746–1755, Sept. 1998.
+[346] H. A. Latan´e. Criteria for choice among risky ventures. J. Polit. Econ.,
+38:145–155, Apr. 1959.
+[347] H. A. Latan´e and D.L. Tuttle. Criteria for portfolio building. J. Finance,
+22:359–373, Sept. 1967.
+[348] E. A. Lee and D. G. Messerschmitt.
+Digital Communication,
+2nd ed.
+Kluwer, Boston, 1994.
+[349] J. Leech and N. J. A. Sloane. Sphere packing and error-correcting codes.
+Can. J. Math, pages 718–745, 1971.
+[350] E. L. Lehmann and H. Scheff´e. Completeness, similar regions and unbiased
+estimation. Sankhya, 10:305–340, 1950.
+[351] A. Lempel and J. Ziv. On the complexity of ﬁnite sequences. IEEE Trans.
+Inf. Theory, pages 75–81, Jan. 1976.
+[352] L. A. Levin.
+On the notion of a random sequence.
+Sov. Math. Dokl.,
+14:1413–1416, 1973.
+[353] L. A. Levin and A. K. Zvonkin. The complexity of ﬁnite objects and the
+development of the concepts of information and randomness by means of
+the theory of algorithms. Russ. Math. Surv., 25/6:83–124, 1970.
+
+--- Page 34 ---
+708
+BIBLIOGRAPHY
+[354] M. Li and P. Vitanyi. An Introduction to Kolmogorov Complexity and Its
+Applications, 2nd ed. Springer-Verlag, New York, 1997.
+[355] H. Liao. Multiple access channels. Ph.D. thesis, Department of Electrical
+Engineering, University of Hawaii, Honolulu, 1972.
+[356] S. Lin and D. J. Costello, Jr.
+Error Control Coding: Fundamentals and
+Applications. Prentice-Hall, Englewood Cliffs, NJ, 1983.
+[357] D. Lind and B. Marcus.
+Symbolic Dynamics and Coding.
+Cambridge
+University Press, Cambridge, 1995.
+[358] Y. Linde, A. Buzo, and R. M. Gray.
+An algorithm for vector quantizer
+design. IEEE Trans. Commun., COM-28:84–95, 1980.
+[359] T. Linder, G. Lugosi, and K. Zeger. Rates of convergence in the source
+coding theorem in empirical quantizer design.
+IEEE Trans. Inf. Theory,
+pages 1728–1740, Nov. 1994.
+[360] T. Linder, G. Lugosi, and K. Zeger. Fixed-rate universal lossy source coding
+and rates of convergence for memoryless sources. IEEE Trans. Inf. Theory,
+pages 665–676, May 1995.
+[361] D. Lindley. Boltzmann’s Atom: The Great Debate That Launched A Revolu-
+tion in Physics. Free Press, New York, 2001.
+[362] A. Liversidge. Proﬁle of Claude Shannon. In N. J. A. Sloane and A. D.
+Wyner (Eds.), Claude Elwood Shannon Collected Papers. IEEE Press, Pis-
+cataway, NJ, 1993 (Omni magazine, Aug. 1987.)
+[363] S. P. Lloyd. Least Squares Quantization in PCM (Technical Report). Bell
+Lab. Tech. Note, 1957.
+[364] G. Louchard and Wojciech Szpankowski.
+On the average redundancy
+rate of the Lempel–Ziv code. IEEE Trans. Inf. Theory, pages 2–8, Jan.
+1997.
+[365] L. Lovasz. On the Shannon capacity of a graph. IEEE Trans. Inf. Theory,
+IT-25:1–7, 1979.
+[366] R. W. Lucky. Silicon Dreams: Information, Man and Machine. St. Martin’s
+Press, New York, 1989.
+[367] D. J. C. Mackay. Information Theory, Inference, and Learning Algorithms.
+Cambridge University Press, Cambridge, 2003.
+[368] D. J. C. MacKay and R. M. Neal.
+Near Shannon limit performance of
+low-density parity-check codes.
+Electron. Lett., pages 1645–1646, Mar.
+1997.
+[369] F. J. MacWilliams and N. J. A. Sloane.
+The Theory of Error-Correcting
+Codes. North-Holland, Amsterdam, 1977.
+[370] B. Marcus.
+Soﬁc systems and encoding data.
+IEEE Trans. Inf. Theory,
+IT-31(3):366–377, May 1985.
+[371] R. J. Marks. Introduction to Shannon Sampling and Interpolation Theory.
+Springer-Verlag New York, 1991.
+
+--- Page 35 ---
+BIBLIOGRAPHY
+709
+[372] A. Marshall and I. Olkin. Inequalities: Theory of Majorization and Its Appli-
+cations. Academic Press, New York, 1979.
+[373] A. Marshall and I. Olkin. A convexity proof of Hadamard’s inequality. Am.
+Math. Monthly, 89(9):687–688, 1982.
+[374] P. Martin-L¨of. The deﬁnition of random sequences. Inf. Control, 9:602–619,
+1966.
+[375] K. Marton. Information and information stability of ergodic sources. Probl.
+Inf. Transm. (VSSR), pages 179–183, 1972.
+[376] K. Marton. Error exponent for source coding with a ﬁdelity criterion. IEEE
+Trans. Inf. Theory, IT-20:197–199, 1974.
+[377] K. Marton. A coding theorem for the discrete memoryless broadcast channel.
+IEEE Trans. Inf. Theory, IT-25:306–311, 1979.
+[378] J. L. Massey and P. Mathys. The collision channel without feedback. IEEE
+Trans. Inf. Theory, pages 192–204, Mar. 1985.
+[379] R. A. McDonald. Information rates of Gaussian signals under criteria con-
+straining the error spectrum. D. Eng. dissertation, Yale University School
+of Electrical Engineering, New Haven, CT, 1961.
+[380] R. A. McDonald and P. M. Schultheiss.
+Information rates of Gaussian
+signals under criteria constraining the error spectrum. Proc. IEEE, pages
+415–416, 1964.
+[381] R. A. McDonald and P. M. Schultheiss. Information rates of Gaussian signals
+under criteria constraining the error spectrum.
+Proc. IEEE, 52:415–416,
+1964.
+[382] R. J. McEliece, D. J. C. MacKay, and J. F. Cheng. Turbo decoding as an
+instance of Pearl’s belief propagation algorithm. IEEE J. Sel. Areas Com-
+mun., pages 140–152, Feb. 1998.
+[383] R. J. McEliece. The Theory of Information and Coding. Addison-Wesley,
+Reading, MA, 1977.
+[384] B. McMillan. The basic theorems of information theory. Ann. Math. Stat.,
+24:196–219, 1953.
+[385] B. McMillan. Two inequalities implied by unique decipherability. IEEE
+Trans. Inf. Theory, IT-2:115–116, 1956.
+[386] N. Merhav and M. Feder. Universal schemes for sequential decision from
+individual data sequences. IEEE Trans. Inf. Theory, pages 1280–1292, July
+1993.
+[387] N. Merhav and M. Feder. A strong version of the redundancy-capacity theo-
+rem of universal coding. IEEE Trans. Inf. Theory, pages 714–722, May 1995.
+[388] N. Merhav and M. Feder. Universal prediction. IEEE Trans. Inf. Theory,
+pages 2124–2147, Oct. 1998.
+[389] R. C. Merton and P. A. Samuelson. Fallacy of the log-normal approximation
+to optimal portfolio decision-making over many periods. J. Finan. Econ.,
+1:67–94, 1974.
+
+--- Page 36 ---
+710
+BIBLIOGRAPHY
+[390] H. Minkowski.
+Diskontinuit¨atsbereich f¨ur arithmetische ¨Aquivalenz.
+J.
+Math., 129:220–274, 1950.
+[391] L. Mirsky. On a generalization of Hadamard’s determinantal inequality due
+to Szasz. Arch. Math., VIII:274–275, 1957.
+[392] S. C. Moy. Generalizations of the Shannon–McMillan theorem. Paciﬁc J.
+Math., pages 705–714, 1961.
+[393] J. von Neumann and O. Morgenstern.
+Theory of Games and Economic
+Behaviour. Princeton University Press, Princeton, NJ, 1980.
+[394] J. Neyman and E. S. Pearson. On the problem of the most efﬁcient tests
+of statistical hypotheses. Philos. Trans. Roy. Soc. London A, 231:289–337,
+1933.
+[395] M. Nielsen and I. Chuang. Quantum Computation and Quantum Informa-
+tion. Cambridge University Press, Cambridge, 2000.
+[396] H. Nyquist. Certain factors affecting telegraph speed. Bell Syst. Tech. J.,
+3:324, 1924.
+[397] H. Nyquist. Certain topics in telegraph transmission theory. AIEE Trans.,
+pages 617–644, Apr. 1928.
+[398] J. Omura. A coding theorem for discrete time sources. IEEE Trans. Inf.
+Theory, IT-19:490–498, 1973.
+[399] A. Oppenheim.
+Inequalities connected with deﬁnite Hermitian forms.
+J.
+London Math. Soc., 5:114–119, 1930.
+[400] E. Ordentlich.
+On the factor-of-two bound for Gaussian multiple-access
+channels with feedback. IEEE Trans. Inf. Theory, pages 2231–2235, Nov.
+1996.
+[401] E. Ordentlich and T. Cover.
+The cost of achieving the best portfolio in
+hindsight. Math. Operations Res., 23(4): 960–982, Nov. 1998.
+[402] S. Orey.
+On the Shannon–Perez–Moy theorem.
+Contemp. Math.,
+41:319–327, 1985.
+[403] A. Orlitsky.
+Worst-case interactive communication. I: Two messages are
+almost optimal. IEEE Trans. Inf. Theory, pages 1111–1126, Sept. 1990.
+[404] A. Orlitsky. Worst-case interactive communication. II: Two messages are
+not optimal. IEEE Trans. Inf. Theory, pages 995–1005, July 1991.
+[405] A. Orlitsky. Average-case interactive communication. IEEE Trans. Inf. The-
+ory, pages 1534–1547, Sept. 1992.
+[406] A. Orlitsky and A. El Gamal. Average and randomized communication com-
+plexity. IEEE Trans. Inf. Theory, pages 3–16, Jan. 1990.
+[407] D. S. Ornstein. Bernoulli shifts with the same entropy are isomorphic. Adv.
+Math., pages 337–352, 1970.
+[408] D. S. Ornstein and B. Weiss. Entropy and data compression schemes. IEEE
+Trans. Inf. Theory, pages 78–83, Jan. 1993.
+[409] D. S. Ornstein. Bernoulli shifts with the same entropy are isomorphic. Adv.
+Math., 4:337–352, 1970.
+
+--- Page 37 ---
+BIBLIOGRAPHY
+711
+[410] L. H. Ozarow. The capacity of the white Gaussian multiple access channel
+with feedback. IEEE Trans. Inf. Theory, IT-30:623–629, 1984.
+[411] L. H. Ozarow and C. S. K. Leung. An achievable region and an outer bound
+for the Gaussian broadcast channel with feedback. IEEE Trans. Inf. Theory,
+IT-30:667–671, 1984.
+[412] H. Pagels. The Dreams of Reason: the Computer and the Rise of the Sciences
+of Complexity. Simon and Schuster, New York, 1988.
+[413] C. Papadimitriou.
+Information theory and computational complexity: The
+expanding interface.
+IEEE Inf. Theory Newslett. (Special Golden Jubilee
+Issue), pages 12–13, June 1998.
+[414] R. Pasco. Source coding algorithms for fast data compression. Ph.D. thesis,
+Stanford University, Stanford, CA, 1976.
+[415] A. J. Paulraj and C. B. Papadias. Space-time processing for wireless com-
+munications. IEEE Signal Processing Mag., pages 49–83, Nov. 1997.
+[416] W. B. Pennebaker and J. L. Mitchell. JPEG Still Image Data Compression
+Standard. Van Nostrand Reinhold, New York, 1988.
+[417] A. Perez. Extensions of Shannon–McMillan’s limit theorem to more general
+stochastic processes. In Trans. Third Prague Conference on Information The-
+ory, Statistical Decision Functions and Random Processes, pages 545–574,
+Czechoslovak Academy of Sciences, Prague, 1964.
+[418] J. R. Pierce. The early days of information theory. IEEE Trans. Inf. Theory,
+pages 3–8, Jan. 1973.
+[419] J. R. Pierce. An Introduction to Information Theory: Symbols, Signals and
+Noise, 2nd ed. Dover Publications, New York, 1980.
+[420] J. T. Pinkston. An application of rate-distortion theory to a converse to the
+coding theorem. IEEE Trans. Inf. Theory, IT-15:66–71, 1969.
+[421] M. S. Pinsker. Talk at Soviet Information Theory meeting, 1969. No abstract
+published.
+[422] M. S. Pinsker. Information and Information Stability of Random Variables
+and Processes. Holden-Day, San Francisco, CA, 1964. (Originally published
+in Russian in 1960.)
+[423] M. S. Pinsker. The capacity region of noiseless broadcast channels. Probl.
+Inf. Transm. (USSR), 14(2):97–102, 1978.
+[424] M. S. Pinsker and R. L. Dobrushin. Memory increases capacity. Probl. Inf.
+Transm. (USSR), pages 94–95, Jan. 1969.
+[425] M. S. Pinsker. Information and Stability of Random Variables and Processes.
+Izd. Akad. Nauk, 1960. Translated by A. Feinstein, 1964.
+[426] E. Plotnik, M. Weinberger, and J. Ziv.
+Upper bounds on the probability
+of sequences emitted by ﬁnite-state sources and on the redundancy of the
+Lempel–Ziv algorithm. IEEE Trans. Inf. Theory, IT-38(1):66–72, Jan. 1992.
+[427] D. Pollard.
+Convergence of Stochastic Processes.
+Springer-Verlag, New
+York, 1984.
+
+--- Page 38 ---
+712
+BIBLIOGRAPHY
+[428] G. S. Poltyrev.
+Carrying capacity for parallel broadcast channels with
+degraded components. Probl. Peredachi Inf., pages 23–35, Apr.–June 1977.
+[429] S. Pombra and T. M. Cover. Nonwhite Gaussian multiple access channels
+with feedback. IEEE Trans. Inf. Theory, pages 885–892, May 1994.
+[430] H. V. Poor. An Introduction to Signal Detection and Estimation, 2nd ed.
+Springer-Verlag, New York, 1994.
+[431] F. Pratt. Secret and Urgent. Blue Ribbon Books, Garden City, NY, 1939.
+[432] L. R. Rabiner. A tutorial on hidden Markov models and selected applications
+in speech recognition. Proc. IEEE, pages 257–286, Feb. 1989.
+[433] L. R. Rabiner and R. W. Schafer. Digital Processing of Speech Signals.
+Prentice-Hall, Englewood Cliffs, NJ, 1978.
+[434] R. Ahlswede and Z. Zhang. New directions in the theory of identiﬁcation
+via channels. IEEE Trans. Inf. Theory, 41:1040–1050, 1995.
+[435] C. R. Rao. Information and accuracy obtainable in the estimation of statistical
+parameters. Bull. Calcutta Math. Soc., 37:81–91, 1945.
+[436] I. S. Reed. 1982 Claude Shannon lecture: Application of transforms to coding
+and related topics. IEEE Inf. Theory Newslett., pages 4–7, Dec. 1982.
+[437] F. M. Reza. An Introduction to Information Theory. McGraw-Hill, New
+York, 1961.
+[438] S. O. Rice. Mathematical analysis of random noise. Bell Syst. Tech. J., pages
+282–332, Jan. 1945.
+[439] S. O. Rice. Communication in the presence of noise: probability of error for
+two encoding schemes. Bell Syst. Tech. J., 29:60–93, 1950.
+[440] B. E. Rimoldi and R. Urbanke. A rate-splitting approach to the Gaussian
+multiple-access channel.
+IEEE Trans. Inf. Theory, pages 364–375, Mar.
+1996.
+[441] J. Rissanen. Generalized Kraft inequality and arithmetic coding. IBM J. Res.
+Dev., 20:198, 1976.
+[442] J. Rissanen.
+Modelling by shortest data description.
+Automatica,
+14:465–471, 1978.
+[443] J. Rissanen.
+A universal prior for integers and estimation by minimum
+description length. Ann. Stat., 11:416–431, 1983.
+[444] J. Rissanen. Universal coding, information, prediction and estimation. IEEE
+Trans. Inf. Theory, IT-30:629–636, 1984.
+[445] J. Rissanen. Stochastic complexity and modelling. Ann. Stat., 14:1080–1100,
+1986.
+[446] J. Rissanen. Stochastic complexity (with discussions). J. Roy. Stat. Soc.,
+49:223–239, 252–265, 1987.
+[447] J. Rissanen. Stochastic complexity in Statistical Inquiry. World Scientiﬁc,
+Singapore, 1989.
+[448] J. J. Rissanen. Complexity of strings in the class of Markov sources. IEEE
+Trans. Inf. Theory, pages 526–532, July 1986.
+
+--- Page 39 ---
+BIBLIOGRAPHY
+713
+[449] J. J. Rissanen and G. G. Langdon, Jr. Universal modeling and coding. IEEE
+Trans. Inf. Theory, pages 12–23, Jan. 1981.
+[450] B. Y. Ryabko. Encoding a source with unknown but ordered probabilities.
+Probl. Inf. Transm., pages 134–139, Oct. 1979.
+[451] B. Y. Ryabko. A fast on-line adaptive code. IEEE Trans. Inf. Theory, pages
+1400–1404, July 1992.
+[452] P. A. Samuelson. Lifetime portfolio selection by dynamic stochastic pro-
+gramming. Rev. Econ. Stat., pages 236–239, 1969.
+[453] P. A. Samuelson. The “fallacy” of maximizing the geometric mean in long
+sequences of investing or gambling. Proc. Natl. Acad. Sci. USA, 68:214–224,
+Oct. 1971.
+[454] P. A. Samuelson. Why we should not make mean log of wealth big though
+years to act are long. J. Banking and Finance, 3:305–307, 1979.
+[455] I. N. Sanov. On the probability of large deviations of random variables.
+Mat. Sbornik, 42:11–44, 1957. English translation in Sel. Transl. Math. Stat.
+Prob., Vol. 1, pp. 213-244, 1961.
+[456] A. A. Sardinas and G.W. Patterson. A necessary and sufﬁcient condition for
+the unique decomposition of coded messages. IRE Conv. Rec., Pt. 8, pages
+104–108, 1953.
+[457] H. Sato. On the capacity region of a discrete two-user channel for strong
+interference. IEEE Trans. Inf. Theory, IT-24:377–379, 1978.
+[458] H. Sato. The capacity of the Gaussian interference channel under strong
+interference. IEEE Trans. Inf. Theory, IT-27:786–788, 1981.
+[459] H. Sato and M. Tanabe. A discrete two-user channel with strong interference.
+Trans. IECE Jap., 61:880–884, 1978.
+[460] S. A. Savari. Redundancy of the Lempel–Ziv incremental parsing rule. IEEE
+Trans. Inf. Theory, pages 9–21, January 1997.
+[461] S. A. Savari and R. G. Gallager. Generalized Tunstall codes for sources
+with memory. IEEE Trans. Inf. Theory, pages 658–668, Mar. 1997.
+[462] K. Sayood.
+Introduction to Data Compression.
+Morgan Kaufmann, San
+Francisco, CA, 1996.
+[463] J. P. M. Schalkwijk.
+A coding scheme for additive noise channels with
+feedback. II: Bandlimited signals. IEEE Trans. Inf. Theory, pages 183–189,
+Apr. 1966.
+[464] J. P. M. Schalkwijk.
+The binary multiplying channel: a coding scheme
+that operates beyond Shannon’s inner bound. IEEE Trans. Inf. Theory, IT-
+28:107–110, 1982.
+[465] J. P. M. Schalkwijk.
+On an extension of an achievable rate region for
+the binary multiplying channel. IEEE Trans. Inf. Theory, IT-29:445–448,
+1983.
+[466] C. P. Schnorr. A uniﬁed approach to the deﬁnition of random sequences.
+Math. Syst. Theory, 5:246–258, 1971.
+
+--- Page 40 ---
+714
+BIBLIOGRAPHY
+[467] C. P. Schnorr. Process, complexity and effective random tests. J. Comput.
+Syst. Sci., 7:376–388, 1973.
+[468] C. P. Schnorr. A surview on the theory of random sequences. In R. Butts and
+J. Hinitikka (Eds.), Logic, Methodology and Philosophy of Science. Reidel,
+Dordrecht, The Netherlands, 1977.
+[469] G. Schwarz. Estimating the dimension of a model. Ann. Stat., 6:461–464,
+1978.
+[470] S. Shamai and S. Verdu. The empirical distribution of good codes. IEEE
+Trans. Inf. Theory, pages 836–846, May 1997.
+[471] C. E. Shannon. A Mathematical Theory of Cryptography (Tech. Rept. MM
+45-110-02). Bell Lab. Tech. Memo., Sept. 1, 1945.
+[472] C. E. Shannon. A mathematical theory of communication. Bell Syst. Tech.
+J., 27:379–423,623–656, 1948.
+[473] C. E. Shannon. Some geometrical results in channel capacity. Verh. Dtsch.
+Elektrotechnik. Fachber., pages 13–15, 1956.
+[474] C. E. Shannon. The zero-error capacity of a noisy channel. IRE Trans. Inf.
+Theory, IT-2:8–19, 1956.
+[475] C. E. Shannon. Channels with side information at the transmitter. IBM J.
+Res. Dev., pages 289–293, 1958.
+[476] C. E. Shannon. Probability of error for optimal codes in a Gaussian channel.
+Bell Syst. Tech. J., pages 611–656, May 1959.
+[477] C. E. Shannon.
+Two-way communication channels.
+Proc. 4th. Berkeley
+Symp. Mathematical Statistics and Probability (June 20–July 30, 1960),
+pages 611–644, 1961.
+[478] C. E. Shannon. The wonderful world of feedback. IEEE Int. Symp. Infor.
+Theory, ser. First Shannon Lecture, Ashkelon, Israel, 1973.
+[479] C. E. Shannon. The mind reading machine. In Shannon’s Collected Papers,
+pages 688–689, 1993.
+[480] C. E. Shannon.
+Communication in the presence of noise.
+Proc. IRE,
+37:10–21, January 1949.
+[481] C. E. Shannon. Communication theory of secrecy systems. Bell Syst. Tech.
+J., 28:656–715, 1949.
+[482] C. E. Shannon. Prediction and entropy of printed English. Bell Syst. Tech.
+J., 30:50–64, January 1951.
+[483] C. E. Shannon. Certain results in coding theory for noisy channels. Infor.
+Control, 1:6–25, 1957.
+[484] C. E. Shannon. Channels with side information at the transmitter. IBM J.
+Res. Dev., 2:289–293, 1958.
+[485] C. E. Shannon. Coding theorems for a discrete source with a ﬁdelity crite-
+rion. IRE Nat. Conv. Rec., Pt. 4, pages 142–163, 1959.
+
+--- Page 41 ---
+BIBLIOGRAPHY
+715
+[486] C. E. Shannon. Two-way communication channels. In Proc. 4th Berkeley
+Symp. Math. Stat. Prob., Vol. 1, pages 611–644. University of California
+Press, Berkeley, CA, 1961.
+[487] C. E. Shannon, R. G. Gallager, and E. R. Berlekamp.
+Lower bounds to
+error probability for coding in discrete memoryless channels. I. Inf. Control,
+10:65–103, 1967.
+[488] C. E. Shannon, R. G. Gallager, and E. R. Berlekamp. Lower bounds to error
+probability for coding in discrete memoryless channels. II.
+Inf. Control,
+10:522–552, 1967.
+[489] C. E. Shannon and W. W. Weaver. The Mathematical Theory of Communi-
+cation. University of Illinois Press, Urbana, IL, 1949.
+[490] C. E. Shannon. General treatment of the problem of coding. IEEE Trans.
+Inf. Theory, pages 102–104, February 1953.
+[491] W. F. Sharpe. Investments, 3rd ed. Prentice-Hall, Englewood Cliffs, NJ,
+1985.
+[492] P. C. Shields. Universal redundancy rates do not exist. IEEE Trans. Inf.
+Theory, pages 520–524, Mar. 1993.
+[493] P. C. Shields.
+The interactions between ergodic theory and information
+theory. IEEE Trans. Inf. Theory, pages 2079–2093, Oct. 1998.
+[494] P. C. Shields and B. Weiss. Universal redundancy rates for the class of
+B-processes do not exist. IEEE Trans. Inf. Theory, pages 508–512, Mar.
+1995.
+[495] J. E. Shore and R. W. Johnson. Axiomatic derivation of the principle of
+maximum entropy and the principle of minimum cross-entropy. IEEE Trans.
+Inf. Theory, IT-26:26–37, 1980.
+[496] Y. M. Shtarkov. Universal sequential coding of single messages. Probl. Inf.
+Transm. (USSR), 23(3):3–17, July–Sept. 1987.
+[497] A. Shwartz and A. Weiss.
+Large Deviations for Performance Analysis,
+Queues, Communication and Computing. Chapman & Hall, London, 1995.
+[498] D. Slepian. Key Papers in the Development of Information Theory. IEEE
+Press, New York, 1974.
+[499] D. Slepian. On bandwidth. Proc. IEEE, pages 292–300, Mar. 1976.
+[500] D. Slepian and H. O. Pollak.
+Prolate spheroidal wave functions, Fourier
+analysis and uncertainty: Part I. Bell Syst. Tech. J., 40:43–64, 1961.
+[501] D. Slepian and J. K. Wolf. A coding theorem for multiple access channels
+with correlated sources. Bell Syst. Tech. J., 52:1037–1076, 1973.
+[502] D. Slepian and J. K. Wolf.
+Noiseless coding of correlated information
+sources. IEEE Trans. Inf. Theory, IT-19:471–480, 1973.
+[503] D. S. Slepian. Information theory in the ﬁfties. IEEE Trans. Inf. Theory,
+pages 145–148, Mar. 1973.
+
+--- Page 42 ---
+716
+BIBLIOGRAPHY
+[504] R. J. Solomonoff.
+A formal theory of inductive inference.
+Inf. Control,
+7:1–22,224–254, 1964.
+[505] A. Stam.
+Some inequalities satisﬁed by the quantities of information of
+Fisher and Shannon. Inf. Control, 2:101–112, June 1959.
+[506] A. Steane. Quantum computing. Rept. Progr. Phys., pages 117–173, Feb.
+1998.
+[507] J. A. Storer and T. G. Szymanski. Data compression via textual substitution.
+J. ACM, 29(4):928–951, 1982.
+[508] W. Szpankowski.
+Asymptotic properties of data compression and sufﬁx
+trees. IEEE Trans. Inf. Theory, pages 1647–1659, Sept. 1993.
+[509] W. Szpankowski. Average Case Analysis of Algorithms on Sequences. Wiley-
+Interscience, New York, 2001.
+[510] D. L. Tang and L. R. Bahl. Block codes for a class of constrained noiseless
+channels. Inf. Control, 17:436–461, 1970.
+[511] I. E. Teletar and R. G. Gallager. Combining queueing theory with informa-
+tion theory for multiaccess. IEEE J. Sel. Areas Commun., pages 963–969,
+Aug. 1995.
+[512] E. Teletar. Capacity of multiple antenna Gaussian channels. Eur. Trans.
+Telecommun., 10(6):585–595, 1999.
+[513] J. A. Thomas. Feedback can at most double Gaussian multiple access chan-
+nel capacity. IEEE Trans. Inf. Theory, pages 711–716, Sept. 1987.
+[514] T. J. Tjalkens and F. M. J. Willems. A universal variable-to-ﬁxed length
+source code based on Lawrence’s algorithm. IEEE Trans. Inf. Theory, pages
+247–253, Mar. 1992.
+[515] T. J. Tjalkens and F. M. J. Willems.
+Variable- to ﬁxed-length codes for
+Markov sources. IEEE Trans. Inf. Theory, pages 246–257, Mar. 1987.
+[516] S. C. Tornay. Ockham: Studies and Selections (chapter “Commentarium in
+Sententias,” I, 27). Open Court Publishers, La Salle, IL, 1938.
+[517] H. L. Van Trees.
+Detection, Estimation, and Modulation Theory,
+Part I.
+Wiley, New York, 1968.
+[518] B. S. Tsybakov. Capacity of a discrete-time Gaussian channel with a ﬁlter.
+Probl. Inf. Transm., pages 253–256, July–Sept. 1970.
+[519] B. P. Tunstall. Synthesis of noiseless compression codes. Ph.D. dissertation,
+Georgia Institute of Technology, Atlanta, GA, Sept. 1967.
+[520] G. Ungerboeck. Channel coding with multilevel/phase signals. IEEE Trans.
+Inf. Theory, pages 55–67, January 1982.
+[521] G. Ungerboeck. Trellis-coded modulation with redundant signal sets part I:
+Introduction. IEEE Commun. Mag., pages 5–11, Feb. 1987.
+[522] G. Ungerboeck. Trellis-coded modulation with redundant signal sets part II:
+State of the art. IEEE Commun. Mag., pages 12–21, Feb. 1987.
+[523] I. Vajda. Theory of Statistical Inference and Information. Kluwer, Dordrecht,
+The Netherlands, 1989.
+
+--- Page 43 ---
+BIBLIOGRAPHY
+717
+[524] L. G. Valiant. A theory of the learnable. Commun. ACM, pages 1134–1142,
+1984.
+[525] J. M. Van Campenhout and T. M. Cover. Maximum entropy and conditional
+probability. IEEE Trans. Inf. Theory, IT-27:483–489, 1981.
+[526] E. Van der Meulen. Random coding theorems for the general discrete mem-
+oryless broadcast channel. IEEE Trans. Inf. Theory, IT-21:180–190, 1975.
+[527] E. C. van der Meulen. Some reﬂections on the interference channel. In R.
+E. Blahut, D. J. Costello, U. Maurer, and T. Mittelholzer, (Eds.), Commu-
+nications and Cryptography: Two Sides of One Tapestry. Kluwer, Boston,
+1994.
+[528] E. C. Van der Meulen. A survey of multi-way channels in information the-
+ory. IEEE Trans. Inf. Theory, IT-23:1–37, 1977.
+[529] E. C. Van der Meulen.
+Recent coding theorems for multi-way channels.
+Part I: The broadcast channel (1976-1980). In J. K. Skwyrzinsky (Ed.), New
+Concepts in Multi-user Communication (NATO Advanced Study Institute
+Series), pages 15–51. Sijthoff & Noordhoff, Amsterdam, 1981.
+[530] E. C. Van der Meulen. Recent coding theorems and converses for multi-
+way channels. Part II: The multiple access channel (1976–1985) (Technical
+Report). Department Wiskunde, Katholieke Universiteit Leuven, 1985.
+[531] V. N. Vapnik.
+Estimation of Dependencies Based on Empirical Data.
+Springer-Verlag, New York, 1982.
+[532] V. N. Vapnik. The Nature of Statistical Learning Theory. Springer-Verlag,
+New York, 1991.
+[533] V. N. Vapnik and A. Y. Chervonenkis. On the uniform convergence of rel-
+ative frequencies to their probabilities. Theory Prob. Appl., pages 264–280,
+1971.
+[534] V. N. Vapnik and A. Y. Chervonenkis. Necessary and sufﬁcient conditions
+for the uniform convergence of means to their expectations. Theory Prob.
+Appl., pages 532–553, 1981.
+[535] S. Verdu.
+The capacity region of the symbol-asynchronous Gaussian
+multiple-access channel. IEEE Trans. Inf. Theory, pages 733–751, July 1989.
+[536] S. Verdu. Recent Progress in Multiuser Detection (Advances in Commu-
+nication and Signal Processing), Springer-Verlag, Berlin, 1989. [Reprinted
+in N. Abramson (Ed.), Multiple Access Communications, IEEE Press, New
+York, 1993.]
+[537] S. Verdu. The exponential distribution in information theory. Probl. Inf.
+Transm. (USSR), pages 86–95, Jan.–Mar. 1996.
+[538] S. Verdu. Fifty years of Shannon theory. IEEE Trans. Inf. Theory, pages
+2057–2078, Oct. 1998.
+[539] S. Verdu.
+Multiuser Detection.
+Cambridge University Press, New York,
+1998.
+[540] S. Verdu and T. S. Han. A general formula for channel capacity. IEEE
+Trans. Inf. Theory, pages 1147–1157, July 1994.
+
+--- Page 44 ---
+718
+BIBLIOGRAPHY
+[541] S. Verdu and T. S. Han. The role of the asymptotic equipartition property
+in noiseless source coding. IEEE Trans. Inf. Theory, pages 847–857, May
+1997.
+[542] S. Verdu and S. W. McLaughlin (Eds.). Information Theory: 50 Years of
+Discovery. Wiley–IEEE Press, New York, 1999.
+[543] S. Verdu and V. K. W. Wei. Explicit construction of optimal constant-weight
+codes for identiﬁcation via channels. IEEE Trans. Inf. Theory, pages 30–36,
+Jan. 1993.
+[544] A. C. G. Verdugo Lazo and P. N. Rathie.
+On the entropy of contin-
+uous probability distributions.
+IEEE Trans. Inf. Theory, IT-24:120–122,
+1978.
+[545] M. Vidyasagar. A Theory of Learning and Generalization. Springer-Verlag,
+New York, 1997.
+[546] K. Visweswariah, S. R. Kulkarni, and S. Verdu. Source codes as random
+number generators. IEEE Trans. Inf. Theory, pages 462–471, Mar. 1998.
+[547] A. J. Viterbi and J. K. Omura. Principles of Digital Communication and
+Coding. McGraw-Hill, New York, 1979.
+[548] J. S. Vitter. Dynamic Huffman coding. ACM Trans. Math. Software, pages
+158–167, June 1989.
+[549] V. V. V’yugin.
+On the defect of randomness of a ﬁnite object with
+respect to measures with given complexity bounds.
+Theory Prob. Appl.,
+32(3):508–512, 1987.
+[550] A. Wald. Sequential Analysis. Wiley, New York, 1947.
+[551] A. Wald. Note on the consistency of the maximum likelihood estimate. Ann.
+Math. Stat., pages 595–601, 1949.
+[552] M. J. Weinberger, N. Merhav, and M. Feder. Optimal sequential probabil-
+ity assignment for individual sequences.
+IEEE Trans. Inf. Theory, pages
+384–396, Mar. 1994.
+[553] N. Weiner. Cybernetics. MIT Press, Cambridge, MA, and Wiley, New York,
+1948.
+[554] T. A. Welch. A technique for high-performance data compression. Computer,
+17(1):8–19, Jan. 1984.
+[555] N. Wiener. Extrapolation, Interpolation and Smoothing of Stationary Time
+Series. MIT Press, Cambridge, MA, and Wiley, New York, 1949.
+[556] H. J. Wilcox and D. L. Myers. An Introduction to Lebesgue Integration and
+Fourier Series. R.E. Krieger, Huntington, NY, 1978.
+[557] F. M. J. Willems. The feedback capacity of a class of discrete memoryless
+multiple access channels. IEEE Trans. Inf. Theory, IT-28:93–95, 1982.
+[558] F. M. J. Willems and A. P. Hekstra. Dependence balance bounds for single-
+output two-way channels. IEEE Trans. Inf. Theory, IT-35:44–53, 1989.
+[559] F. M. J. Willems. Universal data compression and repetition times. IEEE
+Trans. Inf. Theory, pages 54–58, Jan. 1989.
+
+--- Page 45 ---
+BIBLIOGRAPHY
+719
+[560] F. M. J. Willems, Y. M. Shtarkov, and T. J. Tjalkens.
+The context-tree
+weighting method: basic properties. IEEE Trans. Inf. Theory, pages 653–664,
+May 1995.
+[561] F. M. J. Willems, Y. M. Shtarkov, and T. J. Tjalkens. Context weighting for
+general ﬁnite-context sources. IEEE Trans. Inf. Theory, pages 1514–1520,
+Sept. 1996.
+[562] H. S. Witsenhausen. The zero-error side information problem and chromatic
+numbers. IEEE Trans. Inf. Theory, pages 592–593, Sept. 1976.
+[563] H. S. Witsenhausen. Some aspects of convexity useful in information theory.
+IEEE Trans. Inf. Theory, pages 265–271, May 1980.
+[564] I. H. Witten, R. M. Neal, and J. G. Cleary.
+Arithmetic coding for data
+compression. Commun. ACM, 30(6):520–540, June 1987.
+[565] J. Wolfowitz. The coding of messages subject to chance errors. Ill. J. Math.,
+1:591–606, 1957.
+[566] J. Wolfowitz.
+Coding Theorems of Information Theory.
+Springer-Verlag,
+Berlin, and Prentice-Hall, Englewood Cliffs, NJ, 1978.
+[567] P. M. Woodward. Probability and Information Theory with Applications to
+Radar. McGraw-Hill, New York, 1953.
+[568] J. Wozencraft and B. Reiffen. Sequential Decoding. MIT Press, Cambridge,
+MA, 1961.
+[569] J. M. Wozencraft and I. M. Jacobs. Principles of Communication Engineer-
+ing. Wiley, New York, 1965.
+[570] A. Wyner. A theorem on the entropy of certain binary sequences and appli-
+cations II. IEEE Trans. Inf. Theory, IT-19:772–777, 1973.
+[571] A. Wyner. The common information of two dependent random variables.
+IEEE Trans. Inf. Theory, IT-21:163–179, 1975.
+[572] A. Wyner. On source coding with side information at the decoder. IEEE
+Trans. Inf. Theory, IT-21:294–300, 1975.
+[573] A. Wyner and J. Ziv. A theorem on the entropy of certain binary sequences
+and applications I. IEEE Trans. Inf. Theory, IT-19:769–771, 1973.
+[574] A. Wyner and J. Ziv. The rate distortion function for source coding with
+side information at the receiver. IEEE Trans. Inf. Theory, IT-22:1–11, 1976.
+[575] A. Wyner and J. Ziv. On entropy and data compression. IEEE Trans. Inf.
+Theory, 1991.
+[576] A. D. Wyner. Capacity of the the band-limited Gaussian channel. Bell Syst.
+Tech. J., 45:359–395, Mar. 1966.
+[577] A. D. Wyner. Communication of analog data from a Gaussian source over
+a noisy channel. Bell Syst. Tech. J., pages 801–812, May–June 1968.
+[578] A. D. Wyner. Recent results in the Shannon theory. IEEE Trans. Inf. Theory,
+pages 2–10, Jan. 1974.
+[579] A. D. Wyner. The wiretap channel. Bell Syst. Tech. J., pages 1355–1387,
+1975.
+
+--- Page 46 ---
+720
+BIBLIOGRAPHY
+[580] A. D. Wyner. The rate-distortion function for source coding with side infor-
+mation at the decoder. II: General sources. Inf. Control, pages 60–80, 1978.
+[581] A. D. Wyner. Shannon-theoretic approach to a Gaussian cellular multiple-
+access channel. IEEE Trans. Inf. Theory, pages 1713–1727, Nov. 1994.
+[582] A. D. Wyner and A. J. Wyner. Improved redundancy of a version of the
+Lempel–Ziv algorithm. IEEE Trans. Inf. Theory, pages 723–731, May 1995.
+[583] A. D. Wyner and J. Ziv. Bounds on the rate-distortion function for stationary
+sources with memory. IEEE Trans. Inf. Theory, pages 508–513, Sept. 1971.
+[584] A. D. Wyner and J. Ziv. The rate-distortion function for source coding with
+side information at the decoder. IEEE Trans. Inf. Theory, pages 1–10, Jan.
+1976.
+[585] A. D. Wyner and J. Ziv. Some asymptotic properties of the entropy of a
+stationary ergodic data source with applications to data compression. IEEE
+Trans. Inf. Theory, pages 1250–1258, Nov. 1989.
+[586] A. D. Wyner and J. Ziv. Classiﬁcation with ﬁnite memory. IEEE Trans. Inf.
+Theory, pages 337–347, Mar. 1996.
+[587] A. D. Wyner, J. Ziv, and A. J. Wyner. On the role of pattern matching in
+information theory. IEEE Trans. Inf. Theory, pages 2045–2056, Oct. 1998.
+[588] A. J. Wyner.
+The redundancy and distribution of the phrase lengths of
+the ﬁxed-database Lempel–Ziv algorithm. IEEE Trans. Inf. Theory, pages
+1452–1464, Sept. 1997.
+[589] A. D. Wyner. The capacity of the band-limited Gaussian channel. Bell Syst.
+Tech. J., 45:359–371, 1965.
+[590] A. D. Wyner and N. J. A. Sloane (Eds.)
+Claude E. Shannon: Collected
+Papers. Wiley–IEEE Press, New York, 1993.
+[591] A. D. Wyner and J. Ziv.
+The sliding window Lempel–Ziv algorithm is
+asymptotically optimal. Proc. IEEE, 82(6):872–877, 1994.
+[592] E.-H. Yang and J. C. Kieffer.
+On the performance of data compression
+algorithms based upon string matching.
+IEEE Trans. Inf. Theory, pages
+47–65, Jan. 1998.
+[593] R. Yeung. A First Course in Information Theory. Kluwer Academic, Boston,
+2002.
+[594] H. P. Yockey. Information Theory and Molecular Biology. Cambridge Uni-
+versity Press, New York, 1992.
+[595] Z. Zhang, T. Berger, and J. P. M. Schalkwijk. New outer bounds to capacity
+regions of two-way channels. IEEE Trans. Inf. Theory, pages 383–386, May
+1986.
+[596] Z. Zhang, T. Berger, and J. P. M. Schalkwijk. New outer bounds to capac-
+ity regions of two-way channels. IEEE Trans. Inf. Theory, IT-32:383–386,
+1986.
+[597] J. Ziv. Coding of sources with unknown statistics. II: Distortion relative to
+a ﬁdelity criterion. IEEE Trans. Inf. Theory, IT-18:389–394, 1972.
+
+--- Page 47 ---
+BIBLIOGRAPHY
+721
+[598] J. Ziv. Coding of sources with unknown statistics. II: Distortion relative to
+a ﬁdelity criterion. IEEE Trans. Inf. Theory, pages 389–394, May 1972.
+[599] J. Ziv. Coding theorems for individual sequences. IEEE Trans. Inf. Theory,
+pages 405–412, July 1978.
+[600] J. Ziv.
+Distortion-rate theory for individual sequences.
+IEEE Trans. Inf.
+Theory, pages 137–143, March 1980.
+[601] J. Ziv. Universal decoding for ﬁnite-state channels. IEEE Trans. Inf. Theory,
+pages 453–460, July 1985.
+[602] J. Ziv. Variable-to-ﬁxed length codes are better than ﬁxed-to-variable length
+codes for Markov sources. IEEE Trans. Inf. Theory, pages 861–863, July
+1990.
+[603] J. Ziv and A. Lempel. A universal algorithm for sequential data compression.
+IEEE Trans. Inf. Theory, IT-23:337–343, 1977.
+[604] J. Ziv and A. Lempel. Compression of individual sequences by variable rate
+coding. IEEE Trans. Inf. Theory, IT-24:530–536, 1978.
+[605] J. Ziv and N. Merhav. A measure of relative entropy between individual
+sequences with application to universal classiﬁcation. IEEE Trans. Inf. The-
+ory, pages 1270–1279, July 1993.
+[606] W. H. Zurek. Algorithmic randomness and physical entropy. Phys. Rev. A,
+40:4731–4751, Oct. 15 1989.
+[607] W. H. Zurek. Thermodynamic cost of computation, algorithmic complexity
+and the information metric. Nature, 341(6238):119–124, Sept. 1989.
+[608] W. H. Zurek (Ed.)
+Complexity, Entropy and the Physics of Information
+(Proceedings of the 1988 Workshop on the Complexity, Entropy and the
+Physics of Information). Addison-Wesley, Reading, MA, 1990.
+
+--- Page 48 ---
+
+--- Page 49 ---
+LIST OF SYMBOLS
+X, 14
+p(x), 14
+pX(x), 14
+X, 14
+H(X), 14
+H(p), 14
+Hb(X), 14
+Epg(X), 14
+Eg(X), 14
+def
+==, 15
+p(x, y), 17
+H(X, Y), 17
+H(Y|X), 17
+D(p||q), 20
+I (X; Y), 21
+I (X; Y|Z), 24
+D(p(y|x)||q(y|x)), 25
+|X|, 30
+X →Y →Z, 35
+N(µ, σ 2), 37
+T (X), 38
+fθ(x), 38
+Pe, 39
+H(p), 45
+{0, 1}∗, 55
+2−n(H±ǫ), 58
+A(n)
+ǫ , 59
+x, 60
+Xn, 60
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+xn, 61
+B(n)
+δ , 62
+.=, 63
+Zn, 65
+H(X), 71
+Pij, 72
+H ′(X), 75
+C(x), 103
+l(x), 103
+C, 103
+L(C), 104
+D, 104
+C∗, 105
+li, 107
+lmax, 108
+L, 110
+L∗, 111
+HD(X), 111
+⌈x⌉, 113
+F(x), 127
+F(x), 128
+sgn(t), 132
+p(j)
+i , 138
+pi, 159
+oi, 159
+bi, 160
+b(i), 160
+Sn, 160
+S(X), 160
+723
+
+--- Page 50 ---
+724
+LIST OF SYMBOLS
+W(b, p), 160
+b, 160
+p, 160
+W ∗(p), 161
+W, 165
+W ∗(X|Y), 165
+C, 184
+ˆW, 193
+(Xn, p(yn|xn), Yn), 193
+λi, 194
+λ(n), 194
+P (n)
+e
+, 194
+R, 195
+(
+
+2nR
+, n), 195
+C, 200
+E, 202
+Ei, 203
+∪, 203
+C∗, 204
+CFB, 216
+⊕, 224
+F(x), 243
+f (x), 243
+h(X), 243
+S, 243
+h(f ), 243
+φ(x), 244
+Vol(A), 245
+X, 247
+h(X|Y), 249
+Nn(µ, K), 249
+|K|, 249
+D(f ||g), 250
+X, 253
+P , 261
+W, 270
+F(ω), 271
+sinc(t), 271
+N0, 272
+x+, 276
+KX, 278
+KZ, 278
+tr(KX), 278
+B, 282
+KV , 282
+Cn,FB, 283
+{ ˆX(w)}, 303
+ˆX, 304
+R+, 304
+dmax, 304
+D, 306
+ˆXn(w), 306
+R(D), 306
+D(R), 306
+R(I)(D), 307
+A(n)
+d,ǫ, 319
+D, 321
+K(xn, ˆxn), 322
+N(a|xn), 326
+A∗(n)
+ǫ
+, 326
+N(a, b|xn, yn), 326
+φ(D), 337
+Vyn|xn(b|a), 342
+TV (xn), 342
+A∗(n)
+ǫ
+(Y|xn), 343
+x, 347
+X, 347
+Px, 348
+Pxn, 348
+Pn, 348
+T (P ), 348
+Qn(xn), 349
+T ǫ
+Q, 356
+Qn(E), 361
+P ∗, 362
+L1, 369
+||
+||1, 369
+St, 372
+D∗, 372
+α, 375
+β, 376
+a∗, 376
+
+--- Page 51 ---
+LIST OF SYMBOLS
+725
+b∗, 376
+An, 376
+Bn, 376
+φA(), 376
+Pλ, 380
+λ∗, 380
+C(P1, P2), 386
+ψ(s), 392
+T (X1, X2, . . . , Xn), 393
+V , 394
+J(θ), 394
+bT (θ), 396
+Jij(θ), 397
+R(k), 415
+S(λ), 415
+ˆR(k), 415
+K(n), 416
+σ 2
+∞, 417
+Kp, 420
+(u), 422
+pθ, 428
+R(pθ, q), 429
+R∗, 429
+qπ, 430
+A(n, k), 434
+q 1
+2 (xn), 436
+FU(u), 437
+Rn(X0, X1, . . . , Xn−1), 444
+Qu(i), 445
+Ajk, 445
+c(n), 450
+nk, 450
+cls, 452
+{Xi}∞
+−∞, 455
+AD, 460
+U, 466
+U(p), 466
+p, 466
+KU(x), 466
+KU(x|l(x)), 467
+K(x|l(x)), 468
+log∗n, 469
+H0(p), 470
+K(n), 471
+PU(x), 481
+, 484
+n, 484
+Kk(xn|n), 496
+k∗, 497
+p∗, 497
+S∗, 497
+S∗∗, 497
+p∗∗, 497
+C(P/N), 514
+S, 520
+X(S), 520
+A(n)
+ǫ (S), 521
+an
+.= 2n(b±ǫ), 521
+A(n)
+ǫ (S1|s2), 523
+Eij, 531
+Q, 534
+CI, 535
+R(S), 543
+Sc, 543
+β ∗p1, 569
+b, 613
+S, 613
+W(b, F), 615
+W ∗(F), 615
+b∗, 615
+S∗
+n, 615
+W ∗, 615
+B, 617
+W, 622
+W ∗
+∞, 624
+U ∗, 628
+S∗
+n(xn), 630
+ˆSn(xn), 630
+Vn, 631
+j n, 634
+w(j n), 634
+K, 636
+
+--- Page 52 ---
+726
+LIST OF SYMBOLS
+Ŵ(m), 638
+B(λ1, λ2), 642
+(, B, P ), 644
+X(ω), 644
+H k, 645
+H ∞, 645
+ˆpn, 660
+Ŵ(z), 662
+ψ(z), 662
+γ , 662
+X(S), 668
+h(n)
+k , 668
+t(n)
+k , 669
+g(n)
+k , 669
+f (n)
+k
+, 671
+J(X), 671
+gt(y), 672
+V (A), 675
+f ∗g, 676
+Lr, 676
+||f ||r, 676
+Cp, 676
+hr(X), 676
+Vr(X), 677
+Pk, 680
+S(n)
+k , 680
+K(i1, i2, . . . , ik), 680
+Qk, 681
+σ 2
+i , 681
+Kk, 681
+
+--- Page 53 ---
+INDEX
+Abrahams, J., 689
+Abramson, N.M., xxiii, 689
+Abu-Mostafa, Y.S., 689
+acceptance region, 376, 383
+achievable rate, 195, 268, 306, 538, 546,
+550, 598
+achievable rate distortion pair, 306
+achievable rate region, 514, 550
+Acz´el, J., 690
+Adams, K., xxiii
+adaptive dictionary compression algorithms,
+441
+additive channel, 229
+additive noise channel, 280, 287, 296
+additive white Gaussian noise (AWGN),
+289
+Adler, R.L., 158, 689
+AEP, xix, xx, 6, 12, 57, 58, 64, 69, 77,
+101, 168, 219, 220, 222, 223, 347,
+356, 381, 382, 409, 460, 531, 554,
+560, 566, 644, 645, 649, 656, 686, see
+also Shannon-McMillan-Breiman
+theorem
+continuous random variables, 245
+discrete random variables, 58–62
+distortion typical, 319
+growth rate, 650
+joint, 196, 223
+products, 66
+relative entropy, 380
+sandwich proof, 644–649
+stationary ergodic processes, 644–649
+Ahlswede, R., 11, 609, 610, 689, 690, 712
+Akaike, H., 690
+Algoet, P., xxiii, 69, 626, 645, 656, 690
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+algorithm, 442
+alternating minimization, 332
+arithmetic coding, see arithmetic coding
+Blahut-Arimoto, see Blahut-Arimoto
+algorithm
+Durbin, 419
+Frank-Wolfe, 191
+gradient search, 191
+greedy, 127
+Huffman coding, 127, 154, see Huffman
+coding
+iterative, 332
+Lempel-Ziv, see Lempel-Ziv coding
+Levinson, 419
+online, 427
+algorithmic complexity, 1, 3, 463, 464, 466,
+507, 508, see Kolmogorov
+complexity
+algorithmically random, 477, 486, 502,
+507
+almost sure, 58, 69
+alphabet, 13, 347
+discrete, 13
+effective size, 46, 256
+effective support set, 256
+input, 183
+output, 183
+alphabetic codes, 121
+Altria, 643
+Amari, S.I., 55, 690, 703
+Anantharam, V., 690
+antenna, 292, 611
+Arimoto, S., 191, 240, 335, 346, 690, see
+also Blahut-Arimoto algorithm
+arbitrarily varying channel, 689, 690,
+697
+727
+
+--- Page 54 ---
+728
+INDEX
+arithmetic coding, 130, 158, 171, 427, 428,
+435–440, 461
+ﬁnite precision arithmetic, 439
+arithmetic mean geometric mean inequality,
+669
+ASCII, 466
+Ash, R.B., 690
+asymmetric distortion, 337
+asymptotic equipartition property, see AEP
+asymptotic optimality,
+log-optimal portfolio, 619
+ATM networks, 218
+atmosphere, 412
+atom, 137–140, 257, 404
+autocorrelation, 415, 420
+autoregressive process, 416
+auxiliary random variable, 565, 569
+average codeword length, 124, 129, 148
+average description length, 103
+average distortion, 318, 324, 325, 329, 344
+average power, 261, 295, 296, 547
+average probability of error, 199, 201, 202,
+204, 207, 231, 297, 532, 554
+AWGN (Additive white Gaussian noise),
+289
+axiomatic deﬁnition of entropy, 14, 54
+Baer, M., xxi
+Bahl, L.R., xxiii, 690, 716
+bandlimited, 272
+bandpass ﬁlter, 270
+bandwidth, 272–274, 289, 515, 547, 606
+Barron, A.R., xxi, xxiii, 69, 420, 508, 656,
+674, 691, 694
+base of logarithm, 14
+baseball, 389
+Baum, E.B., 691
+Bayesian error exponent, 388
+Bayesian hypothesis testing, 384
+Bayesian posterior probability, 435
+Bayesian probability of error, 385, 399
+BCH (Bose-Chaudhuri-Hocquenghem)
+codes, 214
+Beckenbach, E.F., 484
+Beckner, W., 691
+Bell, R., 182, 656, 691
+Bell, T.C., 439, 691
+Bell’s inequality, 56
+Bellman, R., 691
+Bennett, C.H., 241, 691
+Bentley, J., 691
+Benzel, R., 692
+Berger, T., xxiii, 325, 345, 610, 611, 692,
+720
+Bergmans, P., 609, 692
+Bergstrøm’s inequality, 684
+Berlekamp, E.R., 692, 715
+Bernoulli, J., 182
+Bernoulli distribution, 434
+Bernoulli process, 237, 361, 437, 476, 484,
+488
+Bernoulli random variable, 63
+Bernoulli source, 307, 338
+rate distortion, 307
+Berrou, C., 692
+Berry’s paradox, 483
+Bertsekas, D., 692
+beta distribution, 436, 661
+beta function, 642
+betting, 162, 164, 167, 173, 174, 178, 487,
+626
+horse race, 160
+proportional, 162, 626
+bias, 393, 402
+Bierbaum, M., 692
+Biglieri, E., 692
+binary entropy function, 15, 49
+graph, 15, 16
+binary erasure channel, 188, 189, 218, 227,
+232, 457
+binary multiplier channel, 234, 602
+binary rate distortion function, 307
+binary source, 308, 337
+binary symmetric channel (BSC), 8,
+187–189, 210, 215, 222, 224, 225,
+227–229, 231, 232, 237, 238, 262,
+308, 568, 601
+capacity, 187
+binning, 609
+random, 551, 585
+bioinformatics, xv
+bird, 97
+Birkhoff’s ergodic theorem, 644
+bishop, 80
+bit, 14
+Blachman, N., 674, 687, 692
+Blackwell, D., 692
+
+--- Page 55 ---
+INDEX
+729
+Blahut, R.E., 191, 240, 335, 346, 692, see
+also Blahut-Arimoto algorithm
+Blahut-Arimoto algorithm, 191, 334
+block code, 226
+block length, 195, 204
+block Markov encoding, 573
+Boltzmann, L., 11, 55, 693, see
+also Maxwell-Boltzmann distribution
+bone, 93
+bookie, 163
+Borel-Cantelli lemma, 357, 621, 649
+Bose, R.C., 214, 693
+bottleneck, 47, 48
+bounded convergence theorem, 396, 647
+bounded distortion, 307, 321
+brain, 465
+Brascamp, H.J., 693
+Brassard, G., 691
+Breiman, L., 69, 655, 656, 692, 693, see
+also Shannon-McMillan-Breiman
+theorem
+Brillouin, L., 56, 693
+broadcast channel, 11, 100, 515, 518, 533,
+563, 560–571, 593, 595, 599, 601,
+604, 607, 609, 610
+capacity region, 564
+convexity, 598
+common information, 563
+converse, 599
+degraded, 599, 609
+achievablity, 565
+converse, 599
+with feedback, 610
+Gaussian, 515, 610
+physically degraded, 564
+stochastically degraded, 564
+Brunn-Minkowski inequality, xx, 657,
+674–676, 678, 679, 687
+BSC, see binary symmetric channel (BSC)
+Bucklew, J.A., 693
+Burg, J.P., 416, 425, 693
+Burg’s algorithm, 416
+Burg’s maximum entropy theorem, 417
+Burrows, M., 462, 693
+burst error correcting code, 215
+Buzo, A., 708
+Caire, G., 693
+cake, 65
+calculus, 103, 111, 410
+Calderbank, A.R., 693
+Canada, 82
+capacity, 223, 428
+channel, see channel capacity
+capacity region, 11, 509–610
+degraded broadcast channel, 565
+multiple access channel, 526
+capacity theorem, xviii, 215
+CAPM (Capital Asset Pricing Model), 614
+Carath´eodory’s theorem, 538
+cardinality, 245, 538, 542, 565, 569
+cards, 55, 84, 167, 608
+Carleial, A.B., 610, 693
+cascade, 225
+cascade of channels, 568
+Castelli, V., xxiii
+Cauchy distribution, 661
+Cauchy-Schwarz inequality, 393, 395
+causal, 516, 623
+causal investment strategy, 619, 623, 635
+causal portfolio, 620, 621, 624, 629–631,
+635, 639, 641, 643
+universal, 651
+CCITT, 462
+CDMA (Code Division Multiple Access),
+548
+central limit theorem, xviii, 261, 361
+centroid, 303, 312
+Ces´aro mean, 76, 625, 682
+chain rule, xvii, 35, 43, 49, 287, 418, 540,
+541, 555, 578, 584, 590, 624, 667
+differential entropy, 253
+entropy, 23, 31, 43, 76
+growth rate, 650
+mutual information, 24, 25, 43
+relative entropy, 44, 81
+Chaitin, G.J., 3, 4, 484, 507, 508, 693, 694
+Chang, C.S., xxi, 694
+channel,
+binary erasure, 188, 222
+binary symmetric, see binary symmetric
+channel (BSC)
+broadcast, see broadcast channel
+cascade, 225, 568
+discrete memoryless, see discrete
+memoryless channel
+exponential noise, 291
+extension, 193
+
+--- Page 56 ---
+730
+INDEX
+channel (continued)
+feedback, 216
+Gaussian, see Gaussian channel
+interference, see interference channel
+multiple access, see multiple access
+channel
+noiseless binary, 7, 184
+parallel, 224, 238
+relay, see relay channel
+symmetric, 189, 190, 222
+time-varying, 226, 294
+two-way, see two-way channel
+union, 236
+weakly symmetric, 190
+with memory, 224, 240
+Z-channel, 225
+channel capacity, xv, xviii, xix, 1, 3, 7–9,
+11, 38, 183–241, 291, 297, 298, 307,
+333, 427, 432, 458, 461, 544–546,
+548, 592, 604, 608, 686
+achievability, 200
+computation, 332
+feedback, 223
+information, 184, 263
+operational deﬁnition, 184
+properties, 222
+zero-error, 226
+channel capacity theorem, 38
+channel code, 193, 220
+channel coding, 207, 219, 220, 318, 324,
+325, 344
+achievability, 195
+channel coding theorem, 9, 199, 207, 210,
+223, 230, 321, 324, 347
+achievability, 200
+converse, 207
+channel transition matrix, 190, 234, 428,
+433, 509
+channels with memory, 224, 277
+characteristic function, 422
+Chellappa, R., 694
+Cheng, J.F., 709
+Chernoff, H., 694
+Chernoff bound, 392
+Chernoff information, 380, 384, 386, 388,
+399
+Chernoff-Stein lemma, 347, 376, 380, 383,
+399
+Chervonenkis, A.Y., 717
+chessboard, 80, 97
+χ2 distance, 665
+χ2 statistic, 400
+Chi-squared distribution, 661
+Chiang, M.S., xxi, 610, 695
+chicken, 301
+Choi, B.S., 425, 694, 697
+Chomsky, N., 694
+Chou, P.A., 694
+Chuang, I., 241, 710
+Chung, K.L., 69, 694
+Church’s thesis, 465
+Ciofﬁ, J.M., 611, 702
+cipher, 170
+substitution, 170
+Clarke, B.S., 694
+classroom, 561
+Cleary, J.G., 691, 719
+closed system, 11
+closure, 363
+Cocke, J., 690
+cocktail party, 515
+code, 10, 20, 61, 62, 98, 104–158, 172,
+194–232, 264–281, 302–339, 357,
+360, 428, 429, 434, 436, 438, 440,
+443, 444, 456, 460–463, 492,
+525–602
+arithmetic, see arithmetic coding
+block, see block code
+channel, see channel code
+distributed source, see distributed source
+coding
+error correcting, see error correcting code
+extension, 105, 126
+Gaussian channel, 264
+Hamming, see Hamming code
+Huffman, see Huffman code
+instantaneous, 103, 106, 107, 110, 118,
+124, 142, 143, 146, 152, see
+also code, preﬁx
+minimum distance, 212
+minimum weight, 212
+Morse, see Morse code
+nonsingular, 105, 152
+optimal, 124, 144
+preﬁx, 106
+random, 199, 201
+self-punctuating, 105, 106
+Shannon, see Shannon code
+
+--- Page 57 ---
+INDEX
+731
+source, see source code
+uniquely decodable, 105, 110, 116–118,
+127, 131, 141–143, 147, 148, 150,
+152, 157, 158
+zero-error, 205
+codebook, 204, 206, 212, 266, 268, 321,
+322, 327, 328, 513–519, 530, 534,
+565, 574, 580
+codelength, 114, 115, 122
+code points, 302
+codeword, 109, 122, 131
+optimal length, 113
+Cohn, M., xxi
+coin ﬂips, 44, 103, 155
+coin tosses, 37, 134, 137, 139, 225, 375
+coin weighing, 45
+coins,
+bent, 48
+biased, 96, 375, 407
+fair, 134
+large deviations, 365
+colored noise, 288
+coloring,
+random, 558
+comma, 105, 468
+common information, 563, 564, 567,
+568
+communication channel, 1, 7, 187, 223,
+261, 560, 663
+communication networks, 509
+communication system, 8, 184, 192
+communication theory, 1
+compact disc, 3, 215
+compact set, 432, 538
+company mergers, 149
+competitive optimality,
+log-optimal portfolio, 627
+Shannon code, 130
+competitively optimal, 103, 613
+composition class, 348
+compression, see data compression
+computable, 466, 479, 482, 484, 491
+computable probability distribution, 482
+computable statistical tests, 479
+computation, 4, 5, 12, 68, 190, 438, 463,
+466, 594
+channel capacity, 191, 332
+halting, see halting computation
+models of, 464
+physical limits, 56
+rate distortion, 332
+computer science, xvii, 1, 463, 483
+computer source code, 360
+computers, 4, 442, 464, 504
+concatenation, 105, 116
+concavity, 27, 31, 33, 222, 453, 474, 616,
+see also convexity
+conditional entropy, 17, 38–40, 75, 77, 88,
+89, 206, 417, 669, 670
+conditional limit theorem, 366, 371, 375,
+389, 398
+conditional mutual information, 24, 589
+conditional rate distortion,
+convexity, 583, 585
+conditional rate distortion function, 584,
+585
+conditional relative entropy, 25
+conditional type, 342, 366
+conditionally typical set, 327, 342
+conditioning reduces entropy, 33, 39, 85,
+311, 313, 318, 418, 578, 584, 682
+constant rebalanced portfolio, 615, 630
+constrained sequences, 94, 101
+continuous alphabet, 261, 305
+continuous channel, 263
+continuous random variable, 21, 37, 243,
+245, 248, 256, 301, 304, 338, 500, see
+also differential entropy, rate
+distortion theory
+quantization, see quantization
+continuous time, 270
+convergence of random variables,
+convergence in mean square, 58
+convergence in probability, 58
+convergence with probability, 1, 58
+converse,
+broadcast channel, 599
+discrete memoryless channel, 206
+with feedback, 216
+general multiterminal network, 589
+multiple access channel, 538
+rate distortion, 315
+Slepian-Wolf coding, 555
+
+--- Page 58 ---
+732
+INDEX
+convex closure, 538
+convex families, 655
+convex hull, 526, 530, 532, 534–536, 538,
+543, 544, 565, 591, 594, 595
+convex set, 330, 534
+convexiﬁcation, 598
+convexity, 26, 28, 32, 42, 432, 616, 657,
+see also concavity
+capacity region,
+broadcast channel, 598
+multiple access channel, 534
+rate distortion function, 316
+strict, 26
+convolution, 270, 674
+convolutional code, 215
+interleaved, 215
+cookie-cutting, 240
+copper, 274
+Coppersmith, D., 689
+correlated random variables,
+coding, see Slepian-Wolf coding
+correlation, 46, 252, 258, 294, 295, 593
+Costa, M.H.M., 593, 694, 703
+Costello, D.J., 708
+counterfeit, 45
+covariance matrix, 249, 277, 279, 280, 284,
+292, 397, 416, 417, 681
+Cover, T.M., xxi, 69, 158, 182, 240, 299,
+425, 508, 575, 593, 609–611, 626,
+656, 687, 690, 691, 694–699, 701,
+712, 717
+CPU, 465
+Cram´er, H., 696
+Cram´er-Rao inequality, 392, 395, 396, 399
+with bias, 402
+crosstalk, 273
+cryptography, 171
+Csisz´ar, I., 55, 325, 332, 334, 335, 346,
+347, 358, 408, 461, 610, 696, 697
+Csisz´ar-Tusn´ady algorithm, 335
+cumulative distribution function, 127, 128,
+130, 243, 437, 439
+cut set, 512, 589, 597
+D-adic distribution, 112
+D-ary alphabet, 103, 109
+Dantzig, G.B., 697
+Darroch, J.N., 697
+Dar´oczy, Z., 690
+data compression, xv, xvii, xix, 1, 3, 5, 11,
+103, 156, 163, 172, 173, 184, 218,
+221, 301, 427, 442, 457, 549, 656, 686
+data processing inequality, 35, 39, 44, 47,
+371, 687
+data transmission, 5, 686
+Daubechies, I., 697
+Davisson, L.D., 461, 697, 702, 703
+de Bruijn’s identity, 672
+decision function, 375
+decision theory, see hypothesis testing
+decoder, 194
+decoding, 194
+robust, 296
+decoding delay, 148
+decoding function, 194, 219, 264, 552, 571,
+583
+degraded, 515, 516, 533, 565–570, 595,
+599, 601, 604, 609
+broadcast channel, see broadcast channel,
+degraded
+physically degraded, 564
+relay channel, see relay channel,
+degraded
+stochastically degraded, 564
+Dembo, A., xxiii, 687, 697, 698
+demodulation, 3
+Dempster, A.P., 698
+density, 243
+descriptive complexity, 463
+determinant, 249, 279, 679, 681
+determinant inequalities, xviii, 679–685
+deterministic, 53, 173, 204, 511, 607, 609
+deterministic decoding rule, 194
+deterministic function, 339, 456
+Devroye, L., 698
+dice, 364, 375, 411, 412
+dictionary, 442
+differential entropy, xix, 243–674
+bound, 258
+conditional, 249
+Gaussian distribution, 244
+relationship to discrete entropy, 247
+table of, 661
+Diggavi, S., xxi
+digital, 273, 274, 465
+dimension, 211, 675
+Dirichlet distribution, 436, 641
+Dirichlet partition, 303
+
+--- Page 59 ---
+INDEX
+733
+discrete, 184
+discrete channel, 263, 264, 268
+discrete entropy, 244, 259, 660
+discrete memoryless channel, 183,
+184–241, 280, 318, 344, 536
+discrete memoryless source, 92
+discrete random variable, 14, 49, 54, 134,
+243, 245, 249, 251, 252, 258, 347,
+371, 658
+discrete time, 261
+discrimination, 55
+distance, 20, 301, 325, 332, 369, 432
+between probability distributions, 13
+Euclidean, 297, 332, 367
+relative entropy, 356, 366
+variational, 370
+distinguishable inputs, 10, 222
+distinguishable signals, 183
+distortion, 10, 301–341, 580–582, 586,
+587, see also rate distortion theory
+asymmetric, 337
+Hamming, see Hamming distortion
+squared error, see squared error
+distortion
+distortion function, 304, 307, 309, 312,
+336, 340, 344, 345
+distortion measure, 301, 302, 304, 305,
+307, 314, 319, 321
+bounded, 304
+Hamming distortion, 304,
+Itakura-Saito, 305
+squared error distortion, 305
+distortion rate function, 306, 341
+distortion typical, 319, 321, 322, 328
+distributed source coding, 509, 511, 550,
+556, 586, see also Slepian-Wolf
+coding
+distribution, 427, 428, 456
+two mass point, 28
+divergence, 55
+DiVincenzo, D.P., 691, 698
+DMC, see discrete memoryless channel
+Dobrushin, R.L., 698, 711
+dog, 93
+Donoho, D.L., 698
+doubling rate, xvii, 9, 11, 12, 160,
+163–167, 175, 179, 180
+doubly stochastic matrix, 88
+DSL, 274
+duality, 610
+data compression and data transmission,
+184
+data compression and gambling, 173
+growth rate and entropy rate, 159, 613
+multiple access channel and
+Slepian-Wolf coding, 558
+rate distortion and channel capacity, 311
+source coding and generation of random
+variables, 134
+Duda, R.O., 698
+Dueck, G., 609, 610, 690, 698
+Durbin algorithm, 419
+Dutch, 561, 562, 606
+Dutch book, 164, 180
+DVD, 3
+dyadic, 129, 130, 132, 137–139
+dyadic distribution, 151
+ear, 219
+Ebert, P.M., 299, 698
+echoes, 273
+Eckschlager, K., 698
+economics, 4
+edge process, 98
+effectively computable, 465
+efﬁcient estimator, 396
+efﬁcient frontier, 614
+Effros, M., 462, 694, 698, 702
+Efron, B., 699
+Eggleston, H.G., 538, 699
+eigenvalue, 95, 279, 282, 315, 336
+Einstein, A., xvii
+Ekroot, L., xxiii
+El Gamal, A., xxiii, 575, 609–611,
+694–696, 699, 701, 702, 710
+elephant, 301
+Elias, P., 158, 699
+Ellis, R.S., 699
+EM algorithm, 335
+empirical, 68, 381, 409, 470, 474, 542, 660
+empirical distribution, 68, 168, 209, 347,
+356, 366, 630
+convergence, 68
+empirical entropy, 195
+empirical frequency, 474
+encoder, 173, 231, 304, 321, 357, 360, 443,
+458, 459, 549, 553, 557, 574, 585, 588
+
+--- Page 60 ---
+734
+INDEX
+encoding function, 193, 264, 305, 359, 571,
+583, 599
+encrypted text, 506
+energy, 261, 265, 272, 273, 294, 424
+England, 82
+English, 104, 168–171, 174, 175, 182, 360,
+470, 506
+entropy rate, 159, 182
+models of, 168
+entanglement, 56
+entropy, xvii, 3, 4, 13–56, 87, 659, 671,
+686
+average, 49
+axiomatic deﬁnition, 14, 54
+base of logarithm, 14, 15
+bounds, 663
+chain rule, 23
+concavity, 33, 34
+conditional, 16, 51, see conditional
+entropy
+conditioning, 42
+cross entropy, 55
+differential, see differential entropy
+discrete, 14
+encoded bits, 156
+functions, 45
+grouping, 50
+independence bound, 31
+inﬁnite, 49
+joint, 16, 47, see joint entropy
+mixing increase, 51
+mixture, 46
+and mutual information, 21
+properties of, 42
+relative, see relative entropy
+Renyi, 676
+sum, 47
+thermodynamics, 14
+entropy and relative entropy, 12, 28
+entropy power, xviii, 674, 675, 678, 679,
+687
+entropy power inequality, xx, 298, 657,
+674–676, 678, 679, 687
+entropy rate, 4, 74, 71–101, 114, 115, 134,
+151, 156, 159, 163, 167, 168, 171,
+175, 182, 221, 223, 259, 417, 419,
+420, 423–425, 428–462, 613, 624,
+645, 667, 669
+differential, 416
+English, 168, 170, 174, 175
+Gaussian process, 416
+Hidden Markov model, 86
+Markov chain, 77
+subsets, 667
+envelopes, 182
+Ephremides, A., 611, 699
+Epimenides liar paradox, 483
+equalization, 611
+Equitz, W., xxiii, 699
+erasure, 188, 226, 227, 232, 235, 527, 529,
+594
+erasure channel, 219, 235, 433
+ergodic, 69, 96, 167, 168, 175, 297, 360,
+443, 444, 455, 462, 557, 613, 626,
+644, 646, 647, 651
+ergodic process, xx, 11, 77, 168, 444, 446,
+451, 453, 644
+ergodic source, 428, 644
+ergodic theorem, 644
+ergodic theory, 11
+Erkip, E., xxi, xxiii
+Erlang distribution, 661
+error correcting code, 205
+error detecting code, 211
+error exponent, 4, 376, 380, 384, 385, 388,
+399, 403
+estimation, xviii, 255, 347, 392, 425, 508
+spectrum, 415
+estimator, 39, 40, 52, 255, 392, 393,
+395–397, 401, 402, 407, 417, 500, 663
+bias, 393
+biased, 401
+consistent in probability, 393
+domination, 393
+efﬁcient, 396
+unbiased, 392, 393, 395–397, 399, 401,
+402, 407
+Euclidean distance, 514
+Euclidean geometry, 378
+Euclidean space, 538
+Euler’s constant, 153, 662
+exchangeable stocks, 653
+expectation, 14, 167, 281, 306, 321, 328,
+393, 447, 479, 617, 645, 647, 669, 670
+expected length, 104
+exponential distribution, 256, 661
+extension of channel, 193
+extension of code, 105
+
+--- Page 61 ---
+INDEX
+735
+F-distribution, 661
+face vase illusion, 505
+factorial, 351, 353
+Stirling’s approximation, 405
+fading, 611
+fading channel, 291
+Fahn, P., xxi
+fair odds, 159, 164, 487, 488
+fair randomization, 627, 629
+Fan, K., 679, 699
+Fano, R.M., 56, 158, 240, 699, 700, see
+also Shannon-Fano-Elias code
+Fano’s inequality, 13, 38, 39, 41, 44, 52,
+56, 206, 208, 221, 255, 268, 283,
+539–541, 555, 576, 578, 590, 663
+FAX, 130
+FDMA (Frequency Division Multiple
+Access), 547, 548, 606
+Feder, M., 158, 462, 700, 709, 718
+Feder, T., 461
+feedback, xix, 189, 193, 216, 218, 238,
+280–284, 286–290, 509, 519, 593,
+594, 610, 611
+discrete memoryless channel, 216
+Gaussian channel, xv, 280–289
+Feinstein, A., 240, 699, 700
+Feller, W., 182, 700
+Fermat’s last theorem, 486
+ﬁngers, 143
+ﬁnite alphabet, 220, 318, 344, 473, 474, 645
+ﬁnitely often, 649
+ﬁnitely refutable, 486
+ﬁrst order in the expononent, 63
+Fisher, R.A., 56, 700
+Fisher information, xviii, xx, 247, 347, 392,
+394, 395, 397, 399, 401, 407, 657,
+671, 673, 674
+examples, 401
+multiparameter, 397
+Fitingof, B.M., 461, 700
+ﬁxed rate block code, 357
+ﬂag, 61, 442, 460
+ﬂow of information, 588, 589
+ﬂow of time, 89
+ﬂow of water, 511
+football, 390, 391
+Ford, L.R., 700
+Ford-Fulkerson theorem, 511, 512
+Forney, G.D., 240, 700
+Foschini, G.J., 611, 700
+Fourier transform, 271, 415
+fractal, 471
+Franaszek, P.A., xxi, xxiii, 158, 700
+Frank-Wolfe algorithm, 191
+French, 606
+frequency, 168–170, 270, 274, 315, 404,
+547
+Friedman, J.H., 693
+Fulkerson, D.R., 697, 700
+function,
+concave, 26
+convex, 26
+functional, 161, 276, 313, 330
+future, 93
+Gaarder, T., 593, 609, 700
+Gabor, D., 701
+G´acs, P., 695, 701
+Gadsby, 168
+Gallager, R.G., xxiii, 215, 240, 299, 430,
+461, 609, 692, 701, 713, 715, 716
+Galois ﬁeld theory, 214
+gambling, xviii, xx, 11, 13, 159, 171–173,
+175, 178, 181, 182, 488, 507, 629
+universal, 487
+gambling and data compression, 171
+game, 181, 298, 391, 631
+20 questions, 6, 120, 121, 143, 145, 157,
+237
+Hi-Lo, 147
+mutual information, 298
+red and black, 167, 177
+Shannon guessing, 174
+stock market, 630
+game theory, 132
+fundamental theorem, 432
+game-theoretic optimality, 132, 619
+γ (Euler’s constant), 153, 662
+Gamma distribution, 661
+gas, 34, 409, 411, 412
+Gauss’s law, 548
+Gauss-Markov process, 417–420
+Gaussian, 252, 255, 258, 378, 389, 684, 685
+Gaussian channel, xv, xix, 205, 261–299,
+324, 513, 514, 519, 520, 544, 546, 686
+achievability, 266
+AWGN (additive white Gaussian noise),
+289
+
+--- Page 62 ---
+736
+INDEX
+Gaussian channel (continued)
+bandlimited, 270–274
+broadcast, see broadcast channel,
+Gaussian
+capacity, 264
+colored noise, 277
+converse, 268
+feedback, 280–289
+interference, see interference channel,
+Gaussian
+with memory, 277, 280
+multiple access, see also multiple access
+channel, Gaussian
+parallel, 274–280, 292
+relay, see also relay channel, Gaussian
+Gaussian distribution, see normal
+distribution
+Gaussian process, 272, 279, 417
+Gaussian source, 311, 336
+rate distortion function, 311
+Gaussian stochastic process, 315, 416, 417,
+423
+Gelfand, I.M., 702
+Gelfand, S.I., 609, 610, 702
+Gemelos, G., xxi
+general multiterminal network, 587
+general theory of relativity, 490
+generalized Lloyd algorithm, 303
+generation of random variables, 134
+geodesic, 380
+geometric distribution, 405, 444
+geometry, 9, 301, 367
+Euclidean, 378
+geophysical applications, 415
+Gersho, A., 702
+Gibson, J.D., 702
+GIF, 443, 462
+Gilbert, E.N., 158, 702
+Gill, J., xxiii
+Glavieux, A., 692
+G¨odel’s incompleteness theorem, 483
+Goldbach’s conjecture, 486
+Goldberg, M., xxiii
+Goldman, S., 702
+Goldsmith, A., 702
+Golomb, S.W., 702
+Goodell, K., xxiii
+Gopinath, R., xxi
+Gotham, 470, 550
+gradient search, 191
+grammar, 171
+Grant, A.J., 702
+graph, 73, 78, 79, 97
+graph coloring, 557
+gravestone, 55
+gravitation, 490
+Gray, R.M., 610, 694, 695, 702, 703, 708
+greetings telegrams, 441
+Grenander, U., 703
+grouping rule, 50
+growth rate, xix, 4, 159, 178, 180, 182,
+615, 613–656, 686
+chain rule, 624, 650
+competitive optimality, 628
+convexity, 616, 650
+optimal, 615
+side information, 622, 650
+growth rate optimal, 162, 613
+Gr¨unbaum, B., 538, 703
+Guiasu, S., 703
+Gupta, V., xxi
+Gutman, M., 462, 700
+Gyorﬁ, L., 698
+gzip, 442
+Hadamard’s inequality, 279, 680, 681
+Hajek, B., 611, 699, 703
+halting, 484
+halting computation, 466, 486
+halting problem, 483
+halting program, 473
+Hamming codes, 205, 212–214
+Hamming distortion, 307, 308, 336, 337
+Hamming, R.V., 210, 703
+Han, T.S., xxi, 593, 609, 610, 668, 670,
+687, 689, 703, 717, 718
+handwriting, 87
+Hart, P.E., 695, 698
+Hartley, R.V., 55, 703
+Hassanpour, N., xxi
+Hassibi, B., 693
+Hassner, M., 689
+HDTV, 560
+Hekstra, A.P., 609, 718
+Helstrom, C.W., 703
+Hershkovits, Y., 703
+Hewlett-Packard, 643
+hidden Markov model (HMM), 87, 101
+
+--- Page 63 ---
+INDEX
+737
+high probability set, 62
+histogram, 174
+historical notes, xv
+HMM, see hidden Markov model (HMM)
+Hochwald, B.M., 693
+Hocquenghem, P.A., 214, 703
+Holsinger, J.L., 704
+Honig, M.L., 704
+Hopcroft, J.E., 704
+Horibe, Y., 704
+horse race, 5, 6, 11, 159–182, 622, 626
+Huffman code, 103, 118–127, 129–131,
+137, 142, 145, 146, 149, 151, 155,
+157, 357, 427, 436, 460, 491, 492
+competitive optimality, 158
+dyadic distribution, 151
+Huffman, D.A., 158, 704
+Hui, J.Y., 704
+Humblet, P.A., 704
+hypothesis testing, 1, 4, 11, 355, 375, 380,
+384, 389
+Bayesian, 384
+optimal, see Neyman-Pearson lemma
+i.i.d. (independent and identically
+distributed) source, 307, 318, 344, 357
+identiﬁcation capacity, 610
+Ihara, S., 704
+image, 305
+distortion measure, 305
+entropy rate, 171
+Kolmogorov complexity, 499, 505, 506
+Immink, K.A.S., 704
+incompressible sequence, 477, 479
+independence bound on entropy, 31
+India, 441
+indicator function, 194, 219, 486, 497, 503
+induction, 95, 123, 127, 674
+inequalities, xviii–xx, 53, 207, 418,
+657–687
+inequality,
+arithmetic mean geometric mean, 669
+Brunn-Minkowski,
+see Brunn-Minkowski inequality
+Cauchy-Schwarz, 393
+Chebyshev’s, 64
+data processing, see data processing
+inequality
+determinant, see determinant inequalities
+entropy power, see entropy power
+inequality
+Fano’s, see Fano’s inequality
+Hadamard’s, see Hadamard’s inequality
+information, 29, 410, 659
+Jensen’s, see Jensen’s inequality
+Kraft, see Kraft inequality
+log sum, see log sum inequality
+Markov’s, see Markov’s inequality
+McMillan’s, see McMillan’s inequality
+subset, see subset inequalities
+Young’s, 676
+Ziv’s, 450
+inference, 1, 3, 4, 463, 484
+inﬁnite bandwidth, 273
+inﬁnitely often, 621
+information, see also Fisher information,
+mutual information, self information
+information capacity, 207, 263, 274, 277
+information channel capacity, 184
+information divergence, 55, see
+also relative entropy
+information for discrimination, 55, see
+also relative entropy
+information rate distortion function, 306,
+307, 329
+innovations, 282
+input alphabet, 183, 209, 268
+input distribution, 188, 227, 228, 278, 335,
+430, 431, 532, 544, 546, 591
+instantaneous code, see code, instantaneous
+integer,
+binary representation, 469
+descriptive complexity, 469
+integrability, 248
+interference, xix, 3, 11, 273, 509, 511, 515,
+518, 519, 527, 547, 588, 610
+interference channel, 510, 518, 519, 610
+degraded, 610
+Gaussian, 518, 519, 610
+high interference, 518
+strong interference, 610
+interleaving, 611
+internet, 218
+intersymbol interference, 94
+intrinsic complexity, 464
+investment, 4, 9, 11, 159, 614, 619, 623,
+636, 655, 656
+investor, 619, 623, 627, 629, 633, 635
+
+--- Page 64 ---
+738
+INDEX
+irreducible Markov chain, see Markov
+chain, irreducible
+Itakura-Saito distance, 305
+iterative decoding, 215
+Iyengar, G., xxi
+Jacobs, I.M., 719
+Jayant, N.S., 704
+Jaynes, E.T., 56, 416, 425, 704
+Jelinek, F., xxiii, 158, 690, 704, 705
+Jensen’s inequality, 28, 32, 41, 42, 44, 49,
+252, 253, 270, 318, 447, 453, 474,
+585, 618, 622, 657
+Johnson, R.W., 715
+joint AEP, 202, 203, 267, 329, 520
+joint density, 249
+joint distribution, 16, 23, 34, 51, 52, 71,
+228, 268, 307, 308, 323, 328, 343,
+365, 402, 537, 539, 542, 550, 564,
+565, 578, 586, 595, 600, 602, 608
+joint entropy, 16
+joint source channel coding theorem, 218
+joint type, 499
+joint typicality, 195, 222, 240
+jointly typical, 198–203, 227–230, 240,
+266, 267, 319, 327–329, 341, 343,
+365, 366, 520, 553, 557, 559, 560,
+575, 580
+jointly typical sequences, 520
+jointly typical set, 227, 228, 319, 327
+Jozsa, R, 705
+JPEG, 130
+Julian, D., xxi
+Justesen, J., 215, 705
+Kac, M., 443, 705
+Kac’s lemma, 444
+Kailath, T., 705
+Karlin, S., 705
+Karush, J., 158, 705
+Kaul, A., xxiii
+Kawabata, B., xxiii
+Keegel, J.C., 707
+Kelly, J., 182, 655, 705
+Kelly, F.P., 705
+Kelly gambling, 182, 626
+Kemperman, J.H.B., 408, 705
+Kendall, M., 705
+keyboard, 480, 482
+Khairat, M.A., 707
+Khinchin, A.Y., 705
+Kieffer, J.C., 69, 705, 720
+Kim, Y.H., xxi, 299, 705
+Kimber, D., xxiii
+kinetic energy, 409
+King, R., 182, 696
+Knuth, D.E., 153, 705
+Kobayashi, K., 610, 703
+Kolmogorov, A.N., 3, 345, 417, 463, 507,
+702, 706
+Kolmogorov complexity, xv, xviii, xix, 1,
+3, 4, 10–12, 428, 466, 463–508, 686
+conditional, 467
+and entropy, 473, 502
+of integers, 475
+lower bound, 469, 502
+universal probability, 490
+upper bound, 501
+Kolmogorov structure function, 496, 503,
+507
+Kolmogorov sufﬁcient statistic, 496, 497,
+508
+Kolmogorov’s inequality, 626
+Kontoyiannis, Y., xxi
+K¨orner, J., 241, 325, 347, 358, 408, 609,
+610, 690, 697, 698, 701, 706
+Kotel’nikov, V.A., 706
+Kraft, L.G., 158, 706
+Kraft inequality, 103, 107–110, 112, 113,
+116–118, 127, 138, 141, 143, 158,
+473, 484, 494
+Krichevsky, R.E., 706
+Kuhn-Tucker conditions, 164, 177, 191,
+314, 331, 617, 618, 621, 622
+Kulkarni, S.R., 698, 707, 718
+Kullback, J.H., 707
+Kullback, S., xix, 55, 408, 707
+Kullback Leibler distance, 20, 55, 251, see
+also relative entropy
+L1 distance, 369
+Lagrange multipliers, 110, 153, 161, 276,
+313, 330, 334, 335, 421
+Laird, N.M., 698
+Lamping, J., xxi
+Landau, H.J., 272, 299, 707
+Landauer, R., 56, 691
+Langdon, G.G., 705, 707, 713
+
+--- Page 65 ---
+INDEX
+739
+Lapidoth, A., xxi, 707
+Laplace, P.S., 488, 489
+Laplace distribution, 257, 661
+Laplace estimate, 488
+large deviation theory, 4, 12, 357, 360
+Latan´e, H.A., 182, 655, 707
+Lavenberg, S., xxiii
+law of large numbers, 57, 199, 245, 267,
+319, 326, 355–357, 361, 403, 477,
+479, 520, 522, 615
+incompressible sequences, 477, 502
+method of types, 355
+weak law, 57, 58, 65, 196, 245, 361,
+380, 479
+lecturer, 561
+Lee, E.A., 707
+Leech, J., 707
+Lehmann, E.L., 56, 707
+Leibler, R.A., 55, 707
+Lempel, A., 428, 442, 462, 707, 721, see
+also Lempel-Ziv coding
+Lempel-Ziv,
+ﬁxed database, 459
+inﬁnite dictionary, 458
+sliding window, 443
+tree structured, 448
+Lempel-Ziv algorithm, xxiii, 441
+Lempel-Ziv coding, 440–456
+Lempel-Ziv compression, 360
+Lempel-Ziv parsing, 427
+letter, 105, 168–171, 174, 175, 209, 210,
+224, 226, 233
+Leung, C.S.K., 593, 609, 610, 696, 711
+Levin, L.A., 507, 707
+Levinson algorithm, 419
+Levy’s martingale convergence theorem,
+647
+lexicographic order, 327, 472
+Li, M., 508, 707
+Liao, H., 10, 609, 708
+liar paradox, 483
+Lieb, E.J., 693
+likelihood, 20, 365, 377, 404, 482, 508
+likelihood ratio, 482
+likelihood ratio test, 377, 378, 385,
+389
+Lin, S., 708
+Lind, D., 708
+Linde, Y., 708
+Linder, T., 708
+Lindley, D., 708
+linear algebra, 211
+linear code, 214
+linear inequalities, 534
+linear predictive coding, 416
+list decoding, 517, 575
+Liversidge, A., 708
+Lloyd, S.P., 708
+Lloyd aglorithm, 303
+local realism, 56
+logarithm,
+base of, 14
+lognormal distribution, 662
+log likelihood, 65, 67, 405
+log-optimal portfolio, 616–624, 626–629,
+649, 653, 654, 656
+competitive optimality, 627, 651
+log sum inequality, 31–33, 44
+Longo, G., 697
+Lotto, 178
+Louchard, G., 708
+Lovasz, L., 226, 241, 708
+low density parity check (LDPC) codes,
+215
+Lucky, R.W., 170, 171, 708
+Lugosi, G., 698, 707, 708
+LZ77, 441
+LZ78, 441
+MacKay, D.J.C., 215, 708, 709
+macrostate, 55, 409, 411, 412
+MacWilliams, F.J., 708
+Madhow, U., 704
+magnetic recording, 94, 101, 105, 158
+Malone, D., 175
+Mandelbrot set, 471
+Marcus, B., 158, 708
+margin, 181
+marginal distribution, 297, 333
+Markov approximation, 169, 646
+Markov chain, 35, 36, 39, 40, 47, 52,
+71–100, 144, 206, 258, 294, 295, 423,
+458, 470, 497, 499, 578–580, 584,
+659, 687
+aperiodic, 72, 78
+functions of, 84
+irreducible, 72, 78, 98
+stationary distribution, 73
+
+--- Page 66 ---
+740
+INDEX
+Markov chain (continued)
+time invariant, 72
+time-reversible, 81
+Markov ﬁelds, 35
+Markov lemma, 586
+Markov process, 87, 100, 144, 422, 428,
+437, see also Gauss-Markov process
+Markov’s inequality, 49, 64, 157, 238, 392,
+460, 621, 627, 648, 649
+Markowitz, H., 614
+Marks, R.J., 708
+Marshall, A., 708, 709
+Martian, 143
+Martin-L¨of, P., 507, 709
+martingale, 647
+martingale convergence theorem, 626
+Marton, K., 609, 610, 706, 709
+Marzetta, T.L., 693
+Massey, J.L., 709
+mathematics, xvi
+Mathis, C., xxi
+Mathys, P., 709
+matrix, 88, 95, 99, 200, 212, 239, 337, 338,
+340, 342, 397, 432, 458, 657, 681,
+682, 687
+channel transition, 190
+doubly stochastic, 190
+parity check, 211
+permutation, 88
+probability transition, 72
+trace, 278
+transition, 77, 88
+matrix inequalities, 687
+max-ﬂow min-cut, 512
+maximal probability of error, 204, 207,
+264, 268
+maximum a posteriori, 388
+maximum entropy, xviii, 51, 92, 96, 255,
+258, 263, 282, 289, 375, 409,
+412–415, 417, 420–425, 451
+conditional limit theorem, 371
+prediction error, 423
+spectral density, 419, 421
+maximum entropy distribution, 30, 364,
+375, 409, 410, 412–414
+maximum entropy graph, 97
+maximum entropy process, 419, 422
+maximum likelihood, 201, 231, 500
+maximum likelihood decoding, 231
+maximum likelihood estimation, 404
+Maxwell-Boltzmann distribution, 409, 662
+Maxwell’s demon, 507
+maze, 97
+Mazo, J., xxiii
+McDonald, R.A., 345, 709
+McEliece, R.J., 696, 697, 709
+McLaughlin, S.W., 718
+McMillan, B., 69, 158, 709, see
+also Shannon-McMillan-Breiman
+theorem
+McMillan’s inequality, 141
+MDL (minimum description length), 501
+mean value theorem, 247
+mean-variance theory, 614
+measure theory, xx
+median, 257
+medical testing, 375
+Melsa, J.L., 702
+memoryless, 184, 216, 280, 513, 563, 572,
+588, 593, 610, see also channel,
+discrete memoryless
+merges, 149
+Merhav, N., 461, 462, 700, 709, 718, 721
+Merton, R.C., 709
+Messerschmitt, D.G., 707
+method of types, xv, 347, 357, 361, 665
+metric, 46
+microprocessor, 468
+microstate, 55, 409, 411
+MIMO (multiple-input multiple-output),
+611
+minimal sufﬁcient statistic, 38
+minimax redundancy, 456
+minimum description length, 3, 501, 508
+minimum distance, 213, 325, 332
+between convex sets, 332
+relative entropy, 367
+minimum variance, 396
+minimum weight, 212
+Minkowski, H., 710
+Mirsky, L., 710
+Mitchell, J.L., 711
+mixed strategy, 391
+mobile telephone, 607
+models of computation, 464
+modem, 273, 442
+modulation, 3, 263
+modulo 2 arithmetic, 211, 308, 596
+
+--- Page 67 ---
+INDEX
+741
+molecules, 409
+moments, 255, 414, 614
+Mona Lisa, 471, 499
+money, 160, 164, 171, 172, 176–178, 487,
+631, 634, see also wealth
+monkey, 480, 482, 504
+Moore, E.F., 158, 702
+Morgenstern, O., 710
+Morrell, M., xxiii
+Morse code, 103, 104
+Moy, S.C., 69, 710
+multipath, 292, 611
+multiple access channel, 10, 518, 524, 589,
+594, 609
+achievability, 530
+binary erasure channel, 527
+binary erasure multiple access channel,
+594
+binary multiplier channel, 527
+capacity region, 526
+convexity, 534
+converse, 538
+cooperative capacity, 596
+correlated source, 593
+duality with Slepian-Wolf coding, 558
+erasure channel, 529
+feedback, 594
+Gaussian, 514, 598, 607
+independent BSC’s, 526
+multiplexing, 273, 515, 547
+multi-user information theory, see network
+information theory
+multivariate distributions, 411
+multivariate normal, 249, 254, 287, 305,
+315, 413, 417, 679
+music, 1, 428
+mutual fund, 653
+mutual information, xvii, 12, 20, 159, 252,
+656, 686
+chain rule, 24
+conditional, 45, 49
+continuous random variables, 251
+non-negativity, 29
+properties, 43
+Myers, D.L., 718
+Nagaoka, H., 690
+Nahamoo, D., xxiii
+Narayan, P., 697, 707
+nats, 14, 244, 255, 313
+Nayak, P.P., xxi
+Neal, R.M., 215, 708, 719
+nearest neighbor, 303
+nearest neighbor decoding, 3
+neighborhood, 361, 638
+Nelson, R., xxi
+network, 11, 270, 273, 274, 509–511, 519,
+520, 587, 588, 592, 594
+network information theory, xv, xix, 3, 10,
+11, 509–611
+feedback, 593
+Neumann, J.von, 710
+Newton, I., xvii, 4
+Newtonian physics, 490
+Neyman, J., 710
+Neyman-Pearson lemma, 376, 398
+Nielsen, M., 241, 710
+Nobel, A., xxiii
+noise, xvii, xix, 1, 3, 11, 183, 224, 234,
+237, 257, 261, 265, 272–274,
+276–281, 289, 291–293, 297–299,
+324, 509, 513–516, 519, 520, 533,
+546, 548, 588
+colored, 277
+noiseless channel, 8, 558
+noisy typewriter, 186
+Noll, P., 704
+nonnegative deﬁnite matrix, 284, 285
+nonnegativity,
+entropy, 15
+mutual information, 29
+relative entropy, 20, 29
+nonsense, 464, 482, 504
+norm, 297
+Euclidean, 297
+normal distribution, 38, 254, 269, 311, 411,
+414, 662, 675, see also Gaussian
+channel, Gaussian source
+generalized, 662
+maximum entropy property, 254
+null space, 211
+Nyquist, H., 270, 272, 710
+Occam’s Razor, 1, 4, 463, 481, 488, 490,
+500
+odds, 11, 67, 159, 162–164, 176–180, 626,
+645
+even, 159
+
+--- Page 68 ---
+742
+INDEX
+odds (continued)
+fair, 159, 167, 176
+subfair, 164, 176
+superfair, 164
+uniform, 172
+uniform fair, 163
+Olkin, I., 708, 709
+Olshen, R.A., 693
+, xix, 484, 502
+Omura, J.K., 718, 710
+onion-peeling, 546
+Oppenheim, A., 710
+optical channel, 101
+optimal code length, 148, 149
+optimal decoding, 231, 514
+optimal doubling rate, 162, 165, 166
+optimal portfolio, 613, 626, 629, 652
+oracle, 485
+Ordentlich, E., xxi, xxiii, 656, 696, 710
+Orey, S., 69, 656, 710
+Orlitsky, A., xxi, xxiii, 241, 706, 710
+Ornstein, D.S., 710
+Oslick, M., xxiii
+output alphabet, 143, 183
+Ozarow, L.H., 594, 609, 610, 711
+Pagels, H., 508, 711
+Papadias, C.B., 711
+Papadimitriou, C., 711
+paradox, 482
+Berry’s, 483
+Epimenides liar, 483
+St. Petersburg, 181
+parallel channels, 277, 293
+parallel Gaussian source, 314
+Pareto distribution, 662
+parity, 212–214
+parity check code, 211, 214
+parity check matrix, 211
+parsing, 441, 448–450, 452, 455, 456, 458,
+459
+partial recursive functions, 466
+partition, 251
+Pasco, R., 158, 711
+past, 93
+Patterson, G.W., 149, 713
+Paulraj, A.J., 711
+Pearson, E.S., 710
+Peile, R.E., 702
+Pennebaker, W.B., 711
+Perez, A., 69, 711
+perihelion of Mercury, 490
+periodogram, 415
+permutation, 84, 190, 258
+permutation matrix, 88
+perpendicular bisector, 378
+perturbation, 674
+Phamdo, N., xxi
+philosopher’s stone, 484
+philosophy of science, 4
+photographic ﬁlm, 293
+phrase, 441–443, 448, 452
+physically degraded, 564, 568, 571, 573,
+610
+physics, xvi, xvii, 1, 4, 56, 409, 463, 481
+π, 4
+picture on cover, 471
+Pierce, J.R., 711
+pigeon, 233
+Pinkston, J.T., 337, 711
+Pinsker, M.S., 299, 609, 610, 702, 711
+pitfalls, 483
+pixels, 471
+pkzip, 442
+Plotnik, E., 711
+Poisson distribution, 293
+Pollak, H.O., 272, 299, 707, 715
+Pollard, D., 711
+Poltyrev, G.S., 712
+Polya’s urn model, 90
+polynomial number of types, 355, 357, 373
+Pombra, S., xxi, 299, 695, 696, 712
+Poor, H.V., 705, 712
+portfolio, 182, 613–654, 656
+portfolio strategy, 620, 629–631, 634, 636,
+643
+portfolio theory, xv, 613
+positive deﬁnite matrix, 279, 686, 687
+Posner, E., 696
+power, 84, 116, 142, 273, 293, 295, 297,
+298, 320, 324, 357, 415, 513–515,
+517, 518, 546–548, 606, 607, 610,
+674
+power constraint, 261, 262–264, 266, 268,
+270, 274, 277, 278, 281, 289, 291,
+292, 296, 513, 547
+power spectral density, 272, 289, 415
+Pratt, F., 712
+
+--- Page 69 ---
+INDEX
+743
+prediction, 11
+prediction error, 423
+preﬁx, 106, 109, 110, 118, 124, 149, 150,
+443, 473
+preﬁx code, 109, 110, 118, 148, 150
+principal minor, 680, 681
+prior, 385, 388, 389, 435, 436
+Bayesian, 384
+Proakis, J., 692
+probability density, 243, 250, 420, 425
+probability mass function, 5
+probability of error,
+Bayesian, 385
+maximal, 195, 204
+probability simplex, 348, 359, 362,
+378–380, 385, 386, 391, 408
+probability theory, 1, 12
+probability transition matrix, 7, 72, 73, 226,
+524
+process, 183
+program length, 3, 463
+prolate spheroidal functions, 272
+proportional betting, 487
+proportional gambling, 162–164, 173, 182,
+619, 645
+punctuation, 168
+Pursley, M.B., 697, 703
+Pythagorean theorem, 367, 368
+quantization, 247, 248, 251, 263, 301–303,
+312, 363
+quantum channel capacity, 56
+quantum data compression, 56
+quantum information theory, 11, 241
+quantum mechanics, 11, 56, 241
+queen, 80
+Rabiner, L.R., 712
+race, see horse race
+radio, 261, 270, 547, 560
+radium, 257
+random box size, 67
+random coding, 3, 201, 204, 230, 324, 565
+random number generation, 134
+random process,
+Bernoulli, 98
+random questions, 53
+random variable, 5, 6, 13, 14, 103
+Bernoulli, 53, 63
+generation, 134, 155
+random walk, 78
+randomization, 627
+rank, 211, 393
+Rao, C.R., 712
+Ratcliff, D., 697
+rate,
+achievable, see achievable rate
+entropy, see entropy rate
+rate distortion, xv, 301–347, 582, 585, 586,
+596, 610, 686
+achievability, 306, 318
+Bernoulli source, 307, 336
+computation, 332
+converse, 316
+erasure distortion, 338
+Gaussian source, 310, 311, 325, 336
+inﬁnite distortion, 336
+multivariate Gaussian source, 336
+operational deﬁnition, 307
+parallel Gaussian source, 314
+Shannon lower bound, 337
+with side information, 580, 596
+squared error distortion, 310, 338
+rate distortion code, 305, 316, 321, 324,
+325, 329, 341, 583
+optimal, 339
+rate distortion function, 306–308, 310, 311,
+313–316, 321, 327, 333, 334,
+337–340, 344, 596, 610
+convexity, 316
+information, 307
+rate distortion region, 306, 586
+rate distortion theorem, 307, 310, 324, 325,
+336, 341, 583, 585
+rate distortion theory, 10, 301, 303, 307,
+357
+rate region, 535, 536, 557, 569, 592, 593,
+602–605, 608
+Rathie, P.N., 662, 718
+Raviv, J., 690
+Ray-Chaudhuri, D.K., 214, 693
+Rayleigh, G.G., 611, 702
+Rayleigh distribution, 662
+rebalanced portfolio, 613, 629–632, 634,
+636, 638, 639, 643
+receiver, 183
+recurrence, 91, 457, 459, 460
+recurrence time, 444, 445
+
+--- Page 70 ---
+744
+INDEX
+recursion, 90, 95, 123, 469
+redistribution of wealth, 82
+redundancy, 148, 171, 184, 210, 429, 430,
+435, 436, 456, 461, 462, 631
+minimax, 429
+Reed, I.S., 214, 712
+Reed-Solomon codes, 214, 215
+Reiffen, B., 666, 719
+reinvest, 181, 615
+relative entropy, xvii, xix, 4, 9, 11, 12, 20,
+25, 30, 43, 52, 68, 81, 87, 112, 115,
+151, 252, 259, 305, 332, 333, 362,
+366, 368, 369, 378–384, 401, 421,
+427, 429, 545, 658–660, 665, 686
+χ2 bound, 400
+asymmetry, 52
+bounds, 663
+chain rule, 25
+convexity, 33
+and Fisher information, 401
+L1 bound, 398
+non-negativity, 29, 50
+properties, 43
+relative entropy distance, 82, 356, 433
+relative entropy neighborhood, 361
+relay channel, 510, 516, 571, 572, 591,
+595, 610
+achievability, 573
+capacity, 573
+converse, 572
+degraded, 571, 573, 591, 610
+feedback, 591
+Gaussian, 516
+physically degraded, 571, 573, 591
+reversely degraded, 575
+Renyi entropy, 676, 677
+Renyi entropy power, 677
+reproduction points, 302
+reverse water-ﬁlling, 315, 336, 345
+Reza, F.M., 712
+Rice, S.O., 712
+Riemann integrability, 248
+Rimoldi, B., 702, 712
+risk-free asset, 614
+Rissanen, J., 158, 420, 462, 508, 691, 707,
+712, 713
+Roche, J., xxi, xxiii
+rook, 80
+Roy, B., xxi
+Rubin, D.B., 698
+run length coding, 49
+Ryabko, B.Ya., 430, 461, 713
+saddlepoint, 298
+Salehi, M., xxiii, 695, 696
+Salz, J., xxiii
+sample correlation, 415
+sampling theorem, 272
+Samuelson, P.A., 656, 709, 713
+sandwich argument, 69, 644, 648
+Sanov, I.N., 408, 713
+Sanov’s theorem, 362, 378, 386, 391, 398,
+403
+Sardinas, A.A., 149, 713
+Sardinas-Patterson test, 149
+satellite, 215, 261, 509, 515, 565
+Sato, H., 610, 713
+Savari, S.A., 713
+Sayood, K., 713
+Schafer, R.W., 712
+Schalkwijk, J.P.M., 609, 713, 720
+Scheff´e, H., 56, 707
+Schnorr, C.P., 507, 713, 714
+Scholtz, R.A., 702
+Schr¨odinger’s wave equation, xvii
+Schultheiss, P.M., 345, 709
+Schumacher, B., 705
+Schwalkwijk, J.P.M., 705
+Schwarz, G., 714
+score function, 393, 394
+second law of thermodynamics, xviii, 4, 11,
+55, 81, 87, 507, see also statistical
+mechanics
+concavity, 100
+self-information, 13, 22
+self-punctuating, 468
+self-reference, 483
+sequence length, 55
+sequential projection, 400
+set sum, 675
+sgn function, 132
+Shakespeare, 482
+Shamai, S., 692, 714
+Shannon code, 115, 122, 131, 132, 142,
+145, 463, 470, 613
+competitive optimality, 130, 132, 142,
+158
+Shannon guessing game, 174
+
+--- Page 71 ---
+INDEX
+745
+Shannon lower bound, 337
+Shannon’s ﬁrst theorem (source coding
+theorem), 115
+Shannon’s second theorem (channel coding
+theorem), 189, 192
+Shannon’s third theorem (rate distortion
+theorem), 307
+Shannon, C.E., xv, xviii, 55, 69, 100, 157,
+171, 174, 182, 205, 240, 270, 299,
+345, 609, 656, 687, 699, 714, 715, see
+also Shannon code,
+Shannon-Fano-Elias code,
+Shannon-McMiIlan-Breiman theorem
+Shannon-Fano code, 158, 491, see
+also Shannon code
+Shannon-Fano-Elias code, 127, 130, 428
+Shannon-McMillan-Breiman theorem, 69,
+644–649
+Shannon-Nyquist sampling theorem, 272
+Sharpe, W.F., 614, 715
+Sharpe-Markowitz theory, 614
+Shields, P.C., 462, 715
+Shimizu, M., xxiii
+Shor, P.W., 241, 691, 693, 698
+Shore, J.E., 715
+short selling, 181
+Shtarkov, Y.M., 631, 656, 719
+Shtarkov, Y.V., 715
+shufﬂe, 84, 89
+Shwartz, A., 715
+side information,
+and source coding, 575
+side information, xvii, 12, 159, 165, 166,
+180, 255, 574, 576, 580–583, 596,
+610, 623, 652
+and doubling rate, 165, 622
+Siegel, P.H., 704
+σ algebra, 644
+signal, 1, 171, 192, 199, 234, 258,
+262–299, 513, 517, 519, 533, 544,
+561, 607
+Sigurjonsson, S., xxi
+Silicon Dreams, 170
+silver iodide crystals, 293
+simplex, 348, 378, 380, 385, 386, 391, 408,
+617, 618
+sinc function, 271
+Sleator, D., 691
+Slepian, D., 272, 299, 549, 609, 715
+Slepian-Wolf coding, 10, 549–560, 575,
+581, 586, 592, 593, 595, 598,
+603–605, 608–610
+achievability, 551
+converse, 555
+duality with multiple access channels,
+558
+slice code, 122
+slice questions, 121
+sliding window Lempel-Ziv, 441
+Sloane, N.J.A., 707, 708, 720
+smallest probable set, 64
+Smolin, J., 691, 698
+SNR (Signal to Noise Ratio), 273, 514, 516
+Solomon, G., 214
+Solomonoff, R.J., 3, 4, 507, 716
+source, 103, 337
+binary, 307
+Gaussian, 310
+source channel coding theorem, 218, 223
+source channel separation, 218, 318, 344,
+592, 593
+source code, 103, 123, 552, 631
+source coding, 60, 134, 447, 473, 511
+and channel capacity, 430
+with side information, 575, 595
+source coding theorem, 144, 158
+space-time coding, 611
+Spanish, 561, 562, 606
+spectral representation theorem, 315
+spectrum, 271, 279, 280, 315, 415, 417,
+419, 421
+spectrum estimation, 415
+speech, 1, 87, 101, 171, 218, 305, 416
+sphere, 265, 297, 324, 675
+sphere covering, 324
+sphere packing, 10, 324, 325
+squared error, 302, 393, 423, 683
+squared error distortion, 336
+St. Petersburg paradox, 181, 182
+Stam, A., 674, 687, 716
+state diagram, 95
+state transition, 73, 465
+stationary, 4, 69, 114, 168, 220, 221, 279,
+297, 415–417, 423, 428, 444, 446,
+451, 453, 455, 458, 462, 613, 625,
+626, 646, 647, 651, 659, 681
+stationary distribution, 73, 77–79, 96
+stationary ergodic processes, 69
+
+--- Page 72 ---
+746
+INDEX
+stationary ergodic source, 219
+stationary market, 624
+stationary process, 71, 142, 644
+statistic, 36, 38, 400
+Kolmogorov sufﬁcient, 496
+minimal sufﬁcient, 38
+sufﬁcient, 38
+statistical mechanics, 4, 6, 11, 55, 56, 425
+statistics, xvi–xix, 1, 4, 12, 13, 20, 36–38,
+169, 347, 375, 497, 499
+Steane, A., 716
+Stein’s lemma, 399
+stereo, 604
+Stirling’s approximation, 351, 353, 405,
+411, 666
+stochastic process, 71, 72, 74, 75, 77, 78,
+87, 88, 91, 93, 94, 97, 98, 100, 114,
+166, 219, 220, 223, 279, 415, 417,
+420, 423–425, 455, 625, 626, 646
+ergodic, see ergodic process
+function of, 93
+Gaussian, 315
+without entropy rate, 75
+stock, 9, 613–615, 619, 624, 626, 627,
+629–634, 636, 637, 639–641, 652,
+653
+stock market, xix, 4, 9, 159, 613, 614–617,
+619–622, 627, 629–631, 634, 636,
+649, 652, 653, 655, 656
+Stone, C.J., 693
+stopping time, 55
+Storer, J.A., 441, 459, 716
+strategy, 160, 163, 164, 166, 178, 391, 392,
+487
+investment, 620
+strong converse, 208, 240
+strongly jointly typical, 327, 328
+strongly typical, 326, 327, 357, 579, 580
+strongly typical set, 342, 357
+Stuart, A., 705
+Student’s t distribution, 662
+subfair odds, 164
+submatrix, 680
+subset, xx, 8, 66, 71, 183, 192, 211, 222,
+319, 347, 520, 644, 657, 668–670
+subset inequalities, 668–671
+subsets, 505
+entropy rate, 667
+subspace, 211
+sufﬁcient statistic, 13, 36, 37, 38, 44, 56,
+209, 497–499
+minimal, 38, 56
+sufﬁx code, 145
+superfair odds, 164, 180
+supermartingale, 625
+superposition coding, 609
+support set, 29, 243, 244, 249, 251, 252,
+256, 409, 676–678
+surface area, 247
+Sutivong, A., xxi
+Sweetkind-Singer, J., xxi
+symbol, 103
+symmetric channel, 187, 190
+synchronization, 94
+Szasz’s inequality, 680
+Szeg¨o, G., 703
+Szpankowski, W., 716, 708
+Szymanski, T.G., 441, 459, 716
+Tanabe, M., 713
+Tang, D.L., 716
+Tarjan, R., 691
+TDMA (Time Division Multiple Access),
+547, 548
+Telatar, I.E., 716
+telegraph, 441
+telephone, 261, 270, 273, 274
+channel capacity, 273
+Teletar, E., 611, 716
+temperature, 409, 411
+ternary, 119, 145, 157, 239, 439, 504, 527
+ternary alphabet, 349
+ternary channel, 239
+ternary code, 145, 152, 157
+text, 428
+thermodynamics, 1, 4, see also second law
+of thermodynamics
+Thitimajshima, P., 692
+Thomas, J.A., xxi, 687, 694, 695, 698, 700,
+716
+Thomasian, A.J., 692
+Tibshirani, R., 699
+time symmetry, 100
+timesharing, 527, 532–534, 538, 562, 598,
+600
+Tjalkens, T.J., 716, 719
+Toeplitz matrix, 416, 681
+Tornay, S.C., 716
+
+--- Page 73 ---
+INDEX
+747
+trace, 279, 547
+transition matrix, 77, 92, 98, 144, 190
+doubly stochastic, 83, 88, 190
+transmitter, 266, 294, 296, 299, 515,
+517–519, 546, 573, 574, 588, 601,
+611
+Treasury bonds, 614
+tree,
+code, 107
+Huffman, 124
+random, 89
+tree structured Lempel-Ziv, 441, 442
+triangle inequality, 20, 369
+triangular distribution, 662
+trigram model, 171
+Troﬁmov, V.K., 706
+Trott, M., xxiii
+Tseng, C.W., xxiii
+Tsoucas, P., 700
+Tsybakov, B.S., 716
+Tunstall, B.P., 716
+Tunstall coding, 460
+turbo codes, 3, 205, 215
+Turing, A., 465
+Turing machine, xix, 465, 466
+Tusn´ady, G., 332, 335, 346, 697
+Tuttle, D.L., 182, 707
+TV, 509, 560, 561
+twin, 171
+two envelope problem, 179
+two level signalling, 262
+two stage description, 496
+two-way channel, 510, 519, 594, 602, 609
+type, 342, 347, 348–350, 353–356, 358,
+360, 361, 366, 367, 371, 373, 374,
+378, 391, 408, 474, 490, 499, 570, 666
+type class, 348–351, 353–356, 666
+typewriter, 74, 192, 224, 235, 482
+typical sequence, 11, 12, 57, 63, 245, 381,
+522
+typical set, 57, 59, 61, 62, 64, 68, 77, 196,
+220, 227, 245, 247, 258, 319, 321,
+356, 381, 382, 384, 524, 551
+conditionally typical, 341
+data compression, 60
+distortion typical, 319
+properties, 59, 64, 245
+strongly typical, 326
+volume, 245
+Ullman, J.D., 704
+uncertainty, 5, 6, 11, 13, 15, 20, 22, 24, 31,
+53, 83, 89, 170, 517, 518, 593
+Ungerboeck, G., 716
+uniform distribution, 5, 30, 43, 83, 88, 148,
+163, 190, 195, 202, 204, 209, 210,
+228, 268, 338, 375, 408, 411, 412,
+434, 436, 437, 553, 662, 663
+uniform fair odds, 163, 166, 176, 626
+uniquely decodable code, see code,
+uniquely decodable
+universal computer, 465, 501
+universal data compression, 333, 457
+universal gambling, 487, 488, 507
+universal portfolios, 629–643, 651
+ﬁnite horizon, 631
+horizon free, 638
+universal probability, 481, 487, 489–491,
+502, 503, 507, 686
+universal probability mass function, 481
+universal source, 358
+universal source code, 357, 360, 461
+universal source coding, xv, 355, 427–462
+error exponent, 400
+universal Turing machine, 465, 480
+Unix, 443
+Urbanke, R., 702, 712
+V.90, 273
+V’yugin, V.V., 507, 718
+Vajda, I., 716
+Valiant, L.G., 717
+Van Campenhout, J.M., 717
+Van der Meulen, E., xxiii, 609–611, 699,
+702, 717
+Van Trees, H.L., 716
+Vapnik, V.N., 717
+variable-to-ﬁxed length coding, 460
+variance, xx, 36, 37, 64, 65, 255, 261, 265,
+272, 292, 315, 325, 389, 393, 394,
+396, 513, 516, 520, 544, 614, 655,
+681, 685, see also covariance matrix
+variational distance, 370
+vector quantization, 303, 306
+Venkata, R., xxi
+Venkatesh, S.S., 707
+Venn diagram, 23, 47, 50, 213
+Verdu, S., 690, 698, 703, 704, 714, 717,
+718
+
+--- Page 74 ---
+748
+INDEX
+Verdugo Lazo, A.C.G., 662, 718
+video, 218
+video compression, xv
+Vidyasagar, M., 718
+Visweswariah, K., 698, 718
+vitamins, xx
+Vitanyi, P., 508, 707
+Viterbi, A.J., 718
+Vitter, J.S., 718
+vocabulary, 561
+volume, 67, 149, 244–247, 249, 265, 324,
+675, 676, 679
+Von Neumann, J., 11
+Voronoi partition, 303
+waiting time, 99
+Wald, A., 718
+Wallace, M.S., 697
+Wallmeier, H.M., 692
+Washington, 551
+Watanabe, Y., xxiii
+water-ﬁlling, 164, 177, 277, 279, 282, 289,
+315
+waveform, 270, 305, 519
+weak, 342
+weakly typical, see typical
+wealth, 175
+wealth relative, 613, 619
+weather, 470, 471, 550, 551
+Weaver, W.W., 715
+web search, xv
+Wei, V.K.W., 718, 691
+Weibull distribution, 662
+Weinberger, M.J., 711, 718
+Weiner, N., 718
+Weiss, A., 715
+Weiss, B., 462, 710, 715
+Welch, T.A., 462, 718
+Wheeler, D.J., 462, 693
+white noise, 270, 272, 280, see
+also Gaussian channel
+Whiting, P.A., 702
+Wiener, N., 718
+Wiesner, S.J., 691
+Wilcox, H.J., 718
+Willems, F.M.J., xxi, 461, 594, 609, 716,
+718, 719
+window, 442
+wine, 153
+wireless, xv, 215, 611
+Witsenhausen, H.S., 719
+Witten, I.H., 691, 719
+Wolf, J.K., 549, 593, 609, 700, 704, 715
+Wolfowitz, J., 240, 408, 719
+Woodward, P.M., 719
+Wootters, W.K., 691
+World Series, 48
+Wozencraft, J.M., 666, 719
+Wright, E.V., 168
+wrong distribution, 115
+Wyner, A.D., xxiii, 299, 462, 581, 586,
+610, 703, 719, 720
+Wyner, A.J., 720
+Yaglom, A.M., 702
+Yamamoto, H., xxiii
+Yang, E.-H., 690, 720
+Yao, A.C., 705
+Yard, J., xxi
+Yeung, R.W., xxi, xxiii, 610, 692, 720
+Yockey, H.P., 720
+Young’s inequality, 676, 677
+Yu, Bin, 691
+Yule-Walker equations, 418, 419
+Zeevi, A., xxi
+Zeger, K., 708
+Zeitouni, O., 698
+zero-error, 205, 206, 210, 226, 301
+zero-error capacity, 210, 226
+zero-sum game, 131
+Zhang, Z., 609, 690, 712, 720
+Ziv, J., 428, 442, 462, 581, 586, 610, 703,
+707, 711, 719–721, see
+also Lempel-Ziv coding
+Ziv’s inequality, 449, 450, 453, 455,
+456
+Zurek, W.H., 507, 721
+Zvonkin, A.K., 507, 707

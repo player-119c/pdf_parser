@@ -1,0 +1,5731 @@
+
+--- Page 1 ---
+SUMMARY
+175
+= log 27 + 1
+n
+
+xn
+p(xn) log b(xn)
+(6.46)
+= log 27 −1
+n
+
+xn
+p(xn) log p(xn)
+b(xn)
++ 1
+n
+
+xn
+p(xn) log p(xn)
+(6.47)
+= log 27 −1
+nD(p(xn)||b(xn)) −1
+nH(X1, X2, . . . , Xn)
+(6.48)
+≤log 27 −1
+nH(X1, X2, . . . , Xn)
+(6.49)
+≤log 27 −H(X),
+(6.50)
+where H(X) is the entropy rate of English. Thus, log 27 −E 1
+n log Sn
+is an upper bound on the entropy rate of English. The upper bound
+estimate, ˆH(X) = log 27 −1
+n log Sn, converges to H(X) with prob-
+ability 1 if English is ergodic and the gambler uses b(xn) = p(xn).
+An experiment [131] with 12 subjects and a sample of 75 letters
+from the book Jefferson the Virginian by Dumas Malone (Little,
+Brown, Boston, 1948; the source used by Shannon) resulted in an
+estimate of 1.34 bits per letter for the entropy of English.
+SUMMARY
+Doubling rate. W(b, p) = E(log S(X)) = m
+k=1 pk log bkok.
+Optimal doubling rate. W ∗(p) = maxb W(b, p).
+Proportional gambling is log-optimal
+W ∗(p) = max
+b
+W(b, p) =
+
+pi log oi −H(p)
+(6.51)
+is achieved by b∗= p.
+Growth rate. Wealth grows as Sn
+.=2nW ∗(p).
+
+--- Page 2 ---
+176
+GAMBLING AND DATA COMPRESSION
+Conservation law. For uniform fair odds,
+H(p) + W ∗(p) = log m.
+(6.52)
+Side information. In a horse race X, the increase W in doubling
+rate due to side information Y is
+W = I (X; Y).
+(6.53)
+PROBLEMS
+6.1
+Horse race.
+Three horses run a race. A gambler offers 3-for-
+1 odds on each horse. These are fair odds under the assumption
+that all horses are equally likely to win the race. The true win
+probabilities are known to be
+p = (p1, p2, p3) =
+1
+2, 1
+4, 1
+4
+
+.
+(6.54)
+Let b = (b1, b2, b3), bi ≥0,  bi = 1, be the amount invested on
+each of the horses. The expected log wealth is thus
+W(b) =
+3
+
+i=1
+pi log 3bi.
+(6.55)
+(a) Maximize this over b to ﬁnd b∗and W ∗. Thus, the wealth
+achieved in repeated horse races should grow to inﬁnity like
+2nW ∗with probability 1.
+(b) Show that if instead we put all of our money on horse 1, the
+most likely winner, we will eventually go broke with probabil-
+ity 1.
+6.2
+Horse race with subfair odds.
+If the odds are bad (due to a track
+take), the gambler may wish to keep money in his pocket. Let b(0)
+be the amount in his pocket and let b(1), b(2), . . . , b(m) be the
+amount bet on horses 1, 2, . . . , m, with odds o(1), o(2), . . . , o(m),
+and win probabilities p(1), p(2), . . . , p(m). Thus, the resulting
+wealth is S(x) = b(0) + b(x)o(x), with probability p(x), x =
+1, 2, . . . , m.
+(a) Find b∗maximizing E log S if  1/o(i) < 1.
+
+--- Page 3 ---
+PROBLEMS
+177
+(b) Discuss b∗if  1/o(i) > 1. (There isn’t an easy closed-form
+solution in this case, but a “water-ﬁlling” solution results from
+the application of the Kuhn–Tucker conditions.)
+6.3
+Cards.
+An ordinary deck of cards containing 26 red cards and
+26 black cards is shufﬂed and dealt out one card at time without
+replacement. Let Xi be the color of the ith card.
+(a) Determine H(X1).
+(b) Determine H(X2).
+(c) Does H(Xk | X1, X2, . . . , Xk−1) increase or decrease?
+(d) Determine H(X1, X2, . . . , X52).
+6.4
+Gambling.
+Suppose that one gambles sequentially on the card
+outcomes in Problem 6.6.3. Even odds of 2-for-1 are paid. Thus,
+the wealth Sn at time n is Sn = 2nb(x1, x2, . . . , xn), where
+b(x1, x2, . . . , xn) is the proportion of wealth bet on x1, x2, . . . , xn.
+Find maxb(·) E log S52.
+6.5
+Beating the public odds.
+Consider a three-horse race with win
+probabilities
+(p1, p2, p3) =
+1
+2, 1
+4, 1
+4
+
+and fair odds with respect to the (false) distribution
+(r1, r2, r3) =
+1
+4, 1
+4, 1
+2
+
+.
+Thus, the odds are
+(o1, o2, o3) = (4, 4, 2).
+(a) What is the entropy of the race?
+(b) Find the set of bets (b1, b2, b3) such that the compounded
+wealth in repeated plays will grow to inﬁnity.
+6.6
+Horse race.
+A three-horse race has win probabilities p =
+(p1, p2, p3), and odds o = (1, 1, 1). The gambler places bets b =
+(b1, b2, b3), bi ≥0,  bi = 1, where bi denotes the proportion on
+wealth bet on horse i. These odds are very bad. The gambler gets
+his money back on the winning horse and loses the other bets.
+Thus, the wealth Sn at time n resulting from independent gambles
+goes exponentially to zero.
+(a) Find the exponent.
+
+--- Page 4 ---
+178
+GAMBLING AND DATA COMPRESSION
+(b) Find the optimal gambling scheme b (i.e., the bet b∗that max-
+imizes the exponent).
+(c) Assuming that b is chosen as in part (b), what distribution p
+causes Sn to go to zero at the fastest rate?
+6.7
+Horse race.
+Consider a horse race with four horses. Assume that
+each horse pays 4-for-1 if it wins. Let the probabilities of win-
+ning of the horses be {1
+2, 1
+4, 1
+8, 1
+8}. If you started with $100 and
+bet optimally to maximize your long-term growth rate, what are
+your optimal bets on each horse? Approximately how much money
+would you have after 20 races with this strategy?
+6.8
+Lotto.
+The following analysis is a crude approximation to the
+games of Lotto conducted by various states. Assume that the player
+of the game is required to pay $1 to play and is asked to choose
+one number from a range 1 to 8. At the end of every day, the state
+lottery commission picks a number uniformly over the same range.
+The jackpot (i.e., all the money collected that day) is split among
+all the people who chose the same number as the one chosen by the
+state. For example, if 100 people played today, 10 of them chose
+the number 2, and the drawing at the end of the day picked 2, the
+$100 collected is split among the 10 people (i.e., each person who
+picked 2 will receive $10, and the others will receive nothing).
+The
+general
+population
+does
+not
+choose
+numbers
+uni-
+formly—numbers such as 3 and 7 are supposedly lucky and are
+more popular than 4 or 8. Assume that the fraction of people choos-
+ing the various numbers 1, 2, . . . , 8 is (f1, f2, . . . , f8), and assume
+that n people play every day. Also assume that n is very large, so
+that any single person’s choice does not change the proportion of
+people betting on any number.
+(a) What is the optimal strategy to divide your money among
+the various possible tickets so as to maximize your long-term
+growth rate? (Ignore the fact that you cannot buy fractional
+tickets.)
+(b) What is the optimal growth rate that you can achieve in this
+game?
+(c) If (f1, f2, . . . , f8) = ( 1
+8, 1
+8, 1
+4, 1
+16, 1
+16, 1
+16, 1
+4, 1
+16), and you start
+with $1, how long will it be before you become a millionaire?
+6.9
+Horse race.
+Suppose that one is interested in maximizing the
+doubling rate for a horse race. Let p1, p2, . . . , pm denote the win
+probabilities of the m horses. When do the odds (o1, o2, . . . , om)
+yield a higher doubling rate than the odds (o′
+1, o′
+2, . . . , o′
+m)?
+
+--- Page 5 ---
+PROBLEMS
+179
+6.10
+Horse race with probability estimates.
+(a) Three horses race. Their probabilities of winning are ( 1
+2, 1
+4, 1
+4).
+The odds are 4-for-1, 3-for-1, and 3-for-1. Let W ∗be the opti-
+mal doubling rate. Suppose you believe that the probabilities
+are (1
+4, 1
+2, 1
+4). If you try to maximize the doubling rate, what
+doubling rate W will you achieve? By how much has your dou-
+bling rate decrease due to your poor estimate of the probabilities
+(i.e., what is W = W ∗−W)?
+(b) Now let the horse race be among m horses, with probabil-
+ities p = (p1, p2, . . . , pm) and odds o = (o1, o2, . . . , om). If
+you believe the true probabilities to be q = (q1, q2, . . . , qm),
+and try to maximize the doubling rate W, what is W ∗−W?
+6.11
+Two-envelope problem.
+One envelope contains b dollars, the other
+2b dollars. The amount b is unknown. An envelope is selected at
+random. Let X be the amount observed in this envelope, and let Y
+be the amount in the other envelope. Adopt the strategy of switch-
+ing to the other envelope with probability p(x), where p(x) =
+e−x
+(e−x+ex). Let Z be the amount that the player receives. Thus,
+(X, Y) =
+
+(b, 2b)
+with probability 1
+2
+(2b, b)
+with probability 1
+2
+(6.56)
+Z =
+ X
+with probability 1 −p(x)
+Y
+with probability p(x).
+(6.57)
+(a) Show that E(X) = E(Y) = 3b
+2 .
+(b) Show that E(Y/X) = 5
+4. Since the expected ratio of the
+amount in the other envelope is 5
+4, it seems that one should
+always switch. (This is the origin of the switching paradox.)
+However, observe that E(Y) ̸= E(X)E(Y/X). Thus, although
+E(Y/X) > 1, it does not follow that E(Y) > E(X).
+(c) Let J be the index of the envelope containing the maximum
+amount of money, and let J ′ be the index of the envelope
+chosen by the algorithm. Show that for any b, I (J; J ′) > 0.
+Thus, the amount in the ﬁrst envelope always contains some
+information about which envelope to choose.
+(d) Show that E(Z) > E(X). Thus, you can do better than always
+staying or always switching. In fact, this is true for any mono-
+tonic decreasing switching function p(x). By randomly switch-
+ing according to p(x), you are more likely to trade up than to
+trade down.
+
+--- Page 6 ---
+180
+GAMBLING AND DATA COMPRESSION
+6.12
+Gambling.
+Find the horse win probabilities p1, p2, . . . , pm:
+(a) Maximizing the doubling rate W ∗for given ﬁxed known odds
+o1, o2, . . . , om.
+(b) Minimizing the doubling rate for given ﬁxed odds o1, o2, . . . ,
+om.
+6.13
+Dutch book.
+Consider a horse race with m = 2 horses,
+X = 1, 2
+p = 1
+2,
+1
+2
+odds (for one) = 10, 30
+bets = b, 1 −b.
+The odds are superfair.
+(a) There is a bet b that guarantees the same payoff regardless of
+which horse wins. Such a bet is called a Dutch book. Find this
+b and the associated wealth factor S(X).
+(b) What is the maximum growth rate of the wealth for the optimal
+choice of b? Compare it to the growth rate for the Dutch book.
+6.14
+Horse race.
+Suppose that one is interested in maximizing the
+doubling rate for a horse race. Let p1, p2, . . . , pm denote the win
+probabilities of the m horses. When do the odds (o1, o2, . . . , om)
+yield a higher doubling rate than the odds (o′
+1, o′
+2, . . . , o′
+m)?
+6.15
+Entropy of a fair horse race.
+Let X ∼p(x), x = 1, 2, . . . , m,
+denote the winner of a horse race. Suppose that the odds o(x)
+are fair with respect to p(x) [i.e., o(x) =
+1
+p(x)]. Let b(x) be the
+amount bet on horse x, b(x) ≥0, m
+1 b(x) = 1. Then the resulting
+wealth factor is S(x) = b(x)o(x), with probability p(x).
+(a) Find the expected wealth ES(X).
+(b) Find W ∗, the optimal growth rate of wealth.
+(c) Suppose that
+Y =
+
+1,
+X = 1 or 2
+0,
+otherwise.
+If this side information is available before the bet, how much
+does it increase the growth rate W ∗?
+(d) Find I (X; Y).
+
+--- Page 7 ---
+PROBLEMS
+181
+6.16
+Negative horse race.
+Consider a horse race with m horses with
+win probabilities p1, p2, . . . , pm. Here the gambler hopes that a
+given horse will lose. He places bets (b1, b2, . . . , bm), m
+i=1 bi = 1,
+on the horses, loses his bet bi if horse i wins, and retains the rest of
+his bets. (No odds.) Thus, S = 
+j̸=i bj, with probability pi, and
+one wishes to maximize  pi ln(1 −bi) subject to the constraint
+ bi = 1.
+(a) Find the growth rate optimal investment strategy b∗. Do not
+constrain the bets to be positive, but do constrain the bets to
+sum to 1. (This effectively allows short selling and margin.)
+(b) What is the optimal growth rate?
+6.17
+St. Petersburg paradox.
+Many years ago in ancient St. Petersburg
+the following gambling proposition caused great consternation. For
+an entry fee of c units, a gambler receives a payoff of 2k units with
+probability 2−k, k = 1, 2, . . . .
+(a) Show that the expected payoff for this game is inﬁnite. For this
+reason, it was argued that c = ∞was a “fair” price to pay to
+play this game. Most people ﬁnd this answer absurd.
+(b) Suppose that the gambler can buy a share of the game. For
+example, if he invests c/2 units in the game, he receives 1
+2 a
+share and a return X/2, where Pr(X = 2k) = 2−k, k = 1, 2, . . . .
+Suppose that X1, X2, . . . are i.i.d. according to this distribution
+and that the gambler reinvests all his wealth each time. Thus,
+his wealth Sn at time n is given by
+Sn =
+n
+
+i=1
+Xi
+c .
+(6.58)
+Show that this limit is ∞or 0, with probability 1, accordingly
+as c < c∗or c > c∗. Identify the “fair” entry fee c∗.
+More realistically, the gambler should be allowed to keep a pro-
+portion b = 1 −b of his money in his pocket and invest the rest
+in the St. Petersburg game. His wealth at time n is then
+Sn =
+n
+
+i=1
+
+b + bXi
+c
+
+.
+(6.59)
+Let
+W(b, c) =
+∞
+
+k=1
+2−k log
+
+1 −b + b2k
+c
+
+.
+(6.60)
+
+--- Page 8 ---
+182
+GAMBLING AND DATA COMPRESSION
+We have
+Sn
+.= 2nW(b,c).
+(6.61)
+Let
+W ∗(c) = max
+0≤b≤1 W(b, c).
+(6.62)
+Here are some questions about W ∗(c).
+(a) For what value of the entry fee c does the optimizing value b∗
+drop below 1?
+(b) How does b∗vary with c?
+(c) How does W ∗(c) fall off with c?
+Note that since W ∗(c) > 0, for all c, we can conclude that any
+entry fee c is fair.
+6.18
+Super St. Petersburg.
+Finally, we have the super St. Peters-
+burg paradox, where Pr(X = 22k) = 2−k, k = 1, 2, . . . . Here the
+expected log wealth is inﬁnite for all b > 0, for all c, and the
+gambler’s wealth grows to inﬁnity faster than exponentially for
+any b > 0. But that doesn’t mean that all investment ratios b are
+equally good. To see this, we wish to maximize the relative growth
+rate with respect to some other portfolio, say, b = ( 1
+2, 1
+2). Show
+that there exists a unique b maximizing
+E ln b + bX/c
+1
+2 + 1
+2X/c
+and interpret the answer.
+HISTORICAL NOTES
+The original treatment of gambling on a horse race is due to Kelly [308],
+who found that W = I. Log-optimal portfolios go back to the work
+of Bernoulli, Kelly [308], Latan´e [346], and Latan´e and Tuttle [347].
+Proportional gambling is sometimes referred to as the Kelly gambling
+scheme. The improvement in the probability of winning by switching
+envelopes in Problem 6.11 is based on Cover [130].
+Shannon studied stochastic models for English in his original paper
+[472]. His guessing game for estimating the entropy rate of English is
+described in [482]. Cover and King [131] provide a gambling estimate
+for the entropy of English. The analysis of the St. Petersburg paradox
+is from Bell and Cover [39]. An alternative analysis can be found in
+Feller [208].
+
+--- Page 9 ---
+CHAPTER 7
+CHANNEL CAPACITY
+What do we mean when we say that A communicates with B? We mean
+that the physical acts of A have induced a desired physical state in B. This
+transfer of information is a physical process and therefore is subject to the
+uncontrollable ambient noise and imperfections of the physical signaling
+process itself. The communication is successful if the receiver B and the
+transmitter A agree on what was sent.
+In this chapter we ﬁnd the maximum number of distinguishable signals
+for n uses of a communication channel. This number grows exponen-
+tially with n, and the exponent is known as the channel capacity. The
+characterization of the channel capacity (the logarithm of the number of
+distinguishable signals) as the maximum mutual information is the central
+and most famous success of information theory.
+The mathematical analog of a physical signaling system is shown
+in Figure 7.1. Source symbols from some ﬁnite alphabet are mapped
+into some sequence of channel symbols, which then produces the out-
+put sequence of the channel. The output sequence is random but has a
+distribution that depends on the input sequence. From the output sequence,
+we attempt to recover the transmitted message.
+Each of the possible input sequences induces a probability distribution
+on the output sequences. Since two different input sequences may give rise
+to the same output sequence, the inputs are confusable. In the next few
+sections, we show that we can choose a “nonconfusable” subset of input
+sequences so that with high probability there is only one highly likely input
+that could have caused the particular output. We can then reconstruct the
+input sequences at the output with a negligible probability of error. By
+mapping the source into the appropriate “widely spaced” input sequences
+to the channel, we can transmit a message with very low probability of
+error and reconstruct the source message at the output. The maximum rate
+at which this can be done is called the capacity of the channel.
+Deﬁnition
+We deﬁne a discrete channel to be a system consisting of an
+input alphabet X and output alphabet Y and a probability transition matrix
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+183
+
+--- Page 10 ---
+184
+CHANNEL CAPACITY
+Encoder
+Decoder
+Channel
+p(y|x)
+W
+Xn
+Yn
+Message
+W
+Estimate
+of
+Message
+^
+FIGURE 7.1. Communication system.
+p(y|x) that expresses the probability of observing the output symbol y
+given that we send the symbol x. The channel is said to be memoryless
+if the probability distribution of the output depends only on the input at
+that time and is conditionally independent of previous channel inputs or
+outputs.
+Deﬁnition
+We deﬁne the “information” channel capacity of a discrete
+memoryless channel as
+C = max
+p(x) I (X; Y),
+(7.1)
+where the maximum is taken over all possible input distributions p(x).
+We shall soon give an operational deﬁnition of channel capacity as the
+highest rate in bits per channel use at which information can be sent with
+arbitrarily low probability of error. Shannon’s second theorem establishes
+that the information channel capacity is equal to the operational channel
+capacity. Thus, we drop the word information in most discussions of
+channel capacity.
+There is a duality between the problems of data compression and data
+transmission. During compression, we remove all the redundancy in the
+data to form the most compressed version possible, whereas during data
+transmission, we add redundancy in a controlled fashion to combat errors
+in the channel. In Section 7.13 we show that a general communication
+system can be broken into two parts and that the problems of data com-
+pression and data transmission can be considered separately.
+7.1
+EXAMPLES OF CHANNEL CAPACITY
+7.1.1
+Noiseless Binary Channel
+Suppose that we have a channel whose the binary input is reproduced
+exactly at the output (Figure 7.2).
+In this case, any transmitted bit is received without error. Hence, one
+error-free bit can be transmitted per use of the channel, and the capacity is
+
+--- Page 11 ---
+7.1
+EXAMPLES OF CHANNEL CAPACITY
+185
+0
+0
+1
+1
+X
+Y
+FIGURE 7.2. Noiseless binary channel. C = 1 bit.
+1 bit. We can also calculate the information capacity C = max I (X; Y) =
+1 bit, which is achieved by using p(x) = (1
+2, 1
+2).
+7.1.2
+Noisy Channel with Nonoverlapping Outputs
+This channel has two possible outputs corresponding to each of the two
+inputs (Figure 7.3). The channel appears to be noisy, but really is not.
+Even though the output of the channel is a random consequence of the
+input, the input can be determined from the output, and hence every trans-
+mitted bit can be recovered without error. The capacity of this channel is
+also 1 bit per transmission. We can also calculate the information capacity
+C = max I (X; Y) = 1 bit, which is achieved by using p(x) = ( 1
+2, 1
+2).
+1/2
+1/2
+0
+2
+1
+X
+Y
+1/3
+2/3
+1
+4
+3
+FIGURE 7.3. Noisy channel with nonoverlapping outputs. C = 1 bit.
+
+--- Page 12 ---
+186
+CHANNEL CAPACITY
+7.1.3
+Noisy Typewriter
+In this case the channel input is either received unchanged at the
+output with probability
+1
+2 or is transformed into the next letter with
+probability
+1
+2
+(Figure 7.4). If the input has 26 symbols and we
+use every alternate input symbol, we can transmit one of 13 sym-
+bols without error with each transmission. Hence, the capacity of
+this channel is log 13 bits per transmission. We can also calculate
+the information capacity C = max I (X; Y) = max (H(Y) −H(Y|X)) =
+max H(Y) −1 = log 26 −1 = log 13, achieved by using p(x) distributed
+uniformly over all the inputs.
+Noisy channel
+A
+B
+A
+A
+B
+C
+D
+C
+C
+D
+E
+A
+B
+C
+D
+E
+Y
+Z
+Y
+Z
+Z
+Noiseless subset of inputs
+FIGURE 7.4. Noisy Typewriter. C = log 13 bits.
+
+--- Page 13 ---
+7.1
+EXAMPLES OF CHANNEL CAPACITY
+187
+7.1.4
+Binary Symmetric Channel
+Consider the binary symmetric channel (BSC), which is shown in Fig. 7.5.
+This is a binary channel in which the input symbols are complemented
+with probability p. This is the simplest model of a channel with errors,
+yet it captures most of the complexity of the general problem.
+When an error occurs, a 0 is received as a 1, and vice versa. The bits
+received do not reveal where the errors have occurred. In a sense, all
+the bits received are unreliable. Later we show that we can still use such
+a communication channel to send information at a nonzero rate with an
+arbitrarily small probability of error.
+We bound the mutual information by
+I (X; Y) = H(Y) −H(Y|X)
+(7.2)
+= H(Y) −
+
+p(x)H(Y|X = x)
+(7.3)
+= H(Y) −
+
+p(x)H(p)
+(7.4)
+= H(Y) −H(p)
+(7.5)
+≤1 −H(p),
+(7.6)
+where the last inequality follows because Y is a binary random variable.
+Equality is achieved when the input distribution is uniform. Hence, the
+information capacity of a binary symmetric channel with parameter p is
+C = 1 −H(p)
+bits.
+(7.7)
+1 −p
+1 −p
+p
+p
+0
+1
+0
+1
+FIGURE 7.5. Binary symmetric channel. C = 1 −H(p) bits.
+
+--- Page 14 ---
+188
+CHANNEL CAPACITY
+7.1.5
+Binary Erasure Channel
+The analog of the binary symmetric channel in which some bits are lost
+(rather than corrupted) is the binary erasure channel. In this channel, a
+fraction α of the bits are erased. The receiver knows which bits have
+been erased. The binary erasure channel has two inputs and three outputs
+(Figure 7.6).
+We calculate the capacity of the binary erasure channel as follows:
+C = max
+p(x) I (X; Y)
+(7.8)
+= max
+p(x) (H(Y) −H(Y|X))
+(7.9)
+= max
+p(x) H(Y) −H(α).
+(7.10)
+The ﬁrst guess for the maximum of H(Y) would be log 3, but we cannot
+achieve this by any choice of input distribution p(x). Letting E be the
+event {Y = e}, using the expansion
+H(Y) = H(Y, E) = H(E) + H(Y|E),
+(7.11)
+and letting Pr(X = 1) = π, we have
+H(Y) = H((1 −π)(1 −α), α, π(1 −α)) = H(α) + (1 −α)H(π).
+(7.12)
+1 −a
+1 −a
+0
+e
+a
+a
+0
+1
+1
+FIGURE 7.6. Binary erasure channel.
+
+--- Page 15 ---
+7.2
+SYMMETRIC CHANNELS
+189
+Hence
+C = max
+p(x) H(Y) −H(α)
+(7.13)
+= max
+π (1 −α)H(π) + H(α) −H(α)
+(7.14)
+= max
+π (1 −α)H(π)
+(7.15)
+= 1 −α,
+(7.16)
+where capacity is achieved by π = 1
+2.
+The expression for the capacity has some intuitive meaning: Since a
+proportion α of the bits are lost in the channel, we can recover (at most)
+a proportion 1 −α of the bits. Hence the capacity is at most 1 −α. It is
+not immediately obvious that it is possible to achieve this rate. This will
+follow from Shannon’s second theorem.
+In many practical channels, the sender receives some feedback from
+the receiver. If feedback is available for the binary erasure channel, it is
+very clear what to do: If a bit is lost, retransmit it until it gets through.
+Since the bits get through with probability 1 −α, the effective rate of
+transmission is 1 −α. In this way we are easily able to achieve a capacity
+of 1 −α with feedback.
+Later in the chapter we prove that the rate 1 −α is the best that can be
+achieved both with and without feedback. This is one of the consequences
+of the surprising fact that feedback does not increase the capacity of
+discrete memoryless channels.
+7.2
+SYMMETRIC CHANNELS
+The capacity of the binary symmetric channel is C = 1 −H(p) bits per
+transmission, and the capacity of the binary erasure channel is C = 1 −
+α bits per transmission. Now consider the channel with transition matrix:
+p(y|x) =
+
+
+0.3
+0.2
+0.5
+0.5
+0.3
+0.2
+0.2
+0.5
+0.3
+
+.
+(7.17)
+Here the entry in the xth row and the yth column denotes the conditional
+probability p(y|x) that y is received when x is sent. In this channel, all
+the rows of the probability transition matrix are permutations of each other
+and so are the columns. Such a channel is said to be symmetric. Another
+example of a symmetric channel is one of the form
+Y = X + Z
+(mod c),
+(7.18)
+
+--- Page 16 ---
+190
+CHANNEL CAPACITY
+where Z has some distribution on the integers {0, 1, 2, . . . , c −1}, X has
+the same alphabet as Z, and Z is independent of X.
+In both these cases, we can easily ﬁnd an explicit expression for the
+capacity of the channel. Letting r be a row of the transition matrix, we
+have
+I (X; Y) = H(Y) −H(Y|X)
+(7.19)
+= H(Y) −H(r)
+(7.20)
+≤log |Y| −H(r)
+(7.21)
+with equality if the output distribution is uniform. But p(x) = 1/|X|
+achieves a uniform distribution on Y, as seen from
+p(y) =
+
+x∈X
+p(y|x)p(x) = 1
+|X|
+
+p(y|x) = c 1
+|X| = 1
+|Y|,
+(7.22)
+where c is the sum of the entries in one column of the probability transition
+matrix.
+Thus, the channel in (7.17) has the capacity
+C = max
+p(x) I (X; Y) = log 3 −H(0.5, 0.3, 0.2),
+(7.23)
+and C is achieved by a uniform distribution on the input.
+The transition matrix of the symmetric channel deﬁned above is doubly
+stochastic. In the computation of the capacity, we used the facts that the
+rows were permutations of one another and that all the column sums were
+equal.
+Considering these properties, we can deﬁne a generalization of the
+concept of a symmetric channel as follows:
+Deﬁnition
+A channel is said to be symmetric if the rows of the channel
+transition matrix p(y|x) are permutations of each other and the columns
+are permutations of each other. A channel is said to be weakly symmetric
+if every row of the transition matrix p(·|x) is a permutation of every other
+row and all the column sums 
+x p(y|x) are equal.
+For example, the channel with transition matrix
+p(y|x) =
+ 1
+3
+1
+6
+1
+2
+1
+3
+1
+2
+1
+6
+
+(7.24)
+is weakly symmetric but not symmetric.
+
+--- Page 17 ---
+7.4
+PREVIEW OF THE CHANNEL CODING THEOREM
+191
+The above derivation for symmetric channels carries over to weakly
+symmetric channels as well. We have the following theorem for weakly
+symmetric channels:
+Theorem 7.2.1
+For a weakly symmetric channel,
+C = log |Y| −H(row of transition matrix),
+(7.25)
+and this is achieved by a uniform distribution on the input alphabet.
+7.3
+PROPERTIES OF CHANNEL CAPACITY
+1. C ≥0 since I (X; Y) ≥0.
+2. C ≤log |X| since C = max I (X; Y) ≤max H(X) = log |X|.
+3. C ≤log |Y| for the same reason.
+4. I (X; Y) is a continuous function of p(x).
+5. I (X; Y) is a concave function of p(x) (Theorem 2.7.4). Since
+I (X; Y) is a concave function over a closed convex set, a local
+maximum is a global maximum. From properties 2 and 3, the maxi-
+mum is ﬁnite, and we are justiﬁed in using the term maximum rather
+than supremum in the deﬁnition of capacity. The maximum can then
+be found by standard nonlinear optimization techniques such as gra-
+dient search. Some of the methods that can be used include the
+following:
+• Constrained maximization using calculus and the Kuhn–Tucker
+conditions.
+• The Frank–Wolfe gradient search algorithm.
+• An iterative algorithm developed by Arimoto [25] and Blahut
+[65]. We describe the algorithm in Section 10.8.
+In general, there is no closed-form solution for the capacity. But for
+many simple channels it is possible to calculate the capacity using prop-
+erties such as symmetry. Some of the examples considered earlier are of
+this form.
+7.4
+PREVIEW OF THE CHANNEL CODING THEOREM
+So far, we have deﬁned the information capacity of a discrete memoryless
+channel. In the next section we prove Shannon’s second theorem, which
+
+--- Page 18 ---
+192
+CHANNEL CAPACITY
+Xn
+Yn
+FIGURE 7.7. Channels after n uses.
+gives an operational meaning to the deﬁnition of capacity as the number
+of bits we can transmit reliably over the channel. But ﬁrst we will try to
+give an intuitive idea as to why we can transmit C bits of information over
+a channel. The basic idea is that for large block lengths, every channel
+looks like the noisy typewriter channel (Figure 7.4) and the channel has a
+subset of inputs that produce essentially disjoint sequences at the output.
+For each (typical) input n-sequence, there are approximately 2nH(Y|X)
+possible Y sequences, all of them equally likely (Figure 7.7). We wish
+to ensure that no two X sequences produce the same Y output sequence.
+Otherwise, we will not be able to decide which X sequence was sent.
+The total number of possible (typical) Y sequences is ≈2nH(Y). This set
+has to be divided into sets of size 2nH(Y|X) corresponding to the different
+input X sequences. The total number of disjoint sets is less than or equal
+to 2n(H(Y)−H(Y|X)) = 2nI(X;Y). Hence, we can send at most ≈2nI(X;Y)
+distinguishable sequences of length n.
+Although the above derivation outlines an upper bound on the capacity,
+a stronger version of the above argument will be used in the next section
+to prove that this rate I is achievable with an arbitrarily low probability
+of error.
+Before we proceed to the proof of Shannon’s second theorem, we need
+a few deﬁnitions.
+7.5
+DEFINITIONS
+We analyze a communication system as shown in Figure 7.8.
+A message W, drawn from the index set {1, 2, . . . , M}, results in the
+signal Xn(W), which is received by the receiver as a random sequence
+
+--- Page 19 ---
+7.5
+DEFINITIONS
+193
+Encoder
+Decoder
+Channel
+p(y|x)
+W
+Xn
+Yn
+Message
+W
+Estimate
+of
+Message
+^
+FIGURE 7.8. Communication channel.
+Y n ∼p(yn|xn). The receiver then guesses the index W by an appropriate
+decoding rule ˆW = g(Y n). The receiver makes an error if ˆW is not the
+same as the index W that was transmitted. We now deﬁne these ideas
+formally.
+Deﬁnition
+A discrete channel, denoted by (X, p(y|x), Y), consists of
+two ﬁnite sets X and Y and a collection of probability mass functions
+p(y|x), one for each x ∈X, such that for every x and y, p(y|x) ≥0, and
+for every x, 
+y p(y|x) = 1, with the interpretation that X is the input
+and Y is the output of the channel.
+Deﬁnition
+The nth extension of the discrete memoryless channel (DMC)
+is the channel (Xn, p(yn|xn), Yn), where
+p(yk|xk, yk−1) = p(yk|xk),
+k = 1, 2, . . . , n.
+(7.26)
+Remark
+If the channel is used without feedback [i.e., if the input sym-
+bols do not depend on the past output symbols, namely, p(xk|xk−1, yk−1)
+= p(xk|xk−1)], the channel transition function for the nth extension of the
+discrete memoryless channel reduces to
+p(yn|xn) =
+n
+	
+i=1
+p(yi|xi).
+(7.27)
+When we refer to the discrete memoryless channel, we mean the discrete
+memoryless channel without feedback unless we state explicitly other-
+wise.
+Deﬁnition
+An (M, n) code for the channel (X, p(y|x), Y) consists of
+the following:
+1. An index set {1, 2, . . . , M}.
+2. An encoding function Xn : {1, 2, . . . , M} →Xn, yielding codewords
+xn(1), xn(2), . . ., xn(M). The set of codewords is called the code-
+book.
+
+--- Page 20 ---
+194
+CHANNEL CAPACITY
+3. A decoding function
+g: Yn →{1, 2, . . . , M},
+(7.28)
+which is a deterministic rule that assigns a guess to each possible
+received vector.
+Deﬁnition
+(Conditional probability of error) Let
+λi = Pr(g(Y n) ̸= i|Xn = xn(i)) =
+
+yn
+p(yn|xn(i))I (g(yn) ̸= i) (7.29)
+be the conditional probability of error given that index i was sent, where
+I (·) is the indicator function.
+Deﬁnition
+The maximal probability of error λ(n) for an (M, n) code is
+deﬁned as
+λ(n) =
+max
+i∈{1,2,...,M} λi.
+(7.30)
+Deﬁnition
+The (arithmetic) average probability of error P (n)
+e
+for an
+(M, n) code is deﬁned as
+P (n)
+e
+= 1
+M
+M
+
+i=1
+λi.
+(7.31)
+Note that if the index W is chosen according to a uniform distribution
+over the set {1, 2, . . . , M}, and Xn = xn(W), then
+P (n)
+e
+△= Pr(W ̸= g(Y n)),
+(7.32)
+(i.e., P (n)
+e
+is the probability of error). Also, obviously,
+P (n)
+e
+≤λ(n).
+(7.33)
+One would expect the maximal probability of error to behave quite differ-
+ently from the average probability. But in the next section we prove that
+a small average probability of error implies a small maximal probability
+of error at essentially the same rate.
+
+--- Page 21 ---
+7.6
+JOINTLY TYPICAL SEQUENCES
+195
+It is worth noting that P (n)
+e
+deﬁned in (7.32) is only a mathematical
+construct of the conditional probabilities of error λi and is itself a proba-
+bility of error only if the message is chosen uniformly over the message
+set {1, 2, . . . , 2M}. However, both in the proof of achievability and the
+converse, we choose a uniform distribution on W to bound the probability
+of error. This allows us to establish the behavior of P (n)
+e
+and the maximal
+probability of error λ(n) and thus characterize the behavior of the channel
+regardless of how it is used (i.e., no matter what the distribution of W).
+Deﬁnition
+The rate R of an (M, n) code is
+R = log M
+n
+bits per transmission.
+(7.34)
+Deﬁnition
+A rate R is said to be achievable if there exists a sequence
+of (
+
+2nR
+, n) codes such that the maximal probability of error λ(n) tends
+to 0 as n →∞.
+Later, we write (2nR, n) codes to mean (
+
+2nR
+, n) codes. This will
+simplify the notation.
+Deﬁnition
+The capacity of a channel is the supremum of all achievable
+rates.
+Thus, rates less than capacity yield arbitrarily small probability of error
+for sufﬁciently large block lengths.
+7.6
+JOINTLY TYPICAL SEQUENCES
+Roughly speaking, we decode a channel output Y n as the ith index if
+the codeword Xn(i) is “jointly typical” with the received signal Y n. We
+now deﬁne the important idea of joint typicality and ﬁnd the probabil-
+ity of joint typicality when Xn(i) is the true cause of Y n and when it
+is not.
+Deﬁnition
+The set A(n)
+ǫ
+of jointly typical sequences {(xn, yn)} with
+respect to the distribution p(x, y) is the set of n-sequences with empirical
+entropies ǫ-close to the true entropies:
+A(n)
+ǫ
+=
+
+(xn, yn) ∈Xn × Yn :
+−1
+n log p(xn) −H(X)
+ < ǫ,
+(7.35)
+
+--- Page 22 ---
+196
+CHANNEL CAPACITY
+−1
+n log p(yn) −H(Y)
+ < ǫ,
+(7.36)
+−1
+n log p(xn, yn) −H(X, Y)
+ < ǫ
+
+,
+(7.37)
+where
+p(xn, yn) =
+n
+	
+i=1
+p(xi, yi).
+(7.38)
+Theorem 7.6.1
+(Joint AEP)
+Let (Xn, Y n) be sequences of length n
+drawn i.i.d. according to p(xn, yn) = n
+i=1 p(xi, yi). Then:
+1. Pr((Xn, Y n) ∈A(n)
+ǫ ) →1 as n →∞.
+2. |A(n)
+ǫ | ≤2n(H(X,Y)+ǫ).
+3. If ( ˜Xn, ˜Y n) ∼p(xn)p(yn) [i.e., ˜Xn and ˜Y n are independent with the
+same marginals as p(xn, yn)], then
+Pr
+
+( ˜Xn, ˜Y n) ∈A(n)
+ǫ
+
+≤2−n(I(X;Y)−3ǫ).
+(7.39)
+Also, for sufﬁciently large n,
+Pr
+
+( ˜Xn, ˜Y n) ∈A(n)
+ǫ
+
+≥(1 −ǫ)2−n(I(X;Y)+3ǫ).
+(7.40)
+Proof
+1. We begin by showing that with high probability, the sequence is in
+the typical set. By the weak law of large numbers,
+−1
+n log p(Xn) →−E[log p(X)] = H(X)
+in probability.
+(7.41)
+Hence, given ǫ > 0, there exists n1, such that for all n > n1,
+Pr
+−1
+n log p(Xn) −H(X)
+ ≥ǫ
+
+< ǫ
+3.
+(7.42)
+Similarly, by the weak law,
+−1
+n log p(Y n) →−E[log p(Y)] = H(Y)
+in probability
+(7.43)
+
+--- Page 23 ---
+7.6
+JOINTLY TYPICAL SEQUENCES
+197
+and
+−1
+n log p(Xn, Y n) →−E[log p(X, Y)] = H(X, Y) in probability,
+(7.44)
+and there exist n2 and n3, such that for all n ≥n2,
+Pr
+−1
+n log p(Y n) −H(Y)
+ ≥ǫ
+
+< ǫ
+3
+(7.45)
+and for all n ≥n3,
+Pr
+−1
+n log p(Xn, Y n) −H(X, Y)
+ ≥ǫ
+
+< ǫ
+3.
+(7.46)
+Choosing n > max{n1, n2, n3}, the probability of the union of the
+sets in (7.42), (7.45), and (7.46) must be less than ǫ. Hence for n
+sufﬁciently large, the probability of the set A(n)
+ǫ
+is greater than 1 −ǫ,
+establishing the ﬁrst part of the theorem.
+2. To prove the second part of the theorem, we have
+1 =
+
+p(xn, yn)
+(7.47)
+≥
+
+A(n)
+ǫ
+p(xn, yn)
+(7.48)
+≥|A(n)
+ǫ |2−n(H(X,Y)+ǫ),
+(7.49)
+and hence
+|A(n)
+ǫ | ≤2n(H(X,Y)+ǫ).
+(7.50)
+3. Now if ˜Xn and ˜Y n are independent but have the same marginals as
+Xn and Y n, then
+Pr(( ˜Xn, ˜Y n) ∈A(n)
+ǫ ) =
+
+(xn,yn)∈A(n)
+ǫ
+p(xn)p(yn)
+(7.51)
+≤2n(H(X,Y)+ǫ)2−n(H(X)−ǫ)2−n(H(Y)−ǫ)
+(7.52)
+= 2−n(I(X;Y)−3ǫ).
+(7.53)
+
+--- Page 24 ---
+198
+CHANNEL CAPACITY
+For sufﬁciently large n, Pr(A(n)
+ǫ ) ≥1 −ǫ, and therefore
+1 −ǫ ≤
+
+(xn,yn)∈A(n)
+ǫ
+p(xn, yn)
+(7.54)
+≤|A(n)
+ǫ |2−n(H(X,Y)−ǫ)
+(7.55)
+and
+|A(n)
+ǫ | ≥(1 −ǫ)2n(H(X,Y)−ǫ).
+(7.56)
+By similar arguments to the upper bound above, we can also show
+that for n sufﬁciently large,
+Pr(( ˜Xn, ˜Y n) ∈A(n)
+ǫ ) =
+
+A(n)
+ǫ
+p(xn)p(yn)
+(7.57)
+≥(1 −ǫ)2n(H(X,Y)−ǫ)2−n(H(X)+ǫ)2−n(H(Y)+ǫ)
+(7.58)
+= (1 −ǫ)2−n(I(X;Y)+3ǫ).
+□
+(7.59)
+The jointly typical set is illustrated in Figure 7.9. There are about
+2nH(X) typical X sequences and about 2nH(Y) typical Y sequences. How-
+ever, since there are only 2nH(X,Y) jointly typical sequences, not all pairs
+of typical Xn and typical Y n are also jointly typical. The probability that
+.
+..
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+..
+.
+.
+.
+.
+.
+.
+.
+..
+.
+.
+..
+..
+.
+.
+..
+..
+.
+.
+.
+..
+.
+.
+.
+.
+.
+.
+.
+..
+..
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+.
+xn
+yn
+FIGURE 7.9. Jointly typical sequences.
+
+--- Page 25 ---
+7.7
+CHANNEL CODING THEOREM
+199
+any randomly chosen pair is jointly typical is about 2−nI(X;Y). Hence,
+we can consider about 2nI(X;Y) such pairs before we are likely to come
+across a jointly typical pair. This suggests that there are about 2nI(X;Y)
+distinguishable signals Xn.
+Another way to look at this is in terms of the set of jointly typical
+sequences for a ﬁxed output sequence Y n, presumably the output sequence
+resulting from the true input signal Xn. For this sequence Y n, there are
+about 2nH(X|Y) conditionally typical input signals. The probability that
+some randomly chosen (other) input signal Xn is jointly typical with Y n
+is about 2nH(X|Y)/2nH(X) = 2−nI(X;Y). This again suggests that we can
+choose about 2nI(X;Y) codewords Xn(W) before one of these codewords
+will get confused with the codeword that caused the output Y n.
+7.7
+CHANNEL CODING THEOREM
+We now prove what is perhaps the basic theorem of information theory,
+the achievability of channel capacity, ﬁrst stated and essentially proved
+by Shannon in his original 1948 paper. The result is rather counterintu-
+itive; if the channel introduces errors, how can one correct them all? Any
+correction process is also subject to error, ad inﬁnitum.
+Shannon used a number of new ideas to prove that information can be
+sent reliably over a channel at all rates up to the channel capacity. These
+ideas include:
+• Allowing an arbitrarily small but nonzero probability of error
+• Using the channel many times in succession, so that the law of large
+numbers comes into effect
+• Calculating the average of the probability of error over a random
+choice of codebooks, which symmetrizes the probability, and which
+can then be used to show the existence of at least one good code
+Shannon’s outline of the proof was based on the idea of typical sequen-
+ces, but the proof was not made rigorous until much later. The proof given
+below makes use of the properties of typical sequences and is probably
+the simplest of the proofs developed so far. As in all the proofs, we
+use the same essential ideas—random code selection, calculation of the
+average probability of error for a random choice of codewords, and so
+on. The main difference is in the decoding rule. In the proof, we decode
+by joint typicality; we look for a codeword that is jointly typical with the
+received sequence. If we ﬁnd a unique codeword satisfying this property,
+we declare that word to be the transmitted codeword. By the properties
+
+--- Page 26 ---
+200
+CHANNEL CAPACITY
+of joint typicality stated previously, with high probability the transmitted
+codeword and the received sequence are jointly typical, since they are
+probabilistically related. Also, the probability that any other codeword
+looks jointly typical with the received sequence is 2−nI. Hence, if we
+have fewer then 2nI codewords, then with high probability there will be
+no other codewords that can be confused with the transmitted codeword,
+and the probability of error is small.
+Although jointly typical decoding is suboptimal, it is simple to analyze
+and still achieves all rates below capacity.
+We now give the complete statement and proof of Shannon’s second
+theorem:
+Theorem 7.7.1
+(Channel coding theorem)
+For a discrete memory-
+less channel, all rates below capacity C are achievable. Speciﬁcally, for
+every rate R < C, there exists a sequence of (2nR, n) codes with maximum
+probability of error λ(n) →0.
+Conversely, any sequence of (2nR, n) codes with λ(n) →0 must have
+R ≤C.
+Proof:
+We prove that rates R < C are achievable and postpone proof of
+the converse to Section 7.9.
+Achievability: Fix p(x). Generate a (2nR, n) code at random according
+to the distribution p(x). Speciﬁcally, we generate 2nR codewords inde-
+pendently according to the distribution
+p(xn) =
+n
+	
+i=1
+p(xi).
+(7.60)
+We exhibit the 2nR codewords as the rows of a matrix:
+C =
+
+
+x1(1)
+x2(1)
+· · ·
+xn(1)
+...
+...
+...
+...
+x1(2nR)
+x2(2nR)
+· · ·
+xn(2nR)
+
+.
+(7.61)
+Each entry in this matrix is generated i.i.d. according to p(x). Thus, the
+probability that we generate a particular code C is
+Pr(C) =
+2nR
+	
+w=1
+n
+	
+i=1
+p(xi(w)).
+(7.62)
+
+--- Page 27 ---
+7.7
+CHANNEL CODING THEOREM
+201
+Consider the following sequence of events:
+1. A random code C is generated as described in (7.62) according to
+p(x).
+2. The code C is then revealed to both sender and receiver. Both sender
+and receiver are also assumed to know the channel transition matrix
+p(y|x) for the channel.
+3. A message W is chosen according to a uniform distribution
+Pr(W = w) = 2−nR,
+w = 1, 2, . . . , 2nR.
+(7.63)
+4. The wth codeword Xn(w), corresponding to the wth row of C, is
+sent over the channel.
+5. The receiver receives a sequence Y n according to the distribution
+P (yn|xn(w)) =
+n
+	
+i=1
+p(yi|xi(w)).
+(7.64)
+6. The receiver guesses which message was sent. (The optimum proce-
+dure to minimize probability of error is maximum likelihood decod-
+ing (i.e., the receiver should choose the a posteriori most likely
+message). But this procedure is difﬁcult to analyze. Instead, we will
+use jointly typical decoding, which is described below. Jointly typi-
+cal decoding is easier to analyze and is asymptotically optimal.) In
+jointly typical decoding, the receiver declares that the index ˆW was
+sent if the following conditions are satisﬁed:
+• (Xn( ˆW), Y n) is jointly typical.
+• There is no other index W ′ ̸= ˆW such that (Xn(W ′), Y n) ∈
+A(n)
+ǫ .
+If no such ˆW exists or if there is more than one such, an error is
+declared. (We may assume that the receiver outputs a dummy index
+such as 0 in this case.)
+7. There is a decoding error if ˆW ̸= W. Let E be the event { ˆW ̸= W}.
+Analysis of the probability of error
+Outline: We ﬁrst outline the analysis. Instead of calculating the proba-
+bility of error for a single code, we calculate the average over all codes
+generated at random according to the distribution (7.62). By the symmetry
+of the code construction, the average probability of error does not depend
+
+--- Page 28 ---
+202
+CHANNEL CAPACITY
+on the particular index that was sent. For a typical codeword, there are two
+different sources of error when we use jointly typical decoding: Either the
+output Y n is not jointly typical with the transmitted codeword or there is
+some other codeword that is jointly typical with Y n. The probability that
+the transmitted codeword and the received sequence are jointly typical
+goes to 1, as shown by the joint AEP. For any rival codeword, the proba-
+bility that it is jointly typical with the received sequence is approximately
+2−nI, and hence we can use about 2nI codewords and still have a low
+probability of error. We will later extend the argument to ﬁnd a code with
+a low maximal probability of error.
+Detailed calculation of the probability of error: We let W be drawn
+according to a uniform distribution over {1, 2, . . . , 2nR} and use jointly
+typical decoding
+ˆW(yn) as described in step 6. Let E = { ˆW(Y n) ̸= W}
+denote the error event. We will calculate the average probability of error,
+averaged over all codewords in the codebook, and averaged over all code-
+books; that is, we calculate
+Pr(E) =
+
+C
+Pr(C)P (n)
+e
+(C)
+(7.65)
+=
+
+C
+Pr(C) 1
+2nR
+2nR
+
+w=1
+λw(C)
+(7.66)
+=
+1
+2nR
+2nR
+
+w=1
+
+C
+Pr(C)λw(C),
+(7.67)
+where P (n)
+e
+(C) is deﬁned for jointly typical decoding. By the symmetry
+of the code construction, the average probability of error averaged over
+all codes does not depend on the particular index that was sent [i.e.,
+
+C Pr(C)λw(C) does not depend on w]. Thus, we can assume without
+loss of generality that the message W = 1 was sent, since
+Pr(E) =
+1
+2nR
+2nR
+
+w=1
+
+C
+Pr(C)λw(C)
+(7.68)
+=
+
+C
+Pr(C)λ1(C)
+(7.69)
+= Pr(E|W = 1).
+(7.70)
+Deﬁne the following events:
+Ei = { (Xn(i), Y n) is in A(n)
+ǫ },
+i ∈{1, 2, . . . , 2nR},
+(7.71)
+
+--- Page 29 ---
+7.7
+CHANNEL CODING THEOREM
+203
+where Ei is the event that the ith codeword and Y n are jointly typical.
+Recall that Y n is the result of sending the ﬁrst codeword Xn(1) over the
+channel.
+Then an error occurs in the decoding scheme if either Ec
+1 occurs (when
+the transmitted codeword and the received sequence are not jointly typical)
+or E2 ∪E3 ∪· · · ∪E2nR occurs (when a wrong codeword is jointly typical
+with the received sequence). Hence, letting P (E) denote Pr(E|W = 1), we
+have
+Pr(E|W = 1) = P
+
+Ec
+1 ∪E2 ∪E3 ∪· · · ∪E2nR|W = 1
+
+(7.72)
+≤P (Ec
+1|W = 1) +
+2nR
+
+i=2
+P (Ei|W = 1),
+(7.73)
+by the union of events bound for probabilities. Now, by the joint AEP,
+P (Ec
+1|W = 1)→0, and hence
+P (Ec
+1|W = 1) ≤ǫ
+for n sufﬁciently large.
+(7.74)
+Since by the code generation process, Xn(1) and Xn(i) are independent
+for i ̸= 1, so are Y n and Xn(i). Hence, the probability that Xn(i) and Y n
+are jointly typical is ≤2−n(I(X;Y)−3ǫ) by the joint AEP. Consequently,
+Pr(E) = Pr(E|W = 1) ≤P (Ec
+1|W = 1) +
+2nR
+
+i=2
+P (Ei|W = 1) (7.75)
+≤ǫ +
+2nR
+
+i=2
+2−n(I(X;Y)−3ǫ)
+(7.76)
+= ǫ +
+
+2nR −1
+
+2−n(I(X;Y)−3ǫ)
+(7.77)
+≤ǫ + 23nǫ2−n(I(X;Y)−R)
+(7.78)
+≤2ǫ
+(7.79)
+if n is sufﬁciently large and R < I (X; Y) −3ǫ. Hence, if R < I (X; Y),
+we can choose ǫ and n so that the average probability of error, averaged
+over codebooks and codewords, is less than 2ǫ.
+To ﬁnish the proof, we will strengthen this conclusion by a series of
+code selections.
+1. Choose p(x) in the proof to be p∗(x), the distribution on X that
+achieves capacity. Then the condition R < I (X; Y) can be replaced
+by the achievability condition R < C.
+
+--- Page 30 ---
+204
+CHANNEL CAPACITY
+2. Get rid of the average over codebooks. Since the average proba-
+bility of error over codebooks is small (≤2ǫ), there exists at least
+one codebook C∗with a small average probability of error. Thus,
+Pr(E|C∗) ≤2ǫ. Determination of C∗can be achieved by an exhaus-
+tive search over all (2nR, n) codes. Note that
+Pr(E|C∗) =
+1
+2nR
+2nR
+
+i=1
+λi(C∗),
+(7.80)
+since we have chosen
+ˆW according to a uniform distribution as
+speciﬁed in (7.63).
+3. Throw away the worst half of the codewords in the best codebook
+C∗. Since the arithmetic average probability of error P (n)
+e
+(C∗) for
+this code is less then 2ǫ, we have
+Pr(E|C∗) ≤
+1
+2nR
+
+λi(C∗) ≤2ǫ,
+(7.81)
+which implies that at least half the indices i and their associated
+codewords Xn(i) must have conditional probability of error λi less
+than 4ǫ (otherwise, these codewords themselves would contribute
+more than 2ǫ to the sum). Hence the best half of the codewords
+have a maximal probability of error less than 4ǫ. If we reindex these
+codewords, we have 2nR−1 codewords. Throwing out half the code-
+words has changed the rate from R to R −1
+n, which is negligible
+for large n.
+Combining all these improvements, we have constructed a code of rate
+R′ = R −1
+n, with maximal probability of error λ(n) ≤4ǫ. This proves the
+achievability of any rate below capacity.
+□
+Random coding is the method of proof for Theorem 7.7.1, not the
+method of signaling. Codes are selected at random in the proof merely to
+symmetrize the mathematics and to show the existence of a good deter-
+ministic code. We proved that the average over all codes of block length
+n has a small probability of error. We can ﬁnd the best code within this
+set by an exhaustive search. Incidentally, this shows that the Kolmogorov
+complexity (Chapter 14) of the best code is a small constant. This means
+that the revelation (in step 2) to the sender and receiver of the best code
+C∗requires no channel. The sender and receiver merely agree to use the
+best (2nR, n) code for the channel.
+Although the theorem shows that there exist good codes with arbitrar-
+ily small probability of error for long block lengths, it does not provide
+a way of constructing the best codes. If we used the scheme suggested
+
+--- Page 31 ---
+7.8
+ZERO-ERROR CODES
+205
+by the proof and generate a code at random with the appropriate distri-
+bution, the code constructed is likely to be good for long block lengths.
+However, without some structure in the code, it is very difﬁcult to decode
+(the simple scheme of table lookup requires an exponentially large table).
+Hence the theorem does not provide a practical coding scheme. Ever
+since Shannon’s original paper on information theory, researchers have
+tried to develop structured codes that are easy to encode and decode.
+In Section 7.11, we discuss Hamming codes, the simplest of a class of
+algebraic error correcting codes that can correct one error in a block of
+bits. Since Shannon’s paper, a variety of techniques have been used to
+construct error correcting codes, and with turbo codes have come close
+to achieving capacity for Gaussian channels.
+7.8
+ZERO-ERROR CODES
+The outline of the proof of the converse is most clearly motivated by
+going through the argument when absolutely no errors are allowed. We
+will now prove that P (n)
+e
+= 0 implies that R ≤C. Assume that we have a
+(2nR, n) code with zero probability of error [i.e., the decoder output g(Y n)
+is equal to the input index W with probability 1]. Then the input index W
+is determined by the output sequence [i.e., H(W|Y n) = 0]. Now, to obtain
+a strong bound, we arbitrarily assume that W is uniformly distributed
+over {1, 2, . . . , 2nR}. Thus, H(W) = nR. We can now write the string of
+inequalities:
+nR = H(W) = H(W|Y n)
+
+
+
+=0
++I (W; Y n)
+(7.82)
+= I (W; Y n)
+(7.83)
+(a)
+≤I (Xn; Y n)
+(7.84)
+(b)
+≤
+n
+
+i=1
+I (Xi; Yi)
+(7.85)
+(c)
+≤nC,
+(7.86)
+where (a) follows from the data-processing inequality (since W →Xn(W)
+→Y n forms a Markov chain), (b) will be proved in Lemma 7.9.2 using
+the discrete memoryless assumption, and (c) follows from the deﬁnition
+of (information) capacity. Hence, for any zero-error (2nR, n) code, for
+all n,
+R ≤C.
+(7.87)
+
+--- Page 32 ---
+206
+CHANNEL CAPACITY
+7.9
+FANO’S INEQUALITY AND THE CONVERSE
+TO THE CODING THEOREM
+We now extend the proof that was derived for zero-error codes to the case
+of codes with very small probabilities of error. The new ingredient will be
+Fano’s inequality, which gives a lower bound on the probability of error
+in terms of the conditional entropy. Recall the proof of Fano’s inequality,
+which is repeated here in a new context for reference.
+Let us deﬁne the setup under consideration. The index W is uniformly
+distributed on the set W = {1, 2, . . . , 2nR}, and the sequence Y n is related
+probabilistically to W. From Y n, we estimate the index W that was sent.
+Let the estimate be ˆW = g(Y n). Thus, W →Xn(W) →Y n →ˆW forms
+a Markov chain. Note that the probability of error is
+Pr
+ ˆW ̸= W
+
+=
+1
+2nR
+
+i
+λi = P (n)
+e
+.
+(7.88)
+We begin with the following lemma, which has been proved in
+Section 2.10:
+Lemma 7.9.1
+(Fano’s inequality)
+For a discrete memoryless channel
+with a codebook C and the input message W uniformly distributed over
+2nR, we have
+H(W| ˆW) ≤1 + P (n)
+e
+nR.
+(7.89)
+Proof:
+Since W is uniformly distributed, we have P (n)
+e
+= Pr(W ̸= ˆW).
+We apply Fano’s inequality (Theorem 2.10.1) for W in an alphabet of
+size 2nR.
+□
+We will now prove a lemma which shows that the capacity per trans-
+mission is not increased if we use a discrete memoryless channel many
+times.
+Lemma 7.9.2
+Let Y n be the result of passing Xn through a discrete
+memoryless channel of capacity C. Then
+I (Xn; Y n) ≤nC
+for all p(xn).
+(7.90)
+Proof
+I (Xn; Y n) = H(Y n) −H(Y n|Xn)
+(7.91)
+= H(Y n) −
+n
+
+i=1
+H(Yi|Y1, . . . , Yi−1, Xn)
+(7.92)
+= H(Y n) −
+n
+
+i=1
+H(Yi|Xi),
+(7.93)
+
+--- Page 33 ---
+7.9
+FANO’S INEQUALITY AND THE CONVERSE TO THE CODING THEOREM
+207
+since by the deﬁnition of a discrete memoryless channel, Yi depends only
+on Xi and is conditionally independent of everything else. Continuing the
+series of inequalities, we have
+I (Xn; Y n) = H(Y n) −
+n
+
+i=1
+H(Yi|Xi)
+(7.94)
+≤
+n
+
+i=1
+H(Yi) −
+n
+
+i=1
+H(Yi|Xi)
+(7.95)
+=
+n
+
+i=1
+I (Xi; Yi)
+(7.96)
+≤nC,
+(7.97)
+where (7.95) follows from the fact that the entropy of a collection of ran-
+dom variables is less than the sum of their individual entropies, and (7.97)
+follows from the deﬁnition of capacity. Thus, we have proved that using the
+channel many times does not increase the information capacity in bits per
+transmission.
+□
+We are now in a position to prove the converse to the channel coding
+theorem.
+Proof:
+Converse to Theorem 7.7.1 (Channel coding theorem). We have
+to show that any sequence of (2nR, n) codes with λ(n) →0 must have R ≤
+C. If the maximal probability of error tends to zero, the average probability
+of error for the sequence of codes also goes to zero [i.e., λ(n) →0 implies
+P (n)
+e
+→0, where P (n)
+e
+is deﬁned in (7.32)]. For a ﬁxed encoding rule
+Xn(·) and a ﬁxed decoding rule ˆW = g(Y n), we have W →Xn(W) →
+Y n →ˆW. For each n, let W be drawn according to a uniform distribution
+over {1, 2, . . . , 2nR}. Since W has a uniform distribution, Pr( ˆW ̸= W) =
+P (n)
+e
+=
+1
+2nR
+
+i λi. Hence,
+nR
+(a)
+= H(W)
+(7.98)
+(b)
+= H(W| ˆW) + I (W; ˆW)
+(7.99)
+(c)
+≤1 + P (n)
+e
+nR + I (W; ˆW)
+(7.100)
+(d)
+≤1 + P (n)
+e
+nR + I (Xn; Y n)
+(7.101)
+(e)
+≤1 + P (n)
+e
+nR + nC,
+(7.102)
+
+--- Page 34 ---
+208
+CHANNEL CAPACITY
+where (a) follows from the assumption that W is uniform over {1, 2, . . . ,
+2nR}, (b) is an identity, (c) is Fano’s inequality for W taking on at most 2nR
+values, (d) is the data-processing inequality, and (e) is from Lemma 7.9.2.
+Dividing by n, we obtain
+R ≤P (n)
+e
+R + 1
+n + C.
+(7.103)
+Now letting n →∞, we see that the ﬁrst two terms on the right-hand
+side tend to 0, and hence
+R ≤C.
+(7.104)
+We can rewrite (7.103) as
+P (n)
+e
+≥1 −C
+R −1
+nR.
+(7.105)
+This equation shows that if R > C, the probability of error is bounded
+away from 0 for sufﬁciently large n (and hence for all n, since if P (n)
+e
+= 0
+for small n, we can construct codes for large n with P (n)
+e
+= 0 by con-
+catenating these codes). Hence, we cannot achieve an arbitrarily low
+probability of error at rates above capacity.
+□
+This converse is sometimes called the weak converse to the channel
+coding theorem. It is also possible to prove a strong converse, which states
+that for rates above capacity, the probability of error goes exponentially
+to 1. Hence, the capacity is a very clear dividing point—at rates below
+capacity, P (n)
+e
+→0 exponentially, and at rates above capacity, P (n)
+e
+→1
+exponentially.
+7.10
+EQUALITY IN THE CONVERSE TO THE CHANNEL
+CODING THEOREM
+We have proved the channel coding theorem and its converse. In essence,
+these theorems state that when R < C, it is possible to send informa-
+tion with an arbitrarily low probability of error, and when R > C, the
+probability of error is bounded away from zero.
+It is interesting and rewarding to examine the consequences of equality
+in the converse; hopefully, it will give some ideas as to the kinds of codes
+that achieve capacity. Repeating the steps of the converse in the case when
+Pe = 0, we have
+nR = H(W)
+(7.106)
+= H(W| ˆW) + I (W; ˆW)
+(7.107)
+
+--- Page 35 ---
+7.10
+EQUALITY IN THE CONVERSE TO THE CHANNEL CODING THEOREM
+209
+= I (W; ˆW))
+(7.108)
+(a)
+≤I (Xn(W); Y n)
+(7.109)
+= H(Y n) −H(Y n|Xn)
+(7.110)
+= H(Y n) −
+n
+
+i=1
+H(Yi|Xi)
+(7.111)
+(b)
+≤
+n
+
+i=1
+H(Yi) −
+n
+
+i=1
+H(Yi|Xi)
+(7.112)
+=
+n
+
+i=1
+I (Xi; Yi)
+(7.113)
+(c)
+≤nC.
+(7.114)
+We have equality in (a), the data-processing inequality, only if I (Y n;
+Xn(W)|W) = 0 and I (Xn; Y n| ˆW) = 0, which is true if all the codewords
+are distinct and if ˆW is a sufﬁcient statistic for decoding. We have equality
+in (b) only if the Yi’s are independent, and equality in (c) only if the
+distribution of Xi is p∗(x), the distribution on X that achieves capacity.
+We have equality in the converse only if these conditions are satisﬁed. This
+indicates that a capacity-achieving zero-error code has distinct codewords
+and the distribution of the Yi’s must be i.i.d. with
+p∗(y) =
+
+x
+p∗(x)p(y|x),
+(7.115)
+the distribution on Y induced by the optimum distribution on X. The
+distribution referred to in the converse is the empirical distribution on X
+and Y induced by a uniform distribution over codewords, that is,
+p(xi, yi) =
+1
+2nR
+2nR
+
+w=1
+I (Xi(w) = xi)p(yi|xi).
+(7.116)
+We can check this result in examples of codes that achieve capacity:
+1. Noisy typewriter. In this case we have an input alphabet of 26 let-
+ters, and each letter is either printed out correctly or changed to the
+next letter with probability 1
+2. A simple code that achieves capacity
+(log 13) for this channel is to use every alternate input letter so that
+
+--- Page 36 ---
+210
+CHANNEL CAPACITY
+no two letters can be confused. In this case, there are 13 codewords
+of block length 1. If we choose the codewords i.i.d. according to a
+uniform distribution on {1, 3, 5, 7, . . . , 25}, the output of the channel
+is also i.i.d. and uniformly distributed on {1, 2, . . . , 26}, as expected.
+2. Binary symmetric channel. Since given any input sequence, every
+possible output sequence has some positive probability, it will not
+be possible to distinguish even two codewords with zero probability
+of error. Hence the zero-error capacity of the BSC is zero. How-
+ever, even in this case, we can draw some useful conclusions. The
+efﬁcient codes will still induce a distribution on Y that looks i.i.d.
+∼Bernoulli(1
+2). Also, from the arguments that lead up to the con-
+verse, we can see that at rates close to capacity, we have almost
+entirely covered the set of possible output sequences with decoding
+sets corresponding to the codewords. At rates above capacity, the
+decoding sets begin to overlap, and the probability of error can no
+longer be made arbitrarily small.
+7.11
+HAMMING CODES
+The channel coding theorem promises the existence of block codes that
+will allow us to transmit information at rates below capacity with an
+arbitrarily small probability of error if the block length is large enough.
+Ever since the appearance of Shannon’s original paper [471], people have
+searched for such codes. In addition to achieving low probabilities of
+error, useful codes should be “simple,” so that they can be encoded and
+decoded efﬁciently.
+The search for simple good codes has come a long way since the pub-
+lication of Shannon’s original paper in 1948. The entire ﬁeld of coding
+theory has been developed during this search. We will not be able to
+describe the many elegant and intricate coding schemes that have been
+developed since 1948. We will only describe the simplest such scheme
+developed by Hamming [266]. It illustrates some of the basic ideas under-
+lying most codes.
+The object of coding is to introduce redundancy so that even if some
+of the information is lost or corrupted, it will still be possible to recover
+the message at the receiver. The most obvious coding scheme is to repeat
+information. For example, to send a 1, we send 11111, and to send a 0, we
+send 00000. This scheme uses ﬁve symbols to send 1 bit, and therefore
+has a rate of 1
+5 bit per symbol. If this code is used on a binary symmetric
+channel, the optimum decoding scheme is to take the majority vote of
+each block of ﬁve received bits. If three or more bits are 1, we decode
+
+--- Page 37 ---
+7.11
+HAMMING CODES
+211
+the block as a 1; otherwise, we decode it as 0. An error occurs if and
+only if more than three of the bits are changed. By using longer repetition
+codes, we can achieve an arbitrarily low probability of error. But the rate
+of the code also goes to zero with block length, so even though the code
+is “simple,” it is really not a very useful code.
+Instead of simply repeating the bits, we can combine the bits in some
+intelligent fashion so that each extra bit checks whether there is an error in
+some subset of the information bits. A simple example of this is a parity
+check code. Starting with a block of n −1 information bits, we choose
+the nth bit so that the parity of the entire block is 0 (the number of 1’s
+in the block is even). Then if there is an odd number of errors during
+the transmission, the receiver will notice that the parity has changed and
+detect the error. This is the simplest example of an error-detecting code.
+The code does not detect an even number of errors and does not give any
+information about how to correct the errors that occur.
+We can extend the idea of parity checks to allow for more than one
+parity check bit and to allow the parity checks to depend on various subsets
+of the information bits. The Hamming code that we describe below is an
+example of a parity check code. We describe it using some simple ideas
+from linear algebra.
+To illustrate the principles of Hamming codes, we consider a binary
+code of block length 7. All operations will be done modulo 2. Consider
+the set of all nonzero binary vectors of length 3. Arrange them in columns
+to form a matrix:
+H =
+
+
+0
+0
+0
+1
+1
+1
+1
+0
+1
+1
+0
+0
+1
+1
+1
+0
+1
+0
+1
+0
+1
+
+.
+(7.117)
+Consider the set of vectors of length 7 in the null space of H (the vectors
+which when multiplied by H give 000). From the theory of linear spaces,
+since H has rank 3, we expect the null space of H to have dimension 4.
+These 24 codewords are
+0000000
+0100101
+1000011
+1100110
+0001111
+0101010
+1001100
+1101001
+0010110
+0110011
+1010101
+1110000
+0011001
+0111100
+1011010
+1111111
+Since the set of codewords is the null space of a matrix, it is linear in the
+sense that the sum of any two codewords is also a codeword. The set of
+codewords therefore forms a linear subspace of dimension 4 in the vector
+space of dimension 7.
+
+--- Page 38 ---
+212
+CHANNEL CAPACITY
+Looking at the codewords, we notice that other than the all-0 codeword,
+the minimum number of 1’s in any codeword is 3. This is called the
+minimum weight of the code. We can see that the minimum weight of
+a code has to be at least 3 since all the columns of H are different, so
+no two columns can add to 000. The fact that the minimum distance is
+exactly 3 can be seen from the fact that the sum of any two columns must
+be one of the columns of the matrix.
+Since the code is linear, the difference between any two codewords is
+also a codeword, and hence any two codewords differ in at least three
+places. The minimum number of places in which two codewords differ is
+called the minimum distance of the code. The minimum distance of the
+code is a measure of how far apart the codewords are and will determine
+how distinguishable the codewords will be at the output of the channel.
+The minimum distance is equal to the minimum weight for a linear code.
+We aim to develop codes that have a large minimum distance.
+For the code described above, the minimum distance is 3. Hence if a
+codeword c is corrupted in only one place, it will differ from any other
+codeword in at least two places and therefore be closer to c than to
+any other codeword. But can we discover which is the closest codeword
+without searching over all the codewords?
+The answer is yes. We can use the structure of the matrix H for decod-
+ing. The matrix H, called the parity check matrix, has the property that
+for every codeword c, Hc = 0. Let ei be a vector with a 1 in the ith
+position and 0’s elsewhere. If the codeword is corrupted at position i, the
+received vector r = c + ei. If we multiply this vector by the matrix H,
+we obtain
+Hr = H(c + ei) = Hc + Hei = Hei,
+(7.118)
+which is the vector corresponding to the ith column of H. Hence looking
+at Hr, we can ﬁnd which position of the vector was corrupted. Revers-
+ing this bit will give us a codeword. This yields a simple procedure for
+correcting one error in the received sequence. We have constructed a code-
+book with 16 codewords of block length 7, which can correct up to one
+error. This code is called a Hamming code.
+We have not yet identiﬁed a simple encoding procedure; we could use
+any mapping from a set of 16 messages into the codewords. But if we
+examine the ﬁrst 4 bits of the codewords in the table, we observe that
+they cycle through all 24 combinations of 4 bits. Thus, we could use
+these 4 bits to be the 4 bits of the message we want to send; the other
+3 bits are then determined by the code. In general, it is possible to modify
+a linear code so that the mapping is explicit, so that the ﬁrst k bits in each
+
+--- Page 39 ---
+7.11
+HAMMING CODES
+213
+codeword represent the message, and the last n −k bits are parity check
+bits. Such a code is called a systematic code. The code is often identiﬁed
+by its block length n, the number of information bits k and the minimum
+distance d. For example, the above code is called a (7,4,3) Hamming code
+(i.e., n = 7, k = 4, and d = 3).
+An easy way to see how Hamming codes work is by means of a Venn
+diagram. Consider the following Venn diagram with three circles and with
+four intersection regions as shown in Figure 7.10. To send the information
+sequence 1101, we place the 4 information bits in the four intersection
+regions as shown in the ﬁgure. We then place a parity bit in each of the
+three remaining regions so that the parity of each circle is even (i.e., there
+are an even number of 1’s in each circle). Thus, the parity bits are as
+shown in Figure 7.11.
+Now assume that one of the bits is changed; for example one of the
+information bits is changed from 1 to 0 as shown in Figure 7.12. Then
+the parity constraints are violated for two of the circles (highlighted in the
+ﬁgure), and it is not hard to see that given these violations, the only single
+bit error that could have caused it is at the intersection of the two circles
+(i.e., the bit that was changed). Similarly working through the other error
+cases, it is not hard to see that this code can detect and correct any single
+bit error in the received codeword.
+We can easily generalize this procedure to construct larger matrices
+H. In general, if we use l rows in H, the code that we obtain will have
+block length n = 2l −1, k = 2l −l −1 and minimum distance 3. All
+these codes are called Hamming codes and can correct one error.
+1
+1
+0
+1
+FIGURE 7.10. Venn diagram with information bits.
+
+--- Page 40 ---
+214
+CHANNEL CAPACITY
+0
+1
+1
+0
+1
+0
+1
+FIGURE 7.11. Venn diagram with information bits and parity bits with even parity for each
+circle.
+0
+1
+1
+0
+0
+1
+0
+FIGURE 7.12. Venn diagram with one of the information bits changed.
+Hamming codes are the simplest examples of linear parity check codes.
+They demonstrate the principle that underlies the construction of other
+linear codes. But with large block lengths it is likely that there will be
+more than one error in the block. In the early 1950s, Reed and Solomon
+found a class of multiple error-correcting codes for nonbinary channels.
+In the late 1950s, Bose and Ray-Chaudhuri [72] and Hocquenghem [278]
+generalized the ideas of Hamming codes using Galois ﬁeld theory to con-
+struct t-error correcting codes (called BCH codes) for any t. Since then,
+various authors have developed other codes and also developed efﬁcient
+
+--- Page 41 ---
+7.11
+HAMMING CODES
+215
+decoding algorithms for these codes. With the advent of integrated circuits,
+it has become feasible to implement fairly complex codes in hardware and
+realize some of the error-correcting performance promised by Shannon’s
+channel capacity theorem. For example, all compact disc players include
+error-correction circuitry based on two interleaved (32, 28, 5) and (28, 24,
+5) Reed–Solomon codes that allow the decoder to correct bursts of up to
+4000 errors.
+All the codes described above are block codes —they map a block of
+information bits onto a channel codeword and there is no dependence on
+past information bits. It is also possible to design codes where each output
+block depends not only on the current input block, but also on some of
+the past inputs as well. A highly structured form of such a code is called
+a convolutional code. The theory of convolutional codes has developed
+considerably over the last 40 years. We will not go into the details, but
+refer the interested reader to textbooks on coding theory [69, 356].
+For many years, none of the known coding algorithms came close
+to achieving the promise of Shannon’s channel capacity theorem. For a
+binary symmetric channel with crossover probability p, we would need a
+code that could correct up to np errors in a block of length n and have
+n(1 −H(p)) information bits. For example, the repetition code suggested
+earlier corrects up to n/2 errors in a block of length n, but its rate goes
+to 0 with n. Until 1972, all known codes that could correct nα errors for
+block length n had asymptotic rate 0. In 1972, Justesen [301] described
+a class of codes with positive asymptotic rate and positive asymptotic
+minimum distance as a fraction of the block length.
+In 1993, a paper by Berrou et al. [57] introduced the notion that the
+combination of two interleaved convolution codes with a parallel cooper-
+ative decoder achieved much better performance than any of the earlier
+codes. Each decoder feeds its “opinion” of the value of each bit to the
+other decoder and uses the opinion of the other decoder to help it decide
+the value of the bit. This iterative process is repeated until both decoders
+agree on the value of the bit. The surprising fact is that this iterative
+procedure allows for efﬁcient decoding at rates close to capacity for a
+variety of channels. There has also been a renewed interest in the theory
+of low-density parity check (LDPC) codes that were introduced by Robert
+Gallager in his thesis [231, 232]. In 1997, MacKay and Neal [368] showed
+that an iterative message-passing algorithm similar to the algorithm used
+for decoding turbo codes could achieve rates close to capacity with high
+probability for LDPC codes. Both Turbo codes and LDPC codes remain
+active areas of research and have been applied to wireless and satellite
+communication channels.
+
+--- Page 42 ---
+216
+CHANNEL CAPACITY
+Encoder
+Decoder
+Channel
+p(y|x)
+W
+Xi(W,Yi −1)
+Yi
+Message
+W
+Estimate
+of
+Message
+^
+FIGURE 7.13. Discrete memoryless channel with feedback.
+7.12
+FEEDBACK CAPACITY
+A channel with feedback is illustrated in Figure 7.13. We assume that
+all the received symbols are sent back immediately and noiselessly to
+the transmitter, which can then use them to decide which symbol to send
+next. Can we do better with feedback? The surprising answer is no, which
+we shall now prove. We deﬁne a (2nR, n) feedback code as a sequence
+of mappings xi(W, Y i−1), where each xi is a function only of the mes-
+sage W ∈2nR and the previous received values, Y1, Y2, . . . , Yi−1, and a
+sequence of decoding functions g : Yn →{1, 2, . . . , 2nR}. Thus,
+P (n)
+e
+= Pr
+
+g(Y n) ̸= W
+
+,
+(7.119)
+when W is uniformly distributed over {1, 2, . . . , 2nR}.
+Deﬁnition
+The capacity with feedback, CFB, of a discrete memoryless
+channel is the supremum of all rates achievable by feedback codes.
+Theorem 7.12.1
+(Feedback capacity)
+CFB = C = max
+p(x) I (X; Y).
+(7.120)
+Proof:
+Since a nonfeedback code is a special case of a feedback code,
+any rate that can be achieved without feedback can be achieved with
+feedback, and hence
+CFB ≥C.
+(7.121)
+Proving the inequality the other way is slightly more tricky. We cannot
+use the same proof that we used for the converse to the coding theorem
+without feedback. Lemma 7.9.2 is no longer true, since Xi depends on
+the past received symbols, and it is no longer true that Yi depends only
+on Xi and is conditionally independent of the future X’s in (7.93).
+
+--- Page 43 ---
+7.12
+FEEDBACK CAPACITY
+217
+There is a simple change that will ﬁx the problem with the proof.
+Instead of using Xn, we will use the index W and prove a similar series
+of inequalities. Let W be uniformly distributed over {1, 2, . . . , 2nR}. Then
+Pr(W ̸= ˆW) = P (n)
+e
+and
+nR = H(W) = H(W| ˆW) + I (W; ˆW)
+(7.122)
+≤1 + P (n)
+e
+nR + I (W; ˆW)
+(7.123)
+≤1 + P (n)
+e
+nR + I (W; Y n),
+(7.124)
+by Fano’s inequality and the data-processing inequality. Now we can
+bound I (W; Y n) as follows:
+I (W; Y n) = H(Y n) −H(Y n|W)
+(7.125)
+= H(Y n) −
+n
+
+i=1
+H(Yi|Y1, Y2, . . . , Yi−1, W)
+(7.126)
+= H(Y n) −
+n
+
+i=1
+H(Yi|Y1, Y2, . . . , Yi−1, W, Xi)
+(7.127)
+= H(Y n) −
+n
+
+i=1
+H(Yi|Xi),
+(7.128)
+since Xi is a function of Y1, . . . , Yi−1 and W; and conditional on Xi, Yi
+is independent of W and past samples of Y. Continuing, we have
+I (W; Y n) = H(Y n) −
+n
+
+i=1
+H(Yi|Xi)
+(7.129)
+≤
+n
+
+i=1
+H(Yi) −
+n
+
+i=1
+H(Yi|Xi)
+(7.130)
+=
+n
+
+i=1
+I (Xi; Yi)
+(7.131)
+≤nC
+(7.132)
+from the deﬁnition of capacity for a discrete memoryless channel. Putting
+these together, we obtain
+nR ≤P (n)
+e
+nR + 1 + nC,
+(7.133)
+
+--- Page 44 ---
+218
+CHANNEL CAPACITY
+and dividing by n and letting n →∞, we conclude that
+R ≤C.
+(7.134)
+Thus, we cannot achieve any higher rates with feedback than we can
+without feedback, and
+CFB = C.
+□
+(7.135)
+As we have seen in the example of the binary erasure channel, feedback
+can help enormously in simplifying encoding and decoding. However, it
+cannot increase the capacity of the channel.
+7.13
+SOURCE–CHANNEL SEPARATION THEOREM
+It is now time to combine the two main results that we have proved so far:
+data compression (R > H: Theorem 5.4.2) and data transmission (R <
+C: Theorem 7.7.1). Is the condition H < C necessary and sufﬁcient for
+sending a source over a channel? For example, consider sending digitized
+speech or music over a discrete memoryless channel. We could design
+a code to map the sequence of speech samples directly into the input
+of the channel, or we could compress the speech into its most efﬁcient
+representation, then use the appropriate channel code to send it over the
+channel. It is not immediately clear that we are not losing something
+by using the two-stage method, since data compression does not depend
+on the channel and the channel coding does not depend on the source
+distribution.
+We will prove in this section that the two-stage method is as good as
+any other method of transmitting information over a noisy channel. This
+result has some important practical implications. It implies that we can
+consider the design of a communication system as a combination of two
+parts, source coding and channel coding. We can design source codes
+for the most efﬁcient representation of the data. We can, separately and
+independently, design channel codes appropriate for the channel. The com-
+bination will be as efﬁcient as anything we could design by considering
+both problems together.
+The common representation for all kinds of data uses a binary alphabet.
+Most modern communication systems are digital, and data are reduced
+to a binary representation for transmission over the common channel.
+This offers an enormous reduction in complexity. Networks like, ATM
+networks and the Internet use the common binary representation to allow
+speech, video, and digital data to use the same communication channel.
+
+--- Page 45 ---
+7.13
+SOURCE–CHANNEL SEPARATION THEOREM
+219
+The result—that a two-stage process is as good as any one-stage pro-
+cess—seems so obvious that it may be appropriate to point out that it
+is not always true. There are examples of multiuser channels where the
+decomposition breaks down. We also consider two simple situations where
+the theorem appears to be misleading. A simple example is that of sending
+English text over an erasure channel. We can look for the most efﬁcient
+binary representation of the text and send it over the channel. But the
+errors will be very difﬁcult to decode. If, however, we send the English
+text directly over the channel, we can lose up to about half the letters and
+yet be able to make sense out of the message. Similarly, the human ear has
+some unusual properties that enable it to distinguish speech under very
+high noise levels if the noise is white. In such cases, it may be appropriate
+to send the uncompressed speech over the noisy channel rather than the
+compressed version. Apparently, the redundancy in the source is suited to
+the channel.
+Let us deﬁne the setup under consideration. We have a source V that
+generates symbols from an alphabet V. We will not make any assumptions
+about the kind of stochastic process produced by V other than that it is
+from a ﬁnite alphabet and satisﬁes the AEP. Examples of such processes
+include a sequence of i.i.d. random variables and the sequence of states
+of a stationary irreducible Markov chain. Any stationary ergodic source
+satisﬁes the AEP, as we show in Section 16.8.
+We want to send the sequence of symbols V n = V1, V2, . . . , Vn over
+the channel so that the receiver can reconstruct the sequence. To do this,
+we map the sequence onto a codeword Xn(V n) and send the codeword
+over the channel. The receiver looks at his received sequence Y n and
+makes an estimate ˆV n of the sequence V n that was sent. The receiver
+makes an error if V n ̸= ˆV n. We deﬁne the probability of error as
+Pr(V n ̸= ˆV n) =
+
+yn
+
+vn
+p(vn)p(yn|xn(vn))I (g(yn) ̸= vn),
+(7.136)
+where I is the indicator function and g(yn) is the decoding function. The
+system is illustrated in Figure 7.14.
+We can now state the joint source–channel coding theorem:
+Encoder
+Decoder
+Channel
+p(y|x)
+Vn
+Xn(Vn)
+Yn
+Vn
+^
+FIGURE 7.14. Joint source and channel coding.
+
+--- Page 46 ---
+220
+CHANNEL CAPACITY
+Theorem 7.13.1
+(Source–channel coding theorem)
+If V1, V2, . . . V n
+is a ﬁnite alphabet stochastic process that satisﬁes the AEP and H(V) <
+C, there exists a source–channel code with probability of error Pr( ˆV n ̸=
+V n) →0. Conversely, for any stationary stochastic process, if H(V) > C,
+the probability of error is bounded away from zero, and it is not possible
+to send the process over the channel with arbitrarily low probability of
+error.
+Proof:
+Achievability. The essence of the forward part of the proof is
+the two-stage encoding described earlier. Since we have assumed that the
+stochastic process satisﬁes the AEP, it implies that there exists a typical
+set A(n)
+ǫ
+of size ≤2n(H(V)+ǫ) which contains most of the probability. We
+will encode only the source sequences belonging to the typical set; all
+other sequences will result in an error. This will contribute at most ǫ to
+the probability of error.
+We index all the sequences belonging to A(n)
+ǫ . Since there are at most
+2n(H+ǫ) such sequences, n(H + ǫ) bits sufﬁce to index them. We can
+transmit the desired index to the receiver with probability of error less
+than ǫ if
+H(V) + ǫ = R < C.
+(7.137)
+The receiver can reconstruct V n by enumerating the typical set A(n)
+ǫ
+and choosing the sequence corresponding to the estimated index. This
+sequence will agree with the transmitted sequence with high probability.
+To be precise,
+P (V n ̸= ˆV n) ≤P (V n /∈A(n)
+ǫ ) + P (g(Y n) ̸= V n|V n ∈A(n)
+ǫ )
+(7.138)
+≤ǫ + ǫ = 2ǫ
+(7.139)
+for n sufﬁciently large. Hence, we can reconstruct the sequence with low
+probability of error for n sufﬁciently large if
+H(V) < C.
+(7.140)
+Converse: We wish to show that Pr( ˆV n ̸= V n) →0 implies that H(V)
+≤C for any sequence of source-channel codes
+Xn(V n) : Vn →Xn,
+(7.141)
+gn(Y n) : Yn →Vn.
+(7.142)
+
+--- Page 47 ---
+7.13
+SOURCE–CHANNEL SEPARATION THEOREM
+221
+Thus Xn(·) is an arbitrary (perhaps random) assignment of codewords
+to data sequences V n, and gn(·) is any decoding function (assignment of
+estimates ˆV n to output sequences Y n. By Fano’s inequality, we must have
+H(V n| ˆV n) ≤1 + Pr( ˆV n ̸= V n) log |Vn| = 1 + Pr( ˆV n ̸= V n)n log |V|.
+(7.143)
+Hence for the code,
+H(V)
+(a)
+≤H(V1, V2, . . . , Vn)
+n
+(7.144)
+= H(V n)
+n
+(7.145)
+= 1
+nH(V n| ˆV n) + 1
+nI (V n; ˆV n)
+(7.146)
+(b)
+≤1
+n(1 + Pr( ˆV n ̸= V n)n log |V|) + 1
+nI (V n; ˆV n)
+(7.147)
+(c)
+≤1
+n(1 + Pr( ˆV n ̸= V n)n log |V|) + 1
+nI (Xn; Y n)
+(7.148)
+(d)
+≤1
+n + Pr( ˆV n ̸= V n) log |V| + C,
+(7.149)
+where (a) follows from the deﬁnition of entropy rate of a stationary
+process, (b) follows from Fano’s inequality, (c) follows from the data-
+processing inequality (since V n →Xn →Y n →ˆV n forms a Markov
+chain) and (d) follows from the memorylessness of the channel. Now
+letting n →∞, we have Pr( ˆV n ̸= V n) →0 and hence
+H(V) ≤C.
+(7.150)
+□
+Hence, we can transmit a stationary ergodic source over a channel if and
+only if its entropy rate is less than the capacity of the channel. The joint
+source–channel separation theorem enables us to consider the problem of
+source coding separately from the problem of channel coding. The source
+coder tries to ﬁnd the most efﬁcient representation of the source, and
+the channel coder encodes the message to combat the noise and errors
+introduced by the channel. The separation theorem says that the separate
+encoders (Figure 7.15) can achieve the same rates as the joint encoder
+(Figure 7.14).
+With this result, we have tied together the two basic theorems of
+information theory: data compression and data transmission. We will try
+to summarize the proofs of the two results in a few words. The data
+
+--- Page 48 ---
+222
+CHANNEL CAPACITY
+Source
+Encoder
+Source
+Decoder
+Channel
+Encoder
+Channel
+Decoder
+Channel
+p(y|x)
+Vn
+Xn(Vn)
+Yn
+V n
+^
+FIGURE 7.15. Separate source and channel coding.
+compression theorem is a consequence of the AEP, which shows that
+there exists a “small” subset (of size 2nH) of all possible source sequences
+that contain most of the probability and that we can therefore represent
+the source with a small probability of error using H bits per symbol.
+The data transmission theorem is based on the joint AEP; it uses the
+fact that for long block lengths, the output sequence of the channel is
+very likely to be jointly typical with the input codeword, while any other
+codeword is jointly typical with probability ≈2−nI. Hence, we can use
+about 2nI codewords and still have negligible probability of error. The
+source–channel separation theorem shows that we can design the source
+code and the channel code separately and combine the results to achieve
+optimal performance.
+SUMMARY
+Channel capacity. The logarithm of the number of distinguishable
+inputs is given by
+C = max
+p(x) I (X; Y).
+Examples
+• Binary symmetric channel: C = 1 −H(p).
+• Binary erasure channel: C = 1 −α.
+• Symmetric channel: C = log |Y| −H(row of transition matrix).
+Properties of C
+1. 0 ≤C ≤min{log |X|, log |Y|}.
+2. I (X; Y) is a continuous concave function of p(x).
+Joint typicality. The set A(n)
+ǫ
+of jointly typical sequences {(xn, yn)}
+with respect to the distribution p(x, y) is given by
+A(n)
+ǫ
+=
+
+(xn, yn) ∈Xn × Yn :
+(7.151)
+−1
+n log p(xn) −H(X)
+ < ǫ,
+(7.152)
+
+--- Page 49 ---
+PROBLEMS
+223
+−1
+n log p(yn) −H(Y)
+ < ǫ,
+(7.153)
+−1
+n log p(xn, yn) −H(X, Y)
+ < ǫ
+
+,
+(7.154)
+where p(xn, yn) = n
+i=1 p(xi, yi).
+Joint AEP. Let (Xn, Y n) be sequences of length n drawn i.i.d. accord-
+ing to p(xn, yn) = n
+i=1 p(xi, yi). Then:
+1. Pr((Xn, Y n) ∈A(n)
+ǫ ) →1 as n →∞.
+2. |A(n)
+ǫ | ≤2n(H(X,Y)+ǫ).
+3. If ( ˜Xn, ˜Y n) ∼p(xn)p(yn), then Pr
+
+( ˜Xn, ˜Y n) ∈A(n)
+ǫ
+
+≤2−n(I(X;Y)−3ǫ).
+Channel coding theorem. All rates below capacity C are achievable,
+and all rates above capacity are not; that is, for all rates R < C, there
+exists a sequence of (2nR, n) codes with probability of error λ(n) →0.
+Conversely, for rates R > C,
+λ(n) is bounded away from 0.
+Feedback capacity. Feedback does not increase capacity for discrete
+memoryless channels (i.e., CFB = C).
+Source–channel theorem. A stochastic process with entropy rate H
+cannot be sent reliably over a discrete memoryless channel if H >
+C. Conversely, if the process satisﬁes the AEP, the source can be
+transmitted reliably if H < C.
+PROBLEMS
+7.1
+Preprocessing the output. One is given a communication chan-
+nel with transition probabilities p(y|x) and channel capacity C =
+maxp(x) I (X; Y). A helpful statistician preprocesses the output by
+forming ˜Y = g(Y). He claims that this will strictly improve the
+capacity.
+(a) Show that he is wrong.
+(b) Under what conditions does he not strictly decrease the
+capacity?
+
+--- Page 50 ---
+224
+CHANNEL CAPACITY
+7.2
+Additive noise channel. Find the channel capacity of the following
+discrete memoryless channel:
+Z
+Y
+X
+where Pr{Z = 0} = Pr{Z = a} = 1
+2. The alphabet for x is X =
+{0, 1}. Assume that Z is independent of X. Observe that the channel
+capacity depends on the value of a.
+7.3
+Channels with memory have higher capacity. Consider a binary
+symmetric channel with Yi = Xi ⊕Zi, where ⊕is mod 2 addi-
+tion, and Xi, Yi ∈{0, 1}. Suppose that {Zi} has constant marginal
+probabilities Pr{Zi = 1} = p = 1 −Pr{Zi = 0}, but that Z1, Z2,
+. . ., Zn are not necessarily independent. Assume that Zn is inde-
+pendent of the input Xn. Let C = 1 −H(p, 1 −p). Show that
+maxp(x1,x2,...,xn) I (X1, X2, . . . , Xn; Y1, Y2, . . . ,
+Yn) ≥nC.
+7.4
+Channel capacity. Consider the discrete memoryless channel Y =
+X + Z (mod 11), where
+Z =
+ 1,
+2,
+3
+1
+3,
+1
+3,
+1
+3
+
+and X ∈{0, 1, . . . , 10}. Assume that Z is independent of X.
+(a) Find the capacity.
+(b) What is the maximizing p∗(x)?
+7.5
+Using two channels at once. Consider two discrete memoryless
+channels (X1, p(y1 | x1), Y1) and (X2, p(y2 | x2), Y2) with capac-
+ities C1 and C2, respectively. A new channel (X1 × X2, p(y1 |
+x1) × p(y2 | x2), Y1 × Y2) is formed in which x1 ∈X1 and x2 ∈X2
+are sent simultaneously, resulting in y1, y2. Find the capacity of this
+channel.
+7.6
+Noisy typewriter. Consider a 26-key typewriter.
+(a) If pushing a key results in printing the associated letter, what
+is the capacity C in bits?
+
+--- Page 51 ---
+PROBLEMS
+225
+(b) Now suppose that pushing a key results in printing that letter or
+the next (with equal probability). Thus, A →A or B, . . . , Z →
+Z or A. What is the capacity?
+(c) What is the highest rate code with block length one that you
+can ﬁnd that achieves zero probability of error for the channel
+in part (b)?
+7.7
+Cascade of binary symmetric channels. Show that a cascade of n
+identical independent binary symmetric channels,
+X0 →BSC →X1 →· · · →Xn−1 →BSC →Xn,
+each with raw error probability p, is equivalent to a single BSC with
+error probability 1
+2
+
+1 −(1 −2p)n
+and hence that lim
+n→∞I (X0; Xn)
+= 0 if p ̸= 0, 1. No encoding or decoding takes place at the inter-
+mediate terminals X1, . . . , Xn−1. Thus, the capacity of the cascade
+tends to zero.
+7.8
+Z-channel. The Z-channel has binary input and output alphabets
+and transition probabilities p(y|x) given by the following matrix:
+Q =
+
+1
+0
+1/2
+1/2
+
+x, y ∈{0, 1}
+Find the capacity of the Z-channel and the maximizing input prob-
+ability distribution.
+7.9
+Suboptimal codes. For the Z-channel of Problem 7.8, assume that
+we choose a (2nR, n) code at random, where each codeword is a
+sequence of fair coin tosses. This will not achieve capacity. Find the
+maximum rate R such that the probability of error P (n)
+e
+, averaged
+over the randomly generated codes, tends to zero as the block length
+n tends to inﬁnity.
+7.10
+Zero-error capacity. A channel with alphabet {0, 1, 2, 3, 4} has tran-
+sition probabilities of the form
+p(y|x) =
+
+1/2
+if y = x ± 1 mod 5
+0
+otherwise.
+(a) Compute the capacity of this channel in bits.
+
+--- Page 52 ---
+226
+CHANNEL CAPACITY
+(b) The zero-error capacity of a channel is the number of bits per
+channel use that can be transmitted with zero probability of
+error. Clearly, the zero-error capacity of this pentagonal chan-
+nel is at least 1 bit (transmit 0 or 1 with probability 1/2). Find
+a block code that shows that the zero-error capacity is greater
+than 1 bit. Can you estimate the exact value of the zero-error
+capacity? (Hint: Consider codes of length 2 for this channel.)
+The zero-error capacity of this channel was ﬁnally found by
+Lovasz [365].
+7.11
+Time-varying channels. Consider a time-varying discrete memory-
+less channel.
+Let Y1, Y2, . . . , Yn be conditionally independent given X1, X2,
+. . . , Xn, with conditional distribution given by p(y | x) = n
+i=1
+pi(yi | xi). Let X = (X1, X2, . . . , Xn), Y = (Y1, Y2, . . . , Yn). Find
+maxp(x) I (X; Y).
+1 −pi
+1 −pi
+0
+1
+0
+1
+pi
+pi
+7.12
+Unused symbols. Show that the capacity of the channel with prob-
+ability transition matrix
+Py|x =
+
+
+2
+3
+1
+3
+0
+1
+3
+1
+3
+1
+3
+0
+1
+3
+2
+3
+
+
+(7.155)
+is achieved by a distribution that places zero probability on one
+of input symbols. What is the capacity of this channel? Give an
+intuitive reason why that letter is not used.
+7.13
+Erasures and errors in a binary channel. Consider a channel with
+binary inputs that has both erasures and errors. Let the probability
+
+--- Page 53 ---
+PROBLEMS
+227
+of error be ǫ and the probability of erasure be α, so the channel is
+follows:
+0
+1 −a −
+0
+1
+1
+e
+∋
+1 −a −
+∋
+∋
+∋
+a
+a
+(a) Find the capacity of this channel.
+(b) Specialize to the case of the binary symmetric channel (α = 0).
+(c) Specialize to the case of the binary erasure channel (ǫ = 0).
+7.14
+Channels with dependence between the letters. Consider the fol-
+lowing channel over a binary alphabet that takes in 2-bit symbols
+and produces a 2-bit output, as determined by the following map-
+ping: 00 →01, 01 →10, 10 →11, and 11 →00. Thus, if the
+2-bit sequence 01 is the input to the channel, the output is 10 with
+probability 1. Let X1, X2 denote the two input symbols and Y1, Y2
+denote the corresponding output symbols.
+(a) Calculate the mutual information I (X1, X2; Y1, Y2) as a func-
+tion of the input distribution on the four possible pairs of inputs.
+(b) Show that the capacity of a pair of transmissions on this chan-
+nel is 2 bits.
+(c) Show that under the maximizing input distribution, I (X1; Y1)
+= 0. Thus, the distribution on the input sequences that achieves
+capacity does not necessarily maximize the mutual information
+between individual symbols and their corresponding outputs.
+7.15
+Jointly typical sequences. As we did in Problem 3.13 for the typical
+set for a single random variable, we will calculate the jointly typical
+set for a pair of random variables connected by a binary symmetric
+
+--- Page 54 ---
+228
+CHANNEL CAPACITY
+channel, and the probability of error for jointly typical decoding
+for such a channel.
+0.9
+0.9
+0
+1
+0
+1
+0.1
+0.1
+We consider a binary symmetric channel with crossover probability
+0.1. The input distribution that achieves capacity is the uniform
+distribution [i.e., p(x) = ( 1
+2, 1
+2)], which yields the joint distribution
+p(x, y) for this channel is given by
+X Y
+0
+1
+0
+0.45
+0.05
+1
+0.05
+0.45
+The marginal distribution of Y is also ( 1
+2, 1
+2).
+(a) Calculate H(X), H(Y), H(X, Y), and I (X; Y) for the joint
+distribution above.
+(b) Let X1, X2, . . . , Xn be drawn i.i.d. according the Bernoulli(1
+2)
+distribution. Of the 2n possible input sequences of length n,
+which of them are typical [i.e., member of A(n)
+ǫ (X) for ǫ =
+0.2]? Which are the typical sequences in A(n)
+ǫ (Y)?
+(c) The jointly typical set A(n)
+ǫ (X, Y) is deﬁned as the set of
+sequences that satisfy equations (7.35-7.37). The ﬁrst two
+equations correspond to the conditions that xn and yn are in
+A(n)
+ǫ (X) and A(n)
+ǫ (Y), respectively. Consider the last condi-
+tion, which can be rewritten to state that −1
+n log p(xn, yn) ∈
+(H(X, Y) −ǫ, H(X, Y) + ǫ). Let k be the number of places
+in which the sequence xn differs from yn (k is a function of
+the two sequences). Then we can write
+p(xn, yn) =
+n
+	
+i=1
+p(xi, yi)
+(7.156)
+
+--- Page 55 ---
+PROBLEMS
+229
+= (0.45)n−k(0.05)k
+(7.157)
+=
+1
+2
+n
+(1 −p)n−kpk.
+(7.158)
+An alternative way at looking at this probability is to look at the
+binary symmetric channel as in additive channel Y = X ⊕Z,
+where Z is a binary random variable that is equal to 1 with
+probability p, and is independent of X. In this case,
+p(xn, yn) = p(xn)p(yn|xn)
+(7.159)
+= p(xn)p(zn|xn)
+(7.160)
+= p(xn)p(zn)
+(7.161)
+=
+1
+2
+n
+(1 −p)n−kpk.
+(7.162)
+Show that the condition that (xn, yn) being jointly typical is
+equivalent to the condition that xn is typical and zn = yn −xn
+is typical.
+(d) We now calculate the size of A(n)
+ǫ (Z) for n = 25 and ǫ = 0.2.
+As in Problem 3.13, here is a table of the probabilities and
+numbers of sequences with k ones:
+k
+n
+k
+
+n
+k
+
+pk(1 −p)n−k
+−1
+n log p(xn)
+0
+1
+0.071790
+0.152003
+1
+25
+0.199416
+0.278800
+2
+300
+0.265888
+0.405597
+3
+2300
+0.226497
+0.532394
+4
+12650
+0.138415
+0.659191
+5
+53130
+0.064594
+0.785988
+6
+177100
+0.023924
+0.912785
+7
+480700
+0.007215
+1.039582
+8
+1081575
+0.001804
+1.166379
+9
+2042975
+0.000379
+1.293176
+10
+3268760
+0.000067
+1.419973
+11
+4457400
+0.000010
+1.546770
+12
+5200300
+0.000001
+1.673567
+[Sequences with more than 12 ones are omitted since their total
+probability is negligible (and they are not in the typical set).]
+What is the size of the set A(n)
+ǫ (Z)?
+
+--- Page 56 ---
+230
+CHANNEL CAPACITY
+(e) Now consider random coding for the channel, as in the proof
+of the channel coding theorem. Assume that 2nR codewords
+Xn(1), Xn(2),. . ., Xn(2nR) are chosen uniformly over the 2n
+possible binary sequences of length n. One of these codewords
+is chosen and sent over the channel. The receiver looks at
+the received sequence and tries to ﬁnd a codeword in the
+code that is jointly typical with the received sequence. As
+argued above, this corresponds to ﬁnding a codeword Xn(i)
+such that Y n −Xn(i) ∈A(n)
+ǫ (Z). For a ﬁxed codeword xn(i),
+what is the probability that the received sequence Y n is such
+that (xn(i), Y n) is jointly typical?
+(f) Now
+consider
+a
+particular
+received
+sequence
+yn =
+000000 . . . 0,
+say.
+Assume
+that
+we
+choose
+a
+sequence
+Xn at random, uniformly distributed among all the 2n possible
+binary n-sequences. What is the probability that the chosen
+sequence is jointly typical with this yn? [Hint: This is the
+probability of all sequences xn such that yn −xn ∈A(n)
+ǫ (Z).]
+(g) Now consider a code with 29 = 512 codewords of length 12
+chosen at random, uniformly distributed among all the 2n
+sequences of length n = 25. One of these codewords, say
+the one corresponding to i = 1, is chosen and sent over the
+channel. As calculated in part (e), the received sequence, with
+high probability, is jointly typical with the codeword that was
+sent. What is the probability that one or more of the other
+codewords (which were chosen at random, independent of the
+sent codeword) is jointly typical with the received sequence?
+[Hint: You could use the union bound, but you could also
+calculate this probability exactly, using the result of part (f)
+and the independence of the codewords.]
+(h) Given that a particular codeword was sent, the probability of
+error (averaged over the probability distribution of the chan-
+nel and over the random choice of other codewords) can be
+written as
+Pr(Error|xn(1) sent) = 
+yn:yncauses error p(yn|xn(1)). (7.163)
+There are two kinds of error: the ﬁrst occurs if the received
+sequence yn is not jointly typical with the transmitted code-
+word, and the second occurs if there is another codeword
+jointly typical with the received sequence. Using the result
+of the preceding parts, calculate this probability of error. By
+
+--- Page 57 ---
+PROBLEMS
+231
+the symmetry of the random coding argument, this does not
+depend on which codeword was sent.
+The calculations above show that average probability of error for
+a random code with 512 codewords of length 25 over the binary
+symmetric channel of crossover probability 0.1 is about 0.34. This
+seems quite high, but the reason for this is that the value of ǫ that
+we have chosen is too large. By choosing a smaller ǫ and a larger
+n in the deﬁnitions of A(n)
+ǫ , we can get the probability of error to
+be as small as we want as long as the rate of the code is less than
+I (X; Y) −3ǫ.
+Also note that the decoding procedure described in the problem
+is not optimal. The optimal decoding procedure is maximum like-
+lihood (i.e., to choose the codeword that is closest to the received
+sequence). It is possible to calculate the average probability of
+error for a random code for which the decoding is based on an
+approximation to maximum likelihood decoding, where we decode
+a received sequence to the unique codeword that differs from the
+received sequence in ≤4 bits, and declare an error otherwise. The
+only difference with the jointly typical decoding described above
+is that in the case when the codeword is equal to the received
+sequence! The average probability of error for this decoding scheme
+can be shown to be about 0.285.
+7.16
+Encoder and decoder as part of the channel. Consider a binary
+symmetric channel with crossover probability 0.1. A possible cod-
+ing scheme for this channel with two codewords of length 3 is to
+encode message a1 as 000 and a2 as 111. With this coding scheme,
+we can consider the combination of encoder, channel, and decoder
+as forming a new BSC, with two inputs a1 and a2 and two outputs
+a1 and a2.
+(a) Calculate the crossover probability of this channel.
+(b) What is the capacity of this channel in bits per transmission of
+the original channel?
+(c) What is the capacity of the original BSC with crossover prob-
+ability 0.1?
+(d) Prove a general result that for any channel, considering the
+encoder, channel, and decoder together as a new channel from
+messages to estimated messages will not increase the capacity
+in bits per transmission of the original channel.
+7.17
+Codes of length 3 for a BSC and BEC. In Problem 7.16, the prob-
+ability of error was calculated for a code with two codewords of
+
+--- Page 58 ---
+232
+CHANNEL CAPACITY
+length 3 (000 and 111) sent over a binary symmetric channel with
+crossover probability ǫ. For this problem, take ǫ = 0.1.
+(a) Find the best code of length 3 with four codewords for this
+channel. What is the probability of error for this code? (Note
+that all possible received sequences should be mapped onto
+possible codewords.)
+(b) What is the probability of error if we used all eight possible
+sequences of length 3 as codewords?
+(c) Now consider a binary erasure channel with erasure probability
+0.1. Again, if we used the two-codeword code 000 and 111,
+received sequences 00E, 0E0, E00, 0EE, E0E, EE0 would all
+be decoded as 0, and similarly, we would decode 11E, 1E1,
+E11, 1EE, E1E, EE1 as 1. If we received the sequence EEE,
+we would not know if it was a 000 or a 111 that was sent—so
+we choose one of these two at random, and are wrong half the
+time. What is the probability of error for this code over the
+erasure channel?
+(d) What is the probability of error for the codes of parts (a) and
+(b) when used over the binary erasure channel?
+7.18
+Channel capacity. Calculate the capacity of the following channels
+with probability transition matrices:
+(a) X = Y = {0, 1, 2}
+p(y|x) =
+
+
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+1
+3
+
+
+(7.164)
+(b) X = Y = {0, 1, 2}
+p(y|x) =
+
+
+1
+2
+1
+2
+0
+0
+1
+2
+1
+2
+1
+2
+0
+1
+2
+
+
+(7.165)
+(c) X = Y = {0, 1, 2, 3}
+p(y|x) =
+
+
+p
+1 −p
+0
+0
+1 −p
+p
+0
+0
+0
+0
+q
+1 −q
+0
+0
+1 −q
+q
+
+
+(7.166)
+
+--- Page 59 ---
+PROBLEMS
+233
+7.19
+Capacity of the carrier pigeon channel. Consider a commander of
+an army besieged in a fort for whom the only means of commu-
+nication to his allies is a set of carrier pigeons. Assume that each
+carrier pigeon can carry one letter (8 bits), that pigeons are released
+once every 5 minutes, and that each pigeon takes exactly 3 minutes
+to reach its destination.
+(a) Assuming that all the pigeons reach safely, what is the capacity
+of this link in bits/hour?
+(b) Now assume that the enemies try to shoot down the pigeons
+and that they manage to hit a fraction α of them. Since the
+pigeons are sent at a constant rate, the receiver knows when
+the pigeons are missing. What is the capacity of this link?
+(c) Now assume that the enemy is more cunning and that every
+time they shoot down a pigeon, they send out a dummy pigeon
+carrying a random letter (chosen uniformly from all 8-bit let-
+ters). What is the capacity of this link in bits/hour?
+Set up an appropriate model for the channel in each of the above
+cases, and indicate how to go about ﬁnding the capacity.
+7.20
+Channel with two independent looks at Y. Let Y1 and Y2 be condi-
+tionally independent and conditionally identically distributed given
+X.
+(a) Show that I (X; Y1, Y2) = 2I (X; Y1) −I (Y1, Y2).
+(b) Conclude that the capacity of the channel
+X
+(Y1, Y2)
+is less than twice the capacity of the channel
+X
+Y1
+7.21
+Tall, fat people. Suppose that the average height of people in a
+room is 5 feet. Suppose that the average weight is 100 lb.
+(a) Argue that no more than one-third of the population is 15 feet
+tall.
+(b) Find an upper bound on the fraction of 300-lb 10-footers in
+the room.
+
+--- Page 60 ---
+234
+CHANNEL CAPACITY
+7.22
+Can signal alternatives lower capacity? Show that adding a row to
+a channel transition matrix does not decrease capacity.
+7.23
+Binary multiplier channel
+(a) Consider the channel Y = XZ, where X and Z are independent
+binary random variables that take on values 0 and 1. Z is
+Bernoulli(α) [i.e., P (Z = 1) = α]. Find the capacity of this
+channel and the maximizing distribution on X.
+(b) Now suppose that the receiver can observe Z as well as Y.
+What is the capacity?
+7.24
+Noise alphabets. Consider the channel
+Z
+Y
+X
+∑
+X = {0, 1, 2, 3}, where Y = X + Z, and Z is uniformly distributed
+over three distinct integer values Z = {z1, z2, z3}.
+(a) What is the maximum capacity over all choices of the Z alpha-
+bet? Give distinct integer values z1, z2, z3 and a distribution on
+X achieving this.
+(b) What is the minimum capacity over all choices for the Z alpha-
+bet? Give distinct integer values z1, z2, z3 and a distribution on
+X achieving this.
+7.25
+Bottleneck channel. Suppose that a signal X ∈X = {1, 2, . . . , m}
+goes through an intervening transition X −→V −→Y:
+X
+V
+Y
+p(v |x)
+p(y |v )
+where x = {1, 2, . . . , m}, y = {1, 2, . . . , m}, and v = {1, 2, . . . , k}.
+Here p(v|x) and p(y|v) are arbitrary and the channel has transition
+probability p(y|x) = 
+v p(v|x)p(y|v). Show that C ≤log k.
+
+--- Page 61 ---
+PROBLEMS
+235
+7.26
+Noisy typewriter. Consider the channel with x, y ∈{0, 1, 2, 3} and
+transition probabilities p(y|x) given by the following matrix:
+
+
+1
+2
+1
+2
+0
+0
+0
+1
+2
+1
+2
+0
+0
+0
+1
+2
+1
+2
+1
+2
+0
+0
+1
+2
+
+
+(a) Find the capacity of this channel.
+(b) Deﬁne the random variable z = g(y), where
+g(y) =
+
+A
+if y ∈{0, 1}
+B
+if y ∈{2, 3}.
+For the following two PMFs for x, compute I (X; Z):
+(i)
+p(x) =
+ 1
+2
+if x ∈{1, 3}
+0
+if x ∈{0, 2}.
+(ii)
+p(x) =
+ 0
+if x ∈{1, 3}
+1
+2
+if x ∈{0, 2}.
+(c) Find the capacity of the channel between x and z, speciﬁcally
+where x ∈{0, 1, 2, 3}, z ∈{A, B}, and the transition probabil-
+ities P (z|x) are given by
+p(Z = z|X = x) =
+
+g(y0)=z
+P (Y = y0|X = x).
+(d) For the X distribution of part (i) of (b), does X →Z →Y
+form a Markov chain?
+7.27
+Erasure channel. Let {X, p(y|x), Y} be a discrete memoryless chan-
+nel with capacity C. Suppose that this channel is cascaded imme-
+diately with an erasure channel {Y, p(s|y), S} that erases α of its
+symbols.
+X
+p (y | x)
+Y
+e
+S
+
+--- Page 62 ---
+236
+CHANNEL CAPACITY
+Speciﬁcally, S = {y1, y2, . . . , ym, e}, and
+Pr{S = y|X = x} = αp(y|x),
+y ∈Y,
+Pr{S = e|X = x} = α.
+Determine the capacity of this channel.
+7.28
+Choice of channels. Find the capacity C of the union of two chan-
+nels (X1, p1(y1|x1), Y1) and (X2, p2(y2|x2), Y2), where at each
+time, one can send a symbol over channel 1 or channel 2 but
+not both. Assume that the output alphabets are distinct and do not
+intersect.
+(a) Show that 2C = 2C1 + 2C2. Thus, 2C is the effective alphabet
+size of a channel with capacity C.
+(b) Compare with Problem 2.10 where 2H = 2H1 + 2H2, and inter-
+pret part (a) in terms of the effective number of noise-free
+symbols.
+(c) Use the above result to calculate the capacity of the following
+channel.
+1 −p
+1 −p
+0
+1
+0
+1
+2
+2
+1
+p
+p
+7.29
+Binary multiplier channel
+(a) Consider the discrete memoryless channel Y = XZ, where X
+and Z are independent binary random variables that take on
+values 0 and 1. Let P (Z = 1) = α. Find the capacity of this
+channel and the maximizing distribution on X.
+(b) Now suppose that the receiver can observe Z as well as Y.
+What is the capacity?
+
+--- Page 63 ---
+PROBLEMS
+237
+7.30
+Noise alphabets. Consider the channel
+Z
+Y
+X
+∑
+X = {0, 1, 2, 3}, where Y = X + Z, and Z is uniformly distributed
+over three distinct integer values Z = {z1, z2, z3}.
+(a) What is the maximum capacity over all choices of the Z alpha-
+bet? Give distinct integer values z1, z2, z3 and a distribution on
+X achieving this.
+(b) What is the minimum capacity over all choices for the Z alpha-
+bet? Give distinct integer values z1, z2, z3 and a distribution on
+X achieving this.
+7.31
+Source and channel. We wish to encode a Bernoulli(α) process
+V1, V2, . . . for transmission over a binary symmetric channel with
+crossover probability p.
+1 −p
+Xn (Vn)
+Vn
+Vn
+Y n
+1 −p
+p
+p
+^
+Find conditions on α and p so that the probability of error P ( ˆV n ̸=
+V n) can be made to go to zero as n −→∞.
+7.32
+Random 20 questions. Let X be uniformly distributed over {1, 2,
+. . . , m}. Assume that m = 2n. We ask random questions: Is X ∈S1?
+Is X ∈S2? . . . until only one integer remains. All 2m subsets S of
+{1, 2, . . . , m} are equally likely.
+(a) How many deterministic questions are needed to determine X?
+(b) Without loss of generality, suppose that X = 1 is the random
+object. What is the probability that object 2 yields the same
+answers as object 1 for k questions?
+(c) What is the expected number of objects in {2, 3, . . . , m} that
+have the same answers to the questions as those of the correct
+object 1?
+
+--- Page 64 ---
+238
+CHANNEL CAPACITY
+(d) Suppose that we ask n + √n random questions. What is the
+expected number of wrong objects agreeing with the answers?
+(e) Use Markov’s inequality Pr{X ≥tµ} ≤1
+t , to show that the
+probability of error (one or more wrong object remaining) goes
+to zero as n −→∞.
+7.33
+BSC with feedback. Suppose that feedback is used on a binary
+symmetric channel with parameter p. Each time a Y is received,
+it becomes the next transmission. Thus, X1 is Bern(1
+2), X2 = Y1,
+X3 = Y2, . . ., Xn = Yn−1.
+(a) Find limn→∞1
+nI (Xn; Y n).
+(b) Show that for some values of p, this can be higher than capac-
+ity.
+(c) Using this feedback transmission scheme, Xn(W, Y n) = (X1
+(W), Y1, Y2, . . . , Ym−1), what is the asymptotic communication
+rate achieved; that is, what is limn→∞1
+nI (W; Y n)?
+7.34
+Capacity. Find the capacity of
+(a) Two parallel BSCs:
+p
+p
+1
+2
+1
+2
+p
+p
+3
+X
+Y
+4
+3
+4
+(b) BSC and a single symbol:
+p
+p
+1
+2
+1
+2
+3
+X
+Y
+3
+
+--- Page 65 ---
+PROBLEMS
+239
+(c) BSC and a ternary channel:
+p
+p
+1
+2
+1
+2
+p
+4
+X
+Y
+5
+4
+3
+3
+5
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+1
+2
+(d) Ternary channel:
+p(y|x) =
+ 
+2
+3
+1
+3
+0
+0
+1
+3
+2
+3
+!
+.
+(7.167)
+7.35
+Capacity. Suppose that channel P has capacity C, where P is an
+m × n channel matrix.
+(a) What is the capacity of
+˜P =
+
+P
+0
+0
+1
+
+?
+(b) What about the capacity of
+ˆP =
+
+P
+0
+0
+Ik
+
+?
+where Ik if the k × k identity matrix.
+7.36
+Channel with memory. Consider the discrete memoryless channel
+Yi = ZiXi with input alphabet Xi ∈{−1, 1}.
+(a) What is the capacity of this channel when {Zi} is i.i.d. with
+Zi =
+
+1,
+p = 0.5
+−1,
+p = 0.5?
+(7.168)
+
+--- Page 66 ---
+240
+CHANNEL CAPACITY
+Now consider the channel with memory. Before transmission
+begins, Z is randomly chosen and ﬁxed for all time. Thus,
+Yi = ZXi.
+(b) What is the capacity if
+Z =
+
+1,
+p = 0.5
+−1,
+p = 0.5?
+(7.169)
+7.37
+Joint typicality. Let (Xi, Yi, Zi) be i.i.d. according to p(x, y, z). We
+will say that (xn, yn, zn) is jointly typical [written (xn, yn, zn) ∈
+A(n)
+ǫ ] if
+• p(xn) ∈2−n(H(X)±ǫ).
+• p(yn) ∈2−n(H(Y)±ǫ).
+• p(zn) ∈2−n(H(Z)±ǫ).
+• p(xn, yn) ∈2−n(H(X,Y)±ǫ).
+• p(xn, zn) ∈2−n(H(X,Z)±ǫ).
+• p(yn, zn) ∈2−n(H(Y,Z)±ǫ).
+• p(xn, yn, zn) ∈2−n(H(X,Y,Z)±ǫ).
+Now suppose that ( ˜Xn, ˜Y n, ˜Zn) is drawn according to p(xn)p(yn)
+p(zn). Thus, ˜Xn, ˜Y n, ˜Zn have the same marginals as p(xn, yn, zn)
+but are independent. Find (bounds on) Pr{( ˜Xn, ˜Y n, ˜Zn) ∈A(n)
+ǫ } in
+terms
+of
+the
+entropies
+H(X),H(Y),H(Z),H(X, Y),H(X, Z),
+H(Y, Z), and H(X, Y, Z).
+HISTORICAL NOTES
+The idea of mutual information and its relationship to channel capacity
+was developed by Shannon in his original paper [472]. In this paper, he
+stated the channel capacity theorem and outlined the proof using typical
+sequences in an argument similar to the one described here. The ﬁrst
+rigorous proof was due to Feinstein [205], who used a painstaking “cookie-
+cutting” argument to ﬁnd the number of codewords that can be sent with a
+low probability of error. A simpler proof using a random coding exponent
+was developed by Gallager [224]. Our proof is based on Cover [121] and
+on Forney’s unpublished course notes [216].
+The converse was proved by Fano [201], who used the inequality bear-
+ing his name. The strong converse was ﬁrst proved by Wolfowitz [565],
+using techniques that are closely related to typical sequences. An iterative
+algorithm to calculate the channel capacity was developed independently
+by Arimoto [25] and Blahut [65].
+
+--- Page 67 ---
+HISTORICAL NOTES
+241
+The idea of the zero-error capacity was developed by Shannon [474];
+in the same paper, he also proved that feedback does not increase the
+capacity of a discrete memoryless channel. The problem of ﬁnding the
+zero-error capacity is essentially combinatorial; the ﬁrst important result
+in this area is due to Lovasz [365]. The general problem of ﬁnding the
+zero error capacity is still open; see a survey of related results in K¨orner
+and Orlitsky [327].
+Quantum information theory, the quantum mechanical counterpart to
+the classical theory in this chapter, is emerging as a large research area in
+its own right and is well surveyed in an article by Bennett and Shor [49]
+and in the text by Nielsen and Chuang [395].
+
+--- Page 68 ---
+
+--- Page 69 ---
+CHAPTER 8
+DIFFERENTIAL ENTROPY
+We now introduce the concept of differential entropy, which is the entropy
+of a continuous random variable. Differential entropy is also related to the
+shortest description length and is similar in many ways to the entropy of
+a discrete random variable. But there are some important differences, and
+there is need for some care in using the concept.
+8.1
+DEFINITIONS
+Deﬁnition
+Let X be a random variable with cumulative distribution
+function F(x) = Pr(X ≤x). If F(x) is continuous, the random variable
+is said to be continuous. Let f (x) = F ′(x) when the derivative is deﬁned.
+If
+ ∞
+−∞f (x) = 1, f (x) is called the probability density function for X. The
+set where f (x) > 0 is called the support set of X.
+Deﬁnition
+The differential entropy h(X) of a continuous random vari-
+able X with density f (x) is deﬁned as
+h(X) = −
+
+S
+f (x) log f (x) dx,
+(8.1)
+where S is the support set of the random variable.
+As in the discrete case, the differential entropy depends only on the
+probability density of the random variable, and therefore the differential
+entropy is sometimes written as h(f ) rather than h(X).
+Remark
+As in every example involving an integral, or even a density,
+we should include the statement if it exists. It is easy to construct examples
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+243
+
+--- Page 70 ---
+244
+DIFFERENTIAL ENTROPY
+of random variables for which a density function does not exist or for
+which the above integral does not exist.
+Example 8.1.1
+(Uniform distribution)
+Consider a random variable dis-
+tributed uniformly from 0 to a so that its density is 1/a from 0 to a and 0
+elsewhere. Then its differential entropy is
+h(X) = −
+ a
+0
+1
+a log 1
+a dx = log a.
+(8.2)
+Note: For a < 1, log a < 0, and the differential entropy is negative. Hence,
+unlike discrete entropy, differential entropy can be negative. However,
+2h(X) = 2log a = a is the volume of the support set, which is always non-
+negative, as we expect.
+Example 8.1.2
+(Normal distribution)
+Let X ∼φ(x) =
+1
+√
+2πσ 2e
+−x2
+2σ2 .
+Then calculating the differential entropy in nats, we obtain
+h(φ) = −
+
+φ ln φ
+(8.3)
+= −
+
+φ(x)
+
+−x2
+2σ 2 −ln
+
+2πσ 2
+
+(8.4)
+= EX2
+2σ 2 + 1
+2 ln 2πσ 2
+(8.5)
+= 1
+2 + 1
+2 ln 2πσ 2
+(8.6)
+= 1
+2 ln e + 1
+2 ln 2πσ 2
+(8.7)
+= 1
+2 ln 2πeσ 2
+nats.
+(8.8)
+Changing the base of the logarithm, we have
+h(φ) = 1
+2 log 2πeσ 2
+bits.
+(8.9)
+
+--- Page 71 ---
+8.2
+AEP FOR CONTINUOUS RANDOM VARIABLES
+245
+8.2
+AEP FOR CONTINUOUS RANDOM VARIABLES
+One of the important roles of the entropy for discrete random variables
+is in the AEP, which states that for a sequence of i.i.d. random variables,
+p(X1, X2, . . . , Xn) is close to 2−nH(X) with high probability. This enables
+us to deﬁne the typical set and characterize the behavior of typical sequences.
+We can do the same for a continuous random variable.
+Theorem 8.2.1
+Let X1, X2, . . . , Xn be a sequence of random vari-
+ables drawn i.i.d. according to the density f (x). Then
+−1
+n log f (X1, X2, . . . , Xn) →E[−log f (X)] = h(X)
+in probability.
+(8.10)
+Proof:
+The proof follows directly from the weak law of large numbers.
+□
+This leads to the following deﬁnition of the typical set.
+Deﬁnition
+For ǫ > 0 and any n, we deﬁne the typical set A(n)
+ǫ
+with
+respect to f (x) as follows:
+A(n)
+ǫ
+=
+
+(x1, x2, . . . , xn) ∈Sn :
+−1
+n log f (x1, x2, . . . , xn) −h(X)
+ ≤ǫ
+
+,
+(8.11)
+where f (x1, x2, . . . , xn) = 	n
+i=1 f (xi).
+The properties of the typical set for continuous random variables par-
+allel those for discrete random variables. The analog of the cardinality of
+the typical set for the discrete case is the volume of the typical set for
+continuous random variables.
+Deﬁnition
+The volume Vol(A) of a set A ⊂Rn is deﬁned as
+Vol(A) =
+
+A
+dx1 dx2 · · · dxn.
+(8.12)
+Theorem 8.2.2
+The typical set A(n)
+ǫ
+has the following properties:
+1. Pr
+
+A(n)
+ǫ
+
+> 1 −ǫ for n sufﬁciently large.
+2. Vol
+
+A(n)
+ǫ
+
+≤2n(h(X)+ǫ) for all n.
+3. Vol
+
+A(n)
+ǫ
+
+≥(1 −ǫ)2n(h(X)−ǫ) for n sufﬁciently large.
+
+--- Page 72 ---
+246
+DIFFERENTIAL ENTROPY
+Proof:
+By Theorem 8.2.1, −1
+n log f (Xn) = −1
+n
+ log f (Xi) →h(X) in
+probability, establishing property 1. Also,
+1 =
+
+Sn f (x1, x2, . . . , xn) dx1 dx2 · · · dxn
+(8.13)
+≥
+
+A(n)
+ǫ
+f (x1, x2, . . . , xn) dx1 dx2 · · · dxn
+(8.14)
+≥
+
+A(n)
+ǫ
+2−n(h(X)+ǫ) dx1 dx2 · · · dxn
+(8.15)
+= 2−n(h(X)+ǫ)
+
+A(n)
+ǫ
+dx1 dx2 · · · dxn
+(8.16)
+= 2−n(h(X)+ǫ) Vol
+
+A(n)
+ǫ
+
+.
+(8.17)
+Hence we have property 2. We argue further that the volume of the typical
+set is at least this large. If n is sufﬁciently large so that property 1 is
+satisﬁed, then
+1 −ǫ ≤
+
+A(n)
+ǫ
+f (x1, x2, . . . , xn) dx1 dx2 · · · dxn
+(8.18)
+≤
+
+A(n)
+ǫ
+2−n(h(X)−ǫ) dx1 dx2 · · · dxn
+(8.19)
+= 2−n(h(X)−ǫ)
+
+A(n)
+ǫ
+dx1 dx2 · · · dxn
+(8.20)
+= 2−n(h(X)−ǫ) Vol
+
+A(n)
+ǫ
+
+,
+(8.21)
+establishing property 3. Thus for n sufﬁciently large, we have
+(1 −ǫ)2n(h(X)−ǫ) ≤Vol(A(n)
+ǫ ) ≤2n(h(X)+ǫ).
+□
+(8.22)
+Theorem 8.2.3
+The set A(n)
+ǫ
+is the smallest volume set with probability
+≥1 −ǫ, to ﬁrst order in the exponent.
+Proof:
+Same as in the discrete case.
+□
+This theorem indicates that the volume of the smallest set that contains
+most of the probability is approximately 2nh. This is an n-dimensional
+volume, so the corresponding side length is (2nh)
+1
+n = 2h. This provides
+
+--- Page 73 ---
+8.3
+RELATION OF DIFFERENTIAL ENTROPY TO DISCRETE ENTROPY
+247
+an interpretation of the differential entropy: It is the logarithm of the
+equivalent side length of the smallest set that contains most of the prob-
+ability. Hence low entropy implies that the random variable is conﬁned
+to a small effective volume and high entropy indicates that the random
+variable is widely dispersed.
+Note. Just as the entropy is related to the volume of the typical set, there
+is a quantity called Fisher information which is related to the surface
+area of the typical set. We discuss Fisher information in more detail in
+Sections 11.10 and 17.8.
+8.3
+RELATION OF DIFFERENTIAL ENTROPY TO DISCRETE
+ENTROPY
+Consider a random variable X with density f (x) illustrated in Figure 8.1.
+Suppose that we divide the range of X into bins of length . Let us
+assume that the density is continuous within the bins. Then, by the mean
+value theorem, there exists a value xi within each bin such that
+f (xi) =
+ (i+1)
+i
+f (x) dx.
+(8.23)
+Consider the quantized random variable X, which is deﬁned by
+X = xi
+if i ≤X < (i + 1).
+(8.24)
+∆
+f(x)
+x
+FIGURE 8.1. Quantization of a continuous random variable.
+
+--- Page 74 ---
+248
+DIFFERENTIAL ENTROPY
+Then the probability that X = xi is
+pi =
+ (i+1)
+i
+f (x) dx = f (xi).
+(8.25)
+The entropy of the quantized version is
+H(X) = −
+∞
+
+−∞
+pi log pi
+(8.26)
+= −
+∞
+
+−∞
+f (xi) log(f (xi))
+(8.27)
+= −
+
+f (xi) log f (xi) −
+
+f (xi) log 
+(8.28)
+= −
+
+f (xi) log f (xi) −log ,
+(8.29)
+since  f (xi) =
+
+f (x) = 1. If f (x) log f (x) is Riemann integrable (a
+condition to ensure that the limit is well deﬁned [556]), the ﬁrst term in
+(8.29) approaches the integral of −f (x) log f (x) as  →0 by deﬁnition
+of Riemann integrability. This proves the following.
+Theorem 8.3.1
+If the density f (x) of the random variable X is Rie-
+mann integrable, then
+H(X) + log  →h(f ) = h(X),
+as  →0.
+(8.30)
+Thus, the entropy of an n-bit quantization of a continuous random vari-
+able X is approximately h(X) + n.
+Example 8.3.1
+1. If X has a uniform distribution on [0, 1] and we let  = 2−n,
+then h = 0, H(X) = n, and n bits sufﬁce to describe X to n
+bit accuracy.
+2. If X is uniformly distributed on [0, 1
+8], the ﬁrst 3 bits to the right
+of the decimal point must be 0. To describe X to n-bit accuracy
+requires only n −3 bits, which agrees with h(X) = −3.
+3. If X ∼N(0, σ 2) with σ 2 = 100, describing X to n bit accuracy
+would require on the average n + 1
+2 log(2πeσ 2) = n + 5.37 bits.
+
+--- Page 75 ---
+8.4
+JOINT AND CONDITIONAL DIFFERENTIAL ENTROPY
+249
+In general, h(X) + n is the number of bits on the average required to
+describe X to n-bit accuracy.
+The differential entropy of a discrete random variable can be considered
+to be −∞. Note that 2−∞= 0, agreeing with the idea that the volume of
+the support set of a discrete random variable is zero.
+8.4
+JOINT AND CONDITIONAL DIFFERENTIAL ENTROPY
+As in the discrete case, we can extend the deﬁnition of differential entropy
+of a single random variable to several random variables.
+Deﬁnition
+The differential entropy of a set X1, X2, . . . , Xn of random
+variables with density f (x1, x2, . . . , xn) is deﬁned as
+h(X1, X2, . . . , Xn) = −
+
+f (xn) log f (xn) dxn.
+(8.31)
+Deﬁnition
+If X, Y have a joint density function f (x, y), we can deﬁne
+the conditional differential entropy h(X|Y) as
+h(X|Y) = −
+
+f (x, y) log f (x|y) dx dy.
+(8.32)
+Since in general f (x|y) = f (x, y)/f (y), we can also write
+h(X|Y) = h(X, Y) −h(Y).
+(8.33)
+But we must be careful if any of the differential entropies are inﬁnite.
+The next entropy evaluation is used frequently in the text.
+Theorem 8.4.1
+(Entropy of a multivariate normal distribution)
+Let
+X1, X2, . . . , Xn have a multivariate normal distribution with mean µ and
+covariance matrix K. Then
+h(X1, X2, . . . , Xn) = h(Nn(µ, K)) = 1
+2 log(2πe)n|K|
+bits,
+(8.34)
+where |K| denotes the determinant of K.
+
+--- Page 76 ---
+250
+DIFFERENTIAL ENTROPY
+Proof:
+The probability density function of X1, X2, . . . , Xn is
+f (x) =
+1
+√
+2π
+n
+|K|
+1
+2
+e−1
+2(x−µ)T K−1(x−µ).
+(8.35)
+Then
+h(f ) = −
+
+f (x)
+
+−1
+2(x −µ)T K−1(x −µ) −ln
+√
+2π
+n
+|K|
+1
+2
+
+dx
+(8.36)
+= 1
+2E
+
+
+i,j
+(Xi −µi)
+
+K−1
+ij (Xj −µj)
+
++ 1
+2 ln(2π)n|K| (8.37)
+= 1
+2E
+
+
+i,j
+(Xi −µi)(Xj −µj)
+
+K−1
+ij
+
++ 1
+2 ln(2π)n|K| (8.38)
+= 1
+2
+
+i,j
+E[(Xj −µj)(Xi −µi)]
+
+K−1
+ij + 1
+2 ln(2π)n|K|
+(8.39)
+= 1
+2
+
+j
+
+i
+Kji
+
+K−1
+ij + 1
+2 ln(2π)n|K|
+(8.40)
+= 1
+2
+
+j
+(KK−1)jj + 1
+2 ln(2π)n|K|
+(8.41)
+= 1
+2
+
+j
+Ijj + 1
+2 ln(2π)n|K|
+(8.42)
+= n
+2 + 1
+2 ln(2π)n|K|
+(8.43)
+= 1
+2 ln(2πe)n|K|
+nats
+(8.44)
+= 1
+2 log(2πe)n|K|
+bits.
+□
+(8.45)
+8.5
+RELATIVE ENTROPY AND MUTUAL INFORMATION
+We now extend the deﬁnition of two familiar quantities, D(f ||g) and
+I (X; Y), to probability densities.
+
+--- Page 77 ---
+8.5
+RELATIVE ENTROPY AND MUTUAL INFORMATION
+251
+Deﬁnition
+The relative entropy (or Kullback–Leibler distance) D(f ||g)
+between two densities f and g is deﬁned by
+D(f ||g) =
+
+f log f
+g .
+(8.46)
+Note that D(f ||g) is ﬁnite only if the support set of f is contained in
+the support set of g. [Motivated by continuity, we set 0 log 0
+0 = 0.]
+Deﬁnition
+The mutual information I (X; Y) between two random vari-
+ables with joint density f (x, y) is deﬁned as
+I (X; Y) =
+
+f (x, y) log f (x, y)
+f (x)f (y) dx dy.
+(8.47)
+From the deﬁnition it is clear that
+I (X; Y) = h(X) −h(X|Y) = h(Y) −h(Y|X) = h(X) + h(Y) −h(X, Y)
+(8.48)
+and
+I (X; Y) = D(f (x, y)||f (x)f (y)).
+(8.49)
+The properties of D(f ||g) and I (X; Y) are the same as in the dis-
+crete case. In particular, the mutual information between two random
+variables is the limit of the mutual information between their quantized
+versions, since
+I (X; Y ) = H(X) −H(X|Y )
+(8.50)
+≈h(X) −log  −(h(X|Y) −log )
+(8.51)
+= I (X; Y).
+(8.52)
+More generally, we can deﬁne mutual information in terms of ﬁnite
+partitions of the range of the random variable. Let X be the range of a
+random variable X. A partition P of X is a ﬁnite collection of disjoint
+sets Pi such that ∪iPi = X. The quantization of X by P (denoted [X]P)
+is the discrete random variable deﬁned by
+Pr([X]P = i) = Pr(X ∈Pi) =
+
+Pi
+dF(x).
+(8.53)
+For two random variables X and Y with partitions P and Q, we can
+calculate the mutual information between the quantized versions of X
+and Y using (2.28). Mutual information can now be deﬁned for arbitrary
+pairs of random variables as follows:
+
+--- Page 78 ---
+252
+DIFFERENTIAL ENTROPY
+Deﬁnition
+The mutual information between two random variables X
+and Y is given by
+I (X; Y) = sup
+P,Q
+I ([X]P; [Y]Q),
+(8.54)
+where the supremum is over all ﬁnite partitions P and Q.
+This is the master deﬁnition of mutual information that always applies,
+even to joint distributions with atoms, densities, and singular parts. More-
+over, by continuing to reﬁne the partitions P and Q, one ﬁnds a mono-
+tonically increasing sequence I ([X]P ; [Y]Q) ր I.
+By arguments similar to (8.52), we can show that this deﬁnition of
+mutual information is equivalent to (8.47) for random variables that have
+a density. For discrete random variables, this deﬁnition is equivalent to
+the deﬁnition of mutual information in (2.28).
+Example 8.5.1
+(Mutual information between correlated Gaussian ran-
+dom variables with correlation ρ)
+Let (X, Y) ∼N(0, K), where
+K =
+
+σ 2
+ρσ 2
+ρσ 2
+σ 2
+
+.
+(8.55)
+Then h(X) = h(Y) = 1
+2 log(2πe)σ 2 and h(X, Y) = 1
+2 log(2πe)2|K| =
+1
+2 log(2πe)2σ 4(1 −ρ2), and therefore
+I (X; Y) = h(X) + h(Y) −h(X, Y) = −1
+2 log(1 −ρ2).
+(8.56)
+If ρ = 0, X and Y are independent and the mutual information is 0.
+If ρ = ±1, X and Y are perfectly correlated and the mutual information
+is inﬁnite.
+8.6
+PROPERTIES OF DIFFERENTIAL ENTROPY, RELATIVE
+ENTROPY, AND MUTUAL INFORMATION
+Theorem 8.6.1
+D(f ||g) ≥0
+(8.57)
+with equality iff f = g almost everywhere (a.e.).
+Proof:
+Let S be the support set of f . Then
+−D(f ||g) =
+
+S
+f log g
+f
+(8.58)
+≤log
+
+S
+f g
+f
+(by Jensen’s inequality)
+(8.59)
+
+--- Page 79 ---
+8.6
+DIFFERENTIAL ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+253
+= log
+
+S
+g
+(8.60)
+≤log 1 = 0.
+(8.61)
+We have equality iff we have equality in Jensen’s inequality, which
+occurs iff f = g a.e.
+□
+Corollary
+I (X; Y) ≥0 with equality iff X and Y are independent.
+Corollary
+h(X|Y) ≤h(X) with equality iff X and Y are independent.
+Theorem 8.6.2
+(Chain rule for differential entropy)
+h(X1, X2, . . . , Xn) =
+n
+
+i=1
+h(Xi|X1, X2, . . . , Xi−1).
+(8.62)
+Proof:
+Follows directly from the deﬁnitions.
+□
+Corollary
+h(X1, X2, . . . , Xn) ≤
+
+h(Xi),
+(8.63)
+with equality iff X1, X2, . . . , Xn are independent.
+Proof:
+Follows directly from Theorem 8.6.2 and the corollary to Theo-
+rem 8.6.1.
+□
+Application
+(Hadamard’s inequality)
+If we let X ∼N(0, K) be a mul-
+tivariate normal random variable, calculating the entropy in the above
+inequality gives us
+|K| ≤
+n
+
+i=1
+Kii,
+(8.64)
+which is Hadamard’s inequality. A number of determinant inequalities
+can be derived in this fashion from information-theoretic inequalities
+(Chapter 17).
+Theorem 8.6.3
+h(X + c) = h(X).
+(8.65)
+Translation does not change the differential entropy.
+Proof:
+Follows directly from the deﬁnition of differential entropy.
+□
+
+--- Page 80 ---
+254
+DIFFERENTIAL ENTROPY
+Theorem 8.6.4
+h(aX) = h(X) + log |a|.
+(8.66)
+Proof:
+Let Y = aX. Then fY(y) =
+1
+|a|fX( y
+a), and
+h(aX) = −
+
+fY(y) log fY(y) dy
+(8.67)
+= −
+
+1
+|a|fX
+y
+a
+
+log
+ 1
+|a|fX
+y
+a
+
+dy
+(8.68)
+= −
+
+fX(x) log fX(x) dx + log |a|
+(8.69)
+= h(X) + log |a|,
+(8.70)
+after a change of variables in the integral.
+□
+Similarly, we can prove the following corollary for vector-valued ran-
+dom variables.
+Corollary
+h(AX) = h(X) + log |det(A)|.
+(8.71)
+We now show that the multivariate normal distribution maximizes the
+entropy over all distributions with the same covariance.
+Theorem 8.6.5
+Let the random vector X ∈Rn have zero mean and
+covariance K = EXXt (i.e., Kij = EXiXj, 1 ≤i, j ≤n). Then h(X) ≤
+1
+2 log(2πe)n|K|, with equality iff X ∼N(0, K).
+Proof:
+Let g(x) be any density satisfying
+
+g(x)xixjdx = Kij for all
+i, j. Let φK be the density of a N(0, K) vector as given in (8.35), where we
+set µ = 0. Note that log φK(x) is a quadratic form and
+
+xixjφK(x) dx =
+Kij. Then
+0 ≤D(g||φK)
+(8.72)
+=
+
+g log(g/φK)
+(8.73)
+= −h(g) −
+
+g log φK
+(8.74)
+
+--- Page 81 ---
+8.6
+DIFFERENTIAL ENTROPY, RELATIVE ENTROPY, AND MUTUAL INFORMATION
+255
+= −h(g) −
+
+φK log φK
+(8.75)
+= −h(g) + h(φK),
+(8.76)
+where the substitution
+
+g log φK =
+
+φK log φK follows from the fact
+that g and φK yield the same moments of the quadratic form log φK(x).
+□
+In particular, the Gaussian distribution maximizes the entropy over
+all distributions with the same variance. This leads to the estimation
+counterpart to Fano’s inequality. Let X be a random variable with differ-
+ential entropy h(X). Let ˆX be an estimate of X, and let E(X −ˆX)2 be
+the expected prediction error. Let h(X) be in nats.
+Theorem 8.6.6
+(Estimation error and differential entropy)
+For any
+random variable X and estimator ˆX,
+E(X −ˆX)2 ≥
+1
+2πee2h(X),
+with equality if and only if X is Gaussian and ˆX is the mean of X.
+Proof:
+Let ˆX be any estimator of X; then
+E(X −ˆX)2 ≥min
+ˆX
+E(X −ˆX)2
+(8.77)
+= E (X −E(X))2
+(8.78)
+= var(X)
+(8.79)
+≥
+1
+2πee2h(X),
+(8.80)
+where (8.78) follows from the fact that the mean of X is the best estimator
+for X and the last inequality follows from the fact that the Gaussian
+distribution has the maximum entropy for a given variance. We have
+equality only in (8.78) only if ˆX is the best estimator (i.e., ˆX is the mean
+of X and equality in (8.80) only if X is Gaussian).
+□
+Corollary
+Given side information Y and estimator ˆX(Y), it follows that
+E(X −ˆX(Y))2 ≥
+1
+2πee2h(X|Y).
+
+--- Page 82 ---
+256
+DIFFERENTIAL ENTROPY
+SUMMARY
+h(X) = h(f ) = −
+
+S
+f (x) log f (x) dx
+(8.81)
+f (Xn) .=2−nh(X)
+(8.82)
+Vol(A(n)
+ǫ ) .=2nh(X).
+(8.83)
+H ([X]2−n) ≈h(X) + n.
+(8.84)
+h(N(0, σ 2)) = 1
+2 log 2πeσ 2.
+(8.85)
+h(Nn(µ, K)) = 1
+2 log(2πe)n|K|.
+(8.86)
+D(f ||g) =
+
+f log f
+g ≥0.
+(8.87)
+h(X1, X2, . . . , Xn) =
+n
+
+i=1
+h(Xi|X1, X2, . . . , Xi−1).
+(8.88)
+h(X|Y) ≤h(X).
+(8.89)
+h(aX) = h(X) + log |a|.
+(8.90)
+I (X; Y) =
+
+f (x, y) log f (x, y)
+f (x)f (y) ≥0.
+(8.91)
+max
+EXXt=K h(X) = 1
+2 log(2πe)n|K|.
+(8.92)
+E(X −ˆX(Y))2 ≥
+1
+2πee2h(X|Y).
+2nH(X) is the effective alphabet size for a discrete random variable.
+2nh(X) is the effective support set size for a continuous random variable.
+2C is the effective alphabet size of a channel of capacity C.
+PROBLEMS
+8.1
+Differential entropy.
+Evaluate the differential entropy h(X) =
+−
+
+f ln f for the following:
+(a) The exponential density, f (x) = λe−λx , x ≥0.
+
+--- Page 83 ---
+PROBLEMS
+257
+(b) The Laplace density, f (x) = 1
+2λe−λ|x|.
+(c) The sum of X1 and X2, where X1 and X2 are independent
+normal random variables with means µi and variances σ 2
+i , i =
+1, 2.
+8.2
+Concavity of determinants.
+Let K1 and K2 be two symmetric non-
+negative deﬁnite n × n matrices. Prove the result of Ky Fan [199]:
+| λK1 + λK2 |≥| K1 |λ| K2 |λ
+for 0 ≤λ ≤1, λ = 1 −λ,
+where | K | denotes the determinant of K. [Hint: Let Z = Xθ,
+where X1 ∼N(0, K1), X2 ∼N(0, K2) and θ = Bernoulli(λ). Then
+use h(Z | θ) ≤h(Z).]
+8.3
+Uniformly distributed noise.
+Let the input random variable X to
+a channel be uniformly distributed over the interval −1
+2 ≤x ≤+1
+2.
+Let the output of the channel be Y = X + Z, where the noise ran-
+dom variable is uniformly distributed over the interval −a/2 ≤z ≤
++a/2.
+(a) Find I (X; Y) as a function of a.
+(b) For a = 1 ﬁnd the capacity of the channel when the input X
+is peak-limited; that is, the range of X is limited to −1
+2 ≤x ≤
++1
+2. What probability distribution on X maximizes the mutual
+information I (X; Y)?
+(c) (Optional) Find the capacity of the channel for all values of a,
+again assuming that the range of X is limited to −1
+2 ≤x ≤+1
+2.
+8.4
+Quantized random variables.
+Roughly how many bits are required
+on the average to describe to three-digit accuracy the decay time
+(in years) of a radium atom if the half-life of radium is 80 years?
+Note that half-life is the median of the distribution.
+8.5
+Scaling.
+Let h(X) = −
+
+f (x) log f (x) dx. Show
+h(AX) = log | det(A) | + h(X).
+8.6
+Variational inequality.
+Verify for positive random variables X
+that
+log EP (X) = sup
+Q
+
+EQ(log X) −D(Q||P )
+
+,
+(8.93)
+where EP (X) = 
+x xP (x) and D(Q||P ) = 
+x Q(x) log Q(x)
+P(x),
+and the supremum is over all Q(x)≥0,  Q(x)=1. It is enough
+to extremize J(Q)=EQ ln X−D(Q||P )+λ( Q(x)−1).
+
+--- Page 84 ---
+258
+DIFFERENTIAL ENTROPY
+8.7
+Differential entropy bound on discrete entropy.
+Let X be a dis-
+crete random variable on the set X = {a1, a2, . . .} with Pr(X =
+ai) = pi. Show that
+H(p1, p2, . . .) ≤1
+2 log(2πe)
+
+
+∞
+
+i=1
+pii2 −
+ ∞
+
+i=1
+ipi
+2
++ 1
+12
+
+.
+(8.94)
+Moreover, for every permutation σ,
+H(p1, p2, . . .) ≤1
+2 log(2πe)
+
+
+∞
+
+i=1
+pσ(i)i2 −
+ ∞
+
+i=1
+ipσ(i)
+2
++ 1
+12
+
+.
+(8.95)
+[Hint: Construct a random variable X′ such that Pr(X′ = i) = pi.
+Let U be a uniform (0,1] random variable and let Y = X′ + U,
+where X′ and U are independent. Use the maximum entropy bound
+on Y to obtain the bounds in the problem. This bound is due to
+Massey (unpublished) and Willems (unpublished).]
+8.8
+Channel with uniformly distributed noise.
+Consider a additive
+channel whose input alphabet X = {0,±1,±2} and whose output
+Y = X+Z, where Z is distributed uniformly over the interval
+[−1, 1]. Thus, the input of the channel is a discrete random vari-
+able, whereas the output is continuous. Calculate the capacity C =
+maxp(x) I (X; Y) of this channel.
+8.9
+Gaussian mutual information.
+Suppose that (X, Y, Z) are jointly
+Gaussian and that X →Y →Z forms a Markov chain. Let X and
+Y have correlation coefﬁcient ρ1 and let Y and Z have correlation
+coefﬁcient ρ2. Find I (X; Z).
+8.10
+Shape of the typical set.
+Let Xi be i.i.d. ∼f (x), where
+f (x) = ce−x4.
+Let h = −
+
+f ln f . Describe the shape (or form) or the typical set
+A(n)
+ǫ
+= {xn ∈Rn : f (xn) ∈2−n(h±ǫ)}.
+8.11
+Nonergodic Gaussian process.
+Consider a constant signal V in
+the presence of iid observational noise {Zi}. Thus, Xi = V + Zi,
+where V ∼N(0, S) and Zi are iid ∼N(0, N). Assume that V and
+{Zi} are independent.
+(a) Is {Xi} stationary?
+
+--- Page 85 ---
+HISTORICAL NOTES
+259
+(b) Find limn−→∞1
+n
+n
+i=1 Xi. Is the limit random?
+(c) What is the entropy rate h of {Xi}?
+(d) Find the least-mean-squared error predictor ˆXn+1(Xn), and ﬁnd
+σ 2
+∞= limn−→∞E( ˆXn −Xn)2.
+(e) Does {Xi} have an AEP? That is, does −1
+n log f (Xn) −→h?
+HISTORICAL NOTES
+Differential entropy and discrete entropy were introduced in Shannon’s
+original paper [472]. The general rigorous deﬁnition of relative entropy
+and mutual information for arbitrary random variables was developed by
+Kolmogorov [319] and Pinsker [425], who deﬁned mutual information as
+supP,Q I ([X]P; [Y]Q), where the supremum is over all ﬁnite partitions P
+and Q.
+
+--- Page 86 ---
+
+--- Page 87 ---
+CHAPTER 9
+GAUSSIAN CHANNEL
+The most important continuous alphabet channel is the Gaussian channel
+depicted in Figure 9.1. This is a time-discrete channel with output Yi at
+time i, where Yi is the sum of the input Xi and the noise Zi. The noise
+Zi is drawn i.i.d. from a Gaussian distribution with variance N. Thus,
+Yi = Xi + Zi,
+Zi ∼N(0, N).
+(9.1)
+The noise Zi is assumed to be independent of the signal Xi. This channel
+is a model for some common communication channels, such as wired and
+wireless telephone channels and satellite links. Without further conditions,
+the capacity of this channel may be inﬁnite. If the noise variance is zero,
+the receiver receives the transmitted symbol perfectly. Since X can take
+on any real value, the channel can transmit an arbitrary real number with
+no error.
+If the noise variance is nonzero and there is no constraint on the input,
+we can choose an inﬁnite subset of inputs arbitrarily far apart, so that
+they are distinguishable at the output with arbitrarily small probability of
+error. Such a scheme has an inﬁnite capacity as well. Thus if the noise
+variance is zero or the input is unconstrained, the capacity of the channel
+is inﬁnite.
+The most commonlimitationonthe input is anenergyorpowerconstraint.
+We assume an average power constraint. For any codeword (x1, x2, . . . , xn)
+transmitted over the channel, we require that
+1
+n
+n
+
+i=1
+x2
+i ≤P.
+(9.2)
+This communication channel models many practical channels, includ-
+ing radio and satellite links. The additive noise in such channels may be
+due to a variety of causes. However, by the central limit theorem, the
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+261
+
+--- Page 88 ---
+262
+GAUSSIAN CHANNEL
+Zi
+Yi
+Xi
+FIGURE 9.1. Gaussian channel.
+cumulative effect of a large number of small random effects will be
+approximately normal, so the Gaussian assumption is valid in a large
+number of situations.
+We ﬁrst analyze a simple suboptimal way to use this channel. Assume
+that we want to send 1 bit over the channel in one use of the channel.
+Given the power constraint, the best that we can do is to send one of
+two levels, +
+√
+P or −
+√
+P . The receiver looks at the corresponding Y
+received and tries to decide which of the two levels was sent. Assuming
+that both levels are equally likely (this would be the case if we wish to
+send exactly 1 bit of information), the optimum decoding rule is to decide
+that +
+√
+P was sent if Y > 0 and decide −
+√
+P was sent if Y < 0. The
+probability of error with such a decoding scheme is
+Pe = 1
+2 Pr(Y < 0|X = +
+√
+P) + 1
+2 Pr(Y > 0|X = −
+√
+P )
+(9.3)
+= 1
+2 Pr(Z < −
+√
+P|X = +
+√
+P ) + 1
+2 Pr(Z >
+√
+P |X = −
+√
+P ) (9.4)
+= Pr(Z >
+√
+P )
+(9.5)
+= 1 −
+
+P/N
+
+,
+(9.6)
+where (x) is the cumulative normal function
+(x) =
+ x
+−∞
+1
+√
+2π
+e
+−t2
+2 dt.
+(9.7)
+Using such a scheme, we have converted the Gaussian channel into a dis-
+crete binary symmetric channel with crossover probability Pe. Similarly,
+by using a four-level input signal, we can convert the Gaussian channel
+
+--- Page 89 ---
+9.1
+GAUSSIAN CHANNEL: DEFINITIONS
+263
+into a discrete four-input channel. In some practical modulation schemes,
+similar ideas are used to convert the continuous channel into a discrete
+channel. The main advantage of a discrete channel is ease of processing
+of the output signal for error correction, but some information is lost in
+the quantization.
+9.1
+GAUSSIAN CHANNEL: DEFINITIONS
+We now deﬁne the (information) capacity of the channel as the maxi-
+mum of the mutual information between the input and output over all
+distributions on the input that satisfy the power constraint.
+Deﬁnition
+The information capacity of the Gaussian channel with
+power constraint P is
+C =
+max
+f (x):E X2≤P
+I (X; Y).
+(9.8)
+We can calculate the information capacity as follows: Expanding
+I (X; Y), we have
+I (X; Y) = h(Y) −h(Y|X)
+(9.9)
+= h(Y) −h(X + Z|X)
+(9.10)
+= h(Y) −h(Z|X)
+(9.11)
+= h(Y) −h(Z),
+(9.12)
+since Z is independent of X. Now, h(Z) = 1
+2 log 2πeN. Also,
+EY 2 = E(X + Z)2 = EX2 + 2EXEZ + EZ2 = P + N,
+(9.13)
+since X and Z are independent and EZ = 0. Given EY 2 = P + N, the
+entropy of Y is bounded by
+1
+2 log 2πe(P + N) by Theorem 8.6.5 (the
+normal maximizes the entropy for a given variance).
+Applying this result to bound the mutual information, we obtain
+I (X; Y) = h(Y) −h(Z)
+(9.14)
+≤1
+2 log 2πe(P + N) −1
+2 log 2πeN
+(9.15)
+= 1
+2 log
+
+1 + P
+N
+
+.
+(9.16)
+
+--- Page 90 ---
+264
+GAUSSIAN CHANNEL
+Hence, the information capacity of the Gaussian channel is
+C = max
+EX2≤P
+I (X; Y) = 1
+2 log
+
+1 + P
+N
+
+,
+(9.17)
+and the maximum is attained when X ∼N(0, P ).
+We will now show that this capacity is also the supremum of the rates
+achievable for the channel. The arguments are similar to the arguments
+for a discrete channel. We will begin with the corresponding deﬁnitions.
+Deﬁnition
+An (M, n) code for the Gaussian channel with power con-
+straint P consists of the following:
+1. An index set {1, 2, . . . , M}.
+2. An encoding function x : {1, 2, . . . , M} →Xn, yielding codewords
+xn(1), xn(2), . . . , xn(M), satisfying the power constraint P ; that is,
+for every codeword
+n
+
+i=1
+x2
+i (w) ≤nP,
+w = 1, 2, . . . , M.
+(9.18)
+3. A decoding function
+g : Yn →{1, 2, . . . , M}.
+(9.19)
+The rate and probability of error of the code are deﬁned as in Chapter 7
+for the discrete case. The arithmetic average of the probability of error is
+deﬁned by
+P (n)
+e
+=
+1
+2nR
+
+λi.
+(9.20)
+Deﬁnition
+A rate R is said to be achievable for a Gaussian channel
+with a power constraint P if there exists a sequence of (2nR, n) codes
+with codewords satisfying the power constraint such that the maximal
+probability of error λ(n) tends to zero. The capacity of the channel is the
+supremum of the achievable rates.
+Theorem 9.1.1
+The capacity of a Gaussian channel with power con-
+straint P and noise variance N is
+C = 1
+2 log
+
+1 + P
+N
+
+bits per transmission.
+(9.21)
+
+--- Page 91 ---
+9.1
+GAUSSIAN CHANNEL: DEFINITIONS
+265
+Remark
+We ﬁrst present a plausibility argument as to why we may be
+able to construct (2nC, n) codes with a low probability of error. Consider
+any codeword of length n. The received vector is normally distributed with
+mean equal to the true codeword and variance equal to the noise variance.
+With high probability, the received vector is contained in a sphere of radius
+√n(N + ǫ) around the true codeword. If we assign everything within this
+sphere to the given codeword, when this codeword is sent there will be
+an error only if the received vector falls outside the sphere, which has
+low probability.
+Similarly, we can choose other codewords and their corresponding
+decoding spheres. How many such codewords can we choose? The vol-
+ume of an n-dimensional sphere is of the form Cnrn, where r is the
+radius of the sphere. In this case, each decoding sphere has radius
+√
+nN.
+These spheres are scattered throughout the space of received vectors. The
+received vectors have energy no greater than n(P + N), so they lie in a
+sphere of radius √n(P + N). The maximum number of nonintersecting
+decoding spheres in this volume is no more than
+Cn(n(P + N))
+n
+2
+Cn(nN)
+n
+2
+= 2
+n
+2 log
+
+1 + P
+N
+
+(9.22)
+and the rate of the code is 1
+2 log(1 + P
+N ). This idea is illustrated in Figure 9.2.
+FIGURE 9.2. Sphere packing for the Gaussian channel.
+
+--- Page 92 ---
+266
+GAUSSIAN CHANNEL
+This sphere-packing argument indicates that we cannot hope to send
+at rates greater than C with low probability of error. However, we can
+actually do almost as well as this, as is proved next.
+Proof:
+(Achievability). We will use the same ideas as in the proof of
+the channel coding theorem in the case of discrete channels: namely,
+random codes and joint typicality decoding. However, we must make
+some modiﬁcations to take into account the power constraint and the fact
+that the variables are continuous and not discrete.
+1. Generation of the codebook. We wish to generate a codebook in
+which all the codewords satisfy the power constraint. To ensure
+this, we generate the codewords with each element i.i.d. accord-
+ing to a normal distribution with variance P −ǫ. Since for large
+n, 1
+n
+ X2
+i →P −ǫ, the probability that a codeword does not sat-
+isfy the power constraint will be small. Let Xi(w), i = 1, 2, . . . , n,
+w = 1, 2, . . . , 2nR be i.i.d. ∼N(0, P −ǫ), forming codewords
+Xn(1), Xn(2), . . . , Xn(2nR) ∈Rn.
+2. Encoding. After the generation of the codebook, the codebook is
+revealed to both the sender and the receiver. To send the message
+index w, the transmitter sends the wth codeword Xn(w) in the code-
+book.
+3. Decoding. The receiver looks down the list of codewords {Xn(w)}
+and searches for one that is jointly typical with the received vector.
+If there is one and only one such codeword Xn(w), the receiver
+declares
+ˆW = w to be the transmitted codeword. Otherwise, the
+receiver declares an error. The receiver also declares an error if the
+chosen codeword does not satisfy the power constraint.
+4. Probability of error. Without loss of generality, assume that code-
+word 1 was sent. Thus, Y n = Xn(1) + Zn. Deﬁne the following
+events:
+E0 =
+
+
+
+1
+n
+n
+
+j=1
+X2
+j(1) > P
+
+
+
+(9.23)
+and
+Ei =
+
+(Xn(i), Y n) is in A(n)
+ǫ
+
+.
+(9.24)
+Then an error occurs if E0 occurs (the power constraint is violated)
+or Ec
+1 occurs (the transmitted codeword and the received sequence
+are not jointly typical) or E2 ∪E3 ∪· · · ∪E2nR occurs (some wrong
+
+--- Page 93 ---
+9.1
+GAUSSIAN CHANNEL: DEFINITIONS
+267
+codeword is jointly typical with the received sequence). Let E denote
+the event ˆW ̸= W and let P denote the conditional probability given
+that W = 1. Hence,
+Pr(E|W = 1) = P (E) = P
+
+E0 ∪Ec
+1 ∪E2 ∪E3 ∪· · · ∪E2nR
+
+(9.25)
+≤P (E0) + P (Ec
+1) +
+2nR
+
+i=2
+P (Ei),
+(9.26)
+by the union of events bound for probabilities. By the law of large
+numbers, P (E0) →0 as n →∞. Now, by the joint AEP (which
+can be proved using the same argument as that used in the discrete
+case), P (Ec
+1) →0, and hence
+P (Ec
+1) ≤ǫ
+for n sufﬁciently large.
+(9.27)
+Since by the code generation process, Xn(1) and Xn(i) are indepen-
+dent, so are Y n and Xn(i). Hence, the probability that Xn(i) and Y n
+will be jointly typical is ≤2−n(I(X;Y)−3ǫ) by the joint AEP.
+Now let W be uniformly distributed over {1, 2, . . . , 2nR}, and con-
+sequently,
+Pr(E) =
+1
+2nR
+
+λi = P (n)
+e
+.
+(9.28)
+Then
+P (n)
+e
+= Pr(E) = Pr(E|W = 1)
+(9.29)
+≤P (E0) + P (Ec
+1) +
+2nR
+
+i=2
+P (Ei)
+(9.30)
+≤ǫ + ǫ +
+2nR
+
+i=2
+2−n(I(X;Y)−3ǫ)
+(9.31)
+= 2ǫ +
+
+2nR −1
+
+2−n(I(X;Y)−3ǫ)
+(9.32)
+≤2ǫ + 23nǫ2−n(I(X;Y)−R)
+(9.33)
+≤3ǫ
+(9.34)
+
+--- Page 94 ---
+268
+GAUSSIAN CHANNEL
+for n sufﬁciently large and R < I (X; Y) −3ǫ. This proves the exis-
+tence of a good (2nR, n) code.
+Now choosing a good codebook and deleting the worst half of the
+codewords, we obtain a code with low maximal probability of error. In
+particular, the power constraint is satisﬁed by each of the remaining code-
+words (since the codewords that do not satisfy the power constraint have
+probability of error 1 and must belong to the worst half of the codewords).
+Hence we have constructed a code that achieves a rate arbitrarily close to
+capacity. The forward part of the theorem is proved. In the next section
+we show that the achievable rate cannot exceed the capacity.
+□
+9.2
+CONVERSE TO THE CODING THEOREM FOR GAUSSIAN
+CHANNELS
+In this section we complete the proof that the capacity of a Gaussian
+channel is C = 1
+2 log(1 + P
+N ) by proving that rates R > C are not achiev-
+able. The proof parallels the proof for the discrete channel. The main new
+ingredient is the power constraint.
+Proof:
+(Converse to Theorem 9.1.1). We must show that if P (n)
+e
+→0 for
+a sequence of (2nR, n) codes for a Gaussian channel with power constraint
+P , then
+R ≤C = 1
+2 log
+
+1 + P
+N
+
+.
+(9.35)
+Consider any (2nR, n) code that satisﬁes the power constraint, that is,
+1
+n
+n
+
+i=1
+x2
+i (w) ≤P,
+(9.36)
+for w = 1, 2, . . . , 2nR. Proceeding as in the converse for the discrete case,
+let W be distributed uniformly over {1, 2, . . . , 2nR}. The uniform distri-
+bution over the index set W ∈{1, 2, . . . , 2nR} induces a distribution on
+the input codewords, which in turn induces a distribution over the input
+alphabet. This speciﬁes a joint distribution on W →Xn(W) →Y n →ˆW.
+To relate probability of error and mutual information, we can apply Fano’s
+inequality to obtain
+H(W| ˆW) ≤1 + nRP (n)
+e
+= nǫn,
+(9.37)
+
+--- Page 95 ---
+9.2
+CONVERSE TO THE CODING THEOREM FOR GAUSSIAN CHANNELS
+269
+where ǫn →0 as P (n)
+e
+→0. Hence,
+nR = H(W) = I (W; ˆW) + H(W| ˆW)
+(9.38)
+≤I (W; ˆW) + nǫn
+(9.39)
+≤I (Xn; Y n) + nǫn
+(9.40)
+= h(Y n) −h(Y n|Xn) + nǫn
+(9.41)
+= h(Y n) −h(Zn) + nǫn
+(9.42)
+≤
+n
+
+i=1
+h(Yi) −h(Zn) + nǫn
+(9.43)
+=
+n
+
+i=1
+h(Yi) −
+n
+
+i=1
+h(Zi) + nǫn
+(9.44)
+=
+n
+
+i=1
+I (Xi; Yi) + nǫn.
+(9.45)
+Here Xi = xi(W), where W is drawn according to the uniform distribution
+on {1, 2, . . . , 2nR}. Now let Pi be the average power of the ith column of
+the codebook, that is,
+Pi =
+1
+2nR
+
+w
+x2
+i (w).
+(9.46)
+Then, since Yi = Xi + Zi and since Xi and Zi are independent, the aver-
+age power EYi2 of Yi is Pi + N. Hence, since entropy is maximized by
+the normal distribution,
+h(Yi) ≤1
+2 log 2πe(Pi + N).
+(9.47)
+Continuing with the inequalities of the converse, we obtain
+nR ≤
+
+(h(Yi) −h(Zi)) + nǫn
+(9.48)
+≤
+ 1
+2 log(2πe(Pi + N)) −1
+2 log 2πeN
+
++ nǫn
+(9.49)
+=
+ 1
+2 log
+
+1 + Pi
+N
+
++ nǫn.
+(9.50)
+
+--- Page 96 ---
+270
+GAUSSIAN CHANNEL
+Since each of the codewords satisﬁes the power constraint, so does their
+average, and hence
+1
+n
+
+i
+Pi ≤P.
+(9.51)
+Since f (x) = 1
+2 log(1 + x) is a concave function of x, we can apply
+Jensen’s inequality to obtain
+1
+n
+n
+
+i=1
+1
+2 log
+
+1 + Pi
+N
+
+≤1
+2 log
+
+1 + 1
+n
+n
+
+i=1
+Pi
+N
+
+(9.52)
+≤1
+2 log
+
+1 + P
+N
+
+.
+(9.53)
+Thus R ≤1
+2 log(1 + P
+N ) + ǫn, ǫn →0, and we have the required converse.
+Note that the power constraint enters the standard proof in (9.46).
+9.3
+BANDLIMITED CHANNELS
+A common model for communication over a radio network or a telephone
+line is a bandlimited channel with white noise. This is a continuous-
+time channel. The output of such a channel can be described as the
+convolution
+Y(t) = (X(t) + Z(t)) ∗h(t),
+(9.54)
+where X(t) is the signal waveform, Z(t) is the waveform of the white
+Gaussian noise, and h(t) is the impulse response of an ideal bandpass
+ﬁlter, which cuts out all frequencies greater than W. In this section we
+give simpliﬁed arguments to calculate the capacity of such a channel.
+We begin with a representation theorem due to Nyquist [396] and Shan-
+non [480], which shows that sampling a bandlimited signal at a sampling
+rate
+1
+2W is sufﬁcient to reconstruct the signal from the samples. Intuitively,
+this is due to the fact that if a signal is bandlimited to W, it cannot change
+by a substantial amount in a time less than half a cycle of the maximum
+frequency in the signal, that is, the signal cannot change very much in
+time intervals less than
+1
+2W seconds.
+
+--- Page 97 ---
+9.3
+BANDLIMITED CHANNELS
+271
+Theorem 9.3.1
+Suppose that a function f (t) is bandlimited to W,
+namely, the spectrum of the function is 0 for all frequencies greater than
+W. Then the function is completely determined by samples of the function
+spaced
+1
+2W seconds apart.
+Proof:
+Let F(ω) be the Fourier transform of f (t). Then
+f (t) = 1
+2π
+ ∞
+−∞
+F(ω)eiωt dω
+(9.55)
+= 1
+2π
+ 2πW
+−2πW
+F(ω)eiωt dω,
+(9.56)
+since F(ω) is zero outside the band −2πW ≤ω ≤2πW. If we consider
+samples spaced
+1
+2W seconds apart, the value of the signal at the sample
+points can be written
+f
+ n
+2W
+
+= 1
+2π
+ 2πW
+−2πW
+F(ω)eiω n
+2W dω.
+(9.57)
+The right-hand side of this equation is also the deﬁnition of the coefﬁcients
+of the Fourier series expansion of the periodic extension of the function
+F(ω), taking the interval −2πW to 2πW as the fundamental period. Thus,
+the sample values f ( n
+2W ) determine the Fourier coefﬁcients and, by exten-
+sion, they determine the value of F(ω) in the interval (−2πW, 2πW).
+Since a function is uniquely speciﬁed by its Fourier transform, and since
+F(ω) is zero outside the band W, we can determine the function uniquely
+from the samples.
+Consider the function
+sinc(t) = sin(2πWt)
+2πWt
+.
+(9.58)
+This function is 1 at t = 0 and is 0 for t = n/2W, n ̸= 0. The spectrum
+of this function is constant in the band (−W, W) and is zero outside this
+band. Now deﬁne
+g(t) =
+∞
+
+n=−∞
+f
+ n
+2W
+
+sinc
+
+t −n
+2W
+
+.
+(9.59)
+From the properties of the sinc function, it follows that g(t) is bandlim-
+ited to W and is equal to f (n/2W) at t = n/2W. Since there is only
+
+--- Page 98 ---
+272
+GAUSSIAN CHANNEL
+one function satisfying these constraints, we must have g(t) = f (t). This
+provides an explicit representation of f (t) in terms of its samples.
+□
+A general function has an inﬁnite number of degrees of freedom—the
+value of the function at every point can be chosen independently. The
+Nyquist–Shannon sampling theorem shows that a bandlimited function
+has only 2W degrees of freedom per second. The values of the function
+at the sample points can be chosen independently, and this speciﬁes the
+entire function.
+If a function is bandlimited, it cannot be limited in time. But we can
+consider functions that have most of their energy in bandwidth W and
+have most of their energy in a ﬁnite time interval, say (0, T ). We can
+describe these functions using a basis of prolate spheroidal functions. We
+do not go into the details of this theory here; it sufﬁces to say that there
+are about 2T W orthonormal basis functions for the set of almost time-
+limited, almost bandlimited functions, and we can describe any function
+within the set by its coordinates in this basis. The details can be found
+in a series of papers by Landau, Pollak, and Slepian [340, 341, 500].
+Moreover, the projection of white noise on these basis vectors forms
+an i.i.d. Gaussian process. The above arguments enable us to view the
+bandlimited, time-limited functions as vectors in a vector space of 2T W
+dimensions.
+Now we return to the problem of communication over a bandlimited
+channel. Assuming that the channel has bandwidth W, we can represent
+both the input and the output by samples taken 1/2W seconds apart. Each
+of the input samples is corrupted by noise to produce the corresponding
+output sample. Since the noise is white and Gaussian, it can be shown
+that each noise sample is an independent, identically distributed Gaussian
+random variable.
+If the noise has power spectral density N0/2 watts/hertz and bandwidth
+W hertz, the noise has power N0
+2 2W = N0W and each of the 2WT noise
+samples in time T has variance N0WT /2WT = N0/2. Looking at the
+input as a vector in the 2T W-dimensional space, we see that the received
+signal is spherically normally distributed about this point with covariance
+N0
+2 I.
+Now we can use the theory derived earlier for discrete-time Gaussian
+channels, where it was shown that the capacity of such a channel is
+C = 1
+2 log
+
+1 + P
+N
+
+bits per transmission.
+(9.60)
+Let the channel be used over the time interval [0, T ]. In this case, the
+energy per sample is P T /2WT = P/2W, the noise variance per sample
+
+--- Page 99 ---
+9.3
+BANDLIMITED CHANNELS
+273
+is N0
+2 2W
+T
+2WT = N0/2, and hence the capacity per sample is
+C = 1
+2 log
+
+1 +
+P
+2W
+N0
+2
+
+= 1
+2 log
+
+1 +
+P
+N0W
+
+bits per sample.
+(9.61)
+Since there are 2W samples each second, the capacity of the channel can
+be rewritten as
+C = W log
+
+1 +
+P
+N0W
+
+bits per second.
+(9.62)
+This equation is one of the most famous formulas of information theory. It
+gives the capacity of a bandlimited Gaussian channel with noise spectral
+density N0/2 watts/Hz and power P watts.
+A more precise version of the capacity argument [576] involves con-
+sideration of signals with a small fraction of their energy outside the
+bandwidth W of the channel and a small fraction of their energy outside
+the time interval (0, T ). The capacity above is then obtained as a limit as
+the fraction of energy outside the band goes to zero.
+If we let W →∞in (9.62), we obtain
+C = P
+N0
+log2 e
+bits per second
+(9.63)
+as the capacity of a channel with an inﬁnite bandwidth, power P , and
+noise spectral density N0/2. Thus, for inﬁnite bandwidth channels, the
+capacity grows linearly with the power.
+Example 9.3.1
+(Telephone line)
+To allow multiplexing of many chan-
+nels, telephone signals are bandlimited to 3300 Hz. Using a bandwidth of
+3300 Hz and a SNR (signal-to-noise ratio) of 33 dB (i.e., P/N0W =
+2000) in (9.62), we ﬁnd the capacity of the telephone channel to be
+about 36,000 bits per second. Practical modems achieve transmission rates
+up to 33,600 bits per second in both directions over a telephone channel.
+In real telephone channels, there are other factors, such as crosstalk, inter-
+ference, echoes, and nonﬂat channels which must be compensated for to
+achieve this capacity.
+The V.90 modems that achieve 56 kb/s over the telephone channel
+achieve this rate in only one direction, taking advantage of a purely digital
+channel from the server to ﬁnal telephone switch in the network. In this
+case, the only impairments are due to the digital-to-analog conversion at
+this switch and the noise in the copper link from the switch to the home;
+
+--- Page 100 ---
+274
+GAUSSIAN CHANNEL
+these impairments reduce the maximum bit rate from the 64 kb/s for the
+digital signal in the network to the 56 kb/s in the best of telephone lines.
+The actual bandwidth available on the copper wire that links a home to
+a telephone switch is on the order of a few megahertz; it depends on the
+length of the wire. The frequency response is far from ﬂat over this band.
+If the entire bandwidth is used, it is possible to send a few megabits per
+second through this channel; schemes such at DSL (Digital Subscriber
+Line) achieve this using special equipment at both ends of the telephone
+line (unlike modems, which do not require modiﬁcation at the telephone
+switch).
+9.4
+PARALLEL GAUSSIAN CHANNELS
+In this section we consider k independent Gaussian channels in parallel
+with a common power constraint. The objective is to distribute the total
+power among the channels so as to maximize the capacity. This channel
+models a nonwhite additive Gaussian noise channel where each parallel
+component represents a different frequency.
+Assume that we have a set of Gaussian channels in parallel as illustrated
+in Figure 9.3. The output of each channel is the sum of the input and
+Gaussian noise. For channel j,
+Yj = Xj + Zj,
+j = 1, 2, . . . , k,
+(9.64)
+with
+Zj ∼N(0, Nj),
+(9.65)
+and the noise is assumed to be independent from channel to channel. We
+assume that there is a common power constraint on the total power used,
+that is,
+E
+k
+
+j=1
+X2
+j ≤P.
+(9.66)
+We wish to distribute the power among the various channels so as to
+maximize the total capacity.
+The information capacity of the channel C is
+C =
+max
+f (x1,x2,...,xk): E X2
+i ≤P
+I (X1, X2, . . . , Xk ; Y1, Y2, . . . , Yk).
+(9.67)

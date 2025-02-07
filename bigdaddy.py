@@ -30,7 +30,7 @@ def parse_pdf(pdf_path):
     output_text = ""
 
     # Step 1: Extract text using Tika
-    parsed = parser.from_file(pdf_path)
+    parsed = parser.from_file(pdf_path,timeout=120)
     text_from_tika = parsed.get('content', '').strip()
 
     # Step 2: Extract text and images using PyMuPDF (fitz)
@@ -62,13 +62,13 @@ def parse_pdf(pdf_path):
     return output_text
 
 # Function to save the output to a text file
-def save_output(output_text, output_file="output_book_v2.txt"):
+def save_output(output_text, output_file="output_shannon_paper.txt"):
     with open(output_file, "w", encoding="utf-8") as f:
         f.write(output_text)
 
 # Main execution
-pdf_path = "/Users/subrat_roy/Documents/LLM/try/Elements_of_Information_Theory_2nd_ed_T (dragged) (dragged).pdf"
+pdf_path = "/Users/subrat_roy/Documents/LLM/try/Shannon_Paper.pdf"
 output_text = parse_pdf(pdf_path)
 save_output(output_text)
 
-print("PDF parsing complete. Check output_book.txt.")
+print("PDF parsing complete. Check output_shannon_paper.txt")

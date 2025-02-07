@@ -1,0 +1,6946 @@
+
+--- Page 1 ---
+15.8
+SOURCE CODING WITH SIDE INFORMATION
+575
+3. Assuming that si is decoded correctly at the receiver, the receiver
+constructs a list Ł(y(i −1)) of indices that the receiver considers to
+be jointly typical with y(i −1) in the (i −1)th block. The receiver
+then declares ˆwi−1 = w as the index sent in block i −1 if there is
+a unique w in Ssi ∩Ł(y(i −1)). If n is sufﬁciently large and if
+R < I (X; Y|X1) + R0,
+(15.255)
+then ˆwi−1 = wi−1 with arbitrarily small probability of error. Com-
+bining the two constraints (15.254) and (15.255), R0 drops out,
+leaving
+R < I (X; Y|X1) + I (X1; Y) = I (X, X1; Y).
+(15.256)
+For a detailed analysis of the probability of error, the reader is
+referred to Cover and El Gamal [127].
+□
+Theorem 15.7.2 can also shown to be the capacity for the following
+classes of relay channels:
+1. Reversely degraded relay channel, that is,
+p(y, y1|x, x1) = p(y|x, x1)p(y1|y, x1).
+(15.257)
+2. Relay channel with feedback
+3. Deterministic relay channel,
+y1 = f (x, x1),
+y = g(x, x1).
+(15.258)
+15.8
+SOURCE CODING WITH SIDE INFORMATION
+We now consider the distributed source coding problem where two random
+variables X and Y are encoded separately but only X is to be recovered.We
+now ask how many bits R1 are required to describe X if we are allowed
+R2 bits to describe Y. If R2 > H(Y), then Y can be described perfectly,
+and by the results of Slepian–Wolf coding, R1 = H(X|Y) bits sufﬁce
+to describe X. At the other extreme, if R2 = 0, we must describe X
+without any help, and R1 = H(X) bits are then necessary to describe X. In
+general, we use R2 = I (Y; ˆY) bits to describe an approximate version of
+Y. This will allow us to describe X using H(X| ˆY) bits in the presence of
+side information ˆY. The following theorem is consistent with this intuition.
+
+--- Page 2 ---
+576
+NETWORK INFORMATION THEORY
+Theorem 15.8.1
+Let (X, Y) ∼p(x, y). If Y is encoded at rate R2 and
+X is encoded at rate R1, we can recover X with an arbitrarily small prob-
+ability of error if and only if
+R1 ≥H(X|U),
+(15.259)
+R2 ≥I (Y; U)
+(15.260)
+for some joint probability mass function p(x, y)p(u|y), where |U| ≤
+|Y| + 2.
+We prove this theorem in two parts. We begin with the converse, in
+which we show that for any encoding scheme that has a small probability
+of error, we can ﬁnd a random variable U with a joint probability mass
+function as in the theorem.
+Proof:
+(Converse). Consider any source code for Figure 15.32. The
+source code consists of mappings fn(Xn) and gn(Y n) such that the rates of
+fn and gn are less than R1 and R2, respectively, and a decoding mapping
+hn such that
+P (n)
+e
+= Pr{hn(fn(Xn), gn(Y n)) ̸= Xn} < ǫ.
+(15.261)
+Deﬁne new random variables S = fn(Xn) and T = gn(Y n). Then since
+we can recover Xn from S and T with low probability of error, we have,
+by Fano’s inequality,
+H(Xn|S, T ) ≤nǫn.
+(15.262)
+Then
+nR2
+(a)
+≥H(T )
+(15.263)
+(b)
+≥I (Y n; T )
+(15.264)
+Encoder
+Decoder
+Encoder
+X
+X
+R1
+R2
+Y
+^
+FIGURE 15.32. Encoding with side information.
+
+--- Page 3 ---
+15.8
+SOURCE CODING WITH SIDE INFORMATION
+577
+=
+n
+
+i=1
+I (Yi; T |Y1, . . . , Yi−1)
+(15.265)
+(c)
+=
+n
+
+i=1
+I (Yi; T, Y1, . . . , Yi−1)
+(15.266)
+(d)
+=
+n
+
+i=1
+I (Yi; Ui)
+(15.267)
+where
+(a) follows from the fact that the range of gn is {1, 2, . . . , 2nR2}
+(b) follows from the properties of mutual information
+(c) follows from the chain rule and the fact that Yi is independent of
+Y1, . . . , Yi−1 and hence I (Yi; Y1, . . . , Yi−1) = 0
+(d) follows if we deﬁne Ui = (T, Y1, . . . , Yi−1)
+We also have another chain for R1,
+nR1
+(a)
+≥H(S)
+(15.268)
+(b)
+≥H(S|T )
+(15.269)
+= H(S|T ) + H(Xn|S, T ) −H(Xn|S, T )
+(15.270)
+(c)
+≥H(Xn, S|T ) −nǫn
+(15.271)
+(d)
+= H(Xn|T ) −nǫn
+(15.272)
+(e)
+=
+n
+
+i=1
+H(Xi|T, X1, . . . , Xi−1) −nǫn
+(15.273)
+(f)
+≥
+n
+
+i=1
+H(Xi|T, Xi−1, Y i−1) −nǫn
+(15.274)
+(g)
+=
+n
+
+i=1
+H(Xi|T, Y i−1) −nǫn
+(15.275)
+(h)
+=
+n
+
+i=1
+H(Xi|Ui) −nǫn,
+(15.276)
+
+--- Page 4 ---
+578
+NETWORK INFORMATION THEORY
+where
+(a) follows from the fact that the range of S is {1, 2, . . . , 2nR1}
+(b) follows from the fact that conditioning reduces entropy
+(c) follows from Fano’s inequality
+(d) follows from the chain rule and the fact that S is a function of Xn
+(e) follows from the chain rule for entropy
+(f) follows from the fact that conditioning reduces entropy
+(g) follows from the (subtle) fact that Xi →(T, Y i−1) →Xi−1 forms
+a Markov chain since Xi does not contain any information about
+Xi−1 that is not there in Y i−1 and T
+(h) follows from the deﬁnition of U
+Also, since Xi contains no more information about Ui than is present
+in Yi, it follows that Xi →Yi →Ui forms a Markov chain. Thus we have
+the following inequalities:
+R1 ≥1
+n
+n
+
+i=1
+H(Xi|Ui),
+(15.277)
+R2 ≥1
+n
+n
+
+i=1
+I (Yi; Ui).
+(15.278)
+We now introduce a timesharing random variable Q so that we can rewrite
+these equations as
+R1 ≥1
+n
+n
+
+i=1
+H(Xi|Ui, Q = i) = H(XQ|UQ, Q),
+(15.279)
+R2 ≥1
+n
+n
+
+i=1
+I (Yi; Ui|Q = i) = I (YQ; UQ|Q).
+(15.280)
+Now since Q is independent of YQ (the distribution of Yi does not depend
+on i), we have
+I (YQ; UQ|Q) = I (YQ; UQ, Q) −I (YQ; Q) = I (YQ; UQ, Q). (15.281)
+Now XQ and YQ have the joint distribution p(x, y) in the theorem. Deﬁn-
+ing U = (UQ, Q), X = XQ, and Y = YQ, we have shown the existence
+of a random variable U such that
+R1 ≥H(X|U),
+(15.282)
+R2 ≥I (Y; U)
+(15.283)
+
+--- Page 5 ---
+15.8
+SOURCE CODING WITH SIDE INFORMATION
+579
+for any encoding scheme that has a low probability of error. Thus, the
+converse is proved.
+□
+Before we proceed to the proof of the achievability of this pair of rates,
+we will need a new lemma about strong typicality and Markov chains.
+Recall the deﬁnition of strong typicality for a triple of random variables
+X, Y, and Z. A triplet of sequences xn, yn, zn is said to be ǫ-strongly
+typical if
+				
+1
+nN(a, b, c|xn, yn, zn) −p(a, b, c)
+				 <
+ǫ
+|X||Y||Z|.
+(15.284)
+In particular, this implies that (xn, yn) are jointly strongly typical and
+that (yn, zn) are also jointly strongly typical. But the converse is not true:
+The fact that (xn, yn) ∈A∗(n)
+ǫ
+(X, Y) and (yn, zn) ∈A∗(n)
+ǫ
+(Y, Z) does not
+in general imply that (xn, yn, zn) ∈A∗(n)
+ǫ
+(X, Y, Z). But if X →Y →Z
+forms a Markov chain, this implication is true. We state this as a lemma
+without proof [53, 149].
+Lemma 15.8.1
+Let (X, Y, Z) form a Markov chain X →Y →Z [i.e.,
+p(x, y, z) = p(x, y)p(z|y)]. If for a given (yn, zn) ∈A∗(n)
+ǫ
+(Y, Z), Xn is
+drawn ∼
+n
+i=1 p(xi|yi), then Pr{(Xn, yn, zn) ∈A∗(n)
+ǫ
+(X, Y, Z)} > 1 −ǫ
+for n sufﬁciently large.
+Remark
+The theorem is true from the strong law of large numbers if
+Xn ∼
+n
+i=1 p(xi|yi, zi). The Markovity of X →Y →Z is used to show
+that Xn ∼p(xi|yi) is sufﬁcient for the same conclusion.
+We now outline the proof of achievability in Theorem 15.8.1.
+Proof:
+(Achievability in Theorem 15.8.1). Fix p(u|y). Calculate p(u) =
+
+y p(y)p(u|y).
+Generation of codebooks: Generate 2nR2 independent codewords of
+length n, U(w2), w2 ∈{1, 2, . . . , 2nR2} according to 
+n
+i=1 p(ui). Ran-
+domly bin all the Xn sequences into 2nR1 bins by independently generating
+an index b distributed uniformly on {1, 2, . . . , 2nR1} for each Xn. Let B(i)
+denote the set of Xn sequences allotted to bin i.
+Encoding: The X sender sends the index i of the bin in which Xn falls.
+The Y sender looks for an index s such that (Y n, U n(s)) ∈A∗(n)
+ǫ
+(Y, U).
+If there is more than one such s, it sends the least. If there is no such
+U n(s) in the codebook, it sends s = 1.
+Decoding: The receiver looks for a unique Xn ∈B(i) such that (Xn,
+U n(s)) ∈A∗(n)
+ǫ
+(X, U). If there is none or more than one, it declares an
+error.
+
+--- Page 6 ---
+580
+NETWORK INFORMATION THEORY
+Analysis of the probability of error: The various sources of error are as
+follows:
+1. The pair (Xn, Y n) generated by the source is not typical. The proba-
+bility of this is small if n is large. Hence, without loss of generality,
+we can condition on the event that the source produces a particular
+typical sequence (xn, yn) ∈A∗(n)
+ǫ
+.
+2. The sequence Y n is typical, but there does not exist a U n(s) in the
+codebook that is jointly typical with it. The probability of this is
+small from the arguments of Section 10.6, where we showed that if
+there are enough codewords; that is, if
+R2 > I (Y; U),
+(15.285)
+we are very likely to ﬁnd a codeword that is jointly strongly typical
+with the given source sequence.
+3. The codeword U n(s) is jointly typical with yn but not with xn. But
+by Lemma 15.8.1, the probability of this is small since X →Y →U
+forms a Markov chain.
+4. We also have an error if there exists another typical Xn ∈B(i) which
+is jointly typical with U n(s). The probability that any other Xn is
+jointly typical with U n(s) is less than 2−n(I(U;X)−3ǫ), and therefore
+the probability of this kind of error is bounded above by
+|B(i) ∩A∗(n)
+ǫ
+(X)|2−n(I(X;U)−3ǫ) ≤2n(H(X)+ǫ)2−nR12−n(I(X;U)−3ǫ),
+(15.286)
+which goes to 0 if R1 > H(X|U).
+Hence, it is likely that the actual source sequence Xn is jointly typical
+with U n(s) and that no other typical source sequence in the same bin is
+also jointly typical with U n(s). We can achieve an arbitrarily low proba-
+bility of error with an appropriate choice of n and ǫ, and this completes
+the proof of achievability.
+□
+15.9
+RATE DISTORTION WITH SIDE INFORMATION
+We know that R(D) bits are sufﬁcient to describe X within distortion D.
+We now ask how many bits are required given side information Y.
+We begin with a few deﬁnitions. Let (Xi, Yi) be i.i.d. ∼p(x, y) and
+encoded as shown in Figure 15.33.
+
+--- Page 7 ---
+15.9
+RATE DISTORTION WITH SIDE INFORMATION
+581
+Encoder
+Decoder
+X
+X
+Ed (X,X ) = D
+R
+Y
+^
+^
+FIGURE 15.33. Rate distortion with side information.
+Deﬁnition
+The rate distortion function with side information RY(D)
+is deﬁned as the minimum rate required to achieve distortion D if the
+side information Y is available to the decoder. Precisely, RY(D) is the
+inﬁmum of rates R such that there exist maps in : Xn →{1, . . . , 2nR},
+gn : Yn × {1, . . . , 2nR} →
+ˆXn such that
+lim sup
+n→∞
+Ed(Xn, gn(Y n, in(Xn))) ≤D.
+(15.287)
+Clearly, since the side information can only help, we have RY(D) ≤
+R(D). For the case of zero distortion, this is the Slepian–Wolf problem
+and we will need H(X|Y) bits. Hence, RY(0) = H(X|Y). We wish to
+determine the entire curve RY(D). The result can be expressed in the
+following theorem.
+Theorem 15.9.1
+(Rate distortion with side information (Wyner and Ziv))
+Let
+(X, Y)
+be
+drawn
+i.i.d.
+∼p(x, y)
+and
+let
+d(xn, ˆxn)
+= 1
+n
+n
+i=1 d(xi, ˆxi) be given. The rate distortion function with side infor-
+mation is
+RY(D) = min
+p(w|x) min
+f
+(I (X; W) −I (Y; W))
+(15.288)
+where the minimization is over all functions f : Y × W →ˆX and condi-
+tional probability mass functions p(w|x), |W| ≤|X| + 1, such that
+
+x
+
+w
+
+y
+p(x, y)p(w|x)d(x, f (y, w)) ≤D.
+(15.289)
+The function f in the theorem corresponds to the decoding map that
+maps the encoded version of the X symbols and the side information Y to
+the output alphabet. We minimize over all conditional distributions on W
+and functions f such that the expected distortion for the joint distribution
+is less than D.
+We ﬁrst prove the converse after considering some of the properties of
+the function RY(D) deﬁned in (15.288).
+
+--- Page 8 ---
+582
+NETWORK INFORMATION THEORY
+Lemma 15.9.1
+The rate distortion function with side information
+RY(D) deﬁned in (15.288) is a nonincreasing convex function of D.
+Proof:
+The monotonicity of RY(D) follows immediately from the fact
+that the domain of minimization in the deﬁnition of RY(D) increases with
+D. As in the case of rate distortion without side information, we expect
+RY(D) to be convex. However, the proof of convexity is more involved
+because of the double rather than single minimization in the deﬁnition of
+RY(D) in (15.288). We outline the proof here.
+Let D1 and D2 be two values of the distortion and let W1, f1 and
+W2, f2 be the corresponding random variables and functions that achieve
+the minima in the deﬁnitions of RY(D1) and RY(D2), respectively. Let
+Q be a random variable independent of X, Y, W1, and W2 which takes on
+the value 1 with probability λ and the value 2 with probability 1 −λ.
+Deﬁne W = (Q, WQ) and let f (W, Y) = fQ(WQ, Y). Speciﬁcally,
+f (W, Y) = f1(W1, Y) with probability λ and f (W, Y) = f2(W2, Y) with
+probability 1 −λ. Then the distortion becomes
+D = Ed(X, ˆX)
+(15.290)
+= λEd(X, f1(W1, Y)) + (1 −λ)Ed(X, f2(W2, Y))
+(15.291)
+= λD1 + (1 −λ)D2,
+(15.292)
+and (15.288) becomes
+I (W; X) −I (W; Y) = H(X) −H(X|W) −H(Y) + H(Y|W)
+(15.293)
+= H(X) −H(X|WQ, Q) −H(Y) + H(Y|WQ, Q)
+(15.294)
+= H(X) −λH(X|W1) −(1 −λ)H(X|W2)
+−H(Y) + λH(Y|W1) + (1 −λ)H(Y|W2)
+(15.295)
+= λ (I (W1, X) −I (W1; Y))
++ (1 −λ) (I (W2, X) −I (W2; Y)) , (15.296)
+and hence
+RY(D) =
+min
+U:Ed≤D (I (U; X) −I (U; Y))
+(15.297)
+≤I (W; X) −I (W; Y)
+(15.298)
+
+--- Page 9 ---
+15.9
+RATE DISTORTION WITH SIDE INFORMATION
+583
+= λ (I (W1, X) −I (W1; Y)) + (1 −λ) (I (W2, X) −I (W2; Y))
+= λRY(D1) + (1 −λ)RY(D2),
+(15.299)
+proving the convexity of RY(D).
+□
+We are now in a position to prove the converse to the conditional rate
+distortion theorem.
+Proof:
+(Converse to Theorem 15.9.1). Consider any rate distortion code
+with side information. Let the encoding function be fn : Xn →{1, 2, . . . ,
+2nR}. Let the decoding function be gn : Yn × {1, 2, . . . , 2nR} →
+ˆXn, and
+let gni : Yn × {1, 2, . . . , 2nR} →ˆX denote the ith symbol produced by the
+decoding function. Let T = fn(Xn) denote the encoded version of Xn.
+We must show that if Ed(Xn, gn(Y n, fn(Xn))) ≤D, then R ≥RY(D).
+We have the following chain of inequalities:
+nR
+(a)
+≥H(T )
+(15.300)
+(b)
+≥H(T |Y n)
+(15.301)
+≥I (Xn; T |Y n)
+(15.302)
+(c)
+=
+n
+
+i=1
+I (Xi; T |Y n, Xi−1)
+(15.303)
+=
+n
+
+i=1
+H(Xi|Y n, Xi−1) −H(Xi|T, Y n, Xi−1)
+(15.304)
+(d)
+=
+n
+
+i=1
+H(Xi|Yi) −H(Xi|T, Y i−1, Yi, Y n
+i+1, Xi−1)
+(15.305)
+(e)
+≥
+n
+
+i=1
+H(Xi|Yi) −H(Xi|T, Y i−1, Yi, Y n
+i+1)
+(15.306)
+(f)
+=
+n
+
+i=1
+H(Xi|Yi) −H(Xi|Wi, Yi)
+(15.307)
+(g)
+=
+n
+
+i=1
+I (Xi; Wi|Yi)
+(15.308)
+
+--- Page 10 ---
+584
+NETWORK INFORMATION THEORY
+=
+n
+
+i=1
+H(Wi|Yi) −H(Wi|Xi, Yi)
+(15.309)
+(h)
+=
+n
+
+i=1
+H(Wi|Yi) −H(Wi|Xi)
+(15.310)
+=
+n
+
+i=1
+H(Wi) −H(Wi|Xi) −H(Wi) + H(Wi|Yi)
+(15.311)
+=
+n
+
+i=1
+I (Wi; Xi) −I (Wi; Yi)
+(15.312)
+(i)≥
+n
+
+i=1
+RY(Ed(Xi, g′
+ni(Wi, Yi)))
+(15.313)
+= n1
+n
+n
+
+i=1
+RY(Ed(Xi, g′
+ni(Wi, Yi)))
+(15.314)
+(j)
+≥nRY
+
+1
+n
+n
+
+i=1
+Ed(Xi, g′
+ni(Wi, Yi))
+
+(15.315)
+(k)
+≥nRY (D) ,
+(15.316)
+where
+(a) follows from the fact that the range of T is {1, 2, . . . , 2nR}
+(b) follows from the fact that conditioning reduces entropy
+(c) follows from the chain rule for mutual information
+(d) follows from the fact that Xi is independent of the past and future
+Y’s and X’s given Yi
+(e) follows from the fact that conditioning reduces entropy
+(f) follows by deﬁning Wi = (T, Y i−1, Y n
+i+1)
+(g) follows from the deﬁnition of mutual information
+(h) follows from the fact that since Yi depends only on Xi and is condi-
+tionally independent of T and the past and future Y’s, Wi →Xi →
+Yi forms a Markov chain
+(i) follows
+from
+the deﬁnition
+of the (information)
+conditional
+rate
+distortion
+function
+since
+ˆXi = gni(T, Y n)
+△= g′
+ni(Wi, Yi),
+and
+hence
+I (Wi; Xi) −I (Wi; Yi) ≥minW:Ed(X, ˆX)≤Di I (W; X) −
+I (W; Y) = RY(Di)
+
+--- Page 11 ---
+15.9
+RATE DISTORTION WITH SIDE INFORMATION
+585
+(j) follows from Jensen’s inequality and the convexity of the conditional
+rate distortion function (Lemma 15.9.1)
+(k) follows from the deﬁnition of D = E[ 1
+n
+n
+i=1 d(Xi, ˆXi)]
+□
+It is easy to see the parallels between this converse and the converse
+for rate distortion without side information (Section 10.4). The proof of
+achievability is also parallel to the proof of the rate distortion theorem
+using strong typicality. However, instead of sending the index of the
+codeword that is jointly typical with the source, we divide these codewords
+into bins and send the bin index instead. If the number of codewords in
+each bin is small enough, the side information can be used to isolate
+the particular codeword in the bin at the receiver. Hence again we are
+combining random binning with rate distortion encoding to ﬁnd a jointly
+typical reproduction codeword. We outline the details of the proof below.
+Proof:
+(Achievability of Theorem 15.9.1). Fix p(w|x) and the function
+f (w, y). Calculate p(w) = 
+x p(x)p(w|x).
+Generation of codebook: Let R1 = I (X; W) + ǫ. Generate 2nR i.i.d.
+codewords W n(s) ∼
+n
+i=1 p(wi), and index them by s ∈{1, 2, . . . , 2nR1}.
+Let R2 = I (X; W) −I (Y; W) + 5ǫ. Randomly assign the indices s ∈
+{1, 2, . . . , 2nR1} to one of 2nR2 bins using a uniform distribution over
+the bins. Let B(i) denote the indices assigned to bin i. There are approx-
+imately 2n(R1−R2) indices in each bin.
+Encoding: Given a source sequence Xn, the encoder looks for a code-
+word W n(s) such that (Xn, W n(s)) ∈A∗(n)
+ǫ
+. If there is no such W n, the
+encoder sets s = 1. If there is more than one such s, the encoder uses the
+lowest s. The encoder sends the index of the bin in which s belongs.
+Decoding: The decoder looks for a W n(s) such that s ∈B(i) and
+(W n(s), Y n) ∈A∗(n)
+ǫ
+. If he ﬁnds a unique s, he then calculates ˆXn, where
+ˆXi = f (Wi, Yi). If he does not ﬁnd any such s or more than one such s,
+he sets ˆXn = ˆxn, where ˆxn is an arbitrary sequence in
+ˆXn. It does not
+matter which default sequence is used; we will show that the probability
+of this event is small.
+Analysis of the probability of error: As usual, we have various error
+events:
+1. The pair (Xn, Y n) /∈A∗(n)
+ǫ
+. The probability of this event is small for
+large enough n by the weak law of large numbers.
+2. The sequence Xn is typical, but there does not exist an s such that
+(Xn, W n(s)) ∈A∗(n)
+ǫ
+. As in the proof of the rate distortion theorem,
+
+--- Page 12 ---
+586
+NETWORK INFORMATION THEORY
+the probability of this event is small if
+R1 > I (W; X).
+(15.317)
+3. The pair of sequences (Xn, W n(s)) ∈A∗(n)
+ǫ
+but (W n(s), Y n) /∈A∗(n)
+ǫ
+(i.e., the codeword is not jointly typical with the Y n sequence). By
+the Markov lemma (Lemma 15.8.1), the probability of this event is
+small if n is large enough.
+4. There exists another s′ with the same bin index such that (W n(s′),
+Y n) ∈A∗(n)
+ǫ
+. Since the probability that a randomly chosen W n is
+jointly typical with Y n is ≈2−nI(Y;W), the probability that there is
+another W n in the same bin that is typical with Y n is bounded by
+the number of codewords in the bin times the probability of joint
+typicality, that is,
+Pr(∃s′ ∈B(i) : (W n(s′), Y n) ∈A∗(n)
+ǫ
+) ≤2n(R1−R2)2−n(I(W;Y)−3ǫ),
+(15.318)
+which goes to zero since R1 −R2 < I (Y; W) −3ǫ.
+5. If the index s is decoded correctly, (Xn, W n(s)) ∈A∗(n)
+ǫ
+. By item 1
+we can assume that (Xn, Y n) ∈A∗(n)
+ǫ
+. Thus, by the Markov lemma,
+we have (Xn, Y n, W n) ∈A∗(n)
+ǫ
+and therefore the empirical joint dis-
+tribution is close to the original distribution p(x, y)p(w|x) that we
+started with, and hence (Xn, ˆXn) will have a joint distribution that
+is close to the distribution that achieves distortion D.
+Hence with high probability, the decoder will produce ˆXn such that the
+distortion between Xn and ˆXn is close to nD. This completes the proof
+of the theorem.
+□
+The reader is referred to Wyner and Ziv [574] for details of the proof.
+After the discussion of the various situations of compressing distributed
+data, it might be expected that the problem is almost completely solved,
+but unfortunately, this is not true. An immediate generalization of all
+the above problems is the rate distortion problem for correlated sources,
+illustrated in Figure 15.34. This is essentially the Slepian–Wolf problem
+with distortion in both X and Y. It is easy to see that the three dis-
+tributed source coding problems considered above are all special cases
+of this setup. Unlike the earlier problems, though, this problem has not
+yet
+been
+solved
+and
+the
+general
+rate
+distortion
+region
+remains
+unknown.
+
+--- Page 13 ---
+15.10
+GENERAL MULTITERMINAL NETWORKS
+587
+Xn
+(Xn, Yn)
+Encoder 1
+i(xn) ∈ 2nR1
+j(yn) ∈ 2nR2
+Decoder
+Yn
+Encoder 2
+^
+^
+FIGURE 15.34. Rate distortion for two correlated sources.
+15.10
+GENERAL MULTITERMINAL NETWORKS
+We conclude this chapter by considering a general multiterminal network
+of senders and receivers and deriving some bounds on the rates achievable
+for communication in such a network. A general multiterminal network
+is illustrated in Figure 15.35. In this section, superscripts denote node
+indices and subscripts denote time indices. There are m nodes, and node
+i has an associated transmitted variable X(i) and a received variable Y (i).
+S
+Sc
+(X(1),Y (1))
+(X (m),Y (m))
+FIGURE 15.35. General multiterminal network.
+
+--- Page 14 ---
+588
+NETWORK INFORMATION THEORY
+The node i sends information at rate R(ij) to node j. We assume that all
+the messages W (ij) being sent from node i to node j are independent and
+uniformly distributed over their respective ranges {1, 2, . . . , 2nR(ij)}.
+The
+channel
+is
+represented
+by
+the
+channel
+transition
+function
+p(y(1), . . . , y(m)|x(1), . . . , x(m)), which is the conditional probability mass
+function of the outputs given the inputs. This probability transition func-
+tion captures the effects of the noise and the interference in the network.
+The channel is assumed to be memoryless (i.e., the outputs at any time
+instant depend only the current inputs and are conditionally independent
+of the past inputs).
+Corresponding to each transmitter–receiver node pair is a message
+W (ij) ∈{1, 2, . . . , 2nR(ij)}. The input symbol X(i) at node i depends on
+W (ij), j ∈{1, . . . , m} and also on the past values of the received symbol
+Y (i) at node i. Hence, an encoding scheme of block length n consists of
+a set of encoding and decoding functions, one for each node:
+• Encoders: X(i)
+k (W (i1), W (i2), . . . , W (im), Y (i)
+1 , Y (i)
+2 , . . . , Y (i)
+k−1), k = 1,
+. . . , n. The encoder maps the messages and past received symbols
+into the symbol X(i)
+k
+transmitted at time k.
+• Decoders: ˆW (ji) 
+Y (i)
+1 , . . . , Y (i)
+n , W (i1), . . . , W (im)
+, j = 1, 2, . . . , m.
+The decoder j at node i maps the received symbols in each block and
+his own transmitted information to form estimates of the messages
+intended for him from node j, j = 1, 2, . . . , m.
+Associated with every pair of nodes is a rate and a corresponding
+probability of error that the message will not be decoded correctly,
+P (n)
+e
+(ij) = Pr
+ ˆW (ij) 
+Y(j), W (j1), . . . , W (jm)
+̸= W (ij)
+,
+(15.319)
+where P (n)
+e
+(ij) is deﬁned under the assumption that all the messages are
+independent and distributed uniformly over their respective ranges.
+A set of rates {R(ij)} is said to be achievable if there exist encoders and
+decoders with block length n with P (n)
+e
+(ij) →0 as n →∞for all i, j ∈
+{1, 2, . . . , m}. We use this formulation to derive an upper bound on the
+ﬂow of information in any multiterminal network. We divide the nodes
+into two sets, S and the complement Sc. We now bound the rate of ﬂow
+of information from nodes in S to nodes in Sc. See [514]
+
+--- Page 15 ---
+15.10
+GENERAL MULTITERMINAL NETWORKS
+589
+Theorem 15.10.1
+If the information rates {R(ij)} are achievable, there
+exists some joint probability distribution p(x(1), x(2), . . . , x(m)) such that
+
+i∈S,j∈Sc
+R(ij) ≤I (X(S); Y (Sc)|X(Sc))
+(15.320)
+for all S ⊂{1, 2, . . . , m}. Thus, the total rate of ﬂow of information across
+cut sets is bounded by the conditional mutual information.
+Proof:
+The proof follows the same lines as the proof of the converse
+for the multiple access channel. Let T = {(i, j) : i ∈S, j ∈Sc} be the set
+of links that cross from S to Sc, and let T c be all the other links in the
+network. Then
+n
+
+i∈S,j∈Sc
+R(ij)
+(15.321)
+(a)
+=
+
+i∈S,j∈Sc
+H
+
+W (ij)
+(15.322)
+(b)
+= H
+
+W (T )
+(15.323)
+(c)
+= H
+
+W (T )|W (T c)
+(15.324)
+= I
+
+W (T ); Y (Sc)
+1
+, . . . , Y (Sc)
+n
+|W (T c)
+(15.325)
++ H
+
+W (T )|Y (Sc)
+1
+, . . . , Y (Sc)
+n
+, W (T c)
+(15.326)
+(d)
+≤I
+
+W (T ); Y (Sc)
+1
+, . . . , Y (Sc)
+n
+|W (T c)
++ nǫn
+(15.327)
+(e)
+=
+n
+
+k=1
+I
+
+W (T ); Y (Sc)
+k
+|Y (Sc)
+1
+, . . . , Y (Sc)
+k−1 , W (T c)
++ nǫn
+(15.328)
+(f)
+=
+n
+
+k=1
+H
+
+Y (Sc)
+k
+|Y (Sc)
+1
+, . . . , Y (Sc)
+k−1 , W (T c)
+−H
+
+Y (Sc)
+k
+|Y (Sc)
+1
+, . . . , Y (Sc)
+k−1 , W (T c), W (T )
++ nǫn
+(15.329)
+
+--- Page 16 ---
+590
+NETWORK INFORMATION THEORY
+(g)
+≤
+n
+
+k=1
+H
+
+Y (Sc)
+k
+|Y (Sc)
+1
+, . . . , Y (Sc)
+k−1 , W (T c), X(Sc)
+k
+
+−H
+
+Y (Sc)
+k
+|Y (Sc)
+1
+, . . . , Y (Sc)
+k−1 , W (T c), W (T ), X(S)
+k , X(Sc)
+k
+
++ nǫn
+(15.330)
+(h)
+≤
+n
+
+k=1
+H
+
+Y (Sc)
+k
+|X(Sc)
+k
+
+−H
+
+Y (Sc)
+k
+|X(Sc)
+k
+, X(S)
+k
+
++ nǫn
+(15.331)
+=
+n
+
+k=1
+I
+
+X(S)
+k ; Y (Sc)
+k
+|X(Sc)
+k
+
++ nǫn
+(15.332)
+(i)= n1
+n
+n
+
+k=1
+I
+
+X(S)
+Q ; Y (Sc)
+Q
+|X(Sc)
+Q , Q = k
+
++ nǫn
+(15.333)
+(j)= nI
+
+X(S)
+Q ; Y (Sc)
+Q
+|X(Sc)
+Q , Q
+
++ nǫn
+(15.334)
+= n
+
+H
+
+Y (Sc)
+Q
+|X(Sc)
+Q , Q
+
+−H
+
+Y (Sc)
+Q
+|X(S)
+Q , X(Sc)
+Q , Q
+
++ nǫn (15.335)
+(k)
+≤n
+
+H
+
+Y (Sc)
+Q
+|X(Sc)
+Q
+
+−H
+
+Y (Sc)
+Q
+|X(S)
+Q , X(Sc)
+Q , Q
+
++ nǫn
+(15.336)
+(l)= n
+
+H
+
+Y (Sc)
+Q
+|X(Sc)
+Q
+
+−H
+
+Y (Sc)
+Q
+|X(S)
+Q , X(Sc)
+Q
+
++ nǫn
+(15.337)
+= nI
+
+X(S)
+Q ; Y (Sc)
+Q
+|X(Sc)
+Q
+
++ nǫn,
+(15.338)
+where
+(a) follows from the fact that the messages W (ij) are uniformly dis-
+tributed over their respective ranges {1, 2, . . . , 2nR(ij)}
+(b) follows from the deﬁnition of W (T ) = {W (ij) : i ∈S, j ∈Sc} and
+the fact that the messages are independent
+(c) follows from the independence of the messages for T and T c
+(d) follows from Fano’s inequality since the messages W (T ) can be
+decoded from Y (S) and W (T c)
+(e) is the chain rule for mutual information
+(f) follows from the deﬁnition of mutual information
+(g) follows from the fact that X(Sc)
+k
+is a function of the past received
+symbols Y (Sc) and the messages W (T c) and the fact that adding
+conditioning reduces the second term
+
+--- Page 17 ---
+15.10
+GENERAL MULTITERMINAL NETWORKS
+591
+(h) follows from the fact that Y (Sc)
+k
+depends only on the current input
+symbols X(S)
+k
+and X(Sc)
+k
+(i) follows after we introduce a new timesharing random variable Q
+distributed uniformly on {1, 2, . . . , n}
+(j) follows from the deﬁnition of mutual information
+(k) follows from the fact that conditioning reduces entropy
+(l) follows from the fact that Y (Sc)
+Q
+depends only on the inputs X(S)
+Q and
+X(Sc)
+Q
+and is conditionally independent of Q
+Thus, there exist random variables X(S) and X(Sc) with some arbitrary
+joint distribution that satisfy the inequalities of the theorem.
+□
+The theorem has a simple max-ﬂow min-cut interpretation. The rate of
+ﬂow of information across any boundary is less than the mutual informa-
+tion between the inputs on one side of the boundary and the outputs on
+the other side, conditioned on the inputs on the other side.
+The problem of information ﬂow in networks would be solved if the
+bounds of the theorem were achievable. But unfortunately, these bounds
+are not achievable even for some simple channels. We now apply these
+bounds to a few of the channels that we considered earlier.
+• Multiple-access channel. The multiple access channel is a network
+with many input nodes and one output node. For the case of a two-user
+multiple-access channel, the bounds of Theorem 15.10.1 reduce to
+R1 ≤I (X1; Y|X2),
+(15.339)
+R2 ≤I (X2; Y|X1),
+(15.340)
+R1 + R2 ≤I (X1, X2; Y)
+(15.341)
+for some joint distribution p(x1, x2)p(y|x1, x2). These bounds coin-
+cide with the capacity region if we restrict the input distribution to
+be a product distribution and take the convex hull (Theorem 15.3.1).
+• Relay channel. For the relay channel, these bounds give the upper
+bound of Theorem 15.7.1 with different choices of subsets as shown
+in Figure 15.36. Thus,
+C ≤sup
+p(x,x1)
+min {I (X, X1; Y), I (X; Y, Y1|X1)} .
+(15.342)
+This upper bound is the capacity of a physically degraded relay chan-
+nel and for the relay channel with feedback [127].
+
+--- Page 18 ---
+592
+NETWORK INFORMATION THEORY
+X
+Y1 : X1
+Y
+S1
+S2
+FIGURE 15.36. Relay channel.
+p(y|x1, x2)
+X1
+X2
+U
+(U,V )
+V
+Y
+^
+^
+FIGURE 15.37. Transmission of correlated sources over a multiple-access channel.
+To complement our discussion of a general network, we should mention
+two features of single-user channels that do not apply to a multiuser
+network.
+• Source–channel separation theorem. In Section 7.13 we discussed
+the source–channel separation theorem, which proves that we can
+transmit the source noiselessly over the channel if and only if the
+entropy rate is less than the channel capacity. This allows us to char-
+acterize a source by a single number (the entropy rate) and the channel
+by a single number (the capacity). What about the multiuser case?
+We would expect that a distributed source could be transmitted over
+a channel if and only if the rate region for the noiseless coding of the
+source lay within the capacity region of the channel. To be speciﬁc,
+consider the transmission of a distributed source over a multiple-
+access channel, as shown in Figure 15.37. Combining the results of
+Slepian–Wolf encoding with the capacity results for the multiple-
+access channel, we can show that we can transmit the source over
+the channel and recover it with a low probability of error if
+H(U|V ) ≤I (X1; Y|X2, Q),
+(15.343)
+
+--- Page 19 ---
+15.10
+GENERAL MULTITERMINAL NETWORKS
+593
+H(V |U) ≤I (X2; Y|X1, Q),
+(15.344)
+H(U, V ) ≤I (X1, X2; Y|Q)
+(15.345)
+for some distribution p(q)p(x1|q)p(x2|q)p(y|x1, x2). This condition
+is equivalent to saying that the Slepian–Wolf rate region of the source
+has a nonempty intersection with the capacity region of the multiple-
+access channel.
+But is this condition also necessary? No, as a simple example illus-
+trates. Consider the transmission of the source of Example 15.4.2
+over the binary erasure multiple-access channel (Example 15.3.3).
+The Slepian–Wolf region does not intersect the capacity region, yet
+it is simple to devise a scheme that allows the source to be transmit-
+ted over the channel. We just let X1 = U and X2 = V , and the value
+of Y will tell us the pair (U, V ) with no error. Thus, the conditions
+(15.345) are not necessary.
+The reason for the failure of the source–channel separation theorem
+lies in the fact that the capacity of the multiple-access channel
+increases with the correlation between the inputs of the channel.
+Therefore, to maximize the capacity, one should preserve the cor-
+relation between the inputs of the channel. Slepian–Wolf encoding,
+on the other hand, gets rid of the correlation. Cover et al. [129] pro-
+posed an achievable region for transmission of a correlated source
+over a multiple access channel based on the idea of preserving the
+correlation. Han and Costa [273] have proposed a similar region for
+the transmission of a correlated source over a broadcast channel.
+• Capacity regions with feedback. Theorem 7.12.1 shows that feedback
+does not increase the capacity of a single-user discrete memoryless
+channel. For channels with memory, on the other hand, feedback
+enables the sender to predict something about the noise and to combat
+it more effectively, thus increasing capacity.
+What about multiuser channels? Rather surprisingly, feedback does
+increase the capacity region of multiuser channels, even when the
+channels are memoryless. This was ﬁrst shown by Gaarder and Wolf
+[220], who showed how feedback helps increase the capacity of the
+binary erasure multiple-access channel. In essence, feedback from the
+receiver to the two senders acts as a separate channel between the two
+senders. The senders can decode each other’s transmissions before the
+receiver does. They then cooperate to resolve the uncertainty at the
+receiver, sending information at the higher cooperative capacity rather
+than the noncooperative capacity. Using this scheme, Cover and
+Leung [133] established an achievable region for a multiple-access
+
+--- Page 20 ---
+594
+NETWORK INFORMATION THEORY
+channel with feedback. Willems [557] showed that this region was
+the capacity for a class of multiple-access channels that included the
+binary erasure multiple-access channel. Ozarow [410] established the
+capacity region for a two-user Gaussian multiple-access channel. The
+problem of ﬁnding the capacity region for a multiple-access channel
+with feedback is closely related to the capacity of a two-way channel
+with a common output.
+There is as yet no uniﬁed theory of network information ﬂow. But there
+can be no doubt that a complete theory of communication networks would
+have wide implications for the theory of communication and computation.
+SUMMARY
+Multiple-access channel. The capacity of a multiple-access channel
+(X1 × X2, p(y|x1, x2), Y) is the closure of the convex hull of all (R1, R2)
+satisfying
+R1 < I (X1; Y|X2),
+(15.346)
+R2 < I (X2; Y|X1),
+(15.347)
+R1 + R2 < I (X1, X2; Y)
+(15.348)
+for some distribution p1(x1)p2(x2) on X1 × X2.
+The capacity region of the m-user multiple-access channel is the closure
+of the convex hull of the rate vectors satisfying
+R(S) ≤I (X(S); Y|X(Sc))
+for all S ⊆{1, 2, . . . , m}
+(15.349)
+for some product distribution p1(x1)p2(x2) · · · pm(xm).
+Gaussian multiple-access channel. The capacity region of a two-user
+Gaussian multiple-access channel is
+R1 ≤C
+P1
+N
+
+,
+(15.350)
+R2 ≤C
+P2
+N
+
+,
+(15.351)
+
+--- Page 21 ---
+SUMMARY
+595
+R1 + R2 ≤C
+P1 + P2
+N
+
+,
+(15.352)
+where
+C(x) = 1
+2 log(1 + x).
+(15.353)
+Slepian–Wolf coding. Correlated sources X and Y can be described
+separately at rates R1 and R2 and recovered with arbitrarily low prob-
+ability of error by a common decoder if and only if
+R1 ≥H(X|Y),
+(15.354)
+R2 ≥H(Y|X),
+(15.355)
+R1 + R2 ≥H(X, Y).
+(15.356)
+Broadcast channels. The capacity region of the degraded broadcast
+channel X →Y1 →Y2 is the convex hull of the closure of all (R1, R2)
+satisfying
+R2 ≤I (U; Y2),
+(15.357)
+R1 ≤I (X; Y1|U)
+(15.358)
+for some joint distribution p(u)p(x|u)p(y1, y2|x).
+Relay channel. The capacity C of the physically degraded relay chan-
+nel p(y, y1|x, x1) is given by
+C = sup
+p(x,x1)
+min {I (X, X1; Y), I (X; Y1|X1)} ,
+(15.359)
+where the supremum is over all joint distributions on X × X1.
+Source coding with side information. Let (X, Y) ∼p(x, y). If Y is
+encoded at rate R2 and X is encoded at rate R1, we can recover X with
+an arbitrarily small probability of error iff
+R1 ≥H(X|U),
+(15.360)
+R2 ≥I (Y; U)
+(15.361)
+for some distribution p(y, u) such that X →Y →U.
+
+--- Page 22 ---
+596
+NETWORK INFORMATION THEORY
+Rate distortion with side information. Let (X, Y) ∼p(x, y). The
+rate distortion function with side information is given by
+RY(D) = min
+p(w|x)
+min
+f :Y×W→ˆX
+I (X; W) −I (Y; W),
+(15.362)
+where the minimization is over all functions f and conditional distri-
+butions p(w|x), |W| ≤|X| + 1, such that
+
+x
+
+w
+
+y
+p(x, y)p(w|x)d(x, f (y, w)) ≤D.
+(15.363)
+PROBLEMS
+15.1
+Cooperative capacity of a multiple-access channel
+p(y|x1, x2)
+X1
+X2
+(W1,W2)
+(W1,W2)
+Y
+^
+^
+(a) Suppose that X1 and X2 have access to both indices W1 ∈
+{1, 2nR}, W2 ∈{1, 2nR2}.
+Thus,
+the
+codewords
+X1(W1,
+W2), X2(W1, W2) depend on both indices. Find the capacity
+region.
+(b) Evaluate this region for the binary erasure multiple access
+channel Y = X1 + X2, Xi ∈{0, 1}. Compare to the noncoop-
+erative region.
+15.2
+Capacity of multiple-access channels.
+Find the capacity region
+for each of the following multiple-access channels:
+(a) Additive modulo 2 multiple-access channel. X1 ∈{0, 1},
+X2 ∈{0, 1}, Y = X1 ⊕X2.
+(b) Multiplicative
+multiple-access
+channel.
+X1 ∈{−1, 1},
+X2 ∈{−1, 1}, Y = X1 · X2.
+
+--- Page 23 ---
+PROBLEMS
+597
+15.3
+Cut-set interpretation of capacity region of multiple-access chan-
+nel.
+For the multiple-access channel we know that (R1, R2) is
+achievable if
+R1 < I (X1; Y | X2),
+(15.364)
+R2 < I (X2; Y | X1),
+(15.365)
+R1 + R2 < I (X1, X2; Y)
+(15.366)
+for X1, X2 independent. Show, for X1, X2 independent that
+I (X1; Y | X2) = I (X1; Y, X2).
+X1
+Y
+X2
+S1
+S2
+S3
+Interpret the information bounds as bounds on the rate of ﬂow
+across cut sets S1, S2, and S3.
+15.4
+Gaussian multiple-access channel capacity.
+For the AWGN
+multiple-access channel, prove, using typical sequences, the
+achievability of any rate pairs (R1, R2) satisfying
+R1 < 1
+2 log
+
+1 + P1
+N
+
+,
+(15.367)
+R2 < 1
+2 log
+
+1 + P2
+N
+
+,
+(15.368)
+R1 + R2 < 1
+2 log
+
+1 + P1 + P2
+N
+
+.
+(15.369)
+
+--- Page 24 ---
+598
+NETWORK INFORMATION THEORY
+The proof extends the proof for the discrete multiple-access chan-
+nel in the same way as the proof for the single-user Gaussian
+channel extends the proof for the discrete single-user channel.
+15.5
+Converse for the Gaussian multiple-access channel.
+Prove the
+converse for the Gaussian multiple-access channel by extending
+the converse in the discrete case to take into account the power
+constraint on the codewords.
+15.6
+Unusual
+multiple-access
+channel.
+Consider
+the
+following
+multiple-access channel: X1 = X2 = Y = {0, 1}. If (X1, X2) =
+(0, 0), then Y = 0. If (X1, X2) = (0, 1), then Y = 1. If (X1, X2) =
+(1, 0), then Y = 1. If (X1, X2) = (1, 1), then Y = 0 with proba-
+bility 1
+2 and Y = 1 with probability 1
+2.
+(a) Show that the rate pairs (1,0) and (0,1) are achievable.
+(b) Show that for any nondegenerate distribution p(x1)p(x2), we
+have I (X1, X2; Y) < 1.
+(c) Argue that there are points in the capacity region of this
+multiple-access channel that can only be achieved by time-
+sharing; that is, there exist achievable rate pairs (R1, R2) that
+lie in the capacity region for the channel but not in the region
+deﬁned by
+R1 ≤I (X1; Y|X2),
+(15.370)
+R2 ≤I (X2; Y|X1),
+(15.371)
+R1 + R2 ≤I (X1, X2; Y)
+(15.372)
+for any product distribution p(x1)p(x2). Hence the operation
+of convexiﬁcation strictly enlarges the capacity region. This
+channel was introduced independently by Csisz´ar and K¨orner
+[149] and Bierbaum and Wallmeier [59].
+15.7
+Convexity of capacity region of broadcast channel.
+Let C ⊆R2
+be the capacity region of all achievable rate pairs R = (R1, R2)
+for the broadcast channel. Show that C is a convex set by using
+a time-sharing argument. Speciﬁcally, show that if R(1) and R(2)
+are achievable, λR(1) + (1 −λ)R(2) is achievable for 0 ≤λ ≤1.
+15.8
+Slepian–Wolf for deterministically related sources.
+Find and
+sketch the Slepian–Wolf rate region for the simultaneous data
+compression of (X, Y), where y = f (x) is some deterministic
+function of x.
+
+--- Page 25 ---
+PROBLEMS
+599
+15.9
+Slepian–Wolf .
+Let Xi be i.i.d. Bernoulli(p). Let Zi be i.i.d. ∼
+Bernoulli(r), and let Z be independent of X. Finally, let Y =
+X ⊕Z (mod 2 addition). Let X be described at rate R1 and Y
+be described at rate R2. What region of rates allows recovery of
+X, Y with probability of error tending to zero?
+15.10
+Broadcast capacity depends only on the conditional marginals.
+Consider the general broadcast channel (X, Y1 × Y2, p(y1, y2 | x)).
+Show that the capacity region depends only on p(y1 | x) and p(y2 |
+x). To do this, for any given ((2nR1, 2nR2), n) code, let
+P (n)
+1
+= P { ˆW1(Y1) ̸= W1},
+(15.373)
+P (n)
+2
+= P { ˆW2(Y2) ̸= W2},
+(15.374)
+P (n) = P {( ˆW1, ˆW2) ̸= (W1, W2)}.
+(15.375)
+Then show that
+max{P (n)
+1 , P (n)
+2 } ≤P (n) ≤P (n)
+1
++ P (n)
+2 .
+The result now follows by a simple argument. (Remark: The
+probability of error P (n) does depend on the conditional joint
+distribution p(y1, y2 | x). But whether or not P (n) can be driven
+to zero [at rates (R1, R2)] does not [except through the conditional
+marginals p(y1 | x), p(y2 | x)] .)
+15.11
+Converse for the degraded broadcast channel.
+The following
+chain of inequalities proves the converse for the degraded dis-
+crete memoryless broadcast channel. Provide reasons for each of
+the labeled inequalities.
+Setup for converse for degraded broadcast channel capacity:
+(W1, W2)indep. →Xn(W1, W2) →Y n
+1 →Y n
+2 .
+• Encoding fn : 2nR1 × 2nR2 →Xn
+• Decoding:
+gn : Yn
+1 →2nR1, hn : Yn
+2 →2nR2.
+Let
+Ui =
+(W2, Y i−1
+1
+). Then
+nR2
+·≤Fano I (W2; Y n
+2 )
+(15.376)
+(a)
+=
+n
+
+i=1
+I (W2; Y2i | Y i−1
+2
+)
+(15.377)
+
+--- Page 26 ---
+600
+NETWORK INFORMATION THEORY
+(b)
+=
+
+i
+(H(Y2i | Y i−1
+2
+) −H(Y2i | W2, Y i−1
+2
+))
+(15.378)
+(c)
+≤
+
+i
+(H(Y2i) −H(Y2i | W2, Y i−1
+2
+, Y i−1
+1
+))
+(15.379)
+(d)
+=
+
+i
+(H(Y2i) −H(Y2i | W2, Y i−1
+1
+))
+(15.380)
+(e)
+=
+n
+
+i=1
+I (Ui; Y2i).
+(15.381)
+Continuation of converse: Give reasons for the labeled inequali-
+ties:
+nR1
+·≤Fano I (W1; Y n
+1 )
+(15.382)
+(f)
+≤I (W1; Y n
+1 , W2)
+(15.383)
+(g)
+≤I (W1; Y n
+1 | W2)
+(15.384)
+(h)
+=
+n
+
+i−1
+I (W1; Y1i | Y i−1
+1
+, W2)
+(15.385)
+(i)≤
+n
+
+i=1
+I (Xi; Y1i | Ui).
+(15.386)
+Now let Q be a time-sharing random variable with Pr(Q = i) =
+1/n, i = 1, 2, . . . , n. Justify the following:
+R1 ≤I (XQ; Y1Q|UQ, Q),
+(15.387)
+R2 ≤I (UQ; Y2Q|Q)
+(15.388)
+for some distribution p(q)p(u|q)p(x|u, q)p(y1, y2|x). By appro-
+priately redeﬁning U, argue that this region is equal to the convex
+closure of regions of the form
+R1 ≤I (X; Y1|U),
+(15.389)
+R2 ≤I (U; Y2)
+(15.390)
+for some joint distribution p(u)p(x|u)p(y1, y2|x).
+
+--- Page 27 ---
+PROBLEMS
+601
+15.12
+Capacity points.
+(a) For the degraded broadcast channel X →Y1 →Y2, ﬁnd the
+points a and b where the capacity region hits the R1 and R2
+axes.
+R2
+R1
+b
+a
+(b) Show that b ≤a.
+15.13
+Degraded broadcast channel.
+Find the capacity region for the
+degraded broadcast channel shown below.
+X
+p
+1 − p
+1 − p
+1 −a
+1 −a
+a
+a
+p
+Y2
+Y1
+15.14
+Channels with unknown parameters.
+We are given a binary
+symmetric channel with parameter p. The capacity is C = 1 −
+H(p). Now we change the problem slightly. The receiver knows
+only that p ∈{p1, p2} (i.e., p = p1 or p = p2, where p1 and p2
+are given real numbers). The transmitter knows the actual value
+of p. Devise two codes for use by the transmitter, one to be used
+if p = p1, the other to be used if p = p2, such that transmission
+to the receiver can take place at rate ≈C(p1) if p = p1 and at
+rate ≈C(p2) if p = p2. (Hint: Devise a method for revealing
+p to the receiver without affecting the asymptotic rate. Preﬁxing
+the codeword by a sequence of 1’s of appropriate length should
+work.)
+
+--- Page 28 ---
+602
+NETWORK INFORMATION THEORY
+15.15
+Two-way channel.
+Consider the two-way channel shown in
+Figure 15.6. The outputs Y1 and Y2 depend only on the current
+inputs X1 and X2.
+(a) By using independently generated codes for the two senders,
+show that the following rate region is achievable:
+R1 < I (X1; Y2|X2),
+(15.391)
+R2 < I (X2; Y1|X1)
+(15.392)
+for some product distribution p(x1)p(x2)p(y1, y2|x1, x2).
+(b) Show that the rates for any code for a two-way channel with
+arbitrarily small probability of error must satisfy
+R1 ≤I (X1; Y2|X2),
+(15.393)
+R2 ≤I (X2; Y1|X1)
+(15.394)
+for some joint distribution p(x1, x2)p(y1, y2|x1, x2).
+The inner and outer bounds on the capacity of the two-way
+channel are due to Shannon [486]. He also showed that the inner
+bound and the outer bound do not coincide in the case of the
+binary multiplying channel X1 = X2 = Y1 = Y2 = {0, 1}, Y1 =
+Y2 = X1X2. The capacity of the two-way channel is still an open
+problem.
+15.16
+Multiple-access channel.
+Let the output Y of a multiple-access
+channel be given by
+Y = X1 + sgn(X2),
+where X1, X2 are both real and power limited,
+E(X2
+1)
+≤P1,
+E(X2
+2)
+≤P2,
+and sgn(x) =
+
+1,
+x > 0,
+−1,
+x ≤0.
+Note that there is interference but no noise in this channel.
+(a) Find the capacity region.
+(b) Describe a coding scheme that achieves the capacity region.
+
+--- Page 29 ---
+PROBLEMS
+603
+15.17
+Slepian–Wolf .
+Let (X, Y) have the joint probability mass func-
+tion p(x, y):
+p(x, y)
+1
+2
+3
+1
+α
+β
+β
+2
+β
+α
+β
+3
+β
+β
+α
+where β = 1
+6 −α
+2. (Note: This is a joint, not a conditional, prob-
+ability mass function.)
+(a) Find the Slepian–Wolf rate region for this source.
+(b) What is Pr{X = Y} in terms of α?
+(c) What is the rate region if α = 1
+3?
+(d) What is the rate region if α = 1
+9?
+15.18
+Square channel.
+What is the capacity of the following multiple-
+access channel?
+X1 ∈{−1, 0, 1},
+X2 ∈{−1, 0, 1},
+Y = X2
+1 + X2
+2.
+(a) Find the capacity region.
+(b) Describe p∗(x1), p∗(x2) achieving a point on the boundary of
+the capacity region.
+15.19
+Slepian–Wolf .
+Two senders know random variables U1 and U2,
+respectively. Let the random variables (U1, U2) have the following
+joint distribution:
+U1\U2
+0
+1
+2
+· · ·
+m −1
+0
+α
+β
+m−1
+β
+m−1
+· · ·
+β
+m−1
+1
+γ
+m−1
+0
+0
+· · ·
+0
+2
+γ
+m−1
+0
+0
+· · ·
+0
+...
+...
+...
+...
+...
+...
+m −1
+γ
+m−1
+0
+0
+· · ·
+0
+where α + β + γ = 1. Find the region of rates (R1, R2) that would
+allow a common receiver to decode both random variables reliably.
+
+--- Page 30 ---
+604
+NETWORK INFORMATION THEORY
+15.20
+Multiple access
+(a) Find the capacity region for the multiple-access channel
+Y = XX2
+1 ,
+where
+X1ǫ{2, 4} , X2ǫ{1, 2}.
+(b) Suppose that the range of X1 is {1, 2}. Is the capacity region
+decreased? Why or why not?
+15.21
+Broadcast channel.
+Consider the following degraded broadcast
+channel.
+1 −a1
+1 −a1
+a1
+a1
+0
+1
+0
+1
+1
+E
+X
+Y1
+1 −a2
+1 −a2
+a2
+a2
+0
+1
+E
+Y2
+(a) What is the capacity of the channel from X to Y1?
+(b) What is the channel capacity from X to Y2?
+(c) What is the capacity region of all (R1, R2) achievable for this
+broadcast channel? Simplify and sketch.
+15.22
+Stereo.
+The sum and the difference of the right and left ear sig-
+nals are to be individually compressed for a common receiver. Let
+Z1 be Bernoulli (p1) and Z2 be Bernoulli (p2) and suppose that
+Z1 and Z2 are independent. Let X = Z1 + Z2, and Y = Z1 −Z2.
+(a) What is the Slepian–Wolf rate region of achievable (RX, RY)?
+RX
+Decoder
+(X, Y)
+X
+RY
+Y
+^
+^
+
+--- Page 31 ---
+PROBLEMS
+605
+(b) Is this larger or smaller than the rate region of (RZ1, RZ2)?
+Why?
+RZ1
+Decoder
+(Z1, Z2)
+Z1
+RZ2
+Z2
+^
+^
+There is a simple way to do this part.
+15.23
+Multiplicative multiple-access channel.
+Find and sketch the ca-
+pacity region of the following multiplicative multiple-access chan-
+nel:
+X1
+X2
+Y
+with X1 ∈{0, 1}, X2 ∈{1, 2, 3}, and Y = X1X2.
+15.24
+Distributed data compression.
+Let Z1, Z2, Z3 be independent
+Bernoulli(p). Find the Slepian–Wolf rate region for the description
+of (X1, X2, X3), where
+X1 = Z1
+X2 = Z1 + Z2
+X3 = Z1 + Z2 + Z3.
+X1
+(X1, X2, X3)
+X2
+X3
+^
+^
+^
+
+--- Page 32 ---
+606
+NETWORK INFORMATION THEORY
+15.25
+Noiseless multiple-access channel.
+Consider
+the
+following
+multiple-access channel with two binary inputs X1, X2 ∈{0, 1}
+and output Y = (X1, X2).
+(a) Find the capacity region. Note that each sender can send at
+capacity.
+(b) Now consider the cooperative capacity region, R1 ≥0, R2 ≥
+0, R1 + R2 ≤maxp(x1,x2) I (X1, X2; Y).
+Argue
+that
+the
+throughput R1 + R2 does not increase but the capacity region
+increases.
+15.26
+Inﬁnite bandwidth multiple-access channel.
+Find the capacity
+region for the Gaussian multiple-access channel with inﬁnite band-
+width. Argue that all senders can send at their individual capacities
+(i.e., inﬁnite bandwidth eliminates interference).
+15.27
+Multiple-access identity.
+Let C(x) = 1
+2 log(1 + x) denote the
+channel capacity of a Gaussian channel with signal-to-noise ratio
+x. Show that
+C
+P1
+N
+
++ C
+
+P2
+P1 + N
+
+= C
+P1 + P2
+N
+
+.
+This suggests that two independent users can send information as
+well as if they had pooled their power.
+15.28
+Frequency-division
+multiple
+access (FDMA).
+Maximize
+the
+throughput
+R1+R2 = W1 log(1 +
+P1
+NW1) + (W −W1) log(1 +
+P2
+N(W−W1)) over W1 to show that bandwidth should be proportional
+to transmitted power for FDMA.
+15.29
+Trilingual-speaker broadcast channel.
+A speaker of Dutch,
+Spanish, and French wishes to communicate simultaneously to
+three people: D, S, and F. D knows only Dutch but can distin-
+guish when a Spanish word is being spoken as distinguished from
+a French word; similarly for the other two, who know only Span-
+ish and French, respectively, but can distinguish when a foreign
+word is spoken and which language is being spoken. Suppose
+that each language, Dutch, Spanish, and French, has M words: M
+words of Dutch, M words of French, and M words of Spanish.
+(a) What is the maximum rate at which the trilingual speaker can
+speak to D?
+(b) If he speaks to D at the maximum rate, what is the maximum
+rate at which he can speak simultaneously to S?
+
+--- Page 33 ---
+PROBLEMS
+607
+(c) If he is speaking to D and S at the joint rate in part (b), can
+he also speak to F at some positive rate? If so, what is it? If
+not, why not?
+15.30
+Parallel Gaussian channels from a mobile telephone.
+Assume
+that a sender X is sending to two ﬁxed base stations. Assume that
+the sender sends a signal X that is constrained to have average
+power P . Assume that the two base stations receive signals Y1
+and Y2, where
+Y1 = α1X + Z1
+Y2 = α2X + Z2,
+where Zi ∼N(0, N1), Z2 ∼N(0, N2), and Z1 and Z2 are inde-
+pendent. We will assume the α’s are constant over a transmitted
+block.
+(a) Assuming that both signals Y1 and Y2 are available at a com-
+mon decoder Y = (Y1, Y2), what is the capacity of the channel
+from the sender to the common receiver?
+(b) If, instead, the two receivers Y1 and Y2 each decode their sig-
+nals independently, this becomes a broadcast channel. Let R1
+be the rate to base station 1 and R2 be the rate to base station
+2. Find the capacity region of this channel.
+15.31
+Gaussian multiple access.
+A group of m users, each with power
+P , is using a Gaussian multiple-access channel at capacity, so that
+m
+
+i=1
+Ri = C
+mP
+N
+
+,
+(15.395)
+where C(x) = 1
+2 log(1 + x) and N is the receiver noise power. A
+new user of power P0 wishes to join in.
+(a) At what rate can he send without disturbing the other users?
+(b) What should his power P0 be so that the new users’ rate is
+equal to the combined communication rate C(mP/N) of all
+the other users?
+15.32
+Converse for deterministic broadcast channel.
+A deterministic
+broadcast channel is deﬁned by an input X and two outputs, Y1
+and Y2, which are functions of the input X. Thus, Y1 = f1(X) and
+Y2 = f2(X). Let R1 and R2 be the rates at which information can
+be sent to the two receivers. Prove that
+R1 ≤H(Y1)
+(15.396)
+
+--- Page 34 ---
+608
+NETWORK INFORMATION THEORY
+R2 ≤H(Y2)
+(15.397)
+R1 + R2 ≤H(Y1, Y2).
+(15.398)
+15.33
+Multiple-access channel.
+Consider the multiple-access channel
+Y = X1
++ X2 (mod 4), where X1 ∈{0, 1, 2, 3}, X2 ∈{0, 1}.
+(a) Find the capacity region (R1, R2).
+(b) What is the maximum throughput R1 + R2?
+15.34
+Distributed source compression.
+Let
+Z1 =
+
+1,
+p
+0,
+q,
+Z2 =
+
+1,
+p
+0,
+q,
+and let U = Z1Z2, V = Z1 + Z2. Assume that Z1 and Z2 are
+independent. This induces a joint distribution on (U, V ). Let
+(Ui, Vi) be i.i.d. according to this distribution. Sender 1 describes
+U n at rate R1, and sender 2 describes V n at rate R2.
+(a) Find the Slepian–Wolf rate region for recovering (U n, V n)
+at the receiver.
+(b) What is the residual uncertainty (conditional entropy) that
+the receiver has about (Xn, Y n).
+15.35
+Multiple-access channel capacity with costs.
+The cost of using
+symbol x is r(x). The cost of a codeword xn is r(xn) =
+1
+n
+n
+i=1 r(xi). A (2nR, n) codebook satisﬁes cost constraint r if
+1
+n
+n
+i=1 r(xi(w)) ≤r for all w ∈2nR.
+(a) Find an expression for the capacity C(r) of a discrete mem-
+oryless channel with cost constraint r.
+(b) Find an expression for the multiple-access channel capacity
+region for (X1 × X2, p(y|x1, x2), Y) if sender X1 has cost con-
+straint r1 and sender X2 has cost constraint r2.
+(c) Prove the converse for part (b).
+15.36
+Slepian–Wolf .
+Three cards from a three-card deck are dealt, one
+to sender X1, one to sender X2, and one to sender X3. At what
+rates do X1, X2, and X3 need to communicate to some receiver
+so that their card information can be recovered?
+
+--- Page 35 ---
+HISTORICAL NOTES
+609
+Decoder
+(Xn
+1, Xn
+2, Xn
+3)
+i(Xn
+1)
+k(Xn
+3)
+j(Xn
+2)
+Xn
+1
+Xn
+3
+Xn
+2
+^
+^
+^
+Assume that (X1i, X2i, X3i) are drawn i.i.d. from a uniform dis-
+tribution over the permutations of {1, 2, 3}.
+HISTORICAL NOTES
+This chapter is based on the review in El Gamal and Cover [186]. The
+two-way channel was studied by Shannon [486] in 1961. He derived inner
+and outer bounds on the capacity region. Dueck [175] and Schalkwijk
+[464, 465] suggested coding schemes for two-way channels that achieve
+rates exceeding Shannon’s inner bound; outer bounds for this channel
+were derived by Zhang et al. [596] and Willems and Hekstra [558].
+The multiple-access channel capacity region was found by Ahlswede
+[7] and Liao [355] and was extended to the case of the multiple-access
+channel with common information by Slepian and Wolf [501]. Gaarder
+and Wolf [220] were the ﬁrst to show that feedback increases the capac-
+ity of a discrete memoryless multiple-access channel. Cover and Leung
+[133] proposed an achievable region for the multiple-access channel with
+feedback, which was shown to be optimal for a class of multiple-access
+channels by Willems [557]. Ozarow [410] has determined the capacity
+region for a two-user Gaussian multiple-access channel with feedback.
+Cover et al. [129] and Ahlswede and Han [12] have considered the prob-
+lem of transmission of a correlated source over a multiple-access channel.
+The Slepian–Wolf theorem was proved by Slepian and Wolf [502] and was
+extended to jointly ergodic sources by a binning argument in Cover [122].
+Superposition coding for broadcast channels was suggested by Cover
+in 1972 [119]. The capacity region for the degraded broadcast channel
+was determined by Bergmans [55] and Gallager [225]. The superposi-
+tion codes for the degraded broadcast channel are also optimal for the
+less noisy broadcast channel (K¨orner and Marton [324]), the more capa-
+ble broadcast channel (El Gamal [185]), and the broadcast channel with
+degraded message sets (K¨orner and Marton [325]). Van der Meulen [526]
+and Cover [121] proposed achievable regions for the general broadcast
+channel. The capacity of a deterministic broadcast channel was found by
+Gelfand and Pinsker [242, 243, 423] and Marton [377]. The best known
+
+--- Page 36 ---
+610
+NETWORK INFORMATION THEORY
+achievable region for the broadcast channel is due to Marton [377]; a sim-
+pler proof of Marton’s region was given by El Gamal and Van der Meulen
+[188]. El Gamal [184] showed that feedback does not increase the capac-
+ity of a physically degraded broadcast channel. Dueck [176] introduced
+an example to illustrate that feedback can increase the capacity of a mem-
+oryless broadcast channel; Ozarow and Leung [411] described a coding
+procedure for the Gaussian broadcast channel with feedback that increased
+the capacity region.
+The relay channel was introduced by Van der Meulen [528]; the capac-
+ity region for the degraded relay channel was determined by Cover and
+El Gamal [127]. Carleial [85] introduced the Gaussian interference chan-
+nel with power constraints and showed that very strong interference is
+equivalent to no interference at all. Sato and Tanabe [459] extended the
+work of Carleial to discrete interference channels with strong interference.
+Sato [457] and Benzel [51] dealt with degraded interference channels. The
+best known achievable region for the general interference channel is due
+to Han and Kobayashi [274]. This region gives the capacity for Gaussian
+interference channels with interference parameters greater than 1, as was
+shown in Han and Kobayashi [274] and Sato [458]. Carleial [84] proved
+new bounds on the capacity region for interference channels.
+The problem of coding with side information was introduced by Wyner
+and Ziv [573] and Wyner [570]; the achievable region for this problem
+was described in Ahlswede and K¨orner [13], Gray and Wyner [261], and
+Wyner [571],[572]. The problem of ﬁnding the rate distortion function
+with side information was solved by Wyner and Ziv [574]. The channel
+capacity counterpart of rate distortion with side information was solved by
+Gelfand and Pinsker [243]; the duality between the two results is explored
+in Cover and Chiang [113]. The problem of multiple descriptions is treated
+in El Gamal and Cover [187].
+The special problem of encoding a function of two random variables
+was discussed by K¨orner and Marton [326], who described a simple
+method to encode the modulo 2 sum of two binary random variables.
+A general framework for the description of source networks may be
+found in Csisz´ar and K¨orner [148],[149]. A common model that includes
+Slepian–Wolf encoding, coding with side information, and rate distor-
+tion with side information as special cases was described by Berger and
+Yeung [54].
+In 1989, Ahlswede and Dueck [17] introduced the problem of identi-
+ﬁcation via communication channels, which can be viewed as a problem
+where the sender sends information to the receivers but each receiver only
+needs to know whether or not a single message was sent. In this case, the
+set of possible messages that can be sent reliably is doubly exponential in
+
+--- Page 37 ---
+HISTORICAL NOTES
+611
+the block length, and the key result of this paper was to show that 22nC
+messages could be identiﬁed for any noisy channel with capacity C. This
+problem spawned a set of papers [16, 18, 269, 434], including extensions
+to channels with feedback and multiuser channels.
+Another active area of work has been the analysis of MIMO (multiple-
+input multiple-output) systems or space-time coding, which use multiple
+antennas at the transmitter and receiver to take advantage of the diversity
+gains from multipath for wireless systems. The analysis of these multiple
+antenna systems by Foschini [217], Teletar [512], and Rayleigh and Ciofﬁ
+[246] show that the capacity gains from the diversity obtained using mul-
+tiple antennas in fading environments can be substantial relative to the
+single-user capacity achieved by traditional equalization and interleav-
+ing techniques. A special issue of the IEEE Transactions in Information
+Theory [70] has a number of papers covering different aspects of this
+technology.
+Comprehensive surveys of network information theory may be found
+in El Gamal and Cover [186], Van der Meulen [526–528], Berger [53],
+Csisz´ar and K¨orner [149], Verdu [538], Cover [111], and Ephremides and
+Hajek [197].
+
+--- Page 38 ---
+
+--- Page 39 ---
+CHAPTER 16
+INFORMATION THEORY
+AND PORTFOLIO THEORY
+The duality between the growth rate of wealth in the stock market and
+the entropy rate of the market is striking. In particular, we shall ﬁnd the
+competitively optimal and growth rate optimal portfolio strategies. They
+are the same, just as the Shannon code is optimal both competitively and
+in the expected description rate. We also ﬁnd the asymptotic growth rate
+of wealth for an ergodic stock market process. We end with a discussion
+of universal portfolios that enable one to achieve the same asymptotic
+growth rate as the best constant rebalanced portfolio in hindsight.
+In Section 16.8 we provide a “sandwich” proof of the asymptotic
+equipartition property for general ergodic processes that is motivated by
+the notion of optimal portfolios for stationary ergodic stock markets.
+16.1
+THE STOCK MARKET: SOME DEFINITIONS
+A stock market is represented as a vector of stocks X = (X1, X2, . . . , Xm),
+Xi ≥0, i = 1, 2, . . . , m, where m is the number of stocks and the price
+relative Xi is the ratio of the price at the end of the day to the price at the
+beginning of the day. So typically, Xi is near 1. For example, Xi = 1.03
+means that the ith stock went up 3 percent that day.
+Let X ∼F(x), where F(x) is the joint distribution of the vector of
+price relatives. A portfolio b = (b1, b2, . . . , bm), bi ≥0,  bi = 1, is an
+allocation of wealth across the stocks. Here bi is the fraction of one’s
+wealth invested in stock i. If one uses a portfolio b and the stock vector
+is X, the wealth relative (ratio of the wealth at the end of the day to the
+wealth at the beginning of the day) is S = btX = m
+i=1 biXi.
+We wish to maximize S in some sense. But S is a random variable,
+the distribution of which depends on portfolio b, so there is controversy
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+613
+
+--- Page 40 ---
+614
+INFORMATION THEORY AND PORTFOLIO THEORY
+Variance
+Mean
+Risk-free asset
+Efficient
+frontier
+FIGURE 16.1. Sharpe–Markowitz theory: set of achievable mean–variance pairs.
+over the choice of the best distribution for S. The standard theory of
+stock market investment is based on consideration of the ﬁrst and second
+moments of S. The objective is to maximize the expected value of S
+subject to a constraint on the variance. Since it is easy to calculate these
+moments, the theory is simpler than the theory that deals with the entire
+distribution of S.
+The mean–variance approach is the basis of the Sharpe–Markowitz
+theory of investment in the stock market and is used by business ana-
+lysts and others. It is illustrated in Figure 16.1. The ﬁgure illustrates the
+set of achievable mean–variance pairs using various portfolios. The set
+of portfolios on the boundary of this region corresponds to the undomi-
+nated portfolios: These are the portfolios that have the highest mean for
+a given variance. This boundary is called the efﬁcient frontier, and if one
+is interested only in mean and variance, one should operate along this
+boundary.
+Normally, the theory is simpliﬁed with the introduction of a risk-free
+asset (e.g., cash or Treasury bonds, which provide a ﬁxed interest rate
+with zero variance). This stock corresponds to a point on the Y axis
+in the ﬁgure. By combining the risk-free asset with various stocks, one
+obtains all points below the tangent from the risk-free asset to the efﬁcient
+frontier. This line now becomes part of the efﬁcient frontier.
+The concept of the efﬁcient frontier also implies that there is a true
+price for a stock corresponding to its risk. This theory of stock prices,
+called the capital asset pricing model (CAPM), is used to decide whether
+the market price for a stock is too high or too low. Looking at the mean
+of a random variable gives information about the long-term behavior of
+
+--- Page 41 ---
+16.1
+THE STOCK MARKET: SOME DEFINITIONS
+615
+the sum of i.i.d. versions of the random variable. But in the stock market,
+one normally reinvests every day, so that the wealth at the end of n days
+is the product of factors, one for each day of the market. The behavior of
+the product is determined not by the expected value but by the expected
+logarithm. This leads us to deﬁne the growth rate as follows:
+Deﬁnition
+The growth rate of a stock market portfolio b with respect
+to a stock distribution F(x) is deﬁned as
+W(b, F) =
+
+log btx dF(x) = E
+
+log btX
+
+.
+(16.1)
+If the logarithm is to base 2, the growth rate is also called the doubling
+rate.
+Deﬁnition
+The optimal growth rate W ∗(F) is deﬁned as
+W ∗(F) = max
+b
+W(b, F),
+(16.2)
+where the maximum is over all possible portfolios bi ≥0, 
+i bi = 1.
+Deﬁnition
+A portfolio b∗that achieves the maximum of W(b, F) is
+called a log-optimal portfolio or growth optimal portfolio.
+The deﬁnition of growth rate is justiﬁed by the following theorem,
+which shows that wealth grows as 2nW ∗.
+Theorem 16.1.1
+Let X1, X2, . . . , Xn be i.i.d. according to F(x). Let
+S∗
+n =
+n
+
+i=1
+b∗tXi
+(16.3)
+be the wealth after n days using the constant rebalanced portfolio b∗. Then
+1
+n log S∗
+n →W ∗
+with probability 1.
+(16.4)
+Proof:
+By the strong law of large numbers,
+1
+n log S∗
+n = 1
+n
+n
+
+i=1
+log b∗tXi
+(16.5)
+→W ∗
+with probability 1.
+(16.6)
+Hence, S∗
+n
+.= 2nW ∗.
+□
+
+--- Page 42 ---
+616
+INFORMATION THEORY AND PORTFOLIO THEORY
+We now consider some of the properties of the growth rate.
+Lemma 16.1.1
+W(b, F) is concave in b and linear in F. W ∗(F) is
+convex in F.
+Proof:
+The growth rate is
+W(b, F) =
+
+log btx dF(x).
+(16.7)
+Since the integral is linear in F, so is W(b, F). Since
+log(λb1 + (1 −λ)b2)tX ≥λ log bt
+1X + (1 −λ) log bt
+2X,
+(16.8)
+by the concavity of the logarithm, it follows, by taking expectations, that
+W(b, F) is concave in b. Finally, to prove the convexity of W ∗(F) as a
+function of F, let F1 and F2 be two distributions on the stock market and
+let the corresponding optimal portfolios be b∗(F1) and b∗(F2), respec-
+tively. Let the log-optimal portfolio corresponding to λF1 + (1 −λ)F2 be
+b∗(λF1 + (1 −λ)F2). Then by linearity of W(b, F) with respect to F,
+we have
+W ∗(λF1 + (1 −λ)F2)
+= W(b∗(λF1 + (1 −λ)F2), λF1 + (1 −λ)F2)
+(16.9)
+= λW(b∗(λF1 + (1 −λ)F2), F1)
++ (1 −λ)W(b∗(λF1 + (1 −λ)F2), F2)
+≤λW(b∗(F1), F1) + (1 −λ)W ∗(b∗(F2), F2),
+(16.10)
+since b∗(F1) maximizes W(b, F1) and b∗(F2) maximizes W(b, F2).
+□
+Lemma 16.1.2
+The set of log-optimal portfolios with respect to a given
+distribution is convex.
+Proof:
+Supposethatb1 andb2 arelog-optimal(i.e.,W(b1, F) = W(b2, F)
+= W ∗(F)). By the concavity of W(b, F) in b, we have
+W(λb1 + (1 −λ)b2, F) ≥λW(b1, F) + (1 −λ)W(b2, F) = W ∗(F).
+(16.11)
+Thus, λb1 + (1 −λ)b2 is also log-optimal.
+□
+In the next section we use these properties to characterize the log-
+optimal portfolio.
+
+--- Page 43 ---
+16.2
+KUHN–TUCKER CHARACTERIZATION OF THE LOG-OPTIMAL PORTFOLIO
+617
+16.2
+KUHN–TUCKER CHARACTERIZATION
+OF THE LOG-OPTIMAL PORTFOLIO
+Let B = {b ∈Rm : bi ≥0, m
+i=1bi = 1} denote the set of allowed port-
+folios. The determination of b∗that achieves W ∗(F) is a problem of
+maximization of a concave function W(b, F) over a convex set B. The
+maximum may lie on the boundary. We can use the standard Kuhn–Tucker
+conditions to characterize the maximum. Instead, we derive these condi-
+tions from ﬁrst principles.
+Theorem 16.2.1
+The log-optimal portfolio b∗for a stock market X ∼F
+(i.e., the portfolio that maximizes the growth rate W(b, F)) satisﬁes the
+following necessary and sufﬁcient conditions:
+E
+ Xi
+b∗tX
+
+= 1
+if b∗
+i > 0,
+≤1
+if b∗
+i = 0.
+(16.12)
+Proof:
+The growth rate W(b) = E(ln btX) is concave in b, where b
+ranges over the simplex of portfolios. It follows that b∗is log-optimum
+iff the directional derivative of W(·) in the direction from b∗to any
+alternative portfolio b is nonpositive. Thus, letting bλ = (1 −λ)b∗+ λb
+for 0 ≤λ ≤1, we have
+d
+dλW(bλ)
+			
+λ=0+ ≤0,
+b ∈B.
+(16.13)
+These conditions reduce to (16.12) since the one-sided derivative at λ =
+0+ of W(bλ) is
+d
+dλE(ln(bt
+λX))
+			
+λ=0+
+= lim
+λ↓0
+1
+λE
+
+ln
+(1 −λ)b∗tX + λbtX
+b∗tX
+
+(16.14)
+= E
+
+lim
+λ↓0
+1
+λ ln
+
+1 + λ
+ btX
+b∗tX −1
+
+(16.15)
+= E
+ btX
+b∗tX
+
+−1,
+(16.16)
+where the interchange of limit and expectation can be justiﬁed using the
+dominated convergence theorem [39]. Thus, (16.13) reduces to
+E
+ btX
+b∗tX
+
+−1 ≤0
+(16.17)
+
+--- Page 44 ---
+618
+INFORMATION THEORY AND PORTFOLIO THEORY
+for all b ∈B. If the line segment from b to b∗can be extended beyond b∗
+in the simplex, the two-sided derivative at λ = 0 of W(bλ) vanishes and
+(16.17) holds with equality. If the line segment from b to b∗cannot be
+extended because of the inequality constraint on b, we have an inequality
+in (16.17).
+The Kuhn–Tucker conditions will hold for all portfolios b ∈B if they
+hold for all extreme points of the simplex B since E(btX/b∗tX) is linear
+in b. Furthermore, the line segment from the jth extreme point (b : bj =
+1, bi = 0, i ̸= j) to b∗can be extended beyond b∗in the simplex iff b∗
+j >
+0. Thus, the Kuhn–Tucker conditions that characterize the log-optimum
+b∗are equivalent to the following necessary and sufﬁcient conditions:
+E
+ Xi
+b∗tX
+
+= 1
+if b∗
+i > 0,
+≤1
+if b∗
+i = 0.
+□
+(16.18)
+This theorem has a few immediate consequences. One useful equiva-
+lence is expressed in the following theorem.
+Theorem 16.2.2
+Let S∗= b∗tX be the random wealth resulting from
+the log-optimal portfolio b∗. Let S = btX be the wealth resulting from any
+other portfolio b. Then
+E ln S
+S∗≤0
+for all S
+⇔
+E S
+S∗≤1
+for all S.
+(16.19)
+Proof:
+From Theorem 16.2.1 it follows that for a log-optimal portfolio
+b∗,
+E
+ Xi
+b∗tX
+
+≤1
+(16.20)
+for all i. Multiplying this equation by bi and summing over i, we have
+m
+
+i=1
+biE
+ Xi
+b∗tX
+
+≤
+m
+
+i=1
+bi = 1,
+(16.21)
+which is equivalent to
+E btX
+b∗tX = E S
+S∗≤1.
+(16.22)
+The converse follows from Jensen’s inequality, since
+E log S
+S∗≤log E S
+S∗≤log 1 = 0.
+□
+(16.23)
+
+--- Page 45 ---
+16.3
+ASYMPTOTIC OPTIMALITY OF THE LOG-OPTIMAL PORTFOLIO
+619
+Maximizing the expected logarithm was motivated by the asymptotic
+growth rate. But we have just shown that the log-optimal portfolio, in
+addition to maximizing the asymptotic growth rate, also “maximizes” the
+expected wealth relative E(S/S∗) for one day. We shall say more about
+the short-term optimality of the log-optimal portfolio when we consider
+the game-theoretic optimality of this portfolio.
+Another consequence of the Kuhn–Tucker characterization of the log-
+optimal portfolio is the fact that the expected proportion of wealth in
+each stock under the log-optimal portfolio is unchanged from day to day.
+Consider the stocks at the end of the ﬁrst day. The initial allocation of
+wealth is b∗. The proportion of the wealth in stock i at the end of the day
+is
+b∗
+i Xi
+b∗tX, and the expected value of this proportion is
+E b∗
+i Xi
+b∗tX = b∗
+i E Xi
+b∗tX = b∗
+i .
+(16.24)
+Hence, the proportion of wealth in stock i expected at the end of the
+day is the same as the proportion invested in stock i at the beginning of
+the day. This is a counterpart to Kelly proportional gambling, where one
+invests in proportions that remain unchanged in expected value after the
+investment period.
+16.3
+ASYMPTOTIC OPTIMALITY OF THE LOG-OPTIMAL
+PORTFOLIO
+In Section 16.2 we introduced the log-optimal portfolio and explained its
+motivation in terms of the long-term behavior of a sequence of investments
+in a repeated independent versions of the stock market. In this section we
+expand on this idea and prove that with probability 1, the conditionally
+log-optimal investor will not do any worse than any other investor who
+uses a causal investment strategy.
+We ﬁrst consider an i.i.d. stock market (i.e., X1, X2, . . . , Xn are i.i.d.
+according to F(x)). Let
+Sn =
+n
+
+i=1
+bt
+iXi
+(16.25)
+be the wealth after n days for an investor who uses portfolio bi on day i.
+Let
+W ∗= max
+b
+W(b, F) = max
+b
+E log btX
+(16.26)
+
+--- Page 46 ---
+620
+INFORMATION THEORY AND PORTFOLIO THEORY
+be the maximal growth rate, and let b∗be a portfolio that achieves the
+maximum growth rate. We only allow alternative portfolios bi that depend
+causally on the past and are independent of the future values of the stock
+market.
+Deﬁnition
+A nonanticipating or causal portfolio strategy is a sequence
+of mappings bi : Rm(i−1) →B, with the interpretation that portfolio bi(x1,
+. . . , xi−1) is used on day i.
+From the deﬁnition of W ∗, it follows immediately that the log-optimal
+portfolio maximizes the expected log of the ﬁnal wealth. This is stated in
+the following lemma.
+Lemma 16.3.1
+Let S∗
+n be the wealth after n days using the log-optimal
+strategy b∗on i.i.d. stocks, and let Sn be the wealth using a causal portfolio
+strategy bi. Then
+E log S∗
+n = nW ∗≥E log Sn.
+(16.27)
+Proof
+max
+b1,b2,...,bn E log Sn =
+max
+b1,b2,...,bn E
+n
+
+i=1
+log bt
+iXi
+(16.28)
+=
+n
+
+i=1
+max
+bi(X1,X2,...,Xi−1) E log bt
+i(X1, X2, . . . , Xi−1)Xi
+(16.29)
+=
+n
+
+i=1
+E log b∗tXi
+(16.30)
+= nW ∗,
+(16.31)
+and the maximum is achieved by a constant portfolio strategy b∗.
+□
+So far, we have proved two simple consequences of the deﬁnition of
+log-optimal portfolios: that b∗(satisfying (16.12)) maximizes the expected
+log wealth, and that the resulting wealth S∗
+n is equal to 2nW ∗to ﬁrst order
+in the exponent, with high probability.
+Now we prove a much stronger result, which shows that S∗
+n exceeds
+the wealth (to ﬁrst order in the exponent) of any other investor for almost
+every sequence of outcomes from the stock market.
+Theorem 16.3.1
+(Asymptotic optimality of the log-optimal portfolio)
+Let X1, X2, . . . , Xn be a sequence of i.i.d. stock vectors drawn according
+
+--- Page 47 ---
+16.4
+SIDE INFORMATION AND THE GROWTH RATE
+621
+to F(x). Let S∗
+n = 
+n
+i=1 b∗tXi, where b∗is the log-optimal portfolio, and
+let Sn = 
+n
+i=1 bt
+iXi be the wealth resulting from any other causal portfolio.
+Then
+lim sup
+n→∞
+1
+n log Sn
+S∗n
+≤0
+with probability 1.
+(16.32)
+Proof:
+From the Kuhn–Tucker conditions and the log optimality of S∗
+n,
+we have
+E Sn
+S∗n
+≤1.
+(16.33)
+Hence by Markov’s inequality, we have
+Pr
+
+Sn > tnS∗
+n
+
+= Pr
+Sn
+S∗n
+> tn
+
+< 1
+tn
+.
+(16.34)
+Hence,
+Pr
+1
+n log Sn
+S∗n
+> 1
+n log tn
+
+≤1
+tn
+.
+(16.35)
+Setting tn = n2 and summing over n, we have
+∞
+
+n=1
+Pr
+1
+n log Sn
+S∗n
+> 2 log n
+n
+
+≤
+∞
+
+n=1
+1
+n2 = π2
+6 .
+(16.36)
+Then, by the Borel–Cantelli lemma,
+Pr
+1
+n log Sn
+S∗n
+> 2 log n
+n
+, inﬁnitely often
+
+= 0.
+(16.37)
+This implies that for almost every sequence from the stock market, there
+exists an N such that for all n > N, 1
+n log Sn
+S∗n < 2 log n
+n
+. Thus,
+lim sup 1
+n log Sn
+S∗n
+≤0
+with probability 1.
+□
+(16.38)
+The theorem proves that the log-optimal portfolio will perform as well
+as or better than any other portfolio to ﬁrst order in the exponent.
+16.4
+SIDE INFORMATION AND THE GROWTH RATE
+We showed in Chapter 6 that side information Y for the horse race X can
+be used to increase the growth rate by the mutual information I (X; Y).
+
+--- Page 48 ---
+622
+INFORMATION THEORY AND PORTFOLIO THEORY
+We now extend this result to the stock market. Here, I (X; Y) is an upper
+bound on the increase in the growth rate, with equality if X is a horse
+race. We ﬁrst consider the decrease in growth rate incurred by believing
+in the wrong distribution.
+Theorem 16.4.1
+Let X ∼f (x). Let bf be a log-optimal portfolio cor-
+responding to f (x), and let bg be a log-optimal portfolio corresponding
+to some other density g(x). Then the increase in growth rate W by using
+bf instead of bg is bounded by
+W = W(bf , F) −W(bg, F) ≤D(f ||g).
+(16.39)
+Proof:
+We have
+W =
+
+f (x) log bt
+f x −
+
+f (x) log bt
+gx
+(16.40)
+=
+
+f (x) log
+bt
+f x
+btgx
+(16.41)
+=
+
+f (x) log
+bt
+f x
+btgx
+g(x)
+f (x)
+f (x)
+g(x)
+(16.42)
+=
+
+f (x) log
+bt
+f x
+btgx
+g(x)
+f (x) + D(f ||g)
+(16.43)
+(a)
+≤log
+
+f (x)
+bt
+f x
+btgx
+g(x)
+f (x) + D(f ||g)
+(16.44)
+= log
+
+g(x)
+bt
+f x
+btgx + D(f ||g)
+(16.45)
+(b)
+≤log 1 + D(f ||g)
+(16.46)
+= D(f ||g),
+(16.47)
+where (a) follows from Jensen’s inequality and (b) follows from the
+Kuhn–Tucker conditions and the fact that bg is log-optimal for g.
+□
+Theorem 16.4.2
+The increase W in growth rate due to side informa-
+tion Y is bounded by
+W ≤I (X; Y).
+(16.48)
+
+--- Page 49 ---
+16.5
+INVESTMENT IN STATIONARY MARKETS
+623
+Proof:
+Let (X, Y) ∼f (x, y), where X is the market vector and Y is the
+related side information. Given side information Y = y, the log-optimal
+investor uses the conditional log-optimal portfolio for the conditional
+distribution f (x|Y = y). Hence, conditional on Y = y, we have, from
+Theorem 16.4.1,
+WY=y ≤D(f (x|Y = y)||f (x)) =
+
+x
+f (x|Y = y) log f (x|Y = y)
+f (x)
+dx.
+(16.49)
+Averaging this over possible values of Y, we have
+W ≤
+
+y
+f (y)
+
+x
+f (x|Y = y) log f (x|Y = y)
+f (x)
+dx dy
+(16.50)
+=
+
+y
+
+x
+f (y)f (x|Y = y) log f (x|Y = y)
+f (x)
+f (y)
+f (y) dx dy (16.51)
+=
+
+y
+
+x
+f (x, y) log f (x, y)
+f (x)f (y) dx dy
+(16.52)
+= I (X; Y).
+(16.53)
+Hence, the increase in growth rate is bounded above by the mutual infor-
+mation between the side information Y and the stock market X.
+□
+16.5
+INVESTMENT IN STATIONARY MARKETS
+We now extend some of the results of Section 16.4 from i.i.d. markets
+to time-dependent market processes. Let X1, X2, . . . , Xn, . . . be a vector-
+valued stochastic process with Xi ≥0. We consider investment strategies
+that depend on the past values of the market in a causal fashion (i.e., bi
+may depend on X1, X2, . . . , Xi−1). Let
+Sn =
+n
+
+i=1
+bt
+i(X1, X2, . . . , Xi−1)Xi.
+(16.54)
+Our objective is to maximize E log Sn over all such causal portfolio strate-
+gies {bi(·)}. Now
+max
+b1,b2,...,bn E log Sn =
+n
+
+i=1
+max
+bi(X1,X2,...,Xi−1) E log bt
+iXi
+(16.55)
+=
+n
+
+i=1
+E log b∗t
+i Xi,
+(16.56)
+
+--- Page 50 ---
+624
+INFORMATION THEORY AND PORTFOLIO THEORY
+where b∗
+i is the log-optimal portfolio for the conditional distribution of Xi
+given the past values of the stock market; that is, b∗
+i (x1, x2, . . . , xi−1) is
+the portfolio that achieves the conditional maximum, which is denoted by
+max
+b
+E[ log btXi|(X1, X2, . . . , Xi−1) = (x1, x2, . . . , xi−1)]
+= W ∗(Xi|x1, x2, . . . , xi−1). (16.57)
+Taking the expectation over the past, we write
+W ∗(Xi|X1, X2, . . . , Xi−1) = E max
+b
+E
+
+log btXi|X1, X2, . . . , Xi−1
+
+(16.58)
+as the conditional optimal growth rate, where the maximum is over all
+portfolio-valued functions b deﬁned on X1, . . . , Xi−1. Thus, the high-
+est expected log return is achieved by using the conditional log-optimal
+portfolio at each stage. Let
+W ∗(X1, X2, . . . , Xn) =
+max
+b1,b2,...,bn E log Sn,
+(16.59)
+where the maximum is over all causal portfolio strategies. Then since
+log S∗
+n = m
+i=1 log b∗t
+i Xi, we have the following chain rule for W ∗:
+W ∗(X1, X2, . . . , Xn) =
+n
+
+i=1
+W ∗(Xi|X1, X2, . . . , Xi−1).
+(16.60)
+This chain rule is formally the same as the chain rule for H. In some
+ways, W is the dual of H. In particular, conditioning reduces H but
+increases W. We now deﬁne the counterpart of the entropy rate for time-
+dependent stochastic processes.
+Deﬁnition
+The growth rate W ∗
+∞is deﬁned as
+W ∗
+∞= lim
+n→∞
+W ∗(X1, X2, . . . , Xn)
+n
+(16.61)
+if the limit exists.
+Theorem 16.5.1
+For a stationary market, the growth rate exists and is
+equal to
+W ∗
+∞= lim
+n→∞W ∗(Xn|X1, X2, . . . , Xn−1).
+(16.62)
+
+--- Page 51 ---
+16.5
+INVESTMENT IN STATIONARY MARKETS
+625
+Proof:
+By stationarity, W ∗(Xn|X1, X2, . . . , Xn−1) is nondecreasing in n.
+Hence, it must have a limit, possibly inﬁnity. Since
+W ∗(X1, X2, . . . , Xn)
+n
+= 1
+n
+n
+
+i=1
+W ∗(Xi|X1, X2, . . . , Xi−1),
+(16.63)
+it follows by the theorem of the Ces´aro mean (Theorem 4.2.3) that the
+left-hand side has the same limit as the limit of the terms on the right-hand
+side. Hence, W ∗
+∞exists and
+W ∗
+∞= lim
+n→∞
+W ∗(X1, X2, . . . , Xn)
+n
+= lim
+n→∞W ∗(Xn|X1, X2, . . . , Xn−1).
+□
+(16.64)
+We can now extend the asymptotic optimality property to stationary
+markets. We have the following theorem.
+Theorem 16.5.2
+Consider an arbitrary stochastic process {Xi}, Xi ∈
+Rm
++, conditionally log-optimal portfolios, b∗
+i (Xi−1) and wealth S∗
+n. Let Sn
+be the wealth generated by any other causal portfolio strategy bi(Xi−1).
+Then Sn/S∗
+n is a positive supermartingale with respect to the sequence of
+σ-ﬁelds generated by the past X1, X2, . . . , Xn. Consequently, there exists
+a random variable V such that
+Sn
+S∗n
+→V
+with probability 1
+(16.65)
+EV ≤1
+(16.66)
+and
+Pr
+
+sup
+n
+Sn
+S∗n
+≥t
+
+≤1
+t .
+(16.67)
+Proof:
+Sn/S∗
+n is a positive supermartingale because
+E
+ Sn+1(Xn+1)
+S∗
+n+1(Xn+1)
+				 Xn
+
+= E
+ (bt
+n+1Xn+1)Sn(Xn)
+(b∗t
+n+1Xn+1)S∗n(Xn)
+				 Xn
+
+(16.68)
+= Sn(Xn)
+S∗n(Xn)E
+ bt
+n+1Xn+1
+b∗t
+n+1Xn+1
+				 Xn
+
+(16.69)
+≤Sn(Xn)
+S∗n(Xn),
+(16.70)
+
+--- Page 52 ---
+626
+INFORMATION THEORY AND PORTFOLIO THEORY
+by the Kuhn–Tucker condition on the conditionally log-optimal portfolio.
+Thus, by the martingale convergence theorem, Sn/S∗
+n has a limit, call it
+V , and EV ≤E(S0/S∗
+0) = 1. Finally, the result for sup(Sn/S∗
+n) follows
+from Kolmogorov’s inequality for positive martingales.
+□
+We remark that (16.70) shows how strong the competitive optimality
+of S∗
+n is. Apparently, the probability is less than 1/10 that Sn(Xn) will
+ever be 10 times as large as S∗
+n(Xn). For a stationary ergodic market, we
+can extend the asymptotic equipartition property to prove the following
+theorem.
+Theorem 16.5.3
+(AEP for the stock market)
+Let X1, X2, . . . , Xn be a
+stationary ergodic vector-valued stochastic process. Let S∗
+n be the wealth
+at time n for the conditionally log-optimal strategy, where
+S∗
+n =
+n
+
+i=1
+b∗t
+i (X1, X2, . . . , Xi−1)Xi.
+(16.71)
+Then
+1
+n log S∗
+n →W ∗
+∞
+with probability 1.
+(16.72)
+Proof:
+The proof involves a generalization of the sandwich argument
+[20] used to prove the AEP in Section 16.8. The details of the proof (in
+Algoet and Cover [21]) are omitted.
+□
+Finally, we consider the example of the horse race once again. The
+horse race is a special case of the stock market in which there are m
+stocks corresponding to the m horses in the race. At the end of the race,
+the value of the stock for horse i is either 0 or oi, the value of the odds
+for horse i. Thus, X is nonzero only in the component corresponding to
+the winning horse.
+In this case, the log-optimal portfolio is proportional betting, known as
+Kelly gambling (i.e., b∗
+i = pi), and in the case of uniform fair odds (i.e.,
+oi = m, for all i),
+W ∗= log m −H(X).
+(16.73)
+When we have a sequence of correlated horse races, the optimal portfolio
+is conditional proportional betting and the asymptotic growth rate is
+W ∗
+∞= log m −H(X),
+(16.74)
+
+--- Page 53 ---
+16.6
+COMPETITIVE OPTIMALITY OF THE LOG-OPTIMAL PORTFOLIO
+627
+where H(X) = lim 1
+nH(X1, X2, . . . , Xn) if the limit exists. Then Theo-
+rem 16.5.3 asserts that
+S∗
+n
+.= 2nW ∗,
+(16.75)
+in agreement with the results in chapter 6.
+16.6
+COMPETITIVE OPTIMALITY OF THE LOG-OPTIMAL
+PORTFOLIO
+We now ask whether the log-optimal portfolio outperforms alternative
+portfolios at a given ﬁnite time n. As a direct consequence of the
+Kuhn–Tucker conditions, we have
+E Sn
+S∗n
+≤1,
+(16.76)
+and hence by Markov’s inequality,
+Pr(Sn > tS∗
+n) ≤1
+t .
+(16.77)
+This result is similar to the result derived in Chapter 5 for the competitive
+optimality of Shannon codes.
+By considering examples, it can be seen that it is not possible to get
+a better bound on the probability that Sn > S∗
+n. Consider a stock market
+with two stocks and two possible outcomes,
+(X1, X2) =
+
+
+
+
+1,
+1
+1 −ǫ
+
+with probability 1 −ǫ,
+(1, 0)
+with probability ǫ.
+(16.78)
+In this market the log-optimal portfolio invests all the wealth in the ﬁrst
+stock. [It is easy to verify that b = (1, 0) satisﬁes the Kuhn–Tucker con-
+ditions.] However, an investor who puts all his wealth in the second stock
+earns more money with probability 1 −ǫ. Hence, it is not true that with
+high probability the log-optimal investor will do better than any other
+investor.
+The problem with trying to prove that the log-optimal investor does
+best with a probability of at least 1
+2 is that there exist examples like the
+one above, where it is possible to beat the log-optimal investor by a
+small amount most of the time. We can get around this by allowing each
+investor an additional fair randomization, which has the effect of reducing
+the effect of small differences in the wealth.
+
+--- Page 54 ---
+628
+INFORMATION THEORY AND PORTFOLIO THEORY
+Theorem 16.6.1
+(Competitive optimality)
+Let S∗be the wealth at the
+end of one period of investment in a stock market X with the log-optimal
+portfolio, and let S be the wealth induced by any other portfolio. Let U ∗be
+a random variable independent of X uniformly distributed on [0, 2], and
+let V be any other random variable independent of X and U ∗with V ≥0
+and EV = 1. Then
+Pr(V S ≥U ∗S∗) ≤1
+2.
+(16.79)
+Remark
+Here U ∗and V correspond to initial “fair” randomizations of
+the initial wealth. This exchange of initial wealth S0 = 1 for “fair” wealth
+U ∗can be achieved in practice by placing a fair bet. The effect of the
+fair randomization is to randomize small differences, so that only the
+signiﬁcant deviations of the ratio S/S∗affect the probability of winning.
+Proof:
+We have
+Pr(V S ≥U ∗S∗) = Pr
+V S
+S∗≥U ∗
+
+(16.80)
+= Pr(W ≥U ∗),
+(16.81)
+where W = V S
+S∗is a non-negative-valued random variable with mean
+EW = E(V )E
+Sn
+S∗n
+
+≤1
+(16.82)
+by the independence of V from X and the Kuhn–Tucker conditions. Let
+F be the distribution function of W. Then since U ∗is uniform on [0, 2],
+Pr(W ≥U ∗) =
+ 2
+0
+Pr(W > w)fU∗(w) dw
+(16.83)
+=
+ 2
+0
+Pr(W > w)1
+2 dw
+(16.84)
+=
+ 2
+0
+1 −F(w)
+2
+dw
+(16.85)
+≤
+ ∞
+0
+1 −F(w)
+2
+dw
+(16.86)
+= 1
+2EW
+(16.87)
+≤1
+2,
+(16.88)
+
+--- Page 55 ---
+16.7
+UNIVERSAL PORTFOLIOS
+629
+using the easily proved fact (by integrating by parts) that
+EW =
+ ∞
+0
+(1 −F(w)) dw
+(16.89)
+for a positive random variable W. Hence, we have
+Pr(V S ≥U ∗S∗) = Pr(W ≥U ∗) ≤1
+2.
+□
+(16.90)
+Theorem 16.6.1 provides a short-term justiﬁcation for the use of the
+log-optimal portfolio. If the investor’s only objective is to be ahead of his
+opponent at the end of the day in the stock market, and if fair randomiza-
+tion is allowed, Theorem 16.6.1 says that the investor should exchange his
+wealth for a uniform [0, 2] wealth and then invest using the log-optimal
+portfolio. This is the game-theoretic solution to the problem of gambling
+competitively in the stock market.
+16.7
+UNIVERSAL PORTFOLIOS
+The development of the log-optimal portfolio strategy in Section 16.1
+relies on the assumption that we know the distribution of the stock vectors
+and can therefore calculate the optimal portfolio b∗. In practice, though,
+we often do not know the distribution. In this section we describe a causal
+portfolio that performs well on individual sequences. Thus, we make no
+statistical assumptions about the market sequence. We assume that the
+stock market can be represented by a sequence of vectors x1, x2, . . . ∈Rm
++,
+where xij is the price relative for stock j on day i and xi is the vector
+of price relatives for all stocks on day i. We begin with a ﬁnite-horizon
+problem, where we have n vectors x1, . . . , xn. We later extend the results
+to the inﬁnite-horizon case.
+Given this sequence of stock market outcomes, what is the best we
+can do? A realistic target is the growth achieved by the best constant
+rebalanced portfolio strategy in hindsight (i.e., the best constant rebal-
+anced portfolio on the known sequence of stock market vectors). Note
+that constant rebalanced portfolios are optimal against i.i.d. stock mar-
+ket sequences with known distribution, so that this set of portfolios is
+reasonably natural.
+Let us assume that we have a number of mutual funds, each of which
+follows a constant rebalanced portfolio strategy chosen in advance. Our
+objective is to perform as well as the best of these funds. In this section
+we show that we can do almost as well as the best constant rebalanced
+
+--- Page 56 ---
+630
+INFORMATION THEORY AND PORTFOLIO THEORY
+portfolio without advance knowledge of the distribution of the stock
+market vectors.
+One approach is to distribute the wealth among a continuum of fund
+managers, each of which follows a different constantly rebalanced portfo-
+lio strategy. Since one of the managers will do exponentially better than
+the others, the total wealth after n days will be dominated by the largest
+term. We will show that we can achieve a performance of the best fund
+manager within a factor of n
+m−1
+2 . This is the essence of the argument for
+the inﬁnite-horizon universal portfolio strategy.
+A second approach to this problem is as a game against a malicious
+opponent or nature who is allowed to choose the sequence of stock
+market vectors. We deﬁne a causal (nonanticipating) portfolio strategy
+ˆbi(xi−1, . . . , x1) that depends only on the past values of the stock market
+sequence. Then nature, with knowledge of the strategy ˆbi(xi−1), chooses a
+sequence of vectors xi to make the strategy perform as poorly as possible
+relative to the best constantly rebalanced portfolio for that stock sequence.
+Let b∗(xn) be the best constantly rebalanced portfolio for a stock market
+sequence xn. Note that b∗(xn) depends only on the empirical distribution
+of the sequence, not on the order in which the vectors occur. At the end
+of n days, a constantly rebalanced portfolio b achieves wealth:
+Sn(b, xn) =
+n
+
+i=1
+btxi,
+(16.91)
+and the best constant portfolio b∗(xn) achieves a wealth
+S∗
+n(xn) = max
+b
+n
+
+i=1
+btxi,
+(16.92)
+whereas the nonanticipating portfolio ˆbi(xi−1) strategy achieves
+ˆSn(xn) =
+n
+
+i=1
+ˆbt
+i(xi−1)xi.
+(16.93)
+Our objective is to ﬁnd a nonanticipating portfolio strategy ˆb(·) = (ˆb1,
+ˆb2(x1), . . . , ˆbi(xi−1)) that does well in the worst case in terms of the ratio
+of ˆSn to S∗
+n. We will ﬁnd the optimal universal strategy and show that this
+strategy for each stock sequence achieves wealth ˆSn that is within a factor
+Vn ≈n−m−1
+2
+of the wealth S∗
+n achieved by the best constantly rebalanced
+portfolio on that sequence. This strategy depends on n, the horizon of
+
+--- Page 57 ---
+16.7
+UNIVERSAL PORTFOLIOS
+631
+the game. Later we describe some horizon-free results that have the same
+worst-case asymptotic performance as that of the ﬁnite-horizon game.
+16.7.1
+Finite-Horizon Universal Portfolios
+We begin by analyzing a stock market of n periods, where n is known
+in advance, and attempt to ﬁnd a portfolio strategy that does well against
+all possible sequences of n stock market vectors. The main result can be
+stated in the following theorem.
+Theorem 16.7.1
+For a stock market sequence xn = x1, . . . , xn, xi ∈
+Rm
++ of length n with m assets, let S∗
+n(xn) be the wealth achieved by the
+optimal constantly rebalanced portfolio on xn, and let ˆSn(xn) be the wealth
+achieved by any causal portfolio strategy ˆbi(·) on xn; then
+max
+ˆbi(·)
+min
+x1,...,xn
+ˆSn(xn)
+S∗n(xn) = Vn,
+(16.94)
+where
+Vn =
+
+
+n1+···+nm=n
+
+n
+n1, n2, . . . , nm
+
+2−nH( n1
+n ,..., nm
+n )
+−1
+.
+(16.95)
+Using Stirling’s approximation, we can show that Vn is on the order
+of n−m−1
+2 , and therefore the growth rate for the universal portfolio on
+the worst sequence differs from the growth rate of the best constantly
+rebalanced portfolio on that sequence by at most a polynomial factor.
+The logarithm of the ratio of growth of wealth of the universal portfolio
+ˆb to the growth of wealth of the best constant portfolio behaves like
+the redundancy of a universal source code. (See Shtarkov [496], where
+log Vn appears as the minimax individual sequence redundancy in data
+compression.)
+We ﬁrst illustrate the main results by means of an example for n = 1.
+Consider the case of two stocks and a single day. Let the stock vector for
+the day be x = (x1, x2). If x1 > x2, the best portfolio is one that puts all
+its money on stock 1, and if x2 > x1, the best portfolio puts all its money
+on stock 2. (If x1 = x2, all portfolios are equivalent.)
+Now assume that we must choose a portfolio in advance and our oppo-
+nent can choose the stock market sequence after we have chosen our
+portfolio to make us do as badly as possible relative to the best portfolio.
+Given our portfolio, the opponent can ensure that we do as badly as pos-
+sible by making the stock on which we have put more weight equal to 0
+and the other stock equal to 1. Our best strategy is therefore to put equal
+
+--- Page 58 ---
+632
+INFORMATION THEORY AND PORTFOLIO THEORY
+weight on both stocks, and with this, we will achieve a growth factor at
+least equal to half the growth factor of the best stock, and hence we will
+achieve at least half the gain of the best constantly rebalanced portfolio.
+It is not hard to calculate that Vn = 2 when n = 1 and m = 2 in equation
+(16.94).
+However, this result seems misleading, since it appears to suggest that
+for n days, we would use a constant uniform portfolio, putting half our
+money on each stock every day. If our opponent then chose the stock
+sequence so that only the ﬁrst stock was 1 (and the other was 0) every
+day, this uniform strategy would achieve a wealth of 1/2n, and we would
+achieve a wealth only within a factor of 2n of the best constant portfolio,
+which puts all the money on the ﬁrst stock for all time.
+The result of the theorem shows that we can do signiﬁcantly better.
+The main part of the argument is to reduce a sequence of stock vectors to
+the extreme cases where only one of the stocks is nonzero for each day.
+If we can ensure that we do well on such sequences, we can guarantee
+that we do well on any sequence of stock vectors, and achieve the bounds
+of the theorem.
+Before we prove the theorem, we need the following lemma.
+Lemma 16.7.1
+For p1, p2, . . . , pm ≥0 and q1, q2, . . . , qm ≥0,
+m
+i=1 pi
+m
+i=1 qi
+≥min
+i
+pi
+qi
+.
+(16.96)
+Proof:
+Let I denote the index i that minimizes the right-hand side in
+(16.96). Assume that pI > 0 (if pI = 0, the lemma is trivially true). Also,
+if qI = 0, both sides of (16.96) are inﬁnite (all the other qi’s must also
+be zero), and again the inequality holds. Therefore, we can also assume
+that qI > 0. Then
+m
+i=1 pi
+m
+i=1 qi
+= pI
+qI
+1 + 
+i̸=I(pi/pI)
+1 + 
+i̸=I(qi/qI) ≥pI
+qI
+(16.97)
+because
+pi
+qi
+≥pI
+qI
+−→pi
+pI
+≥qi
+qI
+(16.98)
+for all i.
+□
+First consider the case when n = 1. The wealth at the end of the ﬁrst
+day is
+ˆS1(x) = ˆbtx,
+(16.99)
+S1(x) = btx
+(16.100)
+
+--- Page 59 ---
+16.7
+UNIVERSAL PORTFOLIOS
+633
+and
+ˆS1(x)
+S1(x) =
+ ˆbixi
+ bixi
+≥min
+ ˆbi
+bi
+
+.
+(16.101)
+We wish to ﬁnd maxˆb minb,x
+ˆbtx
+btx. Nature should choose x = ei, where ei is
+the ith basis vector with 1 in the component i that minimizes
+ˆbi
+b∗
+i , and the
+investor should choose ˆb to maximize this minimum. This is achieved by
+choosing ˆb = ( 1
+m, 1
+m, . . . , 1
+m).
+The important point to realize is that
+ˆSn(xn)
+Sn(xn) =
+
+n
+i=1 ˆbt
+ixi
+
+n
+i=1 bt
+ixi
+(16.102)
+can also be rewritten in the form of a ratio of terms
+ˆSn(xn)
+Sn(xn) =
+ˆbtx′
+btx′ ,
+(16.103)
+where ˆb, b, x′ ∈Rmn
++ . Here the mn components of the constantly rebal-
+anced portfolios b are all of the product form bn1
+1 bn2
+2 · · · bnm
+m . One wishes
+to ﬁnd a universal ˆb that is uniformly close to the b’s corresponding to
+constantly rebalanced portfolios.
+We can now prove the main theorem (Theorem 16.7.1).
+Proof of Theorem 16.7.1:
+We will prove the theorem for m = 2. The
+proof extends in a straightforward fashion to the case m > 2. Denote the
+stocks by 1 and 2. The key idea is to express the wealth at time n,
+Sn(xn) =
+n
+
+i=1
+bt
+ixi,
+(16.104)
+which is a product of sums, into a sum of products. Each term in the sum
+corresponds to a sequence of stock price relatives for stock 1 or stock
+2 times the proportion bi1 or bi2 that the strategy places on stock 1 or
+stock 2 at time i. We can therefore view the wealth Sn as a sum over
+all 2n possible n-sequences of 1’s and 2’s of the product of the portfolio
+proportions times the stock price relatives:
+Sn(xn) =
+
+jn∈{1,2}n
+n
+
+i=1
+bijixiji =
+
+jn∈{1,2}n
+n
+
+i=1
+biji
+n
+
+i=1
+xiji.
+(16.105)
+
+--- Page 60 ---
+634
+INFORMATION THEORY AND PORTFOLIO THEORY
+If we let w(j n) denote the product 
+n
+i=1 biji, the total fraction of wealth
+invested in the sequence j n, and let
+x(j n) =
+n
+
+i=1
+xiji
+(16.106)
+be the corresponding return for this sequence, we can write
+Sn(xn) =
+
+jn∈{1,2}n
+w(j n)x(j n).
+(16.107)
+Similar expressions apply to both the best constantly rebalanced portfolio
+and the universal portfolio strategy. Thus, we have
+ˆSn(xn)
+S∗n(xn) =
+
+jn∈{1,2}n ˆw(j n)x(j n)
+
+jn∈{1,2}n w∗(j n)x(j n),
+(16.108)
+where ˆwn is the amount of wealth placed on the sequence j n by the
+universal nonanticipating strategy, and w∗(j n) is the amount placed by the
+best constant rebalanced portfolio strategy. Now applying Lemma 16.7.1,
+we have
+ˆSn(xn)
+S∗n(xn) ≥min
+jn
+ˆw(j n)x(j n)
+w∗(j n)x(j n) = min
+jn
+ˆw(j n)
+w∗(j n).
+(16.109)
+Thus, the problem of maximizing the performance ratio ˆSn/S∗
+n is reduced
+to ensuring that the proportion of money bet on a sequence of stocks by
+the universal portfolio is uniformly close to the proportion bet by b∗. As
+might be obvious by now, this formulation of Sn reduces the n-period
+stock market to a special case of a single-period stock market—there are
+2n stocks, one invests w(j n) in stock j n and receives a return x(j n) for
+stock j n, and the total wealth Sn is 
+jn w(j n)x(j n).
+We ﬁrst calculate the weight w∗(j n) associated with the best constant
+rebalanced portfolio b∗. We observe that a constantly rebalanced portfolio
+b results in
+w(j n) =
+n
+
+i=1
+biji = bk(1 −b)n−k,
+(16.110)
+where k is the number of times 1 appears in the sequence j n. Thus, w(j n)
+depends only on k, the number of 1’s in j n. Fixing attention on j n, we
+
+--- Page 61 ---
+16.7
+UNIVERSAL PORTFOLIOS
+635
+ﬁnd by differentiating with respect to b that the maximum value
+w∗(j n) = max
+0≤b≤1 bk(1 −b)n−k
+(16.111)
+=
+k
+n
+k n −k
+n
+n−k
+,
+(16.112)
+which is achieved by
+b∗=
+k
+n, n −k
+n
+
+.
+(16.113)
+Note that  w∗(j n) > 1, reﬂecting the fact that the amount “bet” on
+j n is chosen in hindsight, thus relieving the hindsight investor of the
+responsibility of allocating his investments w∗(j n) to sum to 1. The causal
+investor has no such luxury. How can the causal investor choose initial
+investments ˆw(j n),  ˆw(j n) = 1, to protect himself from all possible j n
+and hindsight-determined w∗(j n)? The answer will be to choose ˆw(j n)
+proportional to w∗(j n). Then the worst-case ratio of ˆw(j n)/w∗(j n) will
+be maximized. To proceed, we deﬁne Vn by
+1
+Vn
+=
+
+jn
+k(j n)
+n
+k(jn) n −k(j n)
+n
+n−k(jn)
+(16.114)
+=
+n
+
+k=0
+n
+k
+ k
+n
+k n −k
+n
+n−k
+(16.115)
+and let
+ˆw(j n) = Vn
+k(j n)
+n
+k(jn) n −k(j n)
+n
+n−k(jn)
+.
+(16.116)
+It is clear that ˆw(j n) is a legitimate distribution of wealth over the 2n
+stock sequences (i.e., ˆw(j n) ≥0 and 
+jn ˆw(j n) = 1). Here Vn is the
+normalization factor that makes ˆw(j n) a probability mass function. Also,
+from (16.109) and (16.113), for all sequences xn,
+ˆSn(xn)
+S∗n(xn) ≥min
+jn
+ˆw(j n)
+w∗(j n)
+(16.117)
+= min
+k
+Vn( k
+n)k( n−k
+n )n−k
+b∗k(1 −b∗)n−k
+(16.118)
+≥Vn,
+(16.119)
+
+--- Page 62 ---
+636
+INFORMATION THEORY AND PORTFOLIO THEORY
+where (16.117) follows from (16.109) and (16.119) follows from (16.112).
+Consequently, we have
+max
+ˆb
+min
+xn
+ˆSn(xn)
+S∗n(xn) ≥Vn.
+(16.120)
+We have thus demonstrated a portfolio on the 2n possible sequences of
+length n that achieves wealth ˆSn(xn) within a factor Vn of the wealth
+S∗
+n(xn) achieved by the best constant rebalanced portfolio in hindsight. To
+complete the proof of the theorem, we show that this is the best possible,
+that is, that any nonanticipating portfolio bi(xi−1) cannot do better than
+a factor Vn in the worst case (i.e., for the worst choice of xn). To prove
+this, we construct a set of extremal stock market sequences and show that
+the performance of any nonanticipating portfolio strategy is bounded by
+Vn for at least one of these sequences, proving the worst-case bound.
+For each j n ∈{1, 2}n, we deﬁne the corresponding extremal stock mar-
+ket vector xn(j n) as
+xi(ji) =
+
+(1, 0)t
+if ji = 1,
+(0, 1)t
+if ji = 2,
+(16.121)
+Let e1 = (1, 0)t, e2 = (0, 1)t be standard basis vectors. Let
+K = {x(j n) : j n ∈{1, 2}n, xiji = eji}
+(16.122)
+be the set of extremal sequences. There are 2n such extremal sequences,
+and for each sequence at each time, there is only one stock that yields
+a nonzero return. The wealth invested in the other stock is lost. There-
+fore, the wealth at the end of n periods for extremal sequence xn(j n)
+is the product of the amounts invested in the stocks j1, j2, . . . , jn, [i.e.,
+Sn(xn(j n)) = 
+i bji = w(j n)]. Again, we can view this as an investment
+on sequences of length n, and given the 0–1 nature of the return, it is
+easy to see for xn ∈K that
+
+jn
+Sn(xn(j n)) = 1.
+(16.123)
+For any extremal sequence xn(j n) ∈K, the best constant rebalanced port-
+folio is
+b∗(xn(j n)) =
+n1(j n)
+n
+,
+n2(j n)
+n
+t
+,
+(16.124)
+
+--- Page 63 ---
+16.7
+UNIVERSAL PORTFOLIOS
+637
+where n1(j n) is the number of occurrences of 1 in the sequence j n. The
+corresponding wealth at the end of n periods is
+S∗
+n(xn(j n)) =
+n1(j n)
+n
+n1(jn) n2(j n)
+n
+n2(jn)
+= ˆw(j n)
+Vn
+,
+(16.125)
+from (16.116) and it therefore follows that
+
+xn∈K
+S∗
+n(xn) = 1
+Vn
+
+jn
+ˆw(j n) = 1
+Vn
+.
+(16.126)
+We then have the following inequality for any portfolio sequence {bi}n
+i=1,
+with Sn(xn) deﬁned as in (16.104):
+min
+xn∈K
+Sn(xn)
+S∗n(xn) ≤
+
+˜xn∈K
+S∗
+n(˜xn)
+
+xn∈K S∗n(xn)
+Sn(˜xn)
+S∗n(˜xn)
+(16.127)
+=
+
+˜xn∈K
+Sn(˜xn)
+
+xn∈K S∗n(xn)
+(16.128)
+=
+1
+
+xn∈K S∗n(xn)
+(16.129)
+= Vn,
+(16.130)
+where the inequality follows from the fact that the minimum is less than
+the average. Thus,
+max
+b
+min
+xn∈K
+Sn(xn)
+S∗n(xn) ≤Vn.
+□
+(16.131)
+The strategy described in the theorem puts mass on all sequences of
+length n and is clearly dependent on n. We can recast the strategy in
+incremental terms (i.e., in terms of the amount bet on stock 1 and stock
+2 at time 1), then, conditional on the outcome at time 1, the amount bet
+on each of the two stocks at time 2, and so on. Consider the weight
+ˆbi,1 assigned by the algorithm to stock 1 at time i given the previous
+sequence of stock vectors xi−1. We can calculate this by summing over
+all sequences j n that have a 1 in position i, giving
+ˆbi,1(xi−1) =
+
+ji−1∈Mi−1 ˆw(j i−11)x(j i−1)
+
+ji∈Mi ˆw(j i)x(j i−1)
+,
+(16.132)
+
+--- Page 64 ---
+638
+INFORMATION THEORY AND PORTFOLIO THEORY
+where
+ˆw(j i) =
+
+jn:ji⊆jn
+w(j n)
+(16.133)
+is the weight put on all sequences j n that start with j i, and
+x(j i−1) =
+i−1
+
+k=1
+xkjk
+(16.134)
+is the return on those sequences as deﬁned in (16.106).
+Investigation of the asymptotics of Vn reveals [401, 496] that
+Vn ∼
+
+2
+n
+m−1
+Ŵ(m/2)/√π
+(16.135)
+for m assets. In particular, for m = 2 assets,
+Vn ∼
+
+2
+πn
+(16.136)
+and
+1
+2
+√
+n + 1
+≤Vn ≤
+2
+√
+n + 1
+(16.137)
+for all n [400]. Consequently, for m = 2 stocks, the causal portfolio strat-
+egy ˆbi(xi−1) given in (16.132) achieves wealth ˆSn(xn) such that
+ˆSn(xn)
+S∗n(xn) ≥Vn ≥
+1
+2
+√
+n + 1
+(16.138)
+for all market sequences xn.
+16.7.2
+Horizon-Free Universal Portfolios
+We describe the horizon-free strategy in terms of a weighting of different
+portfolio strategies. As described earlier, each constantly rebalanced port-
+folio b can be viewed as corresponding to a mutual fund that rebalances
+the m assets according to b. Initially, we distribute the wealth among
+these funds according to a distribution µ(b), where dµ(b) is the amount
+of wealth invested in portfolios in the neighborhood db of the constantly
+rebalanced portfolio b.
+
+--- Page 65 ---
+16.7
+UNIVERSAL PORTFOLIOS
+639
+Let
+Sn(b, xn) =
+n
+
+i=1
+btxi
+(16.139)
+be the wealth generated by a constant rebalanced portfolio b on the stock
+sequence xn. Recall that
+S∗
+n(xn) = max
+b∈B Sn(b, xn)
+(16.140)
+is the wealth of the best constant rebalanced portfolio in hindsight.
+We investigate the causal portfolio deﬁned by
+ˆbi+1(xi) =
+
+B bSi(b, xi) dµ(b)
+
+B Si(b, xi) dµ(b) .
+(16.141)
+We note that
+ˆbt
+i+1(xi)xi+1 =
+
+B btxi+1Si(b, xi) dµ(b)
+
+B Si(b, xi) dµ(b)
+(16.142)
+=
+
+B Si+1(b, xi+1) dµ(b)
+
+B Si(b, xi) dµ(b)
+.
+(16.143)
+Thus, the product 
+ ˆbt
+ixi telescopes and we see that the wealth ˆSn(xn)
+resulting from this portfolio is given by
+ˆSn(xn) =
+n
+
+i=1
+ˆbt
+i(xi−1)xi
+(16.144)
+=
+
+b∈B
+Sn(b, xn) dµ(b).
+(16.145)
+There is another way to interpret (16.145). The amount given to port-
+folio manager b is dµ(b), the resulting growth factor for the manager
+rebalancing to b is S(b, xn), and the total wealth of this batch of invest-
+ments is
+ˆSn(xn) =
+
+B
+Sn(b, xn) dµ(b).
+(16.146)
+Then ˆbi+1, deﬁned in (16.141), is the performance-weighted total “buy
+order” of the individual portfolio manager b.
+
+--- Page 66 ---
+640
+INFORMATION THEORY AND PORTFOLIO THEORY
+So far, we have not speciﬁed what distribution µ(b) we use to apportion
+the initial wealth. We now use a distribution µ that puts mass on all
+possible portfolios, so that we approximate the performance of the best
+portfolio for the actual distribution of stock price vectors.
+In the next lemma, we bound ˆSn/S∗
+n as a function of the initial wealth
+distribution µ(b).
+Lemma 16.7.2
+Let S∗
+n(xn) in 16.140 be the wealth achieved by the best
+constant rebalanced portfolio and let ˆSn(xn) in (16.144) be the wealth
+achieved by the universal mixed portfolio ˆb(·), given by
+ˆbi+1(xi) =
+
+bSi(b, xi) dµ(b)
+
+Si(b, xi) dµ(b) .
+(16.147)
+Then
+ˆSn(xn)
+S∗n(xn) ≥min
+jn
+
+B
+
+n
+i=1 bji dµ(b)
+
+n
+i=1 b∗
+ji
+.
+(16.148)
+Proof:
+As before, we can write
+S∗
+n(xn) =
+
+jn
+w∗(j n)x(j n),
+(16.149)
+where w∗(j n) = 
+n
+i=1 b∗
+ji is the amount invested on the sequence j n and
+x(j n) = 
+n
+i=1 xiji is the corresponding return. Similarly, we can write
+ˆSn(xn) =
+
+n
+
+i=1
+btxi dµ(b)
+(16.150)
+=
+
+jn
+
+n
+
+i=1
+bjixiji dµ(b)
+(16.151)
+=
+
+jn
+ˆw(j n)x(j n),
+(16.152)
+where ˆw(j n) =
+ 
+n
+i=1 bji dµ(b). Now applying Lemma 16.7.1, we have
+ˆSn(xn)
+S∗n(xn) =
+
+jn ˆw(j n)x(j n)
+
+jn w∗(j n)x(j n)
+(16.153)
+≥min
+jn
+ˆw(j n)x(j n)
+w∗(j n)x(j n)
+(16.154)
+= min
+jn
+
+B
+
+n
+i=1 bji dµ(b)
+
+n
+i=1 b∗
+ji
+.
+□
+(16.155)
+
+--- Page 67 ---
+16.7
+UNIVERSAL PORTFOLIOS
+641
+We now apply this lemma when µ(b) is the Dirichlet(1
+2) distribution.
+Theorem 16.7.2
+For the causal universal portfolio ˆbi( ), i = 1, 2, . . .,
+given in (16.141), with m = 2 stocks and dµ(b) the Dirichlet(1
+2, 1
+2) distri-
+bution, we have
+ˆSn(x n)
+S∗n(x n) ≥
+1
+2
+√
+n + 1
+,
+for all n and all stock sequences x n.
+Proof:
+As in the discussion preceding (16.112), we can show that the
+weight put by the best constant portfolio b∗on the sequence j n is
+n
+
+i=1
+b∗
+ji =
+k
+n
+k n −k
+n
+n−k
+= 2−nH(k/n),
+(16.156)
+where k is the number of indices where ji = 1. We can also explicitly
+calculate the integral in the numerator of (16.148) in Lemma 16.7.2 for
+the Dirichlet(1
+2) density, deﬁned for m variables as
+dµ(b) =
+Ŵ( m
+2 )
+
+Ŵ
+1
+2
+m
+m
+
+j=1
+b
+−1
+2
+j
+db,
+(16.157)
+where Ŵ(x) =
+ ∞
+0 e−ttx−1 dt denotes the gamma function. For simplicity,
+we consider the case of two stocks, in which case
+dµ(b) = 1
+π
+1
+√b(1 −b) db,
+0 ≤b ≤1,
+(16.158)
+where b is the fraction of wealth invested in stock 1. Now consider any
+sequence j n ∈{1, 2}n, and consider the amount invested in that sequence,
+b(j n) =
+n
+
+i=1
+bji = bl(1 −b)n−l,
+(16.159)
+where l is the number of indices where ji = 1. Then
+
+b(j n) dµ(b) =
+
+bl(1 −b)n−l 1
+π
+1
+√b(1 −b) db
+(16.160)
+
+--- Page 68 ---
+642
+INFORMATION THEORY AND PORTFOLIO THEORY
+= 1
+π
+
+bl−1
+2(1 −b)n−l−1
+2 db
+(16.161)
+△= 1
+π B
+
+l + 1
+2, n −l + 1
+2
+
+,
+(16.162)
+where B(λ1, λ2) is the beta function, deﬁned as
+B(λ1, λ2) =
+ 1
+0
+xλ1−1(1 −x)λ2−1 dx
+(16.163)
+= Ŵ(λ1)Ŵ(λ2)
+Ŵ(λ1 + λ2)
+(16.164)
+and
+Ŵ(λ) =
+ ∞
+0
+xλ−1e−x dx.
+(16.165)
+Note that for any integer n, Ŵ(n + 1) = n! and Ŵ(n + 1
+2) = 1·3·5···(2n−1)
+2n
+√π.
+We can calculate B(l + 1
+2, n −l + 1
+2) by means of simple recursion
+using integration by parts. Alternatively, using (16.164), we obtain
+B
+
+l + 1
+2, n −l + 1
+2
+
+= π
+22n
+2n
+n
+n
+l
+
+2n
+2l
+
+.
+(16.166)
+Combining all the results with Lemma 16.7.2, we have
+ˆSn(xn)
+S∗n(xn) ≥min
+jn
+
+B
+
+n
+i=1 bji dµ(b)
+
+n
+i=1 b∗
+ji
+(16.167)
+≥min
+l
+1
+π B(l + 1
+2, n −l + 1
+2)
+2−nH(l/n)
+(16.168)
+≥
+1
+2
+√
+n + 1
+,
+(16.169)
+using the results in [135, Theorem 2].
+□
+It follows for m = 2 stocks that
+ˆSn
+S∗n
+≥
+1
+√
+2π
+Vn
+(16.170)
+
+--- Page 69 ---
+16.7
+UNIVERSAL PORTFOLIOS
+643
+for all n and all market sequences x1, x2, . . . , xn. Thus, good minimax per-
+formance for all n costs at most an extra factor
+√
+2π over the ﬁxed horizon
+minimax portfolio. The cost of universality is Vn, which is asymptotically
+negligible in the growth rate in the sense that
+1
+n ln ˆSn(xn) −1
+n ln S∗
+n(xn) ≥1
+n ln Vn
+√
+2π
+→0.
+(16.171)
+Thus, the universal causal portfolio achieves the same asymptotic growth
+rate of wealth as the best hindsight portfolio.
+Let’s now consider how this portfolio algorithm performs on two real
+stocks. We consider a 14-year period (ending in 2004) and two stocks,
+Hewlett-Packard and Altria (formerly, Phillip Morris), which are both
+components of the Dow Jones Index. Over these 14 years, HP went up by
+a factor of 11.8, while Altria went up by a factor of 11.5. The performance
+of the different constantly rebalanced portfolios that contain HP and Altria
+are shown in Figure 16.2. The best constantly rebalanced portfolio (which
+can be computed only in hindsight) achieves a growth of a factor of 18.7
+using a mixture of about 51% HP and 49% Altria. The universal portfolio
+strategy described in this section achieves a growth factor of 15.7 without
+foreknowledge.
+20
+18
+16
+14
+12
+10
+8
+6
+4
+2
+0
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+0.9
+1
+Proportion b of wealth in HPQ
+Value Sn(b) of initial investment
+Sn*
+FIGURE 16.2. Performance of different constant rebalanced portfolios b for HP and Altria.
+
+--- Page 70 ---
+644
+INFORMATION THEORY AND PORTFOLIO THEORY
+16.8
+SHANNON–MCMILLAN–BREIMAN THEOREM
+(GENERAL AEP)
+The AEP for ergodic processes has come to be known as the Shan-
+non –McMillan –Breiman theorem. In Chapter 3 we proved the AEP for
+i.i.d. processes. In this section we offer a proof of the theorem for a
+general ergodic process. We prove the convergence of
+1
+n log p(Xn) by
+sandwiching it between two ergodic sequences.
+In a sense, an ergodic process is the most general dependent process for
+which the strong law of large numbers holds. For ﬁnite alphabet processes,
+ergodicity is equivalent to the convergence of the kth-order empirical
+distributions to their marginals for all k.
+The technical deﬁnition requires some ideas from probability theory. To
+be precise, an ergodic source is deﬁned on a probability space (, B, P ),
+where B is a σ-algebra of subsets of  and P is a probability measure.
+A random variable X is deﬁned as a function X(ω), ω ∈, on the prob-
+ability space. We also have a transformation T :  →, which plays
+the role of a time shift. We will say that the transformation is stationary
+if P (T A) = P (A) for all A ∈B. The transformation is called ergodic if
+every set A such that T A = A, a.e., satisﬁes P (A) = 0 or 1. If T is station-
+ary and ergodic, we say that the process deﬁned by Xn(ω) = X(T nω) is
+stationary and ergodic. For a stationary ergodic source, Birkhoff’s ergodic
+theorem states that
+1
+n
+n
+
+i=1
+Xi(ω) →EX =
+
+X dP
+with probability 1.
+(16.172)
+Thus, the law of large numbers holds for ergodic processes.
+We wish to use the ergodic theorem to conclude that
+−1
+n log p(X0, X1, . . . , Xn−1) = −1
+n
+n−1
+
+i=0
+log p(Xi|Xi−1
+0
+)
+→lim
+n→∞E[−log p(Xn|Xn−1
+0
+)].
+(16.173)
+But the stochastic sequence p(Xi|Xi−1
+0
+) is not ergodic. However, the
+closely related quantities p(Xi|Xi−1
+i−k) and p(Xi|Xi−1
+−∞) are ergodic and
+have expectations easily identiﬁed as entropy rates. We plan to sandwich
+p(Xi|Xi−1
+0
+) between these two more tractable processes.
+
+--- Page 71 ---
+16.8
+SHANNON–MCMILLAN–BREIMAN THEOREM (GENERAL AEP)
+645
+We deﬁne the kth-order entropy H k as
+H k = E {−log p(Xk|Xk−1, Xk−2, . . . , X0)}
+(16.174)
+= E {−log p(X0|X−1, X−2, . . . , X−k)} ,
+(16.175)
+where the last equation follows from stationarity. Recall that the entropy
+rate is given by
+H = lim
+k→∞H k
+(16.176)
+= lim
+n→∞
+1
+n
+n−1
+
+k=0
+H k.
+(16.177)
+Of course, H k ց H by stationarity and the fact that conditioning does
+not increase entropy. It will be crucial that H k ց H = H ∞, where
+H ∞= E {−log p(X0|X−1, X−2, . . .)} .
+(16.178)
+The proof that H ∞= H involves exchanging expectation and limit.
+The main idea in the proof goes back to the idea of (conditional) propor-
+tional gambling. A gambler receiving uniform odds with the knowledge of
+the k past will have a growth rate of wealth log |X| −H k, while a gambler
+with a knowledge of the inﬁnite past will have a growth rate of wealth
+of log |X| −H ∞. We don’t know the wealth growth rate of a gambler
+with growing knowledge of the past Xn
+0, but it is certainly sandwiched
+between log |X| −H k and log |X| −H ∞. But H k ց H = H ∞. Thus, the
+sandwich closes and the growth rate must be log |X| −H.
+We will prove the theorem based on lemmas that will follow the proof.
+Theorem 16.8.1
+(AEP: Shannon–McMillan–Breiman Theorem)
+If
+H is the entropy rate of a ﬁnite-valued stationary ergodic process {Xn},
+then
+−1
+n log p(X0, . . . , Xn−1) →H
+with probability 1.
+(16.179)
+Proof:
+We prove this for ﬁnite alphabet X; this proof and the proof for
+countable alphabets and densities is given in Algoet and Cover [20]. We
+argue that the sequence of random variables −1
+n log p(Xn−1
+0
+) is asymptot-
+ically sandwiched between the upper bound H k and the lower bound H ∞
+for all k ≥0. The AEP will follow since H k →H ∞and H ∞= H. The
+kth-order Markov approximation to the probability is deﬁned for n ≥k as
+pk(Xn−1
+0
+) = p(Xk−1
+0
+)
+n−1
+
+i=k
+p(Xi|Xi−1
+i−k).
+(16.180)
+
+--- Page 72 ---
+646
+INFORMATION THEORY AND PORTFOLIO THEORY
+From Lemma 16.8.3 we have
+lim sup
+n→∞
+1
+n log pk(Xn−1
+0
+)
+p(Xn−1
+0
+)
+≤0,
+(16.181)
+which we rewrite, taking the existence of the limit
+1
+n log pk(Xn
+0) into
+account (Lemma 16.8.1), as
+lim sup
+n→∞
+1
+n log
+1
+p(Xn−1
+0
+)
+≤lim
+n→∞
+1
+n log
+1
+pk(Xn−1
+0
+)
+= H k
+(16.182)
+for k = 1, 2, . . . . Also, from Lemma 16.8.3, we have
+lim sup
+n→∞
+1
+n log
+p(Xn−1
+0
+)
+p(Xn−1
+0
+|X−1
+−∞)
+≤0,
+(16.183)
+which we rewrite as
+lim inf 1
+n log
+1
+p(Xn−1
+0
+)
+≥lim 1
+n log
+1
+p(Xn−1
+0
+|X−1
+−∞)
+= H ∞
+(16.184)
+from the deﬁnition of H ∞in Lemma 16.8.1.
+Putting together (16.182) and (16.184), we have
+H ∞≤lim inf −1
+n log p(Xn−1
+0
+) ≤lim sup −1
+n log p(Xn−1
+0
+)
+≤H k
+for all k.
+(16.185)
+But by Lemma 16.8.2, H k →H ∞= H. Consequently,
+lim −1
+n log p(Xn
+0) = H.
+□
+(16.186)
+We now prove the lemmas that were used in the main proof. The ﬁrst
+lemma uses the ergodic theorem.
+Lemma 16.8.1
+(Markov approximations)
+For a stationary ergodic
+stochastic process {Xn},
+−1
+n log pk(Xn−1
+0
+) →H k
+with probability 1,
+(16.187)
+−1
+n log p(Xn−1
+0
+|X−1
+−∞) →H ∞
+with probability 1.
+(16.188)
+
+--- Page 73 ---
+16.8
+SHANNON–MCMILLAN–BREIMAN THEOREM (GENERAL AEP)
+647
+Proof:
+Functions Yn = f (Xn
+−∞) of ergodic processes {Xi} are ergodic
+processes. Thus, log p(Xn|Xn−1
+n−k) and log p(Xn|Xn−1, Xn−2, . . . , ) are also
+ergodic processes, and
+−1
+n log pk(Xn−1
+0
+) = −1
+n log p(Xk−1
+0
+) −1
+n
+n−1
+
+i=k
+log p(Xi|Xi−1
+i−k) (16.189)
+→0 + H k
+with probability 1,
+(16.190)
+by the ergodic theorem. Similarly, by the ergodic theorem,
+−1
+n log p(Xn−1
+0
+|X−1, X−2, . . .) = −1
+n
+n−1
+
+i=0
+log p(Xi|Xi−1, Xi−2, . . .)
+(16.191)
+→H ∞
+with probability 1.
+□(16.192)
+Lemma 16.8.2
+(No gap)
+H k ց H ∞and H = H ∞.
+Proof:
+We know that for stationary processes, H k ց H, so it remains
+to show that H k ց H ∞, thus yielding H = H ∞. Levy’s martingale
+convergence theorem for conditional probabilities asserts that
+p(x0|X−1
+−k) →p(x0|X−1
+−∞)
+with probability 1
+(16.193)
+for all x0 ∈X. Since X is ﬁnite and p log p is bounded and continuous in
+p for all 0 ≤p ≤1, the bounded convergence theorem allows interchange
+of expectation and limit, yielding
+lim
+k→∞H k = lim
+k→∞E
+
+−
+
+x0∈X
+p(x0|X−1
+−k) log p(x0|X−1
+−k)
+
+(16.194)
+= E
+
+−
+
+x0∈X
+p(x0|X−1
+−∞) log p(x0|X−1
+−∞)
+
+(16.195)
+= H ∞.
+(16.196)
+Thus, H k ց H = H ∞.
+□
+
+--- Page 74 ---
+648
+INFORMATION THEORY AND PORTFOLIO THEORY
+Lemma 16.8.3
+(Sandwich)
+lim sup
+n→∞
+1
+n log pk(Xn−1
+0
+)
+p(Xn−1
+0
+)
+≤0,
+(16.197)
+lim sup 1
+n log
+p(Xn−1
+0
+)
+p(Xn−1
+0
+|X−1
+−∞)
+≤0.
+(16.198)
+Proof:
+Let A be the support set of p(Xn−1
+0
+). Then
+E
+
+pk(Xn−1
+0
+)
+p(Xn−1
+0
+)
+
+=
+
+xn−1
+0
+∈A
+p(xn−1
+0
+)pk(xn−1
+0
+)
+p(xn−1
+0
+)
+(16.199)
+=
+
+xn−1
+0
+∈A
+pk(xn−1
+0
+)
+(16.200)
+= pk(A)
+(16.201)
+≤1.
+(16.202)
+Similarly, let B(X−1
+−∞) denote the support set of p(·|X−1
+−∞). Then we have
+E
+
+p(Xn−1
+0
+)
+p(Xn−1
+0
+|X−1
+−∞)
+
+= E
+
+E
+
+p(Xn−1
+0
+)
+p(Xn−1
+0
+|X−1
+−∞)
+					 X−1
+−∞
+
+(16.203)
+= E
+
+
+
+xn∈B(X−1
+−∞)
+p(xn)
+p(xn|X−1
+−∞)
+p(xn|X−1
+−∞)
+
+(16.204)
+= E
+
+
+
+xn∈B(X−1
+−∞)
+p(xn)
+
+
+(16.205)
+≤1.
+(16.206)
+By Markov’s inequality and (16.202), we have
+Pr
+
+pk(Xn−1
+0
+)
+p(Xn−1
+0
+)
+≥tn
+
+≤1
+tn
+(16.207)
+
+--- Page 75 ---
+SUMMARY
+649
+or
+Pr
+
+1
+n log pk(Xn−1
+0
+)
+p(Xn−1
+0
+)
+≥1
+n log tn
+
+≤1
+tn
+.
+(16.208)
+Letting
+tn = n2
+and
+noting
+that
+∞
+n=1
+1
+n2 < ∞,
+we
+see
+by
+the
+Borel–Cantelli lemma that the event
+
+1
+n log pk(Xn−1
+0
+)
+p(Xn−1
+0
+)
+≥1
+n log tn
+
+(16.209)
+occurs only ﬁnitely often with probability 1. Thus,
+lim sup 1
+n log pk(Xn−1
+0
+)
+p(Xn−1
+0
+)
+≤0
+with probability 1.
+(16.210)
+Applying the same arguments using Markov’s inequality to (16.206), we
+obtain
+lim sup 1
+n log
+p(Xn−1
+0
+)
+p(Xn−1
+0
+|X−1
+−∞)
+≤0
+with probability 1,
+(16.211)
+proving the lemma.
+□
+The arguments used in the proof can be extended to prove the AEP for
+the stock market (Theorem 16.5.3).
+SUMMARY
+Growth rate. The growth rate of a stock market portfolio b with
+respect to a distribution F(x) is deﬁned as
+W(b, F) =
+
+log btx dF(x) = E
+
+log btx
+
+.
+(16.212)
+Log-optimal portfolio. The optimal growth rate with respect to a dis-
+tribution F(x) is
+W ∗(F) = max
+b
+W(b, F).
+(16.213)
+
+--- Page 76 ---
+650
+INFORMATION THEORY AND PORTFOLIO THEORY
+The portfolio b∗that achieves the maximum of W(b, F) is called the
+log-optimal portfolio.
+Concavity. W(b, F) is concave in b and linear in F. W ∗(F) is convex
+in F.
+Optimality conditions. The portfolio b∗is log-optimal if and only if
+E
+ Xi
+b∗tX
+
+= 1
+if b∗
+i > 0,
+≤1
+if b∗
+i = 0.
+(16.214)
+Expected ratio optimality. If S∗
+n = 
+n
+i=1 b∗tXi, Sn = 
+n
+i=1 bt
+iXi, then
+E Sn
+S∗n
+≤1
+if and only if
+E ln Sn
+S∗n
+≤0.
+(16.215)
+Growth rate (AEP)
+1
+n log S∗
+n →W ∗(F)
+with probability 1.
+(16.216)
+Asymptotic optimality
+lim sup
+n→∞
+1
+n log Sn
+S∗n
+≤0
+with probability 1.
+(16.217)
+Wrong information. Believing g when f is true loses
+W = W(b∗
+f , F) −W(b∗
+g, F) ≤D(f ||g).
+(16.218)
+Side information Y
+W ≤I (X; Y).
+(16.219)
+Chain rule
+W ∗(Xi|X1, X2, . . . , Xi−1) =
+max
+bi(x1,x2,...,xi−1) E log bt
+iXi
+(16.220)
+W ∗(X1, X2, . . . , Xn) =
+n
+
+i=1
+W ∗(Xi|X1, X2, . . . , Xi−1).
+(16.221)
+
+--- Page 77 ---
+SUMMARY
+651
+Growth rate for a stationary market.
+W ∗
+∞= lim W ∗(X1, X2, . . . , Xn)
+n
+(16.222)
+1
+n log S∗
+n →W ∗
+∞.
+(16.223)
+Competitive optimality of log-optimal portfolios.
+Pr(V S ≥U ∗S∗) ≤1
+2.
+(16.224)
+Universal portfolio.
+max
+ˆbi(·)
+min
+xn,b
+
+n
+i=1 ˆbt
+i(xi−1)xi
+
+n
+i=1 btxi
+= Vn,
+(16.225)
+where
+Vn =
+
+
+n1+···+nm=n
+
+n
+n1, n2, . . . , nm
+
+2−nH(n1/n,...,nm/n)
+−1
+.
+(16.226)
+For m = 2,
+Vn ∼
+$
+2/πn
+(16.227)
+The causal universal portfolio
+ˆbi+1(xi) =
+
+bSi(b, xi) dµ(b)
+
+Si(b, xi) dµ(b)
+(16.228)
+achieves
+ˆSn(xn)
+S∗n(xn) ≥
+1
+2
+√
+n + 1
+(16.229)
+for all n and all xn.
+AEP. If {Xi} is stationary ergodic, then
+−1
+n log p(X1, X2, . . . , Xn) →H(X)
+with probability 1. (16.230)
+
+--- Page 78 ---
+652
+INFORMATION THEORY AND PORTFOLIO THEORY
+PROBLEMS
+16.1
+Growth rate.
+Let
+X =
+
+
+
+(1, a)
+with probability 1
+2
+(1, 1/a)
+with probability 1
+2
+where a > 1. This vector X represents a stock market vector of
+cash vs. a hot stock. Let
+W(b, F) = E log btX
+and
+W ∗= max
+b
+W(b, F)
+be the growth rate.
+(a) Find the log optimal portfolio b∗.
+(b) Find the growth rate W ∗.
+(c) Find the asymptotic behavior of
+Sn =
+n
+
+i=1
+btXi
+for all b.
+16.2
+Side information.
+Suppose, in Problem 16.1, that
+Y =
+ 1
+if (X1, X2) ≥(1, 1),
+0
+if (X1, X2) ≤(1, 1).
+Let the portfolio b depend on Y. Find the new growth rate W ∗∗
+and verify that W = W ∗∗−W ∗satisﬁes
+W ≤I (X; Y).
+16.3
+Stock dominance.
+Consider a stock market vector
+X = (X1, X2).
+Suppose that X1 = 2 with probability 1. Thus an investment in
+the ﬁrst stock is doubled at the end of the day.
+
+--- Page 79 ---
+PROBLEMS
+653
+(a) Find necessary and sufﬁcient conditions on the distribution of
+stock X2 such that the log-optimal portfolio b∗invests all the
+wealth in stock X2 [i.e., b∗= (0, 1)].
+(b) Argue for any distribution on X2 that the growth rate satisﬁes
+W ∗≥1.
+16.4
+Including experts and mutual funds.
+Let X ∼F(x), x ∈Rm
++, be
+the vector of price relatives for a stock market. Suppose that an
+“expert” suggests a portfolio b. This would result in a wealth
+factor btX. We add this to the stock alternatives to form ˜X =
+(X1, X2, . . . , Xm, btX). Show that the new growth rate,
+˜W ∗=
+max
+b1,...,bm,bm+1
+
+ln(bt ˜x) dF(˜x),
+(16.231)
+is equal to the old growth rate,
+W ∗= max
+b1,...,bm
+
+ln(btx) dF(x).
+(16.232)
+16.5
+Growth rate for symmetric distribution.
+Consider a stock vec-
+tor X ∼F(x),
+X ∈Rm,
+X ≥0, where the component stocks
+are exchangeable. Thus, F(x1, x2, . . . , xm) = F(xσ(1), xσ(2), . . . ,
+xσ(m)) for all permutations σ.
+(a) Find the portfolio b∗optimizing the growth rate and establish
+its optimality. Now assume that X has been normalized so
+that 1
+m
+m
+i=1 Xi = 1, and F is symmetric as before.
+(b) Again assuming X to be normalized, show that all symmetric
+distributions F have the same growth rate against b∗.
+(c) Find this growth rate.
+16.6
+Convexity.
+We are interested in the set of stock market densities
+that yield the same optimal porfolio. Let Pb0 be the set of all
+probability densities on Rm
++ for which b0 is optimal. Thus, Pb0 =
+{p(x) :
+
+ln(btx)p(x) dx is maximized by b = b0}. Show that Pb0
+is a convex set. It may be helpful to use Theorem 16.2.2.
+16.7
+Short selling.
+Let
+X =
+ (1, 2),
+p,
+(1, 1
+2),
+1 −p.
+Let B = {(b1, b2) : b1 + b2 = 1}. Thus, this set of portfolios B
+does not include the constraint bi ≥0. (This allows short selling.)
+
+--- Page 80 ---
+654
+INFORMATION THEORY AND PORTFOLIO THEORY
+(a) Find the log optimal portfolio b∗(p).
+(b) Relate the growth rate W ∗(p) to the entropy rate H(p).
+16.8
+Normalizing x.
+Suppose that we deﬁne the log-optimal portfolio
+b∗to be the portfolio maximizing the relative growth rate
+
+ln
+btx
+1
+m
+m
+i=1 xi
+dF(x1, . . . , xm).
+The virtue of the normalization 1
+m
+ Xi, which can be viewed as
+the wealth associated with a uniform portfolio, is that the relative
+growth rate is ﬁnite even when the growth rate
+
+ln btxdF(x)
+is not. This matters, for example, if X has a St. Petersburg-like
+distribution. Thus, the log-optimal portfolio b∗is deﬁned for all
+distributions F, even those with inﬁnite growth rates W ∗(F).
+(a) Show that if b maximizes
+
+ln(btx) dF(x), it also maximizes
+
+ln btx
+utx dF(x), where u = ( 1
+m, 1
+m, . . . , 1
+m).
+(b) Find the log optimal portfolio b∗for
+X =
+
+(22k+1, 22k),
+2−(k+1),
+(22k, 22k+1),
+2−(k+1),
+where k = 1, 2, . . . .
+(c) Find EX and W ∗.
+(d) Argue that b∗is competitively better than any portfolio b in
+the sense that Pr{btX > cb∗tX} ≤1
+c.
+16.9
+Universal portfolio.
+We examine the ﬁrst n = 2 steps of the
+implementation of the universal portfolio in (16.7.2) for µ(b) uni-
+form for m = 2 stocks. Let the stock vectors for days 1 and 2 be
+x1 = (1, 1
+2), and x2 = (1, 2). Let b = (b, 1 −b) denote a portfo-
+lio.
+(a) Graph S2(b) = 
+2
+i=1 btxi,
+0 ≤b ≤1.
+(b) Calculate S∗
+2 = maxb S2(b).
+(c) Argue that log S2(b) is concave in b.
+(d) Calculate the (universal) wealth ˆS2 =
+ 1
+0 S2(b)db.
+(e) Calculate the universal portfolio at times n = 1 and n = 2:
+ˆb1 =
+ 1
+0
+b db
+
+--- Page 81 ---
+HISTORICAL NOTES
+655
+ˆb2(x1) =
+ 1
+0 bS1(b) db
+ 1
+0 S1(b) db
+.
+(f) Which of S2(b), S∗
+2, ˆS2, ˆb2 are unchanged if we permute the
+order of appearance of the stock vector outcomes [i.e., if the
+sequence is now (1, 2), (1, 1
+2)]?
+16.10
+Growth optimal.
+Let X1, X2 ≥0, be price relatives of two inde-
+pendent stocks. Suppose that EX1 > EX2. Do you always want
+some of X1 in a growth rate optimal portfolio S(b) = bX1 + bX2?
+Prove or provide a counterexample.
+16.11
+Cost of universality.
+In the discussion of ﬁnite-horizon universal
+portfolios, it was shown that the loss factor due to universality is
+1
+Vn
+=
+n
+
+k=0
+n
+k
+ k
+n
+k n −k
+n
+n−k
+.
+(16.233)
+Evaluate Vn for n = 1, 2, 3.
+16.12
+Convex families.
+This problem generalizes Theorem 16.2.2. We
+say that S is a convex family of random variables if S1, S2 ∈S
+implies that λS1 + (1 −λ)S2 ∈S. Let S be a closed convex family
+of random variables. Show that there is a random variable S∗∈S
+such that
+E ln
+ S
+S∗
+
+≤0
+(16.234)
+for all S ∈S if and only if
+E
+ S
+S∗
+
+≤1
+(16.235)
+for all S ∈S.
+HISTORICAL NOTES
+There is an extensive literature on the mean–variance approach to invest-
+ment in the stock market. A good introduction is the book by Sharpe
+[491]. Log-optimal portfolios were introduced by Kelly [308] and Latan´e
+[346], and generalized by Breiman [75]. The bound on the increase in the
+
+--- Page 82 ---
+656
+INFORMATION THEORY AND PORTFOLIO THEORY
+growth rate in terms of the mutual information is due to Barron and Cover
+[31]. See Samuelson [453, 454] for a criticism of log-optimal investment.
+The proof of the competitive optimality of the log-optimal portfolio
+is due to Bell and Cover [39, 40]. Breiman [75] investigated asymptotic
+optimality for random market processes.
+The AEP was introduced by Shannon. The AEP for the stock mar-
+ket and the asymptotic optimality of log-optimal investment are given
+in Algoet and Cover [21]. The relatively simple sandwich proof for the
+AEP is due to Algoet and Cover [20]. The AEP for real-valued ergodic
+processes was proved in full generality by Barron [34] and Orey [402].
+The universal portfolio was deﬁned in Cover [110] and the proof of
+universality was given in Cover [110] and more exactly in Cover and
+Ordentlich [135]. The ﬁxed-horizon exact calculation of the cost of uni-
+versality Vn is given in Ordentlich and Cover [401]. The quantity Vn also
+appears in data compression in the work of Shtarkov [496].
+
+--- Page 83 ---
+CHAPTER 17
+INEQUALITIES IN
+INFORMATION THEORY
+This chapter summarizes and reorganizes the inequalities found throughout
+this book. A number of new inequalities on the entropy rates of subsets
+and the relationship of entropy and Lp norms are also developed. The
+intimate relationship between Fisher information and entropy is explored,
+culminating in a common proof of the entropy power inequality and the
+Brunn–Minkowski inequality. We also explore the parallels between the
+inequalities in information theory and inequalities in other branches of
+mathematics, such as matrix theory and probability theory.
+17.1
+BASIC INEQUALITIES OF INFORMATION THEORY
+Many of the basic inequalities of information theory follow directly from
+convexity.
+Deﬁnition
+A function f is said to be convex if
+f (λx1 + (1 −λ)x2) ≤λf (x1) + (1 −λ)f (x2)
+(17.1)
+for all 0 ≤λ ≤1 and all x1 and x2.
+Theorem 17.1.1
+(Theorem 2.6.2: Jensen’s inequality)
+If f is convex,
+then
+f (EX) ≤Ef (X).
+(17.2)
+Lemma 17.1.1
+The function log x is concave and x log x is convex, for
+0 < x < ∞.
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+657
+
+--- Page 84 ---
+658
+INEQUALITIES IN INFORMATION THEORY
+Theorem 17.1.2
+(Theorem 2.7.1: Log sum inequality)
+For positive
+numbers a1, a2, . . . , an and b1, b2, . . . , bn,
+n
+
+i=1
+ai log ai
+bi
+≥
+ n
+
+i=1
+ai
+
+log
+n
+i=1 ai
+n
+i=1 bi
+(17.3)
+with equality iff ai
+bi = constant.
+We recall the following properties of entropy from Section 2.1.
+Deﬁnition
+The entropy H(X) of a discrete random variable X is de-
+ﬁned by
+H(X) = −
+
+x∈Xp(x) log p(x).
+(17.4)
+Theorem 17.1.3
+(Lemma 2.1.1, Theorem 2.6.4: Entropy bound)
+0 ≤H(X) ≤log |X|.
+(17.5)
+Theorem 17.1.4
+(Theorem 2.6.5: Conditioning reduces entropy)
+For
+any two random variables X and Y,
+H(X|Y) ≤H(X),
+(17.6)
+with equality iff X and Y are independent.
+Theorem 17.1.5
+(Theorem 2.5.1 with Theorem 2.6.6: Chain rule)
+H(X1, X2, . . . , Xn) =
+n
+
+i=1
+H(Xi|Xi−1, . . . , X1) ≤
+n
+
+i=1
+H(Xi),
+(17.7)
+with equality iff X1, X2, . . . , Xn are independent.
+Theorem 17.1.6
+(Theorem 2.7.3)
+H(p) is a concave function of p.
+We now state some properties of relative entropy and mutual informa-
+tion (Section 2.3).
+Deﬁnition
+The relative entropy or Kullback–Leibler distance between
+two probability mass functions p(x) and q(x) is deﬁned by
+D(p||q) =
+
+x∈X
+p(x) log p(x)
+q(x) .
+(17.8)
+
+--- Page 85 ---
+17.1
+BASIC INEQUALITIES OF INFORMATION THEORY
+659
+Deﬁnition
+The mutual information between two random variables X
+and Y is deﬁned by
+I (X; Y) =
+
+x∈X
+
+y∈Y
+p(x, y) log p(x, y)
+p(x)p(y) = D(p(x, y)||p(x)p(y)).
+(17.9)
+The following basic information inequality can be used to prove many
+of the other inequalities in this chapter.
+Theorem 17.1.7
+(Theorem 2.6.3: Information inequality)
+For any
+two probability mass functions p and q,
+D(p||q) ≥0
+(17.10)
+with equality iff p(x) = q(x) for all x ∈X.
+Corollary
+For any two random variables X and Y,
+I (X; Y) = D(p(x, y)||p(x)p(y)) ≥0
+(17.11)
+with equality iff p(x, y) = p(x)p(y) (i.e., X and Y are independent).
+Theorem 17.1.8
+(Theorem 2.7.2:
+Convexity
+of
+relative
+entropy)
+D(p||q) is convex in the pair (p, q).
+Theorem 17.1.9
+(Theorem 2.4.1)
+I (X; Y) = H(X) −H(X|Y).
+(17.12)
+I (X; Y) = H(Y) −H(Y|X).
+(17.13)
+I (X; Y) = H(X) + H(Y) −H(X, Y).
+(17.14)
+I (X; X) = H(X).
+(17.15)
+Theorem 17.1.10
+(Section 4.4)
+For a Markov chain:
+1. Relative entropy D(µn||µ′
+n) decreases with time.
+2. Relative entropy D(µn||µ) between a distribution and the stationary
+distribution decreases with time.
+3. Entropy H(Xn) increases if the stationary distribution is uniform.
+4. The conditional entropy H(Xn|X1) increases with time for a station-
+ary Markov chain.
+
+--- Page 86 ---
+660
+INEQUALITIES IN INFORMATION THEORY
+Theorem 17.1.11
+Let X1, X2, . . . , Xn be i.i.d. ∼p(x). Let ˆpn be the
+empirical probability mass function of X1, X2, . . . , Xn. Then
+ED( ˆpn||p) ≤ED( ˆpn−1||p).
+(17.16)
+17.2
+DIFFERENTIAL ENTROPY
+We now review some of the basic properties of differential entropy
+(Section 8.1).
+Deﬁnition
+The differential entropy h(X1, X2, . . . , Xn), sometimes writ-
+ten h(f ), is deﬁned by
+h(X1, X2, . . . , Xn) = −
+
+f (x) log f (x) dx.
+(17.17)
+The differential entropy for many common densities is given in
+Table 17.1.
+Deﬁnition
+The relative entropy between probability densities f and
+g is
+D(f ||g) =
+
+f (x) log (f (x)/g(x)) dx.
+(17.18)
+The properties of the continuous version of relative entropy are iden-
+tical to the discrete version. Differential entropy, on the other hand, has
+some properties that differ from those of discrete entropy. For example,
+differential entropy may be negative.
+We now restate some of the theorems that continue to hold for differ-
+ential entropy.
+Theorem 17.2.1
+(Theorem 8.6.1:
+Conditioning
+reduces
+entropy)
+h(X|Y) ≤h(X), with equality iff X and Y are independent.
+Theorem 17.2.2
+(Theorem 8.6.2: Chain rule)
+h(X1, X2, . . . , Xn) =
+n
+
+i=1
+h(Xi|Xi−1, Xi−2, . . . , X1) ≤
+n
+
+i=1
+h(Xi)
+(17.19)
+with equality iff X1, X2, . . . , Xn are independent.
+Lemma 17.2.1
+If X and Y are independent, then h(X + Y) ≥h(X).
+Proof:
+h(X + Y) ≥h(X + Y|Y) = h(X|Y) = h(X).
+□
+
+--- Page 87 ---
+17.2
+DIFFERENTIAL ENTROPY
+661
+TABLE 17.1
+Differential Entropiesa
+Distribution
+Name
+Density
+Entropy (nats)
+f (x) = xp−1(1 −x)q−1
+B(p, q)
+,
+ln B(p, q) −(p −1)
+Beta
+×[ψ(p) −ψ(p + q)]
+0 ≤x ≤1, p, q > 0
+−(q −1)[ψ(q) −ψ(p + q)]
+f (x) = λ
+π
+1
+λ2 + x2 ,
+Cauchy
+ln(4πλ)
+−∞< x < ∞, λ > 0
+f (x) =
+2
+2n/2σ nŴ(n/2)xn−1e
+−x2
+2σ2 ,
+Chi
+ln σŴ(n/2)
+√
+2
+−n −1
+2
+ψ
+n
+2
+
++ n
+2
+x > 0, n > 0
+f (x) =
+1
+2n/2σ nŴ(n/2)x
+n
+2 −1e
+−x
+2σ2 ,
+ln 2σ 2Ŵ
+n
+2
+
+Chi-squared
+x > 0, n > 0
+−
+
+1 −n
+2
+
+ψ
+n
+2
+
++ n
+2
+f (x) =
+βn
+(n −1)!xn−1e−βx,
+Erlang
+(1 −n)ψ(n) + ln Ŵ(n)
+β
++ n
+x, β > 0, n > 0
+Exponential f (x) = 1
+λe−x
+λ , x, λ > 0
+1 + ln λ
+f (x) = n
+n1
+2
+1 n
+n2
+2
+2
+B( n1
+2 , n2
+2 )
+×
+x( n1
+2 ) −1
+(n2 + n1x)
+n1+n2
+2
+,
+ln n1
+n2
+B
+n1
+2 , n2
+2
+
+x > 0, n1, n2 > 0
+F
++
+
+1 −n1
+2
+	
+ψ
+n1
+2
+
+−
+
+1 −n2
+2
+
+ψ
+n2
+2
+
++n1 + n2
+2
+ψ
+
+n1 + n2
+2
+
+Gamma
+f (x) = xα−1e−x
+β
+βαŴ(α) ,
+x, α, β > 0
+ln(βŴ(α)) + (1 −α)ψ(α) + α
+f (x) = 1
+2λe−|x−θ|
+λ
+,
+Laplace
+1 + ln 2λ
+−∞< x, θ < ∞, λ > 0
+f (x) =
+e−x
+(1+e−x)2 ,
+Logistic
+2
+−∞< x < ∞
+
+--- Page 88 ---
+662
+INEQUALITIES IN INFORMATION THEORY
+TABLE 17.1
+(continued)
+Distribution
+Name
+Density
+Entropy (nats)
+f (x) =
+1
+σx
+√
+2π e
+−ln(x−m)2
+2σ2
+,
+Lognormal
+m + 1
+2 ln(2πeσ 2)
+x > 0, −∞< m < ∞, σ > 0
+Maxwell–
+f (x) = 4π−1
+2 β
+3
+2 x2e−βx2,
+Boltzmann
+1
+2 ln π
+β + γ −1
+2
+x, β > 0
+f (x) =
+1
+√
+2πσ 2 e
+−(x−µ)2
+2σ2
+,
+Normal
+1
+2 ln(2πeσ 2)
+−∞< x, µ < ∞, σ > 0
+Generalized
+f (x) = 2β
+α
+2
+Ŵ( α
+2 )xα−1e−βx2,
+normal
+ln Ŵ( α
+2 )
+2β
+1
+2
+−α −1
+2
+ψ
+α
+2
+
++ α
+2
+x, α, β > 0
+Pareto
+f (x) = aka
+xa+1 , x ≥k > 0, a > 0
+ln k
+a + 1 + 1
+a
+Rayleigh
+f (x) = x
+b2 e
+−x2
+2b2 ,
+x, b > 0
+1 + ln β
+√
+2
++ γ
+2
+f (x) = (1 + x2/n)−(n+1)/2
+√nB( 1
+2, n
+2 )
+,
+n + 1
+2
+ψ
+
+n + 1
+2
+
+−ψ
+n
+2
+
+Student’s t
+−∞< x < ∞, n > 0
++ ln √nB
+
+1
+2, n
+2
+
+Triangular
+f (x) =
+
+
+
+2x
+a ,
+0 ≤x ≤a
+2(1 −x)
+1 −a
+,
+a ≤x ≤1
+1
+2 −ln 2
+Uniform
+f (x) =
+1
+β −α , α ≤x ≤β
+ln(β −α)
+Weibull
+f (x) = c
+α xc−1e−xc
+α ,
+x, c, α > 0
+(c −1)γ
+c
++ ln α
+1
+c
+c + 1
+a All entropies are in nats; Ŵ(z) =
+ ∞
+0 e−ttz−1 dt; ψ(z) = d
+dz ln Ŵ(z); γ = Euler’s constant =
+0.57721566 . . . .
+Source: Lazo and Rathie [543].
+
+--- Page 89 ---
+17.3
+BOUNDS ON ENTROPY AND RELATIVE ENTROPY
+663
+Theorem 17.2.3
+(Theorem 8.6.5)
+Let the random vector X ∈Rn have
+zero mean and covariance K = EXXt (i.e., Kij = EXiXj, 1 ≤i, j ≤n).
+Then
+h(X) ≤1
+2 log(2πe)n|K|
+(17.20)
+with equality iff X ∼N(0, K).
+17.3
+BOUNDS ON ENTROPY AND RELATIVE ENTROPY
+In this section we revisit some of the bounds on the entropy function. The
+most useful is Fano’s inequality, which is used to bound away from zero
+the probability of error of the best decoder for a communication channel
+at rates above capacity.
+Theorem 17.3.1
+(Theorem 2.10.1: Fano’s inequality)
+Given two ran-
+dom variables X and Y, let ˆX = g(Y) be any estimator of X given Y and
+let Pe = Pr(X ̸= ˆX) be the probability of error. Then
+H(Pe) + Pe log |X| ≥H(X| ˆX) ≥H(X|Y).
+(17.21)
+Consequently, if H(X|Y) > 0, then Pe > 0.
+A similar result is given in the following lemma.
+Lemma 17.3.1
+(Lemma 2.10.1)
+If X and X′ are i.i.d. with entropy
+H(X)
+Pr(X = X′) ≥2−H(X)
+(17.22)
+with equality if and only if X has a uniform distribution.
+The continuous analog of Fano’s inequality bounds the mean-squared
+error of an estimator.
+Theorem 17.3.2
+(Theorem 8.6.6)
+Let X be a random variable with
+differential entropy h(X). Let ˆX be an estimate of X, and let E(X −ˆX)2
+be the expected prediction error. Then
+E(X −ˆX)2 ≥
+1
+2πee2h(X).
+(17.23)
+Given side information Y and estimator ˆX(Y),
+E(X −ˆX(Y))2 ≥
+1
+2πee2h(X|Y).
+(17.24)
+
+--- Page 90 ---
+664
+INEQUALITIES IN INFORMATION THEORY
+Theorem 17.3.3
+(L1 bound on entropy)
+Let p and q be two proba-
+bility mass functions on X such that
+||p −q||1 =
+
+x∈X
+|p(x) −q(x)| ≤1
+2.
+(17.25)
+Then
+|H(p) −H(q)| ≤−||p −q||1 log ||p −q||1
+|X|
+.
+(17.26)
+Proof:
+Consider the function f (t) = −t log t shown in Figure 17.1. It
+can be veriﬁed by differentiation that the function f (·) is concave. Also,
+f (0) = f (1) = 0. Hence the function is positive between 0 and 1. Con-
+sider the chord of the function from t to t + ν (where ν ≤1
+2). The
+maximum absolute slope of the chord is at either end (when t = 0 or
+1 −ν). Hence for 0 ≤t ≤1 −ν, we have
+|f (t) −f (t + ν)| ≤max{f (ν), f (1 −ν)} = −ν log ν.
+(17.27)
+Let r(x) = |p(x) −q(x)|. Then
+|H(p) −H(q)| =
+
+
+x∈X
+(−p(x) log p(x) + q(x) log q(x))
+
+(17.28)
+≤
+
+x∈X
+|(−p(x) log p(x) + q(x) log q(x))|
+(17.29)
+0.4
+0.35
+0.3
+0.25
+0.2
+0.15
+0.1
+0.05
+0 0
+0.2
+0.4
+t
+f(t ) = −t In t
+−t Int
+0.6
+0.8
+1
+FIGURE 17.1. Function f (t) = −t ln t.
+
+--- Page 91 ---
+17.4
+INEQUALITIES FOR TYPES
+665
+≤
+
+x∈X
+−r(x) log r(x)
+(17.30)
+= ||p −q||1
+
+x∈X
+−
+r(x)
+||p −q||1
+log
+r(x)
+||p −q||1
+||p −q||1
+(17.31)
+= −||p −q||1 log ||p −q||1 + ||p −q||1H
+
+r(x)
+||p −q||1
+
+(17.32)
+≤−||p −q||1 log ||p −q||1 + ||p −q||1 log |X|,
+(17.33)
+where (17.30) follows from (17.27).
+□
+Finally, relative entropy is stronger than the L1 norm in the following
+sense:
+Lemma 17.3.2
+(Lemma 11.6.1)
+D(p1||p2) ≥
+1
+2 ln 2||p1 −p2||2
+1.
+(17.34)
+The relative entropy between two probability mass functions P (x) and
+Q(x) is zero when P = Q. Around this point, the relative entropy has
+a quadratic behavior, and the ﬁrst term in the Taylor series expansion of
+the relative entropy D(P ||Q) around the point P = Q is the chi-squared
+distance between the distributions P and Q. Let
+χ2(P, Q) =
+
+x
+(P (x) −Q(x))2
+Q(x)
+.
+(17.35)
+Lemma 17.3.3
+For P near Q,
+D(P ∥Q) = 1
+2χ2 + · · · .
+(17.36)
+Proof:
+See Problem 11.2.
+□
+17.4
+INEQUALITIES FOR TYPES
+The method of types is a powerful tool for proving results in large devi-
+ation theory and error exponents. We repeat the basic theorems.
+Theorem 17.4.1
+(Theorem 11.1.1)
+The number of types with denom-
+inator n is bounded by
+|Pn| ≤(n + 1)|X|.
+(17.37)
+
+--- Page 92 ---
+666
+INEQUALITIES IN INFORMATION THEORY
+Theorem 17.4.2
+(Theorem 11.1.2)
+If X1, X2, . . . , Xn are drawn i.i.d.
+according to Q(x), the probability of xn depends only on its type and is
+given by
+Qn(xn) = 2−n(H(Pxn)+D(Pxn||Q)).
+(17.38)
+Theorem 17.4.3
+(Theorem 11.1.3: Size of a type class T (P ))
+For any
+type P ∈Pn,
+1
+(n + 1)|X| 2nH(P) ≤|T (P )| ≤2nH(P).
+(17.39)
+Theorem 17.4.4
+(Theorem 11.1.4)
+For any P ∈Pn and any distribu-
+tion Q, the probability of the type class T (P ) under Qn is 2−nD(P||Q) to
+ﬁrst order in the exponent. More precisely,
+1
+(n + 1)|X| 2−nD(P||Q) ≤Qn(T (P )) ≤2−nD(P||Q).
+(17.40)
+17.5
+COMBINATORIAL BOUNDS ON ENTROPY
+We give tight bounds on the size of
+n
+k
+	
+when k is not 0 or n using the
+result of Wozencraft and Reiffen [568]:
+Lemma 17.5.1
+For 0 < p < 1, q = 1 −p, such that np is an integer,
+1
+√8npq ≤
+
+ n
+np
+
+2−nH(p) ≤
+1
+√πnpq .
+(17.41)
+Proof:
+We begin with a strong form of Stirling’s approximation [208],
+which states that
+√
+2πn
+n
+e
+n
+≤n! ≤
+√
+2πn
+n
+e
+n
+e
+1
+12n .
+(17.42)
+Applying this to ﬁnd an upper bound, we obtain
+
+ n
+np
+
+≤
+√
+2πn(n
+e)ne
+1
+12n
+√2πnp( np
+e )np√2πnq(nq
+e )nq
+(17.43)
+=
+1
+√2πnpq
+1
+pnpqnq e
+1
+12n
+(17.44)
+
+--- Page 93 ---
+17.6
+ENTROPY RATES OF SUBSETS
+667
+<
+1
+√πnpq 2nH(p),
+(17.45)
+since e
+1
+12n < e
+1
+12 = 1.087 <
+√
+2, hence proving the upper bound.
+The lower bound is obtained similarly. Using Stirling’s formula, we
+obtain
+
+ n
+np
+
+≥
+√
+2πn(n
+e)ne
+−
+
+1
+12np +
+1
+12nq
+
+√2πnp( np
+e )np√2πnq(nq
+e )nq
+(17.46)
+=
+1
+√2πnpq
+1
+pnpqnq e
+−
+
+1
+12np +
+1
+12nq
+
+(17.47)
+=
+1
+√2πnpq 2nH(p) e
+−
+
+1
+12np +
+1
+12nq
+
+.
+(17.48)
+If np ≥1, and nq ≥3, then
+e
+−
+
+1
+12np +
+1
+12nq
+
+≥e−1
+9 = 0.8948 >
+√π
+2
+= 0.8862,
+(17.49)
+and the lower bound follows directly from substituting this into the equa-
+tion. The exceptions to this condition are the cases where np = 1, nq = 1
+or 2, and np = 2, nq = 2 (the case when np ≥3, nq = 1 or 2 can be
+handled by ﬂipping the roles of p and q). In each of these cases
+np = 1, nq = 1 →n = 2, p = 1
+2,
+ n
+np
+	
+= 2, bound = 2
+np = 1, nq = 2 →n = 3, p = 1
+3,
+ n
+np
+	
+= 3, bound = 2.92
+np = 2, nq = 2 →n = 4, p = 1
+2,
+ n
+np
+	
+= 6, bound = 5.66.
+Thus, even in these special cases, the bound is valid, and hence the lower
+bound is valid for all p ̸= 0, 1. Note that the lower bound blows up when
+p = 0 or p = 1, and is therefore not valid.
+□
+17.6
+ENTROPY RATES OF SUBSETS
+We now generalize the chain rule for differential entropy. The chain rule
+provides a bound on the entropy rate of a collection of random variables
+in terms of the entropy of each random variable:
+h(X1, X2, . . . , Xn) ≤
+n
+
+i=1
+h(Xi).
+(17.50)
+
+--- Page 94 ---
+668
+INEQUALITIES IN INFORMATION THEORY
+We extend this to show that the entropy per element of a subset of a set of
+random variables decreases as the size of the subset increases. This is not
+true for each subset but is true on the average over subsets, as expressed
+in Theorem 17.6.1.
+Deﬁnition
+Let (X1, X2, . . . , Xn) have a density, and for every S ⊆
+{1, 2, . . . , n}, denote by X(S) the subset {Xi : i ∈S).
+Let
+h(n)
+k
+= 1
+n
+k
+	
+
+S: |S|=k
+h(X(S))
+k
+.
+(17.51)
+Here h(n)
+k
+is the average entropy in bits per symbol of a randomly drawn
+k-element subset of {X1, X2, . . . , Xn}.
+The following theorem by Han [270] says that the average entropy
+decreases monotonically in the size of the subset.
+Theorem 17.6.1
+h(n)
+1
+≥h(n)
+2
+≥· · · ≥h(n)
+n .
+(17.52)
+Proof:
+We ﬁrst prove the last inequality, h(n)
+n
+≤h(n)
+n−1. We write
+h(X1, X2, . . . , Xn) = h(X1, X2, . . . , Xn−1)+h(Xn|X1, X2, . . . , Xn−1),
+h(X1, X2, . . . , Xn) = h(X1, X2, . . . , Xn−2, Xn)
++ h(Xn−1|X1, X2, . . . , Xn−2, Xn),
+≤h(X1, X2, . . . , Xn−2, Xn)
++ h(Xn−1|X1, X2, . . . , Xn−2),
+...
+h(X1, X2, . . . , Xn) ≤h(X2, X3, . . . , Xn) + h(X1).
+Adding these n inequalities and using the chain rule, we obtain
+n h(X1, X2, . . . , Xn) ≤
+n
+
+i=1
+h(X1, X2, . . . , Xi−1, Xi+1, . . . , Xn)
++ h(X1, X2, . . . , Xn)
+(17.53)
+or
+1
+nh(X1, X2, . . . , Xn) ≤1
+n
+n
+
+i=1
+h(X1, X2, . . . , Xi−1, Xi+1, . . . , Xn)
+n −1
+,
+(17.54)
+
+--- Page 95 ---
+17.6
+ENTROPY RATES OF SUBSETS
+669
+which is the desired result h(n)
+n
+≤h(n)
+n−1. We now prove that h(n)
+k
+≤h(n)
+k−1
+for all k ≤n by ﬁrst conditioning on a k-element subset, and then taking
+a uniform choice over its (k −1)-element subsets. For each k-element
+subset, h(k)
+k
+≤h(k)
+k−1, and hence the inequality remains true after taking
+the expectation over all k-element subsets chosen uniformly from the n
+elements.
+□
+Theorem 17.6.2
+Let r > 0, and deﬁne
+t(n)
+k
+= 1
+n
+k
+	
+
+S: |S|=k
+e
+r h(X(S))
+k
+.
+(17.55)
+Then
+t(n)
+1
+≥t(n)
+2
+≥· · · ≥t(n)
+n .
+(17.56)
+Proof:
+Starting from (17.54), we multiply both sides by r, exponentiate,
+and then apply the arithmetic mean geometric mean inequality, to obtain
+e
+1
+nrh(X1, X2, . . . , Xn)
+≤e
+1
+n
+n
+i=1
+rh(X1,X2,...,Xi−1,Xi+1,...,Xn)
+(n−1)
+(17.57)
+≤1
+n
+n
+
+i=1
+e
+rh(X1,X2,...,Xi−1,Xi+1,...,Xn)
+(n−1)
+for all r ≥0,
+(17.58)
+which is equivalent to t(n)
+n
+≤t(n)
+n−1. Now we use the same arguments as
+in Theorem 17.6.1, taking an average over all subsets to prove the result
+that for all k ≤n, t(n)
+k
+≤t(n)
+k−1.
+□
+Deﬁnition
+The average conditional entropy rate per element for all
+subsets of size k is the average of the above quantities for k-element
+subsets of {1, 2, . . . , n}:
+g(n)
+k
+= 1
+n
+k
+	
+
+S:|S|=k
+h(X(S)|X(Sc))
+k
+.
+(17.59)
+Here gk(S) is the entropy per element of the set S conditional on the
+elements of the set Sc. When the size of the set S increases, one can
+expect a greater dependence among the elements of the set S, which
+explains Theorem 17.6.1.
+
+--- Page 96 ---
+670
+INEQUALITIES IN INFORMATION THEORY
+In the case of the conditional entropy per element, as k increases, the
+size of the conditioning set Sc decreases and the entropy of the set S
+increases. The increase in entropy per element due to the decrease in
+conditioning dominates the decrease due to additional dependence among
+the elements, as can be seen from the following theorem due to Han [270].
+Note that the conditional entropy ordering in the following theorem is the
+reverse of the unconditional entropy ordering in Theorem 17.6.1.
+Theorem 17.6.3
+g(n)
+1
+≤g(n)
+2
+≤· · · ≤g(n)
+n .
+(17.60)
+Proof:
+The proof proceeds on lines very similar to the proof of the
+theorem for the unconditional entropy per element for a random subset.
+We ﬁrst prove that g(n)
+n
+≥g(n)
+n−1 and then use this to prove the rest of
+the inequalities. By the chain rule, the entropy of a collection of random
+variables is less than the sum of the entropies:
+h(X1, X2, . . . , Xn) ≤
+n
+
+i=1
+h(Xi).
+(17.61)
+Subtracting both sides of this inequality from nh(X1, X2, . . . , Xn), we
+have
+(n −1)h(X1, X2, . . . , Xn) ≥
+n
+
+i=1
+(h(X1, X2, . . . , Xn) −h(Xi)) (17.62)
+=
+n
+
+i=1
+h(X1, . . . , Xi−1, Xi+1, . . . , Xn|Xi).
+(17.63)
+Dividing this by n(n −1), we obtain
+h(X1, X2, . . . , Xn)
+n
+≥1
+n
+n
+
+i=1
+h(X1, X2, . . . , Xi−1, Xi+1, . . . , Xn|Xi)
+n −1
+,
+(17.64)
+which is equivalent to g(n)
+n
+≥g(n)
+n−1. We now prove that g(n)
+k
+≥g(n)
+k−1 for
+all k ≤n by ﬁrst conditioning on a k-element subset and then taking
+a uniform choice over its (k −1)-element subsets. For each k-element
+subset, g(k)
+k
+≥g(k)
+k−1, and hence the inequality remains true after taking
+the expectation over all k-element subsets chosen uniformly from the n
+elements.
+□
+
+--- Page 97 ---
+17.7
+ENTROPY AND FISHER INFORMATION
+671
+Theorem 17.6.4
+Let
+f (n)
+k
+= 1
+n
+k
+	
+
+S:|S|=k
+I (X(S); X(Sc))
+k
+.
+(17.65)
+Then
+f (n)
+1
+≥f (n)
+2
+≥· · · ≥f (n)
+n .
+(17.66)
+Proof:
+The theorem follows from the identity I (X(S); X(Sc)) =
+h(X(S)) −h(X(S)|X(Sc)) and Theorems 17.6.1 and 17.6.3.
+□
+17.7
+ENTROPY AND FISHER INFORMATION
+The differential entropy of a random variable is a measure of its descriptive
+complexity. The Fisher information is a measure of the minimum error
+in estimating a parameter of a distribution. In this section we derive a
+relationship between these two fundamental quantities and use this to
+derive the entropy power inequality.
+Let X be any random variable with density f (x). We introduce a loca-
+tion parameter θ and write the density in a parametric form as f (x −θ).
+The Fisher information (Section 11.10) with respect to θ is given by
+J(θ) =
+ ∞
+−∞
+f (x −θ)
+ ∂
+∂θ ln f (x −θ)
+2
+dx.
+(17.67)
+In this case, differentiation with respect to x is equivalent to differentiation
+with respect to θ. So we can write the Fisher information as
+J(X) =
+ ∞
+−∞
+f (x −θ)
+ ∂
+∂x ln f (x −θ)
+2
+dx
+=
+ ∞
+−∞
+f (x)
+ ∂
+∂x ln f (x)
+2
+dx,
+(17.68)
+which we can rewrite as
+J(X) =
+ ∞
+−∞
+f (x)
+ ∂
+∂x f (x)
+f (x)
+2
+dx.
+(17.69)
+We will call this the Fisher information of the distribution of X. Notice
+that like entropy, it is a function of the density.
+The importance of Fisher information is illustrated in the following
+theorem.
+
+--- Page 98 ---
+672
+INEQUALITIES IN INFORMATION THEORY
+Theorem 17.7.1
+(Theorem 11.10.1: Cram´er–Rao inequality) The
+mean-squared error of any unbiased estimator T (X) of the parameter θ is
+lower bounded by the reciprocal of the Fisher information:
+var(T ) ≥
+1
+J(θ).
+(17.70)
+We now prove a fundamental relationship between the differential
+entropy and the Fisher information:
+Theorem 17.7.2
+(de Bruijn’s identity: entropy and Fisher information)
+Let X be any random variable with a ﬁnite variance with a density f (x).
+Let Z be an independent normally distributed random variable with zero
+mean and unit variance. Then
+∂
+∂t he(X +
+√
+tZ) = 1
+2J(X +
+√
+tZ),
+(17.71)
+where he is the differential entropy to base e. In particular, if the limit
+exists as t →0,
+∂
+∂t he(X +
+√
+tZ)
+
+t=0
+= 1
+2J(X).
+(17.72)
+Proof:
+Let Yt = X + √tZ. Then the density of Yt is
+gt(y) =
+ ∞
+−∞
+f (x)
+1
+√
+2πt
+e−(y−x)2
+2t
+dx.
+(17.73)
+Then
+∂
+∂t gt(y) =
+ ∞
+−∞
+f (x) ∂
+∂t
+
+1
+√
+2πt
+e−(y−x)2
+2t
+
+dx
+(17.74)
+=
+ ∞
+−∞
+f (x)
+
+−1
+2t
+1
+√
+2πt
+e−(y−x)2
+2t
++(y −x)2
+2t2
+1
+√
+2πt
+e−(y−x)2
+2t
+
+dx.
+(17.75)
+We also calculate
+∂
+∂y gt(y) =
+ ∞
+−∞
+f (x)
+1
+√
+2πt
+∂
+∂y
+
+e−(y−x)2
+2t
+
+dx
+(17.76)
+=
+ ∞
+−∞
+f (x)
+1
+√
+2πt
+
+−y −x
+t
+e−(y−x)2
+2t
+
+dx
+(17.77)
+
+--- Page 99 ---
+17.7
+ENTROPY AND FISHER INFORMATION
+673
+and
+∂2
+∂y2 gt(y) =
+ ∞
+−∞
+f (x)
+1
+√
+2πt
+∂
+∂y
+
+−y −x
+t
+e−(y−x)2
+2t
+
+dx
+(17.78)
+=
+ ∞
+−∞
+f (x)
+1
+√
+2πt
+
+−1
+t e−(y−x)2
+2t
++ (y −x)2
+t2
+e−(y−x)2
+2t
+
+dx.
+(17.79)
+Thus,
+∂
+∂t gt(y) = 1
+2
+∂2
+∂y2 gt(y).
+(17.80)
+We will use this relationship to calculate the derivative of the entropy of
+Yt, where the entropy is given by
+he(Yt) = −
+ ∞
+−∞
+gt(y) ln gt(y) dy.
+(17.81)
+Differentiating, we obtain
+∂
+∂t he(Yt) = −
+ ∞
+−∞
+∂
+∂t gt(y) dy −
+ ∞
+−∞
+∂
+∂t gt(y) ln gt(y) dy
+(17.82)
+= −∂
+∂t
+ ∞
+−∞
+gt(y) dy −1
+2
+ ∞
+−∞
+∂2
+∂y2 gt(y) ln gt(y) dy. (17.83)
+The ﬁrst term is zero since
+
+gt(y) dy = 1. The second term can be inte-
+grated by parts to obtain
+∂
+∂t he(Yt) = −1
+2
+∂gt(y)
+∂y
+ln gt(y)
+∞
+−∞
++ 1
+2
+ ∞
+−∞
+ ∂
+∂y gt(y)
+2
+1
+gt(y) dy.
+(17.84)
+The second term in (17.84) is 1
+2J(Yt). So the proof will be complete if
+we show that the ﬁrst term in (17.84) is zero. We can rewrite the ﬁrst
+term as
+∂gt(y)
+∂y
+ln gt(y) =
+
+∂gt(y)
+∂y
+√gt(y)
+
+2
+
+gt(y) ln
+
+gt(y)
+
+.
+(17.85)
+The square of the ﬁrst factor integrates to the Fisher information and
+hence must be bounded as y →±∞. The second factor goes to zero since
+x ln x →0 as x →0 and gt(y) →0 as y →±∞. Hence, the ﬁrst term in
+
+--- Page 100 ---
+674
+INEQUALITIES IN INFORMATION THEORY
+(17.84) goes to 0 at both limits and the theorem is proved. In the proof, we
+have exchanged integration and differentiation in (17.74), (17.76), (17.78),
+and (17.82). Strict justiﬁcation of these exchanges requires the application
+of the bounded convergence and mean value theorems; the details may
+be found in Barron [30].
+□
+This theorem can be used to prove the entropy power inequality, which
+gives a lower bound on the entropy of a sum of independent random
+variables.
+Theorem 17.7.3
+(Entropy power inequality) If X and Y are indepen-
+dent random n-vectors with densities, then
+2
+2
+nh(X + Y) ≥2
+2
+nh(X) + 2
+2
+nh(Y) .
+(17.86)
+We outline the basic steps in the proof due to Stam [505] and Blachman
+[61]. A different proof is given in Section 17.8.
+Stam’s proof of the entropy power inequality is based on a perturbation
+argument. Let n = 1. Let Xt = X + √f (t)Z1, Yt = Y + √g(t)Z2, where
+Z1 and Z2 are independent N(0, 1) random variables. Then the entropy
+power inequality for n = 1 reduces to showing that s(0) ≤1, where we
+deﬁne
+s(t) = 22h(Xt) + 22h(Yt)
+22h(Xt+Yt)
+.
+(17.87)
+If f (t) →∞and g(t) →∞as t →∞, it is easy to show that s(∞) = 1.
+If, in addition, s′(t) ≥0 for t ≥0, this implies that s(0) ≤1. The proof
+of the fact that s′(t) ≥0 involves a clever choice of the functions f (t)
+and g(t), an application of Theorem 17.7.2 and the use of a convolution
+inequality for Fisher information,
+1
+J(X + Y) ≥
+1
+J(X) +
+1
+J(Y).
+(17.88)
+The entropy power inequality can be extended to the vector case by
+induction. The details may be found in the papers by Stam [505] and
+Blachman [61].
+17.8
+ENTROPY POWER INEQUALITY AND
+BRUNN–MINKOWSKI INEQUALITY
+The entropy power inequality provides a lower bound on the differential
+entropy of a sum of two independent random vectors in terms of their
+individual differential entropies. In this section we restate and outline an

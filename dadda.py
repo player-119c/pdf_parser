@@ -3,7 +3,7 @@ import fitz  # PyMuPDF
 output_text = ""
 
 # Open the PDF file
-with fitz.open("/Users/subrat_roy/Documents/LLM/try/DeepSeek_V3.pdf") as doc:
+with fitz.open("/Users/subrat_roy/Documents/LLM/try/Shannon_Paper.pdf") as doc:
     for page_num in range(len(doc)):
         page = doc.load_page(page_num)  # Load the page
         page_text = page.get_text("text")  # Extract plain text
@@ -17,5 +17,5 @@ with fitz.open("/Users/subrat_roy/Documents/LLM/try/DeepSeek_V3.pdf") as doc:
         output_text += f"\n--- Page {page_num + 1} ---\n" + page_text
 
 # Write the combined output to a text file
-with open("output_book2.txt", "w", encoding="utf-8") as f:
+with open("output_shannon_paper.txt", "w", encoding="utf-8") as f:
     f.write(output_text)

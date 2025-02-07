@@ -1,0 +1,5104 @@
+
+--- Page 1 ---
+14.4
+KOLMOGOROV COMPLEXITY OF INTEGERS
+475
+Removing the conditioning on the length of the sequence is straight-
+forward. By similar arguments, we can show that
+H(X) ≤1
+n
+
+xn
+f (xn)K(xn) ≤H(X) + (|X| + 1) log n
+n
++ c
+n
+(14.36)
+for all n. The lower bound follows from the fact that K(xn) is also a
+preﬁx-free code for the source, and the upper bound can be derived from
+the fact that K(xn) ≤K(xn|n) + 2 log n + c. Thus,
+E 1
+nK(Xn) →H(X),
+(14.37)
+and the compressibility achieved by the computer goes to the entropy
+limit.
+14.4
+KOLMOGOROV COMPLEXITY OF INTEGERS
+In Section 14.3 we deﬁned the Kolmogorov complexity of a binary string
+as the length of the shortest program for a universal computer that prints
+out that string. We can extend that deﬁnition to deﬁne the Kolmogorov
+complexity of an integer to be the Kolmogorov complexity of the corre-
+sponding binary string.
+Deﬁnition
+The Kolmogorov complexity of an integer n is deﬁned as
+K(n) =
+min
+p: U(p)=n l(p).
+(14.38)
+The properties of the Kolmogorov complexity of integers are very sim-
+ilar to those of the Kolmogorov complexity of bit strings. The following
+properties are immediate consequences of the corresponding properties
+for strings.
+Theorem 14.4.1
+For universal computers A and U,
+KU(n) ≤KA(n) + cA.
+(14.39)
+Also, since any number can be speciﬁed by its binary expansion, we
+have the following theorem.
+Theorem 14.4.2
+K(n) ≤log∗n + c.
+(14.40)
+
+--- Page 2 ---
+476
+KOLMOGOROV COMPLEXITY
+Theorem 14.4.3
+There are an inﬁnite number of integers n such that
+K(n) > log n.
+Proof:
+We know from Lemma 14.3.1 that
+
+n
+2−K(n) ≤1
+(14.41)
+and
+
+n
+2−log n =
+
+n
+1
+n = ∞.
+(14.42)
+But if K(n) < log n for all n > n0, then
+∞
+
+n=n0
+2−K(n) >
+∞
+
+n=n0
+2−log n = ∞,
+(14.43)
+which is a contradiction.
+□
+14.5
+ALGORITHMICALLY RANDOM AND INCOMPRESSIBLE
+SEQUENCES
+From the examples in Section 14.2, it is clear that there are some long
+sequences that are simple to describe, like the ﬁrst million bits of π. By
+the same token, there are also large integers that are simple to describe,
+such as
+2222222
+or (100!)!.
+We now show that although there are some simple sequences, most
+sequences do not have simple descriptions. Similarly, most integers are
+not simple. Hence, if we draw a sequence at random, we are likely to
+draw a complex sequence. The next theorem shows that the probability
+that a sequence can be compressed by more than k bits is no greater than
+2−k.
+Theorem 14.5.1
+Let X1, X2, . . . , Xn be drawn according to a Bernoulli
+(1
+2) process. Then
+P (K(X1X2 . . . Xn|n) < n −k) < 2−k.
+(14.44)
+
+--- Page 3 ---
+14.5
+ALGORITHMICALLY RANDOM AND INCOMPRESSIBLE SEQUENCES
+477
+Proof:
+P (K(X1X2 . . . Xn|n) < n −k)
+=
+
+x1x2...xn: K(x1x2...xn|n)<n−k
+p(x1, x2, . . . , xn)
+(14.45)
+=
+
+x1x2...xn: K(x1x2...xn|n)<n−k
+2−n
+(14.46)
+= |{x1x2 . . . xn : K(x1x2 . . . xn|n) < n −k}| 2−n
+< 2n−k2−n
+(by Theorem 14.2.4)
+(14.47)
+= 2−k.
+(14.48)
+□
+Thus, most sequences have a complexity close to their length. For
+example, the fraction of sequences of length n that have complexity less
+than n −5 is less than 1/32. This motivates the following deﬁnition:
+Deﬁnition
+A sequence x1, x2, . . . , xn is said to be algorithmically ran-
+dom if
+K(x1x2 . . . xn|n) ≥n.
+(14.49)
+Note that by the counting argument, there exists, for each n, at least
+one sequence xn such that
+K(xn|n) ≥n.
+(14.50)
+Deﬁnition
+We call an inﬁnite string x incompressible if
+lim
+n→∞
+K(x1x2x3 · · · xn|n)
+n
+= 1.
+(14.51)
+Theorem 14.5.2
+(Strong law of large numbers for incompressible se-
+quences)
+If a string x1x2 . . . is incompressible, it satisﬁes the law of large
+numbers in the sense that
+1
+n
+n
+
+i=1
+xi →1
+2.
+(14.52)
+Hence the proportions of 0’s and 1’s in any incompressible string are
+almost equal.
+
+--- Page 4 ---
+478
+KOLMOGOROV COMPLEXITY
+Proof:
+Let θn = 1
+n
+n
+i=1 xi denote the proportion of 1’s in x1x2 . . .
+xn. Then using the method of Example 14.2, one can write a program
+of length nH0(θn) + 2 log(nθn) + c to print xn. Thus,
+K(xn|n)
+n
+< H0(θn) + 2log n
+n
++ c′
+n .
+(14.53)
+By the incompressibility assumption, we also have the lower bound for
+large enough n,
+1 −ǫ ≤K(xn|n)
+n
+≤H0(θn) + 2log n
+n
++ c′
+n .
+(14.54)
+Thus,
+H0(θn) > 1 −2 log n + c′
+n
+−ǫ.
+(14.55)
+Inspection of the graph of H0(p) (Figure 14.2) shows that θn is close to
+1
+2 for large n. Speciﬁcally, the inequality above implies that
+θn ∈
+1
+2 −δn, 1
+2 + δn
+
+,
+(14.56)
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.8
+^
+0.9
+H0(pn)
+1
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+dn
+0.6
+0.7
+0.8
+0.9
+1
+p
+H(p)
+FIGURE 14.2. H0(p) vs. p.
+
+--- Page 5 ---
+14.5
+ALGORITHMICALLY RANDOM AND INCOMPRESSIBLE SEQUENCES
+479
+where δn is chosen so that
+H0
+1
+2 −δn
+
+= 1 −2 log n + cn + c′
+n
+,
+(14.57)
+which implies that δn →0 as n →∞. Thus, 1
+n
+ xi →1
+2 as n →∞. □
+We have now proved that incompressible sequences look random in the
+sense that the proportion of 0’s and 1’s are almost equal. In general, we
+can show that if a sequence is incompressible, it will satisfy all computable
+statistical tests for randomness. (Otherwise, identiﬁcation of the test that x
+fails will reduce the descriptive complexity of x, yielding a contradiction.)
+In this sense, the algorithmic test for randomness is the ultimate test,
+including within it all other computable tests for randomness.
+We now prove a related law of large numbers for the Kolmogorov
+complexity of Bernoulli(θ) sequences. The Kolmogorov complexity of
+a sequence of binary random variables drawn i.i.d. according to a
+Bernoulli(θ) process is close to the entropy H0(θ). In Theorem 14.3.1
+we proved that the expected value of the Kolmogorov complex-
+ity of a random Bernoulli sequence converges to the entropy [i.e.,
+E 1
+nK(X1X2 . . . Xn|n) →H0(θ)]. Now we remove the expectation.
+Theorem 14.5.3
+Let X1, X2, . . . , Xn be drawn i.i.d. ∼Bernoulli(θ).
+Then
+1
+nK(X1X2 . . . Xn|n) →H0(θ)
+in probability.
+(14.58)
+Proof:
+Let Xn = 1
+n
+ Xi be the proportion of 1’s in X1, X2, . . . , Xn.
+Then using the method described in (14.23), we have
+K(X1X2 . . . Xn|n) ≤nH0
+	
+Xn
+
++ 2 log n + c,
+(14.59)
+and since by the weak law of large numbers, Xn →θ in probability, we
+have
+Pr
+1
+nK(X1X2 . . . Xn|n) −H0(θ) ≥ǫ
+
+→0.
+(14.60)
+Conversely, we can bound the number of sequences with complexity sig-
+niﬁcantly lower than the entropy. From the AEP, we can divide the set
+of sequences into the typical set and the nontypical set. There are at
+
+--- Page 6 ---
+480
+KOLMOGOROV COMPLEXITY
+least (1 −ǫ)2n(H0(θ)−ǫ) sequences in the typical set. At most 2n(H0(θ)−c)
+of these typical sequences can have a complexity less than n(H0(θ) −c).
+The probability that the complexity of the random sequence is less than
+n(H0(θ) −c) is
+Pr(K(Xn|n) < n(H0(θ) −c))
+≤Pr(Xn /∈A(n)
+ǫ ) + Pr(Xn ∈A(n)
+ǫ , K(Xn|n) < n(H0(θ) −c))
+≤ǫ +
+
+xn∈A(n)
+ǫ ,K(xn|n)<n(H0(θ)−c)
+p(xn)
+(14.61)
+≤ǫ +
+
+xn∈A(n)
+ǫ ,K(xn|n)<n(H0(θ)−c)
+2−n(H0(θ)−ǫ)
+(14.62)
+≤ǫ + 2n(H0(θ)−c)2−n(H0(θ)−ǫ)
+(14.63)
+= ǫ + 2−n(c−ǫ),
+(14.64)
+which is arbitrarily small for appropriate choice of ǫ, n, and c. Hence with
+high probability, the Kolmogorov complexity of the random sequence is
+close to the entropy, and we have
+K(X1, X2, . . . , Xn|n)
+n
+→H0(θ)
+in probability.
+(14.65)
+□
+14.6
+UNIVERSAL PROBABILITY
+Suppose that a computer is fed a random program. Imagine a monkey
+sitting at a keyboard and typing the keys at random. Equivalently, feed a
+series of fair coin ﬂips into a universal Turing machine. In either case, most
+strings will not make sense to the computer. If a person sits at a terminal
+and types keys at random, he will probably get an error message (i.e., the
+computer will print the null string and halts). But with a certain probability
+she will hit on something that makes sense. The computer will then print
+out something meaningful. Will this output sequence look random?
+From our earlier discussions, it is clear that most sequences of length n
+have complexity close to n. Since the probability of an input program p
+is 2−l(p), shorter programs are much more probable than longer ones; and
+when they produce long strings, shorter programs do not produce random
+strings; they produce strings with simply described structure.
+The probability distribution on the output strings is far from uniform.
+Under the computer-induced distribution, simple strings are more likely
+
+--- Page 7 ---
+14.6
+UNIVERSAL PROBABILITY
+481
+than complicated strings of the same length. This motivates us to deﬁne
+a universal probability distribution on strings as follows:
+Deﬁnition
+The universal probability of a string x is
+PU(x) =
+
+p: U(p)=x
+2−l(p) = Pr(U(p) = x),
+(14.66)
+which is the probability that a program randomly drawn as a sequence of
+fair coin ﬂips p1, p2, . . . will print out the string x.
+This probability is universal in many senses. We can consider it as the
+probability of observing such a string in nature; the implicit belief is that
+simpler strings are more likely than complicated strings. For example, if
+we wish to describe the laws of physics, we might consider the simplest
+string describing the laws as the most likely. This principle, known as
+Occam’s Razor, has been a general principle guiding scientiﬁc research
+for centuries: If there are many explanations consistent with the observed
+data, choose the simplest. In our framework, Occam’s Razor is equivalent
+to choosing the shortest program that produces a given string.
+This probability mass function is called universal because of the fol-
+lowing theorem.
+Theorem 14.6.1
+For every computer A,
+PU(x) ≥c′
+APA(x)
+(14.67)
+for every string x ∈{0, 1}∗, where the constant c′
+A depends only on U and
+A.
+Proof:
+From the discussion of Section 14.2, we recall that for every
+program p′ for A that prints x, there exists a program p for U of length
+not more than l(p′) + cA produced by preﬁxing a simulation program for
+A. Hence,
+PU(x) =
+
+p: U(p)=x
+2−l(p) ≥
+
+p′:A(p′)=x
+2−l(p′)−cA = c′
+APA(x).
+(14.68)
+□
+Any sequence drawn according to a computable probability mass func-
+tion on binary strings can be considered to be produced by some computer
+A acting on a random input (via the probability inverse transformation
+acting on a random input). Hence, the universal probability distribution
+includes a mixture of all computable probability distributions.
+
+--- Page 8 ---
+482
+KOLMOGOROV COMPLEXITY
+Remark
+(Bounded likelihood ratio). In particular, Theorem 14.6.1 guar-
+antees that a likelihood ratio test of the hypothesis that X is drawn
+according to PU versus the hypothesis that it is drawn according to
+PA will have bounded likelihood ratio. If U and A are universal, the
+PU(x)/PA(x) is bounded away from 0 and inﬁnity for all x. This is in
+contrast to other simple hypothesis-testing problems (like Bernoulli(θ1)
+versus Bernoulli(θ2)), where the likelihood ratio goes to 0 or ∞as the
+sample size goes to inﬁnity. Apparently, PU, which is a mixture of all
+computable distributions, can never be rejected completely as the true
+distribution of any data drawn according to some computable probability
+distribution. In that sense we cannot reject the possibility that the universe
+is the output of monkeys typing at a computer. However, we can reject
+the hypothesis that the universe is random (monkeys with no computer).
+In Section 14.11 we prove that
+PU(x) ≈2−K(x),
+(14.69)
+thus showing that K(x) and log
+1
+PU (x) have equal status as universal algo-
+rithmic complexity measures. This is especially interesting since log
+1
+PU (x)
+is the ideal codeword length (the Shannon codeword length) with respect
+to the universal probability distribution PU(x).
+We conclude this section with an example of a monkey at a typewriter
+vs. a monkey at a computer keyboard. If the monkey types at random
+on a typewriter, the probability that it types out all the works of Shake-
+speare (assuming that the text is 1 million bits long) is 2−1,000,000. If the
+monkey sits at a computer terminal, however, the probability that it types
+out Shakespeare is now 2−K(Shakespeare) ≈2−250,000, which although
+extremely small is still exponentially more likely than when the monkey
+sits at a dumb typewriter.
+The example indicates that a random input to a computer is much more
+likely to produce “interesting” outputs than a random input to a typewriter.
+We all know that a computer is an intelligence ampliﬁer. Apparently, it
+creates sense from nonsense as well.
+14.7
+THE HALTING PROBLEM AND THE NONCOMPUTABILITY
+OF KOLMOGOROV COMPLEXITY
+Consider the following paradoxical statement:
+This statement is false.
+This paradox is sometimes stated in a two-statement form:
+
+--- Page 9 ---
+14.7
+KOLMOGOROV COMPLEXITY
+483
+The next statement is false.
+The preceding statement is true.
+These paradoxes are versions of what is called the Epimenides liar para-
+dox, and it illustrates the pitfalls involved in self-reference. In 1931, G¨odel
+used this idea of self-reference to show that any interesting system of
+mathematics is not complete; there are statements in the system that are
+true but that cannot be proved within the system. To accomplish this, he
+translated theorems and proofs into integers and constructed a statement
+of the above form, which can therefore not be proved true or false.
+The halting problem in computer science is very closely connected
+with G¨odel’s incompleteness theorem. In essence, it states that for any
+computational model, there is no general algorithm to decide whether a
+program will halt or not (go on forever). Note that it is not a statement
+about any speciﬁc program. Quite clearly, there are many programs that
+can easily be shown to halt or go on forever. The halting problem says
+that we cannot answer this question for all programs. The reason for this
+is again the idea of self-reference.
+To a practical person, the halting problem may not be of any immediate
+signiﬁcance, but it has great theoretical importance as the dividing line
+between things that can be done on a computer (given unbounded memory
+and time) and things that cannot be done at all (such as proving all true
+statements in number theory). G¨odel’s incompleteness theorem is one of
+the most important mathematical results of the twentieth century, and its
+consequences are still being explored. The halting problem is an essential
+example of G¨odel’s incompleteness theorem.
+One of the consequences of the nonexistence of an algorithm for the
+halting problem is the noncomputability of Kolmogorov complexity. The
+only way to ﬁnd the shortest program in general is to try all short programs
+and see which of them can do the job. However, at any time some of
+the short programs may not have halted and there is no effective (ﬁnite
+mechanical) way to tell whether or not they will halt and what they will
+print out. Hence, there is no effective way to ﬁnd the shortest program to
+print a given string.
+The noncomputability of Kolmogorov complexity is an example of the
+Berry paradox. The Berry paradox asks for the shortest number not name-
+able in under 10 words. A number like 1,101,121 cannot be a solution
+since the deﬁning expression itself is less than 10 words long. This illus-
+trates the problems with the terms nameable and describable; they are
+too powerful to be used without a strict meaning. If we restrict ourselves
+to the meaning “can be described for printing out on a computer,” we can
+resolve Berry’s paradox by saying that the smallest number not describable
+
+--- Page 10 ---
+484
+KOLMOGOROV COMPLEXITY
+in less than 10 words exists but is not computable. This “description” is
+not a program for computing the number. E. F. Beckenbach pointed out
+a similar problem in the classiﬁcation of numbers as dull or interesting;
+the smallest dull number must be interesting.
+As stated at the beginning of the chapter, one does not really anticipate
+that practitioners will ﬁnd the shortest computer program for a given
+string. The shortest program is not computable, although as more and more
+programs are shown to produce the string, the estimates from above of
+the Kolmogorov complexity converge to the true Kolmogorov complexity.
+(The problem, of course, is that one may have found the shortest program
+and never know that no shorter program exists.) Even though Kolmogorov
+complexity is not computable, it provides a framework within which to
+consider questions of randomness and inference.
+14.8
+
+In this section we introduce Chaitin’s mystical, magical number, , which
+has some extremely interesting properties.
+Deﬁnition
+ =
+
+p: U(p) halts
+2−l(p).
+(14.70)
+Note that  = Pr(U(p) halts), the probability that the given universal
+computer halts when the input to the computer is a binary string drawn
+according to a Bernoulli(1
+2) process.
+Since the programs that halt are preﬁx-free, their lengths satisfy the
+Kraft inequality, and hence the sum above is always between 0 and 1. Let
+n = .ω1ω2 · · · ωn denote the ﬁrst n bits of . The properties of  are
+as follows:
+1.  is noncomputable. There is no effective (ﬁnite, mechanical) way
+to check whether arbitrary programs halt (the halting problem), so
+there is no effective way to compute .
+2.  is a “philosopher’s stone”.
+Knowing  to an accuracy of n
+bits will enable us to decide the truth of any provable or ﬁnitely
+refutable mathematical theorem that can be written in less than n
+bits. Actually, all that this means is that given n bits of , there
+is an effective procedure to decide the truth of n-bit theorems; the
+procedure may take an arbitrarily long (but ﬁnite) time. Of course,
+without knowing , it is not possible to check the truth or falsity of
+
+--- Page 11 ---
+14.8
+
+485
+every theorem by an effective procedure (G¨odel’s incompleteness
+theorem).
+The basic idea of the procedure using n bits of  is simple: We
+run all programs until the sum of the masses 2−l(p) contributed
+by programs that halt equals or exceeds n = 0.ω1ω2 · · · ωn, the
+truncated version of  that we are given. Then, since
+ −n < 2−n,
+(14.71)
+we know that the sum of all further contributions of the form 2−l(p)
+to  from programs that halt must also be less than 2−n. This implies
+that no program of length ≤n that has not yet halted will ever halt,
+which enables us to decide the halting or nonhalting of all programs
+of length ≤n.
+To complete the proof, we must show that it is possible for a com-
+puter to run all possible programs in “parallel” in such a way that
+any program that halts will eventually be found to halt. First, list all
+possible programs, starting with the null program, :
+, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, . . . .
+(14.72)
+Then let the computer execute one clock cycle of  for the ﬁrst
+cycle. In the next cycle, let the computer execute two clock cycles
+of  and two clock cycles of the program 0. In the third cycle, let
+it execute three clock cycles of each of the ﬁrst three programs, and
+so on. In this way, the computer will eventually run all possible
+programs and run them for longer and longer times, so that if any
+program halts, it will eventually be discovered to halt. The com-
+puter keeps track of which program is being executed and the cycle
+number so that it can produce a list of all the programs that halt.
+Thus, we will ultimately know whether or not any program of less
+than n bits will halt. This enables the computer to ﬁnd any proof
+of the theorem or a counterexample to the theorem if the theorem
+can be stated in less than n bits. Knowledge of  turns previously
+unprovable theorems into provable theorems. Here  acts as an
+oracle.
+Although  seems magical in this respect, there are other numbers
+that carry the same information. For example, if we take the list of
+programs and construct a real number in which the ith bit indicates
+whether program i halts, this number can also be used to decide
+any ﬁnitely refutable question in mathematics. This number is very
+dilute (in information content) because one needs approximately 2n
+
+--- Page 12 ---
+486
+KOLMOGOROV COMPLEXITY
+bits of this indicator function to decide whether or not an n-bit
+program halts. Given 2n bits, one can tell immediately without any
+computation whether or not any program of length less than n halts.
+However,  is the most compact representation of this information
+since it is algorithmically random and incompressible.
+What are some of the questions that we can resolve using ?
+Many of the interesting problems in number theory can be stated
+as a search for a counterexample. For example, it is straightforward
+to write a program that searches over the integers x, y, z, and n
+and halts only if it ﬁnds a counterexample to Fermat’s last theorem,
+which states that
+xn + yn = zn
+(14.73)
+has no solution in integers for n ≥3. Another example is Goldbach’s
+conjecture, which states that any even number is a sum of two
+primes. Our program would search through all the even numbers
+starting with 2, check all prime numbers less than it and ﬁnd a
+decomposition as a sum of two primes. It will halt if it comes across
+an even number that does not have such a decomposition. Knowing
+whether this program halts is equivalent to knowing the truth of
+Goldbach’s conjecture.
+We can also design a program that searches through all proofs
+and halts only when it ﬁnds a proof of the theorem required. This
+program will eventually halt if the theorem has a ﬁnite proof. Hence
+knowing n bits of , we can ﬁnd the truth or falsity of all theorems
+that have a ﬁnite proof or are ﬁnitely refutable and which can be
+stated in less than n bits.
+3.  is algorithmically random.
+Theorem 14.8.1
+ cannot be compressed by more than a constant;
+that is, there exists a constant c such that
+K(ω1ω2 . . . ωn) ≥n −c
+for all n.
+(14.74)
+Proof:
+We know that if we are given n bits of , we can determine
+whether or not any program of length ≤n halts. Using K(ω1ω2 · · ·
+ωn) bits, we can calculate n bits of , and then we can generate a list
+of all programs of length ≤n that halt, together with their corresponding
+outputs. We ﬁnd the ﬁrst string x0 that is not on this list. The string x0
+is then the shortest string with Kolmogorov complexity K(x0) > n. The
+
+--- Page 13 ---
+14.9
+UNIVERSAL GAMBLING
+487
+complexity of this program to print x0 is K(n) + c, which must be at
+least as long as the shortest program for x0. Consequently,
+K(n) + c ≥K(x0) > n
+(14.75)
+for all n. Thus, K(ω1ω2 · · · ωn) > n −c, and  cannot be compressed by
+more than a constant.
+□
+14.9
+UNIVERSAL GAMBLING
+Suppose that a gambler is asked to gamble sequentially on sequences
+x ∈{0, 1}∗. He has no idea of the origin of the sequence. He is given
+fair odds (2-for-1) on each bit. How should he gamble? If he knew the
+distribution of the elements of the string, he might use proportional betting
+because of its optimal growth-rate properties, as shown in Chapter 6. If he
+believes that the string occurred naturally, it seems intuitive that simpler
+strings are more likely than complex ones. Hence, if he were to extend
+the idea of proportional betting, he might bet according to the universal
+probability of the string. For reference, note that if the gambler knows the
+string x in advance, he can increase his wealth by a factor of 2l(x) simply
+by betting all his wealth each time on the next symbol of x. Let the wealth
+S(x) associated with betting scheme b(x),  b(x) = 1, be given by
+S(x) = 2l(x)b(x).
+(14.76)
+Suppose that the gambler bets b(x) = 2−K(x) on a string x. This betting
+strategy can be called universal gambling. We note that the sum of the
+bets
+
+x
+b(x) =
+
+x
+2−K(x) ≤
+
+p:p halts
+2−l(p) =  ≤1,
+(14.77)
+and he will not have used all his money. For simplicity, let us assume
+that he throws the rest away. For example, the amount of wealth resulting
+from a bet b(0110) on a sequence x = 0110 is 2l(x)b(x) = 24b(0110) plus
+the amount won on all bets b(0110 . . .) on sequences that extend x.
+Then we have the following theorem:
+Theorem 14.9.1
+The logarithm of the wealth a gambler achieves on a
+sequence using universal gambling plus the complexity of the sequence is
+no smaller than the length of the sequence, or
+log S(x) + K(x) ≥l(x).
+(14.78)
+
+--- Page 14 ---
+488
+KOLMOGOROV COMPLEXITY
+Remark
+This is the counterpart of the gambling conservation theorem
+W ∗+ H = log m from Chapter 6.
+Proof:
+The proof follows directly from the universal gambling scheme,
+b(x) = 2−K(x), since
+S(x) =
+
+x′⊒x
+2l(x)b(x′) ≥2l(x)2−K(x),
+(14.79)
+where x′ ⊒x means that x is a preﬁx of x′. Taking logarithms establishes
+the theorem.
+□
+The result can be understood in many ways. For inﬁnite sequences x
+with ﬁnite Kolmogorov complexity,
+S(x1 x2 · · · xl) ≥2l−K(x) = 2l−c
+(14.80)
+for all l. Since 2l is the most that can be won in l gambles at fair odds,
+this scheme does asymptotically as well as the scheme based on knowing
+the sequence in advance. For example, if x = π1π2 · · · πn · · ·, the digits
+in the expansion of π, the wealth at time n will be Sn = S(xn) ≥2n−c
+for all n.
+If the string is actually generated by a Bernoulli process with parameter
+p, then
+S(X1 . . . Xn) ≥2n−nH0(Xn)−2 log n−c ≈2n(1−H0(p)−2 log n
+n −c
+n),
+(14.81)
+which is the same to ﬁrst order as the rate achieved when the gambler
+knows the distribution in advance, as in Chapter 6.
+From the examples we see that the universal gambling scheme on a
+random sequence does asymptotically as well as a scheme that uses prior
+knowledge of the true distribution.
+14.10
+OCCAM’S RAZOR
+In many areas of scientiﬁc research, it is important to choose among
+various explanations of data observed. After choosing the explanation,
+we wish to assign a conﬁdence level to the predictions that ensue from
+the laws that have been deduced. For example, Laplace considered the
+probability that the sun will rise again tomorrow given that it has risen
+every day in recorded history. Laplace’s solution was to assume that the
+rising of the sun was a Bernoulli(θ) process with unknown parameter θ.
+He assumed that θ was uniformly distributed on the unit interval. Using
+
+--- Page 15 ---
+14.10
+OCCAM’S RAZOR
+489
+the observed data, he calculated the posterior probability that the sun will
+rise again tomorrow and found that it was
+P (Xn+1 = 1|Xn = 1, Xn−1 = 1, . . . , X1 = 1)
+= P (Xn+1 = 1, Xn = 1, Xn−1 = 1, . . . , X1 = 1)
+P (Xn = 1, Xn−1 = 1, . . . , X1 = 1)
+=
+ 1
+0 θn+1 dθ
+ 1
+0 θn dθ
+(14.82)
+= n + 1
+n + 2,
+(14.83)
+which he put forward as the probability that the sun will rise on day n + 1
+given that it has risen on days 1 through n.
+Using the ideas of Kolmogorov complexity and universal probability,
+we can provide an alternative approach to the problem. Under the universal
+probability, let us calculate the probability of seeing a 1 next after having
+observed n 1’s in the sequence so far. The conditional probability that
+the next symbol is a 1 is the ratio of the probability of all sequences
+with initial segment 1n and next bit equal to 1 to the probability of all
+sequences with initial segment 1n. The simplest programs carry most of
+the probability; hence we can approximate the probability that the next
+bit is a 1 with the probability of the program that says “Print 1’s forever.”
+Thus,
+
+y
+p(1n1y) ≈p(1∞) = c > 0.
+(14.84)
+Estimating the probability that the next bit is 0 is more difﬁcult. Since any
+program that prints 1n0 . . . yields a description of n, its length should at
+least be K(n), which for most n is about log n + O(log log n), and hence
+ignoring second-order terms, we have
+
+y
+p(1n0y) ≈p(1n0) ≈2−log n ≈1
+n.
+(14.85)
+Hence, the conditional probability of observing a 0 next is
+p(0|1n) =
+p(1n0)
+p(1n0) + p(1∞) ≈
+1
+cn + 1,
+(14.86)
+which is similar to the result p(0|1n) = 1/(n + 1) derived by Laplace.
+
+--- Page 16 ---
+490
+KOLMOGOROV COMPLEXITY
+This type of argument is a special case of Occam’s Razor, a general
+principle governing scientiﬁc research, weighting possible explanations by
+their complexity. William of Occam said “Nunquam ponenda est pluralitas
+sine necesitate”: Explanations should not be multiplied beyond necessity
+[516]. In the end, we choose the simplest explanation that is consistent
+with the data observed. For example, it is easier to accept the general
+theory of relativity than it is to accept a correction factor of c/r3 to the
+gravitational law to explain the precession of the perihelion of Mercury,
+since the general theory explains more with fewer assumptions than does
+a “patched” Newtonian theory.
+14.11
+KOLMOGOROV COMPLEXITY AND UNIVERSAL
+PROBABILITY
+We now prove an equivalence between Kolmogorov complexity and uni-
+versal probability. We begin by repeating the basic deﬁnitions.
+K(x) =
+min
+p:U(p)=x l(p)
+(14.87)
+PU(x) =
+
+p:U(p)=x
+2−l(p).
+(14.88)
+Theorem 14.11.1
+(Equivalence of K(x) and log
+1
+PU (x)).)
+There exists
+a constant c, independent of x, such that
+2−K(x) ≤PU(x) ≤c2−K(x)
+(14.89)
+for all strings x. Thus, the universal probability of a string x is determined
+essentially by its Kolmogorov complexity.
+Remark
+This implies that K(x) and log
+1
+PU(x) have equal status as uni-
+versal complexity measures, since
+K(x) −c′ ≤log
+1
+PU(x) ≤K(x).
+(14.90)
+Recall that the complexity deﬁned with respect to two different computers
+KU and KU′ are essentially equivalent complexity measures if |KU(x) −
+KU′(x)| is bounded. Theorem 14.11.1 shows that KU(x) and log
+1
+PU (x) are
+essentially equivalent complexity measures.
+Notice the striking similarity between the relationship of K(x) and
+log
+1
+PU (x) in Kolmogorov complexity and the relationship of H(X) and
+log
+1
+p(x) in information theory. The ideal Shannon code length assignment
+
+--- Page 17 ---
+14.11
+KOLMOGOROV COMPLEXITY AND UNIVERSAL PROBABILITY
+491
+l(x) = log
+1
+p(x) achieves an average description length H(X), while in
+Kolmogorov complexity theory, the ideal description length log
+1
+PU (x) is
+almost equal to K(X). Thus, log
+1
+p(x) is the natural notion of descriptive
+complexity of x in algorithmic as well as probabilistic settings.
+The upper bound in (14.90) is obvious from the deﬁnitions, but the
+lower bound is more difﬁcult to prove. The result is very surprising, since
+there are an inﬁnite number of programs that print x. From any program
+it is possible to produce longer programs by padding the program with
+irrelevant instructions. The theorem proves that although there are an
+inﬁnite number of such programs, the universal probability is essentially
+determined by the largest term, which is 2−K(x). If PU(x) is large, K(x)
+is small, and vice versa.
+However, there is another way to look at the upper bound that makes
+it less surprising. Consider any computable probability mass function on
+strings p(x). Using this mass function, we can construct a Shannon–Fano
+code (Section 5.9) for the source and then describe each string by the
+corresponding codeword, which will have length log
+1
+p(x). Hence, for
+any computable distribution, we can construct a description of a string
+using not more than log
+1
+p(x) + c bits, which is an upper bound on the
+Kolmogorov complexity K(x). Even though PU(x) is not a computable
+probability mass function, we are able to ﬁnesse the problem using the
+rather involved tree construction procedure described below.
+Proof:
+(of Theorem 14.11.1). The ﬁrst inequality is simple. Let p∗be
+the shortest program for x. Then
+PU(x) =
+
+p:U(p)=x
+2−l(p) ≥2−l(p∗) = 2−K(x),
+(14.91)
+as we wished to show.
+We can rewrite the second inequality as
+K(x) ≤log
+1
+PU(x) + c.
+(14.92)
+Our objective in the proof is to ﬁnd a short program to describe the strings
+that have high PU(x). An obvious idea is some kind of Huffman coding
+based on PU(x), but PU(x) cannot be calculated effectively, hence a proce-
+dure using Huffman coding is not implementable on a computer. Similarly,
+the process using the Shannon–Fano code also cannot be implemented.
+However, if we have the Shannon–Fano code tree, we can reconstruct the
+
+--- Page 18 ---
+492
+KOLMOGOROV COMPLEXITY
+string by looking for the corresponding node in the tree. This is the basis
+for the following tree construction procedure.
+To overcome the problem of noncomputability of PU(x), we use a mod-
+iﬁed approach, trying to construct a code tree directly. Unlike Huffman
+coding, this approach is not optimal in terms of minimum expected code-
+word length. However, it is good enough for us to derive a code for which
+each codeword for x has a length that is within a constant of log
+1
+PU (x).
+Before we get into the details of the proof, let us outline our approach.
+We want to construct a code tree in such a way that strings with high
+probability have low depth. Since we cannot calculate the probability of a
+string, we do not know a priori the depth of the string on the tree. Instead,
+we assign x successively to the nodes of the tree, assigning x to nodes
+closer and closer to the root as our estimate of PU(x) improves. We want
+the computer to be able to recreate the tree and use the lowest depth node
+corresponding to the string x to reconstruct the string.
+We now consider the set of programs and their corresponding outputs
+{(p, x)}. We try to assign these pairs to the tree. But we immediately
+come across a problem—there are an inﬁnite number of programs for a
+given string, and we do not have enough nodes of low depth. However,
+as we shall show, if we trim the list of program-output pairs, we will be
+able to deﬁne a more manageable list that can be assigned to the tree.
+Next, we demonstrate the existence of programs for x of length log
+1
+PU (x).
+Tree construction procedure: For the universal computer U, we simulate
+all programs using the technique explained in Section 14.8. We list all
+binary programs:
+, 0, 1, 00, 01, 10, 11, 000, 001, 010, 011, . . . .
+(14.93)
+Then let the computer execute one clock cycle of  for the ﬁrst stage.
+In the next stage, let the computer execute two clock cycles of  and
+two clock cycles of the program 0. In the third stage, let the computer
+execute three clock cycles of each of the ﬁrst three programs, and so on.
+In this way, the computer will eventually run all possible programs and
+run them for longer and longer times, so that if any program halts, it will
+be discovered to halt eventually. We use this method to produce a list
+of all programs that halt in the order in which they halt, together with
+their associated outputs. For each program and its corresponding output,
+(pk, xk), we calculate nk, which is chosen so that it corresponds to the
+current estimate of PU(x). Speciﬁcally,
+nk =
+
+log
+1
+ˆPU(xk)
+
+,
+(14.94)
+
+--- Page 19 ---
+14.11
+KOLMOGOROV COMPLEXITY AND UNIVERSAL PROBABILITY
+493
+where
+ˆPU(xk) =
+
+(pi,xi):xi=xk,i≤k
+2−l(pi).
+(14.95)
+Note that ˆPU(xk) ↑PU(x) on the subsequence of times k such that xk = x.
+We are now ready to construct a tree. As we add to the list of triplets,
+(pk, xk, nk), of programs that halt, we map some of them onto nodes of
+a binary tree. For purposes of the construction, we must ensure that all
+the ni’s corresponding to a particular xk are distinct. To ensure this, we
+remove from the list all triplets that have the same x and n as a previous
+triplet. This will ensure that there is at most one node at each level of the
+tree that corresponds to a given x.
+Let {(p′
+i, x′
+i, n′
+i) : i = 1, 2, 3, . . .} denote the new list. On the winnowed
+list, we assign the triplet (p′
+k, x′
+k, n′
+k) to the ﬁrst available node at level
+n′
+k + 1. As soon as a node is assigned, all of its descendants become
+unavailable for assignment. (This keeps the assignment preﬁx-free.)
+We illustrate this by means of an example:
+(p1, x1, n1) = (10111, 1110, 5), n1 = 5 because PU(x1) ≥2−l(p1) = 2−5
+(p2, x2, n2) = (11, 10, 2),
+n2 = 2 because PU(x2) ≥2−l(p2) = 2−2
+(p3, x3, n3) = (0, 1110, 1),
+n3 = 1 because PU(x3) ≥2−l(p3) + 2−l(p1)
+= 2−5 + 2−1
+≥2−1
+(p4, x4, n4) = (1010, 1111, 4),
+n4 = 4 because PU(x4) ≥2−l(p4) = 2−4
+(p5, x5, n5) = (101101, 1110, 1), n5 = 1 because PU(x5) ≥2−1 + 2−5 + 2−5
+≥2−1
+(p6, x6, n6) = (100, 1, 3),
+n6 = 3 because PU(x6) ≥2−l(p6) = 2−3.
+...
+(14.96)
+We note that the string x = (1110) appears in positions 1, 3 and 5 in
+the list, but n3 = n5. The estimate of the probability ˆPU(1110) has not
+jumped sufﬁciently for (p5, x5, n5) to survive the cut. Thus the winnowed
+list becomes
+(p′
+1, x′
+1, n′
+1) = (10111, 1110, 5),
+(p′
+2, x′
+2, n′
+2) = (11, 10, 2),
+(p′
+3, x′
+3, n′
+3) = (0, 1110, 1),
+(p′
+4, x′
+4, n′
+4) = (1010, 1111, 4),
+(p′
+5, x′
+5, n′
+5) = (100, 1, 3),
+...
+(14.97)
+The assignment of the winnowed list to nodes of the tree is illustrated in
+Figure 14.3.
+
+--- Page 20 ---
+494
+KOLMOGOROV COMPLEXITY
+(p3, x3, n3), x3 = 110 
+(p2, x2, n2), x2 = 10
+(p5, x5, n5), x5 = 100
+(p4, x4, n4), x4 = 1111
+(p1, x1, n1), x1 = 1110
+FIGURE 14.3. Assignment of nodes.
+In the example, we are able to ﬁnd nodes at level nk + 1 to which
+we can assign the triplets. Now we shall prove that there are always
+enough nodes so that the assignment can be completed. We can perform
+the assignment of triplets to nodes if and only if the Kraft inequality is
+satisﬁed.
+We now drop the primes and deal only with the winnowed list illustrated
+in (14.97). We start with the inﬁnite sum in the Kraft inequality and split
+it according to the output strings:
+∞
+
+k=1
+2−(nk+1) =
+
+x∈{0,1}∗
+
+k:xk=x
+2−(nk+1).
+(14.98)
+We then write the inner sum as
+
+k:xk=x
+2−(nk+1) = 2−1 
+k:xk=x
+2−nk
+(14.99)
+
+--- Page 21 ---
+14.11
+KOLMOGOROV COMPLEXITY AND UNIVERSAL PROBABILITY
+495
+≤2−1 	
+2⌊log PU (x)⌋+ 2⌊log PU (x)⌋−1 + 2⌊log PU (x)⌋−2 + · · ·
+
+(14.100)
+= 2−12⌊log PU (x)⌋
+
+1 + 1
+2 + 1
+4 + · · ·
+
+(14.101)
+= 2−12⌊log PU (x)⌋2
+(14.102)
+≤PU(x),
+(14.103)
+where (14.100) is true because there is at most one node at each level
+that prints out a particular x. More precisely, the nk’s on the winnowed
+list for a particular output string x are all different integers. Hence,
+
+k
+2−(nk+1) ≤
+
+x
+
+k:xk=x
+2−(nk+1) ≤
+
+x
+PU(x) ≤1,
+(14.104)
+and we can construct a tree with the nodes labeled by the triplets.
+If we are given the tree constructed above, it is easy to identify a given
+x by the path to the lowest depth node that prints x. Call this node ˜p.
+(By construction, l( ˜p) ≤log
+1
+PU (x) + 2.) To use this tree in a program
+to print x, we specify ˜p and ask the computer to execute the foregoing
+simulation of all programs. Then the computer will construct the tree as
+described above and wait for the particular node ˜p to be assigned. Since
+the computer executes the same construction as the sender, eventually the
+node ˜p will be assigned. At this point, the computer will halt and print
+out the x assigned to that node.
+This is an effective (ﬁnite, mechanical) procedure for the computer to
+reconstruct x. However, there is no effective procedure to ﬁnd the lowest
+depth node corresponding to x. All that we have proved is that there is
+an (inﬁnite) tree with a node corresponding to x at level ⌈log
+1
+PU (x)⌉+ 1.
+But this accomplishes our purpose.
+With reference to the example, the description of x = 1110 is the path
+to the node (p3, x3, n3) (i.e., 01), and the description of x = 1111 is the
+path 00001. If we wish to describe the string 1110, we ask the computer
+to perform the (simulation) tree construction until node 01 is assigned.
+Then we ask the computer to execute the program corresponding to node
+01 (i.e., p3). The output of this program is the desired string, x = 1110.
+The length of the program to reconstruct x is essentially the length of
+the description of the position of the lowest depth node ˜p corresponding
+
+--- Page 22 ---
+496
+KOLMOGOROV COMPLEXITY
+to x in the tree. The length of this program for x is l( ˜p) + c, where
+l( ˜p) ≤
+
+log
+1
+PU(x)
+
++ 1,
+(14.105)
+and hence the complexity of x satisﬁes
+K(x) ≤
+
+log
+1
+PU(x)
+
++ c.
+(14.106)
+14.12
+KOLMOGOROV SUFFICIENT STATISTIC
+Suppose that we are given a sample sequence from a Bernoulli(θ) process.
+What are the regularities or deviations from randomness in this sequence?
+One way to address the question is to ﬁnd the Kolmogorov complexity
+K(xn|n), which we discover to be roughly nH0(θ) + log n + c. Since,
+for θ ̸= 1
+2, this is much less than n, we conclude that xn has structure
+and is not randomly drawn Bernoulli(1
+2). But what is the structure? The
+ﬁrst attempt to ﬁnd the structure is to investigate the shortest program p∗
+for xn. But the shortest description of p∗is about as long as p∗itself;
+otherwise, we could further compress the description of xn, contradicting
+the minimality of p∗. So this attempt is fruitless.
+A hint at a good approach comes from an examination of the way in
+which p∗describes xn. The program “The sequence has k 1’s; of such
+sequences, it is the ith” is optimal to ﬁrst order for Bernoulli(θ) sequences.
+We note that it is a two-stage description, and all of the structure of the
+sequence is captured in the ﬁrst stage. Moreover, xn is maximally complex
+given the ﬁrst stage of the description. The ﬁrst stage, the description of
+k, requires log(n + 1) bits and deﬁnes a set S = {x ∈{0, 1}n :  xi = k}.
+The second stage requires log |S| = log
+	n
+k
+
+≈nH0(xn) ≈nH0(θ) bits and
+reveals nothing extraordinary about xn.
+We mimic this process for general sequences by looking for a simple
+set S that contains xn. We then follow it with a brute-force description of
+xn in S using log |S| bits. We begin with a deﬁnition of the smallest set
+containing xn that is describable in no more than k bits.
+Deﬁnition
+The Kolmogorov structure function Kk(xn|n) of a binary
+string x ∈{0, 1}n is deﬁned as
+Kk(xn|n) =
+min
+p : l(p) ≤k
+U(p, n) = S
+xn ∈S ⊆{0, 1}n
+log |S|.
+(14.107)
+
+--- Page 23 ---
+14.12
+KOLMOGOROV SUFFICIENT STATISTIC
+497
+The set S is the smallest set that can be described with no more than
+k bits and which includes xn. By U(p, n) = S, we mean that running the
+program p with data n on the universal computer U will print out the
+indicator function of the set S.
+Deﬁnition
+For a given small constant c, let k∗be the least k such that
+Kk(xn|n) + k ≤K(xn|n) + c.
+(14.108)
+Let S∗∗be the corresponding set and let p∗∗be the program that prints out
+the indicator function of S∗∗. Then we shall say that p∗∗is a Kolmogorov
+minimal sufﬁcient statistic for xn.
+Consider the programs p∗describing sets S∗such that
+Kk(xn|n) + k = K(xn|n).
+(14.109)
+All the programs p∗are “sufﬁcient statistics” in that the complexity of
+xn given S∗is maximal. But the minimal sufﬁcient statistic is the shortest
+“sufﬁcient statistic.”
+The equality in the deﬁnition above is up to a large constant depending
+on the computer U. Then k∗corresponds to the least k for which the two-
+stage description of xn is as good as the best single-stage description of
+xn. The second stage of the description merely provides the index of xn
+within the set S∗∗; this takes Kk(xn|n) bits if xn is conditionally maximally
+complex given the set S∗∗. Hence the set S∗∗captures all the structure
+within xn. The remaining description of xn within S∗∗is essentially the
+description of the randomness within the string. Hence S∗∗or p∗∗is called
+the Kolmogorov sufﬁcient statistic for xn.
+This is parallel to the deﬁnition of a sufﬁcient statistic in mathematical
+statistics. A statistic T is said to be sufﬁcient for a parameter θ if the
+distribution of the sample given the sufﬁcient statistic is independent of
+the parameter; that is,
+θ →T (X) →X
+(14.110)
+forms a Markov chain in that order. For the Kolmogorov sufﬁcient statistic,
+the program p∗∗is sufﬁcient for the “structure” of the string xn; the
+remainder of the description of xn is essentially independent of the “struc-
+ture” of xn. In particular, xn is maximally complex given S∗∗.
+A typical graph of the structure function is illustrated in Figure 14.4.
+When k = 0, the only set that can be described is the entire set {0, 1}n,
+
+--- Page 24 ---
+498
+KOLMOGOROV COMPLEXITY
+Slope = −1
+k*
+K(x)
+k
+n
+Kk(x)
+FIGURE 14.4. Kolmogorov sufﬁcient statistic.
+so that the corresponding log set size is n. As we increase k, the size of
+the set drops rapidly until
+k + Kk(xn|n) ≈K(xn|n).
+(14.111)
+After this, each additional bit of k reduces the set by half, and we pro-
+ceed along the line of slope −1 until k = K(xn|n). For k ≥K(xn|n), the
+smallest set that can be described that includes xn is the singleton {xn},
+and hence Kk(xn|n) = 0.
+We will now illustrate the concept with a few examples.
+1. Bernoulli(θ) sequence. Consider a sample of length n from a
+Bernoulli sequence with an unknown parameter θ. As discussed in
+Example 14.2, we can describle this sequence with nH
+	 k
+n
+
++ 1
+2 log n
+bits using a two stage description where we describe k in the ﬁrst
+stage (using log n bits) and then describe the sequence within all
+sequences with k ones (using log
+	n
+k
+
+bits). However, we can use an
+even shorter ﬁrst stage description. Instead of describing k exactly,
+we divide the range of k into bins and describe k only to an accu-
+racy of
+
+k
+n
+n−k
+n
+√n using 1
+2 log n bits. Then we describe the actual
+
+--- Page 25 ---
+14.12
+KOLMOGOROV SUFFICIENT STATISTIC
+499
+Slope = −1
+log n
+1
+2
+nH0(p) +    log n
+k
+n
+Kk(x)
+1
+2
+FIGURE 14.5. Kolmogorov sufﬁcient statistic for a Bernoulli sequence.
+sequence among all sequences whose type is in the same bin as k.
+The size of the set of all sequences with l ones, l ∈k ±
+
+k
+n
+n−k
+n
+√n is
+nH
+	k
+n
+
++ o(n) by Stirling’s formula, so the total description length
+is still nH
+	k
+n
+
++ 1
+2 log n + o(n), but the description length of the
+Kolmogorov sufﬁcient statistics is k∗≈1
+n log n.
+2. Sample from a Markov chain. In the same vein as the preceding
+example, consider a sample from a ﬁrst-order binary Markov chain.
+In this case again, p∗∗will correspond to describing the Markov type
+of the sequence (the number of occurrences of 00’s, 01’s, 10’s, and
+11’s in the sequence); this conveys all the structure in the sequence.
+The remainder of the description will be the index of the sequence
+in the set of all sequences of this Markov type. Hence, in this case,
+k∗≈2( 1
+2 log n) = log n, corresponding to describing two elements
+of the conditional joint type to appropriate accuracy. (The other
+elements of the conditional joint type can be determined from these
+two.)
+3. Mona Lisa.
+Consider an image that consists of a gray circle on a
+white background. The circle is not uniformly gray but Bernoulli
+with parameter θ. This is illustrated in Figure 14.6. In this case, the
+best two-stage description is ﬁrst to describe the size and position of
+
+--- Page 26 ---
+500
+KOLMOGOROV COMPLEXITY
+FIGURE 14.6. Mona Lisa.
+the circle and its average gray level and then to describe the index of
+the circle among all the circles with the same gray level. Assuming
+an n-pixel image (of size √n by √n), there are about n + 1 possible
+gray levels, and there are about (√n)3 distinguishable circles. Hence,
+k∗≈5
+2 log n in this case.
+14.13
+MINIMUM DESCRIPTION LENGTH PRINCIPLE
+A natural extension of Occam’s razor occurs when we need to describe
+data drawn from an unknown distribution. Let X1, X2, . . . , Xn be drawn
+i.i.d. according to probability mass function p(x). We assume that we
+do not know p(x), but know that p(x) ∈P, a class of probability mass
+functions. Given the data, we can estimate the probability mass function in
+P that best ﬁts the data. For simple classes P (e.g., if P has only ﬁnitely
+many distributions), the problem is straightforward, and the maximum
+likelihood procedure [i.e., ﬁnd ˆp ∈P that maximizes ˆp(X1, X2, . . . , Xn)]
+works well. However, if the class P is rich enough, there is a problem
+of overﬁtting the data. For example, if X1, X2, . . . , Xn are continuous
+random variables, and if P is the set of all probability distributions, the
+maximum likelihood estimator given X1, X2, . . . , Xn is a distribution that
+places a single mass point of weight 1
+n at each observed value. Clearly, this
+estimate is too closely tied to actual observed data and does not capture
+any of the structure of the underlying distribution.
+To get around this problem, various methods have been applied. In the
+simplest case, the data are assumed to come from some parametric distri-
+bution (e.g., the normal distribution), and the parameters of the distribution
+are estimated from the data. To validate this method, the data should be
+tested to check whether the distribution “looks” normal, and if the data
+pass the test, we could use this description of the data. A more general
+procedure is to take the maximum likelihood estimate and smooth it out
+to obtain a smooth density. With enough data, and appropriate smoothness
+
+--- Page 27 ---
+SUMMARY
+501
+conditions, it is possible to make good estimates of the original density.
+This process is called kernel density estimation.
+However, the theory of Kolmogorov complexity (or the Kolmogorov
+sufﬁcient statistic) suggests a different procedure: Find the p ∈P that
+minimizes
+Lp(X1, X2, . . . , Xn) = K(p) + log
+1
+p(X1, X2, . . . , Xn).
+(14.112)
+This is the length of a two-stage description of the data, where we ﬁrst
+describe the distribution p and then, given the distribution, construct the
+Shannon code and describe the data using log
+1
+p(X1,X2,...,Xn) bits. This pro-
+cedure is a special case of what is termed the minimum description length
+(MDL) principle: Given data and a choice of models, choose the model
+such that the description of the model plus the conditional description of
+the data is as short as possible.
+SUMMARY
+Deﬁnition.
+The Kolmogorov complexity K(x) of a string x is
+K(x) =
+min
+p: U(p)=x l(p)
+(14.113)
+K(x|l(x)) =
+min
+p: U(p,l(x))=x l(p).
+(14.114)
+Universality of Kolmogorov complexity. There exists a universal
+computer U such that for any other computer A,
+KU(x) ≤KA(x) + cA
+(14.115)
+for any string x, where the constant cA does not depend on x. If U and
+A are universal, |KU(x) −KA(x)| ≤c for all x.
+Upper bound on Kolmogorov complexity
+K(x|l(x)) ≤l(x) + c
+(14.116)
+K(x) ≤K(x|l(x)) + 2 log l(x) + c.
+(14.117)
+
+--- Page 28 ---
+502
+KOLMOGOROV COMPLEXITY
+Kolmogorov complexity and entropy. If X1, X2, . . . are i.i.d. integer-
+valued random variables with entropy H, there exists a constant c such
+that for all n,
+H ≤1
+nEK(Xn|n) ≤H + |X|log n
+n
++ c
+n.
+(14.118)
+Lower bound on Kolmogorov complexity. There are no more than
+2k strings x with complexity K(x) < k. If X1, X2, . . . , Xn are drawn
+according to a Bernoulli(1
+2) process,
+Pr (K(X1X2 . . . Xn|n) ≤n −k) ≤2−k.
+(14.119)
+Deﬁnition
+A sequence x is said to be incompressible if
+K(x1x2 . . . xn|n)/n →1.
+Strong law of large numbers for incompressible sequences
+K(x1, x2, . . . , xn)
+n
+→1 ⇒1
+n
+n
+
+i=1
+xi →1
+2.
+(14.120)
+Deﬁnition
+The universal probability of a string x is
+PU(x) =
+
+p: U(p)=x
+2−l(p) = Pr(U(p) = x).
+(14.121)
+Universality of PU(x). For every computer A,
+PU(x) ≥cAPA(x)
+(14.122)
+for every string x ∈{0, 1}∗, where the constant cA depends only on U
+and A.
+Deﬁnition
+ = 
+p: U(p) halts 2−l(p) = Pr(U(p) halts) is the proba-
+bility that the computer halts when the input p to the computer is a
+binary string drawn according to a Bernoulli(1
+2) process.
+Properties of 
+1.  is not computable.
+2.  is a “philosopher’s stone”.
+3.  is algorithmically random (incompressible).
+
+--- Page 29 ---
+PROBLEMS
+503
+Equivalence of K(x) and log
+
+1
+PU (x)
+
+. There exists a constant c inde-
+pendent of x such that
+log
+1
+PU(x) −K(x)
+ ≤c
+(14.123)
+for all strings x. Thus, the universal probability of a string x is essen-
+tially determined by its Kolmogorov complexity.
+Deﬁnition
+The Kolmogorov structure function Kk(xn|n) of a binary
+string xn ∈{0, 1}n is deﬁned as
+Kk(xn|n) =
+min
+p : l(p) ≤k
+U(p, n) = S
+x ∈S
+log |S|.
+(14.124)
+Deﬁnition
+Let k∗be the least k such that
+Kk∗(xn|n) + k∗= K(xn|n).
+(14.125)
+Let S∗∗be the corresponding set and let p∗∗be the program that prints
+out the indicator function of S∗∗. Then p∗∗is the Kolmogorov minimal
+sufﬁcient statistic for x.
+PROBLEMS
+14.1
+Kolmogorov complexity of two sequences.
+Let x, y ∈{0, 1}∗.
+Argue that K(x, y) ≤K(x) + K(y) + c.
+14.2
+Complexity of the sum
+(a) Argue that K(n) ≤log n + 2 log log n + c.
+(b) Argue that K(n1 + n2) ≤K(n1) + K(n2) + c.
+(c) Give an example in which n1 and n2 are complex but the sum
+is relatively simple.
+14.3
+Images.
+Consider an n × n array x of 0’s and 1’s . Thus, x has
+n2 bits.
+
+--- Page 30 ---
+504
+KOLMOGOROV COMPLEXITY
+Find the Kolmogorov complexity K(x | n) (to ﬁrst order) if:
+(a) x is a horizontal line.
+(b) x is a square.
+(c) x is the union of two lines, each line being vertical or hori-
+zontal.
+14.4
+Do computers reduce entropy?
+Feed a random program P into
+an universal computer. What is the entropy of the corresponding
+output? Speciﬁcally, let X = U(P ), where P is a Bernoulli(1
+2)
+sequence. Here the binary sequence X is either undeﬁned or is
+in {0, 1}∗. Let H(X) be the Shannon entropy of X. Argue that
+H(X) = ∞. Thus, although the computer turns nonsense into
+sense, the output entropy is still inﬁnite.
+14.5
+Monkeys on a computer.
+Suppose that a random program is
+typed into a computer. Give a rough estimate of the probability
+that the computer prints the following sequence:
+(a) 0n followed by any arbitrary sequence.
+(b) π1π2 . . . πn followed by any arbitrary sequence, where πi is
+the ith bit in the expansion of π.
+(c) 0n1 followed by any arbitrary sequence.
+(d) ω1ω2 . . . ωn followed by any arbitrary sequence.
+(e) A proof of the four-color theorem.
+14.6
+Kolmogorov complexity and ternary programs.
+Suppose that the
+input programs for a universal computer U are sequences in
+{0, 1, 2}∗(ternary inputs). Also, suppose that U prints ternary out-
+puts. Let K(x|l(x)) = minU(p,l(x))=x l(p). Show that:
+(a) K(xn|n) ≤n + c.
+(b) |xn ∈{0, 1}∗: K(xn|n) < k| < 3k.
+14.7
+Law of large numbers.
+Using ternary inputs and outputs as in
+Problem 14.14.6, outline an argument demonstrating that if a
+sequence x is algorithmically random [i.e., if K(x|l(x)) ≈l(x)],
+the proportion of 0’s, 1’s, and 2’s in x must each be near 1
+3. It
+may be helpful to use Stirling’s approximation n! ≈(n/e)n.
+
+--- Page 31 ---
+[IMAGE]
+PROBLEMS
+505
+14.8
+Image complexity.
+Consider two binary subsets A and B (of an
+n × n grid): for example,
+Find general upper and lower bounds, in terms of K(A|n) and
+K(B|n), for:
+(a) K(Ac|n).
+(b) K(A ∪B|n).
+(c) K(A ∩B|n).
+14.9
+Random program.
+Suppose that a random program (symbols
+i.i.d. uniform over the symbol set) is fed into the nearest available
+computer. To our surprise the ﬁrst n bits of the binary expansion
+of 1/
+√
+2 are printed out. Roughly what would you say the proba-
+bility is that the next output bit will agree with the corresponding
+bit in the expansion of 1/
+√
+2 ?
+14.10
+Face–vase illusion
+(a) What is an upper bound on the complexity of a pattern on an
+m × m grid that has mirror-image symmetry about a vertical
+axis through the center of the grid and consists of horizontal
+line segments?
+(b) What is the complexity K if the image differs in one cell
+from the pattern described above?
+14.11
+Kolmogorov complexity.
+Assume that n is very large and known.
+Let all rectangles be parallel to the frame.
+
+--- Page 32 ---
+506
+KOLMOGOROV COMPLEXITY
+(a) What is the (maximal) Kolmogorov complexity of the union
+of two rectangles on an n × n grid?
+(b) What if the rectangles intersect at a corner?
+(c) What if they have the same (unknown) shape?
+(d) What if they have the same (unknown) area?
+(e) What is the minimum Kolmogorov complexity of the union
+of two rectangles? That is, what is the simplest union?
+(f) What is the (maximal) Kolmogorov complexity over all images
+(not necessarily rectangles) on an n × n grid?
+14.12
+Encrypted text.
+Suppose that English text xn is encrypted into
+yn by a substitution cypher: a 1-to-1 reassignment of each of the
+27 letters of the alphabet (A–Z, including the space character)
+to itself. Suppose that the Kolmogorov complexity of the text
+xn is K(xn) = n
+4. (This is about right for English text. We’re
+now assuming a 27-symbol programming language, instead of a
+binary symbol-set for the programming language. So, the length
+of the shortest program, using a 27-ary programming language,
+that prints out a particular string of English text of length n, is
+approximately n/4.)
+(a) What is the Kolmogorov complexity of the encryption map?
+
+--- Page 33 ---
+HISTORICAL NOTES
+507
+(b) Estimate the Kolmogorov complexity of the encrypted text
+yn.
+(c) How high must n be before you would expect to be able to
+decode yn?
+14.13
+Kolmogorov complexity.
+Consider the Kolmogorov complexity
+K(n) over the integers n. If a speciﬁc integer n1 has a low Kol-
+mogorov complexity K(n1), by how much can the Kolmogorov
+complexity K(n1 + k) for the integer n1 + k vary from K(n1)?
+14.14
+Complexity of large numbers.
+Let A(n) be the set of positive
+integers x for which a terminating program p of length less than
+or equal to n bits exists that outputs x. Let B(n) be the com-
+plement of A(n) [i.e., B(n) is the set of integers x for which no
+program of length less than or equal to n outputs x]. Let M(n)
+be the maximum integer in A(n), and let S(n) be the minimum
+integer in B(n). What is the Kolmogorov complexity K(M(n))
+(approximately)? What is K(S(n)) (approximately)? Which is
+larger (M(n) or S(n))? Give a reasonable lower bound on M(n)
+and a reasonable upper bound on S(n).
+HISTORICAL NOTES
+The original ideas of Kolmogorov complexity were put forth indepen-
+dently and almost simultaneously by Kolmogorov [321, 322], Solomonoff
+[504], and Chaitin [89]. These ideas were developed further by students of
+Kolmogorov such as Martin-L¨of [374], who deﬁned the notion of algorith-
+mically random sequences and algorithmic tests for randomness, and by
+Levin and Zvonkin [353], who explored the ideas of universal probability
+and its relationship to complexity. A series of papers by Chaitin [90]–[92]
+developed the relationship between algorithmic complexity and mathemat-
+ical proofs. C. P. Schnorr studied the universal notion of randomness and
+related it to gambling in [466]–[468].
+The concept of the Kolmogorov structure function was deﬁned by Kol-
+mogorov at a talk at the Tallin conference in 1973, but these results
+were not published. V’yugin pursues this in [549], where he shows that
+there are some very strange sequences xn that reveal their structure arbi-
+trarily slowly in the sense that Kk(xn|n) = n −k, k < K(xn|n). Zurek
+[606]–[608] addresses the fundamental questions of Maxwell’s demon
+and the second law of thermodynamics by establishing the physical con-
+sequences of Kolmogorov complexity.
+
+--- Page 34 ---
+508
+KOLMOGOROV COMPLEXITY
+Rissanen’s minimum description length (MDL) principle is very close
+in spirit to the Kolmogorov sufﬁcient statistic. Rissanen [445, 446] ﬁnds a
+low-complexity model that yields a high likelihood of the data. Barron and
+Cover [32] argue that the density minimizing K(f ) + log
+1
+ f (Xi) yields
+consistent density estimation.
+A nontechnical introduction to the various measures of complexity can
+be found in a thought-provoking book by Pagels [412]. Additional refer-
+ences to work in the area can be found in a paper by Cover et al. [114] on
+Kolmogorov’s contributions to information theory and algorithmic com-
+plexity. A comprehensive introduction to the ﬁeld, including applications
+of the theory to analysis of algorithms and automata, may be found in the
+book by Li and Vitanyi [354]. Additional coverage may be found in the
+books by Chaitin [86, 93].
+
+--- Page 35 ---
+CHAPTER 15
+NETWORK INFORMATION
+THEORY
+A system with many senders and receivers contains many new elements
+in the communication problem: interference, cooperation, and feedback.
+These are the issues that are the domain of network information theory.
+The general problem is easy to state. Given many senders and receivers
+and a channel transition matrix that describes the effects of the interference
+and the noise in the network, decide whether or not the sources can be
+transmitted over the channel. This problem involves distributed source
+coding (data compression) as well as distributed communication (ﬁnding
+the capacity region of the network). This general problem has not yet been
+solved, so we consider various special cases in this chapter.
+Examples of large communication networks include computer networks,
+satellite networks, and the phone system. Even within a single computer,
+there are various components that talk to each other. A complete theory
+of network information would have wide implications for the design of
+communication and computer networks.
+Suppose that m stations wish to communicate with a common satellite
+over a common channel, as shown in Figure 15.1. This is known as a
+multiple-access channel. How do the various senders cooperate with each
+other to send information to the receiver? What rates of communication are
+achievable simultaneously? What limitations does interference among the
+senders put on the total rate of communication? This is the best understood
+multiuser channel, and the above questions have satisfying answers.
+In contrast, we can reverse the network and consider one TV station
+sending information to m TV receivers, as in Figure 15.2. How does
+the sender encode information meant for different receivers in a common
+signal? What are the rates at which information can be sent to the different
+receivers? For this channel, the answers are known only in special cases.
+Elements of Information Theory, Second Edition,
+By Thomas M. Cover and Joy A. Thomas
+Copyright 2006 John Wiley & Sons, Inc.
+509
+
+--- Page 36 ---
+510
+NETWORK INFORMATION THEORY
+FIGURE 15.1. Multiple-access channel.
+FIGURE 15.2. Broadcast channel.
+There are other channels, such as the relay channel (where there is
+one source and one destination, but one or more intermediate sender–
+receiver pairs that act as relays to facilitate the communication between the
+source and the destination), the interference channel (two senders and two
+receivers with crosstalk), and the two-way channel (two sender–receiver
+pairs sending information to each other). For all these channels, we have
+only some of the answers to questions about achievable communication
+rates and the appropriate coding strategies.
+All these channels can be considered special cases of a general com-
+munication network that consists of m nodes trying to communicate with
+each other, as shown in Figure 15.3. At each instant of time, the ith node
+sends a symbol xi that depends on the messages that it wants to send
+
+--- Page 37 ---
+NETWORK INFORMATION THEORY
+511
+(X1, Y1)
+(X2, Y2)
+(Xm, Ym)
+FIGURE 15.3. Communication network.
+and on past received symbols at the node. The simultaneous transmis-
+sion of the symbols (x1, x2, . . . , xm) results in random received symbols
+(Y1, Y2, . . . , Ym) drawn according to the conditional probability distribu-
+tion p(y(1), y(2), . . . , y(m)|x(1), x(2), . . . , x(m)). Here p(·|·) expresses the
+effects of the noise and interference present in the network. If p(·|·) takes
+on only the values 0 and 1, the network is deterministic.
+Associated with some of the nodes in the network are stochastic data
+sources, which are to be communicated to some of the other nodes in the
+network. If the sources are independent, the messages sent by the nodes
+are also independent. However, for full generality, we must allow the
+sources to be dependent. How does one take advantage of the dependence
+to reduce the amount of information transmitted? Given the probability
+distribution of the sources and the channel transition function, can one
+transmit these sources over the channel and recover the sources at the
+destinations with the appropriate distortion?
+We consider various special cases of network communication. We con-
+sider the problem of source coding when the channels are noiseless and
+without interference. In such cases, the problem reduces to ﬁnding the set
+of rates associated with each source such that the required sources can
+be decoded at the destination with a low probability of error (or appro-
+priate distortion). The simplest case for distributed source coding is the
+Slepian–Wolf source coding problem, where we have two sources that
+must be encoded separately, but decoded together at a common node. We
+consider extensions to this theory when only one of the two sources needs
+to be recovered at the destination.
+The theory of ﬂow in networks has satisfying answers in such domains
+as circuit theory and the ﬂow of water in pipes. For example, for the
+single-source single-sink network of pipes shown in Figure 15.4, the max-
+imum ﬂow from A to B can be computed easily from the Ford–Fulkerson
+theorem . Assume that the edges have capacities Ci as shown. Clearly,
+
+--- Page 38 ---
+512
+NETWORK INFORMATION THEORY
+C1
+A
+B
+C2
+C4
+C5
+C = min{C1 + C2, C2 + C3 + C4, C4 + C5, C1 + C5}
+C3
+FIGURE 15.4. Network of water pipes.
+the maximum ﬂow across any cut set cannot be greater than the sum
+of the capacities of the cut edges. Thus, minimizing the maximum ﬂow
+across cut sets yields an upper bound on the capacity of the network. The
+Ford–Fulkerson theorem [214] shows that this capacity can be achieved.
+The theory of information ﬂow in networks does not have the same
+simple answers as the theory of ﬂow of water in pipes. Although we
+prove an upper bound on the rate of information ﬂow across any cut set,
+these bounds are not achievable in general. However, it is gratifying that
+some problems, such as the relay channel and the cascade channel, admit
+a simple max-ﬂow min-cut interpretation. Another subtle problem in the
+search for a general theory is the absence of a source–channel separation
+theorem, which we touch on brieﬂy in Section 15.10. A complete theory
+combining distributed source coding and network channel coding is still
+a distant goal.
+In the next section we consider Gaussian examples of some of the
+basic channels of network information theory. The physically motivated
+Gaussian channel lends itself to concrete and easily interpreted answers.
+Later we prove some of the basic results about joint typicality that we use
+to prove the theorems of multiuser information theory. We then consider
+various problems in detail: the multiple-access channel, the coding of cor-
+related sources (Slepian–Wolf data compression), the broadcast channel,
+the relay channel, the coding of a random variable with side information,
+and the rate distortion problem with side information. We end with an
+introduction to the general theory of information ﬂow in networks. There
+are a number of open problems in the area, and there does not yet exist a
+comprehensive theory of information networks. Even if such a theory is
+found, it may be too complex for easy implementation. But the theory will
+be able to tell communication designers how close they are to optimality
+and perhaps suggest some means of improving the communication rates.
+
+--- Page 39 ---
+15.1
+GAUSSIAN MULTIPLE-USER CHANNELS
+513
+15.1
+GAUSSIAN MULTIPLE-USER CHANNELS
+Gaussian multiple-user channels illustrate some of the important features
+of network information theory. The intuition gained in Chapter 9 on the
+Gaussian channel should make this section a useful introduction. Here the
+key ideas for establishing the capacity regions of the Gaussian multiple-
+access, broadcast, relay, and two-way channels will be given without
+proof. The proofs of the coding theorems for the discrete memoryless
+counterparts to these theorems are given in later sections of the chapter.
+The basic discrete-time additive white Gaussian noise channel with
+input power P and noise variance N is modeled by
+Yi = Xi + Zi,
+i = 1, 2, . . . ,
+(15.1)
+where the Zi are i.i.d. Gaussian random variables with mean 0 and vari-
+ance N. The signal X = (X1, X2, . . . , Xn) has a power constraint
+1
+n
+n
+
+i=1
+X2
+i ≤P.
+(15.2)
+The Shannon capacity C is obtained by maximizing I (X; Y) over all
+random variables X such that EX2 ≤P and is given (Chapter 9) by
+C = 1
+2 log
+
+1 + P
+N
+
+bits per transmission.
+(15.3)
+In this chapter we restrict our attention to discrete-time memoryless chan-
+nels; the results can be extended to continuous-time Gaussian channels.
+15.1.1
+Single-User Gaussian Channel
+We ﬁrst review the single-user Gaussian channel studied in Chapter 9.
+Here Y = X + Z. Choose a rate R < 1
+2 log(1 + P
+N ). Fix a good (2nR, n)
+codebook of power P . Choose an index w in the set 2nR. Send the
+wth codeword X(w) from the codebook generated above. The receiver
+observes Y = X(w) + Z and then ﬁnds the index ˆw of the codeword
+closest to Y. If n is sufﬁciently large, the probability of error Pr(w ̸= ˆw)
+will be arbitrarily small. As can be seen from the deﬁnition of joint typ-
+icality, this minimum-distance decoding scheme is essentially equivalent
+to ﬁnding the codeword in the codebook that is jointly typical with the
+received vector Y.
+
+--- Page 40 ---
+514
+NETWORK INFORMATION THEORY
+15.1.2
+Gaussian Multiple-Access Channel with m Users
+We consider m transmitters, each with a power P . Let
+Y =
+m
+
+i=1
+Xi + Z.
+(15.4)
+Let
+C
+P
+N
+
+= 1
+2 log
+
+1 + P
+N
+
+(15.5)
+denote the capacity of a single-user Gaussian channel with signal-to-noise
+ratio P/N. The achievable rate region for the Gaussian channel takes on
+the simple form given in the following equations:
+Ri < C
+P
+N
+
+(15.6)
+Ri + Rj < C
+2P
+N
+
+(15.7)
+Ri + Rj + Rk < C
+3P
+N
+
+(15.8)
+...
+(15.9)
+m
+
+i=1
+Ri < C
+mP
+N
+
+.
+(15.10)
+Note that when all the rates are the same, the last inequality dominates
+the others.
+Here we need m codebooks, the ith codebook having 2nRi codewords
+of power P . Transmission is simple. Each of the independent transmitters
+chooses an arbitrary codeword from its own codebook. The users send
+these vectors simultaneously. The receiver sees these codewords added
+together with the Gaussian noise Z.
+Optimal decoding consists of looking for the m codewords, one from
+each codebook, such that the vector sum is closest to Y in Euclidean
+distance. If (R1, R2, . . . , Rm) is in the capacity region given above, the
+probability of error goes to 0 as n tends to inﬁnity.
+
+--- Page 41 ---
+15.1
+GAUSSIAN MULTIPLE-USER CHANNELS
+515
+Remarks
+It is exciting to see in this problem that the sum of the rates
+of the users C(mP/N) goes to inﬁnity with m. Thus, in a cocktail party
+with m celebrants of power P in the presence of ambient noise N, the
+intended listener receives an unbounded amount of information as the
+number of people grows to inﬁnity. A similar conclusion holds, of course,
+for ground communications to a satellite. Apparently, the increasing inter-
+ference as the number of senders m →∞does not limit the total received
+information.
+It is also interesting to note that the optimal transmission scheme here
+does not involve time-division multiplexing. In fact, each of the transmit-
+ters uses all of the bandwidth all of the time.
+15.1.3
+Gaussian Broadcast Channel
+Here we assume that we have a sender of power P and two distant
+receivers, one with Gaussian noise power N1 and the other with Gaussian
+noise power N2. Without loss of generality, assume that N1 < N2. Thus,
+receiver Y1 is less noisy than receiver Y2. The model for the channel is
+Y1 = X + Z1 and Y2 = X + Z2, where Z1 and Z2 are arbitrarily corre-
+lated Gaussian random variables with variances N1 and N2, respectively.
+The sender wishes to send independent messages at rates R1 and R2 to
+receivers Y1 and Y2, respectively.
+Fortunately, all scalar Gaussian broadcast channels belong to the class
+of degraded broadcast channels discussed in Section 15.6.2. Specializing
+that work, we ﬁnd that the capacity region of the Gaussian broadcast
+channel is
+R1 < C
+αP
+N1
+
+(15.11)
+R2 < C
+(1 −α)P
+αP + N2
+
+,
+(15.12)
+where α may be arbitrarily chosen (0 ≤α ≤1) to trade off rate R1 for
+rate R2 as the transmitter wishes.
+To encode the messages, the transmitter generates two codebooks, one
+with power αP at rate R1, and another codebook with power αP at rate
+R2, where R1 and R2 lie in the capacity region above. Then to send
+an index w1 ∈{1, 2, . . . , 2nR1} and w2 ∈{1, 2, . . . , 2nR2} to Y1 and Y2,
+respectively, the transmitter takes the codeword X(w1) from the ﬁrst code-
+book and codeword X(w2) from the second codebook and computes the
+sum. He sends the sum over the channel.
+
+--- Page 42 ---
+516
+NETWORK INFORMATION THEORY
+The receivers must now decode the messages. First consider the bad
+receiver Y2. He merely looks through the second codebook to ﬁnd the clos-
+est codeword to the received vector Y2. His effective signal-to-noise ratio is
+αP/(αP + N2), since Y1’s messageacts as noise toY2. (This canbe proved.)
+The good receiver Y1 ﬁrst decodes Y2’s codeword, which he can accom-
+plish because of his lower noise N1. He subtracts this codeword ˆX2 from
+Y1. He then looks for the codeword in the ﬁrst codebook closest to
+Y1 −ˆX2. The resulting probability of error can be made as low as desired.
+A nice dividend of optimal encoding for degraded broadcast channels is
+that the better receiver Y1 always knows the message intended for receiver
+Y2 in addition to the message intended for himself.
+15.1.4
+Gaussian Relay Channel
+For the relay channel, we have a sender X and an ultimate intended
+receiver Y. Also present is the relay channel, intended solely to help the
+receiver. The Gaussian relay channel (Figure 15.31 in Section 15.7) is
+given by
+Y1 = X + Z1,
+(15.13)
+Y = X + Z1 + X1 + Z2,
+(15.14)
+where Z1 and Z2 are independent zero-mean Gaussian random variables
+with variance N1 and N2, respectively. The encoding allowed by the relay
+is the causal sequence
+X1i = fi(Y11, Y12, . . . , Y1i−1).
+(15.15)
+Sender X has power P and sender X1 has power P1. The capacity is
+C = max
+0≤α≤1 min
+
+C
+P + P1 + 2√αP P1
+N1 + N2
+
+, C
+αP
+N1
+
+,
+(15.16)
+where α = 1 −α. Note that if
+P1
+N2
+≥P
+N1
+,
+(15.17)
+it can be seen that C = C(P/N1),which is achieved by α = 1. The channel
+appears to be noise-free after the relay, and the capacity C(P/N1) from
+X to the relay can be achieved. Thus, the rate C(P/(N1 + N2)) without
+the relay is increased by the presence of the relay to C(P/N1). For large
+
+--- Page 43 ---
+15.1
+GAUSSIAN MULTIPLE-USER CHANNELS
+517
+N2 and for P1/N2 ≥P/N1, we see that the increment in rate is from
+C(P/(N1 + N2)) ≈0 to C(P/N1).
+Let R1 < C(αP/N1). Two codebooks are needed. The ﬁrst codebook
+has 2nR1 words of power αP . The second has 2nR0 codewords of power
+αP . We shall use codewords from these codebooks successively to cre-
+ate the opportunity for cooperation by the relay. We start by sending a
+codeword from the ﬁrst codebook. The relay now knows the index of
+this codeword since R1 < C(αP/N1), but the intended receiver has a list
+of possible codewords of size 2n(R1−C(αP/(N1+N2))). This list calculation
+involves a result on list codes.
+In the next block, the transmitter and the relay wish to cooperate to
+resolve the receiver’s uncertainty about the codeword sent previously that
+is on the receiver’s list. Unfortunately, they cannot be sure what this list
+is because they do not know the received signal Y. Thus, they randomly
+partition the ﬁrst codebook into 2nR0 cells with an equal number of code-
+words in each cell. The relay, the receiver, and the transmitter agree on
+this partition. The relay and the transmitter ﬁnd the cell of the partition
+in which the codeword from the ﬁrst codebook lies and cooperatively
+send the codeword from the second codebook with that index. That is, X
+and X1 send the same designated codeword. The relay, of course, must
+scale this codeword so that it meets his power constraint P1. They now
+transmit their codewords simultaneously. An important point to note here
+is that the cooperative information sent by the relay and the transmitter
+is sent coherently. So the power of the sum as seen by the receiver Y is
+(
+√
+αP + √P1)2.
+However, this does not exhaust what the transmitter does in the second
+block. He also chooses a fresh codeword from the ﬁrst codebook, adds it
+“on paper” to the cooperative codeword from the second codebook, and
+sends the sum over the channel.
+The reception by the ultimate receiver Y in the second block involves
+ﬁrst ﬁnding the cooperative index from the second codebook by looking
+for the closest codeword in the second codebook. He subtracts the code-
+word from the received sequence and then calculates a list of indices of
+size 2nR0 corresponding to all codewords of the ﬁrst codebook that might
+have been sent in the second block.
+Now it is time for the intended receiver to complete computing the
+codeword from the ﬁrst codebook sent in the ﬁrst block. He takes his list
+of possible codewords that might have been sent in the ﬁrst block and
+intersects it with the cell of the partition that he has learned from the
+cooperative relay transmission in the second block. The rates and powers
+have been chosen so that it is highly probable that there is only one
+
+--- Page 44 ---
+518
+NETWORK INFORMATION THEORY
+codeword in the intersection. This is Y’s guess about the information sent
+in the ﬁrst block.
+We are now in steady state. In each new block, the transmitter and the
+relay cooperate to resolve the list uncertainty from the previous block. In
+addition, the transmitter superimposes some fresh information from his
+ﬁrst codebook to this transmission from the second codebook and trans-
+mits the sum. The receiver is always one block behind, but for sufﬁciently
+many blocks, this does not affect his overall rate of reception.
+15.1.5
+Gaussian Interference Channel
+The interference channel has two senders and two receivers. Sender 1
+wishes to send information to receiver 1. He does not care what receiver
+2 receives or understands; similarly with sender 2 and receiver 2. Each
+channel interferes with the other. This channel is illustrated in Figure 15.5.
+It is not quite a broadcast channel since there is only one intended receiver
+for each sender, nor is it a multiple access channel because each receiver
+is only interested in what is being sent by the corresponding transmitter.
+For symmetric interference, we have
+Y1 = X1 + aX2 + Z1
+(15.18)
+Y2 = X2 + aX1 + Z2,
+(15.19)
+where Z1, Z2 are independent N(0, N) random variables. This channel has
+not been solved in general even in the Gaussian case. But remarkably, in
+the case of high interference, it can be shown that the capacity region of
+this channel is the same as if there were no interference whatsoever.
+To achieve this, generate two codebooks, each with power P and rate
+C(P/N). Each sender independently chooses a word from his book and
+X1
+Y1
+X2
+Y2
+Z1 ~
+(0,N )
+Z2 ~
+(0,N )
+a
+a
+FIGURE 15.5. Gaussian interference channel.
+
+--- Page 45 ---
+15.1
+GAUSSIAN MULTIPLE-USER CHANNELS
+519
+sends it. Now, if the interference a satisﬁes C(a2P/(P + N)) > C(P/N),
+the ﬁrst transmitter understands perfectly the index of the second transmit-
+ter. He ﬁnds it by the usual technique of looking for the closest codeword
+to his received signal. Once he ﬁnds this signal, he subtracts it from
+his waveform received. Now there is a clean channel between him and
+his sender. He then searches the sender’s codebook to ﬁnd the closest
+codeword and declares that codeword to be the one sent.
+15.1.6
+Gaussian Two-Way Channel
+The two-way channel is very similar to the interference channel, with the
+additional provision that sender 1 is attached to receiver 2 and sender 2
+is attached to receiver 1, as shown in Figure 15.6. Hence, sender 1 can
+use information from previous received symbols of receiver 2 to decide
+what to send next. This channel introduces another fundamental aspect
+of network information theory: namely, feedback. Feedback enables the
+senders to use the partial information that each has about the other’s
+message to cooperate with each other.
+The capacity region of the two-way channel is not known in general.
+This channel was ﬁrst considered by Shannon [486], who derived upper
+and lower bounds on the region (see Problem 15.15). For Gaussian chan-
+nels, these two bounds coincide and the capacity region is known; in
+fact, the Gaussian two-way channel decomposes into two independent
+channels.
+Let P1 and P2 be the powers of transmitters 1 and 2, respectively,
+and let N1 and N2 be the noise variances of the two channels. Then
+the rates R1 < C(P1/N1) and R2 < C(P2/N2) can be achieved by the
+techniques described for the interference channel. In this case, we generate
+two codebooks of rates R1 and R2. Sender 1 sends a codeword from the
+ﬁrst codebook. Receiver 2 receives the sum of the codewords sent by the
+p(y1, y2|x1, x2)
+X1
+Y1
+X2
+Y2
+FIGURE 15.6. Two-way channel.
+
+--- Page 46 ---
+520
+NETWORK INFORMATION THEORY
+two senders plus some noise. He simply subtracts out the codeword of
+sender 2 and he has a clean channel from sender 1 (with only the noise of
+variance N1). Hence, the two-way Gaussian channel decomposes into two
+independent Gaussian channels. But this is not the case for the general
+two-way channel; in general, there is a trade-off between the two senders
+so that both of them cannot send at the optimal rate at the same time.
+15.2
+JOINTLY TYPICAL SEQUENCES
+We have previewed the capacity results for networks by considering mul-
+tiuser Gaussian channels. We begin a more detailed analysis in this section,
+where we extend the joint AEP proved in Chapter 7 to a form that we
+will use to prove the theorems of network information theory. The joint
+AEP will enable us to calculate the probability of error for jointly typical
+decoding for the various coding schemes considered in this chapter.
+Let (X1, X2, . . . , Xk) denote a ﬁnite collection of discrete random vari-
+ables with some ﬁxed joint distribution, p(x(1), x(2), . . . , x(k)), (x(1), x(2),
+. . . , x(k)) ∈X1 × X2 × · · · × Xk. Let S denote an ordered subset of these
+random variables and consider n independent copies of S. Thus,
+Pr{S = s} =
+n
+
+i=1
+Pr{Si = si},
+s ∈Sn.
+(15.20)
+For example, if S = (Xj, Xl), then
+Pr{S = s} = Pr
+
+(Xj, Xl) = (xj, xl)
+
+(15.21)
+=
+n
+
+i=1
+p(xij, xil).
+(15.22)
+To be explicit, we will sometimes use X(S) for S. By the law of large
+numbers, for any subset S of random variables,
+−1
+n log p(S1, S2, . . . , Sn) = −1
+n
+n
+
+i=1
+log p(Si) →H(S),
+(15.23)
+where the convergence takes place with probability 1 for all 2k subsets,
+S ⊆{X(1), X(2), . . . , X(k)}.
+
+--- Page 47 ---
+15.2
+JOINTLY TYPICAL SEQUENCES
+521
+Deﬁnition
+The set A(n)
+ǫ
+of ǫ-typical n-sequences (x1, x2, . . . , xk) is
+deﬁned by
+A(n)
+ǫ (X(1), X(2), . . . , X(k))
+= A(n)
+ǫ
+=
+
+(x1, x2, . . . , xk) :
+				−1
+n log p(s) −H(S)
+				 < ǫ, ∀S ⊆{X(1), X(2), . . . ,
+X(k)}
+
+.
+(15.24)
+Let A(n)
+ǫ (S) denote the restriction of A(n)
+ǫ
+to the coordinates of S. Thus,
+if S = (X1, X2), we have
+A(n)
+ǫ (X1, X2) = {(x1, x2) :
+				−1
+n log p(x1, x2) −H(X1, X2)
+				 < ǫ,
+				−1
+n log p(x1) −H(X1)
+				 < ǫ,
+				−1
+n log p(x2) −H(X2)
+				 < ǫ}.
+(15.25)
+Deﬁnition
+We will use the notation an
+.= 2n(b±ǫ) to mean that
+				
+1
+n log an −b
+				 < ǫ
+(15.26)
+for n sufﬁciently large.
+Theorem 15.2.1
+For any ǫ > 0, for sufﬁciently large n,
+1. P (A(n)
+ǫ (S)) ≥1 −ǫ,
+∀S ⊆{X(1), X(2), . . . , X(k)}.
+(15.27)
+2. s ∈A(n)
+ǫ (S) ⇒p(s) .= 2n(H(S)±ǫ).
+(15.28)
+3. |A(n)
+ǫ (S)|
+.= 2n(H(S)±2ǫ).
+(15.29)
+
+--- Page 48 ---
+522
+NETWORK INFORMATION THEORY
+4. Let S1, S2 ⊆{X(1), X(2), . . . , X(k)}. If (s1, s2) ∈A(n)
+ǫ (S1, S2), then
+p(s1|s2)
+.= 2−n(H(S1|S2)±2ǫ).
+(15.30)
+Proof
+1. This follows from the law of large numbers for the random variables
+in the deﬁnition of A(n)
+ǫ (S).
+2. This follows directly from the deﬁnition of A(n)
+ǫ (S).
+3. This follows from
+1 ≥
+
+s∈A(n)
+ǫ (S)
+p(s)
+(15.31)
+≥
+
+s∈A(n)
+ǫ (S)
+2−n(H(S)+ǫ)
+(15.32)
+= |A(n)
+ǫ (S)|2−n(H(S)+ǫ).
+(15.33)
+If n is sufﬁciently large, we can argue that
+1 −ǫ ≤
+
+s∈A(n)
+ǫ (S)
+p(s)
+(15.34)
+≤
+
+s∈A(n)
+ǫ (S)
+2−n(H(S)−ǫ)
+(15.35)
+= |A(n)
+ǫ (S)|2−n(H(S)−ǫ).
+(15.36)
+Combining (15.33) and (15.36), we have |A(n)
+ǫ (S)| .= 2n(H(S)±2ǫ) for
+sufﬁciently large n.
+4. For (s1, s2) ∈A(n)
+ǫ (S1, S2), we have p(s1)
+.= 2−n(H(S1)±ǫ) and
+p(s1, s2)
+.= 2−n(H(S1,S2)±ǫ). Hence,
+p(s2|s1) = p(s1, s2)
+p(s1)
+.= 2−n(H(S2|S1)±2ǫ).
+□
+(15.37)
+The next theorem bounds the number of conditionally typical sequences
+for a given typical sequence.
+
+--- Page 49 ---
+15.2
+JOINTLY TYPICAL SEQUENCES
+523
+Theorem 15.2.2
+Let S1, S2 be two subsets of X(1), X(2), . . . , X(k). For
+any ǫ > 0, deﬁne A(n)
+ǫ (S1|s2) to be the set of s1 sequences that are jointly ǫ-
+typical with a particular s2 sequence. If s2 ∈A(n)
+ǫ (S2), then for sufﬁciently
+large n, we have
+|A(n)
+ǫ (S1|s2)| ≤2n(H(S1|S2)+2ǫ)
+(15.38)
+and
+(1 −ǫ)2n(H(S1|S2)−2ǫ) ≤
+
+s2
+p(s2)|A(n)
+ǫ (S1|s2)|.
+(15.39)
+Proof:
+As in part 3 of Theorem 15.2.1, we have
+1 ≥
+
+s1∈A(n)
+ǫ (S1|s2)
+p(s1|s2)
+(15.40)
+≥
+
+s1∈A(n)
+ǫ (S1|s2)
+2−n(H(S1|S2)+2ǫ)
+(15.41)
+= |A(n)
+ǫ (S1|s2)|2−n(H(S1|S2)+2ǫ).
+(15.42)
+If n is sufﬁciently large, we can argue from (15.27) that
+1 −ǫ ≤
+
+s2
+p(s2)
+
+s1∈A(n)
+ǫ (S1|s2)
+p(s1|s2)
+(15.43)
+≤
+
+s2
+p(s2)
+
+s1∈A(n)
+ǫ (S1|s2)
+2−n(H(S1|S2)−2ǫ)
+(15.44)
+=
+
+s2
+p(s2)|A(n)
+ǫ (S1|s2)|2−n(H(S1|S2)−2ǫ).
+□
+(15.45)
+To calculate the probability of decoding error, we need to know the
+probability that conditionally independent sequences are jointly typical.
+Let S1, S2, and S3 be three subsets of {X(1), X(2), . . . , X(k)}. If S′
+1 and
+S′
+2 are conditionally independent given S′
+3 but otherwise share the same
+pairwise marginals of (S1, S2, S3), we have the following probability of
+joint typicality.
+
+--- Page 50 ---
+524
+NETWORK INFORMATION THEORY
+Theorem 15.2.3
+Let A(n)
+ǫ
+denote the typical set for the probability mass
+function p(s1, s2, s3), and let
+P (S′
+1 = s1, S′
+2 = s2, S′
+3 = s3) =
+n
+
+i=1
+p(s1i|s3i)p(s2i|s3i)p(s3i).
+(15.46)
+Then
+P {(S′
+1, S′
+2, S′
+3) ∈A(n)
+ǫ }
+.= 2n(I(S1;S2|S3)±6ǫ).
+(15.47)
+Proof:
+We use the
+.= notation from (15.26) to avoid calculating the
+upper and lower bounds separately. We have
+P {(S′
+1, S′
+2, S′
+3) ∈A(n)
+ǫ }
+=
+
+(s1, s2, s3)∈A(n)
+ǫ
+p(s3)p(s1|s3)p(s2|s3)
+(15.48)
+.= |A(n)
+ǫ (S1, S2, S3)|2−n(H(S3)±ǫ)2−n(H(S1|S3)±2ǫ)2−n(H(S2|S3)±2ǫ)
+(15.49)
+.= 2n(H(S1,S2,S3)±ǫ)2−n(H(S3)±ǫ)2−n(H(S1|S3)±2ǫ)2−n(H(S2|S3)±2ǫ)
+(15.50)
+.= 2−n(I(S1;S2|S3)±6ǫ).
+□
+(15.51)
+We will specialize this theorem to particular choices of S1, S2, and S3
+for the various achievability proofs in this chapter.
+15.3
+MULTIPLE-ACCESS CHANNEL
+The ﬁrst channel that we examine in detail is the multiple-access channel,
+in which two (or more) senders send information to a common receiver.
+The channel is illustrated in Figure 15.7. A common example of this
+channel is a satellite receiver with many independent ground stations, or
+a set of cell phones communicating with a base station. We see that the
+senders must contend not only with the receiver noise but with interference
+from each other as well.
+Deﬁnition
+A discrete memoryless multiple-access channel consists of
+three alphabets, X1, X2, and Y, and a probability transition matrix
+p(y|x1, x2).
+
+--- Page 51 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+525
+p(y |x1, x2)
+X1
+Y1
+W1
+(W1, W2)
+W2
+Y
+^
+^
+FIGURE 15.7. Multiple-access channel.
+Deﬁnition
+A ((2nR1, 2nR2), n) code for the multiple-access channel con-
+sists of two sets of integers W1 = {1, 2, . . . , 2nR1} and W2 = {1, 2, . . . ,
+2nR2}, called the message sets, two encoding functions,
+X1 : W1 →Xn
+1
+(15.52)
+and
+X2 : W2 →Xn
+2,
+(15.53)
+and a decoding function,
+g : Yn →W1 × W2.
+(15.54)
+There are two senders and one receiver for this channel. Sender 1
+chooses an index W1 uniformly from the set {1, 2, . . . , 2nR1} and sends
+the corresponding codeword over the channel. Sender 2 does likewise.
+Assuming that the distribution of messages over the product set W1 × W2
+is uniform (i.e., the messages are independent and equally likely), we
+deﬁne the average probability of error for the ((2nR1, 2nR2), n) code as
+follows:
+P (n)
+e
+=
+1
+2n(R1+R2)
+
+(w1,w2)∈W1×W2
+Pr
+
+g(Y n) ̸= (w1, w2)|(w1, w2) sent
+
+.
+(15.55)
+Deﬁnition
+A rate pair (R1, R2) is said to be achievable for the multiple-
+access channel if there exists a sequence of ((2nR1, 2nR2), n) codes with
+P (n)
+e
+→0.
+
+--- Page 52 ---
+526
+NETWORK INFORMATION THEORY
+Deﬁnition
+The capacity region of the multiple-access channel is the
+closure of the set of achievable (R1, R2) rate pairs.
+An example of the capacity region for a multiple-access channel is
+illustrated in Figure 15.8. We ﬁrst state the capacity region in the form of
+a theorem.
+Theorem 15.3.1
+(Multiple-access channel capacity)
+The capacity of
+a multiple-access channel (X1 × X2, p(y|x1, x2), Y) is the closure of the
+convex hull of all (R1, R2) satisfying
+R1 < I (X1; Y|X2),
+(15.56)
+R2 < I (X2; Y|X1),
+(15.57)
+R1 + R2 < I (X1, X2; Y)
+(15.58)
+for some product distribution p1(x1)p2(x2) on X1 × X2.
+Before we prove that this is the capacity region of the multiple-access
+channel, let us consider a few examples of multiple-access channels:
+Example 15.3.1
+(Independent binary symmetric channels)
+Assume
+that we have two independent binary symmetric channels, one from sender
+1 and the other from sender 2, as shown in Figure 15.9. In this case, it is
+obvious from the results of Chapter 7 that we can send at rate 1 −H(p1)
+over the ﬁrst channel and at rate 1 −H(p2) over the second channel.
+R1
+R2
+0
+C2
+C1
+FIGURE 15.8. Capacity region for a multiple-access channel.
+
+--- Page 53 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+527
+X2
+X2
+Y
+FIGURE 15.9. Independent binary symmetric channels.
+Since the channels are independent, there is no interference between the
+senders. The capacity region in this case is shown in Figure 15.10.
+Example 15.3.2
+(Binary multiplier channel)
+Consider a multiple-
+access channel with binary inputs and output
+Y = X1X2.
+(15.59)
+Such a channel is called a binary multiplier channel. It is easy to see
+that by setting X2 = 1, we can send at a rate of 1 bit per transmission
+from sender 1 to the receiver. Similarly, setting X1 = 1, we can achieve
+R2 = 1. Clearly, since the output is binary, the combined rates R1 + R2
+of sender 1 and sender 2 cannot be more than 1 bit. By timesharing, we
+can achieve any combination of rates such that R1 + R2 = 1. Hence the
+capacity region is as shown in Figure 15.11.
+Example 15.3.3
+(Binary
+erasure
+multiple-access
+channel)
+This
+multiple-access channel has binary inputs, X1 = X2 = {0, 1}, and a
+ternary output, Y = X1 + X2. There is no ambiguity in (X1, X2) if Y = 0
+or Y = 2 is received; but Y = 1 can result from either (0,1) or (1,0).
+
+--- Page 54 ---
+528
+NETWORK INFORMATION THEORY
+R2
+R1
+C2 = 1 −H(p2)
+C1 = 1 −H(p1)
+0
+FIGURE 15.10. Capacity region for independent BSCs.
+R2
+R1
+0
+C2 = 1
+C1 = 1
+FIGURE 15.11. Capacity region for binary multiplier channel.
+We now examine the achievable rates on the axes. Setting X2 = 0, we
+can send at a rate of 1 bit per transmission from sender 1. Similarly, setting
+X1 = 0, we can send at a rate R2 = 1. This gives us two extreme points of
+the capacity region. Can we do better? Let us assume that R1 = 1, so that
+the codewords of X1 must include all possible binary sequences; X1 would
+look like a Bernoulli( 1
+2) process. This acts like noise for the transmission
+from X2. For X2, the channel looks like the channel in Figure 15.12.
+This is the binary erasure channel of Chapter 7. Recalling the results, the
+
+--- Page 55 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+529
+0
+0
+1
+1
+?
+1
+2
+1
+2
+1
+2
+1
+2
+FIGURE 15.12. Equivalent single-user channel for user 2 of a binary erasure multiple-
+access channel.
+R2
+R1
+C2 = 1
+C1 = 1
+1
+0
+2
+1
+2
+FIGURE 15.13. Capacity region for binary erasure multiple-access channel.
+capacity of this channel is 1
+2 bit per transmission. Hence when sending at
+maximum rate 1 for sender 1, we can send an additional 1
+2 bit from sender
+2. Later, after deriving the capacity region, we can verify that these rates
+are the best that can be achieved. The capacity region for a binary erasure
+channel is illustrated in Figure 15.13.
+
+--- Page 56 ---
+530
+NETWORK INFORMATION THEORY
+15.3.1
+Achievability of the Capacity Region for the
+Multiple-Access Channel
+We now prove the achievability of the rate region in Theorem 15.3.1;
+the proof of the converse will be left until the next section. The proof
+of achievability is very similar to the proof for the single-user channel.
+We therefore only emphasize the points at which the proof differs from
+the single-user case. We begin by proving the achievability of rate pairs
+that satisfy (15.58) for some ﬁxed product distribution p(x1)p(x2). In
+Section 15.3.3 we extend this to prove that all points in the convex hull
+of (15.58) are achievable.
+Proof:
+(Achievability in Theorem 15.3.1). Fix p(x1, x2) = p1(x1)p2(x2).
+Codebook generation: Generate 2nR1 independent codewords X1(i),
+i ∈{1, 2, . . . , 2nR1},
+of
+length
+n,
+generating
+each
+element
+i.i.d.
+∼
+n
+i=1 p1(x1i). Similarly, generate 2nR2 independent codewords X2(j),
+j ∈{1, 2, . . . , 2nR2}, generating each element i.i.d. ∼
+n
+i=1 p2(x2i). These
+codewords form the codebook, which is revealed to the senders and the
+receiver.
+Encoding: To send index i, sender 1 sends the codeword X1(i). Simi-
+larly, to send j, sender 2 sends X2(j).
+Decoding: Let A(n)
+ǫ
+denote the set of typical (x1, x2, y) sequences. The
+receiver Y n chooses the pair (i, j) such that
+(x1(i), x2(j), y) ∈A(n)
+ǫ
+(15.60)
+if such a pair (i, j) exists and is unique; otherwise, an error is de-
+clared.
+Analysis of the probability of error: By the symmetry of the random
+code construction, the conditional probability of error does not depend on
+which pair of indices is sent. Thus, the conditional probability of error
+is the same as the unconditional probability of error. So, without loss of
+generality, we can assume that (i, j) = (1, 1) was sent.
+We have an error if either the correct codewords are not typical with
+the received sequence or there is a pair of incorrect codewords that are
+typical with the received sequence. Deﬁne the events
+Eij = {(X1(i), X2(j), Y) ∈A(n)
+ǫ }.
+(15.61)
+
+--- Page 57 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+531
+Then by the union of events bound,
+P (n)
+e
+= P
+
+Ec
+11
+
+∪(i,j)̸=(1,1)Eij
+
+(15.62)
+≤P (Ec
+11) +
+
+i̸=1, j=1
+P (Ei1) +
+
+i=1, j̸=1
+P (E1j)
++
+
+i̸=1, j̸=1
+P (Eij),
+(15.63)
+where P is the conditional probability given that (1, 1) was sent. From the
+AEP, P (Ec
+11) →0. By Theorems 15.2.1 and 15.2.3, for i ̸= 1, we have
+P (Ei1) = P ((X1(i), X2(1), Y) ∈A(n)
+ǫ )
+(15.64)
+=
+
+(x1,x2,y)∈A(n)
+ǫ
+p(x1)p(x2, y)
+(15.65)
+≤|A(n)
+ǫ |2−n(H(X1)−ǫ)2−n(H(X2,Y)−ǫ)
+(15.66)
+≤2−n(H(X1)+H(X2,Y)−H(X1,X2,Y)−3ǫ)
+(15.67)
+= 2−n(I(X1;X2,Y)−3ǫ)
+(15.68)
+= 2−n(I(X1;Y|X2)−3ǫ),
+(15.69)
+where the equivalence of (15.68) and (15.69) follows from the indepen-
+dence of X1 and X2, and the consequent I (X1; X2, Y) = I (X1; X2) +
+I (X1; Y|X2) = I (X1; Y|X2). Similarly, for j ̸= 1,
+P (E1j) ≤2−n(I(X2;Y|X1)−3ǫ),
+(15.70)
+and for i ̸= 1, j ̸= 1,
+P (Eij) ≤2−n(I(X1,X2;Y)−4ǫ).
+(15.71)
+It follows that
+P (n)
+e
+≤P (Ec
+11) + 2nR12−n(I(X1;Y|X2)−3ǫ) + 2nR22−n(I(X2;Y|X1)−3ǫ)
++2n(R1+R2)2−n(I(X1,X2;Y)−4ǫ).
+(15.72)
+Since ǫ > 0 is arbitrary, the conditions of the theorem imply that each
+term tends to 0 as n →∞. Thus, the probability of error, conditioned
+
+--- Page 58 ---
+532
+NETWORK INFORMATION THEORY
+on a particular codeword being sent, goes to zero if the conditions of the
+theorem are met. The above bound shows that the average probability of
+error, which by symmetry is equal to the probability for an individual
+codeword, averaged over all choices of codebooks in the random code
+construction, is arbitrarily small. Hence, there exists at least one code C∗
+with arbitrarily small probability of error.
+This completes the proof of achievability of the region in (15.58) for
+a ﬁxed input distribution. Later, in Section 15.3.3, we show that time-
+sharing allows any (R1, R2) in the convex hull to be achieved, completing
+the proof of the forward part of the theorem.
+□
+15.3.2
+Comments on the Capacity Region for the
+Multiple-Access Channel
+We have now proved the achievability of the capacity region of the
+multiple-access channel, which is the closure of the convex hull of the set
+of points (R1, R2) satisfying
+R1 < I (X1; Y|X2),
+(15.73)
+R2 < I (X2; Y|X1),
+(15.74)
+R1 + R2 < I (X1, X2; Y)
+(15.75)
+for some distribution p1(x1)p2(x2) on
+X1 × X2. For a particular
+p1(x1)p2(x2), the region is illustrated in Figure 15.14.
+R2
+R1
+I(X2;Y|X1)
+D
+C
+B
+A
+I(X2;Y)
+I(X1;Y)
+I(X1;Y|X2)
+0
+FIGURE 15.14. Achievable region of multiple-access channel for a ﬁxed input distribution.
+
+--- Page 59 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+533
+Let us now interpret the corner points in the region. Point A corresponds
+to the maximum rate achievable from sender 1 to the receiver when sender
+2 is not sending any information. This is
+max R1 =
+max
+p1(x1)p2(x2) I (X1; Y|X2).
+(15.76)
+Now for any distribution p1(x1)p2(x2),
+I (X1; Y|X2) =
+
+x2
+p2(x2)I (X1; Y|X2 = x2)
+(15.77)
+≤max
+x2 I (X1; Y|X2 = x2),
+(15.78)
+since the average is less than the maximum. Therefore, the maximum
+in (15.76) is attained when we set X2 = x2, where x2 is the value that
+maximizes the conditional mutual information between X1 and Y. The
+distribution of X1 is chosen to maximize this mutual information. Thus,
+X2 must facilitate the transmission of X1 by setting X2 = x2.
+The point B corresponds to the maximum rate at which sender 2 can
+send as long as sender 1 sends at his maximum rate. This is the rate that
+is obtained if X1 is considered as noise for the channel from X2 to Y. In
+this case, using the results from single-user channels, X2 can send at a
+rate I (X2; Y). The receiver now knows which X2 codeword was used and
+can “subtract” its effect from the channel. We can consider the channel
+now to be an indexed set of single-user channels, where the index is the
+X2 symbol used. The X1 rate achieved in this case is the average mutual
+information, where the average is over these channels, and each channel
+occurs as many times as the corresponding X2 symbol appears in the
+codewords. Hence, the rate achieved is
+
+x2
+p(x2)I (X1; Y|X2 = x2) = I (X1; Y|X2).
+(15.79)
+Points C and D correspond to B and A, respectively, with the roles of the
+senders reversed. The noncorner points can be achieved by time-sharing.
+Thus, we have given a single-user interpretation and justiﬁcation for the
+capacity region of a multiple-access channel.
+The idea of considering other signals as part of the noise, decoding
+one signal, and then “subtracting” it from the received signal is a very
+useful one. We will come across the same concept again in the capacity
+calculations for the degraded broadcast channel.
+
+--- Page 60 ---
+534
+NETWORK INFORMATION THEORY
+15.3.3
+Convexity of the Capacity Region of the Multiple-Access
+Channel
+We now recast the capacity region of the multiple-access channel in order
+to take into account the operation of taking the convex hull by introducing
+a new random variable. We begin by proving that the capacity region is
+convex.
+Theorem 15.3.2
+The capacity region C of a multiple-access channel
+is convex [i.e., if (R1, R2) ∈C and (R′
+1, R′
+2) ∈C, then (λR1 + (1 −λ)R′
+1,
+λR2 + (1 −λ)R′
+2) ∈C for 0 ≤λ ≤1].
+Proof:
+The idea is time-sharing. Given two sequences of codes at dif-
+ferent rates R = (R1, R2) and R′ = (R′
+1, R′
+2), we can construct a third
+codebook at a rate λR + (1 −λ)R′ by using the ﬁrst codebook for the
+ﬁrst λn symbols and using the second codebook for the last (1 −λ)n
+symbols. The number of X1 codewords in the new code is
+2nλR12n(1−λ)R′
+1 = 2n(λR1+(1−λ)R′
+1),
+(15.80)
+and hence the rate of the new code is λR + (1 −λ)R′. Since the overall
+probability of error is less than the sum of the probabilities of error for
+each of the segments, the probability of error of the new code goes to 0
+and the rate is achievable.
+□
+We can now recast the statement of the capacity region for the multiple-
+access channel using a time-sharing random variable Q. Before we prove
+this result, we need to prove a property of convex sets deﬁned by lin-
+ear inequalities like those of the capacity region of the multiple-access
+channel. In particular, we would like to show that the convex hull of two
+such regions deﬁned by linear constraints is the region deﬁned by the
+convex combination of the constraints. Initially, the equality of these two
+sets seems obvious, but on closer examination, there is a subtle difﬁculty
+due to the fact that some of the constraints might not be active. This is
+best illustrated by an example. Consider the following two sets deﬁned
+by linear inequalities:
+C1 = {(x, y) : x ≥0, y ≥0, x ≤10, y ≤10, x + y ≤100} (15.81)
+C2 = {(x, y) : x ≥0, y ≥0, x ≤20, y ≤20, x + y ≤20}.
+(15.82)
+In this case, the (1
+2, 1
+2) convex combination of the constraints deﬁnes the
+region
+C = {(x, y) : x ≥0, y ≥0, x ≤15, y ≤15, x + y ≤60}.
+(15.83)
+
+--- Page 61 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+535
+It is not difﬁcult to see that any point in C1 or C2 has x + y < 20, so
+any point in the convex hull of the union of C1 and C2 satisﬁes this
+property. Thus, the point (15,15), which is in C, is not in the convex hull
+of (C1 ∪C2). This example also hints at the cause of the problem—in the
+deﬁnition for C1, the constraint x + y ≤100 is not active. If this constraint
+were replaced by a constraint x + y ≤a, where a ≤20, the above result
+of the equality of the two regions would be true, as we now prove.
+We restrict ourselves to the pentagonal regions that occur as compo-
+nents of the capacity region of a two-user multiple-access channel. In
+this case, the capacity region for a ﬁxed p(x1)p(x2) is deﬁned by three
+mutual informations, I (X1; Y|X2), I (X2; Y|X1), and I (X1, X2; Y), which
+we shall call I1, I2, and I3, respectively. For each p(x1)p(x2), there is a
+corresponding vector, I = (I1, I2, I3), and a rate region deﬁned by
+CI = {(R1, R2) : R1 ≥0, R2 ≥0, R1 ≤I1, R2 ≤I2, R1 + R2 ≤I3}.
+(15.84)
+Also, since for any distribution p(x1)p(x2), we have I (X2; Y|X1) =
+H(X2|X1) −H(X2|Y, X1) = H(X2) −H(X2|Y, X1) = I (X2; Y, X1) =
+I (X2; Y) + I (X2; X1|Y) ≥I (X2; Y),
+and
+therefore,
+I (X1; Y|X2) +
+I (X2; Y|X1) ≥I (X1; Y|X2)+ I (X2; Y) = I (X1, X2; Y), we have for all
+vectors I that I1 + I2 ≥I3. This property will turn out to be critical for
+the theorem.
+Lemma 15.3.1
+Let I1, I2 ∈R3 be two vectors of mutual informations
+that deﬁne rate regions CI1 and CI2, respectively, as given in (15.84).
+For 0 ≤λ ≤1, deﬁne Iλ = λI1 + (1 −λ)I2, and let CIλ be the rate region
+deﬁned by Iλ. Then
+CIλ = λCI1 + (1 −λ)CI2.
+(15.85)
+Proof:
+We shall prove this theorem in two parts. We ﬁrst show that
+any point in the (λ, 1 −λ) mix of the sets CI1 and CI2 satisﬁes the con-
+straints Iλ. But this is straightforward, since any point in CI1 satisﬁes the
+inequalities for I1 and a point in CI2 satisﬁes the inequalities for I2, so
+the (λ, 1 −λ) mix of these points will satisfy the (λ, 1 −λ) mix of the
+constraints. Thus, it follows that
+λCI1 + (1 −λ)CI2 ⊆CIλ.
+(15.86)
+To prove the reverse inclusion, we consider the extreme points of the
+pentagonal regions. It is not difﬁcult to see that the rate regions deﬁned
+in (15.84) are always in the form of a pentagon, or in the extreme case
+
+--- Page 62 ---
+536
+NETWORK INFORMATION THEORY
+when I3 = I1 + I2, in the form of a rectangle. Thus, the capacity region
+CI can be also deﬁned as a convex hull of ﬁve points:
+(0, 0), (I1, 0), (I1, I3 −I1), (I3 −I2, I2), (0, I2).
+(15.87)
+Consider the region deﬁned by Iλ; it, too, is deﬁned by ﬁve points. Take
+any one of the points, say (I (λ)
+3
+−I (λ)
+2 , I (λ)
+2 ). This point can be written as
+the (λ, 1 −λ) mix of the points (I (1)
+3
+−I (1)
+2 , I (1)
+2 ) and (I (2)
+3
+−I (2)
+2 , I (2)
+2 ),
+and therefore lies in the convex mixture of CI1 and CI2. Thus, all extreme
+points of the pentagon CIλ lie in the convex hull of CI1 and CI2, or
+CIλ ⊆λCI1 + (1 −λ)CI2.
+(15.88)
+Combining the two parts, we have the theorem.
+□
+In the proof of the theorem, we have implicitly used the fact that all
+the rate regions are deﬁned by ﬁve extreme points (at worst, some of
+the points are equal). All ﬁve points deﬁned by the I vector were within
+the rate region. If the condition I3 ≤I1 + I2 is not satisﬁed, some of the
+points in (15.87) may be outside the rate region and the proof collapses.
+As an immediate consequence of the above lemma, we have the fol-
+lowing theorem:
+Theorem 15.3.3
+The convex hull of the union of the rate regions deﬁned
+by individual I vectors is equal to the rate region deﬁned by the convex
+hull of the I vectors.
+These arguments on the equivalence of the convex hull operation on
+the rate regions with the convex combinations of the mutual informa-
+tions can be extended to the general m-user multiple-access channel. A
+proof along these lines using the theory of polymatroids is developed in
+Han [271].
+Theorem 15.3.4
+The set of achievable rates of a discrete memoryless
+multiple-access channel is given by the closure of the set of all (R1, R2)
+pairs satisfying
+R1 < I (X1; Y|X2, Q),
+R2 < I (X2; Y|X1, Q),
+R1 + R2 < I (X1, X2; Y|Q)
+(15.89)
+
+--- Page 63 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+537
+for some choice of the joint distribution p(q)p(x1|q)p(x2|q)p(y|x1, x2)
+with |Q| ≤4.
+Proof:
+We will show that every rate pair lying in the region deﬁned in
+(15.89) is achievable (i.e., it lies in the convex closure of the rate pairs
+satisfying Theorem 15.3.1). We also show that every point in the convex
+closure of the region in Theorem 15.3.1 is also in the region deﬁned
+in (15.89).
+Consider a rate point R satisfying the inequalities (15.89) of the theo-
+rem. We can rewrite the right-hand side of the ﬁrst inequality as
+I (X1; Y|X2, Q) =
+m
+
+q=1
+p(q)I (X1; Y|X2, Q = q)
+(15.90)
+=
+m
+
+q=1
+p(q)I (X1; Y|X2)p1q,p2q,
+(15.91)
+where m is the cardinality of the support set of Q. We can expand the
+other mutual informations similarly.
+For simplicity in notation, we consider a rate pair as a vector and
+denote a pair satisfying the inequalities in (15.58) for a speciﬁc input
+product distribution p1q(x1)p2q(x2) as Rp1,p2 as Rq. Speciﬁcally, let Rq =
+(R1q, R2q) be a rate pair satisfying
+R1q < I (X1; Y|X2)p1q(x1)p2q(x2),
+(15.92)
+R2q < I (X2; Y|X1)p1q(x1)p2q(x2),
+(15.93)
+R1q + R2q < I (X1, X2; Y)p1q(x1)p2q(x2).
+(15.94)
+Then by Theorem 15.3.1, Rq = (R1q, R2q) is achievable. Then since R
+satisﬁes (15.89) and we can expand the right-hand sides as in (15.91),
+there exists a setof pairs Rq satisfying (15.94) such that
+R =
+m
+
+q=1
+p(q)Rq.
+(15.95)
+Since a convex combination of achievable rates is achievable, so is R.
+Hence, we have proven the achievability of the region in the theorem.
+The same argument can be used to show that every point in the convex
+closure of the region in (15.58) can be written as the mixture of points
+satisfying (15.94) and hence can be written in the form (15.89).
+
+--- Page 64 ---
+538
+NETWORK INFORMATION THEORY
+The converse is proved in the next section. The converse shows that
+all achievable rate pairs are of the form (15.89), and hence establishes
+that this is the capacity region of the multiple-access channel. The cardi-
+nality bound on the time-sharing random variable Q is a consequence of
+Carath´eodory’s theorem on convex sets. See the discussion below.
+□
+The proof of the convexity of the capacity region shows that any convex
+combination of achievable rate pairs is also achievable. We can continue
+this process, taking convex combinations of more points. Do we need to
+use an arbitrary number of points ? Will the capacity region be increased?
+The following theorem says no.
+Theorem 15.3.5
+(Carath´eodory)
+Any point in the convex closure of a
+compact set A in a d-dimensional Euclidean space can be represented as
+a convex combination of d + 1 or fewer points in the original set A.
+Proof:
+The proof may be found in Eggleston [183] and Gr¨unbaum
+[263].
+□
+This theorem allows us to restrict attention to a certain ﬁnite convex
+combination when calculating the capacity region. This is an important
+property because without it, we would not be able to compute the capacity
+region in (15.89), since we would never know whether using a larger
+alphabet Q would increase the region.
+In the multiple-access channel, the bounds deﬁne a connected compact
+set in three dimensions. Therefore, all points in its closure can be deﬁned
+as the convex combination of at most four points. Hence, we can restrict
+the cardinality of Q to at most 4 in the above deﬁnition of the capacity
+region.
+Remark
+Many of the cardinality bounds may be slightly improved by
+introducing other considerations. For example, if we are only interested
+in the boundary of the convex hull of A as we are in capacity theorems,
+a point on the boundary can be expressed as a mixture of d points of
+A, since a point on the boundary lies in the intersection of A with a
+(d −1)-dimensional support hyperplane.
+15.3.4
+Converse for the Multiple-Access Channel
+We have so far proved the achievability of the capacity region. In this
+section we prove the converse.
+
+--- Page 65 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+539
+Proof:
+(Converse to Theorems 15.3.1 and 15.3.4). We must show that
+given any sequence of ((2nR1, 2nR2), n) codes with P (n)
+e
+→0, the rates
+must satisfy
+R1 ≤I (X1; Y|X2, Q),
+R2 ≤I (X2; Y|X1, Q),
+R1 + R2 ≤I (X1, X2; Y|Q)
+(15.96)
+for some choice of random variable Q deﬁned on {1, 2, 3, 4} and joint
+distribution p(q)p(x1|q)p(x2|q)p(y|x1, x2). Fix n. Consider the given
+code of block length n. The joint distribution on W1 × W2 × Xn
+1 × Xn
+2 ×
+Yn is well deﬁned. The only randomness is due to the random uniform
+choice of indices W1 and W2 and the randomness induced by the channel.
+The joint distribution is
+p(w1, w2, xn
+1, xn
+2, yn) =
+1
+2nR1
+1
+2nR2 p(xn
+1|w1)p(xn
+2|w2)
+n
+
+i=1
+p(yi|x1i, x2i),
+(15.97)
+where p(xn
+1|w1) is either 1 or 0, depending on whether xn
+1 = x1(w1), the
+codeword corresponding to w1, or not, and similarly, p(xn
+2|w2) = 1 or 0,
+according to whether xn
+2 = x2(w2) or not. The mutual informations that
+follow are calculated with respect to this distribution.
+By the code construction, it is possible to estimate (W1, W2) from the
+received sequence Y n with a low probability of error. Hence, the condi-
+tional entropy of (W1, W2) given Y n must be small. By Fano’s inequality,
+H(W1, W2|Y n) ≤n(R1 + R2)P (n)
+e
++ H(P (n)
+e
+)
+△= nǫn.
+(15.98)
+It is clear that ǫn →0 as P (n)
+e
+→0. Then we have
+H(W1|Y n) ≤H(W1, W2|Y n) ≤nǫn,
+(15.99)
+H(W2|Y n) ≤H(W1, W2|Y n) ≤nǫn.
+(15.100)
+We can now bound the rate R1 as
+nR1 = H(W1)
+(15.101)
+= I (W1; Y n) + H(W1|Y n)
+(15.102)
+(a)
+≤I (W1; Y n) + nǫn
+(15.103)
+
+--- Page 66 ---
+540
+NETWORK INFORMATION THEORY
+(b)
+≤I (Xn
+1(W1); Y n) + nǫn
+(15.104)
+= H(Xn
+1(W1)) −H(Xn
+1(W1)|Y n) + nǫn
+(15.105)
+(c)
+≤H(Xn
+1(W1)|Xn
+2(W2)) −H(Xn
+1(W1)|Y n, Xn
+2(W2)) + nǫn
+(15.106)
+= I (Xn
+1(W1); Y n|Xn
+2(W2)) + nǫn
+(15.107)
+= H(Y n|Xn
+2(W2)) −H(Y n|Xn
+1(W1), Xn
+2(W2)) + nǫn
+(15.108)
+(d)
+= H(Y n|Xn
+2(W2)) −
+n
+
+i=1
+H(Yi|Y i−1, Xn
+1(W1), Xn
+2(W2)) + nǫn
+(15.109)
+(e)
+= H(Y n|Xn
+2(W2)) −
+n
+
+i=1
+H(Yi|X1i, X2i) + nǫn
+(15.110)
+(f)
+≤
+n
+
+i=1
+H(Yi|Xn
+2(W2)) −
+n
+
+i=1
+H(Yi|X1i, X2i) + nǫn
+(15.111)
+(g)
+≤
+n
+
+i=1
+H(Yi|X2i) −
+n
+
+i=1
+H(Yi|X1i, X2i) + nǫn
+(15.112)
+=
+n
+
+i=1
+I (X1i; Yi|X2i) + nǫn,
+(15.113)
+where
+(a) follows from Fano’s inequality
+(b) follows from the data-processing inequality
+(c) follows from the fact that since W1 and W2 are independent,
+so are Xn
+1(W1) and Xn
+2(W2), and hence H(Xn
+1(W1)|Xn
+2(W2)) =
+H(Xn
+1(W1)), and H(Xn
+1(W1)|Y n, Xn
+2(W2)) ≤H(Xn
+1(W1)|Y n) by
+conditioning
+(d) follows from the chain rule
+(e) follows from the fact that Yi depends only on X1i and X2i by the
+memoryless property of the channel
+(f) follows from the chain rule and removing conditioning
+(g) follows from removing conditioning
+Hence, we have
+R1 ≤1
+n
+n
+
+i=1
+I (X1i; Yi|X2i) + ǫn.
+(15.114)
+
+--- Page 67 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+541
+Similarly, we have
+R2 ≤1
+n
+n
+
+i=1
+I (X2i; Yi|X1i) + ǫn.
+(15.115)
+To bound the sum of the rates, we have
+n(R1 + R2) = H(W1, W2)
+(15.116)
+= I (W1, W2; Y n) + H(W1, W2|Y n)
+(15.117)
+(a)
+≤I (W1, W2; Y n) + nǫn
+(15.118)
+(b)
+≤I (Xn
+1(W1), Xn
+2(W2); Y n) + nǫn
+(15.119)
+= H(Y n) −H(Y n|Xn
+1(W1), Xn
+2(W2)) + nǫn
+(15.120)
+(c)
+= H(Y n) −
+n
+
+i=1
+H(Yi|Y i−1, Xn
+1(W1), Xn
+2(W2)) + nǫn
+(15.121)
+(d)
+= H(Y n) −
+n
+
+i=1
+H(Yi|X1i, X2i) + nǫn
+(15.122)
+(e)
+≤
+n
+
+i=1
+H(Yi) −
+n
+
+i=1
+H(Yi|X1i, X2i) + nǫn
+(15.123)
+=
+n
+
+i=1
+I (X1i, X2i; Yi) + nǫn,
+(15.124)
+where
+(a) follows from Fano’s inequality
+(b) follows from the data-processing inequality
+(c) follows from the chain rule
+(d) follows from the fact that Yi depends only on X1i and X2i and is
+conditionally independent of everything else
+(e) follows from the chain rule and removing conditioning
+Hence, we have
+R1 + R2 ≤1
+n
+n
+
+i=1
+I (X1i, X2i; Yi) + ǫn.
+(15.125)
+
+--- Page 68 ---
+542
+NETWORK INFORMATION THEORY
+The expressions in (15.114), (15.115), and (15.125) are the averages of the
+mutual informations calculated at the empirical distributions in column i
+of the codebook. We can rewrite these equations with the new variable Q,
+where Q = i ∈{1, 2, . . . , n} with probability 1
+n. The equations become
+R1 ≤1
+n
+n
+
+i=1
+I (X1i; Yi|X2i) + ǫn
+(15.126)
+= 1
+n
+n
+
+i=1
+I (X1q; Yq|X2q, Q = i) + ǫn
+(15.127)
+= I (X1Q; YQ|X2Q, Q) + ǫn
+(15.128)
+= I (X1; Y|X2, Q) + ǫn,
+(15.129)
+where X1
+△= X1Q, X2
+△= X2Q, and Y
+△= YQ are new random variables
+whose distributions depend on Q in the same way as the distributions
+of X1i, X2i and Yi depend on i. Since W1 and W2 are independent, so are
+X1i(W1) and X2i(W2), and hence
+Pr (X1i(W1) = x1, X2i(W2) = x2)
+△= Pr{X1Q = x1|Q = i} Pr{X2Q = x2|Q = i}.
+(15.130)
+Hence, taking the limit as n →∞, P (n)
+e
+→0, we have the following
+converse:
+R1 ≤I (X1; Y|X2, Q),
+R2 ≤I (X2; Y|X1, Q),
+R1 + R2 ≤I (X1, X2; Y|Q)
+(15.131)
+for some choice of joint distribution p(q)p(x1|q)p(x2|q)p(y|x1, x2). As
+in Section 15.3.3, the region is unchanged if we limit the cardinality of
+Q to 4.
+This completes the proof of the converse.
+□
+Thus, the achievability of the region of Theorem 15.3.1 was proved in
+Section 15.3.1. In Section 15.3.3 we showed that every point in the region
+deﬁned by (15.96) was also achievable. In the converse, we showed that
+the region in (15.96) was the best we can do, establishing that this is
+indeed the capacity region of the channel. Thus, the region in (15.58)
+
+--- Page 69 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+543
+cannot be any larger than the region in (15.96), and this is the capacity
+region of the multiple-access channel.
+15.3.5
+m-User Multiple-Access Channels
+We will now generalize the result derived for two senders to m senders,
+m ≥2. The multiple-access channel in this case is shown in Figure 15.15.
+We send independent indices w1, w2, . . . , wm over the channel from
+the senders 1, 2, . . . , m, respectively. The codes, rates, and achievability
+are all deﬁned in exactly the same way as in the two-sender case.
+Let S ⊆{1, 2, . . . , m}. Let Sc denote the complement of S. Let
+R(S) = 
+i∈S Ri, and let X(S) = {Xi : i ∈S}. Then we have the follow-
+ing theorem.
+Theorem 15.3.6
+The capacity region of the m-user multiple-access
+channel is the closure of the convex hull of the rate vectors satisfying
+R(S) ≤I (X(S); Y|X(Sc))
+for all S ⊆{1, 2, . . . , m}
+(15.132)
+for some product distribution p1(x1)p2(x2) · · · pm(xm).
+Proof:
+The proof contains no new ideas. There are now 2m −1 terms in
+the probability of error in the achievability proof and an equal number of
+inequalities in the proof of the converse. Details are left to the reader. □
+In general, the region in (15.132) is a beveled box.
+p(y|x1,x2,...,xm)
+X1
+X2
+Xm
+...
+Y
+FIGURE 15.15. m-user multiple-access channel.
+
+--- Page 70 ---
+544
+NETWORK INFORMATION THEORY
+15.3.6
+Gaussian Multiple-Access Channels
+We now discuss the Gaussian multiple-access channel of Section 15.1.2
+in somewhat more detail.
+Two senders, X1 and X2, communicate to the single receiver, Y. The
+received signal at time i is
+Yi = X1i + X2i + Zi,
+(15.133)
+where {Zi} is a sequence of independent, identically distributed, zero-
+mean Gaussian random variables with variance N (Figure 15.16). We
+assume that there is a power constraint Pj on sender j; that is, for each
+sender, for all messages, we must have
+1
+n
+n
+
+i=1
+x2
+ji(wj) ≤Pj,
+wj ∈{1, 2, . . . , 2nRj },
+j = 1, 2. (15.134)
+Just as the proof of achievability of channel capacity for the discrete
+case (Chapter 7) was extended to the Gaussian channel (Chapter 9), we
+can extend the proof for the discrete multiple-access channel to the Gaus-
+sian multiple-access channel. The converse can also be extended similarly,
+so we expect the capacity region to be the convex hull of the set of rate
+pairs satisfying
+R1 ≤I (X1; Y|X2),
+(15.135)
+R2 ≤I (X2; Y|X1),
+(15.136)
+R1 + R2 ≤I (X1, X2; Y)
+(15.137)
+for some input distribution f1(x1)f2(x2) satisfying EX2
+1 ≤P1 and
+EX2
+2 ≤P2.
+Zn
+Xn
+1
+W1
+W2
+P1
+Xn
+2
+P2
+Yn
+(W1, W2)
+^
+^
+FIGURE 15.16. Gaussian multiple-access channel.
+
+--- Page 71 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+545
+Now, we can expand the mutual information in terms of relative
+entropy, and thus
+I (X1; Y|X2) = h(Y|X2) −h(Y|X1, X2)
+(15.138)
+= h(X1 + X2 + Z|X2) −h(X1 + X2 + Z|X1, X2)
+(15.139)
+= h(X1 + Z|X2) −h(Z|X1, X2)
+(15.140)
+= h(X1 + Z|X2) −h(Z)
+(15.141)
+= h(X1 + Z) −h(Z)
+(15.142)
+= h(X1 + Z) −1
+2 log(2πe)N
+(15.143)
+≤1
+2 log(2πe)(P1 + N) −1
+2 log(2πe)N
+(15.144)
+= 1
+2 log
+
+1 + P1
+N
+
+,
+(15.145)
+where (15.141) follows from the fact that Z is independent of X1 and
+X2, (15.142) from the independence of X1 and X2, and (15.144) from
+the fact that the normal maximizes entropy for a given second moment.
+Thus, the maximizing distribution is X1 ∼N(0, P1) and X2 ∼N(0, P2)
+with X1 and X2 independent. This distribution simultaneously maximizes
+the mutual information bounds in (15.135)–(15.137).
+Deﬁnition
+We deﬁne the channel capacity function
+C(x)
+△= 1
+2 log(1 + x),
+(15.146)
+corresponding to the channel capacity of a Gaussian white-noise channel
+with signal-to-noise ratio x (Figure 15.17). Then we write the bound on
+R1 as
+R1 ≤C
+P1
+N
+
+.
+(15.147)
+Similarly,
+R2 ≤C
+P2
+N
+
+(15.148)
+
+--- Page 72 ---
+546
+NETWORK INFORMATION THEORY
+R2
+R1
+D
+P2
+N
+C
+C
+B
+A
+0
+P1
+N
+C
+P2
+P1+ N
+C
+P1
+P2 + N
+C
+FIGURE 15.17. Gaussian multiple-access channel capacity.
+and
+R1 + R2 ≤C
+P1 + P2
+N
+
+.
+(15.149)
+These upper bounds are achieved when X1 ∼N(0, P1) and X2 =
+N(0, P2) and deﬁne the capacity region. The surprising fact about these
+inequalities is that the sum of the rates can be as large as C
+
+P1+P2
+N
+
+,
+which is that rate achieved by a single transmitter sending with a power
+equal to the sum of the powers.
+The interpretation of the corner points is very similar to the interpre-
+tation of the achievable rate pairs for a discrete multiple-access channel
+for a ﬁxed input distribution. In the case of the Gaussian channel, we can
+consider decoding as a two-stage process: In the ﬁrst stage, the receiver
+decodes the second sender, considering the ﬁrst sender as part of the noise.
+This decoding will have low probability of error if R2 < C(
+P2
+P1+N ). After
+the second sender has been decoded successfully, it can be subtracted out
+and the ﬁrst sender can be decoded correctly if R1 < C(P1
+N ). Hence, this
+argument shows that we can achieve the rate pairs at the corner points
+of the capacity region by means of single-user operations. This process,
+called onion-peeling, can be extended to any number of users.
+If we generalize this to m senders with equal power, the total rate
+is C
+mP
+N
+
+, which goes to ∞as m →∞. The average rate per sender,
+1
+mC( mP
+N ), goes to 0. Thus, when the total number of senders is very large,
+
+--- Page 73 ---
+15.3
+MULTIPLE-ACCESS CHANNEL
+547
+so that there is a lot of interference, we can still send a total amount of
+information that is arbitrarily large even though the rate per individual
+sender goes to 0.
+The capacity region described above corresponds to code-division mul-
+tiple access (CDMA), where separate codes are used for the different
+senders and the receiver decodes them one by one. In many practical situ-
+ations, though, simpler schemes, such as frequency-division multiplexing
+or time-division multiplexing, are used. With frequency-division multiplex-
+ing, the rates depend on the bandwidth allotted to each sender. Consider
+the case of two senders with powers P1 and P2 using nonintersecting
+frequency bands with bandwidths W1 and W2, where W1 + W2 = W (the
+total bandwidth). Using the formula for the capacity of a single-user ban-
+dlimited channel, the following rate pair is achievable:
+R1 = W1 log
+
+1 +
+P1
+NW1
+
+,
+(15.150)
+R2 = W2 log
+
+1 +
+P2
+NW2
+
+.
+(15.151)
+As we vary W1 and W2, we trace out the curve as shown in Figure 15.18.
+This curve touches the boundary of the capacity region at one point,
+which corresponds to allotting bandwidth to each channel proportional to
+the power in that channel. We conclude that no allocation of frequency
+bands to radio stations can be optimal unless the allocated powers are
+proportional to the bandwidths.
+In time-division multiple access (TDMA), time is divided into slots,
+and each user is allotted a slot during which only that user will transmit
+and every other user remains quiet. If there are two users, each of power
+P , the rate that each sends when the other is silent is C(P/N). Now if
+time is divided into equal-length slots, and every odd slot is allocated
+to user 1 and every even slot to user 2, the average rate that each user
+achieves is 1
+2C(P/N). This system is called naive time-division multiple
+access (TDMA). However, it is possible to do better if we notice that since
+user 1 is sending only half the time, it is possible for him to use twice
+the power during his transmissions and still maintain the same average
+power constraint. With this modiﬁcation, it is possible for each user to
+send information at a rate
+1
+2C(2P/N). By varying the lengths of the
+slots allotted to each sender (and the instantaneous power used during the
+slot), we can achieve the same capacity region as FDMA with different
+bandwidth allocations.
+As Figure 15.18 illustrates, in general the capacity region is larger than
+that achieved by time- or frequency-division multiplexing. But note that
+
+--- Page 74 ---
+548
+NETWORK INFORMATION THEORY
+R2
+R1
+P2
+N
+C
+0
+P1
+N
+C
+P2
+P1+ N
+C
+P1
+P2+ N
+C
+FIGURE 15.18. Gaussian multiple-access channel capacity with FDMA and TDMA.
+the multiple-access capacity region derived above is achieved by use of
+a common decoder for all the senders. However, it is also possible to
+achieve the capacity region by onion-peeling, which removes the need
+for a common decoder and instead, uses a sequence of single-user codes.
+CDMA achieves the entire capacity region, and in addition, allows new
+users to be added easily without changing the codes of the current users.
+On the other hand, TDMA and FDMA systems are usually designed for
+a ﬁxed number of users and it is possible that either some slots are empty
+(if the actual number of users is less than the number of slots) or some
+users are left out (if the number of users is greater than the number
+of slots). However, in many practical systems, simplicity of design is
+an important consideration, and the improvement in capacity due to the
+multiple-access ideas presented earlier may not be sufﬁcient to warrant
+the increased complexity.
+For a Gaussian multiple-access system with m sources with powers
+P1, P2, . . . , Pm and ambient noise of power N, we can state the equivalent
+of Gauss’s law for any set S in the form
+
+i∈S
+Ri = total rate of information ﬂow from S
+(15.152)
+≤C
+
+i∈S Pi
+N
+
+.
+(15.153)
+
+--- Page 75 ---
+15.4
+ENCODING OF CORRELATED SOURCES
+549
+15.4
+ENCODING OF CORRELATED SOURCES
+We now turn to distributed data compression. This problem is in many
+ways the data compression dual to the multiple-access channel problem.
+We know how to encode a source X. A rate R > H(X) is sufﬁcient. Now
+suppose that there are two sources (X, Y) ∼p(x, y). A rate H(X, Y)
+is sufﬁcient if we are encoding them together. But what if the X and
+Y sources must be described separately for some user who wishes to
+reconstruct both X and Y? Clearly, by separately encoding X and Y, it is
+seen that a rate R = Rx + Ry > H(X) + H(Y) is sufﬁcient. However, in
+a surprising and fundamental paper by Slepian and Wolf [502], it is shown
+that a total rate R = H(X, Y) is sufﬁcient even for separate encoding of
+correlated sources.
+Let (X1, Y1), (X2, Y2), . . . be a sequence of jointly distributed random
+variables i.i.d. ∼p(x, y). Assume that the X sequence is available at a
+location A and the Y sequence is available at a location B. The situation
+is illustrated in Figure 15.19.
+Before we proceed to the proof of this result, we will give a few
+deﬁnitions.
+Deﬁnition
+A ((2nR1, 2nR2), n) distributed source code for the joint
+source (X, Y) consists of two encoder maps,
+f1 : Xn →{1, 2, . . . , 2nR1},
+(15.154)
+f2 : Yn →{1, 2, . . . , 2nR2},
+(15.155)
+X
+(X, Y )
+(X, Y )
+Encoder
+Decoder
+R1
+Y
+Encoder
+R2
+^
+^
+FIGURE 15.19. Slepian–Wolf coding.
+
+--- Page 76 ---
+550
+NETWORK INFORMATION THEORY
+and a decoder map,
+g : {1, 2, . . . , 2nR1} × {1, 2, . . . , 2nR2} →Xn × Yn.
+(15.156)
+Here f1(Xn) is the index corresponding to Xn, f2(Y n) is the index cor-
+responding to Y n, and (R1, R2) is the rate pair of the code.
+Deﬁnition
+The probability of error for a distributed source code is
+deﬁned as
+P (n)
+e
+= P (g(f1(Xn), f2(Y n)) ̸= (Xn, Y n)).
+(15.157)
+Deﬁnition
+A rate pair (R1, R2) is said to be achievable for a distributed
+source if there exists a sequence of ((2nR1, 2nR2), n) distributed source
+codes with probability of error P (n)
+e
+→0. The achievable rate region is
+the closure of the set of achievable rates.
+Theorem 15.4.1
+(Slepian–Wolf )
+For the distributed source coding
+problem for the source (X, Y) drawn i.i.d ∼p(x, y), the achievable rate
+region is given by
+R1 ≥H(X|Y),
+(15.158)
+R2 ≥H(Y|X),
+(15.159)
+R1 + R2 ≥H(X, Y).
+(15.160)
+Let us illustrate the result with some examples.
+Example 15.4.1
+Consider the weather in Gotham and Metropolis. For
+the purposes of our example, we assume that Gotham is sunny with prob-
+ability 0.5 and that the weather in Metropolis is the same as in Gotham
+with probability 0.89. The joint distribution of the weather is given as
+follows:
+Metropolis
+p(x, y)
+Rain
+Shine
+Gotham
+Rain
+0.445
+0.055
+Shine
+0.055
+0.445
+
+--- Page 77 ---
+15.4
+ENCODING OF CORRELATED SOURCES
+551
+Assume that we wish to transmit 100 days of weather information to the
+National Weather Service headquarters in Washington. We could send all
+the 100 bits of the weather in both places, making 200 bits in all. If we
+decided to compress the information independently, we would still need
+100H(0.5) = 100 bits of information from each place, for a total of 200
+bits. If, instead, we use Slepian–Wolf encoding, we need only H(X) +
+H(Y|X) = 100H(0.5) + 100H(0.89) = 100 + 50 = 150 bits total.
+Example 15.4.2
+Consider the following joint distribution:
+p(u, v)
+0
+1
+0
+1
+3
+1
+3
+1
+0
+1
+3
+In this case, the total rate required for the transmission of this
+source is H(U) + H(V |U) = log 3 = 1.58 bits rather than the 2 bits that
+would be needed if the sources were transmitted independently without
+Slepian–Wolf encoding.
+15.4.1
+Achievability of the Slepian–Wolf Theorem
+We now prove the achievability of the rates in the Slepian–Wolf theorem.
+Before we proceed to the proof, we introduce a new coding procedure
+using random bins. The essential idea of random bins is very similar to
+hash functions: We choose a large random index for each source sequence.
+If the set of typical source sequences is small enough (or equivalently, the
+range of the hash function is large enough), then with high probability,
+different source sequences have different indices, and we can recover the
+source sequence from the index.
+Let us consider the application of this idea to the encoding of a single
+source. In Chapter 3 the method that we considered was to index all
+elements of the typical set and not bother about elements outside the
+typical set. We will now describe the random binning procedure, which
+indexes all sequences but rejects untypical sequences at a later stage.
+Consider the following procedure: For each sequence Xn, draw an index
+at random from {1, 2, . . . , 2nR}. The set of sequences Xn which have the
+same index are said to form a bin, since this can be viewed as ﬁrst laying
+down a row of bins and then throwing the Xn’s at random into the bins.
+For decoding the source from the bin index, we look for a typical Xn
+sequence in the bin. If there is one and only one typical Xn sequence
+in the bin, we declare it to be the estimate ˆXn of the source sequence;
+otherwise, an error is declared.
+
+--- Page 78 ---
+552
+NETWORK INFORMATION THEORY
+The above procedure deﬁnes a source code. To analyze the probability
+of error for this code, we will now divide the Xn sequences into two
+types, typical sequences and nontypical sequences. If the source sequence
+is typical, the bin corresponding to this source sequence will contain at
+least one typical sequence (the source sequence itself). Hence there will
+be an error only if there is more than one typical sequence in this bin. If
+the source sequence is nontypical, there will always be an error. But if
+the number of bins is much larger than the number of typical sequences,
+the probability that there is more than one typical sequence in a bin is
+very small, and hence the probability that a typical sequence will result
+in an error is very small.
+Formally, let f (Xn) be the bin index corresponding to Xn. Call the
+decoding function g. The probability of error (averaged over the random
+choice ofcodes f ) is
+P (g(f (X)) ̸= X) ≤P (X /∈A(n)
+ǫ ) +
+
+x
+P (∃x′ ̸= x : x′ ∈A(n)
+ǫ , f (x′)
+= f (x))p(x)
+≤ǫ +
+
+x
+
+x′ ∈A(n)
+ǫ
+x′ ̸= x
+P (f (x′) = f (x))p(x) (15.161)
+≤ǫ +
+
+x
+
+x′∈A(n)
+ǫ
+2−nRp(x)
+(15.162)
+= ǫ +
+
+x′∈A(n)
+ǫ
+2−nR 
+x
+p(x)
+(15.163)
+≤ǫ +
+
+x′∈A(n)
+ǫ
+2−nR
+(15.164)
+≤ǫ + 2n(H(X)+ǫ)2−nR
+(15.165)
+≤2ǫ
+(15.166)
+if R > H(X) + ǫ and n is sufﬁciently large. Hence, if the rate of the code
+is greater than the entropy, the probability of error is arbitrarily small and
+the code achieves the same results as the code described in Chapter 3.
+The above example illustrates the fact that there are many ways to
+construct codes with low probabilities of error at rates above the entropy
+of the source; the universal source code is another example of such a code.
+
+--- Page 79 ---
+15.4
+ENCODING OF CORRELATED SOURCES
+553
+Note that the binning scheme does not require an explicit characterization
+of the typical set at the encoder; it is needed only at the decoder. It is
+this property that enables this code to continue to work in the case of a
+distributed source, as illustrated in the proof of the theorem.
+We now return to the consideration of the distributed source coding and
+prove the achievability of the rate region in the Slepian–Wolf theorem.
+Proof:
+(Achievability in Theorem 15.4.1). The basic idea of the proof is
+to partition the space of Xn into 2nR1 bins and the space of Yn into 2nR2
+bins.
+Random code generation: Assign every x ∈Xn to one of 2nR1 bins
+independently according to a uniform distribution on {1, 2, . . . , 2nR1}.
+Similarly, randomly assign every y ∈Yn to one of 2nR2 bins. Reveal
+the assignments f1 and f2 to both the encoder and the decoder.
+Encoding: Sender 1 sends the index of the bin to which X belongs.
+Sender 2 sends the index of the bin to which Y belongs.
+Decoding: Given the received index pair (i0, j0), declare (ˆx, ˆy) = (x, y)
+if there is one and only one pair of sequences (x, y) such that f1(x) = i0,
+f2(y) = j0 and (x, y) ∈A(n)
+ǫ . Otherwise, declare an error. The scheme
+is illustrated in Figure 15.20. The set of X sequences and the set of Y
+sequences are divided into bins in such a way that the pair of indices
+speciﬁes a product bin.
+2nH(X, Y )
+jointly typical pairs
+(xn,yn)
+2nR1 bins
+yn
+xn
+2nR2 bins
+FIGURE 15.20. Slepian–Wolf encoding: the jointly typical pairs are isolated by the product
+bins.
+
+--- Page 80 ---
+554
+NETWORK INFORMATION THEORY
+Probability of error: Let (Xi, Yi) ∼p(x, y). Deﬁne the events
+E0 = {(X, Y) /∈A(n)
+ǫ },
+(15.167)
+E1 = {∃x′ ̸= X : f1(x′) = f1(X) and (x′, Y) ∈A(n)
+ǫ },
+(15.168)
+E2 = {∃y′ ̸= Y : f2(y′) = f2(Y) and (X, y′) ∈A(n)
+ǫ },
+(15.169)
+and
+E12 = {∃(x′, y′) : x′ ̸= X, y′ ̸= Y, f1(x′)
+= f1(X), f2(y′) = f2(Y) and (x′, y′) ∈A(n)
+ǫ }.
+(15.170)
+Here X, Y, f1, and f2 are random. We have an error if (X, Y) is not in
+A(n)
+ǫ
+or if there is another typical pair in the same bin. Hence by the union
+of events bound,
+P (n)
+e
+= P (E0 ∪E1 ∪E2 ∪E12)
+(15.171)
+≤P (E0) + P (E1) + P (E2) + P (E12).
+(15.172)
+First consider E0. By the AEP, P (E0) →0 and hence for n sufﬁciently
+large, P (E0) < ǫ. To bound P (E1), we have
+P (E1) = P {∃x′ ̸= X : f1(x′) = f1(X), and (x′, Y) ∈A(n)
+ǫ }
+(15.173)
+=
+
+(x,y)
+p(x, y)P {∃x′ ̸= x : f1(x′) = f1(x), (x′, y) ∈A(n)
+ǫ }
+(15.174)
+≤
+
+(x,y)
+p(x, y)
+
+x′ ̸= x
+(x′, y) ∈A(n)
+ǫ
+P (f1(x′) = f1(x))
+(15.175)
+=
+
+(x,y)
+p(x, y)2−nR1|Aǫ(X|y)|
+(15.176)
+≤2−nR12n(H(X|Y)+ǫ)
+(by Theorem 15.2.2 ),
+(15.177)
+which goes to 0 if R1 > H(X|Y). Hence for sufﬁciently large n, P (E1) <
+ǫ. Similarly, for sufﬁciently large n, P (E2) < ǫ if R2 > H(Y|X) and
+P (E12) < ǫ if R1 + R2 > H(X, Y). Since the average probability of error
+is < 4ǫ, there exists at least one code (f ∗
+1 , f ∗
+2 , g∗) with probability of error
+< 4ǫ. Thus, we can construct a sequence of codes with P (n)
+e
+→0, and
+the proof of achievability is complete.
+□
+
+--- Page 81 ---
+15.4
+ENCODING OF CORRELATED SOURCES
+555
+15.4.2
+Converse for the Slepian–Wolf Theorem
+The converse for the Slepian–Wolf theorem follows obviously from the
+results for a single source, but we will provide it for completeness.
+Proof:
+(Converse to Theorem 15.4.1). As usual, we begin with Fano’s
+inequality. Let f1, f2, g be ﬁxed. Let I0 = f1(Xn) and J0 = f2(Y n). Then
+H(Xn, Y n|I0, J0) ≤P (n)
+e
+n(log |X| + log |Y|) + 1 = nǫn,
+(15.178)
+where ǫn →0 as n →∞. Now adding conditioning, we also have
+H(Xn|Y n, I0, J0) ≤nǫn,
+(15.179)
+and
+H(Y n|Xn, I0, J0) ≤nǫn.
+(15.180)
+We can write a chain of inequalities
+n(R1 + R2)
+(a)
+≥H(I0, J0)
+(15.181)
+= I (Xn, Y n; I0, J0) + H(I0, J0|Xn, Y n)
+(15.182)
+(b)
+= I (Xn, Y n; I0, J0)
+(15.183)
+= H(Xn, Y n) −H(Xn, Y n|I0, J0)
+(15.184)
+(c)
+≥H(Xn, Y n) −nǫn
+(15.185)
+(d)
+= nH(X, Y) −nǫn,
+(15.186)
+where
+(a) follows
+from
+the
+fact
+that
+I0 ∈{1, 2, . . . , 2nR1}
+and
+J0 ∈
+{1, 2, . . . , 2nR2}
+(b) follows from the fact the I0 is a function of Xn and J0 is a function
+of Y n
+(c) follows from Fano’s inequality (15.178)
+(d) follows from the chain rule and the fact that (Xi, Yi) are i.i.d.
+
+--- Page 82 ---
+556
+NETWORK INFORMATION THEORY
+Similarly, using (15.179), we have
+nR1
+(a)
+≥H(I0)
+(15.187)
+≥H(I0|Y n)
+(15.188)
+= I (Xn; I0|Y n) + H(I0|Xn, Y n)
+(15.189)
+(b)
+= I (Xn; I0|Y n)
+(15.190)
+= H(Xn|Y n) −H(Xn|I0, J0, Y n)
+(15.191)
+(c)
+≥H(Xn|Y n) −nǫn
+(15.192)
+(d)
+= nH(X|Y) −nǫn,
+(15.193)
+where the reasons are the same as for the equations above. Similarly, we
+can show that
+nR2 ≥nH(Y|X) −nǫn.
+(15.194)
+Dividing these inequalities by n and taking the limit as n →∞, we have
+the desired converse.
+□
+The region described in the Slepian–Wolf theorem is illustrated in
+Figure 15.21.
+15.4.3
+Slepian–Wolf Theorem for Many Sources
+The results of Section 15.4.2 can easily be generalized to many sources.
+The proof follows exactly the same lines.
+Theorem 15.4.2
+Let (X1i, X2i, . . . , Xmi) be i.i.d. ∼p(x1, x2, . . . , xm).
+Then the set of rate vectors achievable for distributed source coding with
+separate encoders and a common decoder is deﬁned by
+R(S) > H(X(S)|X(Sc))
+(15.195)
+for all S ⊆{1, 2, . . . , m}, where
+R(S) =
+
+i∈S
+Ri
+(15.196)
+and X(S) = {Xj : j ∈S}.
+
+--- Page 83 ---
+15.4
+ENCODING OF CORRELATED SOURCES
+557
+R2
+R1
+H(Y )
+H(Y|X)
+H(X|Y)
+H(X)
+0
+FIGURE 15.21. Rate region for Slepian–Wolf encoding.
+Proof:
+The proof is identical to the case of two variables and is
+omitted.
+□
+The achievability of Slepian–Wolf encoding has been proved for an
+i.i.d. correlated source, but the proof can easily be extended to the case
+of an arbitrary joint source that satisﬁes the AEP; in particular, it can
+be extended to the case of any jointly ergodic source [122]. In these
+cases the entropies in the deﬁnition of the rate region are replaced by the
+corresponding entropy rates.
+15.4.4
+Interpretation of Slepian–Wolf Coding
+We consider an interpretation of the corner points of the rate region in
+Slepian–Wolf encoding in terms of graph coloring. Consider the point
+with rate R1 = H(X), R2 = H(Y|X). Using nH(X) bits, we can encode
+Xn efﬁciently, so that the decoder can reconstruct Xn with arbitrarily low
+probability of error. But how do we code Y n with nH(Y|X) bits? Looking
+at the picture in terms of typical sets, we see that associated with every
+Xn is a typical “fan” of Y n sequences that are jointly typical with the
+given Xn as shown in Figure 15.22.
+If the Y encoder knows Xn, the encoder can send the index of the Y n
+within this typical fan. The decoder, also knowing Xn, can then construct
+this typical fan and hence reconstruct Y n. But the Y encoder does not
+know Xn. So instead of trying to determine the typical fan, he randomly
+
+--- Page 84 ---
+558
+NETWORK INFORMATION THEORY
+xn
+yn
+FIGURE 15.22. Jointly typical fans.
+colors all Y n sequences with 2nR2 colors. If the number of colors is high
+enough, then with high probability all the colors in a particular fan will
+be different and the color of the Y n sequence will uniquely deﬁne the
+Y n sequence within the Xn fan. If the rate R2 > H(Y|X), the number of
+colors is exponentially larger than the number of elements in the fan and
+we can show that the scheme will have an exponentially small probability
+of error.
+15.5
+DUALITY BETWEEN SLEPIAN–WOLF ENCODING
+AND MULTIPLE-ACCESS CHANNELS
+With multiple-access channels, we considered the problem of sending
+independent messages over a channel with two inputs and only one output.
+With Slepian–Wolf encoding, we considered the problem of sending a
+correlated source over a noiseless channel, with a common decoder for
+recovery of both sources. In this section we explore the duality between
+the two systems.
+In Figure 15.23, two independent messages are to be sent over the
+channel as Xn
+1 and Xn
+2 sequences. The receiver estimates the messages
+from the received sequence. In Figure 15.24 the correlated sources are
+encoded as “independent” messages i and j. The receiver tries to estimate
+the source sequences from knowledge of i and j.
+In the proof of the achievability of the capacity region for the multiple-
+access channel, we used a random map from the set of messages to the
+
+--- Page 85 ---
+15.5
+SLEPIAN–WOLF ENCODING AND MULTIPLE-ACCESS CHANNELS
+559
+p(y|x1, x2)
+X1
+X2
+W1
+(W1, W2)
+W2
+Y
+^
+^
+FIGURE 15.23. Multiple-access channels.
+X
+(X, Y )
+(X, Y )
+Encoder
+Decoder
+R1
+Y
+Encoder
+R2
+^
+^
+FIGURE 15.24. Correlated source encoding.
+sequences Xn
+1 and Xn
+2. In the proof for Slepian–Wolf coding, we used a
+random map from the set of sequences Xn and Y n to a set of messages.
+In the proof of the coding theorem for the multiple-access channel, the
+probability of error was bounded by
+P (n)
+e
+≤ǫ +
+
+codewords
+Pr(codeword jointly typical with sequence received)
+(15.197)
+= ǫ +
+
+2nR1 terms
+2−nI1 +
+
+2nR2 terms
+2−nI2 +
+
+2n(R1+R2) terms
+2−nI3,
+(15.198)
+
+--- Page 86 ---
+560
+NETWORK INFORMATION THEORY
+where ǫ is the probability the sequences are not typical, Ri are the rates
+corresponding to the number of codewords that can contribute to the
+probability of error, and Ii is the corresponding mutual information that
+corresponds to the probability that the codeword is jointly typical with
+the received sequence.
+In the case of Slepian–Wolf encoding, the corresponding expression
+for the probability of error is
+P (n)
+e
+≤ǫ +
+
+jointly typical sequences
+Pr( have the same codeword)
+(15.199)
+= ǫ +
+
+2nH1 terms
+2−nR1 +
+
+2nH2 terms
+2−nR2 +
+
+2nH3 terms
+2−n(R1+R2),
+(15.200)
+where again the probability that the constraints of the AEP are not satisﬁed
+is bounded by ǫ, and the other terms refer to the various ways in which
+another pair of sequences could be jointly typical and in the same bin as
+the given source pair.
+The duality of the multiple-access channel and correlated source encod-
+ing is now obvious. It is rather surprising that these two systems are duals
+of each other; one would have expected a duality between the broadcast
+channel and the multiple-access channel.
+15.6
+BROADCAST CHANNEL
+The broadcast channel is a communication channel in which there is one
+sender and two or more receivers. It is illustrated in Figure 15.25. The
+basic problem is to ﬁnd the set of simultaneously achievable rates for
+communication in a broadcast channel. Before we begin the analysis, let
+us consider some examples.
+Example 15.6.1
+(TV station)
+The simplest example of the broadcast
+channel is a radio or TV station. But this example is slightly degenerate
+in the sense that normally the station wants to send the same informa-
+tion to everybody who is tuned in; the capacity is essentially maxp(x)
+mini I (X; Yi), which may be less than the capacity of the worst receiver.
+But we may wish to arrange the information in such a way that the bet-
+ter receivers receive extra information, which produces a better picture
+or sound, while the worst receivers continue to receive more basic infor-
+mation. As TV stations introduce high-deﬁnition TV (HDTV), it may be
+necessary to encode the information so that bad receivers will receive the
+
+--- Page 87 ---
+15.6
+BROADCAST CHANNEL
+561
+(W1, W2)
+W1
+Decoder
+p(y1, y2|x)
+W2
+Y1
+Y2
+Decoder
+Encoder
+X
+^
+^
+FIGURE 15.25. Broadcast channel.
+regular TV signal, while good receivers will receive the extra informa-
+tion for the high-deﬁnition signal. The methods to accomplish this will
+be explained in the discussion of the broadcast channel.
+Example 15.6.2
+(Lecturer in classroom)
+A lecturer in a classroom is
+communicating information to the students in the class. Due to differences
+among the students, they receive various amounts of information. Some of
+the students receive most of the information; others receive only a little. In
+the ideal situation, the lecturer would be able to tailor his or her lecture in
+such a way that the good students receive more information and the poor
+students receive at least the minimum amount of information. However, a
+poorly prepared lecture proceeds at the pace of the weakest student. This
+situation is another example of a broadcast channel.
+Example 15.6.3
+(Orthogonal broadcast channels)
+Thesimplestbroad-
+cast channel consists of two independent channels to the two receivers.
+Here we can send independent information over both channels, and we
+can achieve rate R1 to receiver 1 and rate R2 to receiver 2 if R1 < C1 and
+R2 < C2. The capacity region is the rectangle shown in Figure 15.26.
+Example 15.6.4
+(Spanish and Dutch speaker)
+To illustrate the idea of
+superposition, we will consider a simpliﬁed example of a speaker who can
+speak both Spanish and Dutch. There are two listeners: One understands
+only Spanish and the other understands only Dutch. Assume for simplicity
+that the vocabulary of each language is 220 words and that the speaker
+speaks at the rate of 1 word per second in either language. Then he
+
+--- Page 88 ---
+562
+NETWORK INFORMATION THEORY
+R2
+R1
+C2
+C1
+0
+FIGURE 15.26. Capacity region for two orthogonal broadcast channels.
+can transmit 20 bits of information per second to receiver 1 by speaking
+to her all the time; in this case, he sends no information to receiver 2.
+Similarly, he can send 20 bits per second to receiver 2 without sending
+any information to receiver 1. Thus, he can achieve any rate pair with
+R1 + R2 = 20 by simple time-sharing. But can he do better?
+Recall that the Dutch listener, even though he does not understand
+Spanish, can recognize when the word is Spanish. Similarly, the Spanish
+listener can recognize when Dutch occurs. The speaker can use this to
+convey information; for example, if the proportion of time he uses each
+language is 50%, then of a sequence of 100 words, about 50 will be
+Dutch and about 50 will be Spanish. But there are many ways to order the
+Spanish and Dutch words; in fact, there are about
+100
+50
+
+≈2100H( 1
+2) ways
+to order the words. Choosing one of these orderings conveys information
+to both listeners. This method enables the speaker to send information at
+a rate of 10 bits per second to the Dutch receiver, 10 bits per second to
+the Spanish receiver, and 1 bit per second of common information to both
+receivers, for a total rate of 21 bits per second, which is more than that
+achievable by simple timesharing. This is an example of superposition of
+information.
+The results of the broadcast channel can also be applied to the case
+of a single-user channel with an unknown distribution. In this case, the
+objective is to get at least the minimum information through when the
+channel is bad and to get some extra information through when the channel
+is good. We can use the same superposition arguments as in the case of
+the broadcast channel to ﬁnd the rates at which we can send information.
+
+--- Page 89 ---
+15.6
+BROADCAST CHANNEL
+563
+15.6.1
+Deﬁnitions for a Broadcast Channel
+Deﬁnition
+A broadcast channel consists of an input alphabet X and
+two output alphabets, Y1 and Y2, and a probability transition function
+p(y1, y2|x). The broadcast channel will be said to be memoryless if
+p(yn
+1, yn
+2|xn) = 
+n
+i=1 p(y1i, y2i|xi).
+We deﬁne codes, probability of error, achievability, and capacity regions
+for the broadcast channel as we did for the multiple-access channel. A
+((2nR1, 2nR2), n) code for a broadcast channel with independent informa-
+tion consists of an encoder,
+X : ({1, 2, . . . , 2nR1} × {1, 2, . . . , 2nR2}) →Xn,
+(15.201)
+and two decoders,
+g1 : Yn
+1 →{1, 2, . . . , 2nR1}
+(15.202)
+and
+g2 : Yn
+2 →{1, 2, . . . , 2nR2}.
+(15.203)
+We deﬁne the average probability of error as the probability that the
+decoded message is not equal to the transmitted message; that is,
+P (n)
+e
+= P (g1(Y n
+1 ) ̸= W1
+or
+g2(Y n
+2 ) ̸= W2),
+(15.204)
+where (W1, W2) are assumed to be uniformly distributed over 2nR1 × 2nR2.
+Deﬁnition
+A rate pair (R1, R2) is said to be achievable for the broad-
+cast channel if there exists a sequence of ((2nR1, 2nR2), n) codes with
+P (n)
+e
+→0.
+We will now deﬁne the rates for the case where we have common
+information to be sent to both receivers. A ((2nR0, 2nR1, 2nR2), n) code
+for a broadcast channel with common information consists of an encoder,
+X : ({1, 2, . . . , 2nR0} × {1, 2, . . . , 2nR1} × {1, 2, . . . , 2nR2}) →Xn,
+(15.205)
+and two decoders,
+g1 : Yn
+1 →{1, 2, . . . , 2nR0} × {1, 2, . . . , 2nR1}
+(15.206)
+and
+g2 : Yn
+2 →{1, 2, . . . , 2nR0} × {1, 2, . . . , 2nR2}.
+(15.207)
+
+--- Page 90 ---
+564
+NETWORK INFORMATION THEORY
+Assuming that the distribution on (W0, W1, W2) is uniform, we can deﬁne
+the probability of error as the probability that the decoded message is not
+equal to the transmitted message:
+P (n)
+e
+= P (g1(Y n
+1 ) ̸= (W0, W1) or g2(Zn) ̸= (W0, W2)).
+(15.208)
+Deﬁnition
+A rate triple (R0, R1, R2) is said to be achievable for the
+broadcast channel with common information if there exists a sequence of
+((2nR0, 2nR1, 2nR2), n) codes with P (n)
+e
+→0.
+Deﬁnition
+The capacity region of the broadcast channel is the closure
+of the set of achievable rates.
+We observe that an error for receiver Y n
+1 depends only the distribution
+p(xn, yn
+1) and not on the joint distribution p(xn, yn
+1, yn
+2). Thus, we have
+the following theorem:
+Theorem 15.6.1
+The capacity region of a broadcast channel depends
+only on the conditional marginal distributions p(y1|x) and p(y2|x).
+Proof:
+See the problems.
+□
+15.6.2
+Degraded Broadcast Channels
+Deﬁnition
+A broadcast channel is said to be physically degraded if
+p(y1, y2|x) = p(y1|x)p(y2|y1).
+Deﬁnition
+A broadcast channel is said to be stochastically degraded if
+its conditional marginal distributions are the same as that of a physically
+degraded broadcast channel; that is, if there exists a distribution p′(y2|y1)
+such that
+p(y2|x) =
+
+y1
+p(y1|x)p′(y2|y1).
+(15.209)
+Note that since the capacity of a broadcast channel depends only on the
+conditional marginals, the capacity region of the stochastically degraded
+broadcast channel is the same as that of the corresponding physically
+degraded channel. In much of the following, we therefore assume that the
+channel is physically degraded.
+
+--- Page 91 ---
+15.6
+BROADCAST CHANNEL
+565
+15.6.3
+Capacity Region for the Degraded Broadcast Channel
+We now consider sending independent information over a degraded broad-
+cast channel at rate R1 to Y1 and rate R2 to Y2.
+Theorem 15.6.2
+The capacity region for sending independent infor-
+mation over the degraded broadcast channel X →Y1 →Y2 is the convex
+hull of the closure of all (R1, R2) satisfying
+R2 ≤I (U; Y2),
+(15.210)
+R1 ≤I (X; Y1|U)
+(15.211)
+for some joint distribution p(u)p(x|u)p(y1, y2|x), where the auxiliary ran-
+dom variable U has cardinality bounded by |U| ≤min{|X|, |Y1|, |Y2|}.
+Proof:
+(The cardinality bounds for the auxiliary random variable U are
+derived using standard methods from convex set theory and are not dealt
+with here.) We ﬁrst give an outline of the basic idea of superposition
+coding for the broadcast channel. The auxiliary random variable U will
+serve as a cloud center that can be distinguished by both receivers Y1
+and Y2. Each cloud consists of 2nR1 codewords Xn distinguishable by the
+receiver Y1. The worst receiver can only see the clouds, while the better
+receiver can see the individual codewords within the clouds. The formal
+proof of the achievability of this region uses a random coding argument:
+Fix p(u) and p(x|u).
+Random codebook generation: Generate 2nR2 independent codewords
+of length n, U(w2), w2 ∈{1, 2, . . . , 2nR2}, according to 
+n
+i=1 p(ui). For
+each codeword U(w2), generate 2nR1 independent codewords X(w1, w2)
+according to 
+n
+i=1 p(xi|ui(w2)). Here u(i) plays the role of the cloud
+center understandable to both Y1 and Y2, while x(i, j) is the jth satellite
+codeword in the ith cloud.
+Encoding: To send the pair (W1, W2), send the corresponding codeword
+X(W1, W2).
+Decoding: Receiver 2 determines the unique ˆˆW 2 such that (U( ˆˆW 2),
+Y2) ∈A(n)
+ǫ . If there are none such or more than one such, an error is
+declared.
+Receiver 1 looks for the unique ( ˆW1, ˆW2) such that (U( ˆW2), X( ˆW1, ˆW2),
+Y1) ∈A(n)
+ǫ . If there are none such or more than one such, an error is
+declared.
+Analysis of the probability of error: By the symmetry of the code gen-
+eration, the probability of error does not depend on which codeword was
+
+--- Page 92 ---
+566
+NETWORK INFORMATION THEORY
+sent. Hence, without loss of generality, we can assume that the mes-
+sage pair (W1, W2) = (1, 1) was sent. Let P (·) denote the conditional
+probability of an event given that (1,1) was sent.
+Since we have essentially a single-user channel from U to Y2, we will
+be able to decode the U codewords with a low probability of error if
+R2 < I (U; Y2). To prove this, we deﬁne the events
+EYi = {(U(i), Y2) ∈A(n)
+ǫ }.
+(15.212)
+Then the probability of error at receiver 2 is
+P (n)
+e
+(2) = P (Ec
+Y1
+ 
+i̸=1
+EYi)
+(15.213)
+≤P (Ec
+Y1) +
+
+i̸=1
+P (EYi)
+(15.214)
+≤ǫ + 2nR22−n(I(U;Y2)−2ǫ)
+(15.215)
+≤2ǫ
+(15.216)
+if n is large enough and R2 < I (U; Y2), where (15.215) follows from the
+AEP. Similarly, for decoding for receiver 1, we deﬁne the events
+˜EYi = {(U(i), Y1) ∈A(n)
+ǫ },
+(15.217)
+˜EYij = {(U(i), X(i, j), Y1) ∈A(n)
+ǫ },
+(15.218)
+where the tilde refers to events deﬁned at receiver 1. Then we can bound
+the probability of error as
+P (n)
+e
+(1) = P
+
+˜Ec
+Y1
+ ˜Ec
+Y11
+ 
+i̸=1
+˜EYi
+ 
+j̸=1
+˜EY1j
+
+
+(15.219)
+≤P ( ˜Ec
+Y1) + P ( ˜Ec
+Y11) +
+
+i̸=1
+P ( ˜EYi) +
+
+j̸=1
+P ( ˜EY1j). (15.220)
+By the same arguments as for receiver 2, we can bound P ( ˜EYi) ≤
+2−n(I(U;Y1)−3ǫ). Hence, the third term goes to 0 if R2 < I (U; Y1). But
+by the data-processing inequality and the degraded nature of the chan-
+nel, I (U; Y1) ≥I (U; Y2), and hence the conditions of the theorem imply
+
+--- Page 93 ---
+15.6
+BROADCAST CHANNEL
+567
+that the third term goes to 0. We can also bound the fourth term in the
+probability of error as
+P ( ˜EY1j) = P ((U(1), X(1, j), Y1) ∈A(n)
+ǫ )
+(15.221)
+=
+
+(U,X,Y1)∈A(n)
+ǫ
+P ((U(1), X(1, j), Y1))
+(15.222)
+=
+
+(U,X,Y1)∈A(n)
+ǫ
+P (U(1))P (X(1, j)|U(1))P (Y1|U(1))
+(15.223)
+≤
+
+(U,X,Y1)∈A(n)
+ǫ
+2−n(H(U)−ǫ)2−n(H(X|U)−ǫ)2−n(H(Y1|U)−ǫ)
+(15.224)
+≤2n(H(U,X,Y1)+ǫ)2−n(H(U)−ǫ)2−n(H(X|U)−ǫ)2−n(H(Y1|U)−ǫ)
+(15.225)
+= 2−n(I(X;Y1|U)−4ǫ).
+(15.226)
+Hence, if R1 < I (X; Y1|U), the fourth term in the probability of error
+goes to 0. Thus, we can bound the probability of error
+P (n)
+e
+(1) ≤ǫ + ǫ + 2nR22−n(I(U;Y1)−3ǫ) + 2nR12−n(I(X;Y1|U)−4ǫ)
+(15.227)
+≤4ǫ
+(15.228)
+if n is large enough and R2 < I (U; Y1) and R1 < I (X; Y1|U). The above
+bounds show that we can decode the messages with total probability
+of error that goes to 0. Hence, there exists a sequence of good ((2nR1,
+2nR2), n) codes C∗
+n with probability of error going to 0. With this, we com-
+plete the proof of the achievability of the capacity region for the degraded
+broadcast channel. Gallager’s proof [225] of the converse is outlined in
+Problem 15.11.
+□
+So far we have considered sending independent information to each
+receiver. But in certain situations, we wish to send common information
+to both receivers. Let the rate at which we send common information be
+R0. Then we have the following obvious theorem:
+Theorem 15.6.3
+If the rate pair (R1, R2) is achievable for a broadcast
+channel with independent information, the rate triple (R0, R1 −R0, R2 −
+R0) with a common rate R0
+is achievable, provided that R0 ≤
+min(R1, R2).
+
+--- Page 94 ---
+568
+NETWORK INFORMATION THEORY
+In the case of a degraded broadcast channel, we can do even better.
+Since by our coding scheme the better receiver always decodes all the
+information that is sent to the worst receiver, one need not reduce the
+amount of information sent to the better receiver when we have common
+information. Hence, we have the following theorem:
+Theorem 15.6.4
+If the rate pair (R1, R2) is achievable for a degraded
+broadcast channel, the rate triple (R0, R1, R2 −R0) is achievable for the
+channel with common information, provided that R0 < R2.
+We end this section by considering the example of the binary symmetric
+broadcast channel.
+Example 15.6.5
+Consider a pair of binary symmetric channels with
+parameters p1 and p2 that form a broadcast channel as shown in Fig-
+ure 15.27. Without loss of generality in the capacity calculation, we can
+recast this channel as a physically degraded channel. We assume that
+p1 < p2 < 1
+2. Then we can express a binary symmetric channel with
+parameter p2 as a cascade of a binary symmetric channel with parameter
+p1 with another binary symmetric channel. Let the crossover probability
+of the new channel be α. Then we must have
+p1(1 −α) + (1 −p1)α = p2
+(15.229)
+X
+Y1
+Y2
+0
+0
+1
+1
+0
+1
+FIGURE 15.27. Binary symmetric broadcast channel.
+
+--- Page 95 ---
+15.6
+BROADCAST CHANNEL
+569
+U
+1 −b
+1 −b
+1 −a
+1 −a
+1 − p1
+1 − p1
+X
+Y1
+Y2
+b
+b
+a
+a
+p1
+p1
+FIGURE 15.28. Physically degraded binary symmetric broadcast channel.
+or
+α = p2 −p1
+1 −2p1
+.
+(15.230)
+We now consider the auxiliary random variable in the deﬁnition of the
+capacity region. In this case, the cardinality of U is binary from the bound
+of the theorem. By symmetry, we connect U to X by another binary
+symmetric channel with parameter β, as illustrated in Figure 15.28.
+We can now calculate the rates in the capacity region. It is clear by sym-
+metry that the distribution on U that maximizes the rates is the uniform
+distribution on {0, 1}, so that
+I (U; Y2) = H(Y2) −H(Y2|U)
+(15.231)
+= 1 −H(β ∗p2),
+(15.232)
+where
+β ∗p2 = β(1 −p2) + (1 −β)p2.
+(15.233)
+Similarly,
+I (X; Y1|U) = H(Y1|U) −H(Y1|X, U)
+(15.234)
+= H(Y1|U) −H(Y1|X)
+(15.235)
+= H(β ∗p1) −H(p1),
+(15.236)
+where
+β ∗p1 = β(1 −p1) + (1 −β)p1.
+(15.237)
+Plotting these points as a function of β, we obtain the capacity region
+in Figure 15.29. When β = 0, we have maximum information transfer
+to Y2 [i.e., R2 = 1 −H(p2) and R1 = 0]. When β = 1
+2, we have maxi-
+mum information transfer to Y1 [i.e., R1 = 1 −H(p1)] and no information
+transfer to Y2. These values of β give us the corner points of the rate
+region.
+
+--- Page 96 ---
+570
+NETWORK INFORMATION THEORY
+R2
+R1
+I − H(p2)
+I − H(p1)
+FIGURE 15.29. Capacity region of binary symmetric broadcast channel.
+Z1 ~
+Y1
+Y2
+(0,N1)
+Z ′2 ~
+(0,N2 −N1)
+X
+FIGURE 15.30. Gaussian broadcast channel.
+Example 15.6.6
+(Gaussian broadcast channel)
+The Gaussian broad-
+cast channel is illustrated in Figure 15.30. We have shown it in the case
+where one output is a degraded version of the other output. Based on
+the results of Problem 15.10, it follows that all scalar Gaussian broadcast
+channels are equivalent to this type of degraded channel.
+Y1 = X + Z1,
+(15.238)
+Y2 = X + Z2 = Y1 + Z′
+2,
+(15.239)
+where Z1 ∼N(0, N1) and Z′
+2 ∼N(0, N2 −N1).
+Extending the results of this section to the Gaussian case, we can show
+that the capacity region of this channel is given by
+R1 < C
+αP
+N1
+
+(15.240)
+R2 < C
+(1 −α)P
+αP + N2
+
+,
+(15.241)
+
+--- Page 97 ---
+15.7
+RELAY CHANNEL
+571
+where α may be arbitrarily chosen (0 ≤α ≤1). The coding scheme that
+achieves this capacity region is outlined in Section 15.1.3.
+15.7
+RELAY CHANNEL
+The relay channel is a channel in which there is one sender and one
+receiver with a number of intermediate nodes that act as relays to help
+the communication from the sender to the receiver. The simplest relay
+channel has only one intermediate or relay node. In this case the channel
+consists of four ﬁnite sets X, X1, Y, and Y1 and a collection of probability
+mass functions p(y, y1|x, x1) on Y × Y1, one for each (x, x1) ∈X × X1.
+The interpretation is that x is the input to the channel and y is the output
+of the channel, y1 is the relay’s observation, and x1 is the input symbol
+chosen by the relay, as shown in Figure 15.31. The problem is to ﬁnd the
+capacity of the channel between the sender X and the receiver Y.
+The relay channel combines a broadcast channel (X to Y and Y1) and a
+multiple-access channel (X and X1 to Y). The capacity is known for the
+special case of the physically degraded relay channel. We ﬁrst prove an
+outer bound on the capacity of a general relay channel and later establish
+an achievable region for the degraded relay channel.
+Deﬁnition
+A (2nR, n) code for a relay channel consists of a set of
+integers W = {1, 2, . . . , 2nR}, an encoding function
+X : {1, 2, . . . , 2nR} →Xn,
+(15.242)
+a set of relay functions {fi}n
+i=1 such that
+x1i = fi(Y11, Y12, . . . , Y1i−1),
+1 ≤i ≤n,
+(15.243)
+and a decoding function,
+g : Yn →{1, 2, . . . , 2nR}.
+(15.244)
+X
+Y1 : X1
+Y
+FIGURE 15.31. Relay channel.
+
+--- Page 98 ---
+572
+NETWORK INFORMATION THEORY
+Note that the deﬁnition of the encoding functions includes the nonan-
+ticipatory condition on the relay. The relay channel input is allowed to
+depend only on the past observations y11, y12, . . . , y1i−1. The channel is
+memoryless in the sense that (Yi, Y1i) depends on the past only through
+the current transmitted symbols (Xi, X1i). Thus, for any choice p(w),
+w ∈W, and code choice X : {1, 2, . . . , 2nR} →Xn
+i and relay functions
+{fi}n
+i=1, the joint probability mass function on W × Xn × Xn
+1 × Yn × Yn
+1
+is given by
+p(w, x, x1, y, y1) = p(w)
+n
+
+i=1
+p(xi|w)p(x1i|y11, y12, . . . , y1i−1)
+× p(yi, y1i|xi, x1i).
+(15.245)
+If the message w ∈[1, 2nR] is sent, let
+λ(w) = Pr{g(Y) ̸= w|w sent}
+(15.246)
+denote the conditional probability of error. We deﬁne the average proba-
+bility of error of the code as
+P (n)
+e
+=
+1
+2nR
+
+w
+λ(w).
+(15.247)
+The probability of error is calculated under the uniform distribution over
+the codewords w ∈{1, . . . , 2nR}. The rate R is said to be achievable
+by the relay channel if there exists a sequence of (2nR, n) codes with
+P (n)
+e
+→0. The capacity C of a relay channel is the supremum of the set
+of achievable rates.
+We ﬁrst give an upper bound on the capacity of the relay channel.
+Theorem 15.7.1
+For any relay channel (X × X1, p(y, y1|x, x1), Y ×
+Y1), the capacity C is bounded above by
+C ≤sup
+p(x,x1)
+min {I (X, X1; Y), I (X; Y, Y1|X1)} .
+(15.248)
+Proof:
+The proof is a direct consequence of a more general max-ﬂow
+min-cut theorem given in Section 15.10.
+□
+This upper bound has a nice max-ﬂow min-cut interpretation. The ﬁrst
+term in (15.248) upper bounds the maximum rate of information transfer
+
+--- Page 99 ---
+15.7
+RELAY CHANNEL
+573
+from senders X and X1 to receiver Y. The second terms bound the rate
+from X to Y and Y1.
+We now consider a family of relay channels in which the relay receiver
+is better than the ultimate receiver Y in the sense deﬁned below. Here the
+max-ﬂow min-cut upper bound in the (15.248) is achieved.
+Deﬁnition
+The relay channel (X × X1, p(y, y1|x, x1), Y × Y1) is said
+to be physically degraded if p(y, y1|x, x1) can be written in the form
+p(y, y1|x, x1) = p(y1|x, x1)p(y|y1, x1).
+(15.249)
+Thus, Y is a random degradation of the relay signal Y1.
+For the physically degraded relay channel, the capacity is given by the
+following theorem.
+Theorem 15.7.2
+The capacity C of a physically degraded relay channel
+is given by
+C = sup
+p(x,x1)
+min {I (X, X1; Y), I (X; Y1|X1)} ,
+(15.250)
+where the supremum is over all joint distributions on X × X1.
+Proof:
+Converse: The proof follows from Theorem 15.7.1 and by degradedness,
+since for the degraded relay channel, I (X; Y, Y1|X1) = I (X; Y1|X1).
+Achievability: The proof of achievability involves a combination
+of the following basic techniques: (1) random coding, (2) list codes,
+(3) Slepian–Wolf partitioning, (4) coding for the cooperative multiple-
+access channel, (5) superposition coding, and (6) block Markov encoding
+at the relay and transmitter. We provide only an outline of the proof.
+Outline of achievability: We consider B blocks of transmission, each of
+n symbols. A sequence of B −1 indices, wi ∈{1, . . . , 2nR}, i = 1, 2, . . . ,
+B −1, will be sent over the channel in nB transmissions. (Note that as
+B →∞for a ﬁxed n, the rate R(B −1)/B is arbitrarily close to R.)
+We deﬁne a doubly indexed set of codewords:
+C = {x(w|s), x1(s)} : w ∈{1, 2nR}, s ∈{1, 2nR0}, x ∈Xn, x1 ∈Xn
+1 .
+(15.251)
+We will also need a partition
+S = {S1, S2, . . . , S2nR0} of W = {1, 2, . . . , 2nR}
+(15.252)
+
+--- Page 100 ---
+574
+NETWORK INFORMATION THEORY
+into 2nR0 cells, with Si ∩Sj = φ, i ̸= j, and ∪Si = W. The partition will
+enable us to send side information to the receiver in the manner of Slepian
+and Wolf [502].
+Generation of random code: Fix p(x1)p(x|x1).
+First generate
+at random
+2nR0
+i.i.d.
+n-sequences in
+Xn
+1 , each
+drawn according to p(x1) = 
+n
+i=1 p(x1i). Index them as x1(s), s ∈
+{1, 2, . . . , 2nR0}. For each x1(s), generate 2nR conditionally independent
+n-sequences x(w|s), w ∈{1, 2, . . . , 2nR}, drawn independently accord-
+ing to p(x|x1(s)) = 
+n
+i=1 p(xi|x1i(s)). This deﬁnes the random code-
+book C = {x(w|s), x1(s)}. The random partition S = {S1, S2, . . . , S2nR0} of
+{1, 2, . . . , 2nR} is deﬁned as follows. Let each integer w ∈{1, 2, . . . , 2nR}
+be assigned independently, according to a uniform distribution over the
+indices s = 1, 2, . . . , 2nR0, to cells Ss.
+Encoding: Let wi ∈{1, 2, . . . , 2nR} be the new index to be sent in block
+i, and let si be deﬁned as the partition corresponding to wi−1 (i.e., wi−1 ∈
+Ssi). The encoder sends x(wi|si). The relay has an estimate ˆˆwi−1 of the
+previous index wi−1. (This will be made precise in the decoding section.)
+Assume that ˆˆwi−1 ∈S ˆˆsi. The relay encoder sends x1( ˆˆsi) in block i.
+Decoding: We assume that at the end of block i −1, the receiver
+knows (w1, w2, . . . , wi−2) and (s1, s2, . . . , si−1) and the relay knows (w1,
+w2, . . . , wi−1) and consequently, (s1, s2, . . . , si). The decoding procedures
+at the end of block i are as follows:
+1. Knowing si and upon receiving y1(i), the relay receiver estimates
+the message of the transmitter ˆˆwi = w if and only if there exists
+a unique w such that (x(w|si), x1(si), y1(i)) are jointly ǫ-typical.
+Using Theorem 15.2.3, it can be shown that ˆˆwi = wi with an arbi-
+trarily small probability of error if
+R < I (X; Y1|X1)
+(15.253)
+and n is sufﬁciently large.
+2. The receiver declares that ˆsi = s was sent iff there exists one and
+only one s such that (x1(s), y(i)) are jointly ǫ-typical. From Theo-
+rem 15.2.1 we know that si can be decoded with arbitrarily small
+probability of error if
+R0 < I (X1; Y)
+(15.254)
+and n is sufﬁciently large.
